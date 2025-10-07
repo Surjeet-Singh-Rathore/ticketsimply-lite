@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.view.activity.SettingsActivity">
+
+    <include
+        android:id="@+id/simple_toolbar"
+        layout="@layout/simple_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/title_bg"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/simple_toolbar">
+
+        <LinearLayout
+            android:id="@+id/fingerPrintCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fingerprint"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/addBiometric"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/add_lowercase"
+                    android:textColor="@color/colorButton" />
+
+                <TextView
+                    android:id="@+id/deLinkBiometric"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/delink"
+                    android:textColor="@color/blocked_tickets" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/blackList_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/balckListText"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/black_list"
+                android:textColor="@color/grey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rapidBookingCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/skip_passenger_details_1"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/rapidBookingTV"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/defaultt"
+                    android:textColor="@color/colorButton" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/language_selection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/language"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/language_selected"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/english"
+                    android:textColor="@color/colorButton" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/coach_layout_choice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:orientation="horizontal"
+
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/subText"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/coach_layout"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/view_selection"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="Split"
+                    android:textColor="@color/colorButton" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/selectLandingPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/subTextLandingPage"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/landing_page"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/viewSelectionLandingPage"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/bookings"
+                    android:textColor="@color/colorButton" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/printTypeLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/printTypeTV"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/print_selection"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/printTypeValueTV"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/bluetooth"
+                    android:textColor="@color/colorButton" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/notificationSoundLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/notificationSoundTV"
+                    style="@style/TextStyleBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notification_sound"
+                    android:textColor="@color/grey"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/notificationSoundValueTV"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/notificationSoundValueTV"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/notificationSoundTV"
+                    app:layout_constraintBottom_toBottomOf="@id/notificationSoundTV" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutSendError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvSendErrorReport"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sendErrorReport"
+                android:textColor="@color/grey" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/textSizeLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/textSizeTV"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_size"
+                android:textColor="@color/grey" />
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/redelcomLL"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/redelcommTV"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/pay_and_print_with_redelcom"
+                android:textColor="@color/grey"
+                app:layout_constraintEnd_toStartOf="@id/redelcommCB"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/redelcommCB"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                app:layout_constraintEnd_toStartOf="@id/infoTV"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/redelcommTV" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/sp30"
+                android:layout_height="@dimen/sp30"
+                android:id="@+id/infoTV"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_info" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+        <include
+            android:id="@+id/includeProgress"
+            layout="@layout/layout_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

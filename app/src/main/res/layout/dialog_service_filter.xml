@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/filter_by"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvClearAll"
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/clear_all"
+                android:textColor="@color/colorRed2" />
+        </RelativeLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/chkHub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_56"
+                android:checked="true"
+                android:text="@string/hub" />
+
+            <RadioButton
+                android:id="@+id/chkFromTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/from_slash_to" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/layoutHub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headerHubLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_hub"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/subHeaderHubLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:hint="@string/select_hub"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etSelectHub"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutFromTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/headerFromLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/from"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/subHeaderFromLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:hint="@string/select_from"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etSelectFrom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/headerToLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/to_city_pascal_case"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor">
+
+            </TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/subHeaderToLabel"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:hint="@string/select_to_city"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etSelectTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
+        <android.widget.Button
+            android:id="@+id/btnApplyFilter"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/button_selected_bg"
+            android:text="@string/apply"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+</LinearLayout>

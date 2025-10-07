@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ignoreMI"
+        android:title="@string/ignore_update_to_rp0" />
+
+    <item
+        android:id="@+id/removeMI"
+        android:title="@string/remove_passenger" />
+
+
+    <!--<item
+        android:id="@+id/sendWhatsappMI"
+        android:title="@string/send_a_whatsapp_message" />
+
+
+    <item
+        android:id="@+id/sendSmsMI"
+        android:title="@string/send_sms_to_passenger" />-->
+
+
+</menu>

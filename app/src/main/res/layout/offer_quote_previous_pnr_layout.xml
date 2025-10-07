@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/card_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:orientation="horizontal">
+
+
+                    <CheckBox
+                        android:id="@+id/check_box"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/dp_8"
+                        android:text="@string/quote_previous_pnr"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorBlackShadow" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/edit_txt"
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="25dp"
+                    android:background="@drawable/layout_rounded_shape_border"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/edit"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="11sp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/valid_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/tick_img"
+                    android:visibility="gone">
+
+                </ImageView>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/expanded_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+
+                    android:background="@drawable/header_gradient_bg"
+
+                    android:textColorHint="@color/grey">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_code"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+
+                        android:drawablePadding="50dp"
+                        android:hint="@string/enter_pnr_number"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:paddingBottom="10dp"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_code_sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_code_sub"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:drawablePadding="50dp"
+                        android:hint="@string/enter_phone_number"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:paddingBottom="10dp"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/cancel_btn"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_16"
+                        android:text="@string/cancel"
+                        android:textColor="@color/colorRed2"
+                        android:textSize="16dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/apply_btn"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_16"
+                        android:text="@string/apply"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp16">
+
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey_four_tint" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

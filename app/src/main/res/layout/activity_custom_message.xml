@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/button_color"
+    android:orientation="vertical"
+    tools:context=".presentation.view.activity.CustomMessageActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_send_sms" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_message"
+                android:textColor="@color/colorBlackShadow" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="159dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/header_gradient_bg"
+                android:gravity="top|start">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCustomMsg"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:gravity="start"
+                    android:hint="@string/type_your_custom_message_here"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:minLines="2" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/max_140_characters"
+                android:textColor="@color/button_default_color"
+                android:textSize="12sp" />
+
+            <android.widget.Button
+                android:id="@+id/btnConfirmMessage"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_selected_bg"
+                android:text="@string/confirm_message"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/head_text"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/button_secondary_bg"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingTop="14dp"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingBottom="14dp"
+                android:text="@string/service_summary"
+                android:textColor="@color/white"
+                app:drawableEndCompat="@drawable/icon_cross"
+                app:drawableTint="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs_pickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:tabBackground="@color/colorWhite"
+                    app:tabIndicatorColor="@color/colorPrimary"
+                    app:tabIndicatorFullWidth="true"
+                    app:tabIndicatorHeight="3dp"
+                    app:tabInlineLabel="false"
+                    app:tabMode="fixed" />
+
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewpager_pickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

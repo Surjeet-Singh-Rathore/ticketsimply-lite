@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/button_color">
+
+
+    <include
+        android:id="@+id/includeHeader"
+        layout="@layout/toolbar_service_summary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/resetTV"
+        app:layout_constraintTop_toBottomOf="@id/includeHeader">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@id/resetTV"
+            app:layout_constraintTop_toBottomOf="@id/includeHeader">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/includeHeader">
+
+
+                <TextView
+                    android:id="@+id/boardingDroppingTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:letterSpacing="0.05"
+                    android:text="@string/boarding_amp_dropping_point"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutBoardingAt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/boardingDroppingTV">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBoardingAt"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:drawableTint="@color/colorBlackShadow"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:hint="@string/select_boarding_point"
+                        android:imeOptions="actionNext"
+                        android:inputType="none"
+                        android:paddingTop="20dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutDropOffAt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layoutBoardingAt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDropOffAt"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:drawableTint="@color/colorBlackShadow"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:hint="@string/select_dropping_point"
+                        android:imeOptions="actionNext"
+                        android:inputType="none"
+                        android:paddingTop="20dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/numberOfTicketTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:letterSpacing="0.05"
+                    android:text="@string/number_of_tickets"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layoutDropOffAt" />
+
+                <TextView
+                    android:id="@+id/ticketValueTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:letterSpacing="0.05"
+                    android:text="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/numberOfTicketTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/numberOfTicketTV" />
+
+
+                <TextView
+                    android:id="@+id/motCouponTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:letterSpacing="0.05"
+                    android:text="@string/mot_coupon"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/numberOfTicketTV" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutMOTCouponTIL"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/motCouponTV">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/motET"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:gravity="center_vertical"
+                        android:hint="@string/enter_coupon_code"
+                        android:imeOptions="actionNext"
+                        android:paddingStart="20dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/qrScanIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:src="@drawable/qr_scan"
+                    app:layout_constraintBottom_toBottomOf="@id/layoutMOTCouponTIL"
+                    app:layout_constraintEnd_toEndOf="@id/layoutMOTCouponTIL"
+                    app:layout_constraintTop_toTopOf="@id/layoutMOTCouponTIL" />
+
+
+                <TextView
+                    android:id="@+id/boardingStatusTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:letterSpacing="0.05"
+                    android:text="@string/boarding_status"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutMOTCouponTIL" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/scan_for_boarded_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/dark_grey_stroke_bg"
+                    android:drawableStart="@drawable/qr_scan"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_50sdp"
+                    android:text="Scan to update boarding status"
+                    android:textColor="@color/textColor"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/boardingStatusTV" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/resetTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_15sdp"
+        android:text="@string/reset"
+        android:gravity="center"
+        android:background="#CFCFCF"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/confirmTV"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/confirmTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_15sdp"
+        android:text="@string/confirm"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/resetTV" />
+
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

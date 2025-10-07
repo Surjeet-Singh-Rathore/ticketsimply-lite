@@ -1,0 +1,23 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<bitmap-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:src="@drawable/phone_blocked_ticket"-->
+
+<!--    android:tileMode="repeat"/>-->
+
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" />
+            <corners android:radius="4dp"></corners>
+        </shape>
+    </item>
+    <item>
+        <bitmap
+            android:src="@drawable/phone_blocked_ticket"
+            android:tileMode="repeat"
+            android:alpha="0.5" />
+    </item>
+
+</layer-list>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_rounded_shape"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="12dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="20dp" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/text_header_bg"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+        app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@id/guideline_h_begin" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="13dp"
+        android:background="@color/colorDimShadow5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/group_buttons"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+    <LinearLayout
+        android:id="@+id/extaSeatInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@id/tvContent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:text="@string/seat_no">
+
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_gravity="end"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_weight="5"
+            android:background="@drawable/header_gradient_bg"
+            android:enabled="false"
+            app:boxStrokeErrorColor="@color/colorRed2"
+            app:boxStrokeWidth="@dimen/dp_2"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_extra_seat_number"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:hint="@string/seat_no"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:imeOptions="actionDone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEdtRemarks"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        app:boxStrokeErrorColor="@color/colorRed2"
+        app:boxStrokeWidth="@dimen/dp_2"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@id/extaSeatInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRemarks"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/enter_remarks"
+            android:imeOptions="actionDone"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkbox_send_sms"
+        style="@style/TextStyleNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:text="@string/send_whatsapp_and_sms_extra_seat"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@id/layoutEdtRemarks" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="btn_left,btn_right"
+        app:layout_constraintTop_toBottomOf="@+id/tvContent"
+
+        />
+
+    <android.widget.Button
+        android:id="@+id/btn_left"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/button_secondary_bg"
+        android:text="@string/empty"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_send_sms"
+        app:layout_constraintWidth_percent="0.50" />
+
+    <android.widget.Button
+        android:id="@+id/btn_right"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/empty"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toRightOf="@+id/btn_left"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_send_sms"
+        app:layout_constraintWidth_percent="0.50" />
+
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

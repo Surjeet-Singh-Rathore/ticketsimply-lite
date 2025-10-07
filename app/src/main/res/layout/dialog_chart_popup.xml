@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_bg"
+    android:paddingBottom="@dimen/dp_16">
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Available Graphs"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbBarChar"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:checked="true"
+            android:drawableStart="@drawable/ic_bar_chart"
+            android:drawablePadding="@dimen/dp_16"
+            android:paddingStart="@dimen/dp_16"
+            android:text="@string/bar_chart"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/sp14" />
+
+        <RadioButton
+            android:id="@+id/rbPieChart"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_pie_chart"
+            android:drawablePadding="@dimen/dp_16"
+            android:paddingStart="@dimen/dp_16"
+            android:text="@string/pie_chart"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/sp14"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <RadioButton
+            android:id="@+id/rbLineChart"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_line_chart"
+            android:drawablePadding="@dimen/dp_16"
+            android:paddingStart="@dimen/dp_16"
+            android:text="@string/line_chart"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/sp14"
+            tools:layout_editor_absoluteX="16dp" />
+
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/btnCancel"
+        style="@style/TextStyleBold"
+        android:layout_width="164dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="@dimen/dp_32"
+        android:text="@string/cancel"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/colorRed2"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnChangeChart"
+        app:layout_constraintTop_toBottomOf="@+id/radiogroup"
+        app:layout_constraintWidth_percent="0.40" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnChangeChart"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/layout_rounded_shape"
+        android:padding="@dimen/margin_10"
+        android:text="Change Chart"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radiogroup"
+        app:layout_constraintWidth_percent="0.60" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

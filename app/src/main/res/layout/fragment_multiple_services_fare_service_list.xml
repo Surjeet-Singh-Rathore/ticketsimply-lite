@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/fromToLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sourceTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:hint="@string/from"
+                app:boxStrokeColor="@color/grey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sourceET"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none"
+                    android:paddingStart="15dp"
+                    android:text="@string/empty"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/destinationTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:hint="@string/to_"
+                app:boxStrokeColor="@color/grey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/destinationET"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none"
+                    android:paddingStart="15dp"
+                    android:text="@string/empty"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@id/fromToLayout">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/selectDateTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:hint="@string/select_date"
+                app:boxStrokeColor="@color/grey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/selectDateET"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:drawableEnd="@drawable/ic_calendar"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none"
+                    android:text="@string/empty"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSearch"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_default_bg"
+                android:backgroundTint="@color/button_highlight_color"
+                android:text="@string/search"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/servicesListCL"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/btnSetFare"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headerCL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/selectedHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/selected"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/selectedCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/empty"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/selectedHeader"
+                app:layout_constraintStart_toEndOf="@id/selectedHeader"
+                app:layout_constraintTop_toTopOf="@id/selectedHeader" />
+
+            <CheckBox
+                android:id="@+id/cbCheckAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layoutDirection="rtl"
+                android:text="@string/all"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/headersLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_300"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:weightSum="4"
+            app:layout_constraintTop_toBottomOf="@id/headerCL">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.5"
+                android:text="@string/service_details_1"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/time"
+                android:textColor="@color/black" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvServices"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintBottom_toTopOf="@id/progressBarBottom"
+            app:layout_constraintTop_toBottomOf="@id/headersLL" />
+
+        <ProgressBar
+            android:id="@+id/progressBarBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvServices" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSetFare"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selected_bg"
+        android:text="@string/set_fare_details"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNoDataAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data_found"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

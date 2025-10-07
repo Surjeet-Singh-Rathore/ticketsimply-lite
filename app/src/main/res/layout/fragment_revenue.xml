@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLighterGrey"
+    tools:context=".phase2.fragments.mainFragments.OccupancyFragment">
+
+    <include
+        android:id="@+id/noData"
+        layout="@layout/layout_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            style="@style/scrollbar_shape_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerRevenue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    shimmer:duration="800">
+
+                    <include layout="@layout/shimmer_dashboard_second_graph_layout" />
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/revenueContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorLighterGrey"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_16"
+                    android:visibility="visible">
+
+                    <include
+                        android:id="@+id/allServicesAndDateFilterContainer"
+                        layout="@layout/dashboard_graph_all_services_and_dates_filter_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewSeatStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_320"
+                        android:layout_marginTop="@dimen/dp_16"
+                        app:cardCornerRadius="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/allServicesAndDateFilterContainer">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tvBookingSeatStatusHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dp_16"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/day_wise_net_rev_travel_date"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.bitla.ts.phase2.chartUtils.RoundedBarChart
+                                android:id="@+id/barChartDayWiseCollection"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_0"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:layout_marginBottom="@dimen/dp_16"
+                                android:padding="@dimen/dp_16"
+                                app:layout_constraintBottom_toTopOf="@+id/view4"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvBookingSeatStatusHeading"
+                                app:radius="0dp" />
+
+                            <View
+                                android:id="@+id/view4"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@color/grey_four_tint"
+                                app:layout_constraintBottom_toTopOf="@+id/tvViewDetailsSeatStatus"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvViewDetailsSeatStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_12"
+                                android:layout_marginEnd="@dimen/dp_12"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@drawable/layout_rounded_shape_light_blue"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/dp_16"
+                                android:paddingTop="@dimen/dp_8"
+                                android:paddingEnd="@dimen/dp_16"
+                                android:paddingBottom="@dimen/dp_8"
+                                android:text="@string/view_details"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewDayWiseBooking"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_320"
+                        android:layout_marginTop="16dp"
+                        app:cardCornerRadius="@dimen/dp_8"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardViewSeatStatus">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tvOccupancyHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dp_16"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/branch_wise_net_rev_issue_date"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.bitla.ts.phase2.chartUtils.RoundedBarChart
+                                android:id="@+id/barChartOccupancy"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_0"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:layout_marginBottom="@dimen/dp_16"
+                                android:padding="@dimen/dp_16"
+                                app:layout_constraintBottom_toTopOf="@+id/view1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvOccupancyHeading"
+                                app:radius="0dp" />
+
+                            <View
+                                android:id="@+id/view1"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@color/grey_four_tint"
+                                app:layout_constraintBottom_toTopOf="@+id/tvViewDetailsServiceOccupancy"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvViewDetailsServiceOccupancy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_12"
+                                android:layout_marginEnd="@dimen/dp_12"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@drawable/layout_rounded_shape_light_blue"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/dp_16"
+                                android:paddingTop="@dimen/dp_8"
+                                android:paddingEnd="@dimen/dp_16"
+                                android:paddingBottom="@dimen/dp_8"
+                                android:text="@string/view_details"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewEmptySeatsOccupancy"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_320"
+                        android:layout_marginTop="@dimen/dp_16"
+                        app:cardCornerRadius="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardViewDayWiseBooking">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <TextView
+                                android:id="@+id/tvServiceOccupancyHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dp_16"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/service_wise_empty_seats"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.bitla.ts.phase2.chartUtils.RoundedBarChart
+                                android:id="@+id/barChartUnsold"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_0"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:layout_marginBottom="@dimen/dp_16"
+                                android:padding="@dimen/dp_16"
+                                app:layout_constraintBottom_toTopOf="@+id/view2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvServiceOccupancyHeading"
+                                app:radius="0dp" />
+
+                            <View
+                                android:id="@+id/view2"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@color/grey_four_tint"
+                                app:layout_constraintBottom_toTopOf="@+id/tvViewDetailsOccupancy"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvViewDetailsOccupancy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_12"
+                                android:layout_marginEnd="@dimen/dp_12"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@drawable/layout_rounded_shape_light_blue"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/dp_16"
+                                android:paddingTop="@dimen/dp_8"
+                                android:paddingEnd="@dimen/dp_16"
+                                android:paddingBottom="@dimen/dp_8"
+                                android:text="@string/view_details"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewServiceWiseCollection"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_320"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:visibility="visible"
+                        app:cardCornerRadius="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardViewEmptySeatsOccupancy">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/imageViewServiceWiseCollection"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="16dp"
+                                android:src="@drawable/ic_drag_indicator"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvServiceTaxCollectionHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/service_wise_net_rev_travel_date"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageViewServiceWiseCollection"
+                                app:layout_constraintStart_toEndOf="@+id/imageViewServiceWiseCollection"
+                                app:layout_constraintTop_toTopOf="@+id/imageViewServiceWiseCollection" />
+
+                            <com.bitla.ts.phase2.chartUtils.RoundedBarChart
+                                android:id="@+id/barChartServiceWiseCollection"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_0"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:layout_marginBottom="@dimen/dp_16"
+                                android:padding="@dimen/dp_16"
+                                app:layout_constraintBottom_toTopOf="@+id/viewServiceTaxCollection"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/imageViewServiceWiseCollection"
+                                app:radius="0dp" />
+
+                            <View
+                                android:id="@+id/viewServiceTaxCollection"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@color/grey_four_tint"
+                                app:layout_constraintBottom_toTopOf="@+id/tvViewDetailsServiceTaxCollection"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvViewDetailsServiceTaxCollection"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_12"
+                                android:layout_marginEnd="@dimen/dp_12"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@drawable/layout_rounded_shape_light_blue"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/dp_16"
+                                android:paddingTop="@dimen/dp_8"
+                                android:paddingEnd="@dimen/dp_16"
+                                android:paddingBottom="@dimen/dp_8"
+                                android:text="@string/view_details"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewBookingService"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_320"
+                        android:layout_marginTop="@dimen/dp_16"
+                        app:cardCornerRadius="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardViewServiceWiseCollection">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tvBookingServiceHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dp_16"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/service_hyphen_wise"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.bitla.ts.phase2.chartUtils.RoundedBarChart
+                                android:id="@+id/barChartServiceTaxCollection"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_0"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:layout_marginBottom="@dimen/dp_16"
+                                android:padding="@dimen/dp_16"
+                                app:layout_constraintBottom_toTopOf="@+id/view3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvBookingServiceHeading"
+                                app:radius="0dp" />
+
+                            <View
+                                android:id="@+id/view3"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@color/grey_four_tint"
+                                app:layout_constraintBottom_toTopOf="@+id/tvViewDetailsBookingService"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvViewDetailsBookingService"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_12"
+                                android:layout_marginEnd="@dimen/dp_12"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@drawable/layout_rounded_shape_light_blue"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/dp_16"
+                                android:paddingTop="@dimen/dp_8"
+                                android:paddingEnd="@dimen/dp_16"
+                                android:paddingBottom="@dimen/dp_8"
+                                android:text="@string/view_details"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewAgentWiseRevenue"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_320"
+                        android:layout_marginTop="@dimen/dp_16"
+                        app:cardCornerRadius="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cardViewBookingService">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/tvAgentWiseRevenueHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dp_16"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/agent_wise_revenue"
+                                android:textColor="@color/grey"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.bitla.ts.phase2.chartUtils.RoundedBarChart
+                                android:id="@+id/barChartAgentWiseRevenue"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_0"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:layout_marginBottom="@dimen/dp_16"
+                                android:padding="@dimen/dp_16"
+                                app:layout_constraintBottom_toTopOf="@+id/view5"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvAgentWiseRevenueHeading"
+                                app:radius="0dp" />
+
+                            <View
+                                android:id="@+id/view5"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@color/grey_four_tint"
+                                app:layout_constraintBottom_toTopOf="@+id/tvViewDetailsAgentWiseRevenue"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvViewDetailsAgentWiseRevenue"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_12"
+                                android:layout_marginEnd="@dimen/dp_12"
+                                android:layout_marginBottom="@dimen/dp_12"
+                                android:background="@drawable/layout_rounded_shape_light_blue"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/dp_16"
+                                android:paddingTop="@dimen/dp_8"
+                                android:paddingEnd="@dimen/dp_16"
+                                android:paddingBottom="@dimen/dp_8"
+                                android:text="@string/view_details"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</FrameLayout>

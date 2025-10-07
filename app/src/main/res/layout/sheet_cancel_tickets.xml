@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_rounded_shape_top_left_right"
+    android:paddingStart="@dimen/dp_16"
+    android:paddingTop="@dimen/dp_24"
+    android:paddingEnd="@dimen/dp_16"
+    android:paddingBottom="@dimen/dp_24">
+
+    <TextView
+        android:id="@+id/textView11"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/total_selected_tickets"
+        android:textColor="@color/grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvtotal_selected_seats"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30"
+        android:textColor="@color/grey"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/textView11" />
+
+    <ImageView
+        android:id="@+id/img_cross_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close_black"
+        app:layout_constraintBottom_toBottomOf="@+id/tvtotal_selected_seats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvtotal_selected_seats"
+        app:tint="@color/grey" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutCancellationPercentage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/header_gradient_bg"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCancellationPercentage"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:maxLength="3"
+            android:hint="@string/cancellation_percentage"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:text="" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/if_cancellation_percentahe_is_blank_then_default_cancellation_policy_will_be_applied"
+        android:textColor="@color/colorRed"
+        android:textSize="9sp"
+
+        app:layout_constraintEnd_toEndOf="@+id/layoutCancellationPercentage"
+        app:layout_constraintStart_toStartOf="@+id/layoutCancellationPercentage"
+        app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutRemarks"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/header_gradient_bg"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRemarks"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/remarks"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:text="" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <CheckBox
+        android:id="@+id/checkBox_sms"
+        style="@style/msg_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="@string/inform_passengers_about_cancellation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutRemarks" />
+
+    <CheckBox
+        android:id="@+id/checkbox_zero_cancellation"
+        style="@style/msg_context"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="@string/zero_cancellation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_sms" />
+
+    <Button
+        android:id="@+id/btn_cancel_tickets"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@drawable/button_default_bg"
+        android:padding="13dp"
+        android:text="@string/bulk_cancel_tickets"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_zero_cancellation" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

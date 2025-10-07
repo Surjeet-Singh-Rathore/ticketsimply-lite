@@ -1,0 +1,31 @@
+package com.bitla.ts.domain.pojo.confirm_pay_at_bus
+
+data class PassengerDetail(
+    val adult_fare: Int,
+    val age: Int,
+    val barcode_value: String,
+    val boarding_at: Int,
+    val boarding_status: String,
+    val can_cancel: Boolean,
+    val can_cancel_ticket_for_user: Boolean,
+    val can_shift_ticket: Boolean,
+    val cus_email: String,
+    val cus_mobile: String,
+    val destination_address: Any,
+    val drop_off: Int,
+    val email: String,
+    val gender: String,
+    val insurance_amount: String,
+    val is_allow_to_print_barcode: Boolean,
+    val meal_coupons: List<Any>,
+    val meal_required: Boolean,
+    val mobile: String,
+    val name: String,
+    val net_fare: Int,
+    val origin_address: Any,
+    val passenger_category: String,
+    val seat_number: String,
+    val selected_meal_type: String,
+    val ticket_status: String,
+    val title: String
+)

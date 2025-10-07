@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@drawable/bg_little_round_white"
+    app:layout_constraintTop_toBottomOf="@id/TopCL"
+    app:layout_constraintStart_toStartOf="parent">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/eBooking_booking_summary"
+        android:textColor="@color/blackish"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title1TVeBooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/seats_booking_summary"
+        android:layout_marginStart="@dimen/_5ssp"
+        android:textColor="@color/blackish"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toEndOf="@+id/titleTV"
+        app:layout_constraintEnd_toStartOf="@+id/title2TVeBooking" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title2TVeBooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/revenue_booking_summary"
+        android:textColor="@color/blackish"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toStartOf="@+id/summaryImg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/summaryImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_arrow_down"
+        app:layout_constraintBottom_toBottomOf="@id/titleTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/titleTV" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/summaryRV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:padding="@dimen/_10sdp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTV"
+        tools:itemCount="3"
+        tools:listitem="@layout/adapter_summary_booking" />
+</androidx.constraintlayout.widget.ConstraintLayout>

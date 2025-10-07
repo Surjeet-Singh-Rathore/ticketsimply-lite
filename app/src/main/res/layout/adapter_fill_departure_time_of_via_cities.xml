@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cityTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bangalore"
+        style="@style/TextStyleNormal"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15ssp"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/departureHoursET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:background="@drawable/bg_edittext_stroke_grey"
+        android:drawableEnd="@drawable/ic_down_arrow_filled_"
+        android:gravity="center_vertical"
+        android:hint="@string/hh"
+        android:padding="@dimen/_8sdp"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toEndOf="@id/cityTV"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/departureMinutesET"
+        />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/departureMinutesET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:background="@drawable/bg_edittext_stroke_grey"
+        android:drawableEnd="@drawable/ic_down_arrow_filled_"
+        android:gravity="center_vertical"
+        android:hint="@string/mm"
+        android:padding="@dimen/_8sdp"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toEndOf="@id/departureHoursET"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/departureDayET"
+        />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/departureDayET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:background="@drawable/bg_edittext_stroke_grey"
+        android:drawableEnd="@drawable/ic_down_arrow_filled_"
+        android:gravity="center_vertical"
+        android:hint="@string/day"
+        android:padding="@dimen/_8sdp"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toEndOf="@id/departureMinutesET"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/seat_wise_navigation"
+    app:startDestination="@id/seat_wise_frag">
+
+    <fragment
+        android:id="@+id/seat_wise_frag"
+        android:name="com.bitla.ts.presentation.view.dashboard.update_rate_card_fragments.SeatWiseFragment"
+        android:label="SeatWiseFragment"
+        tools:layout="@layout/fragment_seatwisefragment" />
+
+
+</navigation>

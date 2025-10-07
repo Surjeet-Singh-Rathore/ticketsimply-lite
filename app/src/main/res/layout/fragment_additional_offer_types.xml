@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flash_white_bg"
+    android:orientation="vertical"
+    tools:context=".presentation.view.activity.AdditionalOfferTypesActivity">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_5sdp">
+
+        <include
+            android:id="@+id/layout_add_user_data"
+            layout="@layout/toolbar_passenger_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:visibility="gone" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/_10sdp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/additionalDetailsTV"
+                    style="@style/TextStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:text="@string/additional_details"
+                    android:textSize="16sp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/imgExpandMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_arrow_down"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/additionalDetailsTV"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/imgExpandLess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down"
+                    android:visibility="gone"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:rotation="180"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/additionalDetailsTV"
+                    app:tint="@color/colorShadow"
+                    tools:ignore="ContentDescription" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/optionsLL"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/coupon_code"
+                    layout="@layout/offer_coupon_code_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:visibility="visible" />
+
+                <include
+                    android:id="@+id/pre_post_ticket"
+                    layout="@layout/offer_pre_post_ticket_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:visibility="visible" />
+
+                <include
+                    android:id="@+id/privileged_card"
+                    layout="@layout/offer_privilege_card_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:visibility="visible" />
+
+                <include
+                    android:id="@+id/gst_details"
+                    layout="@layout/offer_gst_details_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:visibility="visible" />
+
+                <include
+                    android:id="@+id/apply_smart_miles"
+                    layout="@layout/offer_smart_miles_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:visibility="visible" />
+
+                <include
+                    android:id="@+id/discount_amount"
+                    layout="@layout/offer_discount_amount_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp" />
+
+                <include
+                    android:id="@+id/quote_previous_pnr"
+                    layout="@layout/offer_quote_previous_pnr_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:visibility="visible" />
+
+                <include
+                    android:id="@+id/vip_ticket"
+                    layout="@layout/offer_vip_ticket_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp" />
+
+                <include
+                    android:id="@+id/vip_ticket_free"
+                    layout="@layout/offer_vip_ticket_free_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:visibility="gone" />
+
+                <include
+                    android:id="@+id/free_tickets"
+                    layout="@layout/offer_free_ticket_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <android.widget.Button
+            android:id="@+id/btnPaymentOptions"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_24"
+            android:background="@color/colorPrimary"
+            android:clickable="true"
+            android:drawableRight="@drawable/ic_arrow_forward_"
+            android:drawableTint="@color/white"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:paddingRight="8dp"
+            android:text="@string/payment_options"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/includeProgress"
+            layout="@layout/layout_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

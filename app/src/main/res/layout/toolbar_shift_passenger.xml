@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_rounded_shape"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/dp_24" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dp_0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <ImageView
+        android:id="@+id/toolbar_image_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="@dimen/dp_16"
+        android:src="@drawable/arrow_back"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_header_text"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_start"
+        app:tint="@color/colorBlackShadow"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/toolbar_header_text"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shift_passengers"
+        android:textColor="@color/colorBlackShadow"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/toolbar_image_left"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_start" />
+
+    <TextView
+        android:id="@+id/toolbar_subtitle"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp_8"
+        android:text="@string/notAvailable"
+        android:textColor="@color/button_default_color"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@id/toolbar_image_left"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_text" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_subtitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="slider_values">
+        <item>0</item>
+        <item>100</item>
+    </array>
+
+    <string-array name="booking_type">
+        <item>Berjalan di</item>
+        <item>Agen Online</item>
+        <item>Agen Offline</item>
+        <item>Cabang</item>
+    </string-array>
+
+    <string-array name="city_list">
+        <item>Bangalore</item>
+        <item>Chennai</item>
+        <item>Hyderabad</item>
+    </string-array>
+
+    <string-array name="agent_names">
+        <item>Agen 1</item>
+        <item>Agen 2</item>
+        <item>Agen 3</item>
+        <item>Agen 4</item>
+    </string-array>
+
+    <string-array name="branch_names">
+        <item>Cabang 1</item>
+        <item>Cabang 2</item>
+        <item>Cabang 3</item>
+        <item>Cabang 4</item>
+    </string-array>
+
+    <string-array name="channel_name">
+        <item>Cabang</item>
+        <item>Agen Online</item>
+        <item>OTA</item>
+        <item>Pemesanan Elektronik</item>
+    </string-array>
+
+    <string-array name="country_code">
+        <item>+91</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>India</item>
+    </string-array>
+
+    <string-array name="travel_branch">
+        <item>8</item>
+    </string-array>
+
+    <string-array name="genderArray">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+
+    <string-array name="genderArray2">
+        <item>Tn</item>
+        <item>Nn</item>
+    </string-array>
+
+    <string-array name="idType">
+        <item>Aadhar</item>
+        <item>PAN</item>
+        <item>Paspor</item>
+        <item>Kartu Pemilih</item>
+    </string-array>
+
+    <string-array name="driverArray">
+        <item>Pengemudi 1</item>
+        <item>Pengemudi 2</item>
+        <item>Pengemudi 3</item>
+        <item>Pengemudi 4</item>
+        <item>Pengemudi 5</item>
+    </string-array>
+
+    <string-array name="dummyArray">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+    </string-array>
+
+    <string-array name="hourArray">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+    </string-array>
+
+    <string-array name="minuteArray">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+
+    <string-array name="amPMArray">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+
+    <string-array name="genderTitleArray">
+        <item>Tn</item>
+        <item>Ny</item>
+        <item>Nn</item>
+    </string-array>
+
+    <string-array name="rechargeTransactionTypes">
+        <item>Kredit</item>
+        <item>Debit</item>
+    </string-array>
+
+    <string-array name="agentTypes">
+        <item>Semua</item>
+        <item>Prabayar</item>
+        <item>Pascabayar</item>
+        <item>Tidak Ada</item>
+    </string-array>
+
+    <string-array name="selectCategories">
+        <item>Tampilkan semua</item>
+        <item>Tampilkan hanya kredit</item>
+        <item>Tampilkan hanya debit</item>
+        <item>Tampilkan tidak dihapus</item>
+        <item>Tampilkan kredit/debit manual</item>
+    </string-array>
+
+    <string-array name="agentTypesWithoutNone">
+        <item>Semua</item>
+        <item>Prabayar</item>
+        <item>Pascabayar</item>
+    </string-array>
+
+    <string-array name="rechargeStatus">
+        <item>Selesai</item>
+        <item>Tertunda</item>
+        <item>Gagal</item>
+    </string-array>
+
+    <string-array name="rechargePaymentTypes">
+        <item>Cek</item>
+        <item>Tunai</item>
+        <item>DD</item>
+        <item>NEFT</item>
+        <item>IMPS</item>
+        <item>RTGs</item>
+        <item>Pembayaran bersih</item>
+        <item>Surat Perintah Pembayaran</item>
+        <item>Lainnya</item>
+    </string-array>
+
+    <string-array name="allReportTypes">
+        <item>Laporan Pengumpulan Cabang</item>
+        <item>Laporan Penutupan Penjemputan Kota Berdasarkan Layanan</item>
+        <item>Memeriksa Laporan Inspektur</item>
+        <item>Laporan Utilitas Bahan Bakar</item>
+        <item>Laporan Okupansi</item>
+        <item>Tiket yang Dipesan oleh Anda</item>
+        <item>Pengumpulan Layanan Bus</item>
+        <item>Laporan Kelompok Berdasarkan Cabang</item>
+
+    </string-array>
+
+    <string-array name="activeCancelledServicesArray">
+        <item>Semua (Perjalanan Aktif + Perjalanan yang Dibatalkan)</item>
+        <item>Hanya Perjalanan Aktif</item>
+        <item>Hanya Perjalanan yang Dibatalkan</item>
+    </string-array>
+</resources>

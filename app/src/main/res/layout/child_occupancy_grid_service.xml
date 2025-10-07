@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/dashboard_occupancy_grid_background"
+    android:gravity="center"
+    android:layout_gravity="center">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardOccupancy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="8dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/light_purple_notification_pickupchart">
+
+    <LinearLayout
+        android:id="@+id/llServiceDetailsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/layout_rounded_shape"
+        android:paddingEnd="12dp"
+        android:paddingStart="4dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        >
+
+        <TextView
+            android:id="@+id/tvServiceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/service_name"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="14sp"
+            style="@style/TextStyleNormal"
+            />
+
+        <TextView
+            android:id="@+id/tvCoachType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="@color/colorDimShadow"
+            android:textSize="14sp"
+            style="@style/TextStyleNormal"/>
+
+        <TextView
+            android:id="@+id/tvSeats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            style="@style/TextStyleNormal"
+            android:textColor="@color/colorDimShadow"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tvDepTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            style="@style/TextStyleNormal"
+            android:textColor="@color/colorDimShadow"
+            android:textSize="12sp"/>
+    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/card_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v_begin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/dp_16" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/dp_16" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h_begin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/dp_12" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/dp_12" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/tv_header_text"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="Are you sure you want to release the ticket?"
+            android:textColor="@color/text_header_bg"
+            android:textSize="@dimen/sp16"
+            android:visibility="gone"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_message"
+            style="@style/TextStyleNormal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_32"
+            android:text="Do you want to release the ticket, or check the status of the transaction?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header_text" />
+
+        <android.widget.Button
+            android:id="@+id/btnReleaseTicket"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorRed"
+            android:text="@string/release_ticket"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/btnCheckStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_message"
+            app:layout_constraintWidth_percent="0.50" />
+
+        <android.widget.Button
+            android:id="@+id/btnCheckStatus"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorAccent"
+            android:text="@string/check_status"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toRightOf="@+id/btnReleaseTicket"
+            app:layout_constraintTop_toBottomOf="@id/tv_message"
+            app:layout_constraintWidth_percent="0.50" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+

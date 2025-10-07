@@ -1,0 +1,15 @@
+<resources>
+    <string name="image_description">armchair</string>
+    <string name="tap_a_seat_icon_to_select_seat_from_this_service">Tap a seat Icon to select seat from this service</string>
+    <string name="tap_a_seat_icon_to_assign_the_seat">Tap a seat Icon to assign the seat</string>
+    <string name="next">Next</string>
+    <string name="no_berth">No berth</string>
+    <string name="this_seat_cannot_be_selected">This seat cannot be selected</string>
+    <string name="you_can_t_select_more_than">You can\'t select more than %1$s</string>
+    <string name="upper">Upper</string>
+    <string name="lower">Lower</string>
+    <string name="finish">Finish</string>
+    <string name="shift_seats">Shift seats %1$s</string>
+    <string name="from">"From "</string>
+    <string name="to">"To "</string>
+</resources>

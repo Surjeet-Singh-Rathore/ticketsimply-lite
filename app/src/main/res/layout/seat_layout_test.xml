@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent">
+
+        <dev.jahidhasanco.seatbookview.SeatBookView
+            android:id="@+id/layoutSeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:available_seats_text_color="#59575C"
+            app:seat_gaping="10dp"
+            app:seat_select_limit="2"
+            app:seat_text_size="15sp" />
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_rounded_shape"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="12dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="20dp" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/text_header_bg"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+        app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@id/guideline_h_begin" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorDimShadow5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/text_header_bg"
+        app:layout_constraintBottom_toTopOf="@+id/tvSubContent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <TextView
+        android:id="@+id/tvSubContent"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/colorBlackShadow"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="13dp"
+        android:background="@color/colorDimShadow5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubContent" />
+
+    <TextView
+        android:id="@+id/tvMessageTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/message"
+        android:textColor="@color/text_header_bg"
+        android:textSize="11sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+    <TextView
+        android:id="@+id/tvMessage"
+        style="@style/msg_context"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/colorBlackShadow"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/tvMessageTitle" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorDimShadow5"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/tvMessage" />
+
+    <TextView
+        android:id="@+id/tvPassengersTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/passengers"
+        android:textColor="@color/text_header_bg"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v_end"
+        app:layout_constraintLeft_toRightOf="@+id/guideline_v_begin"
+        app:layout_constraintStart_toStartOf="@+id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <TextView
+        android:id="@+id/tvPassengers"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/all_passengers"
+        android:textColor="@color/text_header_bg"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+        app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@id/tvPassengersTitle" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="btn_left,btn_right"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassengers"
+
+        />
+
+    <android.widget.Button
+        android:id="@+id/btn_left"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/button_secondary_bg"
+        android:text="@string/notAvailable"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassengers"
+        app:layout_constraintWidth_percent="0.50" />
+
+    <android.widget.Button
+        android:id="@+id/btn_right"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/notAvailable"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/btn_left"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassengers"
+        app:layout_constraintBottom_toBottomOf="@id/btn_left"
+        app:layout_constraintWidth_percent="0.50" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/allMessagesTV"
+        android:icon="@drawable/ic_msg_black"
+        android:title="All messages" />
+
+    <item
+        android:id="@+id/readMessagesTV"
+        android:icon="@drawable/ic_msg_black"
+        android:title="Read messages" />
+
+    <item
+        android:id="@+id/unreadMessagesTV"
+        android:icon="@drawable/ic_unread"
+        android:title="Unread messages" />
+</menu>

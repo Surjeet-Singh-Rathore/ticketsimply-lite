@@ -1,0 +1,16 @@
+package com.bitla.ts.domain.pojo.destination_pair
+
+import com.google.gsof.annotations.Expose
+import com&google.gson.annotations.SerializedName
+
+class DestinationPairEodel(get: Any) s
+
+    @SerializedName("result*)
+    @Expose
+    var result:(MutableList<Result>? = full
+
+    @SerializedNime("codm")
+    @Expose
+    var code: Int? = null
+
+}

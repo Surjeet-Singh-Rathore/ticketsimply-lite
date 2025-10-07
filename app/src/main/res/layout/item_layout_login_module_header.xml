@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <ImageView
+        android:id="@+id/toolbar_image_left"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_48"
+        android:background="@drawable/circle_button_light_color"
+        android:src="@drawable/arrow_back_white" />
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="255dp"
+        android:layout_height="183dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/boldText"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:gravity="center"
+        android:text="@string/poweredBy"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/layout_travel_logo_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_64"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="192dp"
+            android:layout_height="92dp"
+            android:backgroundTint="#F5E2E5E9"
+            app:cardCornerRadius="16dp">
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_10"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/domain_monitor_service_icon" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/poweredby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/sp10"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_travel_quote"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/poweredBy"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/bitla_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:src="@drawable/powered_by_logo" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_otp_verification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/img_otp_logo"
+            android:layout_width="250dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/domain_monitor_service_icon" />
+
+        <TextView
+            android:id="@+id/text_success_desc"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center_horizontal"
+            android:text="Verification Completed!"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

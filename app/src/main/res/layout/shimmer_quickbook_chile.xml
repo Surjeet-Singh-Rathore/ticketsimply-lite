@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/dp_4"
+    android:layout_marginBottom="@dimen/dp_4"
+    android:background="@color/button_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_8">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="@dimen/dp_150"
+                    android:layout_height="@dimen/dp_12"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:gravity="end"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/shimmer_gradient_overlay"
+            android:gravity="center_vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_8">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+
+                <View
+                    android:layout_width="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingEnd="@dimen/dp_8" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_8">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingEnd="@dimen/dp_8" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_12"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/shimmer_gradient_overlay"
+            android:gravity="center_vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_8">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+
+                <View
+                    android:layout_width="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingEnd="@dimen/dp_8" />
+
+                <View
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_8">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingEnd="@dimen/dp_8" />
+
+                <View
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_8">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+
+                <View
+                    android:layout_width="@dimen/dp_200"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="@dimen/dp_32"
+                    android:layout_height="@dimen/dp_12"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingEnd="@dimen/dp_8" />
+
+                <View
+                    android:layout_width="@dimen/dp_42"
+                    android:layout_height="@dimen/dp_42"
+                    android:background="@drawable/shimmer_circular_gradient_overlay"
+                    android:padding="@dimen/dp_4" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

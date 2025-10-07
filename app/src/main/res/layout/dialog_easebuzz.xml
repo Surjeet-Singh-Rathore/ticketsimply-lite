@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/horizontalScrollViewStyle"
+        android:layout_width="@dimen/dp_42"
+        android:layout_height="@dimen/dp_42"
+        android:layout_alignEnd="@+id/layoutTop"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center"
+            android:text="@string/wallet_upi"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:textColor="@color/grey"
+            android:textSize="18sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_12"
+                    android:background="@color/grey_four_tint" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEasebuzz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:background="@color/white" />
+
+                <RadioGroup
+                    android:id="@+id/rg_block_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:visibility="gone">
+
+                    <RadioButton
+                        android:id="@+id/rbSendSmsLink"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:checked="true"
+                        android:paddingStart="8dp"
+                        android:text="@string/send_sms_link"
+                        android:textColor="@color/colorBlackShadow" />
+
+                    <RadioButton
+                        android:id="@+id/rbGenerateQrCode"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:buttonTint="@color/colorPrimary"
+                        android:checked="true"
+                        android:paddingStart="8dp"
+                        android:text="@string/generate_qr_code"
+                        android:textColor="@color/colorBlackShadow" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_upi_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_upi_id"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:hint="@string/enter_upi_id"
+                        android:imeOptions="actionDone"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_mobile_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_mobile_number"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:hint="@string/enter_mobile_number"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_otp"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/enter_otp"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RadioGroup
+                    android:id="@+id/upi_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:visibility="gone"
+                    android:weightSum="1">
+
+                    <RadioButton
+                        android:id="@+id/upi_create_qr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:text="@string/generate_qr_code"
+                        android:visibility="gone" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutTop"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <android.widget.Button
+            android:id="@+id/btnGoBack"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@color/button_light_color"
+            android:text="@string/goBack"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
+
+        <android.widget.Button
+            android:id="@+id/btnConfirm"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@color/colorShadow"
+            android:enabled="false"
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+</RelativeLayout>

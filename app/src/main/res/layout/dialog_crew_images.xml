@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_8"
+    android:elevation="4dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dp_4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_8">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorBlackShadow" />
+
+            <TextView
+                android:id="@+id/tvCancel"
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:text="@string/cancel"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgMain"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/dp_8"
+                android:scaleType="fitCenter"
+                android:src="@drawable/header_logo_" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/imgBackward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:rotation="180"
+                    android:src="@drawable/arrow_forward" />
+
+                <ImageView
+                    android:id="@+id/imgForward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/arrow_forward" />
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvDelete"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:drawablePadding="@dimen/dp_4"
+            android:text="@string/delete_photo"
+            android:textColor="@color/colorBlackShadow"
+            app:drawableStartCompat="@drawable/ic_delete_red" />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

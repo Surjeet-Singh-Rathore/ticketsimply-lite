@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_title"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_blocking_hours"
+            android:textSize="16sp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="@dimen/dp_24"
+            android:background="@drawable/header_gradient_bg"
+            android:textColorHint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSelectDate"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:drawableEnd="@drawable/ic_icons_calendar"
+                android:drawableTint="@color/colorBlackShadow"
+                android:editable="false"
+                android:focusable="false"
+                android:hint="@string/select_date"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:text="" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <CheckBox
+            android:id="@+id/chkPermanentBlocking"
+            style="@style/TextStyleNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:buttonTint="@color/colorPrimary"
+            android:checked="true"
+            android:gravity="start|center"
+            android:text="@string/permanent_blocking" />
+
+        <LinearLayout
+            android:id="@+id/layoutHhMm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="1">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.32"
+                android:hint="@string/hh"
+                app:hintTextAppearance="@style/TextLabel"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled">
+
+                <AutoCompleteTextView
+                    android:id="@+id/acHH"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_10ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33"
+                android:hint="@string/mm"
+                app:hintTextAppearance="@style/TextLabel"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled">
+
+                <AutoCompleteTextView
+                    android:id="@+id/acMM"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_6"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_10ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.34"
+                app:hintTextAppearance="@style/TextLabel"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled">
+
+                <AutoCompleteTextView
+                    android:id="@+id/acAMPM"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_6"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="@dimen/_10ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCancel"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textColor="@color/colorRed2"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnUse"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginStart="@dimen/dp_24"
+                android:background="@drawable/button_default_bg"
+                android:enabled="false"
+                android:text="@string/use"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

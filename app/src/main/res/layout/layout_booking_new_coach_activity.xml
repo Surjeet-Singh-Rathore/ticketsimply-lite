@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_passenger_details_seat_legends"
+        layout="@layout/passenger_details_seat_legends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/noData"
+        layout="@layout/layout_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_2sdp">
+
+            <include
+                android:id="@+id/includeHeader"
+                layout="@layout/layout_new_coach_toolbar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/includeHeader">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_date_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@+id/swipeRefreshLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/image_calender"
+                    app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+                <FrameLayout
+                    android:id="@+id/fragment_coach_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/main_bp_dp_change"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_12"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/dp_8"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/change_bp_dp"
+                                style="@style/TextStyleBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/eta_background"
+                                android:backgroundTint="@color/light_green"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/dp_16"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingEnd="@dimen/dp_16"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:text="Change BP/DP"
+                                android:textColor="@color/colorButton" />
+
+                            <TextView
+                                style="@style/TextStyleBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:layout_weight="1"
+                                android:background="@drawable/eta_background"
+                                android:backgroundTint="@color/light_green"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/dp_12"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingEnd="@dimen/dp_12"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:text="Change Destination"
+                                android:textColor="@color/colorButton"
+                                android:visibility="gone" />
+
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="50dp"
+                                android:background="@color/white"
+                                android:orientation="vertical"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:paddingBottom="16dp"
+                                android:paddingTop="4dp"
+                                >
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+                                    <TextView
+                                        android:id="@+id/tvSelectSeatTitle"
+                                        style="@style/TextStyleBold"
+                                        android:layout_width="@dimen/dp_0"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:letterSpacing="0.04"
+                                        android:text="@string/selectSeat"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/textColor"
+                                        android:textSize="12sp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/tvSeatSelectedLayout"
+                                        android:layout_width="@dimen/dp_0"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dp_4"
+                                        android:layout_marginEnd="@dimen/dp_4"
+                                        android:layout_toRightOf="@id/tvSelectSeatTitle"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toStartOf="@+id/tvEditSeats"
+                                        app:layout_constraintStart_toEndOf="@+id/tvSelectSeatTitle"
+                                        app:layout_constraintTop_toTopOf="parent">
+
+                                        <TextView
+                                            android:id="@+id/tvSeatSelected"
+                                            style="@style/TextStyleBold"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/layout_rounded_shape_radius_2_dp"
+                                            android:backgroundTint="@color/colorDimShadow6"
+                                            android:paddingLeft="8dp"
+                                            android:paddingTop="4dp"
+                                            android:paddingRight="8dp"
+                                            android:paddingBottom="4dp"
+                                            android:text="@string/noSeatSelected"
+                                            android:textAlignment="textEnd"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/white"
+                                            android:textSize="11sp"
+                                            android:visibility="gone"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                                    <ImageView
+                                        android:id="@+id/img_expand"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="?attr/selectableItemBackgroundBorderless"
+                                        android:src="@drawable/ic_arrow_down"
+                                        android:visibility="gone"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:tint="@color/colorBlackShadow" />
+
+                                    <ImageView
+                                        android:id="@+id/img_collapse"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="?attr/selectableItemBackgroundBorderless"
+                                        android:src="@drawable/ic_arrow_up"
+                                        android:visibility="gone"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:tint="@color/colorBlackShadow" />
+
+
+                                    <TextView
+                                        android:id="@+id/tvEditSeats"
+                                        style="@style/TextStyleBold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+                                        android:padding="4dp"
+                                        android:text="@string/edit"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="11sp"
+                                        android:visibility="gone"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toStartOf="@+id/img_expand"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/flash_white_bg"
+                                    android:visibility="gone" />
+
+
+                                <!--                    <LinearLayout-->
+                                <!--                        android:layout_width="match_parent"-->
+                                <!--                        android:layout_height="wrap_content"-->
+                                <!--                        android:orientation="vertical">-->
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+
+                                    <!--                            <androidx.fragment.app.FragmentContainerView-->
+                                    <!--                                android:id="@+id/layout_coach_split"-->
+                                    <!--                                android:name="com.bitla.ts.presentation.view.fragments.CommonCoachFragment"-->
+                                    <!--                                android:layout_width="match_parent"-->
+                                    <!--                                android:layout_height="wrap_content"-->
+                                    <!--                                android:layout_margin="16dp"-->
+                                    <!--                                android:visibility="gone"-->
+                                    <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+                                    <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+                                    <!--                                app:layout_constraintStart_toStartOf="parent"-->
+                                    <!--                                app:layout_constraintTop_toTopOf="parent"-->
+                                    <!--                                tools:layout="@layout/fragment_all_coach">-->
+
+                                    <!--                            </androidx.fragment.app.FragmentContainerView>-->
+
+                                    <androidx.fragment.app.FragmentContainerView
+                                        android:id="@+id/layout_coach_single"
+                                        android:name="com.bitla.ts.presentation.view.fragments.AllCoachFragment"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:layout="@layout/fragment_all_coach">
+
+                                    </androidx.fragment.app.FragmentContainerView>
+
+
+                                    <LinearLayout
+                                        android:id="@+id/coach_progress_bar"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent">
+
+                                        <ProgressBar
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+
+
+                                    </LinearLayout>
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/layoutviews"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
+
+                                    <LinearLayout
+                                        android:id="@+id/layoutBookingTypes"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            style="@style/TextStyleBold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/dp_24"
+                                            android:ellipsize="end"
+                                            android:gravity="left|center"
+                                            android:paddingEnd="16sp"
+                                            android:text="@string/booking_type"
+                                            android:textAllCaps="true"
+                                            android:textColor="@color/colorBlackShadow"
+                                            android:textSize="14sp" />
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="@dimen/dp_16"
+                                            android:layout_marginBottom="24dp"
+                                            android:hint="@string/selectBookingType"
+                                            app:boxBackgroundColor="@color/title_bg"
+                                            app:boxBackgroundMode="filled">
+
+
+                                            <AutoCompleteTextView
+                                                android:id="@+id/ae_booking_type"
+                                                style="@style/TextStyleNormal"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/et_bg"
+                                                android:inputType="none"
+                                                android:textColor="@color/colorBlackShadow"
+                                                android:textColorHint="@color/grey"
+                                                android:textSize="14sp" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/layout_online_offline_agent"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:orientation="vertical"
+                                        android:visibility="gone">
+
+                                        <CheckBox
+                                            android:id="@+id/check_offline_agent"
+                                            style="@style/TextStyleNormal"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="0dp"
+                                            android:text="@string/amount_paid_offline"
+                                            android:textColor="@color/colorBlackShadow" />
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/auto_city"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="@dimen/dp_16"
+                                            android:hint="@string/city"
+                                            app:boxBackgroundColor="@color/title_bg"
+                                            app:boxBackgroundMode="filled">
+
+                                            <AutoCompleteTextView
+                                                android:id="@+id/ae_city"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/et_bg"
+                                                android:inputType="none"
+                                                android:textColor="@color/colorBlackShadow"
+                                                android:textSize="14sp"
+                                                android:textStyle="normal" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/auto_behalf_of"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="@dimen/dp_16"
+                                            app:boxBackgroundColor="@color/title_bg"
+                                            app:boxBackgroundMode="filled">
+
+                                            <AutoCompleteTextView
+                                                android:id="@+id/ae_behalf_of"
+                                                style="@style/TextStyleNormal"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/et_bg"
+                                                android:hint="@string/on_behalf_of"
+                                                android:inputType="none"
+                                                android:textColor="@color/colorBlackShadow"
+                                                android:textSize="14sp" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/edt_reference"
+
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/text_input_edit_text_height"
+                                            android:layout_marginTop="@dimen/dp_16"
+                                            android:background="@drawable/header_gradient_bg"
+                                            android:textColorHint="@color/grey">
+
+                                            <com.google.android.material.textfield.TextInputEditText
+                                                android:id="@+id/etRefNo"
+                                                style="@style/textInputStyle"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/et_bg"
+                                                android:hint="@string/enter_reference_number"
+                                                android:imeOptions="actionDone"
+                                                android:inputType="text"
+                                                android:text="" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/layout_branch_type"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="10dp"
+                                        android:orientation="vertical"
+                                        android:visibility="gone">
+
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="@dimen/dp_16"
+                                            app:boxBackgroundColor="@color/title_bg"
+                                            app:boxBackgroundMode="filled">
+
+                                            <AutoCompleteTextView
+                                                android:id="@+id/ae_branch"
+                                                style="@style/TextStyleNormal"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/et_bg"
+                                                android:hint="@string/selectBranch"
+                                                android:inputType="none"
+
+                                                android:textColor="@color/colorBlackShadow"
+                                                android:textColorHint="@color/grey"
+                                                android:textSize="14sp" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="@dimen/dp_16"
+                                            app:boxBackgroundColor="@color/title_bg"
+                                            app:boxBackgroundMode="filled">
+
+                                            <AutoCompleteTextView
+                                                android:id="@+id/ae_user"
+                                                style="@style/TextStyleNormal"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/et_bg"
+                                                android:hint="@string/selectUser"
+                                                android:inputType="none"
+
+                                                android:textColor="@color/colorBlackShadow"
+                                                android:textColorHint="@color/grey"
+                                                android:textSize="14sp" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:id="@+id/boarding_dropping_layout"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            style="@style/TextStyleBold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:ellipsize="end"
+                                            android:gravity="left|center"
+                                            android:paddingEnd="16sp"
+                                            android:text="@string/boarding_amp_dropping_point"
+                                            android:textAllCaps="true"
+                                            android:textColor="@color/colorBlackShadow"
+                                            android:textSize="14sp" />
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/autoBoardingPoint"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginTop="@dimen/dp_8"
+                                            android:layout_marginBottom="@dimen/dp_8"
+                                            app:boxBackgroundColor="@color/title_bg"
+                                            app:boxBackgroundMode="filled">
+
+                                            <AutoCompleteTextView
+                                                android:id="@+id/tv_select_boarding_point"
+                                                style="@style/TextStyleNormal"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/et_bg"
+                                                android:hint="@string/select_boarding_point"
+                                                android:inputType="none"
+
+                                                android:textColor="@color/colorBlackShadow"
+                                                android:textColorHint="@color/grey"
+                                                android:textSize="14sp" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/autoDroppingPoint"
+                                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginBottom="@dimen/dp_24"
+                                            app:boxBackgroundColor="@color/title_bg"
+                                            app:boxBackgroundMode="filled">
+
+                                            <AutoCompleteTextView
+                                                android:id="@+id/tv_select_droping_point"
+                                                style="@style/TextStyleNormal"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/et_bg"
+                                                android:hint="@string/select_dropping_point"
+                                                android:inputType="none"
+
+                                                android:textColor="@color/colorBlackShadow"
+                                                android:textColorHint="@color/grey"
+                                                android:textSize="14sp" />
+
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <include
+                        android:id="@+id/layoutSummary"
+                        layout="@layout/include_summary_layout"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+
+    <!--    <include-->
+    <!--        android:id="@+id/includeProgress"-->
+    <!--        layout="@layout/layout_progress_bar"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center" />-->
+
+    <View
+        android:id="@+id/tansparentbackbround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_tint_color"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/tansparentbackbroundServiceSummary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_tint_color"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <include
+        android:id="@+id/summaryLayout"
+        layout="@layout/service_summary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <include
+        android:id="@+id/edit_price_layout"
+        layout="@layout/coach_selected_seat_setail"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/transparentOptionV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_tint_color"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/layout_coach_options"
+        layout="@layout/layout_coach_options"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/transparentBookedSeatsOptionsV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_tint_color"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/modifySearchLayout"
+        layout="@layout/layout_modify_search"
+        android:elevation="30dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_service_summary"
+        style="@style/TextStyleNormalTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/_24sdp"
+        android:layout_marginBottom="@dimen/_92sdp"
+        android:backgroundTint="@color/text_header_bg"
+        android:src="@drawable/view_reservation_chart_icon"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/seatLegendsIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"
+        android:src="@drawable/ic_seat_legends"
+        app:layout_constraintStart_toStartOf="@id/guideline_horizontal_start"
+        app:layout_constraintTop_toTopOf="@id/guideline_horizontal_start" />
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/arrowCoachBackImg"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingVertical="@dimen/_5sdp"-->
+<!--        android:paddingEnd="@dimen/_5sdp"-->
+<!--        android:visibility="gone"-->
+<!--        android:background="@drawable/ic_arrow_coach_back_disable"-->
+<!--        app:layout_constraintStart_toStartOf="@id/guideline_horizontal_start_second"-->
+<!--        app:layout_constraintTop_toTopOf="@id/guideline_horizontal_start_second" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/arrowCoachNextImg"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingVertical="@dimen/_5sdp"-->
+<!--        android:paddingStart="@dimen/_5sdp"-->
+<!--        android:visibility="gone"-->
+<!--        android:background="@drawable/ic_arrow_coach_next_active"-->
+<!--        app:layout_constraintEnd_toEndOf="parent    "-->
+<!--        app:layout_constraintTop_toTopOf="@id/guideline_horizontal_start_second" />-->
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/nextBackLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_50sdp"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/linearLayout15"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:paddingStart="@dimen/_14sdp"-->
+<!--            android:paddingEnd="@dimen/_14sdp">-->
+
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:id="@+id/arrowCoachBackImg"-->
+<!--                style="@style/TextStyleBold"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/_5sdp"-->
+<!--                android:visibility="gone"-->
+<!--                android:text="Previous service"-->
+<!--                android:textColor="@color/colorDimShadow6"-->
+<!--                android:textSize="@dimen/_16ssp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:id="@+id/arrowCoachNextImg"-->
+<!--                style="@style/TextStyleBold"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/_5sdp"-->
+<!--                android:text="Next service"-->
+<!--                android:visibility="gone"-->
+<!--                android:textColor="@color/colorPrimary"-->
+<!--                android:textSize="@dimen/_16ssp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/layoutUpdateTicketContainer"
+        android:name="com.bitla.ts.app.base.BaseUpdateCancelTicket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_all_coach">
+
+    </androidx.fragment.app.FragmentContainerView>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/layoutCancelTicketSheet"
+        android:name="com.bitla.ts.app.base.CancelTicketSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_all_coach">
+
+    </androidx.fragment.app.FragmentContainerView>
+
+    <include
+        android:id="@+id/layout_booked_seat_details"
+        layout="@layout/layout_seat_booking_details"
+        android:visibility="gone"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

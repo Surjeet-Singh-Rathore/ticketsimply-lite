@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_12">
+
+
+    <TextView
+        android:id="@+id/nothing_to_show"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:gravity="center"
+        android:text="@string/nothing_to_show"
+        android:textSize="@dimen/dp_16"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/passenger_count"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/passenger"
+        android:textSize="@dimen/sp16" />
+
+    <TextView
+        android:id="@+id/boarding_point"
+        style="@style/TextStyleNormalTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boarding_point"
+        android:textSize="@dimen/sp16" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_map_passenger_list"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_12"
+        tools:listitem="@layout/map_child_list" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/eta_background"
+        android:backgroundTint="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cancel"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_16"
+            android:text="@string/close"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp16" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

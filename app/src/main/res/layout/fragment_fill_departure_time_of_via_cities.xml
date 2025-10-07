@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background_dim"
+    android:layout_height="match_parent" >
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/viaCitiesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Via Cities"
+        style="@style/TextStyleBold"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/blackish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/step_5_5"
+        style="@style/TextStyleNormal"
+        android:textColor="@color/blackish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dialogTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/you_can_drag_and_delete_the_via_cities"
+        android:textColor="@color/blackish"
+        android:layout_marginStart="@dimen/_7sdp"
+        android:layout_marginVertical="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viaCitiesTV"/>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/checkInfoCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginHorizontal="@dimen/_7sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/dialogTV">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            tools:itemCount="5"
+            tools:listitem="@layout/adapter_fill_departure_time_of_via_cities"/>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

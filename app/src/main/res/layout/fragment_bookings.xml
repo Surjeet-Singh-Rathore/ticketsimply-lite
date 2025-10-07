@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs_bus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            app:tabTextColor="@color/colorBlackShadow"
+            app:tabBackground="@color/colorWhite"
+            app:tabIndicator="@drawable/ic_tab_slider"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorHeight="3dp"
+            app:tabInlineLabel="false"
+            app:tabMode="fixed"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager_bus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+   <!-- <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerBookTicket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_100"
+        android:orientation="vertical"
+        android:visibility="visible"
+        shimmer:duration="800">
+
+        <include layout="@layout/shimmer_book_ticket" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+-->
+
+    <include android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+
+
+</FrameLayout>

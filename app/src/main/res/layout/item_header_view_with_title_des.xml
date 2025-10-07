@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dp_16">
+
+    <ImageView
+        android:id="@+id/toolbar_image_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/app_name"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingTop="24dp"
+        android:paddingEnd="@dimen/dp_16"
+
+        android:paddingBottom="22dp"
+        android:src="@drawable/arrow_back" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image_option_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text_header_booking_type"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_bg"
+                android:ellipsize="end"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingTop="2dp"
+                android:paddingEnd="@dimen/dp_12"
+                android:paddingBottom="2dp"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/text_header_title"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="@dimen/sp18" />
+
+            <TextView
+                android:id="@+id/headerTitleDesc"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:text="@string/notAvailable"
+                android:textColor="@color/button_default_color"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/image_option_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity=""
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image_header_print"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_print"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
+
+            <ImageView
+                android:id="@+id/bus_eta"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/current_location"
+                android:visibility="gone"
+                tools:ignore="ContentDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+
+            <ImageView
+                android:id="@+id/new_bus_location_small_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_new_bus_location_added_small"
+                app:layout_constraintBottom_toBottomOf="@id/bus_eta"
+                app:layout_constraintStart_toStartOf="@id/bus_eta"
+                app:layout_constraintEnd_toEndOf="@id/bus_eta"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/imgShare"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_share"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imgDownload"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_download"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/imgBook"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_book_icon"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/image_header_right_image"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:src="@drawable/icons_bookings"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/5 selected"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/selectedTV"
+            android:visibility="gone"
+            android:textSize="@dimen/_13ssp"
+            android:textColor="@color/orange_light_dark"
+            android:layout_marginEnd="@dimen/_15sdp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

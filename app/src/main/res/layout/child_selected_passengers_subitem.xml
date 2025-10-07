@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_12"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <CheckBox
+            android:id="@+id/chkPassenger"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:gravity="top" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.40"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPassengerName"
+                style="@style/msg_context"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@string/dash"
+                android:textColor="@color/colorBlackShadow" />
+
+            <TextView
+                android:id="@+id/tvBoardingPoint"
+                style="@style/msg_context"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="@string/empty"
+                android:textColor="@color/colorShadow"
+                android:textSize="@dimen/sp12" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTicketNo"
+            style="@style/msg_context"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:ellipsize="end"
+            android:gravity="top"
+            android:singleLine="true"
+            android:text="@string/dash"
+            android:textColor="@color/colorBlackShadow" />
+
+        <TextView
+            android:id="@+id/tvSeatNo"
+            style="@style/msg_context"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:ellipsize="end"
+            android:gravity="top|center"
+            android:singleLine="true"
+            android:text="@string/dash"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tvTotalSeats"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.05"
+            android:gravity="top"
+            android:text="@string/dash"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

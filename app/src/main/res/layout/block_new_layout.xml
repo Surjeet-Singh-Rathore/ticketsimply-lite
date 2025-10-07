@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/_8sdp"
+
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/selectUserType"
+                    app:boxBackgroundColor="@color/title_bg"
+                    app:boxBackgroundMode="filled">
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/sUserType"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:inputType="none"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textColorHint="@color/grey"
+                        android:textSize="14sp" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_moreUserType"
+                    style="@style/TextStyleNormalTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="50dp"
+                    android:text="@string/more_seats"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp14"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+            <RadioGroup
+                android:id="@+id/all_gender_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/group_male"
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:checked="true"
+                    android:paddingLeft="8dp"
+                    android:text="Male"
+                    android:textColor="@color/colorDimShadow6"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/group_female"
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:buttonTint="@color/colorPrimary"
+                    android:paddingLeft="8dp"
+                    android:text="Female"
+                    android:textColor="@color/colorDimShadow6"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_selectMultipleUserType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvAgentType"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.04"
+                android:text="@string/selectAgent"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutAgent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tvAgentTypeSpinner"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/selectAgent"
+                    android:imeOptions="actionNext"
+                    android:text="" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tvBranchType"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.04"
+                android:text="@string/selectBranch"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutBranch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tvBranchTypeSpinner"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/selectBranch"
+                    android:imeOptions="actionNext"
+                    android:text="" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvSelectUserType"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.04"
+                android:text="@string/selectUser"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutUser"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tvUserSpinner"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/selectUser"
+                    android:imeOptions="actionNext"
+                    android:paddingBottom="@dimen/dp_16"
+                    android:text="" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.04"
+                android:text="@string/blockType"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/selectBlockType"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled">
+
+                <AutoCompleteTextView
+                    android:id="@+id/sBlockType"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/blockDurationTextView"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.04"
+                android:text="@string/blockDuration"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/blockDateDurationLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50">
+
+                    <TextView
+                        android:id="@+id/tvFromDate"
+                        style="@style/msg_context"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/header_gradient_bg_underline"
+                        android:drawableEnd="@drawable/ic_calendar_start"
+                        android:gravity="left|center"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/fromDate"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvFromHint"
+                        style="@style/msg_context"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/fromDate"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="11sp"
+                        android:visibility="gone" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="0.50">
+
+                    <TextView
+                        android:id="@+id/tvToDate"
+                        style="@style/msg_context"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/header_gradient_bg_underline"
+                        android:drawableRight="@drawable/ic_combined_shape_"
+                        android:gravity="left|center"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="@string/toDate"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvToHint"
+                        style="@style/msg_context"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/toDate"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="11sp"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/releaseTimeTextView"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.04"
+                android:text="@string/releaseTime"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/hourlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:id="@+id/layout_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginRight="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/header_gradient_bg">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editText_hour"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/hhFormat"
+                        android:imeOptions="actionDone"
+
+                        android:inputType="number"
+                        android:textColor="@color/black" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+
+                    android:id="@+id/layout_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:background="@drawable/header_gradient_bg">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editText_minute"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/mmformat"
+                        android:imeOptions="actionDone"
+
+                        android:inputType="number"
+                        android:textColor="@color/black" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/layout_remarks"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/header_gradient_bg">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/remrks_field"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/remarks"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <TextView
+                android:id="@+id/selectRecurringDays"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.04"
+                android:text="@string/selectReccuringDays"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/main_weekend_layout"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/layout_rounded_shape_border_radius_2_dp_black"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/layout_weekdays_linear"
+                    layout="@layout/layout_weekdays_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="1dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_weekdays"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="1dp"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:letterSpacing="0.04"
+                android:text="@string/blockAll"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+
+            <RadioGroup
+                android:id="@+id/rg_block_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <RadioButton
+                    android:id="@+id/rb_no"
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:checked="true"
+                    android:paddingLeft="8dp"
+                    android:text="No"
+                    android:textColor="@color/colorDimShadow6"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_yes"
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:buttonTint="@color/colorPrimary"
+                    android:paddingLeft="8dp"
+                    android:text="Yes"
+                    android:textColor="@color/colorDimShadow6"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
+
+            <android.widget.Button
+                android:id="@+id/btn_block_seats"
+                style="@style/msg_context"
+                android:enabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/button_height"
+                android:background="@drawable/button_default_bg"
+                android:text="@string/blockSeats"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

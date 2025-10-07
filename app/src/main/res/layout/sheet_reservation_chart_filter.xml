@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_12"
+    android:background="@drawable/layout_rounded_shape_top_left_right">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/filter_by" />
+
+
+                <TextView
+                    android:id="@+id/tvCancel"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/clear_all"
+                    android:textColor="@color/colorPrimary" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/from_city"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/selection_fromCity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:drawableEnd="@drawable/ic_down_arrow_filled"
+                android:inputType="none"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingTop="@dimen/dp_14"
+                android:paddingEnd="@dimen/dp_12"
+                android:paddingBottom="@dimen/dp_14"
+                android:text="All"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="TO CITY"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="12sp" />
+
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:id="@+id/tocity"-->
+            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:hint="All"-->
+            <!--                app:boxBackgroundColor="@color/title_bg"-->
+            <!--                app:boxBackgroundMode="filled">-->
+
+            <TextView
+                android:id="@+id/selection_toCity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:drawableEnd="@drawable/ic_down_arrow_filled"
+                android:inputType="none"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingTop="@dimen/dp_14"
+                android:paddingEnd="@dimen/dp_12"
+                android:paddingBottom="@dimen/dp_14"
+                android:text="All"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+            <CheckBox
+                android:id="@+id/chkSms"
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:text="@string/filter_only_active_services"
+
+                android:textColor="@color/colorBlackShadow" />
+
+
+            <android.widget.Button
+                android:id="@+id/btnApply"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/dp_24"
+                android:background="@drawable/button_selected_bg"
+                android:text="@string/apply"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_12"
+    android:background="@drawable/layout_rounded_shape_top_left_right">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:text="@string/ticket_cancellation"
+                        android:textColor="@color/colorBlackShadow" />
+
+
+                    <TextView
+                        android:id="@+id/tvCancel"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/cancel"
+                        android:textColor="@color/colorPrimary" />
+
+
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/spinnerOnBehalfOf"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:hint="@string/on_behalf_of"
+                    app:boxBackgroundColor="@color/title_bg"
+                    app:boxBackgroundMode="filled">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/acOnBehalfOf"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:imeOptions="actionDone"
+                        android:inputType="none"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textColorHint="@color/grey"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/cancellationTypeLabel"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:letterSpacing="0.05"
+                    android:text="@string/cancellation_type"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlackShadow"
+                    android:visibility="gone" />
+
+                <RadioGroup
+                    android:id="@+id/rgCancellationType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RadioButton
+                        android:id="@+id/rbPercent"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:paddingStart="8dp"
+                        android:text="@string/percentage"
+                        android:textColor="@color/colorBlackShadow" />
+
+                    <RadioButton
+                        android:id="@+id/rbFixed"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="50dp"
+                        android:buttonTint="@color/colorPrimary"
+                        android:paddingStart="@dimen/dp_8"
+                        android:text="@string/fixed"
+                        android:textColor="@color/colorBlackShadow" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutCancellationPercentage"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCancellationPercentage"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/cancellation_percentage"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/notice_text"
+                    style="@style/TextStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/if_cancellation_percentahe_is_blank_then_default_cancellation_policy_will_be_applied"
+                    android:textColor="@color/colorRed"
+                    android:textSize="9sp"
+                    android:visibility="gone"
+
+                    app:layout_constraintEnd_toEndOf="@+id/layoutCancellationPercentage"
+                    app:layout_constraintStart_toStartOf="@+id/layoutCancellationPercentage"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutSeats"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSeats"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:cursorVisible="false"
+                        android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/select_seats_to_cancel"
+                        android:imeOptions="actionDone"
+                        android:inputType="none"
+                        android:text="" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/txtSelectAll"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_16"
+                    android:text="@string/select_all"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlackShadow"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+                    app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_start" />
+
+                <View
+                    android:id="@+id/selectAllHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/light_gray"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_selectMultipleSeats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_selectSeatNo" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/spinnerRefundType"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:hint="@string/refund_type"
+                    app:boxBackgroundColor="@color/title_bg"
+                    app:boxBackgroundMode="filled">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/acRefundType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:inputType="none"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textColorHint="@color/grey"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:visibility="gone"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRemarks"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/remarks"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutSms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:gravity="left|center"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/chkCancellingOnBehalfUser"
+                        style="@style/msg_context"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="Cancelling on behalf of user"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <CheckBox
+                        android:id="@+id/chkCancellingOnBehalfAgent"
+                        style="@style/msg_context"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="Cancelling on behalf of Agent"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <CheckBox
+                        android:id="@+id/chkZeroCancellation"
+                        style="@style/msg_context"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="@string/zero_cancellation"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <CheckBox
+                        android:id="@+id/chkInformPassengerCancellation"
+                        style="@style/msg_context"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="@string/inform_passengers_about_cancellation"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <android.widget.Button
+                    android:id="@+id/btnCancelTicket"
+                    style="@style/TextStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginTop="19dp"
+                    android:background="@drawable/button_default_bg"
+                    android:text="@string/cancel_ticket"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/includeProgress"
+                layout="@layout/layout_progress_bar" />
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

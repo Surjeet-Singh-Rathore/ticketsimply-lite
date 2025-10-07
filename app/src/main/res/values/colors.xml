@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00ADB5</color>
+    <color name="colorPrimaryDark">#00ADB5</color>
+    <color name="colorAccent">#00ADB5</color>
+
+    <color name="colorPrimaryTransparent">#4000ADB5</color>
+    <color name="button_light_color">#7FD6DA</color>
+    <color name="button_color">#EAE9E9</color>
+    <color name="white">#ffffff</color>
+    <color name="gray_light">#FDFDFD</color>
+    <color name="deep_green">#00959C</color>
+    <color name="light_green">#D9F3F4</color>
+    <color name="gray">#DC585855</color>
+    <color name="orange_color">#F2994A</color>
+    <color name="yellow_color">#F2C94C</color>
+    <color name="greyish">#4C4C4C</color>
+    <color name="blackis">#161616</color>
+    <color name="little_dark_grey">#3B454D</color>
+
+    <color name="gray_shade_a">#4A4A4A</color>
+    <color name="light_gray">#B6B2B6</color>
+    <color name="theme_blue_dark">#005C7AB6</color>
+    <color name="black">#000000</color>
+    <color name="primaryGreen">#D9F3F4</color>
+    <color name="little_grey">#d9d5d5</color>
+
+    <color name="grey">#4A4A4A</color>
+    <color name="blue">#3F51B5</color>
+    <color name="blue_light">#7A89E4</color>
+    <color name="blue_dark">#2F80ED</color>
+    <color name="blue_dark_second">#1F6BC6</color>
+    <color name="geen">#478649</color>
+    <color name="gray_disabled">#DC585855</color>
+    <color name="btcolor">#7361b1</color>
+    <color name="purple">#FF35227C</color>
+    <color name="dark_gray_pressed">#373e44</color>
+    <color name="bagecolor">#d50000</color>
+
+    <color name="yelow">#FFEB3B</color>
+    <color name="liteyellow">#E0A177</color>
+    <color name="smallblue">#93BDDF</color>
+    <color name="liteorange">#E4B571</color>
+    <color name="colorRateTint">#fff9f0</color>
+
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorText">#646464</color>
+    <color name="colorRed">#ed3237</color>
+    <color name="colorRed1">#d84e55</color>
+    <color name="colorRed2">#f95959</color>
+    <color name="colorYellow">#ffdd21</color>
+    <color name="colorDim">#f7f7fb</color>
+    <color name="colorDimShadow">#7e7e8c</color>
+    <color name="colorDimShadow1">#e3e3e3</color>
+    <color name="colorDimShadow2">#e8e8e8</color>
+    <color name="colorDimShadow3">#e6eef7</color>
+    <color name="colorDimShadow4">#e4e5e6</color>
+    <color name="colorDimShadow5">#eaeaea</color>
+    <color name="colorDimShadow6">#9b9b9b</color>
+    <color name="colorBlackShadow">#4A4A4A</color>
+    <color name="colorBlackShadow1">#747f8d</color>
+    <color name="colorBlackShadow2">#646464</color>
+    <color name="colorIndicator">#ff002a</color>
+    <color name="colorBlue">#1034d9</color>
+    <color name="colorBlue1">#2F80ED</color>
+    <color name="colorBlueShadow">#465986</color>
+    <color name="colorCircle">#d8d8d8</color>
+    <color name="colorLighterGrey">#e5e5e5</color>
+    <color name="colorBoxOuterColor">#C7C7C7</color>
+
+    <color name="colorDynamic">#ffdd21</color>
+    <color name="green">#a4c639</color>
+    <color name="colorGreen">#1D8844</color>
+
+
+    <color name="transfarent">#66000000</color>
+    <color name="input_edit_text_color">#01579B</color>
+    <color name="colorTheme">#01579B</color>
+    <color name="colorText2">#01579B</color>
+    <color name="dashboard_item_main_bg">#E8F3D3</color>
+    <color name="dashboard_item_button_bg">#75796A</color>
+    <color name="dashboard_item_text_bg">#B9D482</color>
+    <color name="dashboard_item_child_bg">#E2F0D9</color>
+    <color name="dashboard_item_child_text_bg">#A8CEBF</color>
+
+
+    <color name="flash_white">#E9ECEF</color>
+    <color name="anti_flash_white">#E2E5E9</color>
+    <color name="dashboard_bg">#010C30</color>
+
+
+    <color name="orange">#ED8E30</color>
+    <color name="silver">#CCCCCC</color>
+
+
+    <color name="grey_300">#E0E0E0</color>
+    <color name="color_white_shade">#fefefe</color>
+
+    <color name="date_default">#FDE9D8</color>
+    <color name="date_selected">#FFC000</color>
+
+    <color name="button_default_color">#9B9B9B</color>
+    <color name="button_highlight_color">#3CADB5</color>
+    <color name="flash_white_bg">#EAE9E9</color>
+    <color name="nav_color">#3C4F5D</color>
+    <color name="light_highlight_color">#D9F3F4</color>
+
+    <color name="transparent_tint_color">#A8000000</color>
+    <color name="transparent_tint_color1">#8A000000</color>
+    <color name="transparent_tint_color_light">#99DDDDDD</color>
+    <color name="colorButton">#00adb5</color>
+    <color name="transparent_white_color_light">#99dcdcdc</color>
+    <color name="colorDrawer">#282828</color>
+    <color name="grey_four_tint">#cfcfcf</color>
+    <color name="color_03_review_02_moderate">#f5a623</color>
+    <color name="color_03_review_02_moderate_transparent">#40F5A623</color>
+    <color name="icon_dark">#89000000</color>
+    <color name="button_secondary_bg">#4d606e</color>
+
+    <color name="booked_tickets">#02b875</color>
+    <color name="booked_tickets_dim">#6B02B875</color>
+    <color name="blocked_tickets">#f95959</color>
+    <color name="cancelled_tickets">#f5a623</color>
+    <color name="offline_agent_tickets">#C40ECE</color>
+    <color name="color_blue">#00ACF1</color>
+    <color name="textColor">#565656</color>
+
+
+    <color name="color_user_purple">#7B61FF</color>
+    <color name="color_user_pink">#FF65BC</color>
+    <color name="color_user_red">#E05050</color>
+    <color name="color_user_red_dim">#48DA6666</color>
+
+    <color name="text_header_bg">#2c3a45</color>
+    <color name="colorSelected">#52c328</color>
+    <color name="colorAvailableLadies">#ff8a9f</color>
+    <color name="colorAvailableGents">#7777ff</color>
+    <color name="colorSocialDistancing">#cccccc</color>
+    <color name="title_bg">#EAE9E9</color>
+    <color name="view_bg">#1A000000</color>
+    <color name="un_select_color">#979797</color>
+    <color name="view_color">#C4C4C4</color>
+    <color name="colorPrimaryShadow">#42BDC4</color>
+    <color name="colorShadow">#AFAFAF</color>
+    <color name="colorShadowTransparent">#80AFAFAF</color>
+    <color name="pale_primary">#BBEDEE</color>
+
+    <color name="colorskylight">#F5FCFC</color>
+
+    <color name="colorlightPurple">#EE82EE</color>
+    <color name="colorDarkPurple">#8B008B</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="light_purple">#0C000C</color>
+    <color name="light_grey">#F8F8F8</color>
+    <color name="blue_shade_four">#2600ADB5</color>
+    <color name="partition_boarder">#80AFAFAF</color>
+    <color name="primaryLight">#D9F3F4</color>
+    <color name="delay_status">#E05050</color>
+    <color name="lightback">#E7F5F5</color>
+    <color name="trackcolor">#65C466</color>
+    <color name="transparent">#0065C466</color>
+    <color name="lightest_blue">#E5F8FF</color>
+    <color name="lightest_yellow">#F3DB00</color>
+    <color name="lightest_yellow_dim">#7CF3DB00</color>
+    <color name="primaryTransparent">#D9F3F4</color>
+    <color name="lightPurple">#E8E3FF</color>
+    <color name="lightgrey">#F0F1F2</color>
+    <color name="lightBlack">#262626</color>
+    <color name="lightColor">#e5e5e5</color>
+    <color name="very_light_grey">#9F9F9F</color>
+    <color name="project_light_blue">#00ADB5</color>
+    <color name="color_black_revenue">#3B4954</color>
+
+    <color name="color_light_purple">#F1EFFC</color>
+    <color name="light_green_notification_booking">#DAFFF1</color>
+    <color name="light_red_notification_cancel">#FFE5E5</color>
+    <color name="light_purple_notification_pickupchart">#D6D7EA</color>
+    <color name="light_color_notification_review">#FAF1F2</color>
+    <color name="light_blue_notification_updates">#92B8FD</color>
+    <color name="light_blue_notification_general">#E9F0FF</color>
+    <color name="yellow_notification_blocking">#E68600</color>
+    <color name="blue_notification_unblocking">#1958CC</color>
+    <color name="light_purple_notification_mis">#86003E</color>
+    <color name="light_red">#E05050</color>
+
+
+    <color name="grey_soft_light">#F7F7FB</color>
+    <color name="color_primary_transparent">#D9F3F4</color>
+    <color name="fare_color">#3B4954</color>
+    <color name="alice_blue">#E9F0FF</color>
+    <color name="blue_grey">#4D606E</color>
+    <color name="very_light_greyyy">#9B9B9B</color>
+    <color name="pleasing_grey">#F7F7FB</color>
+    <color name="link_blue">#1034D9</color>
+    <color name="dashboard_occupancy_grid_background">#F1F1F1</color>
+    <color name="blackish">#3E3E52</color>
+    <color name="light_color_rate_card">#EDEDED</color>
+
+    <color name="littleGrey">#9A9A9A</color>
+    <color name="partialTicket">#FF8C00</color>
+    <color name="slate_dark_grey">#3B4954</color>
+    <color name="light_blue_card_background">#EEF6FF</color>
+    <color name="background_dim">#40D6D7EA</color>
+    <color name="yellow_">#E07819</color>
+    <color name="black_grey">#3F4E5A</color>
+    <color name="stages_red">#DD2C2F</color>
+    <color name="reddish">#FFF6E5</color>
+    <color name="green_color_text">#699F4C</color>
+    <color name="text_red">#BC2931</color>
+    <color name="yellow_light">#FFF6E5</color>
+    <color name="dark_blue">#3B5DD9</color>
+    <color name="grey_bg">#F0F0F0</color>
+    <color name="orange_light_dark">#F47804</color>
+    <color name="_2043c2">#2043C2</color>
+    <color name="light_white">#FFFAF0</color>
+    <color name="white_yellow">#FAEFDA</color>
+    <color name="slate_grey">#F0F5FF</color>
+    <color name="slate_grey_dark">#E7EFFF</color>
+    <color name="seat_not_shifted">#FFF6E3</color>
+
+</resources>
+

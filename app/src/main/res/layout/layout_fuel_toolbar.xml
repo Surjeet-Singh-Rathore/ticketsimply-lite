@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    >
+
+    <ImageView
+        android:id="@+id/toolbar_image_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/_7sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/_15sdp"
+        android:src="@drawable/arrow_back" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        style="@style/TextStyleBold"
+        android:id="@+id/titleTV"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar_image_left"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_image_left"
+        android:textColor="@color/grey"
+        app:layout_constraintStart_toEndOf="@id/toolbar_image_left"
+        android:text="@string/fuel_utility"
+        android:textSize="@dimen/_16ssp"
+        android:layout_height="wrap_content"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

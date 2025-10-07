@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flash_white_bg"
+    tools:context=".presentation.view.activity.reservationOption.announcement.AnnouncementActivity">
+
+    <include
+        android:id="@+id/announcement_toolbar"
+        layout="@layout/item_header_view_with_title_des"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/announcement_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/includeProgress"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/announcement_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/white_bg"
+            android:paddingTop="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_16">
+
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                android:text="@string/announcement_languages"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingEnd="@dimen/dp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                android:text="@string/select_city_and_reason_type"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_language" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/selectCity"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_16"
+                android:hint="@string/select_city"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                tools:layout_editor_absoluteX="16dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/selection_City"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    tools:ignore="LabelFor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/boading_ponit"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_16"
+                android:hint="@string/select_boarding_point"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintTop_toBottomOf="@+id/selectCity"
+                tools:layout_editor_absoluteX="16dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/select_boading_point"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    tools:ignore="LabelFor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_boarding_announcement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/boading_ponit">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+                    android:padding="@dimen/dp_16">
+
+                    <TextView
+                        android:id="@+id/tvAnnouncementMsgTitle"
+                        style="@style/TextStyleBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="14dp"
+                        android:text="@string/announcement_message"
+                        android:textColor="@color/grey"
+                        app:drawableStartCompat="@drawable/iannouncement"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvAnnouncementMsgContext"
+                        style="@style/msg_context"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:textColor="@color/grey"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAnnouncementMsgTitle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    android:text="@string/select_the_reason_below_to_complete_the_message"
+                    android:textColor="@color/colorShadow"
+                    android:textSize="@dimen/sp12" />
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/reason_type"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_16"
+                android:hint="@string/select_reason_type"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintTop_toBottomOf="@+id/linear_boarding_announcement"
+                tools:layout_editor_absoluteX="16dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/select_reason_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    android:singleLine="true"
+                    tools:ignore="LabelFor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/message"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_16"
+                android:hint="@string/select_message"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                android:visibility="visible"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/reason_type">
+
+                <AutoCompleteTextView
+                    android:id="@+id/select_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Replaced button with linear layout to adjust icon and text to center when changing font size -->
+            <LinearLayout
+                android:id="@+id/btnAnnoumcementMsg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_16"
+                android:background="@drawable/button_default_bg"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="7dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/message">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/iannouncement_white"
+                    android:drawablePadding="@dimen/dp_12"
+                    android:text="@string/announce_message"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+<!--            <androidx.appcompat.widget.AppCompatButton-->
+<!--                android:id="@+id/btnAnnoumcementMsg"-->
+<!--                style="@style/TextStyleBold"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="@dimen/dp_16"-->
+<!--                android:background="@drawable/button_default_bg"-->
+<!--                android:drawableStart="@drawable/iannouncement_white"-->
+<!--                android:drawablePadding="@dimen/dp_12"-->
+<!--                android:gravity="left|center_vertical"-->
+<!--                android:paddingStart="@dimen/dp_56"-->
+<!--                android:text="@string/announce_message"-->
+<!--                android:textColor="@color/white"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/message" />-->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnClearAll"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_16"
+                android:background="@drawable/layout_rounded_shape_border"
+                android:text="@string/clear_all"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp16"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnAnnoumcementMsg" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

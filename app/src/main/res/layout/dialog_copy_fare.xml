@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    app:cardBackgroundColor="@color/white"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_10sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitle"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="start|center"
+            android:text="@string/copy_fare"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/copyFareFromTV"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="start|center"
+            android:text="@string/copy_fare_from"
+            android:textAllCaps="true"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/copyFareTIL"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/header_gradient_bg"
+            app:boxStrokeErrorColor="@color/colorRed2"
+            app:boxStrokeWidth="@dimen/dp_2"
+            android:layout_marginStart="@dimen/_15sdp"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:layout_constraintStart_toStartOf="@id/copyFareFromTV"
+            app:layout_constraintTop_toBottomOf="@id/copyFareFromTV">
+
+            <AutoCompleteTextView
+                android:id="@+id/copyFareET"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:paddingStart="@dimen/_16sdp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:enabled="false"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLines="1" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/copyFareToTV"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="start|center"
+            android:text="@string/copy_fare_to"
+            android:textAllCaps="true"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/copyFareTIL" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/eBookingCB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:text="@string/e_booking"
+            android:checked="true"
+            android:textColor="#4A4A4A"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/copyFareToTV" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/otaChannelsCB"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:text="@string/otas"
+            android:textColor="#4A4A4A"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eBookingCB" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/onlineCB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:text="@string/online_agent"
+            android:checked="true"
+            android:textColor="#4A4A4A"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/otaChannelsCB" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/branchCB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:visibility="gone"
+            android:text="Branch"
+            android:textColor="#4A4A4A"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/onlineCB" />
+
+
+        <TextView
+            android:id="@+id/btnCancel"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:text="@string/cancel"
+            android:textAlignment="textEnd"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorRed2"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/btnRight"
+            app:layout_constraintEnd_toStartOf="@+id/btnRight"
+            app:layout_constraintTop_toTopOf="@id/btnRight"
+            app:layout_constraintWidth_percent="0.40" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRight"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/layout_rounded_shape"
+            android:paddingVertical="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_30sdp"
+            android:text="Apply"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/branchCB"
+            app:layout_constraintWidth_percent="0.60" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

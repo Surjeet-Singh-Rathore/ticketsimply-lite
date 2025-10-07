@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_description">Kursi</string>
+    <string name="tap_a_seat_icon_to_select_seat_from_this_service">Sentuh Ikon Kursi untuk memilih kursi dari layanan ini</string>
+    <string name="tap_a_seat_icon_to_assign_the_seat">Sentuh Ikon Kursi untuk menetapkan kursi</string>
+    <string name="next">Selanjutnya</string>
+    <string name="no_berth">Tidak ada tingkat</string>
+    <string name="this_seat_cannot_be_selected">Kursi ini tidak dapat dipilih</string>
+    <string name="you_can_t_select_more_than">Anda tidak dapat memilih lebih dari %1$s</string>
+    <string name="lower">Bawah</string>
+    <string name="upper">Atas</string>
+    <string name="finish">Selesai</string>
+    <string name="shift_seats">Alihkan kursi %1$s</string>
+    <string name="from">Dari</string>
+    <string name="to">Ke</string>
+</resources>

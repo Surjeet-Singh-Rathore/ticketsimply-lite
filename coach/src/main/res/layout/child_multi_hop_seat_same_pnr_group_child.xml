@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+    <FrameLayout
+        android:id="@+id/seatLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSourceDestination"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvPNR">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/agent_outline_seat" />
+
+        <TextView
+            android:id="@+id/tvTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tvPNR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="PNR - "
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/seatLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSourceDestination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Delhi to Lucknow"
+        app:layout_constraintStart_toEndOf="@+id/seatLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tvPNR" />
+</androidx.constraintlayout.widget.ConstraintLayout>

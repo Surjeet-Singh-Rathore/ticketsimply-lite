@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_rounded_shape"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/includeProgress"
+            layout="@layout/layout_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/update_personal_details"
+                android:textColor="@color/colorBlackShadow" />
+
+            <TextView
+                android:id="@+id/tvCancel"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/cancel"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/header_gradient_bg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:hint="@string/name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/colorBlackShadow" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutAge"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/header_gradient_bg">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAge"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/age"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textColor="@color/colorBlackShadow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/spinnerGender"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0.5"
+                android:hint="@string/gender"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/header_gradient_bg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPhoneNumber"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:hint="@string/phone_number"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:textColor="@color/colorBlackShadow" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutBoardingAt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="false"
+            android:textColorHint="@color/grey"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBoardingAt"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false"
+                android:hint="@string/boarding_at"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:text="" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDropOffAt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            android:textColorHint="@color/grey"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDropOffAt"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false"
+                android:hint="@string/drop_off_at"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:text="" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <android.widget.Button
+            android:id="@+id/btnSaveDetails"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_selected_bg"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+

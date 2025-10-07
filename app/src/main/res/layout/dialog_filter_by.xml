@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_bg"
+    android:paddingBottom="@dimen/dp_16">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_by"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/selectServiceSubHeaderLabel"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:hint="Select Service"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled">
+
+            <AutoCompleteTextView
+                android:id="@+id/etSelectService"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:inputType="none"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="All Services"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/selectOriginSubHeaderLabel"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:hint="Select Origin"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled">
+
+            <AutoCompleteTextView
+                android:id="@+id/etSelectOrigin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:inputType="none"
+                android:text="All cities"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/selectDestinationSubHeaderLabel"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:hint="Select Destination"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled">
+
+            <AutoCompleteTextView
+                android:id="@+id/etSelectDestination"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:inputType="none"
+                android:text="All cities"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_fromDate_urc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:background="@drawable/header_gradient_bg"
+            app:boxStrokeErrorColor="@color/colorRed2"
+            app:boxStrokeWidth="@dimen/dp_2"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_amount">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_fromDate_urc"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:drawableEnd="@drawable/ic_icons_calendar"
+                android:focusableInTouchMode="false"
+                android:hint="@string/selectFromDate" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_toDate_urc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            app:boxStrokeErrorColor="@color/colorRed2"
+            app:boxStrokeWidth="@dimen/dp_2"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_fromDate_urc">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_toDate_urc"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:drawableEnd="@drawable/ic_icons_calendar"
+                android:focusableInTouchMode="false"
+                android:hint="@string/selectToDate"
+                android:imeOptions="actionDone"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_selectDate_urc"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            app:boxStrokeErrorColor="@color/colorRed2"
+            app:boxStrokeWidth="@dimen/dp_2"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_fromDate_urc">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_selectDate_urc"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:drawableEnd="@drawable/ic_icons_calendar"
+                android:focusableInTouchMode="false"
+                android:hint="@string/select_date"
+                android:imeOptions="actionDone"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_light"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/layout_rounded_shape"
+        android:padding="@dimen/margin_10"
+        android:text="@string/apply_filter"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container"
+        app:layout_constraintWidth_percent="0.60" />
+
+    <TextView
+        android:id="@+id/btn_dark"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_32"
+        android:text="@string/cancel"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/colorRed2"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_light"
+        app:layout_constraintTop_toBottomOf="@id/container"
+        app:layout_constraintWidth_percent="0.40" />
+</androidx.constraintlayout.widget.ConstraintLayout>

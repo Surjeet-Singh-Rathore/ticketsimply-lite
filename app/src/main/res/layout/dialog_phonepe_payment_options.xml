@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    app:cardCornerRadius="@dimen/card_radius">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/tvTicketNo"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:gravity="center|start"
+            android:text="PhonePe Payment Options:"
+            android:textColor="@color/text_header_bg"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:id="@+id/rgPaymentOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbPayViaSMS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay Via SMS" />
+
+            <RadioButton
+                android:id="@+id/rbPayViaQR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay Via QR" />
+
+            <RadioButton
+                android:id="@+id/rbPayViaUPI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay Via UPI ID" />
+
+            <RadioButton
+                android:id="@+id/rbPayViaPhonePeApp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay Via PhonePe App" />
+
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_mobile_number"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            android:background="@drawable/header_gradient_bg">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_mobile_number"
+                style="@style/textInputStyle"
+                android:maxLength="10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Enter Mobile Number"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:paddingStart="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/llUPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/header_gradient_bg">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_upi_id"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Enter UPI Id"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="10dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <android.widget.Button
+                android:id="@+id/btnVerifyUPI"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Verify UPI ID"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivQRCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:id="@+id/layoutBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <android.widget.Button
+                android:id="@+id/btnGoBack"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@color/button_secondary_bg"
+                android:text="@string/goBack"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+
+            <android.widget.Button
+                android:id="@+id/btnConfirm"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@drawable/button_default_bg"
+                android:text="@string/confirm"
+                android:clickable="false"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:clickable="false"
+        android:gravity="center"
+        android:visibility="gone">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!--
+        <LinearLayout
+            android:id="@+id/llProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:clickable="false"
+            android:background="#B3FFFFFF"
+            android:layout_centerInParent="true"
+            android:visibility="visible">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        </LinearLayout>
+    -->
+
+
+</androidx.cardview.widget.CardView>

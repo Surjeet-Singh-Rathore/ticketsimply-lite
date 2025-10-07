@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/_15sdp"
+    android:background="@color/title_bg">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/topCL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:cardBackgroundColor="#F7F7FB"
+        android:layout_marginTop="@dimen/_11sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="@id/listRV"
+        app:layout_constraintStart_toStartOf="@id/listRV"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/amountCL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/verticalGL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".45" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/totalSeatsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/booking_count_colon"
+                android:textColor="#3B4954"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/totalSeatsValueTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/totalSeatsTV"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cancellationTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/cancellation"
+                android:textColor="#3B4954"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/totalAmountValueTV"
+                app:layout_constraintStart_toEndOf="@id/verticalGL"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/totalAmountValueTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@id/bottomV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topCL"
+        tools:listitem="@layout/child_branch_collection_booking_cancellation_report" />
+
+    <View
+        android:layout_width="match_parent"
+        android:id="@+id/bottomV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/white"
+        android:layout_height="@dimen/_53sdp"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_40sdp"
+        android:id="@+id/prevPageBT"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/button_selected_bg_grey_round"
+        android:src="@drawable/page_left_grey"
+        app:layout_constraintTop_toTopOf="@id/pagenationRV"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:padding="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="@id/pagenationRV"
+        android:layout_height="0dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:id="@+id/pagenationRV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/prevPageBT"
+        app:layout_constraintEnd_toStartOf="@id/nextButtonBT"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_7sdp"
+        tools:listitem="@layout/adapter_pagenation_number"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="@dimen/_40sdp"
+        android:id="@+id/nextButtonBT"
+        android:background="@drawable/button_selected_bg_round"
+        android:src="@drawable/page_right_white"
+        android:padding="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pagenationRV"
+        app:layout_constraintBottom_toBottomOf="@id/pagenationRV"
+        android:layout_height="0dp"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/noDataTV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/no_data_found"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

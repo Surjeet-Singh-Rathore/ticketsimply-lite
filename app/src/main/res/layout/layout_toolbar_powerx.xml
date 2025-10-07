@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_rounded_shape"
+    android:elevation="0dp"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/dp_16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/dp_16" />
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="@dimen/dp_16"
+        android:src="@drawable/arrow_back"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start"
+        app:tint="@color/colorBlackShadow"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/tv_current_header"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:background="@drawable/layout_rounded_shape_border_circle"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingTop="@dimen/dp_2"
+        android:paddingEnd="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_2"
+        android:text="05 Aug 2022"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/sp12"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/toolbar_header_text"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start" />
+
+    <TextView
+        android:id="@+id/toolbar_header_text"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:text="Dashboard"
+        android:textColor="@color/colorBlackShadow"
+        android:textSize="@dimen/sp18"
+        app:layout_constraintBottom_toBottomOf="@+id/img_back"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toTopOf="@id/img_back" />
+
+    <ImageView
+        android:id="@+id/imgToolbarSearch"
+        style="@style/TextStyleBold"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:padding="@dimen/dp_8"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgToolbarCalendar"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_start" />
+
+    <ImageView
+        android:id="@+id/imgToolbarCalendar"
+        style="@style/TextStyleBold"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:padding="@dimen/dp_8"
+        android:src="@drawable/ic_icons_calendar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_start" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

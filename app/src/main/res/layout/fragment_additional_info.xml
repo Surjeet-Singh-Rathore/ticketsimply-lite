@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background_dim"
+    android:layout_height="match_parent" >
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/checkInfoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/check_info"
+        style="@style/TextStyleBold"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/blackish"
+        app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/step_5_5"
+        android:textSize="@dimen/_11ssp"
+        style="@style/TextStyleNormal"
+        android:textColor="@color/blackish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/checkInfoCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_7sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/checkInfoTV">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/additionalInfoRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="5"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/adapter_additional_info"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/remarkTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:text="@string/remark"
+        android:visibility="gone"
+        style="@style/TextStyleBold"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/blackish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkInfoCV"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/remarkCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_7sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/remarkTV">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:padding="@dimen/_5sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/insideRemarkTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is a remark or some other additional option that might have to be added."
+                style="@style/TextStyleNormal"
+                android:padding="@dimen/_5sdp"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/blackis"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/writeHereEV"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                android:background="@drawable/bg_white_grey_stroke_round"
+                android:padding="@dimen/_10sdp"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="start"
+                android:hint="Write here.."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/insideRemarkTV"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical"
+        android:background="#CDE3E3E3">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/activeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/active"
+        android:paddingVertical="@dimen/_10sdp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        style="@style/TextStyleBold"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:background="@drawable/bg_little_round_blue"
+        />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/proposedTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/proposed"
+            android:paddingVertical="@dimen/_10sdp"
+            android:gravity="center"
+            style="@style/TextStyleBold"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/white_bg"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

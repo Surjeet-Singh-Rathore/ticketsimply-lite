@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_16"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="@dimen/dp_16"
+    android:layout_marginBottom="8dp"
+    android:elevation="4dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioSmsTitle"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_12"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow" />
+
+
+        <TextView
+            android:id="@+id/tvSms"
+            style="@style/msg_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="13dp"
+            android:ellipsize="start"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

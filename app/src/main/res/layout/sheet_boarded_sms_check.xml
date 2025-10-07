@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_rounded_shape_top_left_right"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_12"
+            android:paddingBottom="@dimen/dp_12"
+            android:text="@string/verify_boarding"
+            android:textColor="@color/grey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/skip_verification"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_12"
+            android:paddingBottom="@dimen/dp_12"
+            android:text="@string/skip_verificaiton"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/flash_white_bg" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextStyleNormalTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:text="VIA OTP"
+            android:textSize="@dimen/sp12" />
+
+        <LinearLayout
+            android:id="@+id/resend_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/send_sms"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/send_sms"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/resend_qr_code"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@string/resend_otp"
+            android:textColor="@color/colorPrimary" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lenterotp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            android:textColorHint="@color/colorDimShadow6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etenter_otp"
+                style="@style/TextStyleNormalTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:hint="@string/enter_otp"
+                android:imeOptions="actionNext"
+
+                android:inputType="number"
+                android:textColorHint="@color/colorDimShadow6" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lpassenger_temp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            android:textColorHint="@color/colorDimShadow6"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_passenger_temp"
+                style="@style/TextStyleNormalTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:hint="@string/passenger_temprature"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:textColorHint="@color/colorDimShadow6" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_verify_boarding"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@color/colorDimShadow6"
+            android:padding="13dp"
+            android:text="@string/verify_boarding"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp16" />
+
+    </LinearLayout>
+</LinearLayout>

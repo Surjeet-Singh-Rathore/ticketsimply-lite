@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp">
+
+    <TextView
+        android:id="@+id/tvBusDelayTime"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_rounded_shape"
+        android:backgroundTint="@color/grey_four_tint"
+        android:paddingLeft="@dimen/dp_12"
+        android:paddingTop="8dp"
+        android:paddingRight="@dimen/dp_12"
+        android:paddingBottom="8dp"
+        android:text="10 Mins"
+        android:textColor="@color/colorBlackShadow"
+        android:textSize="12sp" />
+
+</LinearLayout>

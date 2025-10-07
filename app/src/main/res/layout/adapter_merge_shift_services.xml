@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@drawable/bg_light_grey_round_stroke"
+    android:padding="@dimen/_10sdp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="@dimen/_1sdp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/nameServiceTV"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09:00AM | BHT124"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/seatsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_seat"
+        android:drawablePadding="@dimen/_5sdp"
+        android:drawableTint="@color/textColor"
+        android:text="20/45"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/seatTypeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="2+2 Volvo"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nameServiceTV" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/viaTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:drawableStart="@drawable/filled_circle"
+        android:drawablePadding="@dimen/_10sdp"
+        android:drawableTint="@color/light_gray"
+        android:text="Via Badung"
+        android:visibility="gone"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toEndOf="@id/seatTypeTV"
+        app:layout_constraintTop_toBottomOf="@id/nameServiceTV" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/revenueTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:drawablePadding="@dimen/_5sdp"
+        android:text="Net revenue: Rp 250.000"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seatTypeTV" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/bg_selected_green"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_2sdp"
+        android:text="Exact seat nos: 5/5"
+        android:id="@+id/exactSeatNumberTV"
+        android:gravity="start"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/green_color_text"
+        android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/revenueTV" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/bg_selected_green"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_2sdp"
+        android:text="Exact seat nos: 5/5"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:id="@+id/exactSeatTypeTV"
+        android:gravity="start"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/revenueTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

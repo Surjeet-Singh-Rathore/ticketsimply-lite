@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_12"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardPreventCornerOverlap="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_12">
+
+        <TextView
+            android:id="@+id/tvStatus"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/layout_rounded_shape_border_circle"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorPrimary"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_more_horiz"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView16"
+            style="@style/msg_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/pnr"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+
+        <TextView
+            android:id="@+id/tvPnr"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/empty"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/textView16"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+
+        <TextView
+            android:id="@+id/tvAmount"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/empty"
+            android:textColor="@color/colorBlackShadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvBusInfo"
+            app:layout_constraintBottom_toBottomOf="@id/tvBusInfo"
+            />
+
+        <TextView
+            android:id="@+id/tvBusInfo"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingEnd="@dimen/dp_8"
+            android:text="@string/empty"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/tvAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPnr" />
+
+        <TextView
+            android:id="@+id/tvPassengers"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:color="@color/colorWhite"
+            android:ellipsize="end"
+            android:fontFamily="@font/notosans_regular"
+            android:maxLines="1"
+            android:text="@string/empty"
+            android:textColor="@color/colorShadow"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/viewTicket"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBusInfo" />
+
+        <TextView
+            android:id="@+id/viewTicket"
+            style="@style/msg_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:drawableEnd="@drawable/ic_primary_arrow"
+            android:drawablePadding="8dp"
+            android:text="@string/view"
+            android:paddingVertical="@dimen/_3sdp"
+            android:paddingStart="@dimen/_15sdp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="11sp"
+            app:layout_constraintTop_toTopOf="@+id/tvPassengers"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPassengers"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_10sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/boardingCardCV"
+            android:layout_margin="@dimen/_5sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/boarding_point"
+            android:textColor="@color/text_header_bg"
+            style="@style/TextStyleBold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="@dimen/_15ssp"
+            android:padding="@dimen/_10sdp"
+            android:id="@+id/boardingTV"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Madiwala"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textColor="@color/text_header_bg"
+            style="@style/TextStyleBold"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:id="@+id/boardingNameTV"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boardingCardCV"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Landmark:"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:textSize="@dimen/_12ssp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:textColor="@color/text_header_bg"
+            android:id="@+id/landmarkTV"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/boardingNameTV"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Near ABC Showroom, Madiwala"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:textSize="@dimen/_15sdp"
+            style="@style/TextStyleBold"
+            android:textColor="@color/text_header_bg"
+            android:id="@+id/landmarkValueTV"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/landmarkTV"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnOkay"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/light_highlight_color"
+            android:paddingTop="@dimen/dp_16"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:textColor="@color/colorButton"
+            app:layout_constraintTop_toBottomOf="@id/landmarkValueTV"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:paddingBottom="@dimen/dp_16"
+            android:text="@string/okay" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

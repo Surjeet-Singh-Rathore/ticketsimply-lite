@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="slider_values">
+        <item>0</item>
+        <item>100</item>
+    </array>
+
+    <string-array name="booking_type">
+        <item>đi bộ</item>
+        <item>Đại lý trực tuyến</item>
+        <item>Đại lý ngoại tuyến</item>
+        <item>Chi nhánh</item>
+    </string-array>
+
+    <string-array name="city_list">
+        <item>Bangalore</item>
+        <item>Chennai</item>
+        <item>Hyderabad</item>
+    </string-array>
+
+    <string-array name="agent_names">
+        <item>Đặc vụ 1</item>
+        <item>Đặc vụ 2</item>
+        <item>Đặc vụ 3</item>
+        <item>Đặc vụ 4</item>
+    </string-array>
+
+    <string-array name="branch_names">
+        <item>Chi nhánh 1</item>
+        <item>Chi nhánh 2</item>
+        <item>Chi nhánh 3</item>
+        <item>Chi nhánh 4</item>
+    </string-array>
+
+    <string-array name="channel_name">
+        <item>Chi nhánh</item>
+        <item>Đại lý trực tuyến</item>
+        <item>OTAs</item>
+        <item>Đặt chỗ điện tử</item>
+    </string-array>
+
+    <string-array name="country_code">
+        <item>+91</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>Ấn Độ</item>
+    </string-array>
+
+    <string-array name="travel_branch">
+        <item>8</item>
+    </string-array>
+
+    <string-array name="genderArray">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+
+    <string-array name="genderArray2">
+        <item>Ông</item>
+        <item>Bệnh đa xơ cứng</item>
+    </string-array>
+
+    <string-array name="idType">
+        <item>Aadhar</item>
+        <item>PAN</item>
+        <item>Hộ chiếu</item>
+        <item>ID cử tri</item>
+    </string-array>
+
+    <string-array name="driverArray">
+        <item>Trình điều khiển 1</item>
+        <item>Trình điều khiển 2</item>
+        <item>Trình điều khiển 3</item>
+        <item>Trình điều khiển 4</item>
+        <item>Trình điều khiển 5</item>
+    </string-array>
+
+    <string-array name="dummyArray">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+    </string-array>
+
+    <string-array name="hourArray">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+    </string-array>
+
+    <string-array name="minuteArray">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+
+    <string-array name="amPMArray">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+
+    <string-array name="genderTitleArray">
+        <item>Ông</item>
+        <item>bà</item>
+        <item>Cô</item>
+    </string-array>
+
+    <string-array name="rechargeTransactionTypes">
+        <item>Tín dụng</item>
+        <item>Ghi nợ</item>
+    </string-array>
+
+    <string-array name="agentTypes">
+        <item>Tất cả</item>
+        <item>Trả trước</item>
+        <item>Trả sau</item>
+        <item>Không có</item>
+    </string-array>
+
+    <string-array name="selectCategories">
+        <item>Hiển thị tất cả</item>
+        <item>Chỉ hiển thị tín dụng</item>
+        <item>Chỉ hiển thị các khoản ghi nợ</item>
+        <item>Hiển thị chưa bị xóa</item>
+        <item>Hiển thị tín dụng/ghi nợ thủ công</item>
+    </string-array>
+
+    <string-array name="agentTypesWithoutNone">
+        <item>Tất cả</item>
+        <item>Trả trước</item>
+        <item>Trả sau</item>
+    </string-array>
+
+    <string-array name="rechargeStatus">
+        <item>Hoàn thành</item>
+        <item>Chưa giải quyết</item>
+        <item>Thất bại</item>
+    </string-array>
+
+    <string-array name="rechargePaymentTypes">
+        <item>Kiểm tra</item>
+        <item>Tiền mặt</item>
+        <item>DD</item>
+        <item>NEFT</item>
+        <item>IMPS</item>
+        <item>RTGs</item>
+        <item>Lương ròng</item>
+        <item>Thanh toán đơn hàng</item>
+        <item>Khác</item>
+    </string-array>
+
+    <string-array name="allReportTypes">
+        <item>Báo cáo thu chi nhánh</item>
+        <item>Báo cáo đóng cửa nhận hàng tại thành phố thông minh</item>
+        <item>Kiểm tra báo cáo thanh tra</item>
+        <item>Báo cáo tiện ích nhiên liệu</item>
+        <item>Báo cáo tỷ lệ sử dụng phòng</item>
+        <item>Vé do bạn đặt</item>
+        <item>Bộ sưu tập dịch vụ xe buýt</item>
+        <item>Báo cáo nhóm theo chi nhánh</item>
+
+    </string-array>
+
+    <string-array name="activeCancelledServicesArray">
+        <item>Tất cả (Chuyến đi đang hoạt động + Chuyến đi đã hủy)</item>
+        <item>Chỉ những chuyến đi đang hoạt động</item>
+        <item>Chỉ những chuyến đi bị hủy</item>
+    </string-array>
+</resources>

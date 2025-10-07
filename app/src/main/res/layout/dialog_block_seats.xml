@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/card_radius">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v_begin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/dp_16" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_v_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/dp_16" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h_begin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="@dimen/dp_12" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_h_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/dp_12" />
+
+        <TextView
+            android:id="@+id/tvHeader"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="49dp"
+            android:gravity="center|left"
+            android:text="@string/notAvailable"
+            android:textColor="@color/text_header_bg"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/view_bg"
+            app:layout_constraintTop_toBottomOf="@id/tvHeader" />
+
+
+        <TextView
+            android:id="@+id/tv_header_text"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@string/notAvailable"
+            android:textColor="@color/text_header_bg"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toBottomOf="@id/view_top" />
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/notAvailable"
+            android:textColor="@color/button_default_color"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toBottomOf="@id/tv_header_text" />
+
+        <View
+            android:id="@+id/view_middle"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@color/view_bg"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
+
+
+        <TextView
+            android:id="@+id/tv_no_seats_title"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/noOfSeats"
+            android:textColor="@color/text_header_bg"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_selected_seat_no_title"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toBottomOf="@id/view_middle" />
+
+
+        <TextView
+            android:id="@+id/tv_no_seats"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/notAvailable"
+            android:textColor="@color/text_header_bg"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_selected_seat_no"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toBottomOf="@id/tv_no_seats_title" />
+
+
+        <TextView
+            android:id="@+id/tv_selected_seat_no_title"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/selectedSeatsHeading"
+            android:textColor="@color/text_header_bg"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintStart_toEndOf="@id/tv_no_seats_title"
+            app:layout_constraintTop_toBottomOf="@id/view_middle" />
+
+
+        <!--    <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="start"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:constraint_referenced_ids="tv_no_seats_title,tv_selected_seat_no_title" />-->
+
+
+        <TextView
+            android:id="@+id/tv_selected_seat_no"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/notAvailable"
+            android:textColor="@color/text_header_bg"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintStart_toEndOf="@id/tv_no_seats_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_no_seats_title" />
+
+        <View
+            android:id="@+id/view_bottom"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@color/view_bg"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toBottomOf="@id/tv_selected_seat_no" />
+
+
+        <TextView
+            android:id="@+id/tv_message"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/blockContent"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+            app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+            app:layout_constraintTop_toBottomOf="@id/view_bottom" />
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="btn_dark,btn_light"
+            app:layout_constraintTop_toBottomOf="@id/tv_message"
+
+            />
+
+        <android.widget.Button
+            android:id="@+id/btn_dark"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/button_secondary_bg"
+            android:text="@string/goBack"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/btn_light"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_message"
+            app:layout_constraintWidth_percent="0.50" />
+
+        <android.widget.Button
+            android:id="@+id/btn_light"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/block"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@+id/btn_dark"
+            app:layout_constraintTop_toBottomOf="@id/tv_message"
+            app:layout_constraintWidth_percent="0.50" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCollection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:layout_marginBottom="@dimen/dp_16"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_16"
+            android:paddingTop="14dp"
+            android:paddingRight="@dimen/dp_16"
+            android:paddingBottom="14dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutFrequentTraveller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:layout_toEndOf="@+id/tvTicketNo"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tripsTitle"
+                        style="@style/TextStyleNormalTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/frequent_traveller"
+                        android:textColor="@color/blue_dark_second"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/total_trips"
+                        style="@style/TextStyleNormalTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_frequent_traveller"
+                        android:drawablePadding="@dimen/dp_4"
+                        android:text="Trips"
+                        android:textColor="@color/blue_dark_second"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tvTicketNo"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/rounded_border_primary"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_4"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_4"
+
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp10" />
+
+                <ImageView
+                    android:id="@+id/imgMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/dp_4"
+                    android:src="@drawable/ic_more_horiz"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/passengerName"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/empty"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textSize="@dimen/sp14" />
+
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/empty" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/busType"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/empty"
+                    android:textSize="@dimen/sp14" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/departureInfo"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginEnd="4dp"
+                    android:layout_toStartOf="@+id/view_ticket"
+                    android:text="@string/empty"
+                    android:textColor="@color/colorDimShadow6"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/view_ticket"
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:drawableEnd="@drawable/ic_arrow_forward_small"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="@string/view_ticket"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

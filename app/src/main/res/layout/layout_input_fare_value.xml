@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginEnd="@dimen/_6sdp"
+    android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleTV"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/notAvailable"
+        android:textColor="#4A4A4A"
+        android:textSize="@dimen/_11ssp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/layoutSeatType"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutSeatType"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_gradient_bg"
+        android:visibility="visible"
+        app:boxStrokeWidth="@dimen/dp_2"
+        app:errorIconDrawable="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/titleTV"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSeatFare"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:text="0.0"
+            android:textAlignment="textEnd"
+            android:textSize="@dimen/_10ssp" />
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

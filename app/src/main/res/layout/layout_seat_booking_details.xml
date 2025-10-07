@@ -1,0 +1,1326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="@dimen/_1sdp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.28" />
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/serviceTV"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:padding="15dp"
+                android:text="@string/service_options"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/notifyPassengerBtn"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/notifyPassengerBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp"
+                android:drawableStart="@drawable/send_notification_sms"
+                android:drawablePadding="4dp"
+                android:text="@string/notify_passenger"
+                android:textSize="10sp"
+                android:textColor="@color/project_light_blue"
+                android:textAlignment="center"
+                android:background="@drawable/bg_sky_blue_stroke"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/passengerRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="@id/serviceTV"
+                app:layout_constraintTop_toBottomOf="@id/serviceTV"
+                tools:listitem="@layout/adapter_passenger_name" />
+
+
+            <View
+                android:id="@+id/division_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/flash_white_bg"
+                app:layout_constraintTop_toBottomOf="@id/passengerRV" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/division_view">
+
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/seatDetailCV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
+                            android:background="@drawable/layout_rounded_shape_border_radius_8dp_black"
+                            android:backgroundTint="@color/light_grey"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="@dimen/_10sdp">
+
+                                <ImageView
+                                    android:id="@+id/frequentTravellerMenu"
+                                    android:layout_width="@dimen/_20ssp"
+                                    android:layout_height="@dimen/_20ssp"
+                                    android:visibility="gone"
+                                    android:src="@drawable/ic_frequent_traveller"
+                                    android:drawableStart="@drawable/ic_frequent_traveller"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <LinearLayout
+                                    android:id="@+id/pnrLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    android:layout_marginTop="@dimen/dp_4"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/frequentTravellerMenu">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        style="@style/TextStyleBold"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="PNR : "
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_14ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/pnrValueTV"
+                                        style="@style/TextStyleBold"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_14ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/tillLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/pnrLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.5"
+                                        android:singleLine="true"
+                                        android:text="@string/till"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tillValue"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.5"
+                                        android:gravity="end"
+                                        android:singleLine="true"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/seatLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/tillLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/seat"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/seatValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="true"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/otherSeatLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/seatLL"
+                                    android:visibility="visible">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/other_seats"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/otherSeatValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/shiftedSeatLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/otherSeatLL"
+                                    android:visibility="visible">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/shifted_seats"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/shiftedSeatValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/passengerLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/shiftedSeatLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/passenger"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/passengerValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="true"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/mobileLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/passengerLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/mobile"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/mobileValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="true"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/originLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/mobileLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/origin"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/originValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="true"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/boardingLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/originLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.6"
+                                        android:singleLine="false"
+                                        android:text="@string/boarding"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/boardingValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.4"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/destinationLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/boardingLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/destination"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/destinationValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/droppingLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/destinationLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.6"
+                                        android:singleLine="false"
+                                        android:text="@string/dropping"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/droppingValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.4"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/FareLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/droppingLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/fare"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/fareValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="true"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/bookedByLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/FareLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.7"
+                                        android:singleLine="false"
+                                        android:text="@string/booked_by"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/bookedByValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.3"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/bookingDateLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/bookedByLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/booking_date"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/bookingDateValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="true"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/dateOfJourneyLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/bookingDateLL">
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.7"
+                                        android:singleLine="false"
+                                        android:text="@string/doj_"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/dateOfJourneyValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.3"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/paymentViaLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/dateOfJourneyLL">
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="0.7"
+                                        android:singleLine="false"
+                                        android:text="@string/pay_mode"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/paymentViaValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1.3"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                </LinearLayout>
+
+
+
+                                <LinearLayout
+                                    android:id="@+id/remarkLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/paymentViaLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/remarks"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/remarkValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+
+
+
+                                <LinearLayout
+                                    android:id="@+id/shiftedLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/remarkLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/shiftedby"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/shiftedByValue"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/shiftedOnLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/shiftedLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:singleLine="true"
+                                        android:text="@string/shiftedon"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/shiftedOnValue"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:singleLine="false"
+                                        android:text="@string/empty"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_12ssp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/agentNameLL"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:weightSum="2"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/shiftedOnLL">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/agentNameValueTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:gravity="end"
+                                        android:layout_marginBottom="@dimen/_8sdp"
+                                        android:singleLine="false"
+                                        android:text="@string/offline_agent"
+                                        android:textColor="@color/blue_grey"
+                                        android:textSize="@dimen/_10ssp" />
+
+                                </LinearLayout>
+
+
+
+
+
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintTop_toBottomOf="@id/seatDetailCV">
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/boarding_status"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:visibility="visible"
+                                android:weightSum="6">
+
+                                <TextView
+                                    android:id="@+id/textView23"
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:drawablePadding="15dp"
+                                    android:text="@string/boarded_status"
+                                    app:drawableLeftCompat="@drawable/ic_walking_man"
+                                    app:drawableTint="@color/black"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/boarded_switch_box"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.SwitchCompat
+                                    android:id="@+id/boarded_switch_box"
+                                    style="@style/TextStyleBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="25dp"
+                                    android:gravity="center"
+                                    android:thumb="@drawable/thumb_no"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:track="@drawable/track" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <View
+                                android:id="@+id/boarding_status_view"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/menu_viewticket"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/ic_vertical_ticket" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/view_ticket"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/call_passenger"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/ic_phone"
+                                    app:tint="@color/colorBlack" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/call_passenger"
+                                    android:textColor="@color/grey" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/call_passenger_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+
+                            <LinearLayout
+                                android:id="@+id/resend_sms"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/message_bubble"
+                                    app:tint="@color/colorBlack" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/resend_sms"
+                                    android:textColor="@color/grey" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/resend_sms_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/confirm_phone_booking"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:visibility="gone"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/tick_img"
+                                    app:tint="@color/colorBlack" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/confirmPhoneBooking"
+                                    android:textColor="@color/grey" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/confirm_phone_booking_view"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg"
+                                android:visibility="gone" />
+
+                            <LinearLayout
+                                android:id="@+id/cancel_phone_booking"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+
+                                android:visibility="gone"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/ic_un_lock" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/release_ticket"
+                                    android:textColor="@color/grey" />
+
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/cancel_phone_booking_view"
+                                android:layout_width="match_parent"
+
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg"
+                                android:visibility="gone" />
+
+
+                            <LinearLayout
+                                android:id="@+id/menu_send_sms"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:visibility="gone"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/send_sms" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/send_sms"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/menu_update_ticket"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:src="@drawable/ic_update_reverse" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/update_ticket"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/menu_update_remark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/flash_white_bg" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/margin_10"
+                                    android:paddingBottom="@dimen/margin_10"
+                                    android:weightSum="6">
+
+                                    <ImageView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+
+                                        android:src="@drawable/icon_update_remark" />
+
+                                    <TextView
+                                        style="@style/TextStyleNormalTV"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="5"
+                                        android:text="Update Remark"
+                                        android:textColor="@color/grey" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/menu_cancel_ticket"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/ic_close_shape" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/cancel_ticket"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/menu_cancel_ticket_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+
+                            <LinearLayout
+                                android:id="@+id/menu_shift"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:src="@drawable/ic_shift_arrow" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+
+                                    android:text="@string/shift_passengers"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/menu_shift_same_service_"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/ic_shift_arrow" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/shift_to_same_service"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/menu_modify"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:visibility="gone"
+
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+
+                                    android:src="@drawable/ic_edit" />
+
+                                <TextView
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+
+                                    android:text="@string/modify_origin_destination"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+
+                            <LinearLayout
+                                android:id="@+id/menu_move_extra"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/ic_move_seats" />
+
+                                <TextView
+                                    android:id="@+id/moveTV"
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/move_to_extra_seat"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/viewMoveExtraSeat"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/menuConvertPermanentPhoneBlock"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingTop="@dimen/margin_10"
+                                android:paddingBottom="@dimen/margin_10"
+                                android:weightSum="6">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/phone_blocked" />
+
+                                <TextView
+                                    android:id="@+id/moveConvertPermanentPhoneBlock"
+                                    style="@style/TextStyleNormalTV"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5"
+                                    android:text="@string/convert_permanent_phone_block"
+                                    android:textColor="@color/grey" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/viewConvertPermanentPhoneBlock"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.core.widget.NestedScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

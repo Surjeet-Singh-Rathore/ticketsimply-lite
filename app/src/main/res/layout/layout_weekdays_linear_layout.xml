@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_weekend"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/layout_rounded_shape_border_radius_2_dp_black"
+    android:orientation="horizontal"
+    android:weightSum="7">
+
+    <View
+        android:id="@+id/sundayLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray" />
+
+    <LinearLayout
+        android:id="@+id/layout_sunday"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/tvSunday"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/notAvailable"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/mondayLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray" />
+
+    <LinearLayout
+        android:id="@+id/layout_monday"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/tvMonday"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/notAvailable"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/tuesdayLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray" />
+
+    <LinearLayout
+        android:id="@+id/layout_tuesday"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/tvTuesday"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/notAvailable"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/wednesdayLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray" />
+
+    <LinearLayout
+        android:id="@+id/layout_wednesday"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/tvWednesday"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/notAvailable"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/thursdayLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray" />
+
+    <LinearLayout
+        android:id="@+id/layout_thursday"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/tvThursday"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/notAvailable"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/fridayLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray" />
+
+    <LinearLayout
+        android:id="@+id/layout_friday"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/tvFriday"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/notAvailable"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/saturdayLine"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray" />
+
+    <LinearLayout
+        android:id="@+id/layout_saturday"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <TextView
+            android:id="@+id/tvSaturday"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/notAvailable"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+</LinearLayout>

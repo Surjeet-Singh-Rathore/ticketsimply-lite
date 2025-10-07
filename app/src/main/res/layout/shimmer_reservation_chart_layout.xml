@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/cardLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_16"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/shimmer_gradient_overlay" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/shimmer_gradient_overlay" />
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="4dp"
+
+
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:orientation="horizontal">
+
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="120dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="50dp"
+
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/flash_white_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="40dp"
+
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="40dp"
+
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/flash_white_bg" />
+
+
+            <!--        <androidx.recyclerview.widget.RecyclerView-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:id="@+id/rv_driver_number"/>-->
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="350dp"
+
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="4dp"
+
+
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:orientation="horizontal">
+
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="120dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="50dp"
+
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/flash_white_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="40dp"
+
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="40dp"
+
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/flash_white_bg" />
+
+
+            <!--        <androidx.recyclerview.widget.RecyclerView-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:id="@+id/rv_driver_number"/>-->
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="350dp"
+
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="4dp"
+
+
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:orientation="horizontal">
+
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="120dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="50dp"
+
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/flash_white_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="40dp"
+
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="40dp"
+
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/flash_white_bg" />
+
+
+            <!--        <androidx.recyclerview.widget.RecyclerView-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:id="@+id/rv_driver_number"/>-->
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="350dp"
+
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="4dp"
+
+
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:orientation="horizontal">
+
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="120dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="50dp"
+
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+            </LinearLayout>
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/flash_white_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="40dp"
+
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="40dp"
+
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+                    <View
+                        style="@style/TextStyleBold"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/shimmer_gradient_overlay"
+
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/TextStyleBold"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+
+                    />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/flash_white_bg" />
+
+
+            <!--        <androidx.recyclerview.widget.RecyclerView-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:id="@+id/rv_driver_number"/>-->
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="300dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+            <View
+                style="@style/TextStyleBold"
+                android:layout_width="350dp"
+
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+
+                />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

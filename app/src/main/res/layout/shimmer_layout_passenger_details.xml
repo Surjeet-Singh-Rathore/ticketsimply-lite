@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/header_gradient_bg">
+
+    <View
+        android:id="@+id/toolbar_passenger_details_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_72"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/shimmer_gradient_overlay" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayoutShimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_passenger_details_shimmer">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_end_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="0dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/passengerDetailsContactDetailsShimmer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@color/white"
+            android:padding="@dimen/dp_16"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end_new"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/tvContactDetails2"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContactDetails2"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutMobileNo5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                app:layout_constraintTop_toBottomOf="@id/view1">
+
+
+                <View
+                    android:id="@+id/layoutMobileNoCode4"
+                    android:layout_width="110dp"
+                    android:layout_height="58dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/layoutEdtMobileNumber4"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/layoutMobileNoCode4"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutAlternativeMobileNo4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                app:layout_constraintTop_toBottomOf="@id/layoutMobileNo5">
+
+                <View
+                    android:id="@+id/layoutAlternativeMobileNoCode3"
+                    android:layout_width="110dp"
+                    android:layout_height="58dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/layoutEdtAlternativeMobileNumber3"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/layoutAlternativeMobileNoCode3"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/layoutEmailId3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutAlternativeMobileNo4" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/passengerDetailsContactDetails2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:padding="@dimen/dp_16"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end_new"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@+id/passengerDetailsContactDetailsShimmer">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutMobileNo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <View
+                    android:id="@+id/layoutMobileNoCode2"
+                    android:layout_width="250dp"
+                    android:layout_height="58dp"
+
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/layoutEdtMobileNumber2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/layoutMobileNoCode2"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutAlternativeMobileNo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                app:layout_constraintTop_toBottomOf="@id/layoutMobileNo2">
+
+                <View
+                    android:id="@+id/layoutAlternativeMobileNoCode2"
+                    android:layout_width="250dp"
+                    android:layout_height="58dp"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/layoutEdtAlternativeMobileNumber2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:background="@drawable/shimmer_gradient_overlay"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/layoutAlternativeMobileNoCode2"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/layoutEmailId2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutAlternativeMobileNo2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:id="@+id/tvNetAmt2"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:background="@drawable/shimmer_gradient_overlay"
+            android:paddingLeft="4dp"
+            android:paddingTop="2dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/passenger_details_imgArrowUp"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:background="@drawable/shimmer_gradient_overlay"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNetAmt2">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCharges"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/button_default_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/dp_16" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/tvTotalBalance"
+            style="@style/TextStyleBold"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_4"
+            android:background="@drawable/shimmer_gradient_overlay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_header_text" />
+
+        <View
+            android:id="@+id/view9"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/button_default_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+
+        <View
+            android:id="@+id/toolbar_header_text"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/shimmer_gradient_overlay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view9" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view9">
+
+            <View
+                android:id="@+id/btn_procceed"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_72"
+                android:layout_marginEnd="-4dp"
+                android:background="@drawable/shimmer_gradient_overlay"
+                android:paddingStart="42dp"
+                android:paddingTop="22dp"
+                android:paddingEnd="42dp"
+                android:paddingBottom="22dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view1" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

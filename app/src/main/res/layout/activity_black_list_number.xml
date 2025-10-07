@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorSocialDistancing"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.view.activity.BlackListNumberActivity">
+
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/blackListToolbar"
+        android:layout_marginBottom="14dp"/>
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_phone_number_to_blacklist"
+                android:textColor="@color/color_black_revenue" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhoneNumber"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/enter_phone_number_here"
+                    android:textColorHint="@color/colorBlackShadow"
+                    android:imeOptions="actionNext"
+                    android:maxLength="10"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/reason_title"
+                android:layout_marginTop="@dimen/_17ssp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/color_black_revenue" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_remarks"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_remarks"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/enter_reason"
+                    android:textColorHint="@color/colorBlackShadow"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_black_list_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/black_list_number"
+                android:textAllCaps="false"
+                android:layout_marginTop="12dp"/>
+            <include android:id="@+id/includeProgress"
+                layout="@layout/layout_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:visibility="visible"
+                />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/blacklisted_numbers"
+                android:layout_marginBottom="12dp"
+                style="@style/TextStyleBold"
+                android:textColor="@color/color_black_revenue"
+                android:id="@+id/blacklistedNumbersCount"/>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutSearchBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:background="@drawable/header_gradient_bg"
+                    app:boxStrokeErrorColor="@color/colorRed2"
+                    app:boxStrokeWidth="@dimen/dp_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSearchOption"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/search_blacklisted_numbers"
+                        android:textColorHint="@color/colorBlackShadow"
+                        android:imeOptions="actionDone"
+                        android:maxLength="10"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/colorDimShadow"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="VectorDrawableCompat" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+<!--            </LinearLayout>-->
+
+            <include android:id="@+id/includeProgress1"
+                layout="@layout/layout_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_black_list_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                tools:itemCount="2"
+                tools:listitem="@layout/child_blacked_list_number_adapter" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

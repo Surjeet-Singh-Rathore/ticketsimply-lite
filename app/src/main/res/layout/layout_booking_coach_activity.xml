@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/button_color"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/passenger_page_proceed_btn"
+        style="@style/TextStyleBold"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/proceed"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/layout_passenger_details_seat_legends"
+        layout="@layout/passenger_details_seat_legends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_service_summary"
+        style="@style/TextStyleNormalTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_24"
+        android:background="@drawable/layout_round_dark_bg"
+        android:drawableStart="@drawable/view_reservation_chart_icon"
+        android:drawablePadding="@dimen/dp_16"
+        android:drawableTint="@color/white"
+        android:paddingStart="@dimen/dp_24"
+        android:paddingTop="14dp"
+        android:paddingEnd="@dimen/dp_24"
+        android:paddingBottom="14dp"
+        android:text="@string/service_summary"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/noData"
+        layout="@layout/layout_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout15" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include
+            android:id="@+id/includeHeader"
+            layout="@layout/toolbar_service_summary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/includeHeader">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="84dp">
+
+                <LinearLayout
+                    android:id="@+id/main_bp_dp_change"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp_8"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/change_bp_dp"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/eta_background"
+                        android:backgroundTint="@color/light_green"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/dp_16"
+                        android:paddingTop="@dimen/margin_10"
+                        android:paddingEnd="@dimen/dp_16"
+                        android:paddingBottom="@dimen/margin_10"
+                        android:text="@string/change_bp_dp"
+                        android:textColor="@color/colorButton" />
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_4"
+                        android:layout_weight="1"
+                        android:background="@drawable/eta_background"
+                        android:backgroundTint="@color/light_green"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/dp_12"
+                        android:paddingTop="@dimen/margin_10"
+                        android:paddingEnd="@dimen/dp_12"
+                        android:paddingBottom="@dimen/margin_10"
+                        android:text="@string/change_destination"
+                        android:textColor="@color/colorButton"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvSelectSeatTitle"
+                            style="@style/TextStyleBold"
+                            android:layout_width="@dimen/dp_0"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:letterSpacing="0.04"
+                            android:text="@string/selectSeat"
+                            android:textAllCaps="true"
+                            android:textColor="@color/textColor"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/tvSeatSelectedLayout"
+                            android:layout_width="@dimen/dp_0"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:layout_marginEnd="@dimen/dp_4"
+                            android:layout_toRightOf="@id/tvSelectSeatTitle"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/tvEditSeats"
+                            app:layout_constraintStart_toEndOf="@+id/tvSelectSeatTitle"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/tvSeatSelected"
+                                style="@style/TextStyleBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/layout_rounded_shape_radius_2_dp"
+                                android:backgroundTint="@color/colorDimShadow6"
+                                android:paddingLeft="8dp"
+                                android:paddingTop="4dp"
+                                android:paddingRight="8dp"
+                                android:paddingBottom="4dp"
+                                android:text="@string/noSeatSelected"
+                                android:textAlignment="textEnd"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textSize="11sp"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <ImageView
+                            android:id="@+id/img_expand"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@drawable/ic_arrow_down"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/colorBlackShadow" />
+
+                        <ImageView
+                            android:id="@+id/img_collapse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:src="@drawable/ic_arrow_up"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/colorBlackShadow" />
+
+
+                        <TextView
+                            android:id="@+id/tvEditSeats"
+                            style="@style/TextStyleBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+                            android:padding="4dp"
+                            android:text="@string/edit"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="11sp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/img_expand"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/flash_white_bg"
+                        android:visibility="gone" />
+
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="vertical">-->
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <androidx.fragment.app.FragmentContainerView
+                            android:id="@+id/layout_coach_single"
+                            android:name="com.bitla.ts.presentation.view.fragments.AllCoachFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout="@layout/fragment_common_coach_single">
+
+                        </androidx.fragment.app.FragmentContainerView>
+
+
+                        <LinearLayout
+                            android:id="@+id/coach_progress_bar"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/layoutviews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/layoutBookingTypes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextStyleBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/dp_24"
+                                    android:ellipsize="end"
+                                    android:gravity="left|center"
+                                    android:paddingEnd="16sp"
+                                    android:text="@string/booking_type"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textSize="14sp" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/dp_16"
+                                    android:layout_marginBottom="24dp"
+                                    android:hint="@string/selectBookingType"
+                                    app:boxBackgroundColor="@color/title_bg"
+                                    app:boxBackgroundMode="filled">
+
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/ae_booking_type"
+                                        style="@style/TextStyleNormal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:inputType="none"
+                                        android:textColor="@color/colorBlackShadow"
+                                        android:textColorHint="@color/grey"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout_online_offline_agent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <CheckBox
+                                    android:id="@+id/check_offline_agent"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:text="@string/amount_paid_offline"
+                                    android:textColor="@color/colorBlackShadow" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/auto_city"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/dp_16"
+                                    android:hint="@string/city"
+                                    app:boxBackgroundColor="@color/title_bg"
+                                    app:boxBackgroundMode="filled">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/ae_city"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:inputType="none"
+                                        android:textColor="@color/colorBlackShadow"
+                                        android:textSize="14sp"
+                                        android:textStyle="normal" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/auto_behalf_of"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/dp_16"
+                                    app:boxBackgroundColor="@color/title_bg"
+                                    app:boxBackgroundMode="filled">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/ae_behalf_of"
+                                        style="@style/TextStyleNormal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:hint="@string/on_behalf_of"
+                                        android:inputType="none"
+                                        android:textColor="@color/colorBlackShadow"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/edt_reference"
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/text_input_edit_text_height"
+                                    android:layout_marginTop="@dimen/dp_16"
+                                    android:background="@drawable/header_gradient_bg"
+                                    android:textColorHint="@color/grey">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/etRefNo"
+                                        style="@style/textInputStyle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:hint="@string/enter_reference_number"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="text"
+                                        android:text="" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout_branch_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/dp_16"
+                                    app:boxBackgroundColor="@color/title_bg"
+                                    app:boxBackgroundMode="filled">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/ae_branch"
+                                        style="@style/TextStyleNormal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:hint="@string/selectBranch"
+                                        android:inputType="none"
+
+                                        android:textColor="@color/colorBlackShadow"
+                                        android:textColorHint="@color/grey"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/dp_16"
+                                    app:boxBackgroundColor="@color/title_bg"
+                                    app:boxBackgroundMode="filled">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/ae_user"
+                                        style="@style/TextStyleNormal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:hint="@string/selectUser"
+                                        android:inputType="none"
+
+                                        android:textColor="@color/colorBlackShadow"
+                                        android:textColorHint="@color/grey"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                            </LinearLayout>
+
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/cardPhoneBooking"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_12"
+                                android:elevation="4dp"
+                                android:visibility="visible"
+                                app:cardBackgroundColor="@color/button_secondary_bg"
+                                app:cardCornerRadius="4dp">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/dp_16">
+
+                                    <TextView
+                                        style="@style/TextStyleBold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_centerInParent="true"
+                                        android:drawableStart="@drawable/ic_phone_"
+                                        android:drawablePadding="8dp"
+                                        android:text="@string/do_phone_booking"
+                                        android:textColor="@color/white" />
+
+                                    <TextView
+                                        android:id="@+id/tvBookingTime"
+                                        style="@style/TextStyleBold"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_centerInParent="true"
+                                        android:text="@string/not_specified"
+                                        android:textColor="@color/white"
+                                        android:textSize="11sp" />
+
+
+                                </RelativeLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+                                android:id="@+id/boarding_dropping_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextStyleBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:ellipsize="end"
+                                    android:gravity="left|center"
+                                    android:paddingEnd="16sp"
+                                    android:text="@string/boarding_amp_dropping_point"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textSize="14sp" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/autoBoardingPoint"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/dp_8"
+                                    android:layout_marginBottom="@dimen/dp_8"
+                                    app:boxBackgroundColor="@color/title_bg"
+                                    app:boxBackgroundMode="filled">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/tv_select_boarding_point"
+                                        style="@style/TextStyleNormal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:hint="@string/select_boarding_point"
+                                        android:inputType="none"
+
+                                        android:textColor="@color/colorBlackShadow"
+                                        android:textColorHint="@color/grey"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/autoDroppingPoint"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="@dimen/dp_24"
+                                    app:boxBackgroundColor="@color/title_bg"
+                                    app:boxBackgroundMode="filled">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/tv_select_droping_point"
+                                        style="@style/TextStyleNormal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:hint="@string/select_dropping_point"
+                                        android:inputType="none"
+
+                                        android:textColor="@color/colorBlackShadow"
+                                        android:textColorHint="@color/grey"
+                                        android:textSize="14sp" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/layoutSummary"
+                    layout="@layout/include_summary_layout" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+    <!--    <include-->
+    <!--        android:id="@+id/includeProgress"-->
+    <!--        layout="@layout/layout_progress_bar"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center" />-->
+
+    <View
+        android:id="@+id/tansparentbackbround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_tint_color"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/tansparentbackbroundServiceSummary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_tint_color"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/summaryLayout"
+        layout="@layout/service_summary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <include
+        android:id="@+id/edit_price_layout"
+        layout="@layout/coach_selected_seat_setail"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

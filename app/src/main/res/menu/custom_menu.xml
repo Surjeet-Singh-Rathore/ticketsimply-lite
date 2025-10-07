@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/downloadMI"
+        android:icon="@drawable/ic_download"
+
+        android:title="@string/download_pickup_chart" />
+    <item
+        android:id="@+id/stageSummary"
+        android:icon="@drawable/ic_staging_summary"
+        android:title="@string/stage_summary" />
+    <item
+        android:id="@+id/bookingSummary"
+        android:icon="@drawable/ic_booking_summary"
+        android:title="@string/booking_summary" />
+
+    <!--<item
+        android:id="@+id/wifiPrint"
+        android:icon="@drawable/ic_print"
+        android:title="@string/wifi_print" />-->
+
+    <item
+        android:id="@+id/viewTicketMI"
+        android:icon="@drawable/ic_file_grey"
+        android:title="@string/view_pickup_chart_pdf" />
+
+    <item
+        android:id="@+id/newBookingMI"
+        android:icon="@drawable/ic_new_booking"
+        android:title="@string/new_booking" />
+
+
+    <item
+        android:id="@+id/newTripCompletedUi"
+        android:icon="@drawable/ic_trip_complete"
+        android:title="@string/trip_complete" />
+</menu>

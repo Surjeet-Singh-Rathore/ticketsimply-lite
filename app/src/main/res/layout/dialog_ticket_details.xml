@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_rounded_shape"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="12dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:text="@string/ticket_details"
+        android:textColor="@color/colorBlackShadow"
+        app:layout_constraintLeft_toRightOf="@id/guideline_v_begin"
+        app:layout_constraintTop_toBottomOf="@id/guideline_h_begin" />
+
+    <TextView
+        android:id="@+id/tvClose"
+        android:layout_width="0dp"
+        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:text="@string/close"
+        android:textColor="@color/colorRed"
+        app:layout_constraintRight_toRightOf="@id/guideline_v_end"
+        app:layout_constraintTop_toBottomOf="@id/guideline_h_begin" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view_bg"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"/>
+
+    <LinearLayout
+        android:id="@+id/layoutViews"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/layout_rounded_shape_border_gray"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+        app:layout_constraintEnd_toStartOf="@id/guideline_v_end">
+
+        <LinearLayout
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/layoutName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvNameLabel"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name"
+                        android:textColor="@color/colorBlackShadow" />
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name"
+                        android:textColor="@color/colorBlackShadow" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:id="@+id/layoutSeats"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seats"
+                        android:textColor="@color/colorBlackShadow" />
+
+                    <TextView
+                        android:id="@+id/tvSeats"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seats"
+                        android:textColor="@color/colorBlackShadow" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutPnr"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pnr"
+                        android:textColor="@color/colorBlackShadow" />
+
+                    <TextView
+                        android:id="@+id/tvPnr"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pnr"
+                        android:textColor="@color/colorBlackShadow" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:id="@+id/layoutMobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobile_number"
+                    android:textColor="@color/colorBlackShadow" />
+
+                <TextView
+                    android:id="@+id/tvMobileNumber"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobile_number"
+                    android:textColor="@color/colorBlackShadow" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:id="@+id/layoutFromAndTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/from_and_to"
+                    android:textColor="@color/colorBlackShadow" />
+
+                <TextView
+                    android:id="@+id/tvFromAndTo"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/from_and_to"
+                    android:textColor="@color/colorBlackShadow" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:id="@+id/layoutFare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fare"
+                    android:textColor="@color/colorBlackShadow" />
+
+                <TextView
+                    android:id="@+id/tvFare"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fare"
+                    android:textColor="@color/colorBlackShadow" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutPrintAndViewMore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/guideline_v_begin"
+        app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+        app:layout_constraintTop_toBottomOf="@+id/layoutViews"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:id="@+id/btnPrintTicket"
+        app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+        app:layout_constraintTop_toBottomOf="@+id/layoutViews"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="12dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:background="@drawable/layout_rounded_shape_border_transparent">
+
+
+        <TextView
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:drawablePadding="4dp"
+            android:layout_height="wrap_content"
+            android:text="@string/print_ticket"
+            android:textColor="@color/colorPrimary"
+            app:drawableStartCompat="@drawable/ic_print"
+            app:drawableTint="@color/colorPrimary" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:id="@+id/btnViewMoreDetails"
+        app:layout_constraintEnd_toStartOf="@id/guideline_v_end"
+        app:layout_constraintTop_toBottomOf="@+id/layoutViews"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="12dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:background="@drawable/layout_rounded_shape_border_transparent">
+
+
+        <TextView
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:textSize="16sp"
+            android:drawablePadding="4dp"
+            android:layout_height="wrap_content"
+            android:text="@string/view_more"
+            android:textColor="@color/colorPrimary"
+            app:drawableTint="@color/colorPrimary" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

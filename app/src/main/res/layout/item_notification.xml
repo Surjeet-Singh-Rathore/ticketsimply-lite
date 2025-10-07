@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_16">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/containerNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16">
+
+            <TextView
+                android:id="@+id/tvNotificationDetailsTitle"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorBlackShadow"
+                app:layout_constraintBottom_toTopOf="@+id/tvRoute"
+                app:layout_constraintEnd_toStartOf="@+id/imgNotificationNext"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvRoute"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/notAvailable"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvNotificationDetailsTitle" />
+
+            <TextView
+                android:id="@+id/tvNotificationType"
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/layout_rounded_shape_light_red"
+                android:backgroundTint="@color/trackcolor"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_2"
+                android:paddingEnd="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_2"
+                android:text="@string/notAvailable"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRoute" />
+
+            <TextView
+                android:id="@+id/tvDoj"
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:paddingStart="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_2"
+                android:paddingEnd="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_2"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorDimShadow6"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRoute" />
+
+            <ImageView
+                android:id="@+id/imgNotificationNext"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:src="@drawable/arrow_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/dotsLineNotification"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_2"
+            android:layout_gravity="bottom"
+            android:background="@drawable/dotted_line"
+            android:backgroundTint="@color/black"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/containerNotification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:id="@+id/pageLoaderPB"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/containerNotification"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/disable_all_views"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/transfarent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/layoutNetworkError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/network_error" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutNetworkBackOnline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <include layout="@layout/network_back_online_layout" />
+    </LinearLayout>
+</LinearLayout>
+

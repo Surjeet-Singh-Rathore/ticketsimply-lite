@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_bg"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16">
+
+        <TextView
+            android:id="@+id/textView14"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="@string/multistation_fare"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/dateLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/dateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/destination"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView14">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_fromDate_urc"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_fromDate_urc"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_icons_calendar"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/fromDate"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorPrimary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_toDate_urc"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_toDate_urc"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_icons_calendar"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/toDate"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorPrimary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/destination"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:text="Bangalore - Chennai "
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@+id/dateLayout" />
+
+
+        <!--<LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/destination"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/lower_berth"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:text="Lower Berth"
+                android:textColor="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/destination" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutRemarks"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRemarks"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="Lower Berth"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout8"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/lower_berth2"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Side Lower Berth"
+                android:textColor="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/lower_berth"
+                tools:layout_editor_absoluteX="16dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/llower_berth2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etlower_birth2"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="Side Lower Berth"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout9"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/tv_side_uper_berth"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Single Lower Berth"
+                android:textColor="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/lower_berth"
+                tools:layout_editor_absoluteX="16dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/l_side_uper_berth"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_side_uper_berth"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="Single Lower Berth"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                     />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/tv_upper_berth"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upper Berth"
+                android:textColor="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/lower_berth"
+                tools:layout_editor_absoluteX="16dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/l_upper_berth"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_upper_berth"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="Upper Berth"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                     />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
+            tools:layout_editor_absoluteX="16dp">
+
+            <TextView
+                android:id="@+id/tv_single_uper_birth"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Single Upper Berth"
+                android:textColor="@color/grey"
+                app:layout_constraintTop_toBottomOf="@id/lower_berth"
+                tools:layout_editor_absoluteX="16dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/l_single_uper_birth"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_single_uper_birth"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="Single Upper Berth"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>-->
+        <LinearLayout
+            android:id="@+id/linearLayout13"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/appButtonLinearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/destination"
+            tools:layout_editor_absoluteX="16dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFareDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/appButtonLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/appCompatButton"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:background="@color/text_header_bg"
+                android:padding="13dp"
+                android:text="@string/goBack"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/appCompatButton2"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="2"
+                android:background="@color/colorPrimary"
+                android:padding="13dp"
+                android:text="@string/modifyFare"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

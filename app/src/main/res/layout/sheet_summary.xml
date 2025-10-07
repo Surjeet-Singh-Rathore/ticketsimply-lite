@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/text_heading"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/button_secondary_bg"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="8dp"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="8dp"
+            android:text="@string/service_summary"
+            android:textColor="@color/white"
+            app:drawableEndCompat="@drawable/icon_cross"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_heading">
+
+            <TextView
+                android:id="@+id/total_count"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/button_highlight_color" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/view_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp_12"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_revenue"
+
+                    android:textColor="@color/colorBlackShadow" />
+
+
+                <TextView
+                    android:id="@+id/total_revenue"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorBlackShadow" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp_12">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_booked_seats"
+
+                    android:textColor="@color/colorBlackShadow" />
+
+
+                <TextView
+                    android:id="@+id/summary_total_booked_seats"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorBlackShadow" />
+
+                <TextView
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/summary_total_booked_seats"
+                    android:text="@string/including_multistation"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textSize="@dimen/sp10" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dp_12">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_quota_seats"
+
+                    android:textColor="@color/colorBlackShadow" />
+
+
+                <TextView
+                    android:id="@+id/total_quota_seats"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorBlackShadow" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_blocked_seats"
+
+                    android:textColor="@color/colorBlackShadow" />
+
+
+                <TextView
+                    android:id="@+id/total_blocked_seats"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorBlackShadow" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/view_color"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/summary_api"
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/view_summaryline_bg"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:id="@+id/summary_user_cnf"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/view_summaryline_bg"
+
+
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:id="@+id/summary_branch_cnf"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:background="@drawable/view_summaryline_bg"
+
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/summary_onlineagent"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/view_summaryline_bg"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:id="@+id/summary_offline_agent"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/view_summaryline_bg"
+
+
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/summary_online"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/view_summaryline_bg"
+                    android:gravity="center"
+                    android:padding="8dp"
+
+                    android:textSize="@dimen/sp12"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/summary_quota"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/view_summaryline_bg"
+
+
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:id="@+id/summary_e_ticket"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+
+
+                    android:layout_weight="1.5"
+                    android:background="@drawable/view_summaryline_bg"
+
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:orientation="horizontal"
+
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/summary_ladies_quota"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/view_summaryline_bg"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:id="@+id/summary_gents_quota"
+
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+
+                    android:layout_weight="1"
+                    android:background="@drawable/view_summaryline_bg"
+
+
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textSize="@dimen/sp12" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/summary_in_journey"
+
+                style="@style/msg_context"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/view_summaryline_bg"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textSize="@dimen/sp12"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@color/view_color"
+                android:visibility="gone"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+            <TextView
+                android:id="@+id/extra_seats_booked"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:gravity="center_horizontal"
+                android:textColor="@color/button_highlight_color"
+                android:textSize="@dimen/sp14"
+
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

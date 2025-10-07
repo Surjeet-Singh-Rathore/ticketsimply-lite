@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.bitla.ticketsimply",
+  "variantName": "DemoRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 79,
+      "versionName": "3.1",
+      "outputFile": "app-Demo-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

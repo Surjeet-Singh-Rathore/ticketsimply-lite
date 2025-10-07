@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!--<item
+        android:id="@+id/get_current_location"
+        android:icon="@drawable/current_location"
+        android:title="@string/current_location" />-->
+
+    <item
+        android:id="@+id/update_passenger_status"
+        android:icon="@drawable/update_service_details"
+        android:title="@string/update_passenger_status" />
+    <item
+        android:id="@+id/send_sms"
+        android:icon="@drawable/send_sms"
+        android:title="@string/send_sms" />
+    <item
+        android:id="@+id/update_passenger_detail"
+        android:icon="@drawable/ic_edit_shape"
+        android:title="@string/update_passenger_details" />
+
+    <item
+        android:id="@+id/luggage_detail"
+        android:icon="@drawable/ic_luggage"
+        android:iconTint="@color/black"
+        android:title="@string/luggage" />
+    <item
+        android:id="@+id/view_ticket"
+        android:icon="@drawable/ic_cancel_shape"
+        android:iconTint="@color/black"
+        android:title="@string/view_ticket" />
+
+
+</menu>

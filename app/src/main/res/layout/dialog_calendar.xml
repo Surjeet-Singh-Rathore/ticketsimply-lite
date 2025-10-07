@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:headerColor="@color/colorPrimary"
+        app:selectionColor="@color/colorPrimary"
+        app:todayLabelColor="@color/colorPrimary"
+        app:type="many_days_picker" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cancelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendarView"
+        android:layout_toStartOf="@id/doneTV"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="@string/cancel"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/doneTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calendarView"
+        android:layout_alignParentEnd="true"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="Done"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold" />
+</RelativeLayout>

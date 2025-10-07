@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/text_header_bg"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/_12sdp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorDimShadow5"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="@dimen/dp_16"
+        android:id="@+id/boardingLayout"
+        android:layout_marginHorizontal="@dimen/_15sdp">
+
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutBoardingCity"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:background="@drawable/header_gradient_bg"
+        app:boxStrokeErrorColor="@color/colorRed2"
+        app:boxStrokeWidth="@dimen/dp_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBoardingCity"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/boarding_city"
+            android:imeOptions="actionNext"
+            android:focusable="false"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:longClickable="false"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutBP"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/header_gradient_bg"
+        app:boxStrokeErrorColor="@color/colorRed2"
+        app:boxStrokeWidth="@dimen/dp_2"
+        app:errorEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/layoutBoardingCity"
+        app:errorIconDrawable="@null">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bpET"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/boarding_point"
+            android:imeOptions="actionNext"
+            android:focusable="false"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:longClickable="false"
+            android:inputType="none"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boarding_time"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_14ssp"
+        android:id="@+id/boardingTimeTV"
+        app:layout_constraintTop_toBottomOf="@id/layoutBP"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/boardingTimeTV"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:weightSum="2">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/boardingHoursTIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:hint="HH"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled"
+            tools:layout_editor_absoluteX="16dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/boardingHoursACT"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:inputType="none"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/boardingMinutesTIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:hint="MM"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_weight="1"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled"
+            tools:layout_editor_absoluteX="16dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/boardingMinutesACT"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:inputType="none"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/boardingLayout"
+        android:layout_marginTop="10dp"
+        android:id="@+id/droppingLayout"
+        android:layout_marginHorizontal="@dimen/_15sdp">
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDroppingCity"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:background="@drawable/header_gradient_bg"
+            app:boxStrokeErrorColor="@color/colorRed2"
+            app:boxStrokeWidth="@dimen/dp_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDroppingCity"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:hint="@string/dropping_city"
+                android:imeOptions="actionNext"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:longClickable="false"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDP"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/header_gradient_bg"
+            app:boxStrokeErrorColor="@color/colorRed2"
+            app:boxStrokeWidth="@dimen/dp_2"
+            app:errorEnabled="true"
+            app:layout_constraintTop_toBottomOf="@id/layoutDroppingCity"
+            app:errorIconDrawable="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dpET"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:hint="@string/dropping_point"
+                android:imeOptions="actionNext"
+                android:focusable="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:longClickable="false"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dropping_time"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_14ssp"
+            android:id="@+id/droppingTimeTV"
+            app:layout_constraintTop_toBottomOf="@id/layoutDP"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/droppingTimeTV"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:weightSum="2">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/droppingHoursTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:hint="HH"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled"
+                tools:layout_editor_absoluteX="16dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/droppingHoursACT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/droppingMinutesTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:hint="MM"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="1"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled"
+                tools:layout_editor_absoluteX="16dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/droppingMinutesACT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <android.widget.Button
+        android:id="@+id/btn_left"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/button_secondary_bg"
+        android:text="@string/empty"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/droppingLayout"
+        app:layout_constraintWidth_percent="0.50" />
+
+    <android.widget.Button
+        android:id="@+id/btn_right"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/empty"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintTop_toTopOf="@id/btn_left"
+        app:layout_constraintLeft_toRightOf="@+id/btn_left"
+        app:layout_constraintBottom_toBottomOf="@id/btn_left"
+        app:layout_constraintWidth_percent="0.50" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

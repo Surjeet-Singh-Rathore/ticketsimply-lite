@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            layout="@layout/layout_crew_details"
+            android:id="@+id/layoutCrewI"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/loweruppertab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginRight="60dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/lowertab"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/layout_rounded_shape_left_selected"
+                android:padding="@dimen/dp_8"
+                android:text="Lower"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp12" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/uppertab"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@drawable/layout_rounded_shape_right_unselected"
+                android:padding="@dimen/dp_8"
+                android:text="Upper"
+                android:textColor="@color/colorDimShadow6"
+                android:textSize="@dimen/sp12" />
+
+        </LinearLayout>
+
+
+        <!--                        <LinearLayout-->
+        <!--                            android:layout_width="match_parent"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:gravity="center"-->
+        <!--                            android:orientation="horizontal">-->
+        <!--                            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                                android:layout_width="wrap_content"-->
+        <!--                                android:layout_height="wrap_content"-->
+        <!--                                android:text="Lower (10)"-->
+        <!--                                style="@style/TextStyleBold"-->
+        <!--                                android:textColor="@color/white"-->
+        <!--                                android:background="@color/colorPrimary"-->
+        <!--                                android:padding="@dimen/dp_8"/>-->
+        <!--                            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                                android:layout_width="wrap_content"-->
+        <!--                                android:layout_height="wrap_content"-->
+        <!--                                android:text="Lower (10)"-->
+        <!--                                style="@style/TextStyleBold"-->
+        <!--                                android:textColor="@color/colorDimShadow6"-->
+        <!--                                android:padding="@dimen/dp_8"/>-->
+        <!--                        </LinearLayout>-->
+
+        <!--                        <androidx.recyclerview.widget.RecyclerView-->
+        <!--                            android:layout_width="wrap_content"-->
+        <!--                            android:layout_height="wrap_content"-->
+        <!--                            android:layout_gravity="center"-->
+        <!--                            android:id="@+id/rvseatlayout"/>-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/errormsgTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:visibility="gone" />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+
+            <LinearLayout
+                android:id="@+id/seatlayout"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rvFilter"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:id="@+id/layoutSeatlower"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="top|center"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/available_border"
+                    android:gravity="top"
+                    android:paddingStart="@dimen/dp_24"
+                    android:paddingTop="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_24"
+                    android:paddingBottom="@dimen/dp_12"
+                    android:visibility="visible" />
+
+                <RelativeLayout
+                    android:id="@+id/layoutSeatUpper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="top|center"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/available_border"
+                    android:gravity="top"
+                    android:paddingStart="@dimen/dp_24"
+                    android:paddingTop="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_24"
+                    android:paddingBottom="@dimen/dp_12"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+        <LinearLayout
+            android:id="@+id/layout_block_all_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/layout_rounded_shape_border_transparent"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16">
+
+
+            <CheckBox
+                android:id="@+id/chkAllSeats"
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/selectAllSeat"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlackShadow" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_select_all_seats_to_unblock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/layout_rounded_shape_border_transparent"
+            android:gravity="center"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16">
+
+
+            <CheckBox
+                android:id="@+id/selectAllSeatsToUnblock"
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/selectAllSeatsToUnblock"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlackShadow" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_select_all_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/layout_rounded_shape_border_transparent"
+            android:gravity="center"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16">
+
+
+            <CheckBox
+                android:id="@+id/selectallseats"
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/select_all_seats"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlackShadow" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutExtraSeats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvSelectSeatTitle"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_8"
+                android:gravity="center"
+                android:text="@string/extra_seats_booked"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textSize="11sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvExtraSeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_8" />
+
+        </LinearLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:visibility="visible"-->
+        <!--            android:id="@+id/emptyLinearLayout"-->
+        <!--            android:orientation="horizontal">-->
+        <!--        </LinearLayout>-->
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

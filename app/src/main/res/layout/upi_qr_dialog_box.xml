@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/upi_qr_code"
+            android:textColor="@color/text_header_bg"
+            android:textSize="@dimen/sp18" />
+
+        <TextView
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="2:25"
+            android:textColor="@color/booked_tickets"
+            android:textSize="@dimen/sp18" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@color/grey" />
+
+    <TextView
+        style="@style/TextStyleNormalTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:text="Please scan the QR code and make the payment to confirm your booking"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp14" />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:src="@drawable/ic_scan_large" />
+
+    <TextView
+        style="@style/TextStyleNormalTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:text="If the payment is deducted from your wallet we request you to wait for 5 mints. If we get the confirmation from payment gateway the cicket will be confirmed if not it will ne released"
+        android:textColor="@color/color_user_red"
+        android:textSize="@dimen/sp14" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/light_green"
+            android:text="@string/goBack"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/sp18" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp18" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

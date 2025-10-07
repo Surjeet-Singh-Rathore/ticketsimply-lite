@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/toolbar_image_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/_10sdp"
+        android:src="@drawable/arrow_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/toolbar_image_left">
+
+        <TextView
+            android:id="@+id/text_header_booking_type"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_bg"
+            android:ellipsize="end"
+            android:gravity="left|center"
+            android:paddingStart="12dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="16sp"
+            android:paddingBottom="2dp"
+            android:text="Bangalore - Chennai"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/image_header_right_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/text_header_booking_type"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/icons_bookings"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/image_header_print"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/text_header_booking_type"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_print"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_header_booking_type"
+            android:layout_marginTop="4dp"
+            android:layout_toLeftOf="@+id/image_header_right_image"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_header_title"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="left|center"
+                android:paddingEnd="16sp"
+                android:text="@string/recharge"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/header_title_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+
+                android:gravity="left|center"
+                android:paddingEnd="16sp"
+                android:textColor="@color/button_default_color"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

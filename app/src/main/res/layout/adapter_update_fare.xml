@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_4sdp"
+    android:layout_marginEnd="@dimen/_6sdp"
+    android:layout_marginBottom="@dimen/dp_4"
+    android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleTV"
+        android:layout_width="@dimen/_44sdp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/notAvailable"
+        android:textColor="#4A4A4A"
+        android:textSize="@dimen/_11ssp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/etSeatFare"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etSeatFare" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etSeatFare"
+        style="@style/textInputStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="42dp"
+        android:background="@drawable/bg_little_round_grey_stroke"
+        android:imeOptions="actionNext"
+        android:inputType="number"
+        android:text=""
+        android:paddingEnd="@dimen/_8sdp"
+        android:textAlignment="textEnd"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/titleTV"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/layoutSeatType"-->
+<!--        android:layout_width="@dimen/dp_0"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/bg_little_round_grey_stroke"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/titleTV"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

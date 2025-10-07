@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_rounded_shape_bottom_sheet">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textRateCard"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16"
+            android:text="@string/rate_card"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="@dimen/sp16" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@color/colorDimShadow5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                android:id="@+id/textNameLabel"
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:id="@+id/textName"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="@dimen/sp14" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@color/colorDimShadow5" />
+
+            <TextView
+                android:id="@+id/textFutureRateCardLabel"
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/future_rate_card"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:id="@+id/textFutureRateCard"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="@dimen/sp14" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@color/colorDimShadow5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:baselineAligned="false"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textStartDateLabel"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/start_date"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14" />
+
+                    <TextView
+                        android:id="@+id/textStartDate"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="@dimen/sp14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textEndDateLabel"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/end_date"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14" />
+
+                    <TextView
+                        android:id="@+id/textEndDate"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="@dimen/sp14" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@color/colorDimShadow5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:baselineAligned="false"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textCreatedByLabel"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/created_by"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14" />
+
+                    <TextView
+                        android:id="@+id/textCreatedBy"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="@dimen/sp14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textUpdatedByLabel"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/updated_by"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14" />
+
+                    <TextView
+                        android:id="@+id/textUpdatedBy"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="@dimen/sp14" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@color/colorDimShadow5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:baselineAligned="false"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textCreatedAtLabel"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/created_at"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14" />
+
+                    <TextView
+                        android:id="@+id/textCreatedAt"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="@dimen/sp14" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textUpdatedAtLabel"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/updated_at"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14" />
+
+                    <TextView
+                        android:id="@+id/textUpdatedAt"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="@dimen/sp14" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@color/colorDimShadow5" />
+
+            <TextView
+                android:id="@+id/textCoachTypeLabel"
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/coach_type"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp14" />
+
+            <TextView
+                android:id="@+id/textCoachType"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="@dimen/sp14" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnOkay"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/layout_rounded_shape"
+        android:backgroundTint="@color/colorPrimary"
+        android:padding="@dimen/dp_16"
+        android:text="@string/okay"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

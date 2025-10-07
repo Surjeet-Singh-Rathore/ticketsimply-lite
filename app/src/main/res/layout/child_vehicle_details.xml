@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:layout_margin="4dp"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvMain"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            style="@style/TextStyleNormalTV"
+            android:textColor="@color/black"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:text="" />
+
+        <LinearLayout
+            android:id="@+id/containerCheck"
+            android:layout_width="wrap_content"
+            android:gravity="end"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/ivView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_view" />
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_share" />
+
+            <ImageView
+                android:id="@+id/ivDownload"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_dots_grey" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvNotUploaded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            style="@style/TextStyleNormal"
+            android:text="@string/not_uploaded"
+            android:textColor="@color/light_red"
+            android:visibility="gone" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

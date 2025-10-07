@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/flash_white_bg">
+
+    <include
+        android:id="@+id/update_ratecard_toolbar"
+        layout="@layout/item_header_view_with_title_des" />
+
+
+    <com.otaliastudios.zoom.ZoomLayout
+        android:id="@+id/zoomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:alignment="center"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@id/nextBT"
+        app:maxZoom="3.0"
+        app:layout_constraintTop_toBottomOf="@id/update_ratecard_toolbar"
+        app:minZoom="1.0"
+        app:overPinchable="true"
+        app:transformation="centerInside">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rootCL"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/pdfPageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.64"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.847"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:background="#FFFFFF" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.otaliastudios.zoom.ZoomLayout>
+
+
+
+   <!-- <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/update_ratecard_toolbar"
+        app:layout_constraintVertical_bias="0.847" />-->
+
+    <ProgressBar
+        android:id="@+id/dialog_progress_bar"
+        style="?android:attr/horizontalScrollViewStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/grey_four_tint"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:text="Previous"
+        android:id="@+id/previousBT"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/nextBT"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/bg_white_little_round_color_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:paddingVertical="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_30sdp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:text="Next"
+        android:id="@+id/nextBT"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/bg_white_little_round_color_primary"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:layout_constraintStart_toEndOf="@id/previousBT"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingVertical="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_30sdp"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

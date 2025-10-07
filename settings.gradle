@@ -1,0 +1,30 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        jcenter() // Required for viewpdf functionality
+        maven {
+            url "https://phonepe.mycloudrepo.io/public/repositories/phonepe-intentsdk-android"
+        }
+        maven {
+            url  "https://phonepe.mycloudrepo.io/public/repositories/phonepe-intentsdk-snapshots"
+        }
+        maven { url "https://repository.liferay.com/nexus/content/repositories/public/" }
+
+        gradlePluginPortal()
+    }
+}
+rootProject.name = "Ticket Simply"
+include ':app', ':tscalender'
+
+include ':escposprinter'
+include ':coach'

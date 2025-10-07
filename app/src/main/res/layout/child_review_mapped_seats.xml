@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fromSeatTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B12"
+        android:textSize="@dimen/_16ssp"
+        android:textColor="@color/black"/>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/forwardIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:src="@drawable/ic_arrow_forward_gray" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/toSeatTV"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:text="A12"
+        android:textSize="@dimen/_16ssp" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvComma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:text=","
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp" />
+</LinearLayout>

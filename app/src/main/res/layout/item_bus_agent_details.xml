@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainContainerCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:elevation="@dimen/dp_2"
+    app:cardBackgroundColor="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainContainerConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_8">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="8dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="8dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_verical_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="8dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_verical_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="8dp" />
+
+
+        <TextView
+            android:id="@+id/text_travel_name"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:includeFontPadding="false"
+            android:text="@string/notAvailable"
+            android:textColor="@color/color_03_review_02_moderate"
+            android:textSize="11sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/guideline_verical_start"
+            app:layout_constraintTop_toBottomOf="@+id/locked_service_text" />
+
+        <ImageView
+            android:id="@+id/image_call"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:paddingEnd="5dp"
+            android:src="@drawable/icons_bookings"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/guideline_verical_start"
+            app:layout_constraintTop_toBottomOf="@id/text_travel_name" />
+
+        <TextView
+            android:id="@+id/locked_service_text"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="@string/notAvailable"
+            android:textColor="@color/color_user_red"
+            android:textSize="11sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_start"
+            app:layout_constraintStart_toStartOf="@+id/guideline_verical_start"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start" />
+
+
+        <TextView
+            android:id="@+id/text_source_destination"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow"
+            app:layout_constraintStart_toEndOf="@id/image_call"
+            app:layout_constraintTop_toBottomOf="@id/text_travel_name" />
+
+
+
+        <ImageView
+            android:id="@+id/img_expand_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_down"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/guideline_verical_end"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start"
+            app:tint="@color/colorBlack" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/moreIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more_horiz"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/guideline_verical_end"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start"
+            app:tint="@color/colorBlack" />
+
+
+        <ImageView
+            android:id="@+id/img_expand_less"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_expand_less"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/guideline_verical_end"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start"
+            app:tint="@color/colorBlack" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="img_expand_less,img_expand_more" />
+
+
+        <TextView
+            android:id="@+id/busNameTV"
+            style="@style/TextStyleNormal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="start"
+            android:singleLine="false"
+            android:text="@string/notAvailable"
+            android:textColor="@color/gray_shade_a"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toStartOf="@+id/layoutFare"
+            app:layout_constraintStart_toStartOf="@id/text_source_destination"
+            app:layout_constraintTop_toBottomOf="@id/text_source_destination" />
+
+        <LinearLayout
+            android:id="@+id/layout_fare_details"
+            android:layout_width="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@id/guideline_verical_end"
+            app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start"
+            app:layout_constraintBottom_toTopOf="@+id/busNameTV"
+          >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_percentage"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+                    android:backgroundTint="@color/booked_tickets"
+                    android:gravity="center_vertical"
+                    android:paddingStart="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/empty"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_seats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:paddingStart="5dp"
+                    android:drawablePadding="5dp"
+                    style="@style/TextStyleBold"
+                    android:gravity="center_vertical"
+                    android:drawableStart="@drawable/ic_seat"
+                    android:drawableTint="@color/button_secondary_bg"
+                    android:paddingEnd="@dimen/margin_10"
+                    android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+                    android:backgroundTint="@color/colorPrimaryTransparent"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/icon_dark"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_bus_type"
+            style="@style/TextStyleNormal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="start"
+            android:singleLine="false"
+            android:text="@string/notAvailable"
+            android:textColor="@color/transparent_tint_color1"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@+id/layoutFare"
+            app:layout_constraintStart_toStartOf="@id/text_source_destination"
+            app:layout_constraintTop_toBottomOf="@id/busNameTV" />
+
+
+        <LinearLayout
+            android:id="@+id/layoutFare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="2dp"
+            app:layout_constraintBottom_toBottomOf="@id/text_bus_type"
+            app:layout_constraintEnd_toEndOf="@id/guideline_verical_end"
+            app:layout_constraintTop_toTopOf="@id/text_bus_type"
+            app:layout_constraintWidth_percent="0.45">
+
+            <TextView
+                android:id="@+id/text_fare"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:gravity="end"
+                android:scrollHorizontally="false"
+                android:text="@string/empty"
+                android:textColor="@color/fare_color"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvAvailability"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text=""
+            android:visibility="gone"
+            android:textColor="@color/transparent_tint_color1"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/guideline_verical_start"
+            app:layout_constraintTop_toBottomOf="@id/text_bus_type" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
+

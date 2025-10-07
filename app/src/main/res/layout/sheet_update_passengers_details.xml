@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_12"
+    android:background="@drawable/layout_rounded_shape_top_left_right">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:text="@string/update_passenger_details"
+                        android:textColor="@color/colorBlackShadow" />
+
+                    <TextView
+                        android:id="@+id/tvCancel"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/cancel"
+                        android:textColor="@color/colorPrimary" />
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPassengers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16" />
+
+                <TextView
+                    android:id="@+id/headerBoardingDropping"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/update_ticket_details"
+                    android:textColor="@color/colorBlackShadow"
+                    android:visibility="visible" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutBoardingAt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    android:visibility="visible">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBoardingAt"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/boarding_point"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:text=""
+                        android:visibility="visible" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutDropOffAt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDropOffAt"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/dropping_point"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:text="" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutGmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    app:boxStrokeErrorColor="@color/colorRed2"
+                    app:boxStrokeWidth="@dimen/dp_2"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@null"
+                    app:errorTextAppearance="@style/TextAppearance.MaterialComponents.Headline3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etGmail"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/email_id"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:text="" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    android:textColorHint="@color/grey"
+                    app:boxStrokeErrorColor="@color/colorRed2"
+                    app:boxStrokeWidth="@dimen/dp_2"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@null"
+                    app:errorTextAppearance="@style/TextAppearance.MaterialComponents.Headline3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRemark"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/remarks"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:text="" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutSms"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/layout_rounded_shape_border_transparent"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/dp_16">
+
+                    <CheckBox
+                        android:id="@+id/chkSms"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:text="@string/sms_passenger_with_new_details"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorBlackShadow"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <android.widget.Button
+                    android:id="@+id/btnUpdateBulkTicket"
+                    style="@style/TextStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:background="@drawable/button_default_bg"
+                    android:enabled="false"
+                    android:text="@string/update_ticket"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <include
+                android:id="@+id/includeProgress"
+                layout="@layout/layout_progress_bar" />
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

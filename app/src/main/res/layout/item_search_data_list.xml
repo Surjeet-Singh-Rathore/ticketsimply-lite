@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mostSearchContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="0dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="8dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="8dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_verical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_verical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+    <ImageView
+        android:id="@+id/toolbar_image_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/arrow_forward"
+        android:tint="@color/colorBlackShadow"
+        app:layout_constraintEnd_toEndOf="@id/guideline_verical_end"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start"
+        tools:ignore="UseAppTint,VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/tvUserTitle"
+        style="@style/msg_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/empty"
+        android:textColor="@color/colorBlackShadow"
+        app:layout_constraintBottom_toTopOf="@id/view_underline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start" />
+
+    <View
+        android:id="@+id/view_underline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/grey_four_tint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUserTitle" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/update_ratecard_toolbar"
+        layout="@layout/item_header_view_with_title_des"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/title_bg"
+        app:layout_constraintTop_toBottomOf="@id/update_ratecard_toolbar"
+       app:layout_constraintBottom_toBottomOf="parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/selectTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/select_your_service"
+                android:textColor="@color/gray_shade_a"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/selectServiceCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/selectTV">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_light_grey_stroke"
+                    android:backgroundTint="@color/white"
+                    android:padding="@dimen/_10sdp">
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/selectOperatorTIL"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:background="@drawable/header_gradient_bg"
+                        android:focusableInTouchMode="false"
+                        app:boxStrokeWidth="@dimen/dp_2"
+                        android:visibility="gone"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/selectOperatorET"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:hint="@string/select_operator"
+                            android:imeOptions="actionDone"
+                            android:inputType="none"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/selectDateTIL"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/header_gradient_bg"
+                        android:focusableInTouchMode="false"
+                        app:boxStrokeWidth="@dimen/dp_2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/selectOperatorTIL">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/selectDateET"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:hint="@string/select_date_of_journey"
+                            android:imeOptions="actionDone"
+                            android:inputType="none"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/selectDestinationTIL"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/header_gradient_bg"
+                        android:focusableInTouchMode="false"
+                        app:boxStrokeWidth="@dimen/dp_2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/selectDateTIL">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/selectDestinationET"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:hint="@string/select_destination"
+                            android:imeOptions="actionDone"
+                            android:inputType="none"
+                            android:maxLines="1" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_search_service"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:background="@drawable/button_default_bg"
+                        android:padding="@dimen/dp_16"
+                        android:text="@string/search_services"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp16"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/selectDestinationTIL" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/exactRouteServiceCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/selectServiceCV">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/exactRouteTV"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Exact route services (4)"
+                        android:textColor="@color/gray_shade_a"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/stateIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/arrow_forward"
+                        android:tint="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@id/exactRouteTV"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/exactRouteTV" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/serviceRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/exactRouteTV" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/nearByRouteServiceCV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/exactRouteServiceCV">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:padding="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/nearRouteTV"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="Nearby Matches (4)"
+                        android:textColor="@color/gray_shade_a"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/stateNearIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/arrow_forward"
+                        android:tint="@color/black"
+                        app:layout_constraintBottom_toBottomOf="@id/nearRouteTV"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/nearRouteTV" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/nearServiceRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/nearRouteTV" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

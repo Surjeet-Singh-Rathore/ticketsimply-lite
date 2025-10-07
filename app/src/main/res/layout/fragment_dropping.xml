@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flash_white_bg"
+    android:orientation="vertical"
+    tools:context=".presentation.view.dashboard.ViewReservationFragments.BulkCancelFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/header_text"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.05"
+        android:paddingStart="@dimen/dp_24"
+        android:paddingTop="@dimen/dp_24"
+        android:paddingEnd="@dimen/dp_24"
+        android:paddingBottom="@dimen/dp_16"
+        android:textColor="@color/colorBlackShadow" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_rounded_shape"
+        android:padding="@dimen/dp_8"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_8">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDropOffAt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:background="@drawable/header_gradient_bg"
+            android:textColorHint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSearch"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:drawableTint="@color/colorBlackShadow"
+                android:hint="@string/search_dp"
+                android:imeOptions="actionNext"
+                android:inputType="none"
+                android:paddingTop="20dp"
+                android:textSize="@dimen/sp16" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:padding="@dimen/margin_10"
+            android:src="@drawable/ic_search"
+            tools:ignore="VectorDrawableCompat" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSelectDroppingPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clDropoffAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_margin="@dimen/_24sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvEnterDropoffAddress"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_dropoff_address"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etDropoffAddress"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            style="@style/TextStyleNormal"
+            android:background="@android:color/white"
+            android:padding="@dimen/_14sdp"
+            android:gravity="top|start"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:elevation="4dp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/tvEnterDropoffAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDropoffAddressNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextStyleBold"
+            android:textColor="@color/colorRed"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/etDropoffAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDropoffNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        android:textColor="@color/colorWhite"
+        android:backgroundTint="@color/colorPrimaryDark"
+        />
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

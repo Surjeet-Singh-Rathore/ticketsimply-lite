@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flash_white_bg"
+    tools:context=".presentation.view.dashboard.update_rate_card_fragments.TimeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16"
+            android:background="@drawable/white_bg"
+            android:padding="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/increase_or_decrease"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/rgIncOrDec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                <RadioButton
+                    android:id="@+id/inc_dec_fare"
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/increase"
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                <RadioButton
+                    android:id="@+id/dec_fare"
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/decrease"
+                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fromCityTIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                android:hint="@string/select_city"
+                app:boxBackgroundColor="@color/title_bg"
+                app:boxBackgroundMode="filled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgIncOrDec">
+
+                <AutoCompleteTextView
+                    android:id="@+id/fromCityET"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_bg"
+                    android:inputType="none"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/imgCrossFrom"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:src="@drawable/ic_cross"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/fromCityTIL"
+                app:layout_constraintEnd_toEndOf="@+id/fromCityTIL"
+                app:layout_constraintTop_toTopOf="@+id/fromCityTIL"
+                app:tint="@color/gray_disabled" />
+
+            <TextView
+                android:id="@+id/tvSeatType"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/select_type"
+                android:textAllCaps="true"
+                android:visibility="gone"
+                android:textColor="@color/textColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fromCityTIL" />
+
+            <LinearLayout
+                android:id="@+id/seatTypeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSeatType">
+
+                <CheckBox
+                    android:id="@+id/chkAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:checked="true"
+                    android:text="All"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+                <CheckBox
+                    android:id="@+id/chkArrival"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Arrival"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+                <CheckBox
+                    android:id="@+id/chkDeparture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="Departure"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/seatTypeContainer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seatTypeContainer">
+
+                <CheckBox
+                    android:id="@+id/chkBP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="BP"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+                <CheckBox
+                    android:id="@+id/chkDP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="DP"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/time"
+                android:textAllCaps="true"
+                android:layout_marginTop="@dimen/dp_16"
+                android:textColor="@color/textColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seatTypeContainer2" />
+
+            <LinearLayout
+                android:id="@+id/timeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                android:baselineAligned="false">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_hour"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/header_gradient_bg"
+                    app:boxStrokeErrorColor="@color/colorRed2"
+                    app:boxStrokeWidth="@dimen/dp_2"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@null">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/et_hour"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/hhFormat"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_minute"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:background="@drawable/header_gradient_bg"
+                    app:boxStrokeErrorColor="@color/colorRed2"
+                    app:boxStrokeWidth="@dimen/dp_2"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@null">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/et_minute"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/mmformat"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_fromDate_urc"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timeLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_fromDate_urc"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_icons_calendar"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/fromDate" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_toDate_urc"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null"
+                android:textColorHint="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_fromDate_urc">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_toDate_urc"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_icons_calendar"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/toDate" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_modify_time"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@drawable/button_default_bg"
+            android:padding="@dimen/dp_16"
+            android:text="@string/modify"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

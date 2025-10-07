@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_view_rateCard"
+        android:title="@string/view_rate_card" />
+
+    <item
+        android:id="@+id/item_show_rateCard"
+        android:title="@string/show_rate_card" />
+
+    <item
+        android:id="@+id/item_edit_rateCard"
+        android:title="@string/edit_rate_card" />
+
+    <item
+        android:id="@+id/item_delete_rateCard"
+        android:title="@string/delete_rate_card" />
+
+</menu>

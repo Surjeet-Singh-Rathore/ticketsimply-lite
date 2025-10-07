@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/transfarent" />
+            <corners
+                android:bottomRightRadius="30dp"
+                android:topRightRadius="30dp" />
+        </shape>
+    </item>
+    <item
+
+        android:gravity="center">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/icon_cross" />
+    </item>
+</layer-list>

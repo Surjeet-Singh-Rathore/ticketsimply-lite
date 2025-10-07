@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_8"
+    android:layout_marginEnd="@dimen/dp_8"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:elevation="4dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/dp_4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_8">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="@dimen/sp16" />
+
+            <RadioGroup
+                android:id="@+id/rgCrewSelection"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="@string/YES"/>
+
+                <RadioButton
+                    android:id="@+id/rbNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="@string/no"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutRemarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/header_gradient_bg">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRemarks"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_remarks"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:textColor="@color/colorBlackShadow" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/layoutCaptureImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/layout_rounded_shape_border"
+                android:backgroundTint="@color/lightColor"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_menu_camera"
+                    app:tint="@color/lightBlack" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutImages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_menu_camera"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_menu_camera"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_menu_camera"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvCount"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorShadow"
+                    android:paddingStart="@dimen/dp_4"
+                    android:paddingTop="@dimen/dp_4"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_4"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp14"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

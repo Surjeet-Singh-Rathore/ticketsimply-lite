@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_4"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/old_seatnumber"
+        style="@style/TextStyleBold"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/eta_background"
+        android:backgroundTint="@color/colorPrimaryTransparent"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8"
+
+        android:text="@string/notAvailable"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dp_16" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/ic_arrow_forward_"
+        app:tint="@color/black" />
+
+
+    <TextView
+        android:id="@+id/new_seatnumber"
+        style="@style/TextStyleBold"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/eta_background"
+        android:backgroundTint="@color/color_03_review_02_moderate_transparent"
+        android:gravity="center"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingBottom="@dimen/dp_8"
+        android:text="@string/notAvailable"
+        android:textColor="@color/color_03_review_02_moderate"
+        android:textSize="@dimen/dp_16" />
+
+
+</LinearLayout>

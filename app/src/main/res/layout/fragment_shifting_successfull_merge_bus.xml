@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/button_color"
+    android:fillViewport="true">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/button_color"
+            android:paddingBottom="@dimen/_20sdp">
+
+            <include
+                android:id="@+id/toolbar_passenger_details"
+                layout="@layout/toolbar_shifting_successful"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/serviceDetailsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_passenger_details">
+                <TextView
+                    android:id="@+id/old_service_number"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:text="BTR1234 Jakarta to Bangdung"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/sp14"
+                    app:layout_constraintEnd_toEndOf="@+id/tvShiftDateTime"
+                    app:layout_constraintStart_toStartOf="@+id/tvShiftDateTime"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar_passenger_details" />
+
+
+                <TextView
+                    android:id="@+id/tvShiftDateTime"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="@drawable/layout_rounded_shape_border_radius_8dp_black"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_2"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_2"
+                    android:text="09-12-2023 at 22:30"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintEnd_toEndOf="@+id/animation_view"
+                    app:layout_constraintStart_toStartOf="@+id/animation_view"
+                    app:layout_constraintTop_toBottomOf="@+id/old_service_number" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animation_view"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="@dimen/dp_16"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+                    app:layout_constraintTop_toBottomOf="@+id/tvShiftDateTime"
+                    app:lottie_autoPlay="true"
+                    app:lottie_enableMergePathsForKitKatAndAbove="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/arrow_down" />
+
+
+                <TextView
+                    android:id="@+id/new_service_number"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="BJT2345 Jakarta to Bangdung"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/sp14"
+                    app:layout_constraintEnd_toEndOf="@+id/animation_view"
+                    app:layout_constraintStart_toStartOf="@+id/animation_view"
+                    app:layout_constraintTop_toBottomOf="@+id/animation_view" />
+
+
+                <TextView
+                    android:id="@+id/tvShiftDateTime_new"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_14"
+                    android:background="@drawable/layout_rounded_shape_border_radius_8dp_black"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_2"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_2"
+                    android:text="09-12-2023 at 21:30"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintEnd_toEndOf="@+id/new_service_number"
+                    app:layout_constraintStart_toStartOf="@+id/new_service_number"
+                    app:layout_constraintTop_toBottomOf="@+id/new_service_number" />
+
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/adapter_shifting_success"
+                tools:itemCount="5"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="8dp"
+                android:id="@+id/shiftRV"
+                android:background="@drawable/layout_rounded_shape_border"
+                android:backgroundTint="@color/white"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_10sdp"
+                />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                >
+            <ImageView
+                android:id="@+id/ivCaution"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_caution_light_red"
+                app:layout_constraintTop_toTopOf="@+id/tvCaution"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCaution"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tvCaution"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/colorRed2"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:gravity="start"
+                android:text="@string/cancellation_of_service_only_possible_once_all_the_passengers_are_shifted"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivCaution"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/tvShiftRemainingPassengers"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/layout_rounded_shape_border"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/shift_remaining_passengers"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp16"/>
+
+            <LinearLayout
+                android:id="@+id/llGoToOccupancyDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:background="@drawable/sky_blue_rounded_corner"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_occupancy_dashboard"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/go_to_occupancy_dashboard"
+                    style="@style/TextStyleBold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp16"/>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancelService"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/layout_rounded_shape_border_cancel"
+                android:text="@string/cancel_service"
+                android:textAllCaps="false"
+                android:textColor="@color/colorRed2"
+                android:textSize="@dimen/sp16"/>
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

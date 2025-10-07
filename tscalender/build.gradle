@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk 35
+    //buildToolsVersion "35.0.0"
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 35
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    namespace 'com.bitla.tscalender'
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.androidx.material
+    implementation libs.constraintlayout
+    testImplementation libs.junit.junit
+    androidTestImplementation libs.junit
+    androidTestImplementation libs.espresso.core
+}

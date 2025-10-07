@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView26"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_16"
+        android:text="@string/select_bp_dp"
+        android:textColor="@color/gray_shade_a"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_done"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/tab_boarding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyleNormalTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/boarding_point"
+                android:textColor="@color/gray_shade_a"
+                android:textSize="@dimen/sp12" />
+
+            <TextView
+                android:id="@+id/SelectedBP"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/notAvailable"
+                android:textColor="@color/gray_shade_a" />
+
+            <View
+                android:id="@+id/view_bp"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:background="@drawable/layout_rounded_shape_top_left_right"
+                android:backgroundTint="@color/colorPrimary" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_dropping"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyleNormalTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/dropping_point"
+                android:textColor="@color/gray_shade_a"
+                android:textSize="@dimen/sp12" />
+
+            <TextView
+                android:id="@+id/SelectedDP"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/notAvailable"
+                android:textColor="@color/gray_shade_a" />
+
+            <View
+                android:id="@+id/view_dp"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:background="@drawable/layout_rounded_shape_top_left_right"
+                android:backgroundTint="@color/white" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bp_list"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_margin="@dimen/margin_10" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_dp_list"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_margin="@dimen/margin_10"
+
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_16"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_marginBottom="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/eta_background"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/colorButton"
+            android:textSize="@dimen/dp_16" />
+
+        <Button
+            android:id="@+id/tv_done"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/colorDimShadow6"
+            android:clickable="false"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_16" />
+
+    </LinearLayout>
+
+</LinearLayout>

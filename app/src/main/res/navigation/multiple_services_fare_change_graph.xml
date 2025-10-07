@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/multiple_services_fare_change_graph"
+    app:startDestination="@id/multipleServicesFareServiceListFragment">
+
+    <fragment
+        android:id="@+id/multipleServicesFareServiceListFragment"
+        android:name="com.bitla.ts.presentation.view.fragments.MultipleServicesFareServiceListFragment"
+        android:label="MultipleServicesFareServiceListFragment"
+        tools:layout="@layout/fragment_multiple_services_fare_service_list">
+        <action
+            android:id="@+id/actionServiceListToManageFare"
+            app:destination="@id/multipleServicesManageFareFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/multipleServicesManageFareFragment"
+        android:name="com.bitla.ts.presentation.view.fragments.MultipleServicesManageFareFragment"
+        android:label="MultipleServicesManageFareFragment"
+        tools:layout="@layout/fragment_multiple_services_manage_fare">
+        <action
+            android:id="@+id/actionManageFareToServiceList"
+            app:destination="@id/multipleServicesFareServiceListFragment" />
+    </fragment>
+
+</navigation>

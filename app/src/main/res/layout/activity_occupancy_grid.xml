@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLighterGrey">
+
+
+    <include
+        android:id="@+id/layout_toolbar"
+        layout="@layout/layout_fuel_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_toolbar">
+
+        <include
+            android:id="@+id/allServicesAndDateFilterContainer"
+            layout="@layout/dashboard_graph_all_services_and_dates_filter_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:splitMotionEvents="false"
+            android:background="@color/dashboard_occupancy_grid_background"
+            tools:context=".SpreadsheetActivity">
+
+            <LinearLayout
+                android:id="@+id/corner"
+                android:layout_width="96dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+
+                app:layout_constraintBottom_toTopOf="@+id/rvService"
+                app:layout_constraintEnd_toStartOf="@+id/rvDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_slash_services"
+                    android:textColor="@color/colorBlackShadow"
+                    style="@style/TextStyleBold"
+                    />
+            </LinearLayout>
+
+            <com.bitla.ts.utils.scrollable_grid_with_fixed_headers.syncedRecycler.SyncedRecyclerView
+                android:id="@+id/rvDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/rvService"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <com.bitla.ts.utils.scrollable_grid_with_fixed_headers.syncedRecycler.SyncedRecyclerView
+                android:id="@+id/rvService"
+                android:layout_width="96dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="2dp"
+                app:layout_constraintTop_toBottomOf="@id/rvDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <com.bitla.ts.utils.scrollable_grid_with_fixed_headers.syncedRecycler.SyncedRecyclerView
+                android:id="@+id/rvServiceCount"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/rvDate"
+                app:layout_constraintStart_toEndOf="@id/rvService"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:splitMotionEvents="false"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

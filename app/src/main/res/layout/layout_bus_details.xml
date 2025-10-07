@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.97811216" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_verical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/dp_0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_verical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <ImageView
+        android:id="@+id/toolbar_image_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="@dimen/dp_16"
+        android:src="@drawable/arrow_back"
+        app:layout_constraintBottom_toTopOf="@id/toolbar_header_date"
+        app:layout_constraintStart_toEndOf="@id/guideline_verical_start"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start"
+        tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/toolbar_header_text"
+        style="@style/textInputLightStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="@string/notAvailable"
+        android:textColor="@color/colorBlackShadow"
+        android:textSize="14sp"
+        android:drawableEnd="@drawable/ic_edit_shape"
+        android:layout_marginEnd="20dp"
+        android:paddingHorizontal="10dp"
+        android:background="@drawable/available_border"
+        android:backgroundTint="@color/grey_soft_light"
+        app:layout_constraintStart_toEndOf="@id/toolbar_image_left"
+        app:layout_constraintTop_toTopOf="@id/toolbar_image_left"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar_image_left"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/toolbar_header_date"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/colorShadow"
+        android:textSize="11sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/toolbar_image_left"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_text" />
+
+    <!--<androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/button_color"
+        app:layout_constraintBottom_toTopOf="@+id/filters"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_date">
+-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout11"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/button_color"
+        app:layout_constraintBottom_toTopOf="@+id/filters"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_date">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="15dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="396dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_booking_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/grey_four_tint"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/rv_booking_details" />
+
+        <ImageView
+            android:id="@+id/image_calender"
+            android:layout_width="40dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/layout_rounded_shape"
+            android:backgroundTint="@color/grey_four_tint"
+            android:src="@drawable/ic_icons_calendar"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/swipeRefreshLayout"
+            app:layout_constraintEnd_toStartOf="@id/rv_date_details"
+            app:layout_constraintStart_toStartOf="@id/guideline_vertical_start"
+            app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_date_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/child_next_dates"
+            android:layout_marginEnd="@dimen/dp_16"
+            tools:itemCount="3"
+            app:layout_constraintBottom_toTopOf="@+id/swipeRefreshLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_calender"
+            app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toTopOf="@id/paginationProgress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_date_details">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_bus_details"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_bus_details"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_date_details" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerAvailableRoutes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_date_details"
+            shimmer:duration="800">
+
+            <include
+                android:id="@+id/shimmer_layout_bus_details"
+                layout="@layout/shimmer_layout_bus_details" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+        <include android:id="@+id/paginationProgress"
+            layout="@layout/layout_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--  </androidx.core.widget.NestedScrollView>-->
+
+    <ImageView
+        android:id="@+id/image_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="40dp"
+        android:elevation="10dp"
+        android:src="@drawable/ic_search_widget_button_switch"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include
+        android:id="@+id/layout_filter_booking"
+        layout="@layout/layout_booking_filter"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/noData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_no_search_results"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintlayout11"
+        app:layout_constraintTop_toTopOf="@+id/constraintlayout11" />
+
+    <TextView
+        android:id="@+id/tvNoService"
+        style="@style/TextStyleNormal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.05"
+        android:text="@string/no_service_available"
+        android:textColor="@color/grey"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@id/guideline_verical_start"
+        app:layout_constraintRight_toLeftOf="@id/guideline_verical_end"
+        app:layout_constraintTop_toBottomOf="@+id/noData" />
+
+    <LinearLayout
+        android:id="@+id/filters"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            style="@style/TextStyleBold"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:background="@color/button_secondary_bg"
+            android:padding="10dp"
+            android:id="@+id/sortTV"
+            android:text="@string/sortfilter_by"
+            android:textAlignment="textStart"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp14" />
+
+        <!--           <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/rvFilters"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent" />-->
+
+        <HorizontalScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:measureAllChildren="false"
+            android:scrollbars="none"
+            tools:ignore="RtlSymmetry">
+
+            <LinearLayout
+                android:id="@+id/layout_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="@color/colorBlackShadow"
+                    app:cardCornerRadius="0dp"
+                    android:id="@+id/filterCardCV"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/text_header_bg"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/rgSleeperSeater"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/layout_sleeper"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:button="@null"
+                                android:drawableTop="@drawable/ic_sleeper_icon_without_label"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/sleeper"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+
+                            <RadioButton
+                                android:id="@+id/layout_seater"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:button="@null"
+                                android:drawableTop="@drawable/ic_filter_seat"
+                                android:gravity="center"
+                                android:paddingStart="@dimen/margin_10"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingEnd="@dimen/margin_10"
+                                android:paddingBottom="6dp"
+                                android:text="@string/seater"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/rgAcNonAc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/layout_ac"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:button="@null"
+                                android:drawableTop="@drawable/ic_ac_without_label"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/ac"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <RadioButton
+                                android:id="@+id/layout_non_ac"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:button="@null"
+                                android:drawableTop="@drawable/ic_noac_without_label"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/non_ac"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+                        </RadioGroup>
+
+                        <RadioGroup
+                            android:id="@+id/rgPriceDeparture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/layout_price_low"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:button="@null"
+                                android:drawableTop="@drawable/ic_price_low_without_label_new"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/price_low"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <RadioButton
+                                android:id="@+id/layout_price_high"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:button="@null"
+                                android:drawableTop="@drawable/ic_price_high_without_label_new"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/price_high"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <RadioButton
+                                android:id="@+id/layout_departing_early"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:button="@null"
+                                android:drawableTop="@drawable/ic_departing_early_without_label"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/departing_early"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <RadioButton
+                                android:id="@+id/layout_departing_late"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:button="@null"
+                                android:drawableTop="@drawable/ic_departing_early_without_label"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="@string/departing_late"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                        </RadioGroup>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_verical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_verical_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <include
+        android:id="@+id/modifySearchLayout"
+        layout="@layout/layout_modify_search"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

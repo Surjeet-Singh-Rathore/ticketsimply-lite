@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_search_selection"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:gravity="left"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvSearch"
+            style="@style/msg_context"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="28dp"
+            android:gravity="center_vertical"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorDimShadow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/colorDimShadow1" />
+
+
+</LinearLayout>
+

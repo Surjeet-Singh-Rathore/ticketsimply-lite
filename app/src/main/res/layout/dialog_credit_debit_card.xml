@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:gravity="start|center"
+        android:text="@string/credit_debit"
+        android:textColor="@color/grey"
+        android:textSize="18sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_credit_debit_card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        android:textColorHint="@color/grey">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_credit_debit_card"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/enter_last_4_digits_of_credit_debit_card"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="4"
+            android:text="" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:text="@string/note_credit_debit_card"
+        android:textColor="@color/color_blue" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <android.widget.Button
+            android:id="@+id/btnGoBack"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@color/button_secondary_bg"
+            android:text="@string/goBack"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+
+        <android.widget.Button
+            android:id="@+id/btnConfirm"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@color/colorPrimary"
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+</LinearLayout>

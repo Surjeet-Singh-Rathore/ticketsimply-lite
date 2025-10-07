@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/editprice_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabsummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layoutContainer"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:backgroundTint="@color/text_header_bg"
+        android:src="@drawable/ic_edit_chart_white"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:id="@+id/layoutContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/editprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_edit_price"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_shape_edit"
+                android:drawablePadding="4dp"
+                android:drawableTint="@color/colorPrimary"
+                android:paddingStart="10dp"
+                android:paddingTop="8.5dp"
+                android:paddingBottom="8.5dp"
+                android:text="@string/edit_fare"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/ticket_price"
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="10dp"
+                android:gravity="end"
+                android:paddingTop="8.5dp"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingBottom="8.5dp"
+                android:text="@string/notAvailable"
+                android:textColor="@color/grey" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:id="@+id/editFareIV"
+                android:src="@drawable/ic_shape_edit"
+                android:tint="@color/colorPrimary" />
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/viewLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/flash_white_bg" />
+
+        <LinearLayout
+            android:id="@+id/layoutExtraSeatProceed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_rounded_shape_top_left_right">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_10">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/layoutAddRemoveExtraSeats"
+                        android:layout_alignBottom="@+id/layoutAddRemoveExtraSeats"
+                        android:layout_alignParentStart="true"
+
+                        android:gravity="center_vertical"
+                        android:text="@string/book_extra_seats"
+                        android:textColor="@color/colorBlackShadow" />
+
+                    <LinearLayout
+                        android:id="@+id/layoutAddRemoveExtraSeats"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imgRemoveSeat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_minus" />
+
+
+                        <TextView
+                            android:id="@+id/tvExtraSeats"
+                            style="@style/TextStyleBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_12"
+                            android:text="1"
+                            android:textColor="@color/colorBlackShadow"
+                            android:textSize="@dimen/sp20" />
+
+                        <ImageView
+                            android:id="@+id/imgAddSeat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_12"
+                            android:src="@drawable/ic_add" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <android.widget.Button
+                android:id="@+id/btnExtraBookingProceed"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/proceed"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+
+            <View
+                android:id="@+id/viewLineExtraSeats"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/flash_white_bg" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/proceed_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_rounded_shape_top_left_right"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="3">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:id="@+id/blockLL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primaryLight"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingTop="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_8"
+                    app:layout_constraintEnd_toStartOf="@+id/unblockLL"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/block_head_text"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/block"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tv_selectedSeats"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:scrollbars="vertical"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp12" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/unblockLL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/pale_primary"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingTop="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_8"
+                    app:layout_constraintEnd_toStartOf="@+id/bookLL"
+                    app:layout_constraintStart_toEndOf="@+id/blockLL"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/unblock_head_text"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unblock"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tv_unblockSelectedSeats"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:scrollbars="vertical"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp12" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/bookLL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingTop="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/unblockLL"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/book"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tv_proceed"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:scrollbars="vertical"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp12" />
+
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/tv_proceed"-->
+                    <!--                        style="@style/TextStyleBold"-->
+                    <!--                        android:layout_width="@dimen/dp_0"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:background="@color/colorPrimary"-->
+                    <!--                        android:gravity="center"-->
+                    <!--                        android:text="@string/proceed"-->
+                    <!--                        android:textColor="@color/white"-->
+                    <!--                        android:textSize="@dimen/sp16"-->
+                    <!--                       />-->
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nextBackLayout"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="2"
+                    android:paddingStart="@dimen/_14sdp"
+                    android:paddingEnd="@dimen/_14sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/arrowCoachBackImg"
+                        style="@style/TextStyleBold"
+                        android:layout_width="0dp"
+                        android:gravity="center"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        app:layout_constraintEnd_toStartOf="@id/arrowCoachNextImg"
+                        android:text="@string/previous_service"
+                        android:singleLine="true"
+                        android:textColor="@color/colorDimShadow6"
+                        android:textSize="@dimen/_14ssp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/arrowCoachNextImg"
+                        style="@style/TextStyleBold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        app:layout_constraintStart_toEndOf="@id/arrowCoachBackImg"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/_5sdp"
+                        android:text="@string/next_service"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_14ssp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

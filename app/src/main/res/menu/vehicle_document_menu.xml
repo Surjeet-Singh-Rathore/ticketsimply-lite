@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/downloadMI"
+        android:icon="@drawable/ic_download_grey"
+        android:title="@string/download_document" />
+
+    <item
+        android:id="@+id/viewMI"
+        android:icon="@drawable/ic_view_18"
+        android:title="@string/view_document" />
+    <item
+        android:id="@+id/shareMI"
+        android:icon="@drawable/ic_share_grey"
+        android:title="@string/share_document" />
+</menu>

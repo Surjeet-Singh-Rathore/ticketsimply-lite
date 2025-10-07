@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/bg_little_round_white"
+    >
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        style="@style/TextStyleBold"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorDimShadow"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDimShadow1"
+        android:layout_marginTop="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_grey_bus"
+            app:tint="@color/black"
+            android:paddingEnd="8dp"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/service_active_question_mark"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/serviceSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:thumb="@drawable/thumb_no"
+            app:track="@drawable/track"
+            style="@style/TextStyleBold"
+            />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewChangeFare"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDimShadow1"/>
+
+    <LinearLayout
+        android:id="@+id/layoutChangeFare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/money"
+            app:tint="@color/black"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/change_fare"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewAssignCrewToService"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDimShadow1"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/layoutAssignCrewToService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/crew"
+            app:tint="@color/black"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/assign_crew_to_service"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewManifest"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDimShadow1"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/layoutManifest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/view_reservation_chart_icon"
+            app:tint="@color/black"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/manifest"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewMergeBus"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        android:background="@color/colorDimShadow1"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/layoutMergeBus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_merge_bus"
+            app:tint="@color/black"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/merge_bus"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/viewShiftPassenger"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDimShadow1"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/layoutShiftPassenger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_shift_arrow"
+            app:tint="@color/black"
+            android:paddingStart="8dp"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/shift_passengers"
+            android:textColor="@color/black"
+            android:layout_marginStart="8dp"
+            />
+
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/btn_ok"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/okay"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
+
+</LinearLayout>

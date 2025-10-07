@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedscroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp_16">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="80dp"
+                    android:src="@drawable/ic_ts_logo" />
+
+
+                <!--              <TextView
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_gravity="center"
+                                  android:layout_marginTop="40dp"
+                                  android:text="TicketSimply"
+                                  android:textColor="@color/white"
+                                  android:textSize="22sp"
+                                  style="@style/TextStyleBold" />-->
+
+
+                <!--    <com.synnapps.carouselview.CarouselView
+                        android:id="@+id/carouselView"
+                        android:layout_width="250dp"
+                        android:layout_height="340dp"
+                        android:layout_marginTop="20dp"
+                        app:indicatorMarginVertical="0dp"
+                        app:fillColor="@color/colorPrimary"
+                        app:pageColor="@color/black"
+                        android:layout_gravity="center"
+                        app:radius="4dp"
+                        app:slideInterval="4000" />-->
+
+                <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                    android:id="@+id/carousel"
+                    android:layout_width="250dp"
+                    android:layout_height="183dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="32dp"
+                    app:autoPlay="true"
+                    app:autoPlayDelay="3000"
+                    app:carouselBackground="@color/colorPrimary"
+                    app:carouselGravity="CENTER"
+                    app:carouselType="BLOCK"
+                    app:imageScaleType="fitXY"
+                    app:indicatorMargin="20dp"
+                    app:showBottomShadow="false"
+                    app:showIndicator="false"
+                    app:showNavigationButtons="false"
+                    app:showTopShadow="false"
+                    app:touchToPause="false" />
+
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/domain_monitor_service_icon"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/simply_monitor_and_update_the_services"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_domain"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_domain"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDomain"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="Domain"
+                        android:imeOptions="actionDone"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <android.widget.Button
+                android:id="@+id/button_proceed"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:background="@drawable/button_default_bg"
+                android:text="@string/proceed"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+</LinearLayout>

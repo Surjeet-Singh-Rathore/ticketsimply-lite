@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_little_round_white"
+    android:paddingBottom="@dimen/_10sdp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/changeToCompleteTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Change to complete"
+        android:textColor="#2C3A45"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textOneTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:text="Enter the  Cash/Cheque/DD details below"
+        android:textColor="#000000"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/changeToCompleteTV"
+        app:layout_constraintTop_toBottomOf="@id/changeToCompleteTV" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textTwoTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:text="This will complete the transaction and update the agent’s balance amount."
+        android:textColor="#000000"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/changeToCompleteTV"
+        app:layout_constraintTop_toBottomOf="@id/textOneTV" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/enterDetailET"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:text="Enter Details"
+        android:textAllCaps="true"
+        android:textColor="#4A4A4A"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/changeToCompleteTV"
+        app:layout_constraintTop_toBottomOf="@id/textTwoTV" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEnterAmount"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@drawable/header_gradient_bg"
+        app:layout_constraintTop_toBottomOf="@+id/enterDetailET">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEnterAmount"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="Cash/Cheque/DD"
+            android:imeOptions="actionNext"
+            android:textColor="@color/colorBlackShadow" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cancelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:paddingHorizontal="@dimen/_40sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="@string/cancel"
+        android:textColor="#E05050"
+        android:textSize="@dimen/_10ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutEnterAmount" />
+
+
+    <Button
+        android:id="@+id/viewBT"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_weight="1"
+        android:background="@drawable/eta_background"
+        android:text="Change to Complete"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@id/cancelTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cancelTV"
+        app:layout_constraintTop_toTopOf="@id/cancelTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

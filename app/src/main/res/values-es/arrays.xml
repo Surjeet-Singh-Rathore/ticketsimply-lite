@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="slider_values">
+        <item>0</item>
+        <item>100</item>
+    </array>
+
+    <string-array name="booking_type">
+        <item>caminando</item>
+        <item>Agente en línea</item>
+        <item>Agente sin conexión</item>
+        <item>Rama</item>
+    </string-array>
+
+    <string-array name="city_list">
+        <item>Bangalore</item>
+        <item>Chennai</item>
+        <item>Hyderabad</item>
+    </string-array>
+
+    <string-array name="agent_names">
+        <item>Agente 1</item>
+        <item>Agente 2</item>
+        <item>Agente 3</item>
+        <item>Agente 4</item>
+    </string-array>
+
+    <string-array name="branch_names">
+        <item>Sucursal 1</item>
+        <item>Sucursal 2</item>
+        <item>Sucursal 3</item>
+        <item>Sucursal 4</item>
+    </string-array>
+
+    <string-array name="channel_name">
+        <item>Rama</item>
+        <item>Agente en línea</item>
+        <item>OTAs</item>
+        <item>Reserva electrónica</item>
+    </string-array>
+
+    <string-array name="country_code">
+        <item>+91</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>India</item>
+    </string-array>
+
+    <string-array name="travel_branch">
+        <item>8</item>
+    </string-array>
+
+    <string-array name="genderArray">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+
+    <string-array name="genderArray2">
+        <item>Señor</item>
+        <item>Extrañar</item>
+    </string-array>
+
+    <string-array name="idType">
+        <item>Aadhar</item>
+        <item>CACEROLA</item>
+        <item>Pasaporte</item>
+        <item>Identificación de elector</item>
+    </string-array>
+
+    <string-array name="driverArray">
+        <item>Conductor 1</item>
+        <item>Conductor 2</item>
+        <item>Conductor 3</item>
+        <item>Conductor 4</item>
+        <item>Conductor 5</item>
+    </string-array>
+
+    <string-array name="dummyArray">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+    </string-array>
+
+    <string-array name="hourArray">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+    </string-array>
+
+    <string-array name="minuteArray">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+
+    <string-array name="amPMArray">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+
+    <string-array name="genderTitleArray">
+        <item>Señor</item>
+        <item>Señora</item>
+        <item>Extrañar</item>
+    </string-array>
+
+    <string-array name="rechargeTransactionTypes">
+        <item>Crédito</item>
+        <item>Débito</item>
+    </string-array>
+
+    <string-array name="agentTypes">
+        <item>Todo</item>
+        <item>Pagado</item>
+        <item>pospago</item>
+        <item>Ninguno</item>
+    </string-array>
+
+    <string-array name="selectCategories">
+        <item>Mostrar todo</item>
+        <item>Mostrar solo créditos</item>
+        <item>Mostrar solo débitos</item>
+        <item>Mostrar no borrado</item>
+        <item>Mostrar créditos/débitos manuales</item>
+    </string-array>
+
+    <string-array name="agentTypesWithoutNone">
+        <item>Todo</item>
+        <item>Pagado</item>
+        <item>pospago</item>
+    </string-array>
+
+    <string-array name="rechargeStatus">
+        <item>Terminado</item>
+        <item>Pendiente</item>
+        <item>Fallido</item>
+    </string-array>
+
+    <string-array name="rechargePaymentTypes">
+        <item>Cheque</item>
+        <item>Dinero</item>
+        <item>DD</item>
+        <item>NEFT</item>
+        <item>IMPS</item>
+        <item>RTGs</item>
+        <item>Pago neto</item>
+        <item>Orden de pago</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="allReportTypes">
+        <item>Informe de cobranza de sucursales</item>
+        <item>Informe de cierre de recogida en la ciudad según el servicio</item>
+        <item>Comprobación del informe del inspector</item>
+        <item>Informe de utilidad de combustible</item>
+        <item>Informe de ocupación</item>
+        <item>Entradas reservadas por usted</item>
+        <item>Colección de servicios de autobús</item>
+        <item>Informe de grupo por sucursal</item>
+
+    </string-array>
+
+    <string-array name="activeCancelledServicesArray">
+        <item>Todos (viajes activos + viajes cancelados)</item>
+        <item>Sólo viajes activos</item>
+        <item>Sólo viajes cancelados</item>
+    </string-array>
+</resources>

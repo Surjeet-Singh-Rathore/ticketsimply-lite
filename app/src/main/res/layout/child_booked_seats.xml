@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <TextView
+            android:id="@+id/tvPnr"
+            style="@style/TextStyleNormal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/dash"
+            android:textColor="@color/colorBlackShadow" />
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/TextStyleNormal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:paddingStart="5dp"
+            android:text="@string/dash"
+            android:textColor="@color/colorBlackShadow" />
+
+        <TextView
+            android:id="@+id/tvSeatNo"
+            style="@style/TextStyleNormal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.30"
+            android:gravity="center"
+            android:text="@string/dash"
+            android:textColor="@color/colorBlackShadow" />
+
+        <TextView
+            android:id="@+id/tvEdit"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.20"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:text="@string/edit"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

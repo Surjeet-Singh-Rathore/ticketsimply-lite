@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <queries>
+        <package android:name="com.whatsapp" />
+        <package android:name="com.whatsapp.w4b" />
+    </queries>
+    <queries>
+        <package android:name="com.sunmi.pay.hardware_v3" />
+        <package android:name="woyou.aidlservice.jiuiv5" />
+    </queries>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- <uses-permission android:name="android.permission.BLUENeed android.permission.BLUETOOTH_CONNECTTOOTH_CONNECT" /> -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <application
+        android:name=".app.base.TsApplication"
+        android:allowBackup="false"
+        android:allowClearUserData="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".presentation.view.activity.TextSizeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.GroupByPickUpVanNewActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.MultipleServicesManageFareActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.SelfAuditFormActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.NewConfirmPhoneBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.BusTrackingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.view.activity.IvrCallingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.ticketDetails.BookingSummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.merge_bus.MergeBusActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".presentation.view.activity.addRateCard.editRateCard.ModifyEditRateCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.addRateCard.editRateCard.EditRateCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.RouteServiceManagerActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".presentation.view.activity.SplashScreen"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.ticketDetails.StagingSummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.CoachLayoutReportingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.BlackListNumberActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".presentation.view.activity.addRateCard.createRateCard.ModifyCreateRateCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.ticket_details_compose.TicketDetailsActivityCompose"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".presentation.view.activity.notifications.NotificationsActivityNew"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.ModifyIndividualRouteFareActivity"
+            android:exported="true" />
+        <activity
+            android:name=".phase2.dashboardContainer.activity.DashboardRevenueNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.InstantRechargeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".phase2.dashboardContainer.activity.RevenueServiceDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.PendingQuotaDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.passenger_payment.PassengerPaymentActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="com.paytm.pos.payment.CALL_BACK_RESULT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.view.passenger_payment_show_new_flow.PassengerPaymentNewFlowActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="com.paytm.pos.payment.CALL_BACK_RESULT_NEW_FLOW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.ViewPdfActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ManageAccountActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ManageAccountListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ManageTransactionSearchActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ShortRoutCitySelectionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.AccountDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.PushNotificationSoundSettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.RoutewiseBookingMemoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SeatWiseFareActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SearchOriginDestinationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ModifyFareActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SearchCoachActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.PickUpListVanActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.PrinterTypeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.QuickBookChileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".presentation.view.activity.DashboardOccupancyFilterActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <!--
+        <activity
+            android:name=".app.base.BaseActivity"
+            android:configChanges="screenSize|fontScale|fontWeightAdjustment"
+            android:exported="false" />
+        -->
+        <activity
+            android:name=".presentation.view.activity.SearchServiceActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SearchBranchActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".phase2.dashboardContainer.activity.DashboardRevenueDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".phase2.dashboardContainer.activity.DashboardBookingTrendsDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".phase2.dashboardContainer.activity.DashboardOccupancyDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".phase2.dashboardContainer.activity.DashboardDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.RapidBookingSelectionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.CrewToolkitActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.InterBDActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.InterCityActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.PaymentGatewayActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.InterCityAgentActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.LandingPageActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.CrewAllListSelectedActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".app.base.TsApplication"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.view.activity.ConfirmPhoneBookingActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="com.paytm.pos.payment.CALL_BACK_RESULT_PHONE_BLOCK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            tools:replace="screenOrientation" />
+        <activity
+            android:name=".presentation.view.activity.AddDriverActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.LanguageSelectionAvtivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.CoachViewSelectionActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.CityDetailsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.dashboard.DashboardNavigateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".presentation.view.activity.DomainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.reservationOption.extendedFare.MultistationFare"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.PnrSearchActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.reservationOption.SelectServiceActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SelectAllotedServiceActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SeatShiftingSuccessfulActivity"
+            android:exported="true"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SelectBoardingDroppingPointActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ticketDetails.BookingHistoryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ticketDetails.TicketDetailsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.RegisterFingerPrintActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SettingsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.BookingPaymentOptionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.EditChartActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.ScanQrActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ServiceDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.CustomMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SelectMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.reservationOption.ViewReservationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".presentation.view.activity.reservationOption.announcement.ReasonTypeListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.reservationOption.extendedFare.UpdateRateCardActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.reservationOption.extendedFare.ExtendedFair"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.reservationOption.announcement.AnnouncementActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.reservationOption.CurrentLocationActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.resetpassword.MobileNumberEntry"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.resetpassword.OtpEntry"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.resetpassword.ResetPassword"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.OtpVerification"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.BusDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.MapActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.NewCoachActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.view.activity.BlockActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.ServiceSummaryActivity"
+            android:screenOrientation="portrait" /> <!-- <activity -->
+        <!-- android:name=".presentation.view.activity.ForgotPasswordActivity" -->
+        <!-- android:screenOrientation="portrait" /> -->
+        <activity
+            android:name=".presentation.view.activity.QuickBookingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SmsNotificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.MotCouponActivity"
+            android:launchMode="singleInstancePerTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.PassengerDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".presentation.view.activity.NewPassengerDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".presentation.view.activity.ShiftPassengerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" />
+        <activity
+            android:name=".presentation.view.activity.SelectedSearchShiftPassengerActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.RechargeActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.notifications.NotificationsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.notifications.NotificationDetailsActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" /> <!-- FMC -->
+        <activity
+            android:name=".presentation.view.activity.notifications.NotificationDetailsPhase3Actvity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SearchMultiSelectServiceActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.OccupancyGridActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SearchActiveInactiveServiceActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SearchAgentActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.merge_bus.MergeBusShiftActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.FrequentTravellerDataActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.addRateCard.fetchShowRateCard.RateCardMainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.addRateCard.createRateCard.CreateRateCardActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.addRateCard.viewRateCard.ViewCreatedRateCardActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".fcm.FirebaseMessageReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimaryDark" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notifications_black_24dp" />
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
+
+        <service
+            android:name=".utils.ForegroundOnlyLocationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".utils.BatteryLevelReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="io.sentry.auto-init"
+            android:value="false" />
+        <meta-data
+            android:name="com.phonepe.android.sdk.isSimulator"
+            android:value="false" />
+        <meta-data
+            android:name="com.phonepe.android.sdk.Debuggable"
+            android:value="false" />
+        <meta-data
+            android:name="com.phonepe.android.sdk.isUAT"
+            android:value="false" />
+        <meta-data
+            android:name="com.phonepe.android.sdk.MerchantId"
+            android:value="LAXMIHOLIDAYSONLINE" />
+        <meta-data
+            android:name="com.phonepe.android.sdk.AppId"
+            android:value="e31744b7b37b47e9bc2a72a6befea791" />
+    </application>
+
+</manifest>

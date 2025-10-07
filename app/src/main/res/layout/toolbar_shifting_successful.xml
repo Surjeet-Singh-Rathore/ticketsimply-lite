@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="26dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="22dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="22dp" />
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_close_24_white"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_header_text"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_start"
+        tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/toolbar_header_text"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:text="@string/notAvailable"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp14"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_start" />
+
+    <TextView
+        android:id="@+id/toolbar_subtitle"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/passenger_details_toolbar_subtitle"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_text" />
+
+    <ImageView
+        android:id="@+id/xyr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_successful_thumb"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_subtitle" />
+
+    <TextView
+        android:id="@+id/toolbar_ticketSuccessContent"
+        style="@style/TextStyleNormal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:gravity="center"
+        android:text="@string/ticket_shifted_successfully"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp12"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/xyr" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_12"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/header_border_without_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_ticketSuccessContent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

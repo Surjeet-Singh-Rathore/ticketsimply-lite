@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_4">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSeatName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_1sdp"
+        android:text="LB : "
+        android:textColor="#4D606E"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSeatFare"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notAvailable"
+        android:textColor="#3B4954"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvSeatName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/thirdV"
+        android:layout_width="@dimen/_1sdp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:background="#3B4954"
+        app:layout_constraintBottom_toBottomOf="@id/tvSeatFare"
+        app:layout_constraintStart_toEndOf="@id/tvSeatFare"
+        app:layout_constraintTop_toTopOf="@id/tvSeatFare" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

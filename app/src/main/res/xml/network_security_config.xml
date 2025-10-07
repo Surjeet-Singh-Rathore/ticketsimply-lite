@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+
+    <!-- To allow cleartext traffic to specific domains, uncomment the following line -->
+<!--    <domain-config cleartextTrafficPermitted="true">-->
+<!--        <domain includeSubdomains="true">jpsb-qa1.ticketsimply.co.in</domain>-->
+<!--    </domain-config>-->
+
+    <!-- To restrict cleartext traffic to specific domains, uncomment the following line -->
+<!--    <domain-config cleartextTrafficPermitted="false">-->
+<!--        <domain includeSubdomains="true">sensitive-domain.com</domain>-->
+<!--    </domain-config>-->
+
+    <!-- To allow cleartext traffic to all domains, uncomment the following line -->
+     <base-config cleartextTrafficPermitted="true" />
+
+</network-security-config>

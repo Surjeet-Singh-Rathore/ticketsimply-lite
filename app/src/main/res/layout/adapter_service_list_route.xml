@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rootView"
+    android:layout_marginBottom="@dimen/_3sdp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="@dimen/_5sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/serviceNameAndTime"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="BNG1234 | 08:00PM"
+                android:textColor="@color/black"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toStartOf="@id/editIV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/editIV"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:padding="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="@id/serviceNameAndTime"
+                app:layout_constraintEnd_toStartOf="@id/moreIV"
+                app:layout_constraintTop_toTopOf="@id/serviceNameAndTime" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/moreIV"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_more_horiz"
+                app:layout_constraintBottom_toBottomOf="@id/serviceNameAndTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/serviceNameAndTime" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/originDestName"
+                style="@style/TextStyleNormal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="Bangalore to Thrissur"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toStartOf="@id/stagesTV"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/serviceNameAndTime" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:id="@+id/stagesTV"
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="@id/originDestName"
+                app:layout_constraintBottom_toBottomOf="@id/originDestName"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                style="@style/TextStyleNormal"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/busTypeTV"
+                style="@style/TextStyleNormal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="A/C Sleeper(2+1), Volvo"
+                android:textColor="#6C757D"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/originDestName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fromToDateTV"
+                style="@style/TextStyleNormal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="27 Mar 2024 to 14 Apr 2024"
+                android:textColor="#6C757D"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/busTypeTV" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activateTV"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/_7sdp"
+                android:background="@drawable/bg_light_blue_little_round_stroke"
+                android:gravity="center_horizontal"
+                android:paddingVertical="@dimen/_7sdp"
+                android:text="@string/activate"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fromToDateTV" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/button_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvPaymentType"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_type"
+            android:layout_margin="16dp"
+            android:textColor="@color/colorBlackShadow" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <RadioGroup
+                android:id="@+id/rgPaymentType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rbFullPayment"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:text="@string/full_payment"
+                    android:textColor="@color/colorBlackShadow" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/colorDimShadow2"/>
+
+                <RadioButton
+                    android:id="@+id/rbPartialPayment"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/partial_payment"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textSize="@dimen/sp14" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/rgReleaseOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbDoNotRelease"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:checked="true"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:text="@string/do_not_release"
+                    android:textColor="@color/colorBlackShadow" />
+
+
+                <RadioButton
+                    android:id="@+id/rbRelease"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimary"
+                    android:text="@string/release"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textSize="@dimen/sp14" />
+            </RadioGroup>
+
+            <TextView
+                android:visibility="visible"
+                android:id="@+id/tvReleaseDate"
+                style="@style/msg_context"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/header_gradient_bg_underline"
+                android:gravity="left|center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/releaseDate"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlackShadow"
+                app:drawableEndCompat="@drawable/ic_calendar_release" />
+
+            <LinearLayout
+                android:id="@+id/layoutHhMm"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="@dimen/dp_16">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:hint="@string/hh"
+                    android:layout_marginStart="8dp"
+                    app:boxBackgroundMode="filled"
+                    app:boxBackgroundColor="@color/title_bg">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/acHH"
+                        style="@style/TextStyleNormal"
+                        android:textSize="14sp"
+                        android:textColorHint="@color/grey"
+                        android:textColor="@color/colorBlackShadow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="none"
+                        android:background="@drawable/et_bg"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.50"
+                    android:layout_height="match_parent"
+                    android:hint="@string/mm"
+                    app:boxBackgroundMode="filled"
+                    app:boxBackgroundColor="@color/title_bg">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/acMM"
+                        android:layout_marginStart="@dimen/dp_12"
+                        style="@style/TextStyleNormal"
+                        android:textSize="14sp"
+                        android:layout_marginEnd="8dp"
+                        android:textColorHint="@color/grey"
+                        android:textColor="@color/colorBlackShadow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="none"
+                        android:background="@drawable/et_bg"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvPartialPaymentAmt"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/partial_payment_amount"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/colorBlack" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_partial_amt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/header_gradient_bg"
+                android:textColorHint="@color/grey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_partial_amt"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/enter_amount"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:text="" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvRemainingAmt"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/remaining_amount"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tvTotalAmt"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/total_amount"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/colorBlack" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

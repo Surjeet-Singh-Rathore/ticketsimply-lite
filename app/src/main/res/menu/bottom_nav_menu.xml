@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_booking"
+        android:icon="@drawable/icons_bookings"
+        android:iconTint="@color/colorDim"
+        android:title="Bookings" />
+
+    <item
+        android:id="@+id/navigation_pickupcharts"
+        android:icon="@drawable/icons_pickup_charts"
+        android:title="Pick-up Charts" />
+
+
+</menu>

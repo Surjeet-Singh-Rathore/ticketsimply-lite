@@ -1,0 +1,17 @@
+package com.bitla.ts.domain.pojo.add_rate_card.createRateCard.request
+
+
+import com.google.gson.annotations.SerializedName
+
+data class Commission(
+    @SerializedName("category")
+    val category: String,
+    @SerializedName("cmsn")
+    val cmsn: String,
+    @SerializedName("inc_or_dec")
+    val incOrDec: String,
+    @SerializedName("seat_types")
+    val seatTypes: String,
+    @SerializedName("type")
+    val type: String
+)

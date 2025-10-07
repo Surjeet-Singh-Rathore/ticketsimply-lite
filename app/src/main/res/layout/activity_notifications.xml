@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flash_white"
+    android:orientation="vertical"
+    tools:context=".presentation.view.activity.notifications.NotificationsActivity">
+
+    <include
+        android:id="@+id/toolbarNotifications"
+        layout="@layout/toolbar_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarNotifications">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notificationReqCard"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:backgroundTint="@color/colorPrimary"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:fontFamily="@font/notosans_bold"
+                android:text="Please Turn on Notification"
+                android:textColor="@color/white" />
+
+            <android.widget.Button
+                android:id="@+id/btnTurnOn"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/rounded_border_button"
+                android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:text="Turn On"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_11ssp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/notificationReqCard"
+                android:fillViewport="true"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layoutMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvNotificationNavigation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            android:id="@+id/layoutButtons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnUnread"
+                                style="@style/TextStyleBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:layout_marginBottom="@dimen/dp_16"
+                                android:layout_weight="0.5"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:text="Unread"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnRead"
+                                style="@style/TextStyleBold"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/button_height"
+                                android:layout_marginStart="@dimen/dp_8"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:layout_marginBottom="@dimen/dp_16"
+                                android:layout_weight="0.5"
+                                android:text="Read"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                app:backgroundTint="@color/un_select_color" />
+
+                        </LinearLayout>
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvNotificationDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_16"
+                            android:scrollbars="none"
+                            android:visibility="gone" />
+
+                        <include
+                            android:id="@+id/layoutNoNotificationData"
+                            layout="@layout/layout_no_data"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <include
+                        android:id="@+id/layoutNoData"
+                        layout="@layout/layout_no_data"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/includeProgress"
+                layout="@layout/layout_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fabBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:padding="@dimen/_10sdp"
+        android:src="@drawable/ic_filter_grey"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressPB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

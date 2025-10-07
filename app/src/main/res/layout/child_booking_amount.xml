@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dp_16"
+    android:layout_marginBottom="@dimen/dp_12"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvLabel"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow" />
+
+        <TextView
+            android:id="@+id/tvValue"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,32 @@
+{
+  "code": 404,
+  "source_info": {
+    "origin_id": "2",
+    "name": "Jakarta",
+    "timeHH": "20",
+    "timeMM": "00"
+  },
+  "destination_info": {
+    "origin_id": "1",
+    "name": "Semarang",
+    "timeHH": "10",
+    "timeMM": "00"
+  },
+  "boarding_point_info": {
+    "id": 193676,
+    "name": "Semanggi",
+    "timeHH": "05",
+    "timeMM": "35"
+  },
+  "drop_off_details": {
+    "id": 201363,
+    "name": "Bawen",
+    "timeHH": "19",
+    "timeMM": "30"
+  },
+  "is_different_origin": false,
+  "is_different_destination": false,
+  "is_different_bp": true,
+  "is_different_dp": true,
+  "message": "Seat no. 13 is boarding from \u003Cb\u003ESemanggi\u003C/b\u003E and dropping to \u003Cb\u003EBawen\u003C/b\u003E which is not available in SocialDistancing.\n \nDo you want to \u003Cb\u003Eadd the new boarding and dropping details\u003C/b\u003E into SocialDistancing for DOJ 16-08-2024 ?"
+}

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="16dp">
+
+               <TextView
+                   android:id="@+id/tvPartiallyPaidTitle"
+                   style="@style/TextStyleBold"
+                   android:textSize="18sp"
+                   android:layout_alignParentStart="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/partially_paid"
+                   android:textColor="@color/colorBlackShadow" />
+
+               <TextView
+                   android:id="@+id/tvClose"
+                   style="@style/TextStyleBold"
+                   android:textSize="16sp"
+                   android:layout_alignParentEnd="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/close"
+                   android:textColor="@color/colorRed2" />
+
+           </RelativeLayout>
+
+           <androidx.cardview.widget.CardView
+               android:layout_marginStart="16dp"
+               android:layout_marginEnd="16dp"
+               android:layout_marginTop="8dp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+
+                   <RelativeLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="8dp">
+
+                       <LinearLayout
+                           android:layout_alignParentStart="true"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical">
+
+                           <TextView
+                               android:id="@+id/tvNameTitle"
+                               style="@style/TextStyleNormal"
+                               android:textSize="12sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/name"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvName"
+                               style="@style/TextStyleBold"
+                               android:textSize="16sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/notAvailable"
+                               android:textColor="@color/colorBlackShadow" />
+
+
+                           <TextView
+                               android:id="@+id/tvSeatsTitle"
+                               style="@style/TextStyleNormal"
+                               android:textSize="12sp"
+                               android:layout_marginTop="8dp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/seats"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvSeats"
+                               style="@style/TextStyleBold"
+                               android:textSize="16sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/notAvailable"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvMobileNumberTitle"
+                               style="@style/TextStyleNormal"
+                               android:textSize="12sp"
+                               android:layout_marginTop="8dp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/mobile_number"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvMobileNumber"
+                               style="@style/TextStyleBold"
+                               android:textSize="16sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/notAvailable"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvFromAndToTitle"
+                               style="@style/TextStyleNormal"
+                               android:textSize="12sp"
+                               android:layout_marginTop="8dp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/from_and_to"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvFromAndTo"
+                               style="@style/TextStyleBold"
+                               android:textSize="16sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/notAvailable"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvBoardingDroppingStageTitle"
+                               style="@style/TextStyleNormal"
+                               android:textSize="12sp"
+                               android:layout_marginTop="8dp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/boarding_amp_dropping_stage"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvBoardingDroppingStage"
+                               style="@style/TextStyleBold"
+                               android:textSize="16sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/notAvailable"
+                               android:textColor="@color/colorBlackShadow" />
+
+                       </LinearLayout>
+
+                       <LinearLayout
+                           android:layout_alignParentEnd="true"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical">
+
+                           <TextView
+                               android:id="@+id/tvGenderTitle"
+                               style="@style/TextStyleNormal"
+                               android:textSize="12sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/gender"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvGender"
+                               style="@style/TextStyleBold"
+                               android:textSize="16sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/notAvailable"
+                               android:textColor="@color/colorBlackShadow" />
+
+
+                           <TextView
+                               android:id="@+id/tvPnrTitle"
+                               style="@style/TextStyleNormal"
+                               android:textSize="12sp"
+                               android:layout_marginTop="8dp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/pnr"
+                               android:textColor="@color/colorBlackShadow" />
+
+                           <TextView
+                               android:id="@+id/tvPnr"
+                               style="@style/TextStyleBold"
+                               android:textSize="16sp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:text="@string/notAvailable"
+                               android:textColor="@color/colorBlackShadow" />
+
+
+                       </LinearLayout>
+
+
+
+                   </RelativeLayout>
+
+
+
+               </LinearLayout>
+
+           </androidx.cardview.widget.CardView>
+
+
+           <TextView
+               android:id="@+id/tvPaymentType"
+               style="@style/TextStyleBold"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/payment_type"
+               android:layout_marginTop="16dp"
+               android:layout_marginStart="16dp"
+               android:textColor="@color/colorBlackShadow" />
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rv_payment_options"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="16dp"
+               android:layout_marginEnd="16dp"
+               android:layout_marginTop="@dimen/dp_8" />
+
+           <View
+               android:layout_marginTop="8dp"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/_1sdp"
+               android:layout_marginStart="8dp"
+               android:layout_marginEnd="8dp"
+               android:background="@color/colorDimShadow2"/>
+
+           <RelativeLayout
+               android:layout_marginStart="16dp"
+               android:layout_marginEnd="16dp"
+               android:layout_marginTop="@dimen/dp_8"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <TextView
+                   android:layout_alignParentStart="true"
+                   android:id="@+id/tvPaidAmtTitle"
+                   style="@style/TextStyleNormal"
+                   android:textSize="12sp"
+                   android:layout_marginTop="8dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/paid"
+                   android:textColor="@color/colorBlackShadow" />
+
+               <TextView
+                   android:id="@+id/tvPaidAmt"
+                   style="@style/TextStyleBold"
+                   android:textSize="18sp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/notAvailable"
+                   android:layout_alignParentStart="true"
+                   android:layout_below="@id/tvPaidAmtTitle"
+                   android:textColor="@color/colorBlackShadow" />
+
+
+               <TextView
+                   android:layout_centerInParent="true"
+                   android:layout_alignParentTop="true"
+                   android:id="@+id/tvRemainingTitle"
+                   style="@style/TextStyleNormal"
+                   android:textSize="12sp"
+                   android:layout_marginTop="8dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/remaining"
+                   android:textColor="@color/colorBlackShadow" />
+
+               <TextView
+                   android:id="@+id/tvRemaining"
+                   style="@style/TextStyleBold"
+                   android:textSize="18sp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/notAvailable"
+                   android:layout_centerHorizontal="true"
+                   android:gravity="bottom"
+                   android:layout_below="@id/tvRemainingTitle"
+                   android:textColor="@color/colorBlackShadow" />
+
+               <TextView
+                   android:layout_alignParentEnd="true"
+                   android:id="@+id/tvTotalTitle"
+                   style="@style/TextStyleNormal"
+                   android:textSize="12sp"
+                   android:layout_marginTop="8dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/total"
+                   android:textColor="@color/colorBlackShadow" />
+
+               <TextView
+                   android:id="@+id/tvTotal"
+                   style="@style/TextStyleBold"
+                   android:textSize="18sp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@string/notAvailable"
+                   android:layout_alignParentEnd="true"
+                   android:layout_below="@id/tvTotalTitle"
+                   android:textColor="@color/colorBlackShadow" />
+
+           </RelativeLayout>
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/_1sdp"
+               android:layout_marginStart="8dp"
+               android:layout_marginEnd="8dp"
+               android:layout_marginTop="8dp"
+               android:background="@color/colorDimShadow2"/>
+
+           <TextView
+               style="@style/TextStyleNormal"
+               android:textSize="12sp"
+               android:layout_marginTop="16dp"
+               android:layout_marginStart="16dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/remarks"
+               android:textAllCaps="true"
+               android:textColor="@color/colorBlackShadow" />
+
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/input_layout_remarks"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/text_input_edit_text_height"
+               android:layout_marginTop="@dimen/dp_12"
+               android:layout_marginStart="8dp"
+               android:layout_marginEnd="8dp"
+               android:background="@drawable/header_gradient_bg"
+               android:textColorHint="@color/grey">
+
+               <com.google.android.material.textfield.TextInputEditText
+                   android:id="@+id/edt_remarks"
+                   style="@style/textInputStyle"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:background="@drawable/et_bg"
+                   android:hint="@string/enter_remarks"
+                   android:imeOptions="actionDone"
+                   android:inputType="text"
+                   android:text="" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:weightSum="1"
+               android:layout_marginTop="8dp">
+
+               <android.widget.Button
+                   android:id="@+id/btnRelease"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="0.5"
+                   android:background="@color/primaryLight"
+                   android:text="@string/release"
+                   android:textAllCaps="false"
+                   android:textColor="@color/colorPrimary"
+                   style="@style/TextStyleBold"/>
+
+               <android.widget.Button
+                   android:id="@+id/btnConfirm"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="0.5"
+                   android:background="@color/colorPrimary"
+                   android:text="@string/confirm"
+                   android:textAllCaps="false"
+                   style="@style/TextStyleBold"
+                   android:textColor="@color/colorWhite" />
+           </LinearLayout>
+
+       </LinearLayout>
+
+   </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

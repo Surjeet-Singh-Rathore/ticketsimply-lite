@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_rapid_booking"
+        android:icon="@drawable/ic_rapid_booking"
+        android:title="@string/rapid_book" />
+
+
+    <!--<item
+        android:id="@+id/item_phone_booking"
+        android:icon="@drawable/icons_bookings"
+        android:title="Phone Booking"
+        />-->
+
+    <item
+        android:id="@+id/item_sms_notification"
+        android:icon="@drawable/ic_sms_notification"
+        android:title="@string/sendSms" />
+
+    <item
+        android:id="@+id/item_service_details"
+        android:icon="@drawable/ic_service_details"
+        android:title="@string/service_details" />
+
+    <item
+        android:id="@+id/item_block_unblock"
+        android:icon="@drawable/ic_block"
+        android:title="@string/block" />
+
+
+</menu>

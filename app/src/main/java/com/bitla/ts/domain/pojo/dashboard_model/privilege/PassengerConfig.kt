@@ -1,0 +1,31 @@
+package com.bitla.ts.domain.pojo.dashboard_model.privilege
+
+data class PassengerConfig(
+    val PASSENGER_TITLE: OptionIndividual,
+    val PASSENGER_NAME: OptionIndividual,
+    val PASSENGER_AGE: OptionIndividual,
+    val PASSENGER_PHONE: OptionIndividual,
+    val PASSENGER_ALTERNATE_NO: OptionIndividual,
+    val PASSENGER_EMAIL: OptionIndividual,
+    val PASSENGER_ADDRESS: OptionIndividual,
+    val PASSENGER_ID_TYPE: OptionIndividual,
+    val PASSENGER_ID_NUMBER: OptionIndividual,
+    val PASSENGER_REMARKS: OptionIndividual,
+    val PASSENGER_BOARDING_STAGE: OptionIndividual,
+    val PASSENGER_DROP_OFF_STAGE: OptionIndividual,
+    val PRIMARY_PASSENGER_MANDATORY: OptionIndividual,
+    val FIRST_NAME: OptionIndividual,
+    val LAST_NAME: OptionIndividual,
+    val PASSENGER_DUAL_FARE_TYPE: OptionIndividual,
+    val PASSENGER_NATIONALITY: OptionIndividual,
+    val PASSENGER_DOB: OptionIndividual,
+    val ALTERNATE_EMAIL: OptionIndividual,
+    val BLOOD_GROUP: OptionIndividual,
+    val BOARDING_STAGE_ADDRESS: OptionIndividual,
+    val BOARDING_STAGE_LANDMARK: OptionIndividual,
+    val DROP_OFF_STAGE_ADDRESS: OptionIndividual,
+    val DROP_OFF_STAGE_LANDMARK: OptionIndividual,
+    val DEFAULT_ID_TYPE: OptionIndividual,
+    val ORIGIN_ADDRESS: OptionIndividual,
+    val DESTINATION_ADDRESS: OptionIndividual
+)

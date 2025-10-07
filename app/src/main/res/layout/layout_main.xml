@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_verical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_verical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="20dp" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="TicketSimply"
+        android:textColor="@color/colorPrimary"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_verical_end"
+        app:layout_constraintStart_toEndOf="@id/guideline_verical_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<EditText
+        android:id="@+id/etDomain"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:hint="Domain"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@id/button_proceed"
+        app:layout_constraintStart_toEndOf="@id/guideline_verical_start"
+        app:layout_constraintEnd_toStartOf="@id/guideline_verical_end"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="15dp"
+        style="@style/TextStyleNormal"
+        android:background="@drawable/edit_text_bg"/>-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_domain"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/header_gradient_bg"
+        app:layout_constraintBottom_toTopOf="@id/button_proceed"
+        app:layout_constraintEnd_toStartOf="@id/guideline_verical_end"
+        app:layout_constraintStart_toEndOf="@id/guideline_verical_start">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDomain"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Domain"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:text="" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <android.widget.Button
+        android:id="@+id/button_proceed"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/white_bg"
+        android:backgroundTint="@color/colorButton"
+        android:text="Proceed"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_end"
+        app:layout_constraintEnd_toStartOf="@id/guideline_verical_end"
+        app:layout_constraintStart_toEndOf="@id/guideline_verical_start" />
+
+
+    <include
+        layout="@layout/layout_progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_verical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_verical_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

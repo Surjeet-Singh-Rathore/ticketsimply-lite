@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_300">
+
+    <View
+        android:id="@+id/toolbar_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shimmer_gradient_overlay"
+        app:layout_constraintBottom_toTopOf="@+id/extendFareCard1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/extendFareCard1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_shimmer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <View
+                android:id="@+id/extendFareView1"
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/extendFareView2"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_28"
+                android:layout_marginEnd="@dimen/dp_32"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toStartOf="@+id/extendFareView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView1" />
+
+            <View
+                android:id="@+id/extendFareView3"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_28"
+                android:layout_marginEnd="@dimen/dp_32"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/extendFareView2"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView1" />
+
+            <View
+                android:id="@+id/extendFareView4"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView3" />
+
+            <View
+                android:id="@+id/extendFareView5"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView4" />
+
+            <View
+                android:id="@+id/extendFareView6"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_32"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView5" />
+
+            <View
+                android:id="@+id/extendFareView7"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView6" />
+
+            <View
+                android:id="@+id/extendFareView8"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_32"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView7" />
+
+            <View
+                android:id="@+id/extendFareView9"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView8" />
+
+            <View
+                android:id="@+id/extendFareView10"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/extendFareView9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/buttonView1"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/shimmer_gradient_overlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/extendFareCard1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_12"
+        android:paddingRight="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_12"
+        android:text="@string/empty"
+        android:textColor="@color/grey"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        style="@style/msg_context"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:text="@string/empty"
+        android:textColor="@color/colorBlackShadow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <android.widget.Button
+            android:id="@+id/btn_left"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:background="@color/button_secondary_bg"
+            android:text="@string/empty"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+
+        <android.widget.Button
+            android:id="@+id/btn_right"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:background="@color/colorPrimary"
+            android:text="@string/empty"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+</LinearLayout>

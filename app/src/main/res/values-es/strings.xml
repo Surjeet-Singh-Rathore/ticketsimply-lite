@@ -1,0 +1,1494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Ticket Simply</string>
+    <string name="app_tag"> Simplifica tus operaciones de buses</string>
+
+    <string name="preference_file_name">Preferencias</string>
+
+    <string name="no_network_msg">Red no disponible</string>
+
+    <string name="something_went_wrong">Algo salió mal</string>
+
+    <string name="pdfurl_error">La URL del PDF no está presente</string>
+
+    <string name="logo">logo</string>
+
+    <string name="empty" />
+    <string name="reset">Reiniciar</string>
+
+    <string name="reset_login">Reiniciar Sesión</string>
+
+    <!--    <string name="already_logged_in">Tienes una sesión activa con este usuario en otro dispositivo. \n\n\n ¿Quieres iniciar sesión en este dispositivo?.</string>-->
+
+    <string name="already_logged_in">TS app se encuentra abierta en otro dispositivo. Haga click en \”Use Here\” para continuar en este dispositivo.</string>
+
+    <string name="cancel">Cancelar</string>
+
+    <string name="use_here">Usar aquí?</string>
+
+    <string name="use_here2">Usar aquí</string>
+
+    <string name="username">Usuario</string>
+
+    <string name="password">Contraseña</string>
+
+    <string name="login">Ingresar</string>
+
+    <string name="onetouchlogin">Ingreso de un toque</string>
+
+    <string name="forgot_password">Olvidó su contraseña?</string>
+
+    <string name="domain">Dominio</string>
+
+    <string name="notAvailable">N/A</string>
+
+    <string name="new_password">Ingrese nueva Contraseña</string>
+
+    <string name="confirm_new_password">Confirme nueva contraseña</string>
+
+    <string name="change_password">Cambiar contraseña</string>
+
+    <string name="verify">Verificar</string>
+
+    <string name="enter_otp">Ingrese OTP</string>
+
+    <string name="enter_otp_login">Introduzca OTP para ingresar</string>
+
+    <string name="edit_number">Editar numero</string>
+
+    <string name="busTickets">Tickets de Buses</string>
+
+    <string name="search">Buscar</string>
+
+    <string name="search_bp">Buscar punto de abordaje</string>
+
+    <string name="search_dp">Buscar punto de bajada</string>
+
+    <string name="enterSource">Ingresar Fuente</string>
+
+    <string name="enterDestination">Ingrese Destino </string>
+
+    <string name="selectDate">Fecha de Viaje</string>
+
+    <string name="recentSearch">Búsquedas recientes</string>
+
+    <string name="today">Hoy</string>
+
+    <string name="tomorrow">Mañana</string>
+
+    <string name="book_now">Reservar ahora</string>
+
+    <string name="selectReturnDate">Seleccione Fecha de retorno</string>
+
+    <string name="CALENDER_DATE">Calendario</string>
+
+    <string name="SCREEN_TAG">Etiqueta de pantalla</string>
+
+    <string name="PASSPORT">Pasaporte</string>
+
+    <string name="back">Atras</string>
+
+    <string name="otp_sent_message">OTP fué enviado a su teléfono móvil registrado</string>
+
+    <string name="selectOnwardDate">Seleccionar Fecha</string>
+
+    <string name="selectReturnDateLower">Seleccionar fecha de retorno</string>
+
+    <string name="CITY_SELECTION_TYPE">Selección de tipo de ciudad</string>
+
+    <string name="SOURCE_SELECTION">Selección fuente</string>
+
+    <string name="DESTINATION_SELECTION">Selección de Destino</string>
+
+    <string name="selectSource">Seleccionar fuente</string>
+
+    <string name="selectDestination">Seleccionar Destino</string>
+
+    <string name="SELECTED_CITY_NAME">Nombre de ciudad seleccionada</string>
+
+    <string name="SELECTED_CITY_ID">ID de ciudad seleccionada</string>
+
+    <string name="mandatory_fields_cant_be_blank">Campos obligatorios no pueden estar en blanco</string>
+
+    <string name="SELECTED_CITY_TYPE">Tipo de ciudad seleccionado</string>
+
+    <string name="JOURNEY_DATE">Fecha de viaje</string>
+
+
+    <string name="ONWARDS_DATE">Fecha en adelante</string>
+
+    <string name="TRIP_TYPE">Tipo de viaje</string>
+
+    <string name="TICKET_NUMBER">Numero del boleto</string>
+
+    <string name="CHANGE_DOMAIN">Cambiar dominio</string>
+    <string name="YES">si</string>
+
+    <string name="resend_otp">Reenviar OTP</string>
+
+    <string name="tag_block_seat">Etiqueta de asiento bloqueado</string>
+
+
+    <string name="userType">Tipo de usuario</string>
+
+    <string name="blockType">tipo de bloqueo</string>
+
+    <string name="blockDuration">Tiempo de duración del bloqueo</string>
+
+    <string name="releaseTime">Tiempo de liberación</string>
+
+    <string name="selectReccuringDays">seleccionar días recurrentes</string>
+
+    <string name="blockAll">Bloquear todos los asientos disponibles</string>
+
+    <string name="selectAgent">Selecionar agente</string>
+
+    <string name="selectBranch">Seleccionar sucursal</string>
+
+    <string name="selectUser">Seleccionar usuario</string>
+
+    <string name="selectStageUser">Seleccionar etapa de usuario</string>
+
+    <string name="dateFormat">EE, dd MMM</string>
+    <string name="timeFormat">EE, dd MMM HH:mm</string>
+    <string name="period">%1$s – %2$s</string>
+    <string name="toDate">hasta la fecha</string>
+
+    <string name="fromDate">desde la fecha</string>
+
+    <string name="selectFromDate">Seleccionar desde la fecha</string>
+
+    <string name="selectToDate">seleccionar hasta la fecha</string>
+
+    <string name="from">Desde</string>
+
+    <string name="blocking">Bloqueando</string>
+
+    <string name="noSeatSelected">Sin asientos seleccionados</string>
+
+    <string name="edit">Editar</string>
+
+    <string name="modifyDetails">Modificar detalles</string>
+
+    <string name="selectSeat">Seleccionar asiento</string>
+
+    <string name="SELECTED_SEARCHED_NAME">Nombre de ciudad seleccionada</string>
+    <string name="SELECTED_SEARCHED_ID">Id de ciudad seleccionada</string>
+
+    <string name="SELECTED_SEARCHED_TYPE">tipo de ciudad seleccionada</string>
+
+    <string name="blockSeats">bloquear asientos</string>
+
+    <string name="selectUserType">seleccionar tipo de usuario</string>
+
+    <string name="selectBlockType">Seleccionar tipo de bloqueo</string>
+
+    <string name="selectUnblockType">Seleccionar tipo de desbloqueo</string>
+
+    <string name="proceed">Proceder</string>
+
+    <string name="selected">Seleccionado</string>
+
+    <string name="selectAllSeat">Seleccionar todos los asientos para bloquear</string>
+
+    <string name="selectedAllSeat">Asientos seleccionados para bloquear</string>
+
+    <string name="selectedAvailableSeats">todos los asientos disponibles seleccionados</string>
+
+    <string name="allAvailableSeatsSelected">Todos los asientos disponibles seleccionados</string>
+
+    <string name="confirmSeats">Por favor confirme los asientos bloqueados</string>
+
+    <string name="goBack">Ir atras</string>
+
+    <string name="noOfSeats">Número de asientos</string>
+
+    <string name="selectedSeatNo">Número de asiento seleccionado</string>
+
+    <string name="blockContent">Los asientos seleccionados serán asignados a la sucursal de la oficina central</string>
+
+    <string name="blockContentUserTypes">Los asientos seleccionados se asignaran para </string>
+    <string name="unBlockContent">Los asientos seleccionados estarán disponibles para reservar</string>
+
+    <string name="selectedSeatsHeading">Asientos seleccionados(s)</string>
+
+
+    <string name="lower">Más bajo</string>
+
+
+    <string name="upper">Más Alto</string>
+
+    <string name="alertContent">Huella digital no agregada, inicie sesión con nombre de usuario y contraseña primero para agregar la configuración del formulario de huella digital</string>
+
+    <string name="okay">Okey</string>
+
+    <string name="poweredByBitla">Powered by Bitla</string>
+
+    <string name="poweredBy">Powered by</string>
+
+    <string name="enter_domain">Ingrese dominio</string>
+
+    <string name="simply_monitor_and_update_the_services">Simplemente monitoree y actualice los servicios</string>
+
+    <string name="verify_otp">Verificar OTP</string>
+
+    <string name="settings">Configuraciones</string>
+
+    <string name="logout">Cerrar sesión</string>
+
+    <string name="add">Añadir</string>
+
+    <string name="verifyAndAdd">Verify &amp; Add New User</string>
+    <string name="sendOtp">Enviar OTP</string>
+
+    <string name="reset_password">Reiniciar contraseña?</string>
+
+    <string name="code">Codigo</string>
+
+    <string name="additional_fare">Tarifa adicional</string>
+    <string name="setNewPassword">Establecer nueva contraseña</string>
+
+    <string name="setPassword">Establecer contraseña</string>
+
+    <string name="enter_mobile_number">Ingrese número telefónico</string>
+    <string name="alternative_mobile_number">Número telefónico alternativo</string>
+    <string name="primary_mobile_number">Número telefónico principal</string>
+    <string name="reset_password_caption">Por favor ingrese el número de teléfono registrado para recibir OTP y restablecimiento de contraseña</string>
+    <string name="otp">otp</string>
+
+    <string name="validOtp">Por Favor ingresar OTP válido</string>
+
+    <string name="country">País</string>
+
+    <string name="countryCode">Codigo de país</string>
+
+    <string name="countryCodeNum">+91</string>
+    <string name="passKey">Llave</string>
+
+    <string name="title_activity_test">Prueba de actividad</string>
+
+    <string name="navigation_drawer_open">Abrir cajón de navegación</string>
+
+    <string name="navigation_drawer_close">Cerrar cajón de navegación</string>
+
+    <string name="nav_header_title">Estudio Android</string>
+
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+
+    <string name="nav_header_desc">Encabezado de navegación</string>
+
+    <string name="action_settings">configuración</string>
+
+    <string name="menu_home">Inicio</string>
+    <string name="menu_gallery">Galeria</string>
+
+    <string name="menu_slideshow">Diapositivas</string>
+
+    <string name="dashboard">Tablero</string>
+
+    <string name="pick_up_chart">Planillas</string>
+    <string name="pickup_chart">Planilla</string>
+    <string name="reports">Informes</string>
+    <string name="report">informe</string>
+    <string name="downloading">Descargando…</string>
+
+    <string name="bookings">Reservasiones</string>
+    <string name="business">Negocio</string>
+    <string name="most_searched">Mas buscados</string>
+
+    <string name="last_searched_source">la última fuente buscada</string>
+    <string name="last_searched_destination">Ultimo destino buscado</string>
+
+    <string name="today_s_summary">Resumen de hoy</string>
+    <string name="blocked_tickets">Boletos Bloqueados</string>
+    <string name="booked_tickets">Boletos reservados</string>
+    <string name="cancelled_tickets">Boletos Cancelados</string>
+    <string name="departure_date">Fecha de viaje</string>
+    <string name="return_date">Fecha de retorno</string>
+    <string name="booked">Reservado</string>
+    <string name="cancelled">Cancelados</string>
+    <string name="quota_blocked">Cuota bloqueada</string>
+    <string name="phone_blocked">reserva telefónica</string>
+    <string name="is_permanent_phone_booking">es reserva telefónica permanente</string>
+    <string name="your_collection">Tú recaudación</string>
+    <string name="payable_amount">cantidad a pagar</string>
+    <string name="pending_api_tickets">Boletos API pendientes</string>
+    <string name="pending_e_tickets">Boletos electrónicos pendientes</string>
+
+    <string name="delink">Desvincular</string>
+    <string name="add_lowercase">añadir</string>
+    <string name="language">Lenguaje</string>
+    <string name="english">Ingles</string>
+
+    <string name="coach_layout">Diseño del bus</string>
+    <string name="split">Separar</string>
+
+
+    <string name="add_fingerprint_denied">Huella digital ya registrada con otro inicio de sesión. Por favor desvincule los datos biométricos existentes para agregar nuevos.</string>
+
+    <string name="fingerprint_registered">Huella digital autenticada exitosamente</string>
+
+    <string name="fingerprint_not_supported">La autenticación de huellas dactilares no es compatible con este dispositivo</string>
+
+    <string name="fingerprint_header">Escanee su dedo</string>
+    <string name="fingerprint_subheader">Se requiere autenticación</string>
+    <string name="fingerprint_description">Esta aplicación usa protección con huella digital para mantener sus datos seguros</string>
+    <string name="fingerprint_cancel_btn">Cancelar</string>
+    <string name="fingerprint_cancel_msg">Autenticación calcelada</string>
+    <string name="fingerprint_cancelled">Autenticación fue cancelada por el usuario</string>
+
+    <string name="fingerprint_settings_alert">Autenticación con huella digital no se encuentra habilitada</string>
+
+    <string name="fingerprint_permissions_alert">El permiso de autenticación de huellas digitales no está habilitado</string>
+    <string name="fingerprint_no_users_found"> No se encontró ningún usuario para esta ID de huella digital </string>
+
+    <string name="favourites"> Favoritos</string>
+    <string name="all_reports"> Todos los informes </string>
+
+    <string name="ticket_details"> Detalles del Boleto </string>
+    <string name="travel_date_colon"> Fecha de viaje : </string>
+    <string name="ticket_booked_successfully"> Boleto reservado exitosamente </string>
+
+    <string name="name"> Nombre</string>
+    <string name="gender"> Genero</string>
+    <string name="mobile_number"> Número telefónico</string>
+    <string name="mobile_number_length"> Longitud del número telefónico</string>
+    <string name="configured_login_validity_time">tiempo de validez de inicio de sesión configurado</string>
+    <string name="view_passengers"> Ver pasajeros</string>
+
+    <string name="booking_amount"> Monto de la reserva </string>
+    <string name="seats">Asientos</string>
+    <string name="boarding_point_contact"> contacto punto de embarque</string>
+    <string name="vehicle_details"> Detalles del vehiculo</string>
+    <string name="service_number">Numero de servicio</string>
+    <string name="shift_passengers"> Trasladar pasajero</string>
+    <string name="shifted">Trasladado</string>
+    <string name="update_ticket"> Actualizar boleto</string>
+    <string name="share_ticket_text"> Compartir detalles del boleto</string>
+    <string name="more_actions"> Mas acciones</string>
+    <string name="cancel_ticket">Cancelar ticket</string>
+    <string name="new_booking">Nueva reserva</string>
+    <string name="sms"> SMS</string>
+    <string name="email">Correo</string>
+    <string name="email_format">Email ID no es una dirección de email valido</string>
+
+    <string name="whatsapp"> WhatsApp</string>
+
+    <string name="release">Liberar</string>
+    <string name="no_pending_e_ticket_bookings">Sin reservas de boletos electrónicos pendientes</string>
+    <string name="no_pending_api_ticket_bookings">Sin reservas de boletos API pendientes</string>
+    <string name="enter_remarks_to_release">Ingrese sus comentarios para liberar</string>
+    <string name="release_ticket">Liberar boleto</string>
+    <string name="remarks">Comentarios</string>
+    <string name="enter_remarks">Por favor ingrese sus comentarios</string>
+    <string name="my_bookings">Mis reservas</string>
+    <string name="last_booked">Ultima reserva</string>
+    <string name="pnr">PNR</string>
+    <string name="view_ticket">Ver boleto</string>
+    <string name="view_new_ticket">Ver nuevo boleto</string>
+    <string name="edit_passenger_details">Editar detalles del pasajero</string>
+
+    <!--    <string name="cancel_ticket">Cancelar Boleto</string>-->
+    <string name="cancel_tickets">Cancelar boletos</string>
+    <string name="apply_filter">Aplicar filtro</string>
+    <string name="filter_by">Filtrar por</string>
+    <string name="sortfilter_by">Ordenar/Filtrar</string>
+    <!--<string name="pnr_search">Busqueda de Boleto</string>-->
+    <string name="pnr_search">Buscar</string>
+    <string name="update_passenger_details">Actualizar detalles del pasajero</string>
+    <string name="update_ticket_details">Actualizar detalles del boleto</string>
+    <string name="boarding_at">Embarcar en</string>
+    <string name="drop_off_at">Dejar en</string>
+
+    <!--    <string name="update_ticket">Actualizar boleto</string>-->
+    <string name="sms_passenger_with_new_details">Enviar SMS al pasajero con los nuevos detalles</string>
+
+    <string name="update_personal_details">actualizar datos personales</string>
+    <!--    <string name="name">nombre</string>-->
+
+    <string name="phone_number">Número telefónico</string>
+    <string name="email_id">Identificación de correo</string>
+    <string name="update_now">Actualizar ahora</string>
+    <string name="update">Actualizar</string>
+    <string name="save">Guardar</string>
+    <string name="age">Edad</string>
+    <string name="place_of_issue">lugar de emición</string>
+    <string name="issue_date">Fecha de emición</string>
+    <string name="expiry_date">Fecha de expiración</string>
+    <!--    <string name="gender">Genero</string>-->
+    <string name="sms_sent">Se enviará un SMS al pasajero con los nuevos datos</string>
+    <string name="ticket_cancellation">Cancelacion de boleto</string>
+    <string name="on_behalf_of">En nombre de</string>
+
+    <string name="cancellation_type">Tipo de cancelación</string>
+    <string name="cancellation_percentage">Porcentaje de cancelación</string>
+    <string name="cancellation_charges">Cargos por cancelacioón</string>
+    <string name="inform_passengers_about_cancellation">Informar a los pasajeros sobre la cancelación</string>
+    <string name="select_seats_to_cancel">Seleccionar asientos para cancelar</string>
+    <string name="refund_type">Tipo de reembolso</string>
+    <string name="percentage">Porcentaje</string>
+    <string name="fixed">Fijo</string>
+    <string name="confirm_cancellation">Confirmar cancelación</string>
+    <string name="selected_seat_s_will_be_cancelled">Los asientos seleccionados seran cancelados y se notificará al pasajero vía SMS</string>
+    <string name="selected_seat_s_will_be_assigned">Los asientos seleccionados serán asignados a la sucursal de la oficina central</string>
+    <string name="seat_no">Numero de asiento</string>
+    <string name="select_seats">Seleccionar asientos para cancelar</string>
+    <string name="apply">Aplicar</string>
+    <string name="select_all">Seleccionar todo</string>
+
+    <string name="hello_blank_fragment">Hola fragmento blanco</string>
+    <string name="current_location">Ubicación actual</string>
+    <string name="send_sms">Enviar SMS</string>
+    <string name="announcement">Anuncio</string>
+
+    <string name="lock_chart">Bloquear Planilla</string>
+
+    <string name="clear_all">Limpiar todo</string>
+    <string name="filter_only_active_services">Filtrar solo por servicios activos</string>
+    <string name="from_city">Desde ciudad</string>
+
+    <string name="lock_chart_message">ADVERTENCIA: La planilla será bloqueada para el servicio seleccionado, no recibirás ventas o cancelaciones ya que no estarán permitidas</string>
+
+    <string name="multi_station">Multiestación</string>
+    <string name="amount_type">Tipo de monto</string>
+    <string name="increase_or_decrease_fare">Incrementar o disminuir tarifa</string>
+    <string name="inc_percentage">Inc Porcentaje</string>
+    <string name="add_percentage">Agregar Porcentaje</string>
+    <string name="decrease">Disminuir</string>
+    <string name="increase">Incrementar</string>
+    <string name="modify_service">Modificar servicio</string>
+    <string name="increase_or_decrease">Incrementar o disminuir?</string>
+    <string name="time">Tiempo</string>
+    <string name="hhFormat">HH</string>
+    <string name="mmformat">MM</string>
+    <string name="modify">Modificar</string>
+    <string name="amount">Monto</string>
+    <string name="enter_new_fare">Ingresar nueva tarifa</string>
+    <string name="modify_commision">Modificar comisión</string>
+    <string name="rate">Precio</string>
+    <string name="announcement_languages">Anuncios de idioma</string>
+    <string name="select_city_and_reason_type">Selecciona ciudad y motivo</string>
+    <string name="select_city">Selecciona ciudad</string>
+    <string name="announce_message">Mensajes</string>
+    <string name="bulk_cancel_tickets">Cancelación de boletos</string>
+    <string name="booked_by">Vendido por ti</string>
+    <string name="collection">Recaudación</string>
+    <string name="yet_to_board">Por Abordar</string>
+    <string name="edit_chart">Modificar Planilla</string>
+    <string name="reservation_chart">Planilla de reserva</string>
+    <string name="_0_blocked_seats">0 asientos bloqueados</string>
+    <string name="extend_fare_settings">Extender configuración de tarifas</string>
+    <string name="block">Bloquear</string>
+    <string name="book">Venta</string>
+    <string name="fares">Tarifas</string>
+    <string name="update_rate_card">Actualizar tarifario</string>
+    <string name="rapid_book">Venta Rapida</string>
+    <string name="service_details">Actualizar detalles</string>
+    <string name="onward">Ida</string>
+    <string name="returnn">Retorno</string>
+    <string name="all_passengers">Todos los pasajeros</string>
+
+    <string name="selected_passengers">Pasajeros seleccionados</string>
+    <string name="notifyAll">Notificar a todos los pasajeros sobre información importante</string>
+    <string name="notifySelected">Notificar a los pasajeros seleccionados sobre informacion importante</string>
+    <string name="select_sms">Seleccionar SMS</string>
+    <string name="select_sms_from_list">Seleccionar SMS de la lista</string>
+    <string name="sms_all_emergency_contacts">Enviar SMS a todos los contactos de emergencia</string>
+    <string name="done">Hecho</string>
+    <string name="custom_message">Mensaje personalizado</string>
+    <string name="enter_message">Ingresar Mensaje</string>
+    <string name="confirm_message">Confirmar Mensaje</string>
+    <string name="max_140_characters">Maximo 140 caracteres</string>
+    <string name="type_your_custom_message_here">Escriba su mensaje personalizado aquí</string>
+
+    <string name="sendSms">Enviar SMS</string>
+    <string name="message">Mensaje</string>
+    <string name="passengers">Pasajeros</string>
+    <string name="pnr_number">Número de Boleto</string>
+    <string name="passenger">Pasajero</string>
+
+    <!--    <string name="seats">Asientos</string>-->
+
+    <string name="count">Contar : </string>
+
+    <string name="select_sms_message">Seleccionar mensaje para SMS</string>
+    <string name="crew_details">Detalles de tripulacion</string>
+    <string name="Book_Tickets">Reservar boletos</string>
+    <string name="expense_details">Detalles de gastos</string>
+    <string name="scan">Escanear</string>
+    <string name="coach_details">Detalles del Bus</string>
+    <string name="select_coach">Seleccionar Bus</string>
+    <string name="driver_amp_crew_details"><![CDATA[Conductor y datos de tripulacion]]></string>
+    <string name="add_adhoc_driver">Add ADHOC Driver</string>
+    <string name="cleaner">Auxiliar</string>
+    <string name="contractor">Asistente</string>
+    <string name="chart_operated_by">Planilla operada por</string>
+    <string name="checking_inspector">Inspector de ruta</string>
+    <string name="add_driver">Añadir Conductor</string>
+    <string name="personal_details">Detalles personales</string>
+    <string name="full_name">Nombre Completo</string>
+    <string name="first_name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="sex">Genero</string>
+    <string name="date_of_birth">Fecha de nacimiento</string>
+    <string name="pin_code">Codigo PIN</string>
+
+    <string name="pin_code_length_msg">Codigo debe tener 6 caracteres</string>
+    <string name="esi">ESI</string>
+    <string name="pf">PF</string>
+    <string name="uan_no">UAN No</string>
+    <string name="address">Direccion</string>
+    <string name="city">Ciudad</string>
+
+    <string name="travel_branch">Sucursal de viaje</string>
+    <string name="state">Estado</string>
+    <string name="professional_details">Detalles profesionales</string>
+    <string name="driving_license">Licencia de Conducir</string>
+    <string name="driving_license_expiry">Fecha de expiración DL</string>
+    <string name="driving_license_issuing_authority">Autoridad que expide la licencia de conducir</string>
+    <string name="badge_no">Insignia</string>
+    <string name="bank_details">Detalles bancarios</string>
+    <string name="bank_name">Nombre del banco</string>
+    <string name="branch_name">Nombre de sucursal</string>
+    <string name="account_number">Numero de cuenta</string>
+    <string name="ifsc_code">Código IFSC</string>
+    <string name="micr_code">Codigo MICR</string>
+    <string name="beneficiary_name">Nombre del beneficiario</string>
+    <string name="account_type">Tipo de cuenta</string>
+    <string name="payment_type">Tipo de pago</string>
+    <string name="scan_qr_code">Escaneo de codigo QR</string>
+    <string name="successfully_added_details">Detalles añadidos satisfactoriamente</string>
+    <string name="crew_expenses">Gastos de tripulación</string>
+    <string name="rto">RTO</string>
+    <string name="tolls">Herramientas</string>
+    <string name="checkpost">Puesto de control</string>
+    <string name="driver_bata">Driver bata</string>
+    <string name="pooja">Pooja</string>
+    <string name="cleaning_bata">Cleaning Bata</string>
+    <string name="last_closing_kms">Últimos kilómetros de cierre</string>
+    <string name="vehicle_expenses">Gastos de Vehiculo</string>
+    <string name="vehicle_emi">Vehicle EMI</string>
+    <string name="permits">Permisos</string>
+
+    <string name="insurance">Seguro</string>
+    <string name="home_state_tax">Impuesto estatal</string>
+
+    <string name="ts_tax">Impuesto Ts</string>
+    <string name="ka_tax">Impuesto KA</string>
+    <string name="inter_state_tax">Impuesto Interestatal</string>
+    <string name="fast_tag">Fast Tag</string>
+    <string name="pump_expenses">Gastos de combustible</string>
+    <string name="empty_seats">Asientos vacios</string>
+    <string name="booked_seats">Asientos reservados</string>
+    <string name="enter_details_to_fill_seat_s">Ingrese los detalles para llenar los asiento(s)</string>
+    <string name="updateChart">Actulalizar planilla</string>
+    <string name="select_seat">Seleccionar asiento</string>
+    <string name="boarding_point">Punto de abordaje</string>
+    <string name="dropping_point">Punto de bajada</string>
+    <string name="modify_details">Modificar detalles</string>
+    <string name="sms_passenger_about_change">Envíar SMS sobre los cambios al pasajero</string>
+
+    <string name="download">  Descargar</string>
+    <string name="bus_income_report">  Reporte de ingresos del bus</string>
+    <string name="starred_reports">  Informes destacados</string>
+    <string name="generate_report">  Generar reportea</string>
+    <string name="generate_report_download"><![CDATA[Generar y Descargar reporte]]></string>
+
+    <string name="recently_generated_reports">Reportes generados recientemente</string>
+    <string name="generated_on">Generados en</string>
+    <string name="updated">  Actualizados</string>
+    <string name="updatedUpperCase">ACTUALIZADOS</string>
+    <string name="ticket_no">  Numero de boleto</string>
+    <string name="blocked_tentatively">  Bloqueado tentativamente </string>
+    <string name="service">  Servicio</string>
+    <string name="contact">  Contacto</string>
+    <string name="boarding_at_colon"> Abordaje en:</string>
+    <string name="ip_address"> Direccion IP</string>
+    <string name="gds_pnr_ref"> Referencia de boleto GDS</string>
+    <string name="booking_source"> Fuente de reservación:</string>
+    <string name="passengers_s"> Pasajero(s)</string>
+    <string name="add_to_starred_tab"> Añadir reporte a pestaña destacados</string>
+
+    <string name="select_report_type"> Seleccionar tipo de reporte</string>
+    <string name="select_service"> Seleccionar servicio</string>
+    <string name="confirm_new_booking">Confirmar reserva telefónica</string>
+    <string name="partially_cancelled_ticket">Ticket cancelado parcialmente</string>
+    <string name="partially_cancelled">Cancelado Parcialmente</string>
+    <string name="phone_booking">Ticket sin Confirmar/ Reserva Telefónica</string>
+    <string name="phone_booking_title"> Reserva Telefónica</string>
+    <string name="booking_failed"> Falló la reservación</string>
+    <string name="retry_booking">Reintentar reserva</string>
+    <string name="go_to_home_page">Ir a página de inicio</string>
+
+
+    <string name="include_mobile_number_of">Incluir número telefónico de</string>
+
+    <string name="include_mobile_number">Incluir numero telefónico de</string>
+    <string name="bus_number">Numero de bus</string>
+    <string name="driver_name">Nombre del conductor</string>
+    <string name="bus_delayed_by">Bus retrasado por</string>
+    <string name="rapid_booking">Reserva rápida</string>
+    <string name="select_boarding_point">Seleccionar punto de abordaje</string>
+    <string name="select_dropping_point">Seleccionar punto de bajada</string>
+    <string name="number_of_tickets">Numero de boletos</string>
+    <string name="boarding_amp_dropping_point"><![CDATA[Puntos de Abordaje y Bajada]]></string>
+    <string name="enter_number_of_tickets">Ingresar numero de boletos</string>
+    <string name="confirm">Confirmar</string>
+    <string name="quick_booking_details">Detalles de reserva rapida</string>
+    <string name="origin">Origen</string>
+    <string name="destination">Destino</string>
+    <string name="source_id">ID de fuente</string>
+    <string name="destination_id">ID de destino</string>
+    <string name="travel_date">Fecha de viaje</string>
+    <string name="travel_agent">Agente de viaje</string>
+    <string name="seat_nos">Numeros de asiento</string>
+    <string name="passenger_details">Detalles del pasajero</string>
+    <string name="hide_booking_details">Ocultar detalles de reserva</string>
+    <string name="boarding">Abordaje</string>
+    <string name="dropping">Bajada</string>
+    <string name="sms_will_be_sent_to_this_number">Se enviará SMS a este número</string>
+    <string name="share_details_on_whatsapp">Compartir detalles en Whatsapp</string>
+    <string name="payment_options">Opciones de pago</string>
+    <string name="collect">Colectar</string>
+    <string name="contact_details">Detalles de contacto</string>
+    <string name="do_phone_booking">Hacer reserva telefónica </string>
+    <string name="not_specified">No especificado</string>
+    <string name="phone_blocking_hours">Horas de bloqueo por reserva telefónica</string>
+    <string name="use">Usar</string>
+    <string name="select_date">Seleccionar Fecha</string>
+    <string name="permanent_blocking">Bloqueo permanente</string>
+    <string name="hh">HH</string>
+    <string name="mm">MM</string>
+    <string name="sort_by">Ordenar por</string>
+    <string name="collection_by_agents">Recaudación por agentes</string>
+
+    <string name="total_selected_tickets">Total de tickets seleccionados: </string>
+    <string name="no_of_tickets_selected">Número de tickets seleccionados</string>
+    <string name="no_of_bookings_remaining">Número de reservaciones restantes después de la cancelación</string>
+    <string name="select_reason_type">Seleccionar tipo de motivo</string>
+    <string name="select_message">Seleccionar mensaje</string>
+    <string name="announcement_message">Mensaje de anuncio</string>
+    <string name="select_the_reason_below_to_complete_the_message">Seleccionar el motivo debajo para completar el mensaje</string>
+    <string name="update_passenger_status">Actualizar estado del pasajero</string>
+    <string name="stop_playing">Deterner reproducción</string>
+    <string name="multistation_fare">Tarifa multiestación</string>
+    <string name="confirmBooking">Confirmar reserva</string>
+    <string name="confirmPhoneBooking">Confirmar reserva telefónica</string>
+    <string name="confirm_this_phone_booking">¿Está seguro de que quiere confirmar esta reserva telefónica?</string>
+    <string name="confirm_this_booking">¿Está seguro de querer confirmar esta reserva?</string>
+    <string name="no_dont_confirm">No, no confirmar</string>
+    <string name="yes_continue">Si, continuar</string>
+    <string name="service_summary">Resumen del servicio</string>
+    <string name="branch_booking">Reserva por sucursal</string>
+    <string name="e_booking">Reserva electrónica</string>
+    <string name="passenger_details_toolbar_subtitle">15 Sep 2020 | 08:30 - 12:30 | 2+2, Semi Sleeper,AC, LED (4</string>
+
+    <string name="passenger_on">Pasajero en</string>
+    <string name="filled">Lleno</string>
+    <string name="not_filled">No llenado</string>
+    <string name="fare">Tarifa</string>
+    <string name="male">M</string>
+    <string name="female">F</string>
+    <string name="genderM">Masculino</string>
+    <string name="genderF">Femenino</string>
+    <string name="enter_details">Ingresar detalles</string>
+    <string name="id_type">Tipo de identificación</string>
+    <string name="id_number">Número de identifición</string>
+    <string name="same_details">Copiar los mismos detalles para todos los pasajeros</string>
+    <string name="a1">A1</string>
+    <string name="a2">A2</string>
+    <string name="a3">A13</string>
+    <string name="RuppeeSymbol">\u20B9</string>
+    <string name="additional_fare_discount"><![CDATA[tarifa adicional y descuento]]> </string>
+    <string name="source_amp_destination"><![CDATA[Origen y destino]]></string>
+    <string name="from_service">Desde el servicio</string>
+    <string name="to_service">Hacia el servicio</string>
+    <string name="shift_remaining_seats">Mover los asientos restantes a un asiento extra</string>
+    <string name="shift_all_seats_to_extra">Trasladar todos los asientos a un asiento extra</string>
+    <string name="cancellation_policy">Politica de cancelación</string>
+
+    <string name="verify_boarding">Verificar abordaje</string>
+    <string name="scan_qr">Escanear QR</string>
+    <string name="passenger_temprature">Temperatura del pasajero</string>
+    <string name="via_qr_code">Codigo QR VIA</string>
+    <string name="add_new_user">Añadir nuevo usuario</string>
+    <string name="mst_281_current_service">MST-281(Servicio-Actual)</string>
+    <string name="seat_legends">Leyenda de asientos</string>
+    <string name="confirmShifting">Confirmación de traslados</string>
+    <string name="confirmShiftingPassenger">Confirmar traslado de pasajeros</string>
+    <string name="shiftPassengerContent">Esta acción no puede ser reversada, por favor verifique los detalles antes de continuar</string>
+    <string name="successfully_shifted_passengers">Pasajeros trasladados exitosamente</string>
+    <string name="successfully_updated_ticket">Boleto atualizado exitosamente</string>
+    <string name="successfully_released_ticket">Boleto liberado exitosamente</string>
+    <string name="successfully_cancelled_ticket">Ticket cancelado exitosamente</string>
+    <string name="successfully_modified_service">Servicio modificado exitosamente</string>
+    <string name="cancelled_ticket">Ticket cancelado</string>
+    <string name="shifted_successful">Traslado exitoso</string>
+    <string name="booking_edit">Editar reserva</string>
+    <string name="booking_close">Cierre de reserva</string>
+    <string name="released_by">Liberado por</string>
+    <string name="open_calender">Calendario abierto</string>
+    <string name="quick_actions">Acciones rapidas</string>
+    <string name="of">de</string>
+    <string name="availability">Disponibilidad</string>
+    <string name="blockedSeats">Asientos bloqueados</string>
+    <string name="hours">H</string>
+
+    <string name="seats_available">4 asientos disponibles</string>
+    <string name="more_seats">+3 mas</string>
+    <string name="select_new_service">Seleccionar servicio de la lista</string>
+
+    <string name="sms_passenger_ticket_released">Enviar un SMS al pasajero notificando la liberación</string>
+<string name="release_seat">Liberar asiento</string>
+    <string name="additional_details">Detalles adicionales</string>
+    <string name="coupon_code">Codigo de cupón</string>
+    <string name="enter_coupon_code">Ingresar Cupón</string>
+
+    <string name="pre_postpone_ticket">Cambio de Fecha</string>
+    <string name="privilege_card">Tarjeta de privilegios</string>
+    <string name="privilege_card_number">Numero de tarjeta de privilegios</string>
+    <string name="gst_details">Detalles GST</string>
+    <string name="apply_smart_miles">Viajero Frecuente</string>
+    <string name="discount_amount">Monto de descuento</string>
+    <string name="discount">Descuento</string>
+    <string name="quote_previous_pnr">Boleto anterior</string>
+    <string name="vip_ticket">Boleto VIP</string>
+    <string name="vip_ticket_free">Boleto VIP gratis</string>
+    <string name="free_ticket">Ticket gratis</string>
+    <string name="mobile_privilege_number">Número telefónico / numero de tarjeta de privilegios</string>
+    <string name="enter_discount_amount">Ingresar monto de descuento</string>
+    <string name="enter_smart_miles_number">Ingresar puntos viajero frecuente</string>
+    <string name="enter_gst_number">Ingresar numero GST</string>
+    <string name="enter_company_name">Ingresar nombre de empresa</string>
+    <string name="enter_pnr_number">Ingresar numero de Boleto</string>
+    <string name="enter_phone_number">Ingresar Número telefónico</string>
+    <string name="edit_price">Editar precio</string>
+    <string name="delete_recent_search">Borrar búsqueda frecuente</string>
+    <string name="tag">etiqueta</string>
+    <string name="validate_boarding_point">Por favor seleccione punto de abordaje</string>
+    <string name="validate_drop_off">Por favor seleccione el punto de bajada</string>
+    <string name="validate_no_of_tickets">Por favor ingresar número de tickets</string>
+    <string name="bus_type">Tipo de bus</string>
+    <string name="dep_time">Hora de salida</string>
+    <string name="toolbar_title">Título de la barra de herramientas</string>
+    <string name="select_location">Seleccionar ubicación</string>
+    <string name="sms_template_object">Plantilla SMS</string>
+    <string name="validate_employee_type">Por favor seleccionar Tipo de empleado</string>
+    <string name="validate_check_sms">"Por favor Seleccione Enviar SMS para enviar sms"</string>
+    <string name="validate_bus_number">Ingresar numero de bus</string>
+    <string name="validate_driver_name">Ingresar nombre del conductor</string>
+
+    <string name="validate_mobile_number">Ingresar número telefónico</string>
+    <string name="validate_hours">Por favor ingrese horas de retraso</string>
+    <string name="validate_minutes">Por favor seleccione minutos de retraso</string>
+    <string name="dont_send_sms">No enviar SMS</string>
+    <string name="seat_block_successful">\u2713 &#160; Asientos Bloqueados Exitosamente</string>
+    <string name="unblock_seat">Desbloquear</string>
+    <string name="seat_unblock_unsuccessful">\u2713 &#160; Asientos desbloqueados exitosamente</string>
+
+    <string name="cancel_dialog_go_back">Cancelar dialogo ir atras</string>
+    <string name="confirm_cancel">Confirmar Cancelar</string>
+    <string name="doj">DOJ:</string>
+    <string name="doj_">DOJ</string>
+    <string name="expires_in">Caduca en</string>
+
+    <string name="min">min</string>
+    <string name="tickets">Ticket(s)</string>
+    <string name="can_not_update_ticket">Usted no puede actualizar este boleto</string>
+    <string name="opps">Oops, algo salió mal</string>
+    <string name="put_extra_cancelTicket">Cancelar Ticket</string>
+    <string name="put_extra_bulkTicketUpdate">Actualización masiva de boletos</string>
+    <string name="boarding_point_key">Clave de punto de abordaje</string>
+    <string name="dropping_point_key">Clave de punto de bajada</string>
+    <string name="boarding_point_id_key">ID de Clave de punto de abordaje</string>
+    <string name="dropping_point_id_key">ID de Clave de punto de bajada</string>
+    <string name="confirmed_bookings">Reservas confirmadas</string>
+    <string name="cancelled_bookings">Reservas canceladas</string>
+    <string name="phone_blockings">Reservas telefónicas</string>
+    <string name="seat_blockings">Asientos bloqueados</string>
+    <string name="validate_message">Por favor ingrese un mensaje</string>
+    <string name="validate_message_manage_fare">Por favor ingrese un mensaje</string>
+    <string name="dash">-</string>
+    <string name="total_seats">Asientos totales</string>
+    <string name="validate_passenger">"Por favor seleccione un pasajero "</string>
+    <string name="e_release_ticket">"Liberar boleto electrónico"</string>
+    <string name="api_release_ticket">"Liberar boleto API"</string>
+    <string name="rupess_symble">"₹"</string>
+    <string name="blocked">"Bloqueado"</string>
+    <string name="blocked2">"BLOQUEADO"</string>
+    <string name="locked">"Bloqueado"</string>
+    <string name="internet_check">Por favor verifique su conexión a internet</string>
+    <string name="network_error">Sin internet, por favor intente más tarde</string>
+    <string name="network_error_msg">Por favor verifique su conexión wifi La aplicación se reiniciará automáticamente al restablecer la conexión</string>
+    <string name="invalid_pnr_number">Numero de Boleto es invalido</string>
+
+    <string name="note_phone_blocked_ticket">
+   NOTA: Este no es un boleto confirmado. Este boleto es válido hasta la liberación manual. Recoja el pago completo y confirme el boleto.
+</string>
+    <string name="tag_book_seat">Etiqueta de asiento reservado</string>
+    <string name="service_summary_type">Tipo de resumen de servicio</string>
+    <string name="agent_name">Nombre de agente</string>
+    <string name="dropping_points">Puntos de bajada</string>
+    <string name="boarding_points">Puntos de abordaje</string>
+    <string name="boarding_from">Abordar desde</string>
+    <string name="multistation">Multiestación</string>
+    <string name="multistation_booking">Reserva Multiestación</string>
+    <string name="status">Estado</string>
+    <string name="released_tickets">Tickets liberados</string>
+    <string name="summary">Resumen</string>
+    <string name="amenities">Comodidades</string>
+    <string name="cancellation">Cancelación</string>
+    <string name="at">en</string>
+    <string name="to">a</string>
+    <string name="summary_value">0.0</string>
+    <string name="fare_updated_successfully">\u2713 &#160; Tarifa actualizada exitosamente</string>
+    <string name="route">Ruta</string>
+    <string name="routeId">Id de ruta</string>
+    <string name="to_city">A la ciudad</string>
+    <string name="total_blocked_seats">Asientos bloqueados por tiempo</string>
+    <string name="including_multistation">Incluyendo multiestación</string>
+    <string name="total_booked_seats">Total de asientos reservados</string>
+    <string name="total_revenue">Ingresos totales</string>
+    <string name="total_quota_seats">Total de asientos bloqueados</string>
+    <string name="summary_all_services">Resumen(todos los servicios)</string>
+    <string name="allow_reservation">Permite reservación?</string>
+    <string name="reservation">Rerservación</string>
+    <string name="allowe_reservation_message">El servicio seleccionado se marcará como "Reserva permitida"</string>
+    <string name="block_reservation">Reservación bloqueada?</string>
+    <string name="block_reservation_message">ADVERTENCIA: CLa planilla se bloqueará para el servicio seleccionado, no recibirá ninguna reserva y no se permitirá la cancelación.</string>
+    <string name="indo">eng</string>
+    <string name="show_group_by_hubs">Mostrar grupos por HUBS</string>
+    <string name="all_services">TODOS LOS SERVICIOS</string>
+    <string name="all_services_title_case">Todos los Servicios</string>
+    <string name="booking_type">Tipo de reserva</string>
+    <string name="selectBookingType">Seleccionar tipo de reserva</string>
+    <string name="walkin">Entrar</string>
+    <string name="online_agent">Agente en linea</string>
+    <string name="offline_agent">Agente fuera de linea</string>
+    <string name="branch">Sucursal</string>
+    <string name="amount_paid_offline">Monto pagado fuera de linea</string>
+    <string name="booking">Reserva</string>
+    <string name="service_type">Tipo de servicio</string>
+    <string name="CITY_SELECTION">Seleccion de ciudad</string>
+    <string name="enter_reference_number">Ingrese Numero de referencia</string>
+    <string name="validate_branch">Por favor Seleccione la sucursal</string>
+    <string name="cash">Efectivo</string>
+    <string name="credit_debit">Tarjeta de Debito/Credito</string>
+    <string name="creditdebit">Credito/debito</string>
+    <string name="wallet">Billetera</string>
+    <string name="others">Otros</string>
+    <string name="enter_last_4_digits_of_credit_debit_card">Ingrese los ultimos 4 dígitos de la tarjeta de Credito/Debito</string>
+    <string name="creditdebit_card_length_should_be_4">El número ingresado debe ser de longitud 4</string>
+    <string name="other_payment_options">Otras opciones de pago</string>
+    <string name="continue_last_search">Continuar la última búsqueda</string>
+    <string name="mandatory">Obligatorio</string>
+    <string name="optional">Opcional</string>
+    <string name="hide">Ocultar</string>
+    <string name="delete_passenger">Borrar pasajero?</string>
+<string name="options">Opciones</string>
+
+    <string name="modify_origin_destination"><![CDATA[Modificar origen y destino]]></string>
+    <string name="move_to_extra_seat">Mover a asiento extra</string>
+    <string name="extra_seat_number">Asiento Extra No</string>
+    <string name="move">Mover</string>
+    <string name="seat_is_booked">Este asiento está reservado</string>
+    <string name="service_is_blocked">Este servicio está bloqueado</string>
+    <string name="this_seat_is_blocked">Este asiento está Bloqueado</string>
+    <string name="book_extra_seats">Reservar asiento Extra(s)</string>
+    <string name="none">ninguno</string>
+    <string name="no_bookings_yet">Sin reservas aun</string>
+    <string name="driver">CONDUCTOR</string>
+    <string name="cheking_inspector">INSPECTOR DE RUTA</string>
+    <string name="collection_person">RECAUDADOR</string>
+    <string name="contractor2">ASISTENTE</string>
+    <string name="cleaner2">AUXILIAR2</string>
+    <string name="details">Detalles</string>
+    <string name="netAmount">Monto neto</string>
+    <string name="inc_gst">(Incluir GST)</string>
+    <string name="collet_cash">Cobrar</string>
+    <string name="and">y</string>
+
+    <string name="validate_card_number">Por favor ingrese numero de tarjeta valido</string>
+    <string name="enter_ticket_number">Ingrese numero de boleto</string>
+    <string name="invalid_otp">Codigo invalido</string>
+    <string name="price_low">Precio bajo</string>
+    <string name="price_high">Precio alto</string>
+    <string name="departing_early">Saliendo Temprano</string>
+    <string name="departing_late">Saliendo tarde</string>
+    <string name="left">Izquierda</string>
+    <string name="mr">Mr</string>
+    <string name="ms">Ms</string>
+    <string name="title">Titulo</string>
+    <string name="ticket_price_for_selected_seats_is">Tel precio para los boletos seleccionados es </string>
+    <string name="please_select_boarding_point_first">Por favor seleccione punto de abordaje primero</string>
+    <string name="validate_seat">Por favor seleccionar asiento</string>
+    <string name="validate_phone_no">Ingresar número de teléfono válido</string>
+    <string name="validate_name">Por favor seleccionar nombre</string>
+    <string name="select_boarding_stage">Seleccionar punto de abordaje</string>
+    <string name="select_dropping_stage">Seleccionar punto de bajada</string>
+    <string name="available">Disponible</string>
+    <string name="canceling">Cancelando</string>
+    <string name="proceed_to_cancel">Proceder a cancelar</string>
+    <string name="resend_qr">Reenvíar código QR</string>
+    <string name="skip_verificaiton">Saltar verificación</string>
+    <string name="alreadyBoarded">Este asiento ya ha sido abordado</string>
+    <string name="sortByStaging">Ordenado por punto de abordaje</string>
+    <string name="nothing_to_show">Nada que mostrar</string>
+    <string name="show_all">Mostrar todo</string>
+    <string name="rate_card_fare">Tarifa</string>
+    <string name="rate_card_time">Tiempo</string>
+    <string name="rate_card_commission">Comision</string>
+    <string name="rupeeSybbol">\u20B9</string>
+    <string name="modifyFare">Modificar tarifa</string>
+    <string name="edit_seat_fare">Editar tarifa por asiento</string>
+    <string name="current_seat_fare">La tarifa actual del asiento es </string>
+    <string name="scannedUserId">Id de usuario escaneado</string>
+    <string name="scannedUserName">Nombre de usuario escaneado</string>
+    <string name="passenger_cannot_be_shifted">Pasajero no puede ser trasladado</string>
+    <string name="current_service">(Servicio Actual)</string>
+    <string name="select_seat_manually">Seleccionar asiento manualmente</string>
+    <string name="view_coach_layout">Ver Diseño del bus</string>
+    <string name="seat_layout">Tipo de asiento</string>
+    <string name="new_seats_assigned">Nuevos asientos asignados</string>}
+    <string name="close">Cerrar</string>
+    <string name="new_service_selected">Nuevo Servicio Seleccionado</string>
+    <string name="occupy_similar_seats_in_new_service_by">Ocupar asientos similares en el nuevo servicio</string>
+
+    <string name="select_seats_manually">Seleccionar asientos manualmente</string>
+    <string name="auto_match_by_seat_no">Coincidencia automática por número de asiento</string>
+    <string name="auto_match_by_rows_and_coloums">Coincidencia automática por filas y columnas</string>
+    <string name="auto_select_seats"> Asientos auto seleccionados </string>
+    <string name="same_service">(Mismo Servicio)</string>
+    <string name="applied_coupons">Cupones aplicados</string>
+    <string name="phone_blocking_use_btn">Usar botón de bloqueo telefónico</string>
+    <string name="phone">Teléfono</string>
+    <string name="TICKET_STATUS">Estado del boleto</string>
+    <string name="pm">PM</string>
+    <string name="am">AM</string>
+    <string name="extra_seats_booked">Asientos extra reservados</string>
+    <string name="res_id">ID de reservación</string>
+
+    <string name="apply_date">Fecha de aplicación</string>
+    <string name="successfully_created_rate_card">\u2713 &#160; Tarifario creado exitosamente</string>
+    <string name="edit_fare">Editar tarifa</string>
+    <string name="current_total_fare_is">Tarifa total actual es</string>
+    <string name="unauthorized">Sin autorización</string>
+    <string name="please_try_again">Por favor intente de nuevo</string>
+    <string name="fare_edited_successfully">Tarifa editada exitosamente</string>
+    <string name="delete">Borrar</string>
+    <string name="updateRateCard_resId">updateRateCard_resId</string>
+    <string name="updateRateCard_origin">ActualizarTarifario_origen</string>
+    <string name="updateRateCard_destination">ActualizarTarifario_Destino</string>
+    <string name="updateRateCard_originId">ActualizarTarifario_IdDeOrigen</string>
+    <string name="updateRateCard_destinationId">ActualizarTarifario_IdDeDestino</string>
+    <string name="updateRateCard_travelDate">ActualizarTarifario_FechaDeViaje</string>
+    <string name="updateRateCard_busType">ActualizarTarifario_TipoBus</string>
+    <string name="view_summary">Ver Resumen</string>
+
+    <string name="occupancy">Ocupación</string>
+    <string name="recharge">Recargar</string>
+    <string name="rechargeFor">Recargar para</string>
+    <string name="agent">Agente</string>
+    <string name="role_agent">Agente</string>
+    <string name="role_field_officer">Oficial de Campo</string>
+    <string name="transactionType">Tipo de Transacción</string>
+    <string name="description">Descripción</string>
+    <string name="select">Seleccionar</string>
+    <string name="date">Fecha</string>
+    <string name="enterAmount">Ingresar Monto</string>
+    <string name="addDescription">Agregar descripción</string>
+    <string name="enterDdNumber">Ingresar Día</string>
+    <string name="enterChequeNumber">Enter Cheque Number</string>
+    <string name="API_KEY">Lave API</string>
+    <string name="AUTH_TOKEN">Token de autorización</string>
+    <string name="hr">Hrs</string>
+    <string name="no_service_available">Servicio no disponible</string>
+    <string name="not_authorized_to_access">No está autorizado para acceder, por favor contacte al administrador de Bitla</string>
+    <string name="deviation">Desviación</string>
+    <string name="pick_up_drop">Recogida/Entrega</string>
+    <string name="send_sms_extra_seat">Enviar SMS al pasajero sobre el cambio de SERVICIO y NÚMEROS DE ASIENTO</string>
+    <string name="select_seat_number">Seleccionar número de asiento</string>
+    <string name="view_reservation_chart">Ver planilla de Reservas</string>
+    <string name="moving_to_extra_seat_numbers">Pasar a números de asiento adicionales</string>
+    <string name="dropped_off">Dejado en</string>
+    <string name="missing_status">Perdido</string>
+    <string name="no_show">No mostrar</string>
+    <string name="boarded_status">Abordado</string>
+    <string name="boarded_switch">Abordado?</string>
+    <string name="unboarded_status">Desembarcado</string>
+    <string name="report_downloaded">Informe Descargado</string>
+    <string name="luggage">Equipaje</string>
+    <string name="item_description">Descripción del Artículo</string>
+    <string name="quantity">Cantidad</string>
+    <string name="resend_sms_qr_code">Reenviar código QR/SMS</string>
+    <string name="navigate_back_to_dashboard">Navegar de regreso al Dashboard</string>
+    <string name="storage_permission_granted">Permiso de almacenamiento concedido</string>
+    <string name="storage_permission_denied">Permiso de almacenamiento denegado</string>
+    <string name="validate_from_date">Seleccione desde la fecha</string>
+    <string name="validate_to_date">Seleccione hasta la fecha</string>
+    <string name="date_compare">Desde la fecha debe ser menor que hasta la fecha</string>
+    <string name="selectFromDateFirst">Seleccione Desde la fecha primero</string>
+    <string name="resend_sms">Reenviar SMS</string>
+    <string name="branch_collection_report">Informe de Ventas</string>
+    <string name="tickets_booked_by_you">Boletos vendidos por usted</string>
+    <string name="fuel_utility_report">Informe de utilidad de combustible</string>
+    <string name="occupancy_report">Informe de ocupación</string>
+    <string name="service_wise_city_pickup_report">Informe de cierre de recogida en la ciudad de Service Wise</string>
+    <string name="checking_inspector_report">Informe del Inspector de Ruta</string>
+    <string name="bus_service_collection">Recaudación por Servicio(ruta)</string>
+    <string name="group_by_branch_report">Informe Agrupar por sucursal</string>
+    <string name="cargo_booking_report">Informe de reserva de carga</string>
+    <string name="server_error">Error del Servidor</string>
+    <string name="no_data_available">Datos no disponibles</string>
+    <string name="validate_travel_date">Por favor seleccionar fecha de viaje</string>
+    <string name="validate_remarks">Por favor ingresar comentarios</string>
+    <string name="user">usuario</string>
+    <string name="sub_user">sub usuario</string>
+    <string name="sub_agent">Sub agente</string>
+    <string name="phone_blocking_cancel_btn">Boton de cancelación de reserva telefónica</string>
+    <string name="close_reservation">Cerrar reservación</string>
+    <string name="wallet_upi">Monedero/UPI</string>
+    <string name="choose_a_wallet">Seleccionar Monedero</string>
+    <string name="send_sms_link">Enviar enlace SMS</string>
+    <string name="generate_qr_code">Generar código QR</string>
+    <string name="wallet_upi_confirm">Monedero UPI confirmado</string>
+    <string name="other_payments_confirm">Otros pagos confirmados</string>
+    <string name="validate_wallet_upi">Por favor seleccionar monedero o UPI</string>
+    <string name="confirm_validate">Validar</string>
+    <string name="wallet_go_back">Monedero volver</string>
+    <string name="shift_to">Trasladar a</string>
+    <string name="upi">upi</string>
+    <string name="validate_otp">Por favor ingresar OTP</string>
+    <string name="bulk_cancel">Cancelación masiva</string>
+    <string name="passenger_list">Lista de Pasajeros</string>
+    <string name="driver_1">Conductor 1</string>
+    <string name="driver_1_no_space">Conductor1</string>
+    <string name="driver_2">Conductor 2</string>
+    <string name="driver_2_no_space">Conductor2</string>
+    <string name="chk_inspector">inspector de ruta</string>
+
+
+    <string name="summary_api">API-</string>
+    <string name="summary_user_cnf">Usuario CNF-</string>
+    <string name="summary_branch_cnf">Sucursal CNF-</string>
+    <string name="summary_online_agent">Agente En línea- </string>
+    <string name="summary_offline_agent">Agente Fuera de línea-</string>
+    <string name="summary_online">En línea-</string>
+    <string name="quota">Cuota</string>
+    <string name="summary_quota">Cuota-</string>
+    <string name="summary_agent_quota">Cuota de Agente-</string>
+    <string name="summary_e_ticket">Boleto Electrónico-</string>
+    <string name="summary_ladies_quota">Cuota damas-</string>
+    <string name="summary_gents_quota">Cuota caballeros-</string>
+    <string name="summary_in_journey">En Servicio-</string>
+    <string name="summary_extra_seat_booked">Asientos Extra Reservados</string>
+    <string name="summary_seat_available">Asientos disponibles</string>
+    <string name="summary_occupancy">• Total Occ :</string>
+    <string name="shift_pnr">Pnr :</string>
+    <string name="more">mas</string>
+    <string name="no_favourite_report">No hay informes favoritos</string>
+    <string name="view">Ver</string>
+    <string name="please_selecte_an_option">Por favor seleccionar una opción</string>
+    <string name="please_fill_all_the_required_details">Por favor complete todos los detalles</string>
+    <string name="qr_scan_error">QR no escaneado adecuadamente</string>
+    <string name="blockSeatFunctionalityNotApplicable">La funcionalidad de bloqueo de asiento no es aplicable</string>
+    <string name="youCanAddMaxUsers">Puede agregar máximo 5 usuarios</string>
+    <string name="youCanAddMaxSevenUsers">Puede agregar máximo 7 usuarios</string>
+    <string name="masking_enable">El enmascaramiento está habilitado, no puedes llamar</string>
+
+    <!--    id card list-->
+    <string name="pan_card">Pan Card</string>
+    <string name="dl">D/L</string>
+    <string name="passport">Pasaporte</string>
+    <string name="voter_id">Voter ID</string>
+    <string name="aadhar_card">Aadhar Card</string>
+    <string name="ration_card">Ration Card</string>
+    <string name="rut">Rut</string>
+    <string name="dni">DNI</string>
+    <string name="ci">CI</string>
+    <string name="emp_id">Emp ID</string>
+    <string name="extra_seat_fare">Tarifa de asiento extra</string>
+    <string name="validate_city">Por favor seleccione ciudad</string>
+    <string name="validate_min_fare">"La tarifa no puede ser menor de -"</string>
+    <string name="validate_max_fare">"La tarifa no puede ser mayor de  -"</string>
+    <string name="service_tax_amount">Monto del impuesto de servicio</string>
+    <string name="total_fare">Tarifa total</string>
+    <string name="all_passengers_are_boarded_fro_this_pnr">Todos los pasajeros están abordados para este pnr</string>
+    <string name="selected_seat_s_will_be_cancelled_and_customer_will_be_notified_via_sms">Los asientos seleccionados se cancelarán y se notificará al cliente por SMS</string>
+    <string name="if_cancellation_percentahe_is_blank_then_default_cancellation_policy_will_be_applied">AVISO: si el porcentaje de cancelación está en blanco, se aplicará la política de cancelación predeterminada</string>
+    <string name="scan_valid_qr_code">Por favor escanee QR valido</string>
+    <string name="scan_coach">Escanear bus</string>
+    <string name="scan_driver_1">Escanecar conductor 1</string>
+    <string name="scan_driver_2">Escanecar conductor 2</string>
+    <string name="scan_cleaner">Escanecar auxiliar</string>
+    <string name="scan_contractor">Escanecar asistente</string>
+    <string name="driver_type">Tipo de Conductor</string>
+    <string name="coach_not_found">Bus no encontrado</string>
+    <string name="driver_1_not_found">Conductor 1 No encontrado</string>
+    <string name="driver_2_not_found">Conductor 2 No encontrado</string>
+    <string name="cleaner_not_found">Auxiliar No encontrado</string>
+    <string name="contractor_not_found">Asistente No encontrado</string>
+    <string name="successfully_added_details_with_tickmark">"\u2713 &#160; Detalles agregados exitosamente"</string>
+    <string name="chart_closed">Planilla cerrada</string>
+    <string name="close_chart">Cerrar planilla</string>
+    <string name="all_seatsMay_have_been_cancelled">Todos los asientos pueden haber sido cancelados</string>
+    <string name="phone_number_is_not_visible">El número de teléfono no está presente</string>
+    <string name="please_enter_value_in_at_least_one_field">Ingrese el valor en al menos 1 campo</string>
+    <string name="proceed_to_lock">Proceder a bloquear</string>
+    <string name="increase_by">Aumentado por</string>
+    <string name="decrease_by">Disminuido por</string>
+    <string name="non_ac">No AC</string>
+    <string name="ac">AC</string>
+    <string name="seater">Asiento</string>
+    <string name="sleeper">Sleeper</string>
+    <string name="please_enter_all_the_details">Por favor ingrese todos los detalles</string>
+    <string name="update_rate_card_question">Actualizar tarifario ?</string>
+    <string name="sorted_by">Ordenado por </string>
+    <string name="validate_source">Por favor seleccione ciudad de origen</string>
+    <string name="validate_destination">Por favor seleccione ciudad de destino</string>
+    <string name="validate_date">Por favor seleccione fecha</string>
+    <string name="invalid_mobile_number">Dar número de móvil válido</string>
+    <string name="invalid_email_id">Email Id Invalido</string>
+    <string name="is_service_blocked">esta bloqueado el servicio</string>
+    <string name="coach">Bus</string>
+    <string name="crewDetailsKey">Clave de detalles de la tripulación</string>
+    <string name="idFromCrewDetails">Clave de detalles de la tripulación ID</string>
+    <string name="nameFromCrewDetails">nombre de los detalles de la tripulación</string>
+    <string name="bookings_via">Reservas  Vía</string>
+    <string name="note_credit_debit_card">NOTA: Continuar reservando solo se recibe el pago</string>
+    <string name="version">versión</string>
+    <string name="BACK_PRESS">presionar hacia atrás</string>
+
+    <string name="seats_s">Asiento(s)</string>
+    <string name="start_downloading">Empezar a descargar</string>
+    <string name="pleaseSelectCoach">Por favor seleccione bus</string>
+    <string name="call">Llamar</string>
+    <string name="all">Todos</string>
+    <string name="all_service">Todos los servicios</string>
+    <string name="viewPassengerEditVisibility">ver Pasajero Editar Visibilidad</string>
+    <string name="data_as_on">Datos como en</string>
+    <string name="pick_the_fares_from">Elige las tarifas desde</string>
+    <string name="copy_all">Copiar todo</string>
+    <string name="copy_fare_only">Copiar solo tarifa</string>
+    <string name="validate_country_code">Por favor seleccione código de país</string>
+    <string name="selectVip">Seleccionar VIP</string>
+    <string name="fill_mandatory_fields">Por favor complete el campo obligatorio anterior</string>
+    <string name="please_enter_temperature">por favor ingrese la temperatura</string>
+    <string name="temp_range_validation">Ingrese la temperatura correcta en Celsius (°C)</string>
+
+    <string name="starred_note">NOTA:Solo se pueden agregar hasta 20 informes en la pestaña destacada</string>
+    <string name="authentication_failed">Falló autenticación</string>
+    <string name="cancel_phone_booking">Cancelar reserva telefónica</string>
+    <string name="service_blocked">SERVICIO BLOQUEADO</string>
+    <string name="verification_successful">Verificación exitosa</string>
+    <string name="issue_date_">Fecha de emición</string>
+    <string name="unblock">Desbloquear</string>
+    <string name="single_block_reservation">¿Quieres bloquear la reserva?</string>
+    <string name="submit">Envíar</string>
+    <string name="upi_qr_code">Código QR</string>
+    <string name="select_all_seats">Seleccionar todos los asientos</string>
+    <string name="device_not_connected">No conectada a ningún dispositivo</string>
+    <string name="bluetooth_printer_selection">Selección de impresora Bluetooth</string>
+    <string name="no_paired_devices">Sin dispositivos emparejados</string>
+    <string name="print">Imprimir</string>
+    <string name="qr_code">Código qr</string>
+    <string name="language_selected">Idioma seleccionado: </string>
+    <string name="already_selected">Ya seleccionado</string>
+    <string name="SELECTED_DATE">Fecha seleccionada</string>
+    <string name="landing_page">Página de destino</string>
+    <string name="landing_page_key">Llave de Página de destino</string>
+    <string name="total_trips">Viajes totales: </string>
+    <string name="call_passenger">Llamar al pasajero</string>
+    <string name="allAvailable">Todo disponible</string>
+    <string name="allAvailableSeats">Todos los asientos disponibles</string>
+    <string name="selectAllSeatsToUnblock">Seleccionar todos los asientos a desbloquear</string>
+    <string name="unblock_time_duration">DURACIÓN DEL TIEMPO DE DESBLOQUEO</string>
+
+
+    <!--    FCM-->
+    <string name="notifications">Notificaciones</string>
+    <string name="notifications_marks_all_as_read">Marcar como leido</string>
+    <string name="notifications_marks_all_as_unread">Marcar como no leido</string>
+    <string name="notifications_delete_all"><font fgcolor='#FF1400'>Borrar todo</font></string>
+    <string name="notification_id">ID de notificación</string>
+    <string name="notification_title">Titulo de notificación</string>
+    <string name="notification_message">mensaje de notificación</string>
+    <string name="notification_image">Imagen de notificación</string>
+    <string name="notification_filter">Filtro de notificacion</string>
+
+    <string name="android_device_content">Este dispositivo aún no ha sido registrado</string>
+    <string name="android_device_content1">Ingrese la ID de su dispositivo que se muestra a continuación en el portal web de TicketSimply &amp; ingresar de nuevo</string>
+    <string name="android_device_id">ID de dispositivo:</string>
+    <string name="deposit">Deposito</string>
+    <string name="print_ticket">Imprimir boleto</string>
+    <string name="not_allowed_to_reprint">¡Alerta!\', \'No está autorizado a reimprimir el billete. Póngase en contacto con el operador del autobús.</string>
+    <string name="last_trip">Ultimo viaje</string>
+    <string name="frequent_traveller">Viajero frecuente</string>
+    <string name="indian_currency_format">#,##,###.00</string>
+    <string name="card">Tarjeta</string>
+    <string name="bima">Bima</string>
+    <string name="see_more">Ver mas</string>
+    <string name="agent_collection">Recaudación de agente</string>
+    <string name="select_bp_dp">Seleccionar BP/DP</string>
+    <string name="template_not_configured">Plantilla Bluetooth no configurada</string>
+    <string name="device_id">ID de dispositivo:</string>
+    <string name="re_login">Volver a iniciar sesión</string>
+    <string name="balance_available">Saldo disponible</string>
+    <string name="commission">Comisión</string>
+    <string name="seat_wise">Asiento sabio</string>
+    <string name="update_fare">actualizar tarifa</string>
+    <string name="by_seat_type">Por tipo de asiento</string>
+    <string name="per_seat">Por asiento</string>
+    <string name="select_seat_type">Seleccionar tipo de asiento</string>
+    <string name="select_via_route">Seleccionar vía Ruta</string>
+    <string name="confirm_fare_change">Confirmar cambio de tarifa</string>
+    <string name="amount_percent_sign">Monto(%)</string>
+    <string name="inactive">Inactivo</string>
+    <string name="active">Activo</string>
+    <string name="single_view">Vista única</string>
+    <string name="split_view">Vista dividida</string>
+    <string name="indonesian">Indonesio</string>
+    <string name="vietnamese">Vietnamita</string>
+    <string name="fingerprint">Huella dactilar</string>
+    <string name="authenticationError">Error de autenticación</string>
+    <string name="authenticationSucceeded">Autenticación exitosa</string>
+    <string name="add_fingerprint">Agregar Huella dactilar</string>
+    <string name="please_place_your_fingertip">Coloque su dedo en el escáner para verificar su identidad</string>
+    <string name="noBiometricFeatureAvaibleOnThisDevice">No hay funciones biométricas disponibles en este dispositivo</string>
+    <string name="biometricFeaturesAreCurrenyUnavailable">Las funciones biométricas no están disponibles actualmente</string>
+    <string name="fingerprintIsNotConfigured">La huella digital no está configurada</string>
+    <string name="totalAmount">Monto total</string>
+    <string name="note_selecting_this_will_send_sms_to_emergency_contacts_for_selected_passengers">Nota: al seleccionar esto, se enviará un SMS a los contactos de emergencia de los pasajeros seleccionados</string>
+    <string name="issuedBy">Emitido por</string>
+    <string name="re_book_tickets">Volver a reservar boletos</string>
+    <string name="booking_history">Historial de reservas</string>
+    <string name="found">Encontrado</string>
+    <string name="number_not_registered">Número de móvil no presente, actualice el número de móvil para compartir el billete</string>
+    <string name="create_rate_card_for_the_period">Crear tarifario para el período</string>
+    <string name="create_rate_card">Crear tarifario</string>
+    <string name="summary_all_services_on">Resumen (Todos los servicios en</string>
+    <string name="booked_on">Reservado en</string>
+    <string name="zero_cancellation">Cancelación cero</string>
+    <string name="all_services_on">Todos los servicios en</string>
+    <string name="pending">Pendiente</string>
+    <string name="DESTINATION_PAIR_MODEL_KEY">modelo de par de destino</string>
+    <string name="OLD_DATE_TIME_KEY">clave de fecha y hora antigua</string>
+    <string name="OLD_COUNT_KEY">antigua llave de conteo</string>
+    <string name="payload">Carga útil</string>
+    <string name="performance">Rendimiento</string>
+    <string name="booking_trends">Tendencias de reserva</string>
+    <string name="revenue">Ganancia</string>
+    <string name="service_wise_booking">Servicio de reserva inteligente</string>
+    <string name="service_wise_booking_dashboard">Recaudación GST</string>
+    <string name="schedules_summary">Resumen de Horarios</string>
+    <string name="schedules_summary_active_cancelled">Resumen de Horarios (Activo/Cancelado)</string>
+    <string name="time_blocked_seats_booked_released">Asientos bloqueados por tiempo (reservados/liberados)</string>
+    <string name="total_pending_quota_seats">Asientos de cuota pendientes totales</string>
+    <string name="pending_quota">Cuota pendiente</string>
+    <string name="day_wise">Colección día a día</string>
+    <string name="seat_status">Estado de asiento</string>
+    <string name="booking_source_chart">Origen de reservas</string>
+    <string name="unsold_seat">Asientos vacios</string>
+    <string name="service_wise">Recaudación GST</string>
+    <string name="service_wise_collection">Colección de servicio inteligente</string>
+    <string name="best_days">Días de mejor rendimiento</string>
+    <string name="e_tickets">Reserva electrónica</string>
+    <string name="available_seats">Asientos Disponibles</string>
+    <string name="cancel_seats">Asientos Cancelados</string>
+    <string name="pending_seats">Asientos pendientes</string>
+
+    <string name="bar_chart">Gráfico de barras</string>
+    <string name="pie_chart">Gráfico circular</string>
+    <string name="line_chart">Gráfico de líneas</string>
+    <string name="fragmentTabPosition">FRAGMENT_ID</string>
+    <string name="no_notification">Sin notificaciones</string>
+    <string name="general">General</string>
+    <string name="mis">MIS</string>
+    <string name="selectedChartId">ID de planilla seleccionada</string>
+    <string name="refund_amount">Monto de reembolso</string>
+    <string name="upi_create_qr_desc1">Escanea el código QR y realiza el pago para confirmar tu reserva</string>
+    <string name="upi_create_qr_desc2">Si el pago se deduce de su billetera, le solicitamos que espere 5 minutos Si recibimos la confirmación del pago, el boleto se confirmará; de lo contrario, se liberará</string>
+
+    <string name="select_hubs">Select Hub</string>
+
+    <string name="preference_file_key">CLAVE DE ARCHIVO DE PREFERENCIA</string>
+    <string name="no_location_text">Sin ubicación actual</string>
+    <string name="tracking_on">Seguimiento activado</string>
+    <string name="launch_activity">Abrir mapa</string>
+    <string name="start_location_updates_button_text">Empezar a recibir actualizaciones de ubicación</string>
+    <string name="stop_location_updates_button_text">Detener</string>
+    <string name="permission_rationale">Permiso de ubicación necesario para la funcionalidad principal</string>
+    <string name="permission_denied_explanation">El permiso fue denegado, pero es necesario para la funcionalidad principal</string>
+    <string name="coach_warning">Actualice el número de autobús antes de iniciar la navegación del servicio</string>
+    <string name="start">Iniciar</string>
+    <string name="stop">Detener</string>
+    <string name="navigate">Navegar</string>
+    <string name="crew_toolkit">Lista de verificación del kit de herramientas de la tripulación</string>
+    <string name="crew_toolkit_title">Equipo - Lista de verificación de herramientas</string>
+    <string name="camera_permission_denied">Permiso de cámara denegado</string>
+    <string name="call_permission_denied">Izin Panggilan Ditolak</string>
+    <string name="write_permission_denied">Permiso de almacenamiento denegado</string>
+    <string name="delete_photo">Borrar foto</string>
+    <string name="capture_image">Capturar imagen</string>
+    <string name="switch_btn">Cambiar</string>
+    <string name="no_pdf_link">El enlace en pdf no está disponible</string>
+    <string name="crew_images">Imágenes de la tripulación</string>
+    <string name="sendErrorReport">Enviar reporte de error</string>
+    <string name="error_report_sent_successfully">Informe de error enviado correctamente</string>
+    <string name="view_route">Ver Ruta</string>
+    <string name="next_boarding_point">Próximo punto de embarque</string>
+
+
+    <string name="start_Trip">iniciar viaje</string>
+    <string name="stop_trip">Viaje detenido</string>
+    <string name="there_are">Hay</string>
+    <string name="passenger_to_board_at">Pasajero a bordo en</string>
+    <string name="you_have_arrived_at">has llegado a</string>
+    <string name="station">estación</string>
+    <string name="current_boarding_point">Punto de embarque actual</string>
+    <string name="Continue">Continuar</string>
+
+
+    <string name="otp_verification_for_cancel_ticket">OTP Verificación para Cancelar Ticket</string>
+    <string name="please_enter_the_otp_sent_to_your_registered_mobile_number">Ingrese la OTP enviada a su número de teléfono móvil registrado</string>
+
+    <string name="please_select_new_service">Seleccione el servicio</string>
+    <string name="note">Nota</string>
+    <string name="trip_complete">Viaje completo</string>
+    <string name="trip_complete_msg">Has llegado al destino final</string>
+
+
+    <string name="pay_bus">Pay@Bus</string>
+    <string name="seat_booked">Asientos Reservados</string>
+    <string name="payAtBus">(Pay@Bus)</string>
+    <string name="collected_by">Recaudado por</string>
+
+    <string name="confirm_recharge">Confirmar recarga</string>
+    <string name="agent_recharge">Recarga de agente</string>
+    <string name="branch_recharge">Recarga Sucursal</string>
+    <string name="please_enter_otp_to_proceed">Ingrese OTP para continuar</string>
+    <string name="spanish">Español</string>
+    <string name="additional_discount">Descuento adicional</string>
+    <string name="status_cancelled">Cancelados</string>
+    <string name="select_seats_to_unblock">SELECCIONE ASIENTOS PARA DESBLOQUEAR</string>
+    <string name="unblock_type">TIPO DE DESBLOQUEO</string>
+    <string name="permanent">Permanente</string>
+    <string name="temporary">Temporal</string>
+    <string name="custom">personalizado</string>
+
+    <string name="reset_password_txt">Restablecer contraseña</string>
+    <string name="last_updated">Última actualización : </string>
+    <string name="no_more_seats_can_be_selected">No se pueden seleccionar más asientos</string>
+    <string name="ticket_shifted_successfully">Boleto cambiado con éxito</string>
+    <string name="pending_inspections">Inspecciones pendientes</string>
+    <string name="completed_inspections">Inspecciones completadas</string>
+    <string name="inspect_seats">Inspeccionar asientos</string>
+
+    <string name="extra_cabins">Cabinas adicionales</string>
+    <string name="are_you_sure_you_have_completed_the_ninspection_once_updated_it_cannot_be_nchanged">¿Está seguro de haber completado la \ninspección? Una vez actualizado, no se puede \ncambiar</string>
+    <string name="male_complete">Hombre</string>
+    <string name="female_complete">Mujer</string>
+    <string name="total_passengers">Pasajeros totales</string>
+    <string name="inspection_summary">Resumen de inspección</string>
+    <string name="complete_inspection">Inspección completa</string>
+    <string name="cancellation_amount">Importe de cancelación</string>
+    <string name="edit_caps">EDITAR</string>
+    <string name="no_coupon_available">No hay cupones disponibles</string>
+    <string name="Rut_on_single_seat_only">Rut solo se puede aplicar en un solo asiento</string>
+    <string name="per_booking">por reserva</string>
+    <string name="from_list">de la lista</string>
+    <string name="extra_seats_details">Detalles de asientos adicionales</string>
+
+    <string name="select_source">Seleccionar fuente</string>
+    <string name="select_destination">Seleccionar destino</string>
+    <string name="seat_type">Tipo de asiento (Adulta / Normal)</string>
+    <string name="passenger_category">Categoría de Pasajero</string>
+    <string name="quick_book">Libro Rápido</string>
+    <string name="booking_confirmed">Reserva Confirmada</string>
+    <string name="booking_status">Booking Status</string>
+    <string name="transaction_time_out">Se agotó el tiempo de transacción, inténtelo de nuevo</string>
+    <string name="print_selection">Selección de impresión</string>
+    <string name="split_view_selected">Vista dividida seleccionado</string>
+    <string name="single_view_selected">Vista simple seleccionado</string>
+    <string name="pay_and_print_with_redelcom">Pago e impresión con Redelcom</string>
+    <string name="redelcom_settings">Ajuste redelcom</string>
+    <string name="serial_number">Numero de serie</string>
+
+    <string name="services">SERVICES</string>
+    <string name="item_all_services">All Services</string>
+    <string name="only_via_routes">Only via Routes</string>
+    <string name="only_main_src_dest">Only main source-destination routes</string>
+    <string name="via">(via)</string>
+
+    <string name="meals">comidas</string>
+    <string name="selectMealType">Seleccionar tipo de comida</string>
+    <string name="meal_coupons">Cupones de comida</string>
+    <string name="bar_code">código de barras</string>
+    <string name="pnr_name_mobile_number">PNR, nombre, número de móvil</string>
+    <string name="name_mobile_number">Nombre/Número de móvil</string>
+    <string name="change_bp_dp">Cambiar BP/DP</string>
+    <string name="change_destination">Cambiar destino</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="harvard">Harvard</string>
+    <string name="SUNMI">SUNMI</string>
+    <string name="notification_sound">Sonido de notificación</string>
+    <string name="silent">Silenciosa</string>
+    <string name="system_sound">Sonido del sistema</string>
+    <string name="default_sound">Sonido predeterminado</string>
+    <string name="notification_sound_selected">Sonido de notificación seleccionado</string>
+    <string name="manage_all_your_scheduled_services_on_the_go">Administre todos sus servicios programados sobre la marcha</string>
+    <string name="booking_blocking_seats_made_simple">Reservar y bloquear asientos de forma sencilla</string>
+    <string name="download_your_key_reports_in_no_time">Descarga tus informes clave en poco tiempo</string>
+    <string name="meal_type">Meal Type</string>
+    <string name="policyNo">Policy No</string>
+    <string name="bookingCode">Booking Code</string>
+    <string name="insurance_information">Insurance Information</string>
+    <string name="booking_code">Booking Code</string>
+    <string name="policy">Policy</string>
+    <string name="insurance_bitmap">InsuranceBitmap</string>
+
+
+
+    <string name="not_uploaded">No subido</string>
+    <string name="download_document">Descargar documento</string>
+    <string name="view_document">Ver documento</string>
+    <string name="share_document">Compartir documento</string>
+    <string name="additional_options">Additional options (Optional)</string>
+    <string name="selectedSeats">Selected seats:</string>
+    <string name="crew">Crew</string>
+    <string name="not_assigned">Not Assigned</string>
+    <string name="booking_date">Booking Date</string>
+    <string name="seat">Seat</string>
+    <string name="error_occured">Error occured! Please try again</string>
+    <string name="users">Users</string>
+    <string name="retrieve">Retrieve</string>
+    <string name="validate_max_pax">You can\'t select more than</string>
+    <string name="max_passenger">passenger(s)</string>
+    <string name="update_available">Update Available</string>
+    <string name="book_ticket">Book ticket</string>
+    <string name="logout_successfully">Logout Successfully</string>
+    <string name="modify_search">Modify Search</string>
+    <string name="booking_available_pre">Booking Will be Available from</string>
+    <string name="booking_available_post">for this Route</string>
+    <string name="balance">Balance</string>
+    <string name="all_dropping_points">All dropping points</string>
+    <string name="dates">DATES</string>
+    <string name="search_dropping_points">Search dropping points</string>
+    <string name="no_more_data">No more data</string>
+    <string name="selected_seat_color">Selected</string>
+    <string name="service_options">Service Options</string>
+    <string name="for_">for</string>
+    <string name="ticket_history">Ticket History</string>
+    <string name="share_ticket">Share Ticket</string>
+    <string name="tracking">Tracking</string>
+    <string name="bus_tracking">Bus Tracking</string>
+    <string name="whatsapp_is_not_installed">Whatsapp is not Installed</string>
+    <string name="share_bus_location_text">Hi! Track your bus in real-time! Visit this link ! (link: [link to app/service]</string>
+    <string name="move_to_extra_seats">Pasar a asientos adicionales</string>
+    <string name="move_to_book_seats">Mover a Reservar asientos</string>
+    <string name="to_receive">To receive</string>
+    <string name="updateAll">Update all to Rp0</string>
+    <string name="all_seats_shifted_to">All seats shifted to</string>
+    <string name="view_seat_details">View seat details</string>
+    <string name="hide_seat_details">Hide seat details</string>
+</resources>

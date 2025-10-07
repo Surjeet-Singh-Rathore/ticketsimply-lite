@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:padding="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_booking_"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_14ssp"
+        android:id="@+id/phoneBookingTV"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/this_shows_the_number_of_seats_under_the_phone_booking"
+        app:layout_constraintTop_toBottomOf="@id/phoneBookingTV"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_12ssp"
+        android:id="@+id/thisTV"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next_1_4"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:id="@+id/nextTV"
+        android:background="@drawable/bg_little_round_white"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thisTV"
+        android:layout_marginTop="@dimen/_20sdp"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dismiss"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:id="@+id/dismissTV"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toEndOf="@id/nextTV"
+        app:layout_constraintTop_toBottomOf="@id/thisTV"
+        android:layout_marginTop="@dimen/_20sdp"
+      />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDim"
+    tools:context=".presentation.view.activity.IvrCallingActivity">
+
+    <include
+        android:id="@+id/layout_toolbar1"
+        layout="@layout/item_header_view_with_title_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/summaryCL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/white_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_toolbar1">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleTV"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/option1"
+            android:textColor="@color/blackish"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleTV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/description_status"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTV" />
+
+<!--        <Button-->
+<!--            android:id="@+id/myButton1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_10ssp"-->
+<!--            android:layout_marginBottom="@dimen/_8sdp"-->
+<!--            android:text="@string/place_internet_call"-->
+<!--            android:textColor="@color/white"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/titleTV1"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/myButton1"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/primaryGreen"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTV1"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+
+                android:drawablePadding="@dimen/_8sdp"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryGreen"
+                android:drawableLeft="@drawable/ic_ivr_call"
+                android:text="@string/place_internet_call"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/summaryCL1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/white_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/summaryCL">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleTV2"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+
+            android:text="@string/option2"
+            android:textColor="@color/blackish"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/summaryCL"
+            tools:ignore="NotSibling" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleTV3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/description_status1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTV2" />
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTV3">
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/timeInHours"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_weight="0.5"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                android:layout_marginEnd="@dimen/_10ssp"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/timeInHoursTv"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/select_hours"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    app:endIconMode="custom"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--<androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ic_arrow_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_7ssp"
+                    android:background="@drawable/header_gradient_bg"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/colorDimShadow"
+                    tools:ignore="VectorDrawableCompat" />-->
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/timeInMins"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_weight="0.5"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/timeInMinsTv"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/select_minutes"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    app:endIconMode="custom" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+<!--        <Button-->
+<!--            android:id="@+id/myButton2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_10ssp"-->
+<!--            android:layout_marginBottom="@dimen/_10sdp"-->
+<!--            android:text="@string/place_internet_call"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:backgroundTint="@color/primaryGreen"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/ll" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/primaryGreen"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:id="@+id/myButton2"
+            app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/ll">
+
+                    <TextView
+
+                        android:drawablePadding="@dimen/_8sdp"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/primaryGreen"
+                        android:drawableLeft="@drawable/ic_ivr_call"
+                        android:text="@string/place_internet_call"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/summaryCL2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/white_bg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/summaryCL1"
+                tools:ignore="NotSibling">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/titleTV4"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/option3"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/titleTV5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:text="@string/description_status2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTV4" />
+
+                <LinearLayout
+                    android:id="@+id/ll1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTV5">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/timeInMins1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:background="@drawable/header_gradient_bg"
+                    app:boxStrokeErrorColor="@color/colorRed2"
+                    app:boxStrokeWidth="@dimen/dp_2"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTV5"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/select_boarding_point"
+                    app:boxBackgroundColor="@color/title_bg"
+                    app:boxBackgroundMode="filled">
+
+
+                    <AutoCompleteTextView
+                        android:inputType="none"
+                        android:id="@+id/timeInMinsTv1"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/et_bg"
+                        android:imeOptions="actionNext"
+                        android:drawableEnd="@drawable/ic_search"
+
+                        app:endIconMode="custom" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ic_arrow_down1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/_7ssp"
+                    android:background="@drawable/header_gradient_bg"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    app:tint="@color/colorDimShadow"
+                    tools:ignore="VectorDrawableCompat" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/myButton3"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/primaryGreen"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll1"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <TextView
+
+                        android:drawablePadding="@dimen/_8sdp"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/primaryGreen"
+                        android:drawableLeft="@drawable/ic_ivr_call"
+                        android:text="@string/place_internet_call"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>

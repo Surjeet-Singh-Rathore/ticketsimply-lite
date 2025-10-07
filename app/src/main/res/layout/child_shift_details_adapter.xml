@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/childShiftPassenger_mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="@dimen/dp_8"
+        app:cardCornerRadius="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/childShiftPassenger_tvSeatNo"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/layout_rounded_shape"
+                android:backgroundTint="@color/colorPrimaryTransparent"
+                android:gravity="center"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingBottom="@dimen/dp_12"
+                android:text="SL02"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:src="@drawable/ic_arrow_forward_"
+                android:tint="@color/gray"
+                app:layout_constraintBottom_toBottomOf="@+id/childShiftPassenger_tvSeatNo2"
+                app:layout_constraintStart_toEndOf="@+id/childShiftPassenger_tvSeatNo2"
+                app:layout_constraintTop_toTopOf="@+id/childShiftPassenger_tvSeatNo2"
+                tools:ignore="ContentDescription,UseAppTint" />
+
+            <TextView
+                android:id="@+id/childShiftPassenger_tvSeatNo2"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/layout_rounded_shape"
+                android:backgroundTint="@color/colorPrimaryTransparent"
+                android:gravity="center"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingBottom="@dimen/dp_12"
+                android:text="SL06"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintBottom_toBottomOf="@+id/childShiftPassenger_tvSeatNo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/childShiftPassenger_tvShiftLocation"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Ananthpur to Vijaywada"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintBottom_toBottomOf="@+id/childShiftPassenger_tvSeatNo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/childShiftPassenger_tvSeatNo"
+                app:layout_constraintTop_toBottomOf="@+id/childShiftPassenger_tvShiftLocation3" />
+
+            <TextView
+                android:id="@+id/childShiftPassenger_tvShiftLocation3"
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Amrit Nadig"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintStart_toEndOf="@+id/childShiftPassenger_tvShiftLocation2"
+                app:layout_constraintTop_toTopOf="@+id/childShiftPassenger_tvSeatNo" />
+
+            <TextView
+                android:id="@+id/childShiftPassenger_tvShiftLocation2"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_8"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="449003"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp14"
+                app:layout_constraintStart_toEndOf="@+id/childShiftPassenger_tvSeatNo"
+                app:layout_constraintTop_toTopOf="@+id/childShiftPassenger_tvSeatNo" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/header_border_without_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/childShiftPassenger_tvSeatNo2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

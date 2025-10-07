@@ -1,0 +1,1369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flash_white_bg">
+
+    <include
+        android:id="@+id/layout_passenger_details_seat_legends"
+        layout="@layout/passenger_details_seat_legends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="@dimen/guideline_size" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="@dimen/guideline_size" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/guideline_size" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/guideline_size" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_service_summary"
+        style="@style/TextStyleNormalTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_24"
+        android:background="@drawable/layout_round_dark_bg"
+        android:drawableStart="@drawable/view_reservation_chart_icon"
+        android:drawablePadding="@dimen/dp_16"
+        android:drawableTint="@color/white"
+        android:paddingStart="@dimen/dp_24"
+        android:paddingTop="14dp"
+        android:paddingEnd="@dimen/dp_24"
+        android:paddingBottom="14dp"
+        android:text="@string/service_summary"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/includeToolbar"
+            layout="@layout/toolbar_service_summary" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:background="@color/white">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_16"
+                    android:background="@color/flash_white_bg" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvSelectSeatTitle"
+                        style="@style/TextStyleBold"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:letterSpacing="0.04"
+                        android:text="@string/selectSeat"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvBlocked"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_8"
+                        android:text=""
+                        android:textColor="@color/blocked_tickets"
+                        android:textSize="@dimen/sp16"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tvSelectSeatTitle"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/tvSeatSelectedLayout"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_4"
+                        android:layout_marginEnd="@dimen/dp_4"
+                        android:layout_toRightOf="@id/tvSelectSeatTitle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvEditSeats"
+                        app:layout_constraintStart_toEndOf="@+id/tvBlocked"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tvSeatSelected"
+                            style="@style/TextStyleBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/layout_rounded_shape_radius_2_dp"
+                            android:backgroundTint="@color/colorDimShadow6"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="4dp"
+                            android:paddingRight="8dp"
+                            android:paddingBottom="4dp"
+                            android:text="@string/noSeatSelected"
+                            android:textAlignment="textEnd"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="11sp"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <ImageView
+                        android:id="@+id/img_expand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:src="@drawable/ic_arrow_down"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorBlackShadow" />
+
+                    <ImageView
+                        android:id="@+id/img_collapse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_up"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorBlackShadow" />
+
+                    <TextView
+                        android:id="@+id/tvEditSeats"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+                        android:padding="4dp"
+                        android:text="@string/edit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="11sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/img_expand"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/layout_coach"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:background="@color/view_color" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <androidx.fragment.app.FragmentContainerView
+                            android:id="@+id/layout_coach_single"
+                            android:name="com.bitla.ts.presentation.view.fragments.AllCoachFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:layout="@layout/fragment_common_coach_single">
+
+                        </androidx.fragment.app.FragmentContainerView>
+
+
+                        <LinearLayout
+                            android:id="@+id/coach_progress_bar"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:background="@color/white"
+                            android:gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/multioption_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/flash_white_bg"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:elevation="5dp"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="8dp">
+
+                            <LinearLayout
+                                android:id="@+id/layout_multistation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal"
+                                android:paddingStart="15dp"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingBottom="@dimen/dp_12"
+                                android:weightSum="2">
+
+                                <TextView
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1.7"
+                                    android:drawableStart="@drawable/icon_multistation"
+                                    android:drawablePadding="10dp"
+                                    android:text="@string/multistation_booking"
+                                    android:textColor="@color/black" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_weight="0.3"
+                                    android:contentDescription="@string/app_name"
+                                    android:src="@drawable/arrow_forward" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/layout_boardin_point"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+
+                                android:orientation="horizontal"
+                                android:paddingStart="15dp"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingBottom="@dimen/dp_12"
+                                android:weightSum="2">
+
+
+                                <TextView
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1.7"
+                                    android:drawableStart="@drawable/icon_boarding_point"
+                                    android:drawablePadding="10dp"
+                                    android:text="@string/boarding_point"
+                                    android:textColor="@color/black" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_weight="0.3"
+                                    android:contentDescription="@string/app_name"
+                                    android:src="@drawable/arrow_forward" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/layout_dropping_point"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+
+                                android:orientation="horizontal"
+                                android:paddingStart="15dp"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingBottom="@dimen/dp_12"
+                                android:weightSum="2">
+
+                                <TextView
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1.7"
+                                    android:drawableStart="@drawable/icon_dropping_point"
+                                    android:drawablePadding="10dp"
+                                    android:text="@string/dropping_point"
+                                    android:textColor="@color/black" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_weight="0.3"
+                                    android:contentDescription="@string/app_name"
+                                    android:src="@drawable/arrow_forward" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/layout_booked_by"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+
+                                android:orientation="horizontal"
+                                android:paddingStart="15dp"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingBottom="@dimen/dp_12"
+                                android:weightSum="2">
+
+
+                                <TextView
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+
+                                    android:layout_weight="1.7"
+                                    android:drawableStart="@drawable/icon_booked_by"
+                                    android:drawablePadding="10dp"
+                                    android:text="@string/booked_by"
+                                    android:textColor="@color/black"
+
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_weight="0.3"
+                                    android:contentDescription="@string/app_name"
+                                    android:src="@drawable/arrow_forward" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="100dp"
+                        android:elevation="5dp"
+                        android:padding="5dp"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+
+                            android:padding="8dp">
+
+                            <LinearLayout
+                                android:id="@+id/layout_service_details"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal"
+                                android:paddingStart="15dp"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingBottom="@dimen/dp_12"
+                                android:weightSum="2">
+
+
+                                <TextView
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1.7"
+                                    android:drawableStart="@drawable/icon_update_details"
+                                    android:drawablePadding="10dp"
+                                    android:text="@string/service_details"
+                                    android:textColor="@color/black"
+
+
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_weight="0.3"
+                                    android:contentDescription="@string/app_name"
+                                    android:src="@drawable/arrow_forward" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/layout_bookings"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+
+                                android:orientation="horizontal"
+                                android:paddingStart="15dp"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingBottom="@dimen/dp_12"
+                                android:weightSum="2">
+
+
+                                <TextView
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+
+                                    android:layout_weight="1.7"
+                                    android:drawableStart="@drawable/icon_booked_by"
+                                    android:drawablePadding="10dp"
+                                    android:text="@string/bookings"
+                                    android:textColor="@color/black"
+
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_weight="0.3"
+                                    android:contentDescription="@string/app_name"
+                                    android:src="@drawable/arrow_forward" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/layout_collections"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+
+                                android:orientation="horizontal"
+                                android:paddingStart="15dp"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingBottom="@dimen/dp_12"
+                                android:weightSum="2">
+
+
+                                <TextView
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="1.7"
+                                    android:drawableStart="@drawable/icon_collection"
+                                    android:drawablePadding="10dp"
+                                    android:text="@string/collection"
+                                    android:textColor="@color/black" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_weight="0.3"
+                                    android:contentDescription="@string/app_name"
+                                    android:src="@drawable/arrow_forward" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/flash_white_bg" />
+
+                            <LinearLayout
+                                android:id="@+id/layout_released_tickets"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+
+                                android:orientation="horizontal"
+                                android:paddingStart="15dp"
+                                android:paddingTop="@dimen/dp_12"
+                                android:paddingBottom="@dimen/dp_12"
+                                android:weightSum="2">
+
+
+                                <TextView
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+
+                                    android:layout_weight="1.7"
+                                    android:drawableStart="@drawable/icon_released_tickets"
+                                    android:drawablePadding="10dp"
+                                    android:text="@string/released_tickets"
+                                    android:textColor="@color/black" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_weight="0.3"
+                                    android:contentDescription="@string/app_name"
+                                    android:src="@drawable/arrow_forward" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/coach_under_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:layout_marginBottom="@dimen/dp_8"
+                        android:background="@color/flash_white_bg" />
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.04"
+                        android:text="@string/userType"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                    <!-- <FrameLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content">
+
+                         <Spinner
+                             android:id="@+id/sUserType"
+                             android:layout_width="match_parent"
+                             android:layout_height="56dp"
+                             android:layout_marginTop="8dp"
+                             android:background="@color/button_color"
+                             android:popupBackground="@color/button_color"
+                             android:spinnerMode="dropdown"
+                             tools:listitem="@layout/spinner_item"
+                             />
+
+                         <TextView
+                             android:id="@+id/tvUserTypeHint"
+                             style="@style/msg_context"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginStart="12dp"
+                             android:layout_marginTop="12dp"
+                             android:text="@string/selectUserType"
+                             android:textAllCaps="false"
+                             android:textColor="@color/colorPrimary"
+                             android:textSize="11sp"
+                             android:visibility="gone" />
+
+
+                     </FrameLayout>-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:hint="@string/selectUserType"
+                            app:boxBackgroundColor="@color/title_bg"
+                            app:boxBackgroundMode="filled">
+
+
+                            <AutoCompleteTextView
+                                android:id="@+id/sUserType"
+                                style="@style/TextStyleNormal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/et_bg"
+                                android:inputType="none"
+                                android:textColor="@color/colorBlackShadow"
+                                android:textColorHint="@color/grey"
+                                android:textSize="14sp" />
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tv_moreUserType"
+                            style="@style/TextStyleNormalTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="50dp"
+                            android:text="@string/more_seats"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/sp14"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_selectMultipleUserType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvAgentType"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.04"
+                        android:text="@string/selectAgent"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <!-- <FrameLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content">
+
+                         <TextView
+                             android:id="@+id/tvAgentTypeSpinner"
+                             style="@style/msg_context"
+                             android:layout_width="match_parent"
+                             android:layout_height="56dp"
+                             android:layout_marginTop="8dp"
+                             android:background="@drawable/header_gradient_bg_underline"
+                             android:drawableEnd="@drawable/ic_down_arrow_filled"
+                             android:gravity="center_vertical"
+                             android:paddingStart="15dp"
+                             android:paddingEnd="15dp"
+                             android:text="@string/selectAgent"
+                             android:textAllCaps="false"
+                             android:textColor="@color/colorDimShadow6"
+                             android:visibility="gone" />
+
+                         <TextView
+                             android:id="@+id/tvAgentHint"
+                             style="@style/msg_context"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginStart="16dp"
+                             android:layout_marginTop="12dp"
+                             android:text="@string/selectAgent"
+                             android:textAllCaps="false"
+                             android:textColor="@color/colorPrimary"
+                             android:textSize="11sp"
+                             android:visibility="gone" />
+
+                     </FrameLayout>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutAgent"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/header_gradient_bg"
+                        android:textColorHint="@color/grey"
+                        android:visibility="gone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvAgentTypeSpinner"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:hint="@string/selectAgent"
+                            android:imeOptions="actionNext"
+                            android:text="" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <TextView
+                        android:id="@+id/tvBranchType"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.04"
+                        android:text="@string/selectBranch"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <!--<FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvBranchTypeSpinner"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/header_gradient_bg_underline"
+                            android:drawableEnd="@drawable/ic_down_arrow_filled"
+                            android:gravity="center_vertical"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
+                            android:text="@string/selectBranch"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorDimShadow6"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tvBranchHint"
+                            style="@style/msg_context"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/selectBranch"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="11sp"
+                            android:visibility="gone" />
+
+                    </FrameLayout>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutBranch"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/header_gradient_bg"
+                        android:textColorHint="@color/grey"
+                        android:visibility="gone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvBranchTypeSpinner"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:hint="@string/selectBranch"
+                            android:imeOptions="actionNext"
+                            android:text="" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tvSelectUserType"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.04"
+                        android:text="@string/selectUser"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <!-- <FrameLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content">
+
+                         <TextView
+                             android:id="@+id/tvUserSpinner"
+                             style="@style/msg_context"
+                             android:layout_width="match_parent"
+                             android:layout_height="56dp"
+                             android:layout_marginTop="8dp"
+                             android:background="@drawable/header_gradient_bg_underline"
+                             android:drawableEnd="@drawable/ic_down_arrow_filled"
+                             android:gravity="center_vertical"
+                             android:paddingStart="15dp"
+                             android:paddingEnd="15dp"
+                             android:text="@string/selectUser"
+                             android:textAllCaps="false"
+                             android:textColor="@color/colorDimShadow6"
+                             android:visibility="gone" />
+
+                         <TextView
+                             android:id="@+id/tvUserHint"
+                             style="@style/msg_context"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginStart="16dp"
+                             android:layout_marginTop="12dp"
+                             android:text="@string/selectUser"
+                             android:textAllCaps="false"
+                             android:textColor="@color/colorPrimary"
+                             android:textSize="11sp"
+                             android:visibility="gone" />
+
+
+                     </FrameLayout>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/header_gradient_bg"
+                        android:textColorHint="@color/grey"
+                        android:visibility="gone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tvUserSpinner"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:hint="@string/selectUser"
+                            android:imeOptions="actionNext"
+                            android:paddingBottom="@dimen/dp_16"
+                            android:text="" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.04"
+                        android:text="@string/blockType"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                    <!-- <FrameLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content">
+
+                         <Spinner
+                             android:id="@+id/sBlockType"
+                             android:layout_width="match_parent"
+                             android:layout_height="56dp"
+                             android:layout_marginTop="8dp"
+                             android:background="@color/button_color"
+                             android:popupBackground="@color/button_color"
+                             android:spinnerMode="dropdown"
+                             tools:listitem="@layout/spinner_item" />
+
+                         <TextView
+                             android:id="@+id/tvBlockTypeHint"
+                             style="@style/msg_context"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginStart="12dp"
+                             android:layout_marginTop="12dp"
+                             android:text="@string/selectBlockType"
+                             android:textAllCaps="false"
+                             android:textColor="@color/colorPrimary"
+                             android:textSize="11sp"
+                             android:visibility="gone" />
+
+
+                     </FrameLayout>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/selectBlockType"
+                        app:boxBackgroundColor="@color/title_bg"
+                        app:boxBackgroundMode="filled">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/sBlockType"
+                            style="@style/TextStyleNormal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:inputType="none"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/grey"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/blockDurationTextView"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.04"
+                        android:text="@string/blockDuration"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:id="@+id/blockDateDurationLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.50">
+
+                            <TextView
+                                android:id="@+id/tvFromDate"
+                                style="@style/msg_context"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/header_gradient_bg_underline"
+                                android:drawableEnd="@drawable/ic_calendar_start"
+                                android:gravity="left|center"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:text="@string/fromDate"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tvFromHint"
+                                style="@style/msg_context"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/fromDate"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="11sp"
+                                android:visibility="gone" />
+
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="0.50">
+
+                            <TextView
+                                android:id="@+id/tvToDate"
+                                style="@style/msg_context"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/header_gradient_bg_underline"
+                                android:drawableRight="@drawable/ic_combined_shape_"
+                                android:gravity="left|center"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:text="@string/toDate"
+                                android:textAllCaps="false"
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tvToHint"
+                                style="@style/msg_context"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="12dp"
+                                android:text="@string/toDate"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="11sp"
+                                android:visibility="gone" />
+
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/releaseTimeTextView"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.04"
+                        android:text="@string/releaseTime"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:id="@+id/hourlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <com.google.android.material.textfield.TextInputLayout
+
+                            android:id="@+id/layout_hour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/text_input_edit_text_height"
+                            android:layout_marginTop="@dimen/dp_12"
+                            android:layout_marginRight="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/header_gradient_bg">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editText_hour"
+                                style="@style/textInputStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/et_bg"
+                                android:hint="@string/hhFormat"
+                                android:imeOptions="actionDone"
+
+                                android:inputType="number"
+                                android:textColor="@color/black" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+
+                            android:id="@+id/layout_minute"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/text_input_edit_text_height"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginTop="@dimen/dp_12"
+                            android:layout_weight="1"
+                            android:background="@drawable/header_gradient_bg">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editText_minute"
+                                style="@style/textInputStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/et_bg"
+                                android:hint="@string/mmformat"
+                                android:imeOptions="actionDone"
+
+                                android:inputType="number"
+                                android:textColor="@color/black" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:id="@+id/layout_remarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:background="@drawable/header_gradient_bg">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/remrks_field"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:hint="@string/remarks"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:textColor="@color/black" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    <TextView
+                        android:id="@+id/selectRecurringDays"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.04"
+                        android:text="@string/selectReccuringDays"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:id="@+id/main_weekend_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/layout_rounded_shape_border_radius_2_dp_black"
+                        android:orientation="vertical">
+
+                        <include
+                            android:id="@+id/layout_weekdays_linear"
+                            layout="@layout/layout_weekdays_linear_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginEnd="1dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_weekdays"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="1dp"
+                            android:visibility="gone" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:letterSpacing="0.04"
+                        android:text="@string/blockAll"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+
+                    <RadioGroup
+                        android:id="@+id/rg_block_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <RadioButton
+                            android:id="@+id/rb_no"
+                            style="@style/msg_context"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/colorPrimary"
+                            android:checked="true"
+                            android:paddingLeft="8dp"
+                            android:text="No"
+                            android:textColor="@color/colorDimShadow6"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_yes"
+                            style="@style/msg_context"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:buttonTint="@color/colorPrimary"
+                            android:paddingLeft="8dp"
+                            android:text="Yes"
+                            android:textColor="@color/colorDimShadow6"
+                            android:textSize="18sp" />
+                    </RadioGroup>
+
+
+                    <android.widget.Button
+                        android:id="@+id/btn_block_seats"
+                        style="@style/msg_context"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_marginTop="@dimen/button_height"
+                        android:background="@drawable/button_default_bg"
+                        android:text="@string/blockSeats"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/tansparentbackbround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_tint_color"
+        android:clickable="true"
+        android:elevation="0dp"
+        android:focusable="true"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/summaryLayout"
+        layout="@layout/service_summary"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    <include
+        android:id="@+id/edit_price_layout"
+        layout="@layout/coach_selected_seat_setail"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

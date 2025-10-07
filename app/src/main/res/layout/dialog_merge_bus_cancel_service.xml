@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Service Cancellation"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/serviceCancelDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you sure to cancel the service"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/this_action_cannot_be_reversed_please_verify_details_before_proceeding"
+        android:textColor="@color/colorRed2"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="8dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="16dp"
+        >
+
+        <android.widget.Button
+            android:id="@+id/btnGoBack"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/light_highlight_color"
+            android:text="@string/goBack"
+            android:textAllCaps="false"
+            android:textColor="@color/colorButton"
+            android:textSize="16sp"/>
+
+        <android.widget.Button
+            android:id="@+id/btnCancelService"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorRed2"
+            android:text="@string/cancel_service"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp16"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

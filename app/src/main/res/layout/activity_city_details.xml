@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/flash_white_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/toolbar_image_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_16"
+                android:src="@drawable/arrow_back"
+                app:tint="@color/white"
+                tools:ignore="VectorDrawableCompat" />
+
+
+            <!--            <RelativeLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="48dp"-->
+            <!--                android:layout_marginLeft="18dp"-->
+            <!--                android:layout_marginRight="15dp"-->
+            <!--                android:background="@drawable/layout_rounded_shape"-->
+            <!--                >-->
+
+
+            <SearchView
+                android:id="@+id/et_search"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/layout_rounded_shape"
+                android:focusableInTouchMode="true"
+                android:iconifiedByDefault="false"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/colorBlackShadow" />
+
+
+            <!--            </RelativeLayout>-->
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/toolbar_header_text"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            android:letterSpacing="0.04"
+            android:text="@string/notAvailable"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="12sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/all_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingEnd="28dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:text="@string/all"
+                android:textColor="@color/grey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/selected_tick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/tick_img"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/flash_white_bg" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

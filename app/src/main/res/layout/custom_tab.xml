@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTab"
+            style="@style/TextStyleNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/select_location"
+            android:textColor="@color/colorBlackShadow1"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/selectedBPDP"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/select_location"
+            android:textColor="@color/colorBlackShadow"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

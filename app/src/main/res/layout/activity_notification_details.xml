@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/title_bg">
+
+    <include
+        android:id="@+id/toolbarNotificationsDetails"
+        layout="@layout/toolbar_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarNotificationsDetails">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/containerNotification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/dp_8"
+            app:cardCornerRadius="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dp_16">
+
+                <TextView
+                    android:id="@+id/tvNotificationType"
+                    style="@style/msg_context"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_rounded_shape_light_red"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_2"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_2"
+                    android:text="@string/empty"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvNotificationDetailsTitle"
+                    style="@style/TextStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/layout_rounded_shape_light_blue"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_16"
+                    android:text="@string/empty"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNotificationType" />
+
+                <TextView
+                    android:id="@+id/tvNotificationBody"
+                    style="@style/TextStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/layout_rounded_shape_light_blue"
+                    android:backgroundTint="@color/white"
+                    android:paddingStart="@dimen/dp_8"
+                    android:paddingTop="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_8"
+                    android:paddingBottom="@dimen/dp_16"
+                    android:text="@string/empty"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp16"
+                    app:layout_constraintBottom_toTopOf="@+id/layoutServiceNo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNotificationDetailsTitle" />
+
+                <LinearLayout
+                    android:id="@+id/layoutServiceNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNotificationBody">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/service_number"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tvServiceNumber"
+                        style="@style/TextStyleBold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/dash"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutRoute"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutServiceNo">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/route"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tvRoute"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/dash"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutDoj"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutRoute">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/doj_"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tvDoj"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/dash"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutSeats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutDoj">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/seats"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tvSeats"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/dash"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutFares"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutSeats">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/fares"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tvFares"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/dash"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutBookedBy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutFares">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/booked_by"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/tvBookedBy"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/dash"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp16" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <include
+        android:id="@+id/layoutNoData"
+        layout="@layout/layout_no_data"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

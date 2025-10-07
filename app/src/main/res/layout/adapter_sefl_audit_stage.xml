@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_8sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/stageNameTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Mumbai"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radio"
+        app:layout_constraintTop_toBottomOf="@+id/stageNameTV"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/_8sdp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/stageNameTV"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

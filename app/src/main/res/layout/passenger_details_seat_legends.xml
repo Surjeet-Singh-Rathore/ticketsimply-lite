@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="@dimen/dp_8">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/dp_16" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_vertical_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/dp_16" />
+
+            <TextView
+                android:id="@+id/tv_current_header2"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:text="@string/seat_legends"
+                android:textAllCaps="true"
+                android:textSize="@dimen/sp16"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPassengersDetailsSeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+                app:layout_constraintTop_toBottomOf="@+id/tv_current_header2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/branchLegendsLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+                app:layout_constraintTop_toBottomOf="@id/rvPassengersDetailsSeats">
+
+                <TextView
+                    android:id="@+id/tvBranchHeader"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="2dp"
+                    android:text="@string/branch_wise_legends"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/sp16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBranchLegendColors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBranchHeader" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/passengerDetails_tvOkay"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:padding="@dimen/dp_8"
+                android:text="@string/okay"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                app:layout_constraintTop_toBottomOf="@+id/branchLegendsLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="slider_values">
+        <item>0</item>
+        <item>100</item>
+    </array>
+
+    <string-array name="booking_type">
+        <item>Walkin</item>
+        <item>Online Agent</item>
+        <item>Offline Agent</item>
+        <item>Branch</item>
+    </string-array>
+
+    <string-array name="city_list">
+        <item>Bangalore</item>
+        <item>Chennai</item>
+        <item>Hyderabad</item>
+    </string-array>
+
+    <string-array name="agent_names">
+        <item>Agent 1</item>
+        <item>Agent 2</item>
+        <item>Agent 3</item>
+        <item>Agent 4</item>
+    </string-array>
+
+    <string-array name="branch_names">
+        <item>Branch 1</item>
+        <item>Branch 2</item>
+        <item>Branch 3</item>
+        <item>Branch 4</item>
+    </string-array>
+
+    <string-array name="channel_name">
+        <item>Branch</item>
+        <item>Online Agent</item>
+        <item>OTAs</item>
+        <item>E-Booking</item>
+    </string-array>
+
+    <string-array name="country_code">
+        <item>+91</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>India</item>
+    </string-array>
+
+    <string-array name="travel_branch">
+        <item>8</item>
+    </string-array>
+
+    <string-array name="genderArray">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+
+    <string-array name="genderArray2">
+        <item>Mr</item>
+        <item>Ms</item>
+    </string-array>
+
+    <string-array name="idType">
+        <item>Aadhar</item>
+        <item>PAN</item>
+        <item>Passport</item>
+        <item>Voter ID</item>
+    </string-array>
+
+    <string-array name="driverArray">
+        <item>Driver 1</item>
+        <item>Driver 2</item>
+        <item>Driver 3</item>
+        <item>Driver 4</item>
+        <item>Driver 5</item>
+    </string-array>
+
+    <string-array name="dummyArray">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+    </string-array>
+
+    <string-array name="hourArray">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+    </string-array>
+
+    <string-array name="minuteArray">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+    </string-array>
+
+    <string-array name="amPMArray">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+
+    <string-array name="genderTitleArray">
+        <item>Mr</item>
+        <item>Mrs</item>
+        <item>Miss</item>
+    </string-array>
+
+    <string-array name="rechargeTransactionTypes">
+        <item>Credit</item>
+        <item>Debit</item>
+    </string-array>
+
+    <string-array name="agentTypes">
+        <item>All</item>
+        <item>Prepaid</item>
+        <item>Postpaid</item>
+        <item>None</item>
+    </string-array>
+
+    <string-array name="selectCategories">
+        <item>Show all</item>
+        <item>Show only credits</item>
+        <item>Show only debits</item>
+        <item>Show not cleared</item>
+        <item>Show manual credits/debits</item>
+    </string-array>
+
+    <string-array name="agentTypesWithoutNone">
+        <item>All</item>
+        <item>Prepaid</item>
+        <item>Postpaid</item>
+    </string-array>
+
+    <string-array name="rechargeStatus">
+        <item>Completed</item>
+        <item>Pending</item>
+        <item>Failed</item>
+    </string-array>
+
+    <string-array name="rechargePaymentTypes">
+        <item>Cheque</item>
+        <item>Cash</item>
+        <item>DD</item>
+        <item>NEFT</item>
+        <item>IMPS</item>
+        <item>RTGs</item>
+        <item>Net Pay</item>
+        <item>Pay Order</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="allReportTypes">
+        <item>Branch Collection Report</item>
+        <item>Service wise City Pickup Closure Report</item>
+        <item>Checking Inspector Report</item>
+        <item>Fuel Utility Report</item>
+        <item>Occupancy Report</item>
+        <item>Tickets Booked by You</item>
+        <item>Bus Service Collection</item>
+        <item>Group By Branch Report</item>
+
+    </string-array>
+
+    <string-array name="activeCancelledServicesArray">
+        <item>All (Active Trips + Cancelled Trips)</item>
+        <item>Only Active Trips</item>
+        <item>Only Cancelled Trips</item>
+    </string-array>
+</resources>

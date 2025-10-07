@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/noData"
+        layout="@layout/layout_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/dashboardChartContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@color/colorLighterGrey"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/dashboardAPIProcessing"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:indeterminateOnly="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLighterGrey"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_16"
+            android:visibility="visible"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tvAllService"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dp_8"
+                android:layout_weight="1"
+                android:background="@drawable/layout_rounded_shape"
+                android:drawableLeft="@drawable/icon_bus_24"
+                android:drawablePadding="@dimen/dp_8"
+                android:drawableTint="@color/colorPrimary"
+                android:paddingStart="8dp"
+                android:paddingTop="@dimen/dp_16"
+                android:paddingBottom="@dimen/dp_16"
+                android:gravity="center_vertical"
+                android:text="@string/all_services_title_case"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_weight="1"
+                android:background="@drawable/layout_rounded_shape"
+                android:drawableLeft="@drawable/ic_icons_calendar"
+                android:drawablePadding="@dimen/dp_8"
+                android:drawableTint="@color/colorPrimary"
+                android:padding="@dimen/dp_16"
+                android:gravity="center_vertical"
+                android:text="@string/empty"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline13"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerNewDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:visibility="gone"
+        shimmer:duration="800">
+
+        <include layout="@layout/shimmer_dashboard_graph_layout" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/dashboardChartContainer"
+        android:layout_marginBottom="56dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDraggable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewSeatWise" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</RelativeLayout>

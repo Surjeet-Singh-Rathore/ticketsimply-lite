@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dim">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/viaCitiesTV"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="@string/via_cities"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/stepTV"
+        style="@style/TextStyleNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/step_2_5"
+        android:textColor="@color/greyish"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/viaCitiesTV" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dragToRearangeTV"
+        style="@style/TextStyleNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/you_can_do_drag_drop_to_rearrange_and_swipe_to_delete_the_via_cities"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:textColor="@color/little_dark_grey"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viaCitiesTV"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/viaCitiesRV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            tools:itemCount="5"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:layout_constraintBottom_toTopOf="@id/previousTV"
+            tools:listitem="@layout/adapter_via_cities"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/dragToRearangeTV"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/previousTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="@string/cancel"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nextTV"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/nextTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/previousTV" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

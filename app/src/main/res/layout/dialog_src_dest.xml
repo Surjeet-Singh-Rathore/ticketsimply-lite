@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_title"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/booking"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"
+            android:letterSpacing="0.05"
+            android:text="@string/source_amp_destination"
+            android:textAllCaps="true"
+            android:textColor="@color/textColor"
+            android:textSize="12sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutSource"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeWidth="@dimen/dp_2">
+
+            <AutoCompleteTextView
+                android:id="@+id/etSource"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_bg"
+                android:hint="@string/select_source"
+                android:imeOptions="actionNext"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDestination"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeWidth="@dimen/dp_2">
+
+            <AutoCompleteTextView
+                android:id="@+id/etDestination"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_bg"
+                android:hint="@string/select_destination"
+                android:imeOptions="actionDone"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCancel"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="@string/cancel"
+                android:textColor="@color/colorRed2"
+                android:textSize="16sp" />
+
+            <android.widget.Button
+                android:id="@+id/btn_procceed"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_24"
+                android:background="@drawable/layout_rounded_shape"
+                android:backgroundTint="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="10dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:text="@string/proceed"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/dialog_progress_bar"
+        style="?android:attr/horizontalScrollViewStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/grey_four_tint"
+        android:visibility="gone" />
+
+</RelativeLayout>

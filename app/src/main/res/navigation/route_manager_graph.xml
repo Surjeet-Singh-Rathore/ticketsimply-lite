@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/route_manager_graph"
+    app:startDestination="@id/searchRouteFragment">
+
+    <fragment
+        android:id="@+id/searchRouteFragment"
+        tools:layout="@layout/fragment_search_route"
+        android:name="com.bitla.ts.presentation.view.fragments.SearchRouteFragment"
+        android:label="SearchRouteFragment" >
+        <action
+            android:id="@+id/action_searchRouteFragment_to_editRouteBasicDetailsFragment"
+            app:destination="@id/editRouteBasicDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editRouteBasicDetailsFragment"
+        tools:layout="@layout/fragment_edit_route_basic_details"
+        android:name="com.bitla.ts.presentation.view.fragments.EditRouteBasicDetailsFragment"
+        android:label="EditRouteBasicDetailsFragment" >
+        <action
+            android:id="@+id/action_editRouteBasicDetailsFragment_to_editRouteViaCitiesFragment"
+            app:destination="@+id/editRouteViaCitiesFragment" />
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/editRouteViaCitiesFragment"
+        tools:layout="@layout/fragment_edit_route_via_cities"
+
+        android:name="com.bitla.ts.presentation.view.fragments.EditRouteViaCitiesFragment"
+        android:label="EditRouteViaCitiesFragment" >
+        <action
+            android:id="@+id/action_editRouteViaCitiesFragment_to_multiCityBookingFragment"
+            app:destination="@+id/multiCityBookingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/multiCityBookingFragment"
+        tools:layout="@layout/fragment_multi_city_booking"
+        android:name="com.bitla.ts.presentation.view.fragments.MultiCityBookingFragment"
+        android:label="MultiCityBookingFragment" >
+        <action
+            android:id="@+id/action_multiCityBookingFragment_to_boardingPointConfigFragment"
+            app:destination="@id/boardingPointConfigFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/boardingPointConfigFragment"
+        tools:layout="@layout/fragment_boarding_point_configuration"
+
+        android:name="com.bitla.ts.presentation.view.fragments.BoardingPointConfigFragment"
+        android:label="BoardingPointConfigFragment" >
+        <action
+            android:id="@+id/action_boardingPointConfigFragment_to_droppingPointConfigFragment"
+            app:destination="@id/droppingPointConfigFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/droppingPointConfigFragment"
+        tools:layout="@layout/fragment_dropping_point_config"
+
+        android:name="com.bitla.ts.presentation.view.fragments.DroppingPointConfigFragment"
+        android:label="DroppingPointConfigFragment" >
+        <action
+            android:id="@+id/action_droppingPointConfigFragment_to_additionalInfoFragment"
+            app:destination="@id/additionalInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/additionalInfoFragment"
+        tools:layout="@layout/fragment_additional_info"
+
+        android:name="com.bitla.ts.presentation.view.fragments.AdditionalInfoFragment"
+        android:label="AdditionalInfoFragment" />
+    <fragment
+        android:id="@+id/previewRouteFragment"
+        tools:layout="@layout/fragment_route_review"
+        android:name="com.bitla.ts.presentation.view.fragments.PreviewRouteFragment"
+        android:label="PreviewRouteFragment" />
+</navigation>

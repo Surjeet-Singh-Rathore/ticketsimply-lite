@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_rounded_shape_top_left_right">
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="@dimen/dp_16"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/linearLayout11"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--                android:id="@+id/shimmer_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:visibility="gone"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"-->
+<!--                shimmer:duration="800">-->
+
+<!--                <include-->
+<!--                    layout="@layout/coach_service_summary_shimmer"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/serviceName"-->
+<!--                style="@style/TextStyleBold"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginStart="@dimen/dp_16"-->
+<!--                android:layout_marginEnd="@dimen/dp_16"-->
+<!--                android:layout_marginTop="@dimen/dp_16"-->
+<!--                android:text="@string/notAvailable"-->
+<!--                android:textColor="@color/grey"-->
+<!--                android:textSize="@dimen/sp20" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/ftSubtitle"-->
+<!--                style="@style/TextStyleBold"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginStart="@dimen/dp_16"-->
+<!--                android:layout_marginEnd="@dimen/dp_16"-->
+<!--                android:text="@string/notAvailable"-->
+<!--                android:textColor="@color/button_default_color"-->
+<!--                android:textSize="12sp"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"-->
+<!--                app:layout_constraintStart_toEndOf="@id/img_back"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/toolbar_header_text" />-->
+
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recycler_service_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:paddingStart="16dp"-->
+<!--                android:paddingEnd="16dp"-->
+<!--                android:visibility="visible" />-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/NoResult"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                android:visibility="gone">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_no_search_results" />-->
+
+<!--                <TextView-->
+<!--                    style="@style/TextStyleNormalTV"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:letterSpacing="0.05"-->
+<!--                    android:text="@string/nothing_to_show"-->
+<!--                    android:textColor="@color/grey" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout11"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="bottom"-->
+<!--        android:weightSum="2"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btn_left"-->
+<!--            style="@style/TextStyleBold"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:visibility="gone"-->
+<!--            android:background="@color/primaryLight"-->
+<!--            android:paddingTop="@dimen/dp_12"-->
+<!--            android:paddingBottom="@dimen/dp_12"-->
+<!--            android:text="@string/print"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/colorBlackShadow"-->
+<!--            android:textSize="@dimen/sp16" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btn_right"-->
+<!--            style="@style/TextStyleBold"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorPrimaryDark"-->
+<!--            android:paddingTop="@dimen/dp_12"-->
+<!--            android:paddingBottom="@dimen/dp_12"-->
+<!--            android:text="@string/okay"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/colorWhite"-->
+<!--            android:textSize="@dimen/sp16" />-->
+<!--    </LinearLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

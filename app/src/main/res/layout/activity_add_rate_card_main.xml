@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDim">
+
+    <include
+        android:id="@+id/update_ratecard_toolbar"
+        layout="@layout/item_header_view_with_title_des" />
+
+    <ImageView
+        android:id="@+id/noData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_72"
+        android:layout_below="@+id/update_ratecard_toolbar"
+        android:src="@drawable/ic_no_search_results"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvNoService"
+        style="@style/TextStyleNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/noData"
+        android:gravity="center"
+        android:letterSpacing="0.05"
+        android:text="@string/no_service_available"
+        android:textColor="@color/grey"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFetchShowRateCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/createRateCardBT"
+        android:paddingTop="@dimen/dp_12"
+        android:visibility="visible"
+        android:layout_below="@+id/update_ratecard_toolbar"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update_ratecard_toolbar"
+        tools:listitem="@layout/child_rate_card_main" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        style="@style/TextStyleBold"
+        android:id="@+id/createRateCardBT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/layout_rounded_shape"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/create_rate_card"
+        android:textAllCaps="false"
+        android:padding="@dimen/dp_16"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</RelativeLayout>

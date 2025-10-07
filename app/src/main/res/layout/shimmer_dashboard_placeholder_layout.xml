@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_300"
+    android:padding="@dimen/dp_16">
+
+    <View
+        android:id="@+id/view0"
+        style="@style/TextStyleBold"
+        android:layout_width="@dimen/dp_172"
+        android:layout_height="@dimen/dp_14"
+        android:background="@drawable/shimmer_gradient_overlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                android:id="@+id/text_summary_shimmer"
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_14"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/dashboardShimmerPieChart"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_122"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_16"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/shimmer_circular_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/text_summary_shimmer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_summary_shimmer" />
+
+            <View
+                android:id="@+id/dashboardShimmerView1"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/margin_10"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_28"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_summary_shimmer"
+                app:layout_constraintTop_toBottomOf="@+id/text_summary_shimmer" />
+
+            <View
+                android:id="@+id/dashboardShimmerView2"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/margin_10"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_summary_shimmer"
+                app:layout_constraintTop_toBottomOf="@+id/dashboardShimmerView1" />
+
+            <View
+                android:id="@+id/dashboardShimmerView3"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/margin_10"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_summary_shimmer"
+                app:layout_constraintTop_toBottomOf="@+id/dashboardShimmerView2" />
+
+            <View
+                android:id="@+id/dashboardShimmerView4"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/margin_10"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_summary_shimmer"
+                app:layout_constraintTop_toBottomOf="@+id/dashboardShimmerView3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_summary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_dashboard2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_dashboard3">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_dashboard4">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_dashboard5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_dashboard6">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_dashboard7">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_dashboard9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_dashboard8">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

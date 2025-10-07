@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/busTrackingMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:background="@drawable/layout_rounded_shape_top_left_right"
+        android:padding="@dimen/_16sdp"
+        android:visibility="visible"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <ImageView
+            android:id="@+id/imgSheetIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bottom_sheet_holder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCoachNumber"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="ABCD"
+            android:layout_marginStart="@dimen/_16sdp"
+            app:layout_constraintStart_toEndOf="@id/tvServiceNumber"
+            app:layout_constraintTop_toBottomOf="@+id/imgSheetIcon" />
+
+        <TextView
+            android:id="@+id/tvServiceNumber"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="EFGH"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgSheetIcon"/>
+
+        <TextView
+            android:id="@+id/tvCurrentCity"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notAvailable"
+            android:drawablePadding="@dimen/_4sdp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCoachNumber"
+            app:drawableStartCompat="@drawable/ic_bus_location" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrentCity"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@color/colorBlackShadow"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/NoResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@color/button_color"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="@dimen/_70sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_no_search_results"
+            android:id="@+id/noDataIV"/>
+
+        <TextView
+            style="@style/TextStyleNormalTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:letterSpacing="0.05"
+            android:text="@string/nothing_to_show"
+            android:id="@+id/messageTV"
+            app:layout_constraintTop_toBottomOf="@id/noDataIV"
+            app:layout_constraintStart_toStartOf="@id/noDataIV"
+            app:layout_constraintEnd_toEndOf="@id/noDataIV"
+            android:textColor="@color/grey" />
+
+
+        <Button
+            android:id="@+id/addBusDetailsButton"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="@drawable/button_default_bg"
+            android:text="@string/assign_bus"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_8"
+    android:background="@drawable/layout_rounded_shape"
+    android:elevation="0dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/api_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16">
+
+
+        <TextView
+            android:id="@+id/stage_name"
+            style="@style/TextStyleNormal"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"></TextView>
+
+        <TextView
+            android:id="@+id/time"
+            style="@style/TextStyleNormal"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"></TextView>
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/TextStyleNormal"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text=""></TextView>
+
+        <TextView
+            android:id="@+id/deviation"
+            style="@style/TextStyleNormal"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text=""></TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

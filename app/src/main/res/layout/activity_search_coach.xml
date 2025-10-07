@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.view.activity.SearchCoachActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbarLayout"
+        android:layout_width="0dp"
+        android:layout_height="88dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/toolbar_image_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="@dimen/dp_16"
+            android:src="@drawable/arrow_back_white"
+            tools:ignore="ContentDescription,VectorDrawableCompat" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/layout_rounded_shape">
+
+
+            <EditText
+                android:id="@+id/et_search"
+                style="@style/TextStyleNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/img_search"
+                android:background="@null"
+                android:hint="@string/search"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text=""
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/colorBlackShadow" />
+
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/colorDimShadow"
+                tools:ignore="VectorDrawableCompat" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchCoach"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout"
+        tools:listitem="@layout/child_search_selection" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

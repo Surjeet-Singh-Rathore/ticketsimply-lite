@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvIncludeMobile"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/include_mobile_number_of"
+        android:textColor="@color/colorBlackShadow"
+        android:visibility="gone" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spinner"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:hint="@string/include_mobile_number"
+        android:visibility="gone"
+        app:boxBackgroundColor="@color/title_bg"
+        app:boxBackgroundMode="filled">
+
+        <AutoCompleteTextView
+            android:id="@+id/acEmployeeType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:inputType="none"
+            android:textColor="@color/colorBlackShadow"
+            android:textColorHint="@color/grey"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutBusNumber"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBusNumber"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/bus_number"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutDriverName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDriverName"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/driver_name"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:maxLength="10" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutBoardingPoint"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBoardingPoint"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/boarding_point"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutMobileNumber"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        android:visibility="gone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMobileNumber"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/mobile_number"
+            android:imeOptions="actionDone"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/tvBusDelay"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/bus_delayed_by"
+        android:textColor="@color/colorBlackShadow"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutBusDelayTraffic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="1">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinnerHour"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:layout_weight="0.5"
+            android:hint="@string/hh"
+            android:visibility="visible"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled">
+
+            <AutoCompleteTextView
+                android:id="@+id/acHour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:inputType="none"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinnerMinutes"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:hint="@string/mm"
+            android:visibility="visible"
+            app:boxBackgroundColor="@color/title_bg"
+            app:boxBackgroundMode="filled">
+
+            <AutoCompleteTextView
+                android:id="@+id/acMinutes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:inputType="none"
+                android:textColor="@color/colorBlackShadow"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_16"
+    android:layout_marginTop="@dimen/dp_8"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginEnd="@dimen/dp_16"
+    android:layout_marginBottom="@dimen/dp_8"
+    app:cardCornerRadius="@dimen/dp_8"
+    app:cardElevation="@dimen/dp_4"
+    app:cardPreventCornerOverlap="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_14">
+
+        <TextView
+            android:id="@+id/tvStartDate"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/colorBlackShadow"
+            android:text="@string/start_dateX"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvEndDate"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="@string/end_dateX"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintStart_toStartOf="@+id/guideline10"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_more_horiz"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvStartDateValue"
+            style="@style/TextStyleBold"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toStartOf="@+id/tvEndDateValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvStartDate" />
+
+        <TextView
+            android:id="@+id/tvEndDateValue"
+            style="@style/TextStyleBold"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline10"
+            app:layout_constraintTop_toBottomOf="@+id/tvStartDate" />
+
+        <TextView
+            android:id="@+id/tvRateCardName"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Rate Card Name"
+            android:textSize="@dimen/sp14"
+            android:textColor="@color/colorBlackShadow"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/dp_8"
+            app:layout_constraintTop_toBottomOf="@+id/tvStartDateValue" />
+
+        <TextView
+            android:id="@+id/tvRateCardNameValue"
+            style="@style/TextStyleBold"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/notAvailable"
+            android:paddingEnd="@dimen/_6ssp"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toStartOf="@+id/tvCoachTypeValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRateCardName" />
+
+        <TextView
+            android:id="@+id/tvCoachType"
+            style="@style/TextStyleNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@string/coach_type"
+            android:textColor="@color/colorBlackShadow"
+            app:layout_constraintTop_toBottomOf="@+id/tvStartDateValue"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintStart_toStartOf="@+id/guideline10" />
+
+        <TextView
+            android:id="@+id/tvCoachTypeValue"
+            style="@style/TextStyleBold"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline10"
+            app:layout_constraintTop_toBottomOf="@+id/tvCoachType" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

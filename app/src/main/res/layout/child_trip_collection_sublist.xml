@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginTop="@dimen/_1sdp"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/passenger_name"
+            style="@style/msg_context"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="Name"
+            android:textColor="@color/grey"
+            android:gravity="center" />
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/seat_number"
+            style="@style/msg_context"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            android:layout_weight="1"
+            android:text="Seat No" />
+
+        <TextView
+            android:id="@+id/seat_fare"
+            style="@style/msg_context"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fares"
+            android:textColor="@color/grey"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/from_to"
+            style="@style/msg_context"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:text="From To"
+            android:textColor="@color/grey"
+            android:visibility="visible"
+            />
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

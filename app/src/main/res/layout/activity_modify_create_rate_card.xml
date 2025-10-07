@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDim">
+
+    <include
+        android:id="@+id/update_ratecard_toolbar"
+        layout="@layout/item_header_view_with_title_des"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/update_ratecard_toolbar">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_55sdp"
+            android:elevation="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_5sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bulkModifyTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="250 Routes (Branch)"
+                    android:textColor="@color/color_black_revenue"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/copyAllModifyTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/copy_all"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/firstV"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:background="#F0F0F0"
+                    app:layout_constraintTop_toBottomOf="@id/bulkModifyTV" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fareRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/firstV" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancelBT"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@drawable/bg_stroke_red_little_round"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/color_user_red"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toStartOf="@id/applyBT"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/applyBT"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="@drawable/layout_rounded_shape"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="@string/apply"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cancelBT"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

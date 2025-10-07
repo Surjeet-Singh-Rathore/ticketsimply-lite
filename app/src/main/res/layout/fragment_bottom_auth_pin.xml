@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAuthPinCancelButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:textSize="@dimen/sp20"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_6"
+        android:layout_marginBottom="@dimen/dp_12"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/dividerView"
+        />
+
+    <View
+        android:id="@+id/dividerView"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/tvAuthPinCancelButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/constraintTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_12"
+        android:background="@color/light_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerView"
+        app:layout_constraintBottom_toTopOf="@+id/titleTextView"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_16"
+            android:textStyle="bold"
+            android:text="Action:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvActionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Action Name"
+            android:paddingEnd="@dimen/dp_16"
+            android:textStyle="bold"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvAction"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_pin_to_unlock"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintTop_toBottomOf="@id/constraintTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvTitleNext"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_pin_to_unlock_next"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:layout_marginBottom="@dimen/dp_6"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/pinIndicatorLayout"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pinIndicatorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginBottom="@dimen/dp_100"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPin1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_8"
+            android:textColor="@android:color/transparent"
+            android:textSize="@dimen/dp_0"
+            android:inputType="numberPassword"
+            android:textAlignment="center"
+            android:background="@drawable/ic_circle_outline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPin2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@android:color/transparent"
+            android:textSize="@dimen/dp_0"
+            android:inputType="numberPassword"
+            android:textAlignment="center"
+            android:background="@drawable/ic_circle_outline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvPin1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPin3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@android:color/transparent"
+            android:textSize="@dimen/dp_0"
+            android:inputType="numberPassword"
+            android:textAlignment="center"
+            android:background="@drawable/ic_circle_outline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvPin2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPin4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@android:color/transparent"
+            android:textSize="@dimen/dp_0"
+            android:inputType="numberPassword"
+            android:textAlignment="center"
+            android:background="@drawable/ic_circle_outline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvPin3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPin5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@android:color/transparent"
+            android:textSize="@dimen/dp_0"
+            android:inputType="numberPassword"
+            android:textAlignment="center"
+            android:background="@drawable/ic_circle_outline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvPin4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPin6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@android:color/transparent"
+            android:textSize="@dimen/dp_0"
+            android:inputType="numberPassword"
+            android:textAlignment="center"
+            android:background="@drawable/ic_circle_outline"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvPin5"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintForGridKeypad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_14sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomGridLayout"
+        app:layout_constraintTop_toBottomOf="@+id/pinIndicatorLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPinKeyboard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:overScrollMode="never"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/pin_auth_custom_keyboard"
+            tools:itemCount="3"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomGridLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintForGridKeypad">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewBackspace"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvZeroNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_backspace"
+            android:background="@drawable/ic_button_border"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvZeroNumber"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:text="0"
+            android:textAlignment="center"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_8"
+            android:textSize="@dimen/sp22"
+            android:background="@drawable/ic_button_border"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/imageViewBackspace"
+            app:layout_constraintEnd_toStartOf="@id/imageViewDone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewDone"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/_10sdp"
+            app:layout_constraintStart_toEndOf="@id/tvZeroNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_done"
+            android:background="@drawable/ic_button_border"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/dividerViewEnd"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/dp_64"
+        app:layout_constraintTop_toBottomOf="@id/bottomGridLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

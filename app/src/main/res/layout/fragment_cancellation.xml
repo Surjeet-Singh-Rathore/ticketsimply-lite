@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.view.fragments.boarding.summaryfragments.Cancellation">
+
+    <TextView
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_16"
+        android:text="@string/cancellation_policy"
+        android:textColor="@color/grey" />
+
+    <ScrollView
+        android:id="@+id/svCancellationPolicies"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textview"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_16"
+
+            android:textColor="@color/grey" />
+    </ScrollView>
+
+    <include
+        android:id="@+id/layoutNoData"
+        layout="@layout/layout_no_data" />
+
+
+</LinearLayout>
+
+    <!--
+
+        android:text="Additional Information\n
+        Use your PNR No for all communication with Orange Tours and Travels. Your PNR No. serves as confirmation of ticket status.
+        Carry a print out of this e-ticket and Present it to the bus counter at time of check in.
+        Carry photo identification, you will need it as proof of identity while checking in.
+        \n
+        \n
+        By use of online booking facility on this site, customer grants his consent to site to allow contact him/her by SMS, email or phone. Customer’s contact details are not shared with anyone as per privacy policy.
+        \n\n
+        Boarding of Passengers\n
+        Passengers shall report at the boarding point at least 15 minutes prior to the scheduled departure time. Passengers who do not report on time will be termed as NO-SHOW passenger and will be denied boarding and Not entitled for any refund of the ticket amount anyhow. Orange Tours and Travels reserves the right to deny boarding to passengers who are under the influence of alcohol or owing to any misconduct of behaviour/critically ill/stretcher borne which may not be deemed safe for travel by Orange Tours and Travels.
+        \n
+        \n
+        Photo Identification\n
+        Passenger shall present valid e-Ticket along with a valid photo identity card of at least one of the passengers of the group issued by one the government authority otherwise they will be denied boarding and not entitled for refund.
+        \n
+        \n
+        Baggage\n
+        Passengers should not carry any goods like weapons, inflammables, firearms, ammunition, drugs, liquor, smuggled goods etc and any other articles that are prohibited under law. Maximum baggage allowed per passenger is 15 Kg, Excess baggage will be charged as per Orange Tours and Travels rules. Orange Tours and Travels shall not take responsibility in the event of loss or damage to the passenger luggage. Orange Tours and Travels reserves the right to disallow any excess baggage carried by the passengers. Orange Tours and Travels highly recommends that you remove all valuables (cameras, jewellery, money, electronics, perishables, etc) and medication from your luggage. In case, the passenger decides to carry any valuables against the above advice they will do this at their own risk and shall not hold Orange Tours and Travels responsible for any pilferage/ damage etc. to such valuables. Orange Tours and Travels assumes no liability for wear and tear to luggage any guest with medical condition or history will travel at his / her own risk and consequences.
+        \n\n
+        Delay of Service\n
+        Orange Tours and Travels may delay a bus without any prior notice in case of circumstances beyond its control. In such circumstances Orange Tours and Travels delays a bus more than 2 hours. Orange Tours and Travels may reschedule the journey on the next Orange Tours and Travels service in the same sector subject to availability without any extra charge based on the passenger's conveyance or enable the full refund of the ticket as paid by the passengers. The passenger will have to cancel or reschedule the ticket before the departure of the delayed service else the ticket will become a NO-SHOW and will not be entitled to any refund or reschedule. Orange Tours and Travels is not responsible for the delays caused en route due to unavoidable circumstances like traffic jams etc.
+        \n\n
+        Cancellation Policy\n
+        Cancellation Cut off Time	Cancellation Return Amount
+        1 Minutes To 6 Hours	0%
+        6 Hours To 24 Hours	70%
+        More than 24 Hours	85%
+        Partial Cancellation Is Possible.
+        Refund of partial cancellation will be processed after your journey date.
+        Ticket Cancellation Can Be Before 1 Minutes of Journey From Pickup Time.
+        It Is Rights Of Orange Tours and Travels To Change Cancellation Policy Any Time Without Prior To Notice
+        Bookings from this site will be eligible for cancellation through Cancellation Form on this site only. No cancellation request will be entertained by any branch or agent office.
+        On Cancellation, Refund will be credited in 7 To 10 working days in source payment.
+        If any customer choose extra benefit option while cancelletion they will get refund amount in their orange wallet, By any means amount will not be credit in their bank account niether it can be transfer to bank account.
+        No further arguments will be taken into consideration.
+        \n
+        \n
+        Orange Tours and Travels may cancel a service without any prior notice in case of circumstances beyond its control.
+        In such circumstances Orange Tours and Travels shall either reschedule the journey for travel on the next Orange Tours and Travels service in the same sector, Subject to availability without any extra charge based on the passenger's conveyance or enable a full refund of the ticket as paid by the passenger and shall be under no further liability to the passenger.
+
+        Breakdowns
+        In case of any breakdowns in route, Orange Tours and Travels will refund the amount on a prorate basis at the Orange Tours and Travels booking counters situated at the origin or destination of the journey. Orange Tours and Travels will not make any alternate arrangements of travel for breakdowns en route. Orange Tours and Travels is not responsible for any breakdowns of audio, video and air conditioning equipment en route or in the middle of the journey.
+
+        Pets
+        Orange Tours and Travels does not allow any pets on board its service.
+
+        Contact Information
+        Orange Tours and Travels Helpline (08:00 AM To 11:00 PM): +91 92280 09590 / 0281 6198016
+        Orange Tours and Travels Customer Support Email (Response Time 3 Working Days): eticket@orangetravels.in
+
+        "-->

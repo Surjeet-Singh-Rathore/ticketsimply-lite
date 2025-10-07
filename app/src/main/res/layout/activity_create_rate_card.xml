@@ -1,0 +1,1293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flash_white_bg">
+
+    <include
+        android:id="@+id/update_ratecard_toolbar"
+        layout="@layout/item_header_view_with_title_des"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_save_modify_service"
+        android:layout_below="@+id/update_ratecard_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/update_ratecard_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintMainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/flash_white_bg"
+            android:padding="@dimen/dp_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/layout_rounded_shape"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingTop="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingBottom="@dimen/dp_8"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/rateCardTitleTV"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rate_card_details"
+                    android:textColor="@color/color_black_revenue"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgArrowRateCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_arrow_up"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rateCardTitleTV"
+                    app:tint="#4A4A4A" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/childRateCardDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/rateCardTitleTV">
+
+                    <View
+                        android:id="@+id/firstV"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:background="#F0F0F0"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/rateCardNameTitle"
+                        style="@style/TextStyleNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:text="@string/rate_card_name_optional"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/firstV" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutRateCardName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:background="@drawable/header_gradient_bg"
+                        android:focusableInTouchMode="false"
+                        app:boxStrokeWidth="@dimen/dp_2"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rateCardNameTitle">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRateCardName"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:hint="@string/enter_name_for_rate_card_name"
+                            android:imeOptions="actionDone" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dateLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layoutRateCardName">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/layout_fromDate_urc"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_input_edit_text_height"
+                            android:layout_marginEnd="@dimen/dp_4"
+                            android:layout_weight="1"
+                            android:background="@drawable/header_gradient_bg"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            android:visibility="visible"
+                            app:boxStrokeErrorColor="@color/colorRed2"
+                            app:boxStrokeWidth="@dimen/dp_2"
+                            app:errorEnabled="true"
+                            app:errorIconDrawable="@null"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/rgFareTemplateType2">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_fromDate_urc"
+                                style="@style/textInputStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/et_bg"
+                                android:drawableEnd="@drawable/ic_icons_calendar"
+                                android:focusableInTouchMode="false"
+                                android:hint="@string/fromDate" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/layout_toDate_urc"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/text_input_edit_text_height"
+                            android:layout_marginStart="@dimen/dp_4"
+                            android:layout_weight="1"
+                            android:background="@drawable/header_gradient_bg"
+                            android:textColorHint="@color/colorPrimaryDark"
+                            android:visibility="visible"
+                            app:boxStrokeErrorColor="@color/colorRed2"
+                            app:boxStrokeWidth="@dimen/dp_2"
+                            app:errorEnabled="true"
+                            app:errorIconDrawable="@null"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_fromDate_urc">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_toDate_urc"
+                                style="@style/textInputStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/et_bg"
+                                android:drawableEnd="@drawable/ic_icons_calendar"
+                                android:focusableInTouchMode="false"
+                                android:hint="@string/toDate"
+                                android:imeOptions="actionDone"
+                                android:inputType="text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fareParentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/layout_rounded_shape"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+
+                <TextView
+                    android:id="@+id/fareTvTitle"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:text="@string/fare"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_black_revenue"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgArrowFare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/dp_2"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/_2sdp"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@+id/fareTvTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fareTvTitle" />
+
+                <View
+                    android:id="@+id/lineViewFare"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="#F0F0F0"
+                    app:layout_constraintTop_toBottomOf="@+id/imgArrowFare" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/childLayoutFare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@color/white"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lineViewFare">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/amount_type"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/rgAmountType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView3"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                        <RadioButton
+                            android:id="@+id/percentageRadio"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/percentage" />
+
+                        <RadioButton
+                            android:id="@+id/fixedRadio"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fixed"
+                            app:layout_constraintStart_toStartOf="@+id/guideline6"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="@string/increase_or_decrease_fare"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@+id/rgAmountType" />
+
+                    <RadioGroup
+                        android:id="@+id/rgIncOrDec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView3"
+                        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                        <RadioButton
+                            android:id="@+id/inc_dec_fare"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/increase"
+                            app:layout_constraintStart_toStartOf="@+id/textView3"
+                            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                        <RadioButton
+                            android:id="@+id/dec_fare"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/decrease"
+                            app:layout_constraintStart_toStartOf="@+id/guideline6"
+                            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvSeatType"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="@string/select_seat_type"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rgIncOrDec" />
+
+                    <CheckBox
+                        android:id="@+id/chkSelectAll"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:checked="true"
+                        android:text="@string/all"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSeatType" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSelectSeat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toEndOf="@+id/chkSelectAll"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSeatType" />
+
+                    <TextView
+                        android:id="@+id/additionalOptionTV"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="Additional Options"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@+id/rvSelectSeat"
+                        tools:layout_editor_absoluteX="3dp" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/includeSeatWiseChk"
+                        style="@style/msg_context"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Include seat-wise fare"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/additionalOptionTV" />
+
+                    <TextView
+                        android:id="@+id/tvIncPercentage"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="@string/inc_percentage"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/includeSeatWiseChk" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layout_addpercentage"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:background="@drawable/header_gradient_bg"
+                        app:boxStrokeErrorColor="@color/colorRed2"
+                        app:boxStrokeWidth="@dimen/dp_2"
+                        app:errorEnabled="true"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvIncPercentage">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etAddPercentage"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:hint="@string/add_percentage"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutCityFare"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_addpercentage">
+
+                        <TextView
+                            android:id="@+id/fromAndToCitiesTV"
+                            style="@style/TextStyleBold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/from_and_to_cities"
+                            android:textAllCaps="true"
+                            android:textColor="@color/textColor"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/fromCityTIL"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"
+                            android:hint="@string/select_from_city_1"
+                            app:boxBackgroundColor="@color/title_bg"
+                            app:boxBackgroundMode="filled"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fromAndToCitiesTV">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/fromCityET"
+                                style="@style/TextStyleNormal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/et_bg"
+                                android:inputType="none"
+                                android:textColor="@color/colorBlackShadow"
+                                android:textColorHint="@color/grey"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tv_moreUserType_toCity"
+                            style="@style/TextStyleNormalTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_30sdp"
+                            android:text="@string/more_seats"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/sp14"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/fromCityTIL"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fromAndToCitiesTV" />
+
+                        <ImageView
+                            android:id="@+id/imgCrossFrom"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_30sdp"
+                            android:src="@drawable/ic_cross"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/fromCityTIL"
+                            app:layout_constraintEnd_toEndOf="@+id/fromCityTIL"
+                            app:layout_constraintTop_toTopOf="@+id/fromCityTIL"
+                            app:tint="@color/gray_disabled" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/toCityTIL"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="58dp"
+                            android:layout_marginTop="@dimen/dp_16"
+                            android:background="@drawable/header_gradient_bg"
+                            android:hint="@string/select_to_city"
+                            app:boxBackgroundColor="@color/title_bg"
+                            app:boxBackgroundMode="filled"
+                            app:boxStrokeErrorColor="@color/colorRed2"
+                            app:boxStrokeWidth="@dimen/dp_2"
+                            app:errorEnabled="true"
+                            app:errorIconDrawable="@null"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fromCityTIL">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/toCityET"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/et_bg"
+                                android:inputType="none"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tv_moreUserType_fromCity"
+                            style="@style/TextStyleNormalTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_30sdp"
+                            android:text="@string/more_seats"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/sp14"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/toCityTIL"
+                            app:layout_constraintEnd_toEndOf="@+id/toCityTIL"
+                            app:layout_constraintTop_toTopOf="@+id/toCityTIL" />
+
+                        <ImageView
+                            android:id="@+id/imgCrossTo"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_30sdp"
+                            android:src="@drawable/ic_cross"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/toCityTIL"
+                            app:layout_constraintEnd_toEndOf="@+id/toCityTIL"
+                            app:layout_constraintTop_toTopOf="@+id/toCityTIL"
+                            app:tint="@color/gray_disabled" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/cityPairTIL"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="58dp"
+                            android:layout_marginTop="@dimen/dp_16"
+                            android:background="@drawable/header_gradient_bg"
+                            android:hint="@string/select_city_pair"
+                            app:boxBackgroundColor="@color/title_bg"
+                            app:boxBackgroundMode="filled"
+                            app:boxStrokeErrorColor="@color/colorRed2"
+                            app:boxStrokeWidth="@dimen/dp_2"
+                            app:errorEnabled="true"
+                            app:errorIconDrawable="@null"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/toCityTIL">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/cityPairET"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/et_bg"
+                                android:inputType="none"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/tv_moreUserType_cityPair"
+                            style="@style/TextStyleNormalTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_30sdp"
+                            android:text="@string/more_seats"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/sp14"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/cityPairTIL"
+                            app:layout_constraintEnd_toEndOf="@+id/cityPairTIL"
+                            app:layout_constraintTop_toTopOf="@+id/cityPairTIL" />
+
+                        <ImageView
+                            android:id="@+id/imgCrossCityPair"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_30sdp"
+                            android:src="@drawable/ic_cross"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="@+id/cityPairTIL"
+                            app:layout_constraintEnd_toEndOf="@+id/cityPairTIL"
+                            app:layout_constraintTop_toTopOf="@+id/cityPairTIL"
+                            app:tint="@color/gray_disabled" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnApply"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:background="@drawable/bg_blue_stroke_white_little_round"
+                        android:enabled="true"
+                        android:text="@string/apply"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintEnd_toStartOf="@id/modifyFareBT"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layoutCityFare" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/modifyFareBT"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@drawable/layout_rounded_shape_left_selected"
+                        android:enabled="true"
+                        android:text="@string/modify_fare"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/btnApply"
+                        app:layout_constraintTop_toBottomOf="@id/layoutCityFare" />
+
+                    <View
+                        android:id="@+id/spacer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/modifyFareBT" />
+
+                    <TextView
+                        android:id="@+id/tvModifiedChannelLabel_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:text="@string/modifyFare"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorPrimary"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/spacer" />
+
+                    <TextView
+                        android:id="@+id/tvModifiedChannelLabel_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:text="@string/modifyFare"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorPrimary"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvModifiedChannelLabel_1" />
+
+                    <TextView
+                        android:id="@+id/tvModifiedChannelLabel_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:text="@string/modifyFare"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorPrimary"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvModifiedChannelLabel_2" />
+
+                    <TextView
+                        android:id="@+id/tvModifiedChannelLabel_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/_8sdp"
+                        android:text="@string/modifyFare"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/colorPrimary"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvModifiedChannelLabel_3" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/timeParentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/layout_rounded_shape"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/fareParentLayout">
+
+                <TextView
+                    android:id="@+id/timeTvTitle"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:text="@string/time"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_black_revenue"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgArrowTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/dp_2"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/_2sdp"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@+id/timeTvTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/timeTvTitle" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/childLayoutTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:background="@drawable/layout_rounded_shape"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/timeTvTitle">
+
+                    <View
+                        android:id="@+id/lineViewTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:background="#F0F0F0"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:background="@drawable/layout_rounded_shape"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lineViewTime">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayout2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/white_bg"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/textView3Time"
+                                style="@style/TextStyleBold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/increase_or_decrease"
+                                android:textAllCaps="true"
+                                android:textColor="@color/textColor"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <RadioGroup
+                                android:id="@+id/rgIncOrDecTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="@+id/textView3Time"
+                                app:layout_constraintTop_toBottomOf="@+id/textView3Time">
+
+                                <RadioButton
+                                    android:id="@+id/incFareTime"
+                                    style="@style/msg_context"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="@string/increase"
+                                    app:layout_constraintStart_toStartOf="@+id/textView3Time"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView3Time" />
+
+                                <RadioButton
+                                    android:id="@+id/decFareTime"
+                                    style="@style/msg_context"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/decrease"
+                                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                            </RadioGroup>
+
+                            <TextView
+                                android:id="@+id/tvSeatTypeTime"
+                                style="@style/TextStyleBold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:text="@string/select_type"
+                                android:textAllCaps="true"
+                                android:textColor="@color/textColor"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/rgIncOrDecTime" />
+
+                            <LinearLayout
+                                android:id="@+id/seatTypeContainerTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:visibility="gone"
+                                android:weightSum="3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvSeatTypeTime">
+
+                                <CheckBox
+                                    android:id="@+id/chkAll"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="All"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+                                <CheckBox
+                                    android:id="@+id/chkArrival"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:text="Arrival"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+                                <CheckBox
+                                    android:id="@+id/chkDeparture"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:text="Departure"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/seatTypeContainer2Time"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:visibility="gone"
+                                android:weightSum="7"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/seatTypeContainerTime">
+
+                                <CheckBox
+                                    android:id="@+id/chkBP"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:text="BP"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+
+                                <CheckBox
+                                    android:id="@+id/chkDP"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:text="DP"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/textView4Time"
+                                style="@style/TextStyleBold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:text="@string/time"
+                                android:textAllCaps="true"
+                                android:textColor="@color/textColor"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/seatTypeContainer2Time" />
+
+                            <LinearLayout
+                                android:id="@+id/timeLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                android:weightSum="2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView4Time">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/layout_hour"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_input_edit_text_height"
+                                    android:layout_marginTop="@dimen/dp_12"
+                                    android:layout_marginEnd="6dp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/header_gradient_bg"
+                                    app:boxStrokeErrorColor="@color/colorRed2"
+                                    app:boxStrokeWidth="@dimen/dp_2"
+                                    app:errorEnabled="true"
+                                    app:errorIconDrawable="@null">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/et_hour"
+                                        style="@style/textInputStyle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:hint="@string/hhFormat"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:maxLines="1" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/layout_minute"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/text_input_edit_text_height"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginTop="@dimen/dp_12"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/header_gradient_bg"
+                                    app:boxStrokeErrorColor="@color/colorRed2"
+                                    app:boxStrokeWidth="@dimen/dp_2"
+                                    app:errorEnabled="true"
+                                    app:errorIconDrawable="@null">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/et_minute"
+                                        style="@style/textInputStyle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/et_bg"
+                                        android:hint="@string/mmformat"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="number"
+                                        android:maxLines="1" />
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/parentLayoutCms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/layout_rounded_shape"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/timeParentLayout">
+
+                <TextView
+                    android:id="@+id/tvTitleCms"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:text="@string/commission"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_black_revenue"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgArrowCms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/dp_2"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/_2sdp"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitleCms"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitleCms" />
+
+                <View
+                    android:id="@+id/lineViewCmsn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:background="#F0F0F0"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgArrowCms" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/childLayoutCms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@color/white"
+                    android:paddingStart="@dimen/dp_16"
+                    android:paddingEnd="@dimen/dp_16"
+                    android:paddingBottom="@dimen/dp_24"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lineViewCmsn">
+
+                    <TextView
+                        android:id="@+id/incOrDecTitleCms"
+                        style="@style/TextStyleNormalTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/increase_or_decrease_fare"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioGroup
+                        android:id="@+id/rgIncOrDecCms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/incOrDecTitleCms"
+                        app:layout_constraintTop_toBottomOf="@+id/incOrDecTitleCms">
+
+                        <RadioButton
+                            android:id="@+id/incFareCms"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/increase"
+                            app:layout_constraintStart_toStartOf="@+id/textView3"
+                            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                        <RadioButton
+                            android:id="@+id/decFareCms"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/decrease"
+                            app:layout_constraintStart_toStartOf="@+id/guideline6"
+                            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/amountTypeTitleCms"
+                        style="@style/TextStyleNormalTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="@string/amount_type"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rgIncOrDecCms" />
+
+                    <RadioGroup
+                        android:id="@+id/rgAmountTypeCms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/amountTypeTitleCms"
+                        app:layout_constraintTop_toBottomOf="@+id/amountTypeTitleCms">
+
+                        <RadioButton
+                            android:id="@+id/percentageRadioCms"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/percentage" />
+
+                        <RadioButton
+                            android:id="@+id/fixedRadioCms"
+                            style="@style/msg_context"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/fixed"
+                            app:layout_constraintStart_toStartOf="@+id/guideline6"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/selectSeatTypeTIL"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:background="@drawable/header_gradient_bg"
+                        android:hint="Select Seat Type"
+                        android:visibility="gone"
+                        app:boxBackgroundColor="@color/title_bg"
+                        app:boxBackgroundMode="filled"
+                        app:boxStrokeErrorColor="@color/colorRed2"
+                        app:boxStrokeWidth="@dimen/dp_2"
+                        app:errorEnabled="true"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintTop_toBottomOf="@+id/rgAmountTypeCms">
+
+                        <MultiAutoCompleteTextView
+                            android:id="@+id/selectSeatTypeCms"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:inputType="none"
+                            android:textSize="14sp"
+                            android:textStyle="normal" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tvSeatTypeCms"
+                        style="@style/TextStyleBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:text="@string/select_seat_type"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textColor"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rgAmountTypeCms" />
+
+                    <CheckBox
+                        android:id="@+id/chkSelectAllCms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:checked="false"
+                        android:text="@string/all"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/rvSelectSeatCms"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSeatTypeCms" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSelectSeatCms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toEndOf="@+id/chkSelectAllCms"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSeatTypeCms" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutAmountCmsn"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/text_input_edit_text_height"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:background="@drawable/header_gradient_bg"
+                        android:hint="@string/amount_percent_sign"
+                        app:boxStrokeErrorColor="@color/colorRed2"
+                        app:boxStrokeWidth="@dimen/dp_2"
+                        app:errorEnabled="true"
+                        app:errorIconDrawable="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rvSelectSeatCms">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etAmountCmsn"
+                            style="@style/textInputStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/et_bg"
+                            android:inputType="none"
+                            android:maxLength="2" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <include
+                android:id="@+id/includeProgress"
+                layout="@layout/layout_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/_280sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save_modify_service"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_default_bg"
+        android:enabled="false"
+        android:padding="@dimen/dp_16"
+        android:text="@string/save_rate_card"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</RelativeLayout>

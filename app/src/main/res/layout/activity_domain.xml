@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/ic_ts_logo" />
+
+        <!--        <org.imaginativeworld.whynotimagecarousel.ImageCarousel-->
+        <!--            android:id="@+id/carousel"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="200dp"-->
+        <!--            android:layout_marginTop="32dp"-->
+        <!--            app:showIndicator="false"-->
+        <!--            app:indicatorMargin="20dp"-->
+        <!--            app:imageScaleType="fitXY"-->
+        <!--            app:carouselBackground="@color/colorPrimary"-->
+        <!--            app:showNavigationButtons="false"-->
+        <!--            app:carouselType="BLOCK"-->
+        <!--            app:carouselGravity="CENTER"-->
+        <!--            app:autoPlay="true"-->
+        <!--            app:showTopShadow="false"-->
+        <!--            app:showBottomShadow="false"-->
+        <!--            app:autoPlayDelay="3000"-->
+        <!--            app:touchToPause="false"/>-->
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/image_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="32dp" />
+
+        <LinearLayout
+            android:id="@+id/dots_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_container"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/domain_monitor_service_icon"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/simply_monitor_and_update_the_services"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            app:autoSizeMaxTextSize="@dimen/sp14"
+            app:autoSizeMinTextSize="@dimen/sp11"
+            app:autoSizeTextType="uniform" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_domain"
+                android:textColor="@color/grey"
+                android:textSize="18sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_domain"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/header_gradient_bg">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDomain"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/domain"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_proceed"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/button_default_bg"
+                android:text="@string/proceed"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.view.activity.CrewToolkitActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnSave"
+        android:background="@color/flash_white_bg"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/includeToolbar"
+            layout="@layout/toolbar_crew_toolkit" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCrewToolKit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dp_8"
+        android:textSize="@dimen/sp16"
+        android:background="@drawable/layout_rounded_shape_border"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <include
+        android:id="@+id/includeProgress"
+        layout="@layout/layout_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+
+    <LinearLayout
+        android:id="@+id/NoResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_100"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_no_search_results" />
+
+        <TextView
+            android:id="@+id/no_result_text"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:letterSpacing="0.05"
+            android:text="@string/nothing_to_show"
+            android:textColor="@color/grey" />
+    </LinearLayout>
+
+</RelativeLayout>

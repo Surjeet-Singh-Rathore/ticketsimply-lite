@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="slycalendar_cancel">Cancelar</string>
+    <string name="slycalendar_save">Guardar</string>
+    <string name="slycalendar_next">Siguiente</string>
+    <string name="slycalendar_prev">Anterior</string>
+    <string name="ok">Aceptar</string>
+    <string name="notAvailable">N/D</string>
+</resources>

@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:orientation="vertical"
+    tools:context=".presentation.view.dashboard.ViewReservationFragments.ShiftPassengersFragment">
+
+    <LinearLayout
+        android:id="@+id/NoResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_no_search_results" />
+
+        <TextView
+            style="@style/TextStyleNormalTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:letterSpacing="0.05"
+            android:text="@string/nothing_to_show"
+            android:textColor="@color/grey" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_proceed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="#F0F0F0">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="19dp"
+                    android:background="@drawable/header_gradient_bg"
+                    app:endIconDrawable="@drawable/ic_down_arrow_filled"
+                    app:endIconMode="custom"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+                    app:layout_constraintTop_toBottomOf="@+id/view1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etName"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/et_bg"
+                        android:focusable="false"
+                        android:hint="@string/from_service"
+                        android:imeOptions="actionNext"
+                        android:inputType="none"
+                        android:textColor="@color/colorBlackShadow" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                app:lottie_autoPlay="true"
+                app:lottie_enableMergePathsForKitKatAndAbove="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/arrow_down" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/animation_view">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="19dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/select_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/header_gradient_bg"
+                        android:textColorHint="@color/colorDimShadow6"
+                        app:endIconDrawable="@drawable/ic_down_arrow_filled"
+                        app:hintTextColor="@color/gray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etSelectDate_shift_pasngr"
+                            style="@style/TextStyleNormalTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/et_bg"
+                            android:drawableEnd="@drawable/ic_icons_calendar"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/date"
+                            android:imeOptions="actionNext"
+                            android:inputType="none"
+                            android:textColorHint="@color/colorDimShadow6" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <TextView
+                        android:id="@+id/etselect_service"
+                        style="@style/TextStyleNormalTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:background="@drawable/et_bg"
+                        android:drawableEnd="@drawable/ic_search"
+                        android:hint="@string/select_service"
+
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:paddingStart="@dimen/dp_12"
+                        android:paddingTop="18dp"
+                        android:paddingEnd="@dimen/dp_12"
+
+                        android:paddingBottom="19dp"
+                        android:textColorHint="@color/colorDimShadow6" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/adapterParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+
+                <LinearLayout
+                    android:id="@+id/manualLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/relativeLayout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_16"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/allservice"
+                            style="@style/TextStyleBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:letterSpacing="0.05"
+                            android:text="@string/select_seat_manually"
+                            android:textColor="@color/colorBlackShadow" />
+
+                        <TextView
+                            android:id="@+id/view_coach_layout"
+                            style="@style/TextStyleBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:letterSpacing="0.05"
+                            android:text="@string/view_coach_layout"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorButton" />
+
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/manual_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_8"
+                        android:overScrollMode="never"
+
+                        />
+
+                    <!--                <ProgressBar-->
+                    <!--                    android:id="@+id/manul_progressbar"-->
+                    <!--                    android:layout_width="wrap_content"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:visibility="gone"-->
+
+                    <!--                    android:layout_gravity="center" />-->
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/auto_Layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/manualLayout">
+
+                    <LinearLayout
+                        android:id="@+id/auto_layout_sub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_16"
+                        android:layout_marginBottom="@dimen/dp_8"
+                        android:orientation="horizontal"
+
+                        android:weightSum="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/auto_head"
+                            style="@style/TextStyleBold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:letterSpacing="0.05"
+                            android:text="Auto seat ###"
+
+                            android:textColor="@color/colorBlackShadow"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <TextView
+                            android:id="@+id/view_coach_layout_auto"
+                            style="@style/TextStyleBold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:letterSpacing="0.05"
+                            android:text="@string/view_coach_layout"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorButton"
+                            android:visibility="gone" />
+
+
+                    </LinearLayout>
+
+
+                    <!--                <TextView-->
+                    <!--                    android:id="@+id/textView10"-->
+                    <!--                    style="@style/TextStyleBold"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:layout_margin="@dimen/dp_16"-->
+                    <!--                    android:letterSpacing="0.05"-->
+                    <!--                    android:text="Auto seat ###"-->
+                    <!--                    android:textColor="@color/colorBlackShadow"-->
+                    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/auto_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_8"
+                        android:overScrollMode="never"
+
+
+                        />
+
+                    <!--                <ProgressBar-->
+                    <!--                    android:id="@+id/auto_progressbar"-->
+                    <!--                    android:layout_width="wrap_content"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:layout_gravity="center" />-->
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/main_progressBar"
+
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="@dimen/dp_0"
+                    android:background="@color/flash_white_bg"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+
+                        android:visibility="visible" />
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <CheckBox
+                android:id="@+id/check_shiftRemainingSeats"
+                style="@style/TextStyleNormalTV"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:text="@string/shift_remaining_seats"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adapterParent" />
+
+            <CheckBox
+                android:id="@+id/check_smsPassengerWithNewDetails"
+                style="@style/textInputStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@color/white"
+                android:text="@string/sms_passenger_with_new_details"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/check_shiftRemainingSeats" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputRemarks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/check_smsPassengerWithNewDetails">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputEditTextRemarks"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/remarks"
+                    android:inputType="text"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/colorPrimaryDark" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_proceed"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/button_default_color"
+        android:text="@string/proceed"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp16"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/coach_layout_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_tint_color"
+        android:clickable="false"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_24"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scrollView3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_rounded_shape"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:id="@+id/heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/coach_layout" />
+
+                <TextView
+                    android:id="@+id/close_Coach_layout"
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text="@string/close"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+
+            <include
+                android:id="@+id/coach_layout_fragment"
+                layout="@layout/sheet_coach_layout" />
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

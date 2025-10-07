@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@android:color/white"
+    app:cardCornerRadius="12dp"
+    android:layout_marginHorizontal="@dimen/_2sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Header Row -->
+        <TextView
+            android:id="@+id/seatTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Seat 1"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/expandIcon"
+            app:layout_constraintHorizontal_bias="0" />
+
+        <ImageView
+            android:id="@+id/expandIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_drop_down"
+            app:tint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/seatTitle"
+            app:layout_constraintBottom_toBottomOf="@id/seatTitle" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:id="@+id/mainG"
+            android:visibility="visible"
+            app:constraint_referenced_ids="passengerDetailsLabel,layoutGender,layoutName,layoutContact,layoutFare"
+            android:layout_height="wrap_content"/>
+
+        <!-- Section Label -->
+        <TextView
+            android:id="@+id/passengerDetailsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PASSENGER DETAILS"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/grey"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/seatTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Gender Dropdown -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutGender"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Gender"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeWidth="1dp"
+            app:layout_constraintTop_toBottomOf="@id/passengerDetailsLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <AutoCompleteTextView
+                android:id="@+id/genderET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:focusable="false"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Name"
+            app:layout_constraintTop_toBottomOf="@id/layoutGender"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nameET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Contact -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutContact"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Contact number"
+            app:layout_constraintTop_toBottomOf="@id/layoutName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contactET"
+                android:layout_width="match_parent"
+                android:maxLength="10"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Fare -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutFare"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Fare"
+            app:layout_constraintTop_toBottomOf="@id/layoutContact"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fareET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Copy details checkbox -->
+        <CheckBox
+            android:id="@+id/copyDetailsCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/copy_details_to_all_seats"
+            app:layout_constraintTop_toBottomOf="@id/layoutFare"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

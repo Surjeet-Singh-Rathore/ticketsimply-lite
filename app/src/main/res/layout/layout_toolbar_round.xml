@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="106dp"
+    android:background="@drawable/layout_rounded_shape"
+    android:elevation="0dp"
+    android:orientation="vertical"
+    android:paddingBottom="5dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="26dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="22dp" />
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="@dimen/dp_16"
+        android:src="@drawable/arrow_back"
+        app:layout_constraintBottom_toTopOf="@id/toolbar_header_text"
+        app:layout_constraintStart_toEndOf="@id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start"
+        app:tint="@color/colorBlackShadow"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/tv_current_header"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/layout_rounded_shape_border_circle"
+        android:paddingLeft="4dp"
+        android:paddingTop="2dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="2dp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/colorPrimary"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@id/toolbar_header_text"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal_start" />
+
+
+    <TextView
+        android:id="@+id/toolbar_header_text"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bangalore - Chennai"
+        android:textColor="@color/colorBlackShadow"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/tvOnwardsDate"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toBottomOf="@id/tv_current_header" />
+
+    <TextView
+        android:id="@+id/tvEdit"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:drawableLeft="@drawable/ic_shape_edit"
+        android:drawablePadding="6dp"
+        android:text="@string/edit"
+        android:textColor="@color/colorBlackShadow"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tvOnwardsDate"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_end"
+        app:layout_constraintTop_toBottomOf="@id/tv_current_header" />
+
+    <TextView
+        android:id="@+id/tvOnwardsDate"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="06 Oct 2020"
+        android:textColor="@color/colorPrimary"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_end"
+        app:layout_constraintStart_toEndOf="@id/img_back"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_text" />
+
+    <ImageView
+        android:id="@+id/imgOnwardsReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/ic_onward_return"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_end"
+        app:layout_constraintStart_toEndOf="@id/tvOnwardsDate"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_text" />
+
+    <TextView
+        android:id="@+id/tvReturnDate"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:text="06 Oct 2020"
+        android:textColor="@color/button_default_color"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_end"
+        app:layout_constraintStart_toEndOf="@id/imgOnwardsReturn"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_header_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

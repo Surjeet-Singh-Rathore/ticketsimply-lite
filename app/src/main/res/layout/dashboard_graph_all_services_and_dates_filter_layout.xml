@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dayWiseOccupancyHeaderContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorLighterGrey"
+    android:orientation="horizontal"
+    android:visibility="visible"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/tvAllService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_weight="1"
+        android:background="@drawable/layout_rounded_shape"
+        android:drawableLeft="@drawable/icon_bus_24"
+        android:drawablePadding="@dimen/dp_2"
+        android:drawableTint="@color/colorPrimary"
+        android:paddingStart="8dp"
+        android:paddingTop="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16"
+        android:text="@string/all_services_title_case"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_weight="1"
+        android:background="@drawable/layout_rounded_shape"
+        android:drawableLeft="@drawable/ic_icons_calendar"
+        android:drawablePadding="@dimen/dp_2"
+        android:drawableTint="@color/colorPrimary"
+        android:padding="@dimen/dp_16"
+        android:text="@string/notAvailable"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="parent" />
+</LinearLayout>

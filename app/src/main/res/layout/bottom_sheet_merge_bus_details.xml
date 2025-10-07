@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:id="@+id/bottomSheet"
+    app:behavior_peekHeight="0dp"
+    android:elevation="@dimen/_20sdp"
+    style="@style/BottomSheetDialog"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14ssp"
+            android:id="@+id/serviceNameTV"
+            android:text="Service details-BHT110"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDimShadow1"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/travelling_from"
+        android:id="@+id/travellingFromTv"
+        android:textColor="@color/colorDimShadow"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <TextView
+        android:id="@+id/sourceTV"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Johar Bahru"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <ImageView
+        android:id="@+id/dottedLine1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/dotted_line"
+        android:layerType="software" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/travelling_to"
+        android:textColor="@color/colorDimShadow"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <TextView
+        android:id="@+id/destinationTV"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Surabaya"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:background="@drawable/dotted_line_horizontal"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_seats_booked"
+        android:textColor="@color/colorDimShadow"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:id="@+id/totalSeatsBooked"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <TextView
+        android:id="@+id/bookedSeats"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:text="5"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_seats_available"
+        android:textColor="@color/colorDimShadow"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <TextView
+        android:id="@+id/seatsAvailable"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="45"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+
+
+    <android.widget.Button
+        android:id="@+id/btn_ok"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/okay"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite" />
+
+</LinearLayout>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MapsActivity" />
+
+    <FrameLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_rounded_shape_top_left_right"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <LinearLayout
+            android:id="@+id/layoutBottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_margin="@dimen/dp_16"
+
+            android:clipToPadding="false"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="@dimen/dp_8"
+                app:cardBackgroundColor="@color/grey"
+                app:cardCornerRadius="@dimen/dp_4" />
+
+            <LinearLayout
+                android:id="@+id/city_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:orientation="horizontal"
+                android:visibility="visible"
+
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/current_service_name"
+                    style="@style/TextStyleBold"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:text="ServiceName"
+                    android:textSize="@dimen/sp16" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/city"
+                        android:textSize="@dimen/sp16" />
+
+                    <TextView
+                        android:id="@+id/current_city_name"
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_4"
+                        android:text="@string/notAvailable"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/sp16" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/station_parent_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/bp_dp_current_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_14"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/current_boarding_point"
+                                style="@style/TextStyleNormalTV"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/current_boarding_point"
+                                android:textSize="@dimen/sp16"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/imageView11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_source"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/current_boarding_point"
+                                app:tint="@color/black" />
+
+                            <TextView
+                                android:id="@+id/current_station_name"
+                                style="@style/TextStyleBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/notAvailable"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/sp16"
+                                app:layout_constraintEnd_toStartOf="@+id/imageView12"
+                                app:layout_constraintStart_toEndOf="@+id/imageView11"
+                                app:layout_constraintTop_toBottomOf="@+id/current_boarding_point" />
+
+
+                            <ImageView
+                                android:id="@+id/imageView12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/dp_4"
+                                android:src="@drawable/ic_walking_man"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/current_station_pass_count"
+                                app:layout_constraintTop_toBottomOf="@+id/current_boarding_point"
+                                app:tint="@color/black" />
+
+                            <TextView
+                                android:id="@+id/current_station_pass_count"
+                                style="@style/TextStyleBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/notAvailable"
+                                android:textSize="@dimen/sp16"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/current_boarding_point" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/division_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_2"
+                    android:background="@color/grey"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/bp_dp_next_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/eta_background"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_14"
+                    android:visibility="gone">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/next_boarding_point"
+                            style="@style/TextStyleNormalTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/next_boarding_point"
+                            android:textSize="@dimen/sp16"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/busimageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_source"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/next_boarding_point"
+                            app:tint="@color/black" />
+
+                        <TextView
+                            android:id="@+id/next_station_name"
+                            style="@style/TextStyleBold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="jakarta Bus Stand"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp16"
+                            app:layout_constraintEnd_toStartOf="@+id/people_imageView12"
+                            app:layout_constraintStart_toEndOf="@+id/busimageView"
+                            app:layout_constraintTop_toBottomOf="@+id/next_boarding_point" />
+
+
+                        <ImageView
+                            android:id="@+id/people_imageView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dp_4"
+                            android:src="@drawable/ic_walking_man"
+                            app:layout_constraintEnd_toStartOf="@+id/next_passenger_count"
+                            app:layout_constraintTop_toBottomOf="@+id/next_boarding_point"
+                            app:tint="@color/black" />
+
+                        <TextView
+                            android:id="@+id/next_passenger_count"
+                            style="@style/TextStyleBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/sp16"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/next_boarding_point" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/next_station_name">
+
+                            <TextView
+                                android:id="@+id/distnce"
+                                style="@style/TextStyleNormalTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/notAvailable"
+                                android:textColor="@color/deep_green"
+                                android:textSize="@dimen/sp16"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/next_boarding_point" />
+
+                            <TextView
+                                android:id="@+id/time"
+                                style="@style/TextStyleNormalTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" 24min |"
+                                android:textColor="@color/deep_green"
+                                android:textSize="@dimen/sp16"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/next_boarding_point" />
+
+                            <TextView
+                                android:id="@+id/arrival"
+                                style="@style/TextStyleNormalTV"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" 5:30Pm"
+                                android:textColor="@color/deep_green"
+                                android:textSize="@dimen/sp16"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/next_boarding_point" />
+
+
+                        </LinearLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/navigate_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <Button
+                    android:id="@+id/btnStart"
+                    style="@style/TextStyleBold"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:paddingTop="@dimen/dp_16"
+                    android:paddingBottom="@dimen/dp_16"
+                    android:text="@string/start" />
+
+                <Button
+                    android:id="@+id/btn_navigate"
+                    style="@style/TextStyleBold"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_4"
+                    android:layout_weight="1"
+                    android:paddingTop="@dimen/dp_16"
+                    android:paddingBottom="@dimen/dp_16"
+                    android:text="@string/navigate"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

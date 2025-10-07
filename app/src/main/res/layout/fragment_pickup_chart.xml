@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs_pickup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:tabBackground="@color/colorWhite"
+            app:tabIndicator="@drawable/ic_tab_slider"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorHeight="3dp"
+            app:tabInlineLabel="false"
+            app:tabMode="fixed" />
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                shimmer:duration="800">
+
+                <include
+                    layout="@layout/shimmer_reservation_chart_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager_pickup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <include
+                android:id="@+id/includeProgress"
+                layout="@layout/layout_progress_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_verical_end"
+                app:layout_constraintStart_toStartOf="@+id/guideline_verical_start"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainFrame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/slycalendar_defBackgroundColor"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/headerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/slycalendar_defHeaderColor"
+        android:orientation="vertical"
+        android:paddingLeft="25dp"
+        android:paddingTop="17dp"
+        android:paddingRight="25dp"
+        android:paddingBottom="17dp">
+
+        <TextView
+            android:id="@+id/txtYear"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:letterSpacing="-0.02"
+            android:textColor="@color/slycalendar_defHeaderTextColor"
+            android:layout_marginBottom="10dp"
+            style="@style/TextStyleNormal"
+            tools:text="2021"
+            />
+
+        <TextView
+            android:id="@+id/txtSelectedPeriod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/slycalendar_defHeaderTextColor"
+            android:textSize="26sp"
+            android:layout_marginBottom="10dp"
+            tools:text="@string/notAvailable"
+            android:singleLine="true"
+            android:letterSpacing="-0.02"
+            style="@style/TextStyleNormal"
+            android:maxLines="1"
+            />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_margin="12dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="12dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btnMonthPrev"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_weight="0"
+                android:contentDescription="@string/slycalendar_prev"
+                android:foreground="?android:attr/actionBarItemBackground"
+                android:padding="12dp"
+                app:srcCompat="@drawable/slycalendar_chevron_left"
+                tools:ignore="VectorDrawableCompat"
+                android:tint="@color/colorBlackShadow"/>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+
+            <ImageView
+                android:id="@+id/btnMonthNext"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_weight="0"
+                android:contentDescription="@string/slycalendar_next"
+                android:foreground="?android:attr/actionBarItemBackground"
+                android:padding="12dp"
+                app:srcCompat="@drawable/slycalendar_chevron_right"
+                tools:ignore="VectorDrawableCompat"
+                android:tint="@color/colorBlackShadow"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal"
+            android:layout_gravity="end|bottom"
+
+            >
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:textAllCaps="true"
+                android:visibility="gone"
+                android:textColor="@color/slycalendar_defHeaderColor"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+
+            <TextView
+                android:id="@+id/txtCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="@string/slycalendar_cancel"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                style="@style/TextStyleBold"
+                android:textColor="@color/slycalendar_defHeaderColor"
+                />
+
+            <TextView
+                android:id="@+id/txtSave"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="@string/ok"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:paddingLeft="32dp"
+                android:paddingRight="12dp"
+                style="@style/TextStyleBold"
+                android:textColor="@color/slycalendar_defHeaderColor"
+
+                />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+
+
+
+</LinearLayout>

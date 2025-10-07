@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_12"
+        android:paddingRight="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_12"
+        android:text="@string/edit_fare"
+        android:textColor="@color/text_header_bg"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view_bg" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvContent"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:text="@string/current_total_fare_is"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="@dimen/_10ssp" />
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:id="@+id/applyToAllFareCB"
+                android:textSize="@dimen/_10ssp"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:text="@string/apply_same_fare_to_all_seats"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvMinMaxError"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:text="@string/empty"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/sp12"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNewFare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:layout_marginBottom="@dimen/dp_16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <android.widget.Button
+                    android:id="@+id/btnGoBack"
+                    style="@style/TextStyleBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:background="@color/button_secondary_bg"
+                    android:text="@string/goBack"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
+
+                <android.widget.Button
+                    android:id="@+id/btnConfirm"
+                    style="@style/TextStyleBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/confirm"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

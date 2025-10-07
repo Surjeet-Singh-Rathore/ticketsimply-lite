@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/outline_bg"
+    android:layout_marginBottom="6dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+        <include android:id="@+id/includeProgress"
+            layout="@layout/layout_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unblock"
+            android:id="@+id/btn_unblock"
+            style="@style/TextStyleBold"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_phone_number"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="@color/color_black_revenue"
+            app:layout_constraintEnd_toStartOf="@+id/btn_unblock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="@color/button_secondary_bg"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_unblock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_phone_number" />
+
+        <TextView
+            android:id="@+id/reason"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/button_secondary_bg"
+            android:textSize="12sp"
+            android:text="@string/empty"
+            app:layout_constraintEnd_toStartOf="@+id/btn_unblock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
+
+        <TextView
+            android:id="@+id/blocked_by"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="0dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="@color/button_secondary_bg"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/reason"
+            app:layout_constraintEnd_toStartOf="@+id/btn_unblock"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

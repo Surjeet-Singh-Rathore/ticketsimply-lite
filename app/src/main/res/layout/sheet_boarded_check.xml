@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_rounded_shape_top_left_right"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/bottomSheet_header"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_12"
+            android:paddingBottom="@dimen/dp_12"
+            android:text="@string/verify_boarding"
+            android:textColor="@color/grey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/skip_verification"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_12"
+            android:paddingBottom="@dimen/dp_12"
+            android:text="@string/skip_verificaiton"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/flash_white_bg" />
+
+
+    <LinearLayout
+        android:id="@+id/scan_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextStyleNormalTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/via_qr_code"
+            android:textSize="@dimen/sp12" />
+
+        <LinearLayout
+            android:id="@+id/scan_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+            android:gravity="center"
+
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_scan"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/scanqr_text"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/scan_qr"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/otp_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/otp_text"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:gravity="center"
+            android:text="@string/otp"
+            android:textAllCaps="true"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/sp12" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lenterotp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_input_edit_text_height"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:background="@drawable/header_gradient_bg"
+            android:textColorHint="@color/colorDimShadow6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etenter_otp"
+                style="@style/TextStyleNormalTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/et_bg"
+                android:hint="@string/enter_otp"
+                android:imeOptions="actionDone"
+
+                android:inputType="number"
+                android:textColorHint="@color/colorDimShadow6" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lpassenger_temp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        android:textColorHint="@color/colorDimShadow6"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_passenger_temp"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:digits="1234567890."
+            android:hint="@string/passenger_temprature"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="5"
+            android:textColorHint="@color/colorDimShadow6" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/remarksLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_input_edit_text_height"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/header_gradient_bg"
+        android:textColorHint="@color/colorDimShadow6"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutCancellationPercentage">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_remarks_text"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/et_bg"
+            android:hint="@string/enter_remarks"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textColorHint="@color/colorDimShadow6" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <LinearLayout
+        android:id="@+id/resend_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/layout_rounded_shape_border_radius_2_dp"
+        android:gravity="center"
+
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/resend_sms_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/send_sms"
+            app:tint="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/resend_qr_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_scan"
+            android:visibility="gone"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/resend_text"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/resend_sms"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_verify_boarding"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:background="@color/button_default_color"
+        android:padding="13dp"
+        android:text="@string/verify_boarding"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp16" />
+
+</LinearLayout>

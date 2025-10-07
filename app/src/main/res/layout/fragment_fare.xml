@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/flash_white_bg"
+    tools:context=".presentation.view.dashboard.update_rate_card_fragments.FareFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/flash_white_bg"
+        android:padding="@dimen/dp_16">
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/amount_type"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RadioGroup
+                android:id="@+id/rgAmountType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                <RadioButton
+                    android:id="@+id/percentageRadio"
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/percentage" />
+
+                <RadioButton
+                    android:id="@+id/fixedRadio"
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/fixed"
+                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/increase_or_decrease_fare"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/rgAmountType"
+                tools:layout_editor_absoluteX="3dp" />
+
+            <RadioGroup
+                android:id="@+id/rgIncOrDec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                <RadioButton
+                    android:id="@+id/inc_dec_fare"
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/increase"
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                <RadioButton
+                    android:id="@+id/dec_fare"
+                    style="@style/msg_context"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/decrease"
+                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/inc_percentage"
+                android:textAllCaps="true"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rgIncOrDec" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_addpercentage"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddPercentage"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/add_percentage"
+                    android:maxLength="2"
+                    android:imeOptions="actionDone"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_fromDate_urc"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_addpercentage">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_fromDate_urc"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_icons_calendar"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/fromDate"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_toDate_urc"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/header_gradient_bg"
+                app:boxStrokeErrorColor="@color/colorRed2"
+                app:boxStrokeWidth="@dimen/dp_2"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_fromDate_urc">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_toDate_urc"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:drawableEnd="@drawable/ic_icons_calendar"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/toDate"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_modify_service"
+            style="@style/TextStyleBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"
+            android:background="@drawable/button_default_bg"
+            android:enabled="false"
+            android:padding="@dimen/dp_16"
+            android:text="@string/modifyFare"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

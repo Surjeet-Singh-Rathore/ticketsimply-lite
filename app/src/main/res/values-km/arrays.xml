@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="slider_values">
+        <item>0</item>
+        <item>១០០</item>
+    </array>
+
+    <string-array name="booking_type">
+        <item>ដើរ</item>
+        <item>ភ្នាក់ងារអនឡាញ</item>
+        <item>ភ្នាក់ងារក្រៅបណ្តាញ</item>
+        <item>សាខា</item>
+    </string-array>
+
+    <string-array name="city_list">
+        <item>Bangalore</item>
+        <item>ចេនណៃ</item>
+        <item>អ៊ីដ្រាបាដ</item>
+    </string-array>
+
+    <string-array name="agent_names">
+        <item>ភ្នាក់ងារ ១</item>
+        <item>ភ្នាក់ងារ ២</item>
+        <item>ភ្នាក់ងារ ៣</item>
+        <item>ភ្នាក់ងារ ៤</item>
+    </string-array>
+
+    <string-array name="branch_names">
+        <item>សាខា ១</item>
+        <item>សាខា ២</item>
+        <item>សាខា ៣</item>
+        <item>សាខា ៤</item>
+    </string-array>
+
+    <string-array name="channel_name">
+        <item>សាខា</item>
+        <item>ភ្នាក់ងារអនឡាញ</item>
+        <item>OTAs</item>
+        <item>ការកក់សំបុត្រអេឡិចត្រូនិច</item>
+    </string-array>
+
+    <string-array name="country_code">
+        <item>+៩១</item>
+    </string-array>
+
+    <string-array name="country">
+        <item>ប្រទេសឥណ្ឌា</item>
+    </string-array>
+
+    <string-array name="travel_branch">
+        <item>៨</item>
+    </string-array>
+
+    <string-array name="genderArray">
+        <item>ម</item>
+        <item>ច</item>
+    </string-array>
+
+    <string-array name="genderArray2">
+        <item>លោក</item>
+        <item>អ្នកស្រី</item>
+    </string-array>
+
+    <string-array name="idType">
+        <item>អាដារ</item>
+        <item>ផាន</item>
+        <item>លិខិតឆ្លងដែន</item>
+        <item>លេខសម្គាល់អ្នកបោះឆ្នោត</item>
+    </string-array>
+
+    <string-array name="driverArray">
+        <item>អ្នកបើកបរ ១</item>
+        <item>អ្នកបើកបរ ២</item>
+        <item>អ្នកបើកបរ ៣</item>
+        <item>អ្នកបើកបរ ៤</item>
+        <item>អ្នកបើកបរ ៥</item>
+    </string-array>
+
+    <string-array name="dummyArray">
+        <item>0១</item>
+        <item>0២</item>
+        <item>0៣</item>
+        <item>0៤</item>
+        <item>0៥</item>
+    </string-array>
+
+    <string-array name="hourArray">
+        <item>00</item>
+        <item>0១</item>
+        <item>0២</item>
+        <item>0៣</item>
+        <item>0៤</item>
+        <item>0៥</item>
+        <item>0៦</item>
+        <item>0៧</item>
+        <item>0៨</item>
+        <item>0៩</item>
+        <item>១០</item>
+        <item>១១</item>
+        <item>១២</item>
+        <item>១៣</item>
+        <item>១៤</item>
+        <item>១៥</item>
+        <item>១៦</item>
+        <item>១៧</item>
+        <item>១៨</item>
+        <item>១៩</item>
+        <item>២០</item>
+        <item>២១</item>
+        <item>២២</item>
+        <item>២៣</item>
+        <item>២៤</item>
+    </string-array>
+
+    <string-array name="minuteArray">
+        <item>00</item>
+        <item>0១</item>
+        <item>0២</item>
+        <item>0៣</item>
+        <item>0៤</item>
+        <item>0៥</item>
+        <item>0៦</item>
+        <item>0៧</item>
+        <item>0៨</item>
+        <item>0៩</item>
+        <item>១០</item>
+        <item>១១</item>
+        <item>១២</item>
+        <item>១៣</item>
+        <item>១៤</item>
+        <item>១៥</item>
+        <item>១៦</item>
+        <item>១៧</item>
+        <item>១៨</item>
+        <item>១៩</item>
+        <item>២០</item>
+        <item>២១</item>
+        <item>២២</item>
+        <item>២៣</item>
+        <item>២៤</item>
+        <item>២៥</item>
+        <item>២៦</item>
+        <item>២៧</item>
+        <item>២៨</item>
+        <item>២៩</item>
+        <item>៣០</item>
+        <item>៣១</item>
+        <item>៣២</item>
+        <item>៣៣</item>
+        <item>៣៤</item>
+        <item>៣៥</item>
+        <item>៣៦</item>
+        <item>៣៧</item>
+        <item>៣៨</item>
+        <item>៣៩</item>
+        <item>៤០</item>
+        <item>៤១</item>
+        <item>៤២</item>
+        <item>៤៣</item>
+        <item>៤៤</item>
+        <item>៤៥</item>
+        <item>៤៦</item>
+        <item>៤៧</item>
+        <item>៤៨</item>
+        <item>៤៩</item>
+        <item>៥០</item>
+        <item>៥១</item>
+        <item>៥២</item>
+        <item>៥៣</item>
+        <item>៥៤</item>
+        <item>៥៥</item>
+        <item>៥៦</item>
+        <item>៥៧</item>
+        <item>៥៨</item>
+        <item>៥៩</item>
+    </string-array>
+
+    <string-array name="amPMArray">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+
+    <string-array name="genderTitleArray">
+        <item>លោក</item>
+        <item>លោកស្រី</item>
+        <item>កញ្ញា</item>
+    </string-array>
+
+    <string-array name="rechargeTransactionTypes">
+        <item>ឥណទាន</item>
+        <item>ឥណពន្ធ</item>
+    </string-array>
+
+    <string-array name="agentTypes">
+        <item>ទាំងអស់។</item>
+        <item>បង់ប្រាក់ជាមុន</item>
+        <item>បង់ប្រាក់ប្រចាំខែ</item>
+        <item>គ្មាន</item>
+    </string-array>
+
+    <string-array name="selectCategories">
+        <item>បង្ហាញទាំងអស់។</item>
+        <item>បង្ហាញតែឥណទានប៉ុណ្ណោះ។</item>
+        <item>បង្ហាញតែឥណពន្ធប៉ុណ្ណោះ។</item>
+        <item>បង្ហាញមិនច្បាស់</item>
+        <item>បង្ហាញឥណទាន/ឥណពន្ធដោយដៃ</item>
+    </string-array>
+
+    <string-array name="agentTypesWithoutNone">
+        <item>ទាំងអស់។</item>
+        <item>បង់ប្រាក់ជាមុន</item>
+        <item>បង់ប្រាក់ប្រចាំខែ</item>
+    </string-array>
+
+    <string-array name="rechargeStatus">
+        <item>បានបញ្ចប់</item>
+        <item>កំពុងរង់ចាំ</item>
+        <item>បរាជ័យ</item>
+    </string-array>
+
+    <string-array name="rechargePaymentTypes">
+        <item>ពិនិត្យ</item>
+        <item>សាច់ប្រាក់</item>
+        <item>DD</item>
+        <item>NEFT</item>
+        <item>IMPS</item>
+        <item>RTGs</item>
+        <item>បង់សុទ្ធ</item>
+        <item>បញ្ជាទិញ</item>
+        <item>ផ្សេងៗ</item>
+    </string-array>
+
+    <string-array name="allReportTypes">
+        <item>របាយការណ៍ប្រមូលសាខា</item>
+        <item>របាយការណ៍បិទការទៅយកទីក្រុងប្រកបដោយប្រាជ្ញា</item>
+        <item>ពិនិត្យរបាយការណ៍អធិការ</item>
+        <item>របាយការណ៍ប្រើប្រាស់ប្រេងឥន្ធនៈ</item>
+        <item>របាយការណ៍ការកាន់កាប់</item>
+        <item>សំបុត្រដែលបានកក់ដោយអ្នក។</item>
+        <item>ការប្រមូលសេវារថយន្តក្រុង</item>
+        <item>របាយការណ៍ក្រុមតាមសាខា</item>
+
+    </string-array>
+
+    <string-array name="activeCancelledServicesArray">
+        <item>ទាំងអស់ (ការធ្វើដំណើរសកម្ម + ការធ្វើដំណើរដែលបានលុបចោល)</item>
+        <item>មានតែការធ្វើដំណើរសកម្មប៉ុណ្ណោះ។</item>
+        <item>មានតែការធ្វើដំណើរដែលត្រូវបានលុបចោល</item>
+    </string-array>
+</resources>

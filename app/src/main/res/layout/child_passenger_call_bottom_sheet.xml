@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_6sdp"
+    android:background="@color/transparent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/callPassengerBtn"
+        style="@style/TextStyleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/white_bg"
+        android:paddingHorizontal="@dimen/_6sdp"
+        android:drawableTint="@color/gray"
+        android:drawableStart="@drawable/ic_call_1"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancelCallBtn"
+        style="@style/TextStyleNormal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:paddingHorizontal="@dimen/_6sdp"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/white_bg"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/callPassengerBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

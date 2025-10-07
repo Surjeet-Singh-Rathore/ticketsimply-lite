@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_2sdp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardPreventCornerOverlap="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp">
+
+
+        <TextView
+            android:id="@+id/busDetailsTV"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:text="Banglore - Hyderabad"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/rateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/rate"
+            android:textColor="@color/very_light_greyyy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/busDetailsTV" />
+
+        <TextView
+            android:id="@+id/rateValueTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:layout_constraintEnd_toStartOf="@id/totalSeatValueTV"
+            android:text=""
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rateTV" />
+
+        <TextView
+            android:id="@+id/totalseatsTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/very_light_greyyy"
+            android:text="@string/total_seats"
+            app:layout_constraintEnd_toStartOf="@id/amountTV"
+            app:layout_constraintStart_toEndOf="@id/rateTV"
+            app:layout_constraintTop_toBottomOf="@id/busDetailsTV" />
+
+        <TextView
+            android:id="@+id/totalSeatValueTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text=""
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/totalseatsTV"
+            app:layout_constraintTop_toBottomOf="@id/rateTV" />
+
+        <TextView
+            android:id="@+id/amountTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/very_light_greyyy"
+            android:text="@string/amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/totalseatsTV"
+            app:layout_constraintTop_toBottomOf="@id/busDetailsTV" />
+
+        <TextView
+            android:id="@+id/amountValueTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text=""
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/amountTV"
+            app:layout_constraintTop_toBottomOf="@id/rateTV" />
+
+
+        <TextView
+            android:id="@+id/seatNosV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/very_light_greyyy"
+            android:text="Seat Nos."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rateValueTV" />
+
+
+        <TextView
+            android:id="@+id/seatNosValueTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/seatNosV"
+            app:layout_constraintTop_toBottomOf="@id/seatNosV" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

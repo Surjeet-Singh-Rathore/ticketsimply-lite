@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_12"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_12">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvDate"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/notAvailable"
+                android:textColor="@color/button_secondary_bg"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgPrint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_print"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/imgEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginEnd="11dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_edit" />
+
+                <ImageView
+                    android:id="@+id/imgClose"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginEnd="11dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_close_shape" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView16"
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pnr"
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+
+            <TextView
+                android:id="@+id/tvPnr"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_4"
+                android:text=""
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/textView16"
+                app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSrcDest"
+            style="@style/TextStyleBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvPassengers"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_toStartOf="@id/tvAmount"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingEnd="@dimen/dp_4"
+                android:text="@string/notAvailable"
+                android:textColor="@color/colorShadow"
+                android:textSize="11sp"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/tvAmount"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text=""
+                android:textColor="@color/colorBlackShadow"
+                android:textSize="@dimen/sp16" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

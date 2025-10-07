@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_dim">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_7sdp"
+        android:layout_marginVertical="@dimen/_4sdp"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/mainG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="stageDropDownTIL,departureTV,departureHoursTIL,departureMinuteTIL,sendSmsCB,journeyDayTIL,isPickupCB,isEticketingCB,isApiCB,stageDetailsTV,personTIL,contactTIL,addressLine1TIL,addressLine2TIL,landmarkTIL,locationTIL,lattitudeTIL,longitudeTIL,saveChangesTV" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/stageNameTV"
+                style="@style/TextStyleBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:ellipsize="end"
+                android:paddingBottom="@dimen/_5sdp"
+                android:singleLine="true"
+                android:text="Anand Rao Circle"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toStartOf="@id/deleteIV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/alertIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:src="@drawable/ic_alert_circle"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/stageNameTV"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/deleteIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:src="@drawable/ic_delete_red"
+                app:layout_constraintEnd_toStartOf="@id/openIV"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/openIV"
+                android:layout_width="16dp"
+                android:layout_height="17dp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_down_arrow_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/stageDropDownTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/stageNameTV">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/stageDropDownTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/bg_edittext_stroke_grey"
+                    android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center_vertical"
+                    android:hint="Stage name"
+                    android:paddingTop="@dimen/_16sdp"
+                    android:textSize="@dimen/_10ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/departureTV"
+                style="@style/TextStyleNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/departure"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/stageDropDownTIL" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/departureHoursTIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toStartOf="@id/departureMinuteTIL"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/departureTV">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/departureHoursET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:background="@drawable/bg_edittext_stroke_grey"
+                    android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:gravity="center_vertical"
+                    android:hint="@string/hh"
+                    android:imeOptions="actionNext"
+                    android:paddingTop="@dimen/_16sdp"
+                    android:textSize="@dimen/_10ssp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/departureMinuteTIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/departureHoursTIL"
+                app:layout_constraintTop_toBottomOf="@id/departureTV">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/departureMinutesET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center_vertical"
+                android:hint="@string/mm"
+                android:imeOptions="actionNext"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/sendSmsCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@string/send_sms_to_customer_about_time_update"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/departureHoursTIL" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/journeyDayTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sendSmsCB">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/journeyDayTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:drawableEnd="@drawable/ic_down_arrow_filled_"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center_vertical"
+                android:hint="Journey Day"
+                android:imeOptions="actionNext"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+               />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/isPickupCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@string/is_pickup"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/journeyDayTIL" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/isEticketingCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@string/is_e_ticketing"
+                app:layout_constraintEnd_toStartOf="@id/isApiCB"
+                app:layout_constraintStart_toEndOf="@id/isPickupCB"
+                app:layout_constraintTop_toBottomOf="@id/journeyDayTIL" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/isApiCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:text="@string/is_api"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/journeyDayTIL" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/stageDetailsTV"
+                style="@style/TextStyleBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/stage_details_"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/isPickupCB" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/personTIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toStartOf="@id/contactTIL"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/stageDetailsTV" >
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/personEV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:singleLine="true"
+                android:hint="@string/person"
+                android:imeOptions="actionNext"
+                android:maxLength="40"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+               />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contactTIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/personTIL"
+                app:layout_constraintTop_toBottomOf="@id/stageDetailsTV">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/contactNumberEV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:digits="1234567890"
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:hint="@string/contact_number"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+                 />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addressLine1TIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/personTIL">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/addressLine1EV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:maxLines="2"
+                android:singleLine="true"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:gravity="center_vertical"
+                android:hint="@string/address_line_1"
+                android:imeOptions="actionNext"
+                android:maxLength="40"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+              />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addressLine2TIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addressLine1TIL">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/addressLine2EV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:maxLines="2"
+                android:hint="@string/address_line_2"
+                android:imeOptions="actionNext"
+                android:maxLength="40"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/landmarkTIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toStartOf="@id/locationTIL"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addressLine2TIL">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/landmarkEV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:gravity="center_vertical"
+                android:hint="@string/landmark"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:maxLines="2"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+                 />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/locationTIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/landmarkTIL"
+                app:layout_constraintTop_toBottomOf="@id/addressLine2TIL">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/locationUrlEV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:gravity="center_vertical"
+                android:hint="@string/location_url"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:maxLines="2"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/lattitudeTIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintBottom_toTopOf="@id/saveChangesTV"
+                app:layout_constraintEnd_toStartOf="@id/longitudeTIL"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/landmarkTIL">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/latitudeEV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:gravity="center_vertical"
+                android:hint="@string/latitude"
+                android:inputType="numberDecimal"
+                android:singleLine="true"
+                android:maxLines="2"
+                android:imeOptions="actionNext"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+           />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/longitudeTIL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintBottom_toTopOf="@id/saveChangesTV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lattitudeTIL"
+                app:layout_constraintTop_toBottomOf="@id/landmarkTIL">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/longitudeEV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@drawable/bg_edittext_stroke_grey"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:singleLine="true"
+                android:inputType="numberDecimal"
+                android:hint="@string/longitude"
+                android:imeOptions="actionDone"
+                android:paddingTop="@dimen/_16sdp"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/saveChangesTV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@drawable/bg_light_blue_little_round_stroke"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_8sdp"
+                android:text="Save Stage"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

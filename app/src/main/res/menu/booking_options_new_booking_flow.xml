@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_rapid_booking"
+        android:icon="@drawable/ic_rapid_booking"
+        android:title="@string/rapid_book" />
+
+    <item
+        android:id="@+id/item_sms_notification"
+        android:icon="@drawable/ic_sms_notification"
+        android:title="@string/sendSms" />
+
+    <item
+        android:id="@+id/item_service_details"
+        android:icon="@drawable/update_service_details"
+        android:title="@string/service_details" />
+
+    <item
+        android:id="@+id/item_block_unblock"
+        android:icon="@drawable/ic_block"
+        android:title="@string/block" />
+
+    <item
+        android:id="@+id/item_edit_chart"
+        android:icon="@drawable/edit_chart_button_new_booking_flow"
+        android:title="@string/edit_chart" />
+
+    <item
+        android:id="@+id/item_view_reservation_chart"
+        android:icon="@drawable/view_reservation_chart_icon"
+        android:title="@string/view_reservation_chart" />
+
+    <item
+        android:id="@+id/item_extend_fare_settings"
+        android:icon="@drawable/extend_fare_settings_icon_new_booking_flow"
+        android:title="@string/extend_fare_settings" />
+
+    <item
+        android:id="@+id/item_update_rate_card"
+        android:icon="@drawable/update_rate_card_icon_new_booking_flow"
+        android:title="@string/modify_reservation" />
+
+    <item
+        android:id="@+id/item_modify_fare"
+        android:icon="@drawable/ic_recharge_grey"
+        android:title="@string/modify_fare" />
+
+    <item
+        android:id="@+id/item_seat_wise"
+        android:icon="@drawable/ic_seat_wise_fare"
+        android:title="@string/seat_wise_fare" />
+
+    <item
+        android:id="@+id/item_frequent_traveller"
+        android:icon="@drawable/ic_frequent_traveller"
+        android:title="@string/frequent_traveller" />
+
+    <item
+        android:id="@+id/item_rate_card"
+        android:icon="@drawable/update_rate_card"
+        android:title="@string/rate_card" />
+
+</menu>

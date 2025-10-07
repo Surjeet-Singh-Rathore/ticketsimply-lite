@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/cardLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_16"
+    android:elevation="4dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+
+        <TextView
+            android:id="@+id/numberinfo"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxLines="1"
+
+            android:text="@string/notAvailable"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/coach_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/coach_name"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="@string/notAvailable"
+            android:textColor="@color/black"
+            app:autoSizeMaxTextSize="@dimen/sp14"
+            app:autoSizeMinTextSize="4sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/route_info"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/notAvailable"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/view13"
+            app:layout_constraintEnd_toStartOf="@+id/total_booked"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberinfo" />
+
+        <TextView
+            android:id="@+id/total_booked"
+            style="@style/TextStyleNormalTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/notAvailable"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/view13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberinfo" />
+
+
+        <View
+            android:id="@+id/view13"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/flash_white_bg"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout22"
+            card_view:layout_editor_absoluteX="8dp" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_editor_absoluteX="8dp">
+
+            <TextView
+                android:id="@+id/mapbutton"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dp_4"
+                android:layout_weight="0.8"
+                android:background="@drawable/verylight_pickup_background"
+                android:backgroundTint="@color/colorPrimary"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp_14"
+                android:paddingBottom="@dimen/dp_14"
+                android:text="@string/view_route"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/btn_view_reservation_chart"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_4"
+                android:layout_weight="0.8"
+                android:background="@drawable/verylight_pickup_background"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center"
+
+                android:paddingTop="@dimen/dp_14"
+                android:paddingBottom="@dimen/dp_14"
+                android:text="@string/view_reservation_chart"
+                android:textColor="@color/colorButton" />
+        </LinearLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

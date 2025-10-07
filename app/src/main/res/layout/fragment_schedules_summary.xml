@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLighterGrey">
+
+    <include
+        android:id="@+id/noData"
+        layout="@layout/layout_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayoutDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerSchedulesSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    shimmer:duration="800">
+
+                    <include layout="@layout/shimmer_dashboard_schedules_summary_layout" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/schedulesSummaryContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorLighterGrey"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_16"
+                    android:visibility="visible">
+
+                    <include
+                        android:id="@+id/allServicesAndDateFilterContainer"
+                        layout="@layout/dashboard_graph_all_services_and_dates_filter_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewSchedulesSummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:layout_marginBottom="@dimen/dp_16"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/allServicesAndDateFilterContainer">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/dp_16">
+
+                            <TextView
+                                android:id="@+id/tvScheduleSummary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/schedules_summary"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/layoutSelectSeatType"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/text_input_edit_text_height"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:background="@drawable/header_gradient_bg"
+                                android:hint="@string/service"
+                                android:visibility="gone"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxStrokeErrorColor="@color/colorRed2"
+                                app:boxStrokeWidth="@dimen/dp_2"
+                                app:errorEnabled="true"
+                                app:errorIconDrawable="@null"
+                                app:hintTextColor="@color/colorPrimary"
+                                app:layout_constraintTop_toBottomOf="@+id/tvScheduleSummary">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/selectSeatType"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:text="@string/all_active_cancel"
+                                    android:textSize="14sp"
+                                    android:textStyle="normal" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <TextView
+                                android:id="@+id/tvActiveServices"
+                                style="@style/TextStyleBold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:background="#D9F3F4"
+                                android:padding="@dimen/dp_8"
+                                android:text="@string/active_trips"
+                                android:textColor="#00959C"
+                                android:textSize="@dimen/sp16"
+                                app:drawableRightCompat="@drawable/ic_arrow_down"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layoutSelectSeatType" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvActiveServices"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:nestedScrollingEnabled="false"
+                                android:visibility="gone"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvActiveServices" />
+
+                            <TextView
+                                android:id="@+id/tvCancelledServies"
+                                style="@style/TextStyleBold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:background="#FFE9E9"
+                                android:padding="@dimen/dp_8"
+                                android:text="@string/cancelled_trips"
+                                android:textColor="#E05050"
+                                android:textSize="@dimen/sp16"
+                                app:drawableRightCompat="@drawable/ic_arrow_down"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/rvActiveServices" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvCancelledServices"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:nestedScrollingEnabled="false"
+                                android:visibility="gone"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tvCancelledServies" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>

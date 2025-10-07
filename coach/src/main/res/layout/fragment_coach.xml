@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCoachHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6F6F6F"
+            android:gravity="center_horizontal"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="BHT 110"
+            android:textColor="@color/white" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/rbLower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_flat_selector_left"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+
+                android:text="@string/lower"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/rbUpper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radio_flat_selector_right"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/upper"
+                android:textColor="#4A4A4A" />
+
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/gridLayoutParent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.example.buscoach.CustomGridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/layout_rounded_shape_border"
+                android:padding="4dp" />
+
+            <com.example.buscoach.CustomGridLayout
+                android:id="@+id/gridLayoutUpper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/layout_rounded_shape_border"
+                android:padding="4dp"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/multiHopLayoutParent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMergeBus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:itemCount="10"
+                tools:listitem="@layout/child_multi_hop_seat_same_pnr_group_parent" />
+
+            <LinearLayout
+                android:id="@+id/llGoBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:padding="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/rvMergeBus"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+            <TextView
+                android:id="@+id/tvGoBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/arrow_back_orange"
+                android:text="Go Back"
+                android:background="@color/white"
+                android:textColor="@color/orange"
+                android:drawablePadding="8dp"
+                android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:padding="16dp"
+                android:gravity="center"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/llGoBack"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+            <TextView
+                android:id="@+id/tvDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_deep_blue_tick"
+                android:text="Done"
+                android:background="@color/white"
+                android:textColor="@color/blue"
+                android:drawablePadding="8dp"
+                android:textStyle="bold"/>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

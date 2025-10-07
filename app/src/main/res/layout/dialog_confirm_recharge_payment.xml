@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleTV"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Agent Recharge"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/descTV"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Please enter the OTP sent to your registered mobile number."
+        android:textColor="@color/dark_gray_pressed"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTV" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/otpTIL"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/header_gradient_bg"
+        app:layout_constraintEnd_toStartOf="@id/resendOtpBT"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descTV">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/otpET"
+            style="@style/textInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/et_bg"
+            android:digits="0123456789"
+            android:hint="Enter OTP"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColor="@color/gray"
+            android:textColorHint="@color/colorPrimaryDark" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <android.widget.Button
+        android:id="@+id/resendOtpBT"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_little_round_light_grey"
+        android:clickable="false"
+        android:paddingHorizontal="10sp"
+        android:text="Resend OTP"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/otpTIL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/otpTIL" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/resendOtpTV"
+        style="@style/TextStyleBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Your OTP will expire in 28 seconds"
+        android:textColor="@color/color_user_red"
+        app:layout_constraintStart_toStartOf="@id/otpTIL"
+        app:layout_constraintTop_toBottomOf="@id/resendOtpBT" />
+
+
+    <android.widget.Button
+        android:id="@+id/goBackBT"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:background="@color/button_secondary_bg"
+        android:text="@string/goBack"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resendOtpTV"
+        app:layout_constraintWidth_percent="0.40" />
+
+    <android.widget.Button
+        android:id="@+id/confirmRechargeBT"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/confirm_recharge"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/goBackBT"
+        app:layout_constraintTop_toTopOf="@id/goBackBT"
+        app:layout_constraintWidth_percent="0.60" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_300"
+    android:padding="@dimen/dp_16">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/myBookingCard1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <View
+                android:id="@+id/myBookingView1"
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/myBookingView2"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_28"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView1" />
+
+            <View
+                android:id="@+id/myBookingView3"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView2" />
+
+            <View
+                android:id="@+id/myBookingView4"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView3" />
+
+            <View
+                android:id="@+id/myBookingView5"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView4" />
+
+            <View
+                android:id="@+id/myBookingView6"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50" />
+
+            <View
+                android:id="@+id/myBookingView7"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/myBookingCard2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myBookingCard1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <View
+                android:id="@+id/myBookingView8"
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/myBookingView9"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_28"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView8" />
+
+            <View
+                android:id="@+id/myBookingView10"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView9" />
+
+            <View
+                android:id="@+id/myBookingView11"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView10" />
+
+            <View
+                android:id="@+id/myBookingView12"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView11" />
+
+            <View
+                android:id="@+id/myBookingView13"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView12" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5039578" />
+
+            <View
+                android:id="@+id/myBookingView14"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView12" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/myBookingCard3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:elevation="@dimen/dp_4"
+        app:cardCornerRadius="@dimen/dp_4"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myBookingCard2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16">
+
+            <View
+                android:id="@+id/myBookingView15"
+                style="@style/TextStyleBold"
+                android:layout_width="@dimen/dp_138"
+                android:layout_height="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/myBookingView16"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_28"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView15" />
+
+            <View
+                android:id="@+id/myBookingView17"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView16" />
+
+            <View
+                android:id="@+id/myBookingView18"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView17" />
+
+            <View
+                android:id="@+id/myBookingView19"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView18" />
+
+            <View
+                android:id="@+id/myBookingView20"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView19" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5039578" />
+
+            <View
+                android:id="@+id/myBookingView21"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/shimmer_gradient_overlay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/myBookingView19" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

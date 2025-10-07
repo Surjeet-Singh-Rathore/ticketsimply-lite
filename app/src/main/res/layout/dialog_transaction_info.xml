@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_little_round_white">
+
+    <ImageView
+        android:id="@+id/operatorLogoIV"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:layout_margin="@dimen/_10sdp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/changeToCompleteTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Transaction Info"
+        android:textColor="#2C3A45"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operatorLogoIV" />
+
+    <TextView
+        android:id="@+id/transNoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="Trans no."
+        android:textColor="#3B4954"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/changeToCompleteTV" />
+
+    <TextView
+        android:id="@+id/transNoValueTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/notAvailable"
+        android:layout_marginStart="@dimen/dp_24"
+        android:textAlignment="textEnd"
+        android:textColor="#3B4954"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/transNoTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/transNoTV"
+        app:layout_constraintTop_toTopOf="@+id/transNoTV" />
+
+    <TextView
+        android:id="@+id/agentNameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/agent_name"
+        android:textColor="#3B4954"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transNoTV" />
+
+    <TextView
+        android:id="@+id/agentNameValueTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/dp_24"
+        android:textAlignment="textEnd"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/notAvailable"
+        android:textColor="#3B4954"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/agentNameTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/agentNameTV"
+        app:layout_constraintTop_toTopOf="@+id/agentNameTV" />
+
+    <TextView
+        android:id="@+id/typeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/amount"
+        android:textColor="#3B4954"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agentNameTV" />
+
+    <TextView
+        android:id="@+id/typeValueTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/dp_24"
+        android:textAlignment="textEnd"
+        android:text="@string/notAvailable"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/typeTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/typeTV"
+        app:layout_constraintTop_toTopOf="@+id/typeTV" />
+
+    <TextView
+        android:id="@+id/paymentTypeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/balance"
+        android:textColor="#3B4954"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeTV" />
+
+    <TextView
+        android:id="@+id/paymentTypeValueTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/notAvailable"
+        android:layout_marginStart="@dimen/dp_24"
+        android:textAlignment="textEnd"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/paymentTypeTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/paymentTypeTV"
+        app:layout_constraintTop_toTopOf="@+id/paymentTypeTV" />
+
+    <TextView
+        android:id="@+id/chequeNoTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/date"
+        android:textColor="#3B4954"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymentTypeTV" />
+
+    <TextView
+        android:id="@+id/chequeNoValueTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/notAvailable"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/dp_24"
+        android:textAlignment="textEnd"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/chequeNoTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chequeNoTV"
+        app:layout_constraintTop_toTopOf="@+id/chequeNoTV" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cancelTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_17sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="@string/close"
+        android:textColor="#E05050"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/printBT"
+        app:layout_constraintStart_toStartOf="@id/chequeNoTV"
+        app:layout_constraintTop_toBottomOf="@id/chequeNoTV" />
+
+    <Button
+        android:id="@+id/printBT"
+        style="@style/TextStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:background="@drawable/eta_background"
+        android:text="@string/print"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/cancelTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cancelTV"
+        app:layout_constraintTop_toTopOf="@id/cancelTV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,167 @@
+{
+  "project_info": {
+    "project_number": "434784627744",
+    "firebase_url": "https://ticket-simply-app-default-rtdb.firebaseio.com",
+    "project_id": "ticket-simply-app",
+    "storage_bucket": "ticket-simply-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434784627744:android:d46809108dc87d6a1f2045",
+        "android_client_info": {
+          "package_name": "com.bitla.ticketsimply"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434784627744-9qmfabsbvrl2pu56bhvilt0t0cf9ivm0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bitla.ticketsimply",
+            "certificate_hash": "68be324f9b4be829e927fc85d45e149a7106ef50"
+          }
+        },
+        {
+          "client_id": "434784627744-fjmeu0jdrpo4fqivmvr3kgt4idhp3233.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD585RZFQ9s6WN0SNzqZM3L4v6gWwTfSPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434784627744-fjmeu0jdrpo4fqivmvr3kgt4idhp3233.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "434784627744-p0ibv0v6kbdffg1j00fhk7ssd8g89frp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bitla.ticketsimply",
+                "app_store_id": "1645840121"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434784627744:android:4bf57519963522f81f2045",
+        "android_client_info": {
+          "package_name": "com.bitla.ticketsimply.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434784627744-fjmeu0jdrpo4fqivmvr3kgt4idhp3233.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD585RZFQ9s6WN0SNzqZM3L4v6gWwTfSPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434784627744-fjmeu0jdrpo4fqivmvr3kgt4idhp3233.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "434784627744-p0ibv0v6kbdffg1j00fhk7ssd8g89frp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bitla.ticketsimply",
+                "app_store_id": "1645840121"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434784627744:android:8c663138097c356a1f2045",
+        "android_client_info": {
+          "package_name": "com.bitla.ticketsimply.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434784627744-fjmeu0jdrpo4fqivmvr3kgt4idhp3233.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD585RZFQ9s6WN0SNzqZM3L4v6gWwTfSPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434784627744-fjmeu0jdrpo4fqivmvr3kgt4idhp3233.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "434784627744-p0ibv0v6kbdffg1j00fhk7ssd8g89frp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bitla.ticketsimply",
+                "app_store_id": "1645840121"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434784627744:android:1927892ba8ae76c51f2045",
+        "android_client_info": {
+          "package_name": "com.ticketsimply.log"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434784627744-fjmeu0jdrpo4fqivmvr3kgt4idhp3233.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD585RZFQ9s6WN0SNzqZM3L4v6gWwTfSPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434784627744-fjmeu0jdrpo4fqivmvr3kgt4idhp3233.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "434784627744-p0ibv0v6kbdffg1j00fhk7ssd8g89frp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bitla.ticketsimply",
+                "app_store_id": "1645840121"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

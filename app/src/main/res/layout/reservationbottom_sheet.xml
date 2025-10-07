@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/bottomsheet_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/layout_rounded_shape_top_left_right"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:paddingBottom="@dimen/dp_24"
+                    android:text="@string/filter_by" />
+
+
+                <TextView
+                    android:id="@+id/tvCancel"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/clear_all"
+                    android:textColor="@color/colorRed2" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/selection_fromCity_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/from_city"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/selection_fromCity"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:background="@drawable/et_bg"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingTop="@dimen/dp_14"
+                    android:paddingEnd="@dimen/dp_12"
+                    android:paddingBottom="@dimen/dp_14"
+                    android:text="@string/all"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    app:boxBackgroundColor="@color/title_bg" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/selection_toCity_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/to_city"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/selection_toCity"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:background="@drawable/et_bg"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingTop="@dimen/dp_14"
+                    android:paddingEnd="@dimen/dp_12"
+                    android:paddingBottom="@dimen/dp_14"
+                    android:text="@string/all"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    app:boxBackgroundColor="@color/title_bg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutServices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/services"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/text_input_edit_text_height"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@drawable/header_gradient_bg"
+                    app:boxBackgroundColor="@color/title_bg"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeWidth="@dimen/dp_2"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@null">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etServices"
+                        style="@style/textInputStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/et_bg"
+                        android:hint="@string/select_service"
+                        android:imeOptions="actionDone"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/chk_active_service"
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/filter_only_active_services"
+
+                android:textColor="@color/colorBlackShadow" />
+
+            <CheckBox
+                android:id="@+id/chk_by_hub_service"
+                style="@style/msg_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/show_group_by_hubs"
+                android:textColor="@color/colorBlackShadow" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutSelectHubs"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/header_gradient_bg"
+                android:hint="@string/select_hubs"
+                android:textColorHint="@color/grey"
+                android:visibility="gone">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etHubs"
+                    style="@style/textInputStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/et_bg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="false"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:visibility="visible" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/selectServiceLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+
+                <TextView
+                    style="@style/TextStyleBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/service"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/selectServiceTV"
+                    style="@style/TextStyleNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginBottom="@dimen/dp_8"
+                    android:background="@drawable/et_bg"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingTop="@dimen/dp_14"
+                    android:paddingEnd="@dimen/dp_12"
+                    android:paddingBottom="@dimen/dp_14"
+                    android:text="@string/all"
+                    android:textColor="@color/colorBlackShadow"
+                    android:textColorHint="@color/grey"
+                    android:textSize="14sp"
+                    app:boxBackgroundColor="@color/title_bg" />
+
+            </LinearLayout>
+
+
+            <android.widget.Button
+                android:id="@+id/btnApply"
+                style="@style/TextStyleBold"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="@dimen/dp_24"
+                android:background="@drawable/button_default_bg"
+                android:text="@string/apply"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

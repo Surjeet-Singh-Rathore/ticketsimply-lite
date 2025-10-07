@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutParent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp_4"
+    android:paddingTop="@dimen/dp_4"
+    android:paddingEnd="@dimen/dp_4"
+    >
+
+        <RadioButton
+            android:id="@+id/radioItem"
+            style="@style/TextStyleNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorPrimary"
+            android:paddingStart="8dp"
+            android:paddingEnd="@dimen/dp_8"
+            android:text="@string/notAvailable"
+            android:textColor="@color/colorBlackShadow" />
+
+
+</LinearLayout>
