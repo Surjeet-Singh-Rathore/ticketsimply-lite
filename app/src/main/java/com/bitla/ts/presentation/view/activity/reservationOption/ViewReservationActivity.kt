@@ -9,10 +9,12 @@ import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupMenu
@@ -33,8 +35,10 @@ import com.bitla.ts.data.listener.VarArgListener
 import com.bitla.ts.data.operator_api_key
 import com.bitla.ts.data.response_format
 import com.bitla.ts.databinding.ActivityViewReservationBinding
+import com.bitla.ts.domain.pojo.all_reports.AllReports
 import com.bitla.ts.domain.pojo.available_routes.BoardingPointDetail
 import com.bitla.ts.domain.pojo.available_routes.DropOffDetail
+import com.bitla.ts.domain.pojo.available_routes.Result
 import com.bitla.ts.domain.pojo.booking.Tabs
 import com.bitla.ts.domain.pojo.login_model.LoginModel
 import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.PrivilegeResponseModel
@@ -55,6 +59,7 @@ import com.bitla.ts.utils.common.FileDownloader
 import com.bitla.ts.utils.common.edgeToEdge
 import com.bitla.ts.utils.common.firebaseLogEvent
 import com.bitla.ts.utils.common.getUserRole
+import com.bitla.ts.utils.common.printPDF
 import com.bitla.ts.utils.common.sharePdf
 import com.bitla.ts.utils.constants.BULK_CANCEL_TAB_CLICKS
 import com.bitla.ts.utils.constants.BulkCancelTabClicks
@@ -76,6 +81,7 @@ import com.bitla.ts.utils.sharedPref.PREF_IS_USER_LOGIN
 import com.bitla.ts.utils.sharedPref.PREF_NEW_BUS_LOCATION_ADDED_POPUP_DISPLAYED
 import com.bitla.ts.utils.sharedPref.PREF_PICKUP_DROPOFF_CHARGES_ENABLED
 import com.bitla.ts.utils.sharedPref.PREF_RESERVATION_ID
+import com.bitla.ts.utils.sharedPref.PREF_SELECTED_AVAILABLE_ROUTES
 import com.bitla.ts.utils.sharedPref.PREF_SOURCE
 import com.bitla.ts.utils.sharedPref.PREF_SOURCE_ID
 import com.bitla.ts.utils.sharedPref.PREF_UPDATE_COACH
@@ -92,6 +98,7 @@ import com.skydoves.balloon.BalloonSizeSpec
 import com.skydoves.balloon.showAlignBottom
 import gone
 import isNetworkAvailable
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import noNetworkToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -99,6 +106,8 @@ import timber.log.Timber
 import toast
 import visible
 import java.io.File
+import com.bitla.ts.presentation.view.activity.reservationOption.CurrentLocationActivity
+
 
 
 class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarArgListener,
@@ -124,6 +133,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
     private var myDownload: Long = 0
     private var url: String? = null
     private var tabPosition = 0
+    private var allReportSuccessResponse: AllReports? = null
     private var locale: String? = ""
     private val sourceList = mutableListOf<CitySeqOrder>()
     private val destinationList = mutableListOf<CitySeqOrder>()

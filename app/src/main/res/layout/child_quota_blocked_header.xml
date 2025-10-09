@@ -24,13 +24,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/title"
-                style="@style/TextStyleBold"
+                style="@style/textStyleBold"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
                 android:text="@string/your_summary"
-                android:textColor="@color/gray_shade_a"
+                android:textColor="@color/grey_shade_3"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

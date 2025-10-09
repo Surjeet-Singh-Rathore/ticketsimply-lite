@@ -69,6 +69,7 @@ import com.bitla.ts.domain.pojo.ticket_details.response.Body
 import com.bitla.ts.domain.pojo.ticket_details.response.Insurance
 import com.bitla.ts.domain.pojo.ticket_details.response.PassengerDetail
 import com.bitla.ts.domain.pojo.ticket_details.response.TicketDetailsModel
+import com.bitla.ts.presentation.adapter.MealCouponsAdapter
 import com.bitla.ts.presentation.adapter.ReleaseTicketPassengersListAdapter
 import com.bitla.ts.presentation.view.activity.ConfirmPhoneBookingActivity
 import com.bitla.ts.presentation.view.activity.LoginActivity
@@ -628,6 +629,18 @@ class TicketDetailsActivity : BaseActivity(), View.OnClickListener, OnItemClickL
             binding.imgPartialPaymentInfo.gone()
             binding.btnPayPendingAmt.gone()
         }
+    }
+
+    private fun setMealsAdapter(mealCouponList: MutableList<String>) {
+        binding.rvMealCoupons.layoutManager = GridLayoutManager(this, 3)
+        val mealCouponsAdapter = MealCouponsAdapter(this, mealCouponList)
+        binding.rvMealCoupons.adapter = mealCouponsAdapter
+    }
+
+    private fun setMealTypeAdapter(mealTypeList: MutableList<String>) {
+        binding.rvMealType.layoutManager = GridLayoutManager(this, 3)
+        val mealTypeAdapter = MealCouponsAdapter(this, mealTypeList)
+        binding.rvMealType.adapter = mealTypeAdapter
     }
 
     private fun loadCancelledTicket() {
@@ -3640,8 +3653,39 @@ class TicketDetailsActivity : BaseActivity(), View.OnClickListener, OnItemClickL
                 }
             }
 
-            binding.cardMealCoupons.gone()
-            binding.cardMealTypes.gone()
+            if (::ticketData.isInitialized && ticketData.passengerDetails != null && ticketData.passengerDetails?.isNotEmpty()!!
+            ) {
+                val mealCouponList = mutableListOf<String>()
+                var mealCoupons = ""
+
+                val mealTypeList = mutableListOf<String>()
+                var mealTypes = ""
+                ticketData.passengerDetails?.forEach {
+                    if (it?.meal_coupons != null && it.meal_coupons.isNotEmpty()) {
+                        mealCoupons += it.meal_coupons.toString().replace("[", "").replace("]", "")
+                            .replace(",", "\n").replace(" ", "")
+                        mealCouponList.add(mealCoupons)
+                        mealCoupons = ""
+                    }
+
+                    if (!it?.selected_meal_type.isNullOrEmpty() && it?.selected_meal_type != "-") {
+                        mealTypes += it?.selected_meal_type
+                        mealTypeList.add(mealTypes)
+                        mealTypes = ""
+                    }
+                }
+                if (mealCouponList.isNotEmpty()) {
+                    binding.cardMealCoupons.visible()
+                    setMealsAdapter(mealCouponList)
+                }
+                if (mealTypeList.isNotEmpty()) {
+                    binding.cardMealTypes.visible()
+                    setMealTypeAdapter(mealTypeList)
+                }
+            } else {
+                binding.cardMealCoupons.gone()
+                binding.cardMealTypes.gone()
+            }
 
             if (res.passengerDetails != null) {
                 for (i in 0..res.passengerDetails.size.minus(1)) {
@@ -3701,6 +3745,9 @@ class TicketDetailsActivity : BaseActivity(), View.OnClickListener, OnItemClickL
             }
 
             try {
+                /* val travelYear = res.travelDate!!.split("-")[2]
+                 val traveldate = res.travelDate.split("-")[0]
+                 val travelmonth = res.travelDate.split("-")[1]*/
                 totalNoOfSeats = res.noOfSeats
                 travelDate = "${res.travelDate}"
 
@@ -3711,6 +3758,7 @@ class TicketDetailsActivity : BaseActivity(), View.OnClickListener, OnItemClickL
                 bookedBy = res.ticketLeadDetail?.ticketBookedBy?.split(",")?.get(0)
                     ?: getString(R.string.notAvailable)
                 bookedAt = res.bookedAt ?: getString(R.string.notAvailable)
+//            bookedAt = res.ticketLeadDetail?.ticketBookedBy?.split(",")?.get(1) ?: getString(R.string.notAvailable)
                 boarding = res.origin
                 bAddress = res.boardingDetails?.stageName ?: res.boardingDetails?.address
                         ?: getString(R.string.notAvailable)
@@ -3854,6 +3902,11 @@ class TicketDetailsActivity : BaseActivity(), View.OnClickListener, OnItemClickL
                             tvSeats.setPadding(0, 100, 0, 0)
                         }
                         else -> {
+//                        if (bookedAt.isNullOrEmpty()) {
+//                            noteAgent.text = "Issued by $bookedBy"
+//                        } else {
+//                            noteAgent.text = "Issued on $bookedAt by $bookedBy"
+//                        }
                             noteAgent.text =
                                 "${getString(R.string.issuedBy)} ${res.ticketLeadDetail?.ticketBookedBy}"
                             if (res.isEticket) {

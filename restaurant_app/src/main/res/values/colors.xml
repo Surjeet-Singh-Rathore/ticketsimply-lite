@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#00ADB5</color>
+    <color name="colorPrimaryDark">#00ADB5</color>
+    <color name="colorAccent">#00ADB5</color>
+
+    <!-- Colors -->
+    <color name="light_gray">#B6B2B6</color>
+    <color name="colorDrawer">#282828</color>
+    <color name="grey">#4A4A4A</color>
+    <color name="white_shade_bg">#F7F7F8</color>
+    <color name="black_shade_1">#263238</color>
+    <color name="light_blue">#C0CAF0</color>
+    <color name="light_grey">#7C7C7C</color>
+    <color name="blue">#1029BA</color>
+    <color name="black_shade_2">#2C3A45</color>
+    <color name="white_shade_1">#CFCFCF</color>
+    <color name="grey_shade_1">#484C4F</color>
+    <color name="grey_shade_2">#3E3E52</color>
+    <color name="white_shade_2">#EEF1FF</color>
+    <color name="white_shade_3">#DDDBE8</color>
+    <color name="blue_shade_1">#323342</color>
+    <color name="light_blue_1">#A6B1DB</color>
+    <color name="grey_shade_3">#3B4954</color>
+    <color name="blue_shade_2">#516D81</color>
+    <color name="white_shade_4">#C8C4DF</color>
+    <color name="blue_shade_3">#9CA5D6</color>
+    <color name="grey_shade_4">#9B9B9B</color>
+    <color name="blue_shade_4">#4D606E</color>
+    <color name="colorDimShadow1">#e3e3e3</color>
+    <color name="textColor">#565656</color>
+    <color name="colorBlackShadow">#4A4A4A</color>
+    <color name="text_header_bg">#2c3a45</color>
+    <color name="colorDimShadow5">#eaeaea</color>
+
+</resources>

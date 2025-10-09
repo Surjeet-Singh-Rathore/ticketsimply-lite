@@ -1537,6 +1537,7 @@ App will automatically reload once internet is back.</string>
     <string name="via">(via)</string>
 
     <string name="customer_does_not_belong_to_this_service">Customer does not belong to this service</string>
+    <string name="vehicle_documents">Vehicle Documents</string>
     <string name="error_occur_please_try_again">Error occured! Please try again</string>
     <string name="not_uploaded">Not Uploaded</string>
     <string name="download_document">Download Document</string>

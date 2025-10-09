@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -9,18 +11,6 @@ plugins {
      alias(libs.plugins.sentry.android)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
     alias(libs.plugins.kotlin.parcelize)
-}
-
-// Force Java 17 toolchain for all tasks including KSP
-kotlin {
-    jvmToolchain(17)
-}
-
-// Ensure Java toolchain is consistently set to 17
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
 }
 
 android {
@@ -71,6 +61,12 @@ android {
         isCoreLibraryDesugaringEnabled = true
     }
 
+    tasks.withType<KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "17"
+        }
+    }
+
     kotlinOptions {
         jvmTarget = "17"
         freeCompilerArgs = listOf("-XXLanguage:-ProperCheckAnnotationsTargetInTypeUsePositions")
@@ -78,7 +74,6 @@ android {
 //        freeCompilerArgs += ["-P", "plugjvmOptions += listOf("-Xms4000m", "-Xmx4000m", "-XX:+HeapDumpOnOutOfMemoryError")in:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"]
 //        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
     }
-
 
     buildFeatures {
         compose = true
@@ -157,6 +152,7 @@ android {
 dependencies {
     implementation(project(":escposprinter"))
     implementation(project(":tscalender"))
+    implementation(project(":restaurant_app"))
     implementation(project(":coach"))
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)

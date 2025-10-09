@@ -90,7 +90,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEnterDropoffAddress"
-            style="@style/TextStyleBold"
+            style="@style/textStyleBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/enter_dropoff_address"
@@ -103,7 +103,7 @@
             android:id="@+id/etDropoffAddress"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            style="@style/TextStyleNormal"
+            style="@style/textStyleNormal"
             android:background="@android:color/white"
             android:padding="@dimen/_14sdp"
             android:gravity="top|start"

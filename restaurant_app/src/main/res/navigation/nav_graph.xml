@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.bitla.restaurant_app.presentation.view.fragments.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_ReportsFragment"
+            app:destination="@id/reportSection" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reportSection"
+        android:name="com.bitla.restaurant_app.presentation.view.fragments.ReportSectionFragment"
+        android:label="@string/reports_fragment_label"
+        tools:layout="@layout/fragment_report_section">
+
+        <action
+            android:id="@+id/action_ReportsFragment_to_MealsReportFragment"
+            app:destination="@id/mealsReport" />
+        <action
+            android:id="@+id/action_reportsFragment_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_reportSection_to_restaurantServiceList"
+            app:destination="@id/restaurantServiceList">
+            <argument
+                android:name="isRestaurant"
+                app:argType="boolean" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/mealsReport"
+        android:name="com.bitla.restaurant_app.presentation.view.fragments.MealsReportFragment"
+        android:label="@string/meals_report_fragment_label"
+        tools:layout="@layout/fragment_meals_report">
+        <action
+            android:id="@+id/action_mealsReport_to_reportSection"
+            app:destination="@id/reportSection" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/restaurantServiceList"
+        android:name="com.bitla.restaurant_app.presentation.view.fragments.SelectRestaurantServiceFragment"
+        android:label="@string/restaurant_service_label"
+        tools:layout="@layout/fragment_select_restaurant_service">
+
+        <argument
+            android:name="isRestaurant"
+            app:argType="boolean" />
+    </fragment>
+
+</navigation>

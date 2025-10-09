@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter
 import androidx.activity.*
 import androidx.annotation.*
 import androidx.core.app.*
+import androidx.core.content.ContextCompat
 import androidx.core.view.*
 import androidx.drawerlayout.widget.*
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +24,8 @@ import androidx.navigation.*
 import androidx.navigation.fragment.*
 import androidx.navigation.ui.*
 import androidx.recyclerview.widget.*
+import com.bitla.restaurant_app.presentation.utils.Constants
+import com.bitla.restaurant_app.presentation.view.*
 import com.bitla.ts.BuildConfig
 import com.bitla.ts.R
 import com.bitla.ts.app.base.*
@@ -31,6 +34,8 @@ import com.bitla.ts.data.*
 import com.bitla.ts.data.db.*
 import com.bitla.ts.data.listener.*
 import com.bitla.ts.databinding.*
+import com.bitla.ts.domain.pojo.CreditInfoResponse
+import com.bitla.ts.domain.pojo.dashboard_model.*
 import com.bitla.ts.domain.pojo.dynamic_domain.DynamicDomain
 import com.bitla.ts.domain.pojo.login_model.*
 import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.*
@@ -67,6 +72,7 @@ import com.bitla.ts.utils.sharedPref.PreferenceUtils.getUpdatedApiUrlAddress
 import com.bitla.ts.utils.sharedPref.PreferenceUtils.setUpdatedApiUrlAddress
 import com.bumptech.glide.*
 import com.google.android.gms.location.*
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.tasks.*
 import com.google.android.material.bottomnavigation.*
 import com.google.android.material.bottomsheet.*
@@ -128,6 +134,7 @@ class DashboardNavigateActivity : BaseActivity(),
     private var endYYMMDD: String? = null
     private var privilegeResponse: PrivilegeResponseModel? = null
     private var updateDetailsList: UpdateCountryListData? = null
+    private var allowToViewTheCoachDocument: Boolean = false
     private var agentInstantRecharge: Boolean = false
     private var inAppUpdateTs: Boolean = false
     private var currentCountry: String = ""
@@ -143,8 +150,10 @@ class DashboardNavigateActivity : BaseActivity(),
     val binding by lazy { ActivityDashboardNavigateBinding.inflate(layoutInflater) }
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var menuList: MutableList<NavMenuModel>
     private lateinit var navigationMenuAdapter: NavigationMenuAdapter
     private var currentUser: LoginModel = LoginModel()
+    private val dashboardViewModel by viewModel<DashboardViewModel<Any>>()
     private val userViewModel: UserViewModel by viewModels()
     private var domain: String = ""
     private var username: String = ""
@@ -178,6 +187,7 @@ class DashboardNavigateActivity : BaseActivity(),
     private var userList: List<User> = listOf()
     private var selectedShiftId: Int? = null
     private var selectedCounterId: Int? = null
+    private var allowToViewVehicleDocBO: Boolean = false
 
     //     val cityName = MutableLiveData<String>("")
     val cityName = MutableSharedFlow<String>()
@@ -236,8 +246,12 @@ class DashboardNavigateActivity : BaseActivity(),
         binding.appBar.layoutPnr.setOnClickListener(this)
         appBarConfiguration = AppBarConfiguration(
             setOf(
+                R.id.dashboard_fragment,
+                R.id.dashboard_fragment_tabs,
                 R.id.bookings_fragment,
-                R.id.pickup_fragment
+                R.id.pickup_fragment,
+                R.id.report_fragment,
+                R.id.chk_inspector_fragment,
             ), binding.drawerLayout
         )
 
@@ -375,6 +389,9 @@ class DashboardNavigateActivity : BaseActivity(),
                     textView.text = day.date.dayOfMonth.toString()
                     tvOccupancy.text = ""
 
+                    val index = occupancyCalendarList.indexOfFirst {
+                        it.day == day.date.toString()
+                    }
                     if (index != -1) {
                         tvOccupancy.text = "${occupancyCalendarList[index].occupancy}%"
 
@@ -476,6 +493,11 @@ class DashboardNavigateActivity : BaseActivity(),
     private fun landingPageNavigation() {
 
         when (PreferenceUtils.getString(getString(R.string.landing_page)).toString()) {
+            getString(R.string.dashboard) -> {
+                setDefaultDashboard()
+                back = true
+            }
+
             getString(R.string.booking) -> {
                 findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
                 setToolbarTitle(getString(R.string.bookings))
@@ -486,6 +508,27 @@ class DashboardNavigateActivity : BaseActivity(),
                 findNavController(R.id.nav_host_fragment).navigate(R.id.pickup_fragment)
                 setToolbarTitle(getString(R.string.pickup_chart))
                 back = true
+            }
+
+            getString(R.string.reports) -> {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.report_fragment)
+                navController.navigate(R.id.report_fragment)
+                setToolbarTitle(getString(R.string.reports))
+                back = true
+            }
+
+            getString(R.string.checking_inspector) -> {
+                if (getPrivilegeBase()?.availableAppModes?.checkingInspectorMode != null) {
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.chk_inspector_fragment)
+                    navController.navigate(R.id.chk_inspector_fragment)
+                    setToolbarTitle(getString(R.string.checking_inspector))
+                    back = true
+                } else {
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
+                    setToolbarTitle(getString(R.string.bookings))
+                    back = true
+                }
+
             }
 
             else -> {
@@ -499,6 +542,10 @@ class DashboardNavigateActivity : BaseActivity(),
                     ) {
                         findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
                         setToolbarTitle(getString(R.string.bookings))
+                        back = true
+                    } else if (privilegeResponse?.showBusMobilityAppDashboard == true) {
+                        findNavController(R.id.nav_host_fragment).navigate(R.id.dashboard_fragment)
+                        setToolbarTitle(getString(R.string.dashboard))
                         back = true
                     } else {
                         findNavController(R.id.nav_host_fragment).navigate(R.id.pickup_fragment)
@@ -676,6 +723,47 @@ class DashboardNavigateActivity : BaseActivity(),
                 }
             }
         }
+
+        checkIfRestaurantUser()
+    }
+
+    private fun DashboardNavigateActivity.checkIfRestaurantUser() {
+        val gson = Gson()
+        val loginModelJson = gson.toJson(currentUser)
+        if (currentUser.role == "Restaurant User") {
+
+            val loginModel = Gson().fromJson(
+                loginModelJson,
+                com.bitla.restaurant_app.presentation.pojo.LoginModel::class.java
+            )
+            com.bitla.restaurant_app.presentation.utils.PreferenceUtils.putObject(
+                loginModel,
+                Constants.PREF_LOGGED_IN_USER
+            )
+
+
+            com.bitla.restaurant_app.presentation.utils.PreferenceUtils.putString(
+                "currency",
+                getPrivilegeBase()?.currency ?: ""
+            )
+            com.bitla.restaurant_app.presentation.utils.PreferenceUtils.putString(
+                "currencyFormat",
+                getPrivilegeBase()?.currencyFormat
+                    ?: getString(R.string.indian_currency_format) ?: ""
+            )
+
+            Constants.BASE_URL =
+                PreferenceUtils.getPreference(PREF_DOMAIN, "mba.ticketsimply.com")!!
+
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("currentUser", loginModelJson)
+            intent.putExtra(
+                "baseUrl",
+                PreferenceUtils.getPreference(PREF_DOMAIN, "mba.ticketsimply.com")
+            )
+            intent.putExtra("version", BuildConfig.VERSION_NAME)
+            startActivityForResult(intent, LAUNCH_MAIN_ACTIVITY_CODE)
+        }
     }
 
     private fun requestForLocationPermission() {
@@ -829,398 +917,400 @@ class DashboardNavigateActivity : BaseActivity(),
         }
     }
 
-//    private fun listenTextWatcher() {
-//        dashboardViewModel.etTextWatcher(onChangeUsername, onChangePassword)
-//    }
-//
-//    private fun setAddUserTextOnChangeObserver() {
-//        dashboardViewModel.etOnChange.observe(this) {
-//            try {
-//                if (it) {
-//                    binding.layoutAddUserData.buttonAddUser.backgroundTintList =
-//                        ColorStateList.valueOf(Color.parseColor("#3CADB5"))
-//                } else {
-//                    binding.layoutAddUserData.buttonAddUser.backgroundTintList =
-//                        ColorStateList.valueOf(Color.parseColor("#AFAFAF"))
-//                }
-//            } catch (e: Exception) {
-//                //Timber.d("e::${e}")
-//            }
-//        }
-//
-//    }
-//
-//    private fun listenTextWatcherOtp() {
-//        dashboardViewModel.etTextWatcherOTP(onChangeOtp)
-//    }
-//
-//    @SuppressLint("SetTextI18n")
-//    private fun setUpObserver() {
-//        try {
-//
-//            dashboardViewModel.getDate.observe(this) {
-//                endYYMMDD = it
-//            }
-//
-//            dashboardViewModel.loginWithOTP.observe(this) {
-//                //try {
-//                closeKeyBoard()
-//                if (it != null) {
-//                    when (it.code) {
-//                        200 -> {
-//                            val loginModel = it
-//                            loginModel.domainName =
-//                                binding.layoutAddUserData.etDomain.text.toString()
-//                            loginModel.userName =
-//                                binding.layoutAddUserData.etUsername.text.toString()
-//                            loginModel.password =
-//                                binding.layoutAddUserData.etPassword.text.toString()
-//                            loginModel.isEncryptionEnabled = EncrypDecryp.isEncrypted()
-//
-//                            removeSourceDest()
-//                            //remove cached destination pair
-//                            PreferenceUtils.removeKey(getString(R.string.DESTINATION_PAIR_MODEL_KEY))
-//                            PreferenceUtils.removeKey(getString(R.string.OLD_COUNT_KEY))
-//                            PreferenceUtils.removeKey(PREF_DASHBOARD_MODEL_DATA)
-//                            PreferenceUtils.removeKey(PREF_DASHBOARD_API_MEASURE_TIME)
-//                            PreferenceUtils.removeKey(PREF_DASHBOARD_NAVIGATE_SCREEN)
-//                            PreferenceUtils.removeKey("orderBy")
-//
-//                            registerUserDataToFirestore(
-//                                domainName = loginModel.domainName,
-//                                userName = loginModel.userName,
-//                                userId = loginModel.user_id.toString(),
-//                                activity = this,
-//                                clazz = DashboardNavigateActivity::class.java,
-//                                progressBar = null
-//                            )
-//
-//                            userViewModel.insertUserAndRestartActivity(loginModel.toUserModel())
-//                        }
-//
-//                        399 -> {
-//                            openResetDialog()
-//                        }
-//
-//                        else -> {
-//                            it.result.message?.let { it1 -> toast(it1) }
-//                        }
-//                    }
-//                } else {
-//                    toast(getString(R.string.server_error))
-//                }
-//                /*} catch (e: Exception) {
-//                    Timber.d("Error occurred in dashboardViewModel.data.observe ${e.message}")
-//                    toast(getString(R.string.opps))
-//                }*/
-//            }
-//
-//            dashboardViewModel.validationData.observe(this) {
-//                //remove cached destination pair
-//                PreferenceUtils.removeKey(getString(R.string.DESTINATION_PAIR_MODEL_KEY))
-//                PreferenceUtils.removeKey(getString(R.string.OLD_COUNT_KEY))
-//                try {
-//                    // privilege otp based sign in
-//                    if (currentUser.otp.isEmpty()) {
-//                        if (it.isNotEmpty()) toast(it)
-//                        else {
-//
-//                            removeSourceDest()
-//
-//                            if (PreferenceUtils.getPreference(PREF_DOMAIN, "") != null) {
-//                                val prefDomain = PreferenceUtils.getPreference(PREF_DOMAIN, "")!!
-//                                if (prefDomain == domain) {
-//                                    callLoginApi()
-//                                } else {
-//                                    dashboardViewModel.isResetUserCall = false
-//                                    setUpdatedApiUrlAddress(domain)
-//                                    callDomainApi()
-//                                }
-//                            } else callLoginApi()
-//                        }
-//                    } else {
-//                        isOtpBasedLogin = true
-//                        callLoginApi()
-//                    }
-//                } catch (e: Exception) {
-//                    //Timber.d("Error occurred in dashboardViewModel.validationData.observe ${e.message}")
-//                    toast(getString(R.string.opps))
-//
-//                }
-//            }
-//
-//            dashboardViewModel.validationDataOtp.observe(this) {
-//                try {
-//
-//                    if (it.isNotEmpty()) toast(it)
-//                    else {
-//                        if (isNetworkAvailable()) {
-//                            val otp = binding.layoutVerifyOtp.etOtp.text.toString()
-//                            val reqBody = com.bitla.ts.domain.pojo.login_with_otp.request.ReqBody(
-//                                currentUser.phone_number,
-//                                currentUser.key,
-//                                otp,
-//                                locale = locale,
-//                                device_id = getDeviceUniqueId(this)
-//                            )
-//
-//                            if (otp != currentUser.otp) {
-//                                toast(getString(R.string.invalid_otp))
-//                            } else {
-//
-//                                dashboardViewModel.confirmOTP(
-//                                    reqBody, login_with_otp_method_name
-//                                )
-//                                binding.layoutVerifyOtp.etOtp.setText("")
-//                            }
-//                        } else {
-//                            noNetworkToast()
-//                        }
-//                    }
-//                } catch (e: Exception) {
-//                    //Timber.d("Error occurred in dashboardViewModel.validationDataOtp.observe ${e.message}")
-//                    toast(getString(R.string.opps))
-//                }
-//            }
-//
-//            dashboardViewModel.dataDynamicDomain.observe(this) {
-//                try {
-//                    //Timber.d("dataDomain $it")
-//                    if (it != null) {
-//                        if (it.code == 200) {
-//                            if (it.result?.dailingCode != null) setCountryCodes(it.result?.dailingCode)
-//                            else {
-//                                val dialingCode = ArrayList<Int>()
-//                                dialingCode.add(91)
-//                                setCountryCodes(dialingCode)
-//                            }
-//
-//                            PreferenceUtils.setPreference(
-//                                PREF_IS_ENCRYPTED,
-//                                it.result?.isEncrypted ?: false
-//                            )
-//                            if (dashboardViewModel.isResetUserCall == true) {
-//                                updateBaseURL(domain)
-//                                checkHttpsAndSetupClient(it)
-//
-//                            } else {
-//                                updateBaseURL(domain)
-//                                checkHttpsAndSetupClient(it)
-//                                dashboardViewModel.loginApi(
-//                                    username, password, locale, getDeviceUniqueId(this)
-//                                )
-//                            }
-//                        } else {
-//                            if (it.message != null) toast(it.message)
-//                        }
-//                    } else {
-//
-//                        if (!PreferenceUtils.getString(PREF_EXCEPTION).isNullOrEmpty()) toast(
-//                            PreferenceUtils.getString(PREF_EXCEPTION)
-//                        )
-//                        else toast(getString(R.string.server_error))
-//                    }
-//                } catch (e: Exception) {
-//                    toast(getString(R.string.opps))
-//                }
-//            }
-//
-//            dashboardViewModel.resetUser.observe(this) { loginModel ->
-//                try {
-//                    if (loginModel.code == 200) {
-//
-//                        if (loginModel.is_counter_enabled_by_user == true) {
-//                            showCounterLogin(loginModel)
-//                            return@observe
-//                        }
-//
-//                        loginModel.domainName = domain
-//                        loginModel.userName = username
-//                        loginModel.password = password
-//
-//                        removeSourceDest()
-//
-//                        Sentry.configureScope { scope ->
-//                            scope.setTag(LOGIN_ID, username)
-//                            scope.setTag(OPERATOR_NAME, loginModel.travels_name ?: "")
-//                            scope.setTag(ROLE_NAME, loginModel.role)
-//                            loginModel.dialingCode?.get(0)
-//                                ?.let { it1 -> scope.setTag(COUNTRY_CODE, it1.toString()) }
-//                        }
-//
-//                        PreferenceUtils.setSubAgentRole(loginModel.is_sub_agent_and_user)
-//                        loginModel.isEncryptionEnabled = EncrypDecryp.isEncrypted()
-//                        userViewModel.insertUserAndRestartActivity(loginModel.toUserModel())
-//
-//                    } else if (loginModel.code == 411 && isReLoginClick) {
-//                        openDeviceRegistrationDialog(loginModel.result.message ?: "")
-//                    } else {
-//                        loginModel.result.message?.let { toast(it) }
-//                    }
-//                } catch (e: Exception) {
-//                    //Timber.d("Error occurred in dashboardViewModel.dataLogout.observe ${e.message}")
-//                    toast(getString(R.string.opps))
-//                }
-//                isReLoginClick = false
-//            }
-//
-//            dashboardViewModel.loginUser.observe(this) {
-//                try {
-//                    closeKeyBoard()
-//
-//                    //Timber.d("okh isOtpBasedLogin $isOtpBasedLogin response $it")
-//
-//                    if (it != null) {
-//
-//                        isOtpBasedLogin = it.otp.isNotEmpty()
-//
-//                        if (it.code == 200) {
-//
-//                            if (it.is_counter_enabled_by_user == true) {
-//                                showCounterLogin(it)
-//                                return@observe
-//                            }
-//
-//                            if (isOtpBasedLogin) {
-//
-//                                currentUser.otp = it.otp
-//                                currentUser.key = it.key
-//                                currentUser.phone_number = it.mobile_number
-//                                PreferenceUtils.setSubAgentRole(it.is_sub_agent_and_user)
-//                                updateBaseURL(domain)
-//                                binding.layoutAddUserData.root.gone()
-//                                binding.layoutVerifyOtp.root.visible()
-//                                otpCountDown()
-//                                binding.layoutVerifyOtp.tvOTPmsg.text =
-//                                    "${getString(R.string.otp_sent_message)} ${it.mobile_number}"
-//                            } else {
-//                                saveAddedUser(it)
-//                            }
-//                        } else if (it.code == 399) {
-//                            openResetDialog()
-//                        } else if (it.code == 411) {
-//                            openDeviceRegistrationDialog(it.result.message ?: "")
-//                        } else {
-//                            it.result.message?.let { it1 -> toast(it1) }
-//                        }
-//                    } else toast(getString(R.string.server_error))
-//                } catch (e: Exception) {
-//                    //Timber.d("Error occurred in dashboardViewModel.dataAddUser.observe ${e.message}")
-//                    toast(getString(R.string.opps))
-//
-//                }
-//            }
-//
-//            privilegeDetailsViewModel.privilegeResponseModel.observe(this) {
-//                try {
-//                    if (it != null) {
-//                        if (it.code == 200) {
-//                            PreferenceUtils.setPreference(
-//                                "otp_validation_time", it.configuredLoginValidityTime
-//                            )
-//                            privilegeResponse = it
-//                            manageBranchAccounting =
-//                                privilegeResponse?.manageBranchAccounting ?: false
-//                            showManageAgentAccountLinkInAccount =
-//                                privilegeResponse?.showManageAgentAccountLinkInAccount ?: false
-//                            agentInstantRecharge = privilegeResponse?.agentInstantRecharge ?: false
-//
-//                            callStoreFcm()
-//
-//
-//                            // PreferenceUtils.putObject(it, PREF_PRIVILEGE_DETAILS,this)
-//                            PreferenceUtils.putObject(
-//                                LocalDateTime.now(), PREF_PRIVILEGE_DETAILS_CALLED
-//                            )
-//
-//
-//                            putObjectBase(it, PREF_PRIVILEGE_DETAILS)
-//                            remoteConfigUpdateCheck()
-//                            setData(it)
-//
-//                            val role = getUserRole(
-//                                currentUser,
-//                                isAgentLogin = privilegeResponse?.isAgentLogin ?: false,
-//                                this
-//                            )
-//
-//
-//                            currentCountry = privilegeResponse?.country ?: ""
-//
-//                            if (!currentCountry.isNullOrEmpty() && currentCountry.equals(
-//                                    "india",
-//                                    true
-//                                )
-//                            ) {
-//                                requestForLocationPermission()
-//                            }
-//
-//
-//                            if (role == getString(R.string.role_agent) && privilegeResponse?.allowBookingForAllotedServices == true) {
-//                                PreferenceUtils.setIsAgentAndAllowBookingForAllotedServices(true)
-//                            } else {
-//                                PreferenceUtils.setIsAgentAndAllowBookingForAllotedServices(false)
-//                            }
-//
-//                            if (privilegeResponse?.tsPrivileges?.showCreditLimitForAgentsAndSubAgents == true) {
-//                                callCreditInfoApi()
-//                            }
-//                            val allowBimaInTs = it.allowBimaInTs ?: false
-//                            PreferenceUtils.setPreference("is_bima", allowBimaInTs)
-//                        }
-//                    } else {
-//                        // openUnauthorisedDialog()
-//                        showUnauthorisedDialog()
-//                    }
-//                } catch (e: Exception) {
-//                    toast(getString(R.string.opps))
-//
-//                }
-//            }
-//
-//
-//            dashboardViewModel.creditInfoData.observe(this) {
-//                if (it != null) {
-//                    when (it.code) {
-//                        200 -> {
-//                            binding.creditLayoutCL.visible()
-//                            if (it.availableBalance.isNullOrEmpty()) {
-//                                binding.avlBalanceLL.gone()
-//                                binding.creditLayoutParent.weightSum = 2F
-//                            } else {
-//                                binding.avlBalanceLL.visible()
-//                                binding.creditLayoutParent.weightSum = 3F
-//                                binding.tvAvlBalance.text = it.availableBalance
-//                            }
-//                            binding.tvTotalCredit.text = it.totalCredit
-//                            binding.tvAvlCredit.text = it.availableCredit
-//                            binding.tvLastUpdated.text =
-//                                getString(R.string.last_updated) + " " + it.lastUpdatedOn
-//                        }
-//
-//                        401 -> {
-//                            binding.creditLayoutCL.gone()
-//                            showUnauthorisedDialog()
-//                        }
-//
-//                        else -> {
-//                            binding.creditLayoutCL.gone()
-//                            toast(it.message)
-//                        }
-//                    }
-//                } else {
-//                    binding.creditLayoutCL.gone()
-//                    toast(getString(R.string.opps))
-//                }
-//            }
-//
-//
-//        } catch (e: Exception) {
-//            //Timber.d("An exception occurred in method ${e.message.toString()}")
-//            toast(getString(R.string.opps))
-//
-//        }
-//    }
+    private fun listenTextWatcher() {
+        dashboardViewModel.etTextWatcher(onChangeUsername, onChangePassword)
+    }
+
+    private fun setAddUserTextOnChangeObserver() {
+        dashboardViewModel.etOnChange.observe(this) {
+            try {
+                if (it) {
+                    binding.layoutAddUserData.buttonAddUser.backgroundTintList =
+                        ColorStateList.valueOf(Color.parseColor("#3CADB5"))
+                } else {
+                    binding.layoutAddUserData.buttonAddUser.backgroundTintList =
+                        ColorStateList.valueOf(Color.parseColor("#AFAFAF"))
+                }
+            } catch (e: Exception) {
+                //Timber.d("e::${e}")
+            }
+        }
+
+    }
+
+    private fun listenTextWatcherOtp() {
+        dashboardViewModel.etTextWatcherOTP(onChangeOtp)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setUpObserver() {
+        try {
+
+            dashboardViewModel.getDate.observe(this) {
+                endYYMMDD = it
+            }
+
+            dashboardViewModel.loginWithOTP.observe(this) {
+                //try {
+                closeKeyBoard()
+                if (it != null) {
+                    when (it.code) {
+                        200 -> {
+                            val loginModel = it
+                            loginModel.domainName =
+                                binding.layoutAddUserData.etDomain.text.toString()
+                            loginModel.userName =
+                                binding.layoutAddUserData.etUsername.text.toString()
+                            loginModel.password =
+                                binding.layoutAddUserData.etPassword.text.toString()
+                            loginModel.isEncryptionEnabled = EncrypDecryp.isEncrypted()
+
+                            removeSourceDest()
+                            //remove cached destination pair
+                            PreferenceUtils.removeKey(getString(R.string.DESTINATION_PAIR_MODEL_KEY))
+                            PreferenceUtils.removeKey(getString(R.string.OLD_COUNT_KEY))
+                            PreferenceUtils.removeKey(PREF_DASHBOARD_MODEL_DATA)
+                            PreferenceUtils.removeKey(PREF_DASHBOARD_API_MEASURE_TIME)
+                            PreferenceUtils.removeKey(PREF_DASHBOARD_NAVIGATE_SCREEN)
+                            PreferenceUtils.removeKey("orderBy")
+
+                            registerUserDataToFirestore(
+                                domainName = loginModel.domainName,
+                                userName = loginModel.userName,
+                                userId = loginModel.user_id.toString(),
+                                activity = this,
+                                clazz = DashboardNavigateActivity::class.java,
+                                progressBar = null
+                            )
+
+                            userViewModel.insertUserAndRestartActivity(loginModel.toUserModel())
+                        }
+
+                        399 -> {
+                            openResetDialog()
+                        }
+
+                        else -> {
+                            it.result.message?.let { it1 -> toast(it1) }
+                        }
+                    }
+                } else {
+                    toast(getString(R.string.server_error))
+                }
+                /*} catch (e: Exception) {
+                    Timber.d("Error occurred in dashboardViewModel.data.observe ${e.message}")
+                    toast(getString(R.string.opps))
+                }*/
+            }
+
+            dashboardViewModel.validationData.observe(this) {
+                //remove cached destination pair
+                PreferenceUtils.removeKey(getString(R.string.DESTINATION_PAIR_MODEL_KEY))
+                PreferenceUtils.removeKey(getString(R.string.OLD_COUNT_KEY))
+                try {
+                    // privilege otp based sign in
+                    if (currentUser.otp.isEmpty()) {
+                        if (it.isNotEmpty()) toast(it)
+                        else {
+
+                            removeSourceDest()
+
+                            if (PreferenceUtils.getPreference(PREF_DOMAIN, "") != null) {
+                                val prefDomain = PreferenceUtils.getPreference(PREF_DOMAIN, "")!!
+                                if (prefDomain == domain) {
+                                    callLoginApi()
+                                } else {
+                                    dashboardViewModel.isResetUserCall = false
+                                    setUpdatedApiUrlAddress(domain)
+                                    callDomainApi()
+                                }
+                            } else callLoginApi()
+                        }
+                    } else {
+                        isOtpBasedLogin = true
+                        callLoginApi()
+                    }
+                } catch (e: Exception) {
+                    //Timber.d("Error occurred in dashboardViewModel.validationData.observe ${e.message}")
+                    toast(getString(R.string.opps))
+
+                }
+            }
+
+            dashboardViewModel.validationDataOtp.observe(this) {
+                try {
+
+                    if (it.isNotEmpty()) toast(it)
+                    else {
+                        if (isNetworkAvailable()) {
+                            val otp = binding.layoutVerifyOtp.etOtp.text.toString()
+                            val reqBody = com.bitla.ts.domain.pojo.login_with_otp.request.ReqBody(
+                                currentUser.phone_number,
+                                currentUser.key,
+                                otp,
+                                locale = locale,
+                                device_id = getDeviceUniqueId(this)
+                            )
+
+                            if (otp != currentUser.otp) {
+                                toast(getString(R.string.invalid_otp))
+                            } else {
+
+                                dashboardViewModel.confirmOTP(
+                                    reqBody, login_with_otp_method_name
+                                )
+                                binding.layoutVerifyOtp.etOtp.setText("")
+                            }
+                        } else {
+                            noNetworkToast()
+                        }
+                    }
+                } catch (e: Exception) {
+                    //Timber.d("Error occurred in dashboardViewModel.validationDataOtp.observe ${e.message}")
+                    toast(getString(R.string.opps))
+                }
+            }
+
+            dashboardViewModel.dataDynamicDomain.observe(this) {
+                try {
+                    //Timber.d("dataDomain $it")
+                    if (it != null) {
+                        if (it.code == 200) {
+                            if (it.result?.dailingCode != null) setCountryCodes(it.result?.dailingCode)
+                            else {
+                                val dialingCode = ArrayList<Int>()
+                                dialingCode.add(91)
+                                setCountryCodes(dialingCode)
+                            }
+
+                            PreferenceUtils.setPreference(
+                                PREF_IS_ENCRYPTED,
+                                it.result?.isEncrypted ?: false
+                            )
+                            if (dashboardViewModel.isResetUserCall == true) {
+                                updateBaseURL(domain)
+                                checkHttpsAndSetupClient(it)
+
+                            } else {
+                                updateBaseURL(domain)
+                                checkHttpsAndSetupClient(it)
+                                dashboardViewModel.loginApi(
+                                    username, password, locale, getDeviceUniqueId(this)
+                                )
+                            }
+                        } else {
+                            if (it.message != null) toast(it.message)
+                        }
+                    } else {
+
+                        if (!PreferenceUtils.getString(PREF_EXCEPTION).isNullOrEmpty()) toast(
+                            PreferenceUtils.getString(PREF_EXCEPTION)
+                        )
+                        else toast(getString(R.string.server_error))
+                    }
+                } catch (e: Exception) {
+                    toast(getString(R.string.opps))
+                }
+            }
+
+            dashboardViewModel.resetUser.observe(this) { loginModel ->
+                try {
+                    if (loginModel.code == 200) {
+
+                        if (loginModel.is_counter_enabled_by_user == true) {
+                            showCounterLogin(loginModel)
+                            return@observe
+                        }
+
+                        loginModel.domainName = domain
+                        loginModel.userName = username
+                        loginModel.password = password
+
+                        removeSourceDest()
+
+                        Sentry.configureScope { scope ->
+                            scope.setTag(LOGIN_ID, username)
+                            scope.setTag(OPERATOR_NAME, loginModel.travels_name ?: "")
+                            scope.setTag(ROLE_NAME, loginModel.role)
+                            loginModel.dialingCode?.get(0)
+                                ?.let { it1 -> scope.setTag(COUNTRY_CODE, it1.toString()) }
+                        }
+
+                        PreferenceUtils.setSubAgentRole(loginModel.is_sub_agent_and_user)
+                        loginModel.isEncryptionEnabled = EncrypDecryp.isEncrypted()
+                        userViewModel.insertUserAndRestartActivity(loginModel.toUserModel())
+
+                    } else if (loginModel.code == 411 && isReLoginClick) {
+                        openDeviceRegistrationDialog(loginModel.result.message ?: "")
+                    } else {
+                        loginModel.result.message?.let { toast(it) }
+                    }
+                } catch (e: Exception) {
+                    //Timber.d("Error occurred in dashboardViewModel.dataLogout.observe ${e.message}")
+                    toast(getString(R.string.opps))
+                }
+                isReLoginClick = false
+            }
+
+            dashboardViewModel.loginUser.observe(this) {
+                try {
+                    closeKeyBoard()
+
+                    //Timber.d("okh isOtpBasedLogin $isOtpBasedLogin response $it")
+
+                    if (it != null) {
+
+                        isOtpBasedLogin = it.otp.isNotEmpty()
+
+                        if (it.code == 200) {
+
+                            if (it.is_counter_enabled_by_user == true) {
+                                showCounterLogin(it)
+                                return@observe
+                            }
+
+                            if (isOtpBasedLogin) {
+
+                                currentUser.otp = it.otp
+                                currentUser.key = it.key
+                                currentUser.phone_number = it.mobile_number
+                                PreferenceUtils.setSubAgentRole(it.is_sub_agent_and_user)
+                                updateBaseURL(domain)
+                                binding.layoutAddUserData.root.gone()
+                                binding.layoutVerifyOtp.root.visible()
+                                otpCountDown()
+                                binding.layoutVerifyOtp.tvOTPmsg.text =
+                                    "${getString(R.string.otp_sent_message)} ${it.mobile_number}"
+                            } else {
+                                saveAddedUser(it)
+                            }
+                        } else if (it.code == 399) {
+                            openResetDialog()
+                        } else if (it.code == 411) {
+                            openDeviceRegistrationDialog(it.result.message ?: "")
+                        } else {
+                            it.result.message?.let { it1 -> toast(it1) }
+                        }
+                    } else toast(getString(R.string.server_error))
+                } catch (e: Exception) {
+                    //Timber.d("Error occurred in dashboardViewModel.dataAddUser.observe ${e.message}")
+                    toast(getString(R.string.opps))
+
+                }
+            }
+
+            privilegeDetailsViewModel.privilegeResponseModel.observe(this) {
+                try {
+                    if (it != null) {
+                        if (it.code == 200) {
+                            PreferenceUtils.setPreference(
+                                "otp_validation_time", it.configuredLoginValidityTime
+                            )
+                            privilegeResponse = it
+                            manageBranchAccounting =
+                                privilegeResponse?.manageBranchAccounting ?: false
+                            showManageAgentAccountLinkInAccount =
+                                privilegeResponse?.showManageAgentAccountLinkInAccount ?: false
+                            allowToViewTheCoachDocument =
+                                privilegeResponse?.allowToViewTheCoachDocument ?: false
+                            agentInstantRecharge = privilegeResponse?.agentInstantRecharge ?: false
+
+                            callStoreFcm()
+
+
+                            // PreferenceUtils.putObject(it, PREF_PRIVILEGE_DETAILS,this)
+                            PreferenceUtils.putObject(
+                                LocalDateTime.now(), PREF_PRIVILEGE_DETAILS_CALLED
+                            )
+
+
+                            putObjectBase(it, PREF_PRIVILEGE_DETAILS)
+                            remoteConfigUpdateCheck()
+                            setData(it)
+
+                            val role = getUserRole(
+                                currentUser,
+                                isAgentLogin = privilegeResponse?.isAgentLogin ?: false,
+                                this
+                            )
+
+
+                            currentCountry = privilegeResponse?.country ?: ""
+
+                            if (!currentCountry.isNullOrEmpty() && currentCountry.equals(
+                                    "india",
+                                    true
+                                )
+                            ) {
+                                requestForLocationPermission()
+                            }
+
+
+                            if (role == getString(R.string.role_agent) && privilegeResponse?.allowBookingForAllotedServices == true) {
+                                PreferenceUtils.setIsAgentAndAllowBookingForAllotedServices(true)
+                            } else {
+                                PreferenceUtils.setIsAgentAndAllowBookingForAllotedServices(false)
+                            }
+
+                            if (privilegeResponse?.tsPrivileges?.showCreditLimitForAgentsAndSubAgents == true) {
+                                callCreditInfoApi()
+                            }
+                            val allowBimaInTs = it.allowBimaInTs ?: false
+                            PreferenceUtils.setPreference("is_bima", allowBimaInTs)
+                        }
+                    } else {
+                        // openUnauthorisedDialog()
+                        showUnauthorisedDialog()
+                    }
+                } catch (e: Exception) {
+                    toast(getString(R.string.opps))
+
+                }
+            }
+
+
+            dashboardViewModel.creditInfoData.observe(this) {
+                if (it != null) {
+                    when (it.code) {
+                        200 -> {
+                            binding.creditLayoutCL.visible()
+                            if (it.availableBalance.isNullOrEmpty()) {
+                                binding.avlBalanceLL.gone()
+                                binding.creditLayoutParent.weightSum = 2F
+                            } else {
+                                binding.avlBalanceLL.visible()
+                                binding.creditLayoutParent.weightSum = 3F
+                                binding.tvAvlBalance.text = it.availableBalance
+                            }
+                            binding.tvTotalCredit.text = it.totalCredit
+                            binding.tvAvlCredit.text = it.availableCredit
+                            binding.tvLastUpdated.text =
+                                getString(R.string.last_updated) + " " + it.lastUpdatedOn
+                        }
+
+                        401 -> {
+                            binding.creditLayoutCL.gone()
+                            showUnauthorisedDialog()
+                        }
+
+                        else -> {
+                            binding.creditLayoutCL.gone()
+                            toast(it.message)
+                        }
+                    }
+                } else {
+                    binding.creditLayoutCL.gone()
+                    toast(getString(R.string.opps))
+                }
+            }
+
+
+        } catch (e: Exception) {
+            //Timber.d("An exception occurred in method ${e.message.toString()}")
+            toast(getString(R.string.opps))
+
+        }
+    }
 
 
     private fun checkHttpsAndSetupClient(it: DynamicDomain) {
@@ -1278,9 +1368,19 @@ class DashboardNavigateActivity : BaseActivity(),
                     getString(R.string.landing_page),
                     getString(R.string.booking)
                 )
+            } else if (privilegeResponse?.boLicenses?.showBookingAndCollectionTabInTsApp == false && privilegeResponse?.showBusMobilityAppDashboard == true) {
+                PreferenceUtils.putString(
+                    getString(R.string.landing_page),
+                    getString(R.string.dashboard)
+                )
             } else {
                 val currentpage = PreferenceUtils.getString(getString(R.string.landing_page))
-                if (currentpage.equals(getString(R.string.booking)) && privilegeResponse?.boLicenses?.showBookingAndCollectionTabInTsApp == true) {
+                if (currentpage.equals(getString(R.string.dashboard)) && privilegeResponse?.showBusMobilityAppDashboard == true) {
+                    PreferenceUtils.putString(
+                        getString(R.string.landing_page),
+                        getString(R.string.dashboard)
+                    )
+                } else if (currentpage.equals(getString(R.string.booking)) && privilegeResponse?.boLicenses?.showBookingAndCollectionTabInTsApp == true) {
                     PreferenceUtils.putString(
                         getString(R.string.landing_page),
                         getString(R.string.booking)
@@ -1297,12 +1397,30 @@ class DashboardNavigateActivity : BaseActivity(),
         }
 
 
+
+
+
+        binding.bottomNavView.menu.findItem(R.id.dashboard_fragment).isVisible =
+            !(it.allowBookingForAllotedServices != null && it.allowBookingForAllotedServices)
+
+
         if (currentUser.role == getString(R.string.role_field_officer) && privilegeResponse?.country.equals(
                 "India", true
             )
         ) {
             binding.bottomNavView.menu.findItem(R.id.bookings_fragment).isVisible =
                 it.boLicenses?.showBookingAndCollectionTabInTsApp == true
+            binding.bottomNavView.menu.findItem(R.id.dashboard_fragment).isVisible =
+                it.showBusMobilityAppDashboard == true
+        }
+
+        if (it.availableAppModes?.checkingInspectorMode != null && !it.availableAppModes.checkingInspectorMode) {
+            binding.bottomNavView.menu.removeItem(R.id.chk_inspector_fragment)
+        } else {
+            binding.bottomNavView.menu.findItem(R.id.chk_inspector_fragment).isVisible = true
+        }
+        if (it.availableAppModes?.showReports != null && !it.availableAppModes.showReports) {
+            binding.bottomNavView.menu.removeItem(R.id.report_fragment)
         }
 
         setNavAdapter()
@@ -1563,8 +1681,164 @@ class DashboardNavigateActivity : BaseActivity(),
         binding.layoutAddUserData.etPassword.setText("")
     }
 
-    fun setNavAdapter() {
+    fun checkForVehicleDocument(bool: Boolean) {
+        allowToViewTheCoachDocument = bool
+    }
 
+    fun setNavAdapter() {
+        menuList = mutableListOf()
+        if (manageBranchAccounting || showManageAgentAccountLinkInAccount) {
+            menuList.add(
+                NavMenuModel(
+                    resources.getString(R.string.recharge), R.drawable.ic_recharge
+                )
+            )
+        }
+
+        val role = getUserRole(
+            currentUser,
+            isAgentLogin = privilegeResponse?.isAgentLogin ?: false,
+            this
+        )
+
+        if (role == getString(R.string.role_agent) && agentInstantRecharge && privilegeResponse?.rechargeTypes?.instantRecharge == true) {
+            menuList.add(
+                NavMenuModel(
+                    resources.getString(R.string.recharge),
+                    R.drawable.ic_recharge
+                )
+            )
+        }
+        if (role == getString(R.string.role_field_officer)) {
+            allowToViewVehicleDocBO =
+                privilegeResponse?.boLicenses?.allowToViewVehicleDocumentOption ?: false
+            if (allowToViewVehicleDocBO) {
+                menuList.add(
+                    NavMenuModel(
+                        resources.getString(R.string.vehicle_documents),
+                        R.drawable.ic_vehicle_documents_nav_drawer
+                    )
+                )
+            }
+        } else {
+            if (allowToViewTheCoachDocument) {
+                menuList.add(
+                    NavMenuModel(
+                        resources.getString(R.string.vehicle_documents),
+                        R.drawable.ic_vehicle_documents_nav_drawer
+                    )
+                )
+            }
+        }
+
+
+        if (privilegeResponse?.manageRoutesInTsApp == true) {
+            menuList.add(
+                NavMenuModel(
+                    getString(R.string.route_manager),
+                    R.drawable.ic_route_manager
+                )
+            )
+        }
+
+        if (privilegeResponse?.country.equals("india", true)) {
+            if (showManageAgentAccountLinkInAccount || manageBranchAccounting) {
+                menuList.add(
+                    NavMenuModel(
+                        resources.getString(R.string.manage_account), R.drawable.ic_manage_acc
+                    )
+                )
+            }
+        }
+
+
+        if (privilegeResponse?.isAgentLogin == true && !privilegeResponse?.country.equals(
+                "india", true
+            )
+        ) {
+            val index = menuList.indexOfFirst {
+                it.title == getString(R.string.account_details)
+            }
+
+            if (index == -1) {
+                menuList.add(
+                    NavMenuModel(
+                        getString(R.string.account_details), R.drawable.baseline_account_circle_24
+                    )
+                )
+            }
+        }
+
+        if (privilegeResponse?.tsPrivileges?.allowFareChangeForMultipleServices == true) {
+            menuList.add(
+                NavMenuModel(
+                    getString(R.string.fare_change_multiple_services),
+                    R.drawable.ic_recharge
+                )
+            )
+        }
+
+
+        binding.navRecyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        navigationMenuAdapter = NavigationMenuAdapter(this, menuList) {
+            when (it) {
+                resources.getString(R.string.recharge) -> {
+                    val role = getUserRole(
+                        currentUser,
+                        isAgentLogin = privilegeResponse?.isAgentLogin ?: false,
+                        this
+                    )
+                    if (role == getString(R.string.role_agent)) {
+                        val intent = Intent(this, InstantRechargeActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(this, RechargeActivity::class.java)
+                        this.startActivity(intent)
+                    }
+
+                }
+
+                resources.getString(R.string.vehicle_documents) -> {
+                    val intent = Intent(this, VehicleDetailsActivity::class.java)
+                    this.startActivity(intent)
+                }
+
+                getString(R.string.manage_account) -> {
+                    val intent = Intent(this, ManageAccountActivity::class.java)
+                    startActivity(intent)
+                }
+
+                getString(R.string.route_manager) -> {
+                    val intent = Intent(this, RouteServiceManagerActivity::class.java)
+                    startActivity(intent)
+                }
+
+
+                getString(R.string.account_details) -> {
+
+                    firebaseLogEvent(
+                        this,
+                        ACCOUNT_DETAILS,
+                        currentUser.userName,
+                        currentUser.travels_name,
+                        currentUser.role,
+                        ACCOUNT_DETAILS,
+                        ACCOUNT_DETAILS_HAMBURGER_MENU
+                    )
+
+                    val intent = Intent(this, AccountDetailsActivity::class.java)
+                    startActivity(intent)
+                }
+
+                getString(R.string.fare_change_multiple_services) -> {
+                    val intent = Intent(this, MultipleServicesManageFareActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            openCloseNavigationDrawer()
+        }
+        binding.navRecyclerView.adapter = navigationMenuAdapter
     }
 
     private fun callLogoutApi(closeCounter: Boolean = false) {
@@ -1612,12 +1886,20 @@ class DashboardNavigateActivity : BaseActivity(),
                 setDefaultDashboard()
             } else {
                 binding.bottomNavView.menu.getItem(0).isChecked = true
-                if (back) {
-                    setDefaultDashboard()
-                    back = false
-                    //binding.bottomNavView.visibility = View.GONE
+                if (isCheckingInspectorDetail) {
+                    isCheckingInspectorDetail = false
+                    setToolbarTitle(getString(R.string.checking_inspector))
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.chk_inspector_fragment)
+                    binding.appBar.notificationImg.gone()
+
                 } else {
-                    finishAffinity()
+                    if (back) {
+                        setDefaultDashboard()
+                        back = false
+                        //binding.bottomNavView.visibility = View.GONE
+                    } else {
+                        finishAffinity()
+                    }
                 }
                 showHideBottomBar(true)
 //                if (isCheckingInspectorDetail) {
@@ -1692,6 +1974,24 @@ class DashboardNavigateActivity : BaseActivity(),
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.dashboard_fragment -> {
+                PreferenceUtils.putObject(true, "callAPI_onCLICK")
+                privilegeDetailsViewModel.setDashboardDefaultTab(true)
+                if (::navigationMenuAdapter.isInitialized) {
+                    navigationMenuAdapter.menuColorChange(0)
+                    setDefaultDashboard()
+                    back = true
+//                    PreferenceUtils.putString(PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.dashboard))
+                }
+            }
+
+            R.id.dashboard_fragment_tabs -> {
+                if (::navigationMenuAdapter.isInitialized) {
+                    setDefaultDashboard()
+                    back = true
+//                    PreferenceUtils.putString(PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.dashboard))
+                }
+            }
 
             R.id.bookings_fragment -> {
                 PreferenceUtils.putObject(true, "callAPI_onCLICK")
@@ -1723,6 +2023,29 @@ class DashboardNavigateActivity : BaseActivity(),
                         PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.pick_up_chart)
                     )
                 }
+            }
+
+            R.id.report_fragment -> {
+                PreferenceUtils.putObject(true, "callAPI_onCLICK")
+
+                if (::navigationMenuAdapter.isInitialized) {
+                    setToolbarTitle(getString(R.string.reports))
+                    navigationMenuAdapter.menuColorChange(3)
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.report_fragment)
+                    back = true
+                    binding.appBar.notificationImg.gone()
+                    binding.appBar.calendarImg.gone()
+                    PreferenceUtils.putString(
+                        PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.reports)
+                    )
+                }
+            }
+
+            R.id.chk_inspector_fragment -> {
+                setToolbarTitle(getString(R.string.checking_inspector))
+                back = true
+                findNavController(R.id.nav_host_fragment).navigate(R.id.chk_inspector_fragment)
+                binding.appBar.notificationImg.gone()
             }
         }
         return true
@@ -1773,6 +2096,28 @@ class DashboardNavigateActivity : BaseActivity(),
             dashboardViewModel.updatePrivileges(privilege)
         }
 
+        dashboardViewModel.privilegesLiveData.observe(this) { privilegeResponse ->
+
+            if (privilegeResponse?.allowToViewTsAppNewDashboard == true) {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.dashboard_fragment_tabs)
+                setToolbarTitle(getString(R.string.dashboard))
+            } else {
+                findNavController(R.id.nav_host_fragment).navigate(R.id.dashboard_fragment)
+                setToolbarTitle(getString(R.string.dashboard))
+                binding.appBar.lastUpdateTV.gone()
+                binding.appBar.notificationImg.gone()
+                binding.appBar.calendarImg.gone()
+            }
+
+            if (privilegeResponse?.country.equals(
+                    "India", true
+                ) && privilegeResponse?.isAgentLogin == false
+            ) {
+                binding.appBar.notificationImg.visible()
+            } else {
+                binding.appBar.notificationImg.gone()
+            }
+        }
     }
 
     override fun onCheckRemoteConfigUpdateListener(

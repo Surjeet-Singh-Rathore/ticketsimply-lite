@@ -503,9 +503,45 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
                 selectedSeatDetails[i].number = passengerList[i].seatNumber ?: ""
             }
         }
+//        selectedSeatDetails.forEach {
+//            it.additionalFare = passengerList[0].additionalFare?.toDouble()
+//        }
 
-        binding.cardMealCoupons.gone()
-        binding.cardMealTypes.gone()
+        if (passengerList.isNotEmpty()
+        ) {
+            val mealCouponList = mutableListOf<String>()
+            var mealCoupons = ""
+
+            val mealTypeList = mutableListOf<String>()
+            var mealTypes = ""
+
+            passengerList.forEach {
+                if (it.meal_coupons != null && it.meal_coupons.isNotEmpty()) {
+                    mealCoupons += it.meal_coupons.toString().replace("[", "").replace("]", "")
+                        .replace(",", "\n").replace(" ", "")
+                    mealCouponList.add(mealCoupons)
+                    mealCoupons = ""
+                }
+                if (!it.selectedMealType.isNullOrEmpty()) {
+                    mealTypes += it.selectedMealType
+                    mealTypeList.add(mealTypes)
+                    mealTypes = ""
+                }
+            }
+            if (mealCouponList.isNotEmpty()) {
+                binding.cardMealCoupons.visible()
+                setMealsAdapter(mealCouponList)
+            }
+            if (mealTypeList.isNotEmpty()) {
+                binding.cardMealTypes.visible()
+                setMealTypeAdapter(mealTypeList)
+            }
+        } else {
+            binding.cardMealCoupons.gone()
+            binding.cardMealTypes.gone()
+        }
+
+//        Timber.d("passengerList- $passengerList")
     }
 
     private fun getSeatDetails() {
@@ -516,6 +552,26 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
         if (!passengerList.any { it.isExtraSeat }) {
             selectedSeatNo = retrieveSelectedSeatNumber()
         }
+
+//        val seatNoUpdatedList = mutableListOf<String>()
+//        for (i in 0 until selectedSeatDetails.size) {
+//            selectedSeatNo = selectedSeatDetails[i].number
+//            seatNoUpdatedList.add(selectedSeatNo.toString())
+//        }
+//        val commaSeparatedSeatNoUpdated = android.text.TextUtils.join(",", seatNoUpdatedList)
+//        selectedSeatNo = commaSeparatedSeatNoUpdated
+    }
+
+    private fun setMealsAdapter(mealCouponList: MutableList<String>) {
+        binding.rvMealCoupons.layoutManager = GridLayoutManager(this, 3)
+        val mealCouponsAdapter = MealCouponsAdapter(this, mealCouponList)
+        binding.rvMealCoupons.adapter = mealCouponsAdapter
+    }
+
+    private fun setMealTypeAdapter(mealTypeList: MutableList<String>) {
+        binding.rvMealType.layoutManager = GridLayoutManager(this, 3)
+        val mealTypeAdapter = MealCouponsAdapter(this, mealTypeList)
+        binding.rvMealType.adapter = mealTypeAdapter
     }
 
     private fun getBookingRequest() {

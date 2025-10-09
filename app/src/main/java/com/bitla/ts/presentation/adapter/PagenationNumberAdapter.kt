@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bitla.ts.R
 import com.bitla.ts.data.listener.DialogButtonAnyDataListener
 import com.bitla.ts.databinding.AdapterPagenationNumberBinding
-import com.bitla.ts.domain.pojo.manage_account_view.show_transaction_list.PagenationData
+import com.bitla.ts.domain.pojo.all_reports.new_response.occupany_report_data.PagenationData
 import java.util.Collections
 
 class PagenationNumberAdapter(

@@ -1,10 +1,12 @@
 package com.bitla.ts.presentation.view.fragments
 
+import EndlessRecyclerOnScrollListener
 import android.annotation.*
 import android.app.*
 import android.content.*
 import android.os.*
 import android.text.*
+import android.util.Log
 import android.view.*
 import android.view.animation.*
 import android.widget.*
@@ -57,6 +59,7 @@ import visible
 import java.io.*
 import java.text.*
 import java.time.*
+import java.time.format.*
 import java.util.*
 
 
@@ -71,6 +74,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
     private var servicePopupWindow: PopupWindow? = null
     private var selectedOriginId: String = "0"
     private var selectedDestinationId: String = "0"
+    private val limit: Int = 10 //fixed
     private val TAG: String = FragmentBooking::class.java.simpleName
     private var busStageData = mutableListOf<StageData>()
     private var isSourceSlected: Boolean = false
@@ -113,6 +117,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
     private val recentSearchViewModel by sharedViewModel<RecentSearchViewModel<Any?>>()
     private val sharedViewModel by viewModel<SharedViewModel<Any?>>()
 
+    //    private var isOnlineInit = false
     private var isAllowBookingAfterTravelDate = false
     private var bookingAfterDoj: Int = 0
     private var service =
@@ -136,6 +141,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
     private var serviceNewAdapter: SimpleListAdapter? = null
     private val availableRoutesViewModel by viewModel<AvailableRoutesViewModel<Any?>>()
     private var allowToShowNewFlowInTsApp = false
+    //private var availableRouteModel =
 
 
     //    bus details
@@ -146,11 +152,16 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
     private var sevenDaysDate: String = getTodayDate()
     private var serviceApiType: String? = null
+
+    //    private val showOnlyAvailableServices: String = "fixed" //fixed
+//    private val showInJourneyServices: String = "true" // fixed
     private var busType: String? = null
     private var depTime: String? = null
     private lateinit var rapidBookingDialog: AlertDialog
     private var boardingPoint: String = ""
     private var droppingPoint: String = ""
+
+    //    private lateinit var droppingStageDetail: StageDetail
     private lateinit var boardingStageDetail: StageDetail
     private var stageDetails = mutableListOf<StageDetail>()
     private var boardingList: MutableList<StageDetail>? = null
@@ -162,6 +173,8 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
     private var ymdDate: String = ""
     private var ymdCurrentDate: String = ""
     private lateinit var recentSearchModel: RecentSearchModel
+
+    //    private val availableRoutesViewModel by viewModel<AvailableRoutesViewModel>()
     private var busList: ArrayList<BusFilterModel> = arrayListOf()
     private var filteredList = mutableListOf<com.bitla.ts.domain.pojo.available_routes.Result>()
     private var updatedList = mutableListOf<com.bitla.ts.domain.pojo.available_routes.Result>()
@@ -172,14 +185,18 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
     private var role: String? = ""
     private var isAgentLogin: Boolean = false
     private var groupByHubs = false
+    private var isActiveService = true
     private var searchList1 =
         ArrayList<com.bitla.ts.domain.pojo.allotedServiceDirect.AllotedDirctResponse.Service>()
 
+    //    private var serviceDirect = arrayListOf<com.bitla.ts.domain.pojo.allotedServiceDirect.AllotedDirctResponse.Service>()
+    private val privilegeDetailsViewModel by sharedViewModel<PrivilegeDetailsViewModel>()
     private val pickUpChartViewModel by viewModel<PickUpChartViewModel<Any?>>()
     private var allowBimaInTs: Boolean = false
     private var recentSearchList = mutableListOf<RecentSearch>()
     private var tempRecentSearchList = mutableListOf<RecentSearch>()
     private lateinit var firebaseAnalytics: FirebaseAnalytics
+    private lateinit var tvService: TextView
     private var selectedOrigin = ""
     private var currency = ""
     private var currencyFormat = ""
@@ -193,8 +210,15 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
     var emptyBoarding: BoardingPointDetail = BoardingPointDetail("", "", "", "", "")
     var emptyDropping: DropOffDetail = DropOffDetail("", "", "", "", "")
     var oldCount = 0
+    var oldCountFlag = false
     var isDestinationPairCache = false
     var destinationPairCount = 0
+    private val dashboardViewModel by viewModel<DashboardViewModel<Any?>>()
+    private var PAGE_NUMBER = 1
+    private var maxPage: Int = 0
+    private lateinit var onScrollListener: EndlessRecyclerOnScrollListener
+    private var tempnum = 0
+    private val QUERY_PER_PAGE = 50
 
     override fun onResume() {
         super.onResume()
@@ -385,7 +409,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
         setObserver()
         setDestinationPairObserver()
 
-
+        setPrivilegesObserver()
         setBusDetailsObserver()
 
         setUpServiceListObserver()
@@ -402,6 +426,13 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
         lifecycleScope.launch {
             sharedViewModel.messageSharedFlow.collect {
+                if (it.isNotEmpty()) {
+                    requireContext().showToast(it)
+                }
+            }
+        }
+        lifecycleScope.launch {
+            dashboardViewModel.messageSharedFlow.collect {
                 if (it.isNotEmpty()) {
                     requireContext().showToast(it)
                 }
@@ -499,12 +530,306 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
     }
 
+    private fun setSourceListAdapter() {
+        // Create the adapter
+        sourceDestinationArrayAdapter = SourceDestinationArrayAdapter(
+            requireContext(),
+            R.layout.spinner_dropdown_item,
+            R.id.tvItem,
+            originList
+        )
+        /*binding.sourceDropdownTv.setOnItemClickListener { adapterView, view, i, l ->
+            binding.sourceDropdownTv.setText(originList[i].name, false)
+            tvSource.setText(originList[i].name)
+            sourceId = originList[i].id ?: ""
+            finalSourceId = sourceId
+            createDestinationList()
+            setDestinationListAdapter()
+            invalidateServiceList()
+        }
+
+
+        // Set the adapter to the AutoCompleteTextView
+        binding.sourceDropdownTv.setAdapter(sourceDestinationArrayAdapter)*/
+
+
+    }
+
+    private fun setDestinationListAdapter() {
+        // Create the adapter
+        val destList: MutableList<Origin> = arrayListOf()
+
+        for (i in 0 until destinationList.size) {
+            val obj = Origin()
+            obj.id = destinationList[i].id
+            obj.name = destinationList[i].name
+            destList.add(obj)
+        }
+
+        destinationCustomArrayAdapter = SourceDestinationArrayAdapter(
+            requireContext(),
+            R.layout.spinner_dropdown_item,
+            R.id.tvItem,
+            destList
+        )
+
+        /*binding.destinationDropdownTv.setOnItemClickListener { adapterView, view, i, l ->
+            binding.destinationDropdownTv.setText(destList[i].name, false)
+            destinationId = destList[i].id ?: ""
+            finalDestinationId = destinationId
+            invalidateServiceList()
+
+            if (convertedDate != null) {
+                availableRoutesApi(
+                    finalDestinationId,
+                    finalSourceId,
+                    getDateYMD(getDateDMY(convertedDate!!)!!)
+                )
+            }
+
+        }*/
+
+// Set the adapter to the AutoCompleteTextView
+        //  binding.destinationDropdownTv.setAdapter(destinationCustomArrayAdapter)
+
+
+    }
+
     private fun invalidateServiceList() {
         binding.tvService.setText("")
         searchList.clear()
         //    binding.tvService.setAdapter(null)
 
     }
+
+    private fun setServiceListAdapter(list: MutableList<SearchModel>) {
+// Create the adapter
+
+
+        serviceCustomArrayAdapter = ServiceCustomArrayAdapter(
+            requireContext(),
+            R.layout.spinner_dropdown_item,
+            R.id.tvItem,
+            list
+        )
+        /*  binding.tvService.setOnItemClickListener { adapterView, view, i, l ->
+              val selectedServiceItem = list[i]
+
+              var boardingList = mutableListOf<BoardingPointDetail>()
+              var droppingList = mutableListOf<DropOffDetail>()
+
+              com.bitla.ts.utils.common.availableRoutesList.forEach {
+                  if (it.id.toString() == selectedServiceItem.id) {
+                      binding.tvService.setText(it.number, false)
+                      service_ServiceNUmber = it.reservation_id.toString()
+                      boardingList = it.boarding_point_details as MutableList
+                      droppingList = it.drop_off_details as MutableList
+                      serviceBusType = it.bus_type
+                      serviceDepTime = it.dep_time
+                      PreferenceUtils.putObject(it.is_apply_bp_dp_fare, IS_APPLY_BP_DP_FARE)
+
+                      PreferenceUtils.putObject(it.is_apply_bp_dp_fare, SERVICE_IS_APPLY_BP_DP_FARE)
+
+                      PreferenceUtils.setPreference("is_bima", it.is_bima)
+                      PreferenceUtils.putObject(
+                          it, PREF_SELECTED_AVAILABLE_ROUTES
+                      )
+                      PreferenceUtils.putString((PREF_COACH_NUMBER), it.number)
+                      PreferenceUtils.setPreference(
+                          PREF_RESERVATION_ID,
+                          it.reservation_id
+                      )
+                  }
+              }
+              PreferenceUtils.putBoarding(boardingList)
+              PreferenceUtils.putDropping(droppingList)
+              binding.tvService.showDropDown()
+
+          }
+
+  // Set the adapter to the AutoCompleteTextView
+          binding.tvService.setAdapter(serviceCustomArrayAdapter)*/
+
+    }
+
+    private fun getPrevFullCalenderDate(monthh: String, year: String): String {
+
+        var inputMonth = monthh
+
+        if (monthh.toInt() < 10) {
+            inputMonth = monthh.replace("0", "")
+        }
+
+        val weekList =
+            arrayOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+
+        var leap = when {
+            year.toInt() % 4 == 0 -> {
+                when {
+                    year.toInt() % 100 == 0 -> year.toInt() % 400 == 0
+                    else -> true
+                }
+            }
+
+            else -> false
+        }
+
+        val monthDayList = when {
+            leap -> {
+                arrayOf(31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+            }
+
+            else -> {
+                arrayOf(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+            }
+        }
+//        yyyy-mm-dd"
+        val sdf3 = SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH)
+        val currentCal = Calendar.getInstance()
+        currentCal.set(Calendar.DAY_OF_MONTH, 1)
+        val sdf1 = SimpleDateFormat("EEEE", Locale.ENGLISH)
+        val n = "01-${inputMonth}-${year}"
+        val currentMonthWeek = sdf1.format((sdf3.parse(n)))
+        val indexCurrentWeek = weekList.indexOfFirst {
+            it.lowercase().contains(currentMonthWeek.toString().lowercase())
+        }
+
+        var newDate = ""
+        var monthEndDate = ""
+
+        var date = ""
+        if (inputMonth.toInt() < 10) {
+            date = "01/0$inputMonth/$year"
+        } else {
+            date = "01/$inputMonth/$year"
+        }
+        var convertedDate: LocalDate =
+            LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+        convertedDate = convertedDate.withDayOfMonth(
+            convertedDate.month.length(convertedDate.isLeapYear)
+        )
+        val lastDayOfCurrentMonth = convertedDate.dayOfMonth
+
+        if (indexCurrentWeek > 0) {
+            var prevmonth: Int? = null
+            var prevyear = year.toInt()
+            if (inputMonth.contentEquals("1") || inputMonth.contentEquals("01")) {
+                prevmonth = 12
+                prevyear -= 1
+            } else {
+                prevmonth = inputMonth.toInt() - 1
+            }
+
+            val maxDayy: Int =
+                monthDayList[prevmonth - 1] //prevCal.getActualMaximum(Calendar.DAY_OF_MONTH)
+            val getOldDate = maxDayy - (indexCurrentWeek - 1)
+
+            val diff = maxDayy - getOldDate + 1
+            var d = (35 - diff) - lastDayOfCurrentMonth
+            if (d == 0) {
+                if (leap) {
+                    d = 29
+                } else {
+                    d = 31
+                }
+            } else if (d < 0) {
+                d += 7
+            }
+
+            var m = inputMonth.toInt()
+            if (inputMonth.toInt() != 12) {
+                if (!leap || d != 29) {
+                    m = inputMonth.toInt() + 1
+                }
+            }
+            var nextMonth = m.toString()
+            var nextYear = year
+
+            if (nextMonth.toInt() < 10) {
+                nextMonth = "0$nextMonth"
+            }
+            if (inputMonth.toInt() == 12 && d != 31) {
+                nextMonth = "01"
+                nextYear = (year.toInt() + 1).toString()
+            }
+
+
+            if (d < 10) {
+                monthEndDate = "0$d-$nextMonth-$nextYear"
+            } else {
+                monthEndDate = "$d-$nextMonth-$nextYear"
+            }
+            var finalDate = getOldDate.toString()
+            var finalMonth = prevmonth.toString()
+            if (finalDate.toInt() < 10) {
+                finalDate = "0$finalDate"
+            }
+            if (finalMonth.toInt() < 10) {
+                finalMonth = "0$finalMonth"
+            }
+            newDate = "${finalDate}-${finalMonth}-${prevyear}"
+
+            val ymdStartDate = getDateYMD(newDate)
+            val ymdEndDate = getDateYMD(monthEndDate)
+
+
+            //Timber.d("previousDate - $ymdStartDate")
+            //Timber.d("monthEndDate - $ymdEndDate")
+
+            callOccupancyCalendarApi(ymdStartDate, ymdEndDate)
+
+        } else {
+            if (inputMonth.toInt() < 10) {
+                newDate = "01-0${inputMonth.toInt()}-${year.toInt()}"
+            } else {
+                newDate = "01-${inputMonth.toInt()}-${year.toInt()}"
+            }
+            var diff = 35 - lastDayOfCurrentMonth
+
+            var finalDate = diff.toString()
+            var finalMonth = inputMonth
+            var finalYear = year
+            if (inputMonth.toInt() < 10) {
+                finalMonth = "0${inputMonth.toInt() + 1}"
+            }
+            if (diff == 0) {
+                finalDate = "$lastDayOfCurrentMonth"
+            } else if (diff < 10) {
+                finalDate = "0${diff}"
+            }
+
+            if (inputMonth.toInt() == 12 && diff == 0) {
+                finalYear = (year.toInt() + 1).toString()
+            }
+
+            monthEndDate = "$finalDate-$finalMonth-${finalYear}"
+
+
+//            Timber.d("Previous date", "$newDate")
+//            Timber.d("Month End date", "$monthEndDate")
+
+            Timber.d("previousDate-2 - $newDate")
+            Timber.d("monthEndDate-2 - $monthEndDate")
+
+//            callOccupancyCalendarApi(newDate,monthEndDate)
+
+        }
+        return "$newDate#$monthEndDate"
+    }
+
+
+    private fun callOccupancyCalendarApi(startDate: String, endDate: String) {
+        dashboardViewModel.occupancyCalendarApi(
+            com.bitla.ts.phase2.dashboard_pojo.occupancyCalendarModel.request.ReqBody(
+                apiKey = loginModelPref.api_key,
+                reservationId = -1,
+                startDate = startDate,
+                endDate = endDate
+            ),
+            occupancy_calendar_method_name
+        )
+    }
+
 
     private fun checkSource() {
         Timber.i("CheckBPDP : $isAllowBpDpFare,$cityStagingNameOnTrue,$cityStagingNameOnFalse")
@@ -751,6 +1076,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
         PreferenceUtils.putString(LAST_SEARCHED_SOURCE_ID, sourceId)
         PreferenceUtils.putString(LAST_SEARCHED_DESTINATION_ID, destinationId)
 
+//        privilegeDetails = (activity as BaseActivity).getPrivilegeBase()
         if (travelDate.isNotEmpty())
             convertedDate = getDateYMD(travelDate)
         else {
@@ -765,6 +1091,71 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
         loginModelPref = PreferenceUtils.getLogin()
 
+
+        lifecycleScope.launch {
+            val privilege = (activity as BaseActivity).getPrivilegeBaseSafely()
+            dashboardViewModel.updatePrivileges(privilege)
+        }
+
+
+    }
+
+    private fun setPrivilegesObserver() {
+        dashboardViewModel.privilegesLiveData.observe(requireActivity()) { privilegeResponse ->
+            if(privilegeResponse != null) {
+                currentCountry = privilegeResponse?.country ?: ""
+
+                if (privilegeResponse.isAgentLogin) {
+                    isAgentLogin = privilegeResponse.isAgentLogin
+                }
+
+                privilegeDetails=privilegeResponse
+
+                role = getUserRole(loginModelPref, isAgentLogin = isAgentLogin, requireActivity())
+
+                callRecentSearch()
+
+                isAllowBookingAfterTravelDate = privilegeResponse.isAllowBookingAfterTravelDate
+
+                if (PreferenceUtils.getTravelDate().isNotEmpty()) {
+
+                    bookingAfterDoj = if (privilegeResponse.bookingAfterDoj == null) {
+                        0
+                    } else {
+                        if (privilegeResponse.bookingAfterDoj.trim().isEmpty()) {
+                            0
+                        } else {
+                            privilegeResponse.bookingAfterDoj.trim().toInt()
+                        }
+                    }
+                }
+
+                allowBimaInTs = if (privilegeResponse.allowBimaInTs == null) {
+                    false
+                } else {
+                    privilegeResponse.allowBimaInTs
+                }
+
+                privilegeResponse.let {
+                    currency = privilegeResponse.currency
+                    currencyFormat = getCurrencyFormat(requireContext(), privilegeResponse.currencyFormat)
+
+                }
+
+                PreferenceUtils.setPreference("is_bima", privilegeResponse.allowBimaInTs)
+                PreferenceUtils.putObject(
+                    LocalDateTime.now(),
+                    PREF_PRIVILEGE_DETAILS_CALLED
+                )
+                setData(privilegeResponse)
+                setBookTicketData(privilegeResponse)
+
+
+                (activity as DashboardNavigateActivity).checkForVehicleDocument(privilegeResponse!!.allowToViewTheCoachDocument)
+                (activity as DashboardNavigateActivity).setNavAdapter()
+
+            }
+        }
     }
 
     private suspend fun setPrefWithCoroutines(privilegeResponseModel: PrivilegeResponseModel) =
@@ -2788,6 +3179,8 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
     private fun setBusDetailsAdapter(finallist: ArrayList<com.bitla.ts.domain.pojo.allotedServiceDirect.AllotedDirctResponse.Service>) {
 
+        dashboardViewModel.privilegesLiveData.observe(requireActivity()) { privilegeResponse ->
+
             binding.busDetailsIncludeLayout.rvBusDetails.visible()
             binding.busDetailsIncludeLayout.rvBusDetails.layoutManager =
                 LinearLayoutManager(
@@ -2798,7 +3191,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
             searchListAdapter = MyReservationAdapterBook(
                 context = requireContext(),
                 searchList = finallist,
-                privilegeDetails = privilegeDetails,
+                privilegeDetails = privilegeResponse,
                 loginModelPref = loginModelPref,
                 onItemClickListener = this
             ) { menuItemPosition, itemPosition ->
@@ -2852,6 +3245,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
             }
             binding.busDetailsIncludeLayout.rvBusDetails.adapter = searchListAdapter
+        }
     }
 
     private fun setAdapters() {
@@ -3133,6 +3527,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
 // humsafar
 //for service
+
     private fun availableRoutesApi(destinationId: String, sourceId: String, ymdDate: String) {
         bccId = PreferenceUtils.getBccId()
         var isBima: Boolean? = null
@@ -3202,7 +3597,10 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
                             searchList.sortBy { it.name?.lowercase() }
                             servicePopupDialog()
+                            //setServiceListAdapter(searchList)
                         }
+
+
                     }
 
                 } else if (it.code == 401) {
@@ -3342,11 +3740,16 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
         var popupBinding : AdapterSearchBpdpBinding ?= null
         popupBinding = AdapterSearchBpdpBinding.inflate(LayoutInflater.from(requireContext()))
 
+
+
         popupBinding.root.measure(View.MeasureSpec.UNSPECIFIED,View.MeasureSpec.UNSPECIFIED)
 
         binding.nestedScrollView5.smoothScrollTo(0, 500)
 
+
         val destList : MutableList<Origin> = arrayListOf()
+
+
 
         for (i in 0 until searchList.size){
             val obj  = Origin()
@@ -3355,8 +3758,10 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
             destList.add(obj)
         }
 
+
         serviceNewAdapter = SimpleListAdapter(requireContext(),destList,this, SERVICE)
         popupBinding.searchRV.adapter = serviceNewAdapter
+
 
         popupBinding.searchET.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
@@ -3378,16 +3783,21 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
             }
         })
 
+
         servicePopupWindow = PopupWindow(
             popupBinding.root,binding.tvService.width, FrameLayout.LayoutParams.WRAP_CONTENT,
             true
         )
+        val xOff = 0
+        val yOff = binding.tvService.height
 
         if (isAdded && binding.tvService.isAttachedToWindow) {
             servicePopupWindow?.showAsDropDown(binding.tvService)
         }
 
+
         servicePopupWindow?.elevation=25f
+
 
         popupBinding.root.setOnTouchListener { v: View?, event: MotionEvent? ->
             servicePopupWindow?.dismiss()

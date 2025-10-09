@@ -8,15 +8,15 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bitla.restaurant_app.presentation.utils.gone
+import com.bitla.restaurant_app.presentation.utils.visible
 import com.bitla.ts.R
 import com.bitla.ts.data.listener.DialogButtonMoveSeatExtraListener
 import com.bitla.ts.data.listener.MoveToExtraOnItemClickListener
 import com.bitla.ts.databinding.SheetTicketMoveToExtraMultiSeatBinding
 import com.bitla.ts.presentation.adapter.SelectMultiSeatAdapterForMultiSelection
 import com.bitla.ts.utils.showToast
-import gone
 import timber.log.Timber
-import visible
 
 open class BaseMultiSelectMoveToExtraTicket : BaseFragment(), MoveToExtraOnItemClickListener {
 

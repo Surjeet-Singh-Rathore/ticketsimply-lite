@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="textStyleNormal">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">#7C7C7C</item>
+        <item name="android:textColor">#263238</item>
+        <item name="android:fontFamily">@font/noto_sans_regular</item>
+    </style>
+
+    <style name="textStyleBold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#4A4A4A</item>
+        <item name="android:fontFamily">@font/noto_sans_bold</item>
+    </style>
+
+
+    <style name="TextStyleNormal">
+    <item name="android:textStyle">normal</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:color">@color/white</item>
+    </style>
+</resources>

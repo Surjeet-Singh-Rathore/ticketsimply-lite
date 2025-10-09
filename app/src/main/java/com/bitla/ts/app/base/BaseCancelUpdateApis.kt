@@ -4,6 +4,8 @@ import android.app.*
 import android.content.*
 import android.text.*
 import android.view.*
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.bitla.restaurant_app.presentation.utils.*
 import com.bitla.ts.*
 import com.bitla.ts.R
 import com.bitla.ts.data.listener.*
@@ -18,7 +20,6 @@ import com.bitla.ts.presentation.viewModel.*
 import com.bitla.ts.utils.*
 import com.bitla.ts.utils.dialog.*
 import com.google.android.material.bottomsheet.*
-import isNetworkAvailable
 import noNetworkToast
 import timber.log.*
 

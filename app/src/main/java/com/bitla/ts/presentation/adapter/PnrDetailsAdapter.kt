@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bitla.ts.R
 import com.bitla.ts.data.listener.OnItemClickListener
 import com.bitla.ts.databinding.ChildPnrDetailsLayoutBinding
+import com.bitla.ts.databinding.LayoutFavouriteReportsFragmentBinding
 import com.bitla.ts.domain.pojo.passenger_history.PassengerHistoryModel
+import com.bitla.ts.presentation.view.activity.ticketDetails.TicketDetailsActivity
 import com.bitla.ts.presentation.view.ticket_details_compose.TicketDetailsActivityCompose
 import gone
 import visible
@@ -25,10 +27,14 @@ class PnrDetailsAdapter
     private val onItemClickListener: OnItemClickListener,
     private var passengersList: ArrayList<PassengerHistoryModel>,
     private var country: String?,
+
     ) :
     RecyclerView.Adapter<PnrDetailsAdapter.ViewHolder>() {
 
+    //    private var tag: String = BusFilterAdapter::class.java.simpleName
     private lateinit var layoutManager: RecyclerView.LayoutManager
+    private lateinit var binding: LayoutFavouriteReportsFragmentBinding
+    private lateinit var favouriteReportsAdapter: FavouriteReportsAdapter
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -70,6 +76,11 @@ class PnrDetailsAdapter
         holder.depInfo.text = "$boardOn | $count passengers | Booked on $bookedOn "
 
         holder.viewTicket.setOnClickListener {
+//            val intent = if (country.equals("India", true) || country.equals("Indonesia", true)) {
+//                Intent(context, TicketDetailsActivityCompose::class.java)
+//            } else {
+//                Intent(context, TicketDetailsActivity::class.java)
+//            }
             val intent=Intent(context, TicketDetailsActivityCompose::class.java)
             intent.putExtra("position", position)
             intent.putExtra(context?.getString(R.string.TICKET_NUMBER), ticketNo)
@@ -84,6 +95,22 @@ class PnrDetailsAdapter
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 popup.gravity = Gravity.RIGHT
             }
+//            if (data.isUpdatable) {
+//                val itemPosition = popup.menu.getItem(0)
+//                itemPosition.isVisible = true
+//            } else {
+//                val itemPosition = popup.menu.getItem(0)
+//                itemPosition.isVisible = false
+//            }
+//
+//            if (data.isCancellable) {
+//                val itemPosition = popup.menu.getItem(1)
+//                itemPosition.isVisible = true
+//            } else {
+//                val itemPosition = popup.menu.getItem(1)
+//                itemPosition.isVisible = false
+//
+//            }
 
             popup.setOnMenuItemClickListener { item ->
                 when (item.itemId) {

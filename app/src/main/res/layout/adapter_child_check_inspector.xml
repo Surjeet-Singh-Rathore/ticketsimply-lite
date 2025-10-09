@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_12"
+    app:cardElevation="4dp"
+    android:id="@+id/cardView"
+    app:cardPreventCornerOverlap="false"
+    app:cardCornerRadius="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_12">
+
+
+        <TextView
+            android:id="@+id/seatsTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="2 Seats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/pnrTV"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="183938"
+            android:textSize="14sp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/colorBlackShadow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/seatsTV"/>
+
+
+
+        <TextView
+            android:id="@+id/busInfoTV"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingEnd="@dimen/dp_8"
+            android:text="Bangalore to Hyderabad"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="14sp"
+            android:paddingRight="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pnrTV" />
+
+        <TextView
+            android:id="@+id/timeTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="14:10"
+            android:textColor="@color/colorShadow"
+            android:textSize="11sp"
+            android:fontFamily="@font/notosans_regular"
+            android:color="@color/colorWhite"
+            app:layout_constraintEnd_toStartOf="@+id/inspectTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/busInfoTV" />
+
+        <TextView
+            android:id="@+id/inspectTV"
+            style="@style/msg_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:drawableEnd="@drawable/ic_primary_arrow"
+            android:drawablePadding="8dp"
+            android:text="@string/inspect_seats"
+            android:textColor="@color/colorPrimary"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
+    app:cardCornerRadius="4dp"
+    app:cardPreventCornerOverlap="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/serviceNumberTV"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="@string/service_name"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/pleasing_grey"
+            android:layout_marginTop="@dimen/dp_8"
+            app:layout_constraintTop_toBottomOf="@+id/serviceNumberTV"
+            app:cardPreventCornerOverlap="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/serviceNumberTV">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineForCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.45" />
+
+                <TextView
+                    android:id="@+id/serviceNameTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/service_name"
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/serviceNameTVValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/serviceNameTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/serviceNameTV" />
+
+                <TextView
+                    android:id="@+id/vehicleNumberTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/vehicle_number"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/serviceNameTVValueTV" />
+
+                <TextView
+                    android:id="@+id/vehicleNumberValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/vehicleNumberTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/vehicleNumberTV" />
+
+                <TextView
+                    android:id="@+id/driver1TV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/driver_1"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicleNumberValueTV" />
+
+                <TextView
+                    android:id="@+id/driver1ValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/driver1TV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/driver1TV" />
+
+                <TextView
+                    android:id="@+id/driver2TV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/driver_2"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/driver1ValueTV" />
+
+                <TextView
+                    android:id="@+id/driver2ValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/driver2TV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/driver2TV" />
+
+                <TextView
+                    android:id="@+id/totalSeatsBookedTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/total_seats_booked"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/driver2ValueTV" />
+
+                <TextView
+                    android:id="@+id/totalSeatsBookedValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/totalSeatsBookedTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/totalSeatsBookedTV" />
+
+                <TextView
+                    android:id="@+id/boardedTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/boarded"
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/totalSeatsBookedValueTV" />
+
+                <TextView
+                    android:id="@+id/boardedValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/boardedTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/boardedTV" />
+
+                <TextView
+                    android:id="@+id/yetToBoardTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/yet_to_board"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/boardedValueTV" />
+
+                <TextView
+                    android:id="@+id/yetToBoardValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/yetToBoardTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/yetToBoardTV" />
+
+                <TextView
+                    android:id="@+id/unboardedTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/unboarded"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/yetToBoardValueTV" />
+
+                <TextView
+                    android:id="@+id/unboardedValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/unboardedTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/unboardedTV" />
+
+                <TextView
+                    android:id="@+id/noShowTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/no_show"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/unboardedValueTV" />
+
+                <TextView
+                    android:id="@+id/noShowValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/noShowTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/noShowTV" />
+
+                <TextView
+                    android:id="@+id/missingTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/missing_status"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/noShowValueTV" />
+
+                <TextView
+                    android:id="@+id/missingValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/missingTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/missingTV" />
+
+                <TextView
+                    android:id="@+id/availableSeatsTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/available_seats"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/missingValueTV" />
+
+                <TextView
+                    android:id="@+id/availableSeatsValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/availableSeatsTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/availableSeatsTV" />
+
+                <TextView
+                    android:id="@+id/noOfPassengerTravellingTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/no_of_pass_travelling"
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/availableSeatsValueTV" />
+
+                <TextView
+                    android:id="@+id/noOfPassengerTravellingValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/noOfPassengerTravellingTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/noOfPassengerTravellingTV" />
+
+                <TextView
+                    android:id="@+id/pickupClosedByTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/pickup_closed_by"
+
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/guidelineForCard"
+                    app:layout_constraintTop_toBottomOf="@+id/noOfPassengerTravellingValueTV" />
+
+                <TextView
+                    android:id="@+id/pickupClosedByValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/pickupClosedByTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/pickupClosedByTV"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

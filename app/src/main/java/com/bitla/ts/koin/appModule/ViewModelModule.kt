@@ -16,6 +16,8 @@ val ViewModelModule = module {
     viewModel { PaymentMethodViewModel() }
 
 
+    viewModel { DashboardViewModel<Any?>(get()) }
+
     viewModel { BranchWiseRevenueViewModel<Any?>(get()) }
 
 
@@ -71,13 +73,19 @@ val ViewModelModule = module {
 
     viewModel { EtaViewModel<Any?>(get()) }
 
+    viewModel { StarredReportsViewModel<Any?>(get()) }
+
     viewModel { MoveToExtraSeatViewModel<Any?>(get()) }
+
+    viewModel { AllReportsViewModel<Any?>(get()) }
 
     viewModel { AgentAccountInfoViewModel<Any?>(get()) }
 
     viewModel { CrewToolKitViewModel<Any?>(get()) }
 
     viewModel { RedelcomViewModel<Any?>(get()) }
+
+    viewModel { VehicleDetailsViewModel<Any?>(get()) }
 
     viewModel { PhonePeUpiDirectViewModel<Any?>(get()) }
 
@@ -89,6 +97,7 @@ val ViewModelModule = module {
     viewModel { BookingSummaryViewModel<Any?>(get()) }
     viewModel { StagingSummaryViewModel<Any?>(get()) }
     viewModel { OccupancyGridViewModel<Any?>(get()) }
+    viewModel { DashboardRevenueViewModel<Any?>(get()) }
     viewModel { BlackListViewModel<Any?>(get()) }
 
     viewModel { MergeBusSharedViewModel(get())}
@@ -101,6 +110,7 @@ val ViewModelModule = module {
     viewModel { MergeBusShiftPassengerViewModel<Any?>(get()) }
 
     viewModel { BusTrackingViewModel<Any?>() }
+    viewModel { RestaurantViewModel(get()) }
     viewModel { SelfAuditViewModel(get()) }
     viewModel { CoachLayoutReportingViewModel(get()) }
     viewModel { UpdateCoachTypeViewModel<Any?>(get()) }
