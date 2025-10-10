@@ -11,16 +11,11 @@
         android:title="@string/bookings" />
 
     <item
-        android:visible="false"
-        android:id="@+id/chk_inspector_fragment"
-        android:icon="@drawable/ic_checking_inspector"
-        android:title="@string/ci" />
-    <item
         android:id="@+id/pickup_fragment"
         android:icon="@drawable/icons_pickup_charts"
         android:title="@string/pick_up_chart" />
-    <item
-        android:id="@+id/report_fragment"
-        android:icon="@drawable/icons_reports"
-        android:title="@string/reports" />
+<!--    <item-->
+<!--        android:id="@+id/report_fragment"-->
+<!--        android:icon="@drawable/icons_reports"-->
+<!--        android:title="@string/reports" />-->
 </menu>

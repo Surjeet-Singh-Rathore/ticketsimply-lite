@@ -147,9 +147,6 @@
             android:name=".presentation.view.activity.BranchCollectionDetailsReportActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.view.activity.CheckingInspectorReportActivity"
-            android:exported="false" />
-        <activity
             android:name=".presentation.view.activity.notifications.NotificationsActivityNew"
             android:exported="false" />
         <activity

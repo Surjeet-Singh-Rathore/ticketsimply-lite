@@ -2640,34 +2640,6 @@ class DialogUtils {
             builder.show()
         }
 
-
-        fun dialogCheckingInspectorUpdate(
-            context: Context,
-            dialogSingleButtonListener: DialogSingleButtonListener,
-            maleCount: Int,
-            femaleCount: Int,
-            totalBoarded: Int,
-        ) {
-            val builder = AlertDialog.Builder(context).create()
-            val inflater = LayoutInflater.from(context)
-            builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))  // for transparent background
-            val binding: DialogCheckingInspectorUpdateBinding =
-                DialogCheckingInspectorUpdateBinding.inflate(LayoutInflater.from(context))
-            builder.setCancelable(false)
-            binding.maleSeatsTV.text = maleCount.toString()
-            binding.femaleSeatsTV.text = femaleCount.toString()
-            binding.totalPassSeatsTV.text = totalBoarded.toString()
-            binding.btnLight.setOnClickListener {
-                builder.cancel()
-                dialogSingleButtonListener.onSingleButtonClick("check_inspector")
-            }
-            binding.cancelBT.setOnClickListener {
-                builder.cancel()
-            }
-            builder.setView(binding.root)
-            builder.show()
-        }
-
         fun oneTouchDialogSuccess(
             context: Context,
             message: String,
@@ -6574,24 +6546,6 @@ class DialogUtils {
                     dialogUnblockSeatsBinding.tvMoreUserType.visibility = View.GONE
                 }
             }
-        }
-
-        //Checking Inspector filter dialog
-
-        fun checkInspectorFilterDialog(
-            context: Context,
-            dialogSingleButtonListener: DialogSingleButtonListener,
-        ) {
-            val builder = AlertDialog.Builder(context).create()
-            val binding: BottomSheetCheckInspectorFilterBinding =
-                BottomSheetCheckInspectorFilterBinding.inflate(LayoutInflater.from(context))
-            builder.setCancelable(true)
-            binding.btnApply.setOnClickListener {
-                dialogSingleButtonListener.onSingleButtonClick(context.getString(R.string.apply))
-                builder.cancel()
-            }
-            builder.setView(binding.root)
-            builder.show()
         }
 
         fun phoneBlockTotalSeatsDialog(

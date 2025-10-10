@@ -239,8 +239,6 @@ import com.bitla.ts.domain.pojo.upi_create_qr.response.UPICreateQRCodeResponse
 import com.bitla.ts.domain.pojo.user_list.UserListModel
 import com.bitla.ts.domain.pojo.validate_otp_wallets.ValidateOtpWalletsModel
 import com.bitla.ts.domain.pojo.viewSummary.ViewSummaryResonse
-import com.bitla.ts.domain.pojo.view_reservation.CheckingInspectorRequestBody
-import com.bitla.ts.domain.pojo.view_reservation.checkingInspectorResponseBody
 import com.bitla.ts.domain.pojo.wallet_otp_generation.WalletOtpGenerationModel
 import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.booking_trends_model.response.BookingTrendsResponse
 import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.occupancy_model.response.OccupancyDetailsResponse
@@ -1965,15 +1963,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("api_key") Apikey: String,
         @Query("locale") locale: String?
     ): Call<PayAtBusResponse>
-
-    @Headers("Content-Type: application/json")
-    @POST("bus_operator_app/api/post_inspection_summary/{res_id}.json?is_from_middle_tier=true&operator_api_key=BITLA@123")
-    suspend fun checkingInspectionSummaryApi(
-        @Path("res_id") resId: String,
-        @Query("api_key") apikey: String,
-        @Query("locale") locale: String,
-        @Body requestBody: CheckingInspectorRequestBody,
-    ): Response<checkingInspectorResponseBody>
 
 
     @GET("/bus_operator_app/api/rut_based_auto_discount_details.json?")

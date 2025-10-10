@@ -210,10 +210,6 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
     val dataAllotedServiceDirect: LiveData<AllotedDirectResponse>
         get() = _dataAllotedServiceDirect
 
-    private val _checkInspectorData = MutableLiveData<checkingInspectorResponseBody>()
-    val checkingInspectorData: LiveData<checkingInspectorResponseBody>
-        get() = _checkInspectorData
-
     private val _viewSummaryDirect = MutableLiveData<ViewSummaryResonse>()
     val viewSummaryDirect: LiveData<ViewSummaryResonse>
         get() = _viewSummaryDirect
@@ -395,38 +391,6 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
                     }
                 }
             }
-        }
-    }
-
-    fun checkingInspectorApi(
-        resId: String,
-        apiKey: String,
-        locale: String,
-        reqBody: CheckingInspectorRequestBody,
-        apiType: String
-
-    ) {
-
-        _loadingState.postValue(LoadingState.LOADING)
-        viewModelScope.launch(Dispatchers.IO) {
-            pickUpRepository.checkingInspectorApi(
-                resId, apiKey, locale, reqBody
-            ).collect {
-            when (it) {
-                is NetworkProcess.Loading -> {}
-                is NetworkProcess.Success -> {
-                    _loadingState.postValue(LoadingState.LOADED)
-                    _checkInspectorData .postValue(
-                            it.data
-                        )
-                }
-
-                is NetworkProcess.Failure -> {
-                    _loadingState.postValue(LoadingState.LOADED)
-                    messageSharedFlow.emit(it.message)
-                }
-            }
-        }
         }
     }
 

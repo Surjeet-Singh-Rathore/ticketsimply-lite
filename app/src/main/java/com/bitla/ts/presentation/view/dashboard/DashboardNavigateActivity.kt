@@ -249,9 +249,7 @@ class DashboardNavigateActivity : BaseActivity(),
                 R.id.dashboard_fragment,
                 R.id.dashboard_fragment_tabs,
                 R.id.bookings_fragment,
-                R.id.pickup_fragment,
-                R.id.report_fragment,
-                R.id.chk_inspector_fragment,
+                R.id.pickup_fragment
             ), binding.drawerLayout
         )
 
@@ -510,26 +508,12 @@ class DashboardNavigateActivity : BaseActivity(),
                 back = true
             }
 
-            getString(R.string.reports) -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.report_fragment)
-                navController.navigate(R.id.report_fragment)
-                setToolbarTitle(getString(R.string.reports))
-                back = true
-            }
-
-            getString(R.string.checking_inspector) -> {
-                if (getPrivilegeBase()?.availableAppModes?.checkingInspectorMode != null) {
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.chk_inspector_fragment)
-                    navController.navigate(R.id.chk_inspector_fragment)
-                    setToolbarTitle(getString(R.string.checking_inspector))
-                    back = true
-                } else {
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
-                    setToolbarTitle(getString(R.string.bookings))
-                    back = true
-                }
-
-            }
+//            getString(R.string.reports) -> {
+//                findNavController(R.id.nav_host_fragment).navigate(R.id.report_fragment)
+//                navController.navigate(R.id.report_fragment)
+//                setToolbarTitle(getString(R.string.reports))
+//                back = true
+//            }
 
             else -> {
                 if (privilegeResponse?.country.equals(
@@ -1414,14 +1398,9 @@ class DashboardNavigateActivity : BaseActivity(),
                 it.showBusMobilityAppDashboard == true
         }
 
-        if (it.availableAppModes?.checkingInspectorMode != null && !it.availableAppModes.checkingInspectorMode) {
-            binding.bottomNavView.menu.removeItem(R.id.chk_inspector_fragment)
-        } else {
-            binding.bottomNavView.menu.findItem(R.id.chk_inspector_fragment).isVisible = true
-        }
-        if (it.availableAppModes?.showReports != null && !it.availableAppModes.showReports) {
-            binding.bottomNavView.menu.removeItem(R.id.report_fragment)
-        }
+//        if (it.availableAppModes?.showReports != null && !it.availableAppModes.showReports) {
+//            binding.bottomNavView.menu.removeItem(R.id.report_fragment)
+//        }
 
         setNavAdapter()
         setBottomBarOptions()
@@ -1886,13 +1865,6 @@ class DashboardNavigateActivity : BaseActivity(),
                 setDefaultDashboard()
             } else {
                 binding.bottomNavView.menu.getItem(0).isChecked = true
-                if (isCheckingInspectorDetail) {
-                    isCheckingInspectorDetail = false
-                    setToolbarTitle(getString(R.string.checking_inspector))
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.chk_inspector_fragment)
-                    binding.appBar.notificationImg.gone()
-
-                } else {
                     if (back) {
                         setDefaultDashboard()
                         back = false
@@ -1900,24 +1872,7 @@ class DashboardNavigateActivity : BaseActivity(),
                     } else {
                         finishAffinity()
                     }
-                }
                 showHideBottomBar(true)
-//                if (isCheckingInspectorDetail) {
-//                    isCheckingInspectorDetail= false
-//                    setToolbarTitle(getString(R.string.checking_inspector))
-//                    findNavController(R.id.nav_host_fragment).navigate(R.id.chk_inspector_fragment)
-//                    binding.appBar.notificationImg.gone()
-//                } else {
-//
-//                    if (back) {
-//                        toast("3")
-//                        setDefaultDashboard()
-//                        back = false
-//                    } else {
-////                finishAffinity()
-//                    }
-//
-//                }
             }
         } else finishAffinity()
     }
@@ -2025,28 +1980,21 @@ class DashboardNavigateActivity : BaseActivity(),
                 }
             }
 
-            R.id.report_fragment -> {
-                PreferenceUtils.putObject(true, "callAPI_onCLICK")
-
-                if (::navigationMenuAdapter.isInitialized) {
-                    setToolbarTitle(getString(R.string.reports))
-                    navigationMenuAdapter.menuColorChange(3)
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.report_fragment)
-                    back = true
-                    binding.appBar.notificationImg.gone()
-                    binding.appBar.calendarImg.gone()
-                    PreferenceUtils.putString(
-                        PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.reports)
-                    )
-                }
-            }
-
-            R.id.chk_inspector_fragment -> {
-                setToolbarTitle(getString(R.string.checking_inspector))
-                back = true
-                findNavController(R.id.nav_host_fragment).navigate(R.id.chk_inspector_fragment)
-                binding.appBar.notificationImg.gone()
-            }
+//            R.id.report_fragment -> {
+//                PreferenceUtils.putObject(true, "callAPI_onCLICK")
+//
+//                if (::navigationMenuAdapter.isInitialized) {
+//                    setToolbarTitle(getString(R.string.reports))
+//                    navigationMenuAdapter.menuColorChange(3)
+//                    findNavController(R.id.nav_host_fragment).navigate(R.id.report_fragment)
+//                    back = true
+//                    binding.appBar.notificationImg.gone()
+//                    binding.appBar.calendarImg.gone()
+//                    PreferenceUtils.putString(
+//                        PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.reports)
+//                    )
+//                }
+//            }
         }
         return true
     }

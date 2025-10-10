@@ -74,7 +74,6 @@ import com.bitla.ts.presentation.view.activity.BranchCollectionDetailsReportActi
 import com.bitla.ts.presentation.view.activity.BranchCollectionSummaryReportActivity
 import com.bitla.ts.presentation.view.activity.BusServiceCollectionDetailedReportActivity
 import com.bitla.ts.presentation.view.activity.BusServiceCollectionSummaryReportActivity
-import com.bitla.ts.presentation.view.activity.CheckingInspectorReportActivity
 import com.bitla.ts.presentation.view.activity.GroupByBranchReportActivity
 import com.bitla.ts.presentation.view.activity.LoginActivity
 import com.bitla.ts.presentation.view.activity.MealsReportActivity
@@ -298,7 +297,6 @@ class FragmentReports : BaseFragment(), View.OnClickListener, OnItemClickListene
         setPaymentStatusReportObserver()
         setRouteWiseBookingMemoObserver()
         setUpOccupancyReportViewObserver()
-        setCheckingInspectorReportObserver()
         setServiceWisePickupReportObserver()
         setGroupByBranchReportObserver()
         setBusServiceCollectionReportObserver()
@@ -822,53 +820,6 @@ class FragmentReports : BaseFragment(), View.OnClickListener, OnItemClickListene
             "All reports click"
         )
 
-    }
-
-    private fun setCheckingInspectorReportObserver() {
-        allReportsViewModel.checkingInspectorReport.observe(viewLifecycleOwner) {
-            Timber.d("allReports - CheckingInspectorReport ->> $it")
-            binding.progressPB.root.gone()
-            dismissProgressDialog()
-
-            if(it != null) {
-                binding.apply {
-                    btnDownload.isEnabled = true
-                    btnViewReport.isEnabled = true
-                    btnDownload.setBackgroundResource(R.drawable.bg_little_round_blue)
-                    btnViewReport.setBackgroundResource(R.drawable.bg_little_round_blue)
-                    btnDownload.setTextColor(resources.getColor(R.color.white))
-                    btnViewReport.setTextColor(resources.getColor(R.color.white))
-                }
-                when(it.code) {
-                    200 -> {
-                        val intent = Intent (requireContext(), CheckingInspectorReportActivity::class.java)
-                        intent.putExtra("data", jsonToString(it))
-                        intent.putExtra(
-                            "travel_date",
-                            "${binding.tvTravelDate.text}  | ${binding.acSelectService.text}"
-                        )
-                        intent.putExtra("req_data", checkingInspectorReqBody)
-                        startActivity(intent)
-                        stopShimmerEffect()
-                        dismissProgressDialog()
-                    }
-                    401 -> {
-                        (activity as BaseActivity).showUnauthorisedDialog()
-                    }
-                    else -> {
-                        if (it.message != null) {
-                            it.message.let { it1 -> requireContext().toast(it1) }
-                        }
-                        stopShimmerEffect()
-                        dismissProgressDialog()
-                    }
-                }
-            } else {
-                requireContext().toast(getString(R.string.server_error))
-                stopShimmerEffect()
-                checkingInspectorReqBody = ""
-            }
-        }
     }
 
     private fun setDateChoiceSelectionAdapter() {
