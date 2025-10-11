@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bitla.ts.R
 import com.bitla.ts.data.listener.OnItemClickListener
 import com.bitla.ts.databinding.ChildReportDateBinding
-import com.bitla.ts.databinding.LayoutFavouriteReportsFragmentBinding
 import com.bitla.ts.domain.pojo.available_routes.Result
 import com.bitla.ts.domain.pojo.starred_reports.StarredReport
 import com.bitla.ts.utils.common.getDateDMY
@@ -27,7 +26,6 @@ class ReportsDateAdapter(
 
     //    private var tag: String = BusFilterAdapter::class.java.simpleName
     private lateinit var layoutManager: RecyclerView.LayoutManager
-    private lateinit var binding: LayoutFavouriteReportsFragmentBinding
     private lateinit var favouriteReportsAdapter: FavouriteReportsAdapter
 
 

@@ -20,7 +20,6 @@ import com.bitla.ts.domain.pojo.available_routes.Result
 import com.bitla.ts.phase2.fragments.childFragments.bookingTrendsFragments.BranchContributionFragment
 import com.bitla.ts.phase2.fragments.childFragments.revenueFragments.*
 import com.bitla.ts.presentation.adapter.SearchBranchAdapter
-import com.bitla.ts.presentation.view.fragments.FragmentReports
 import com.bitla.ts.utils.common.edgeToEdge
 import com.bitla.ts.utils.constants.SELECT_BRANCH_INTENT_REQUEST_CODE
 import com.bitla.ts.utils.sharedPref.*
@@ -63,11 +62,11 @@ class SearchBranchActivity : BaseActivity(), OnItemClickListener, OnItemCheckedL
                     BRANCH_WISE_MODEL_BRANCH_CONTRIBUTION
                 )
             }
-            FragmentReports.TAG -> {
-                branchListModel = PreferenceUtils.getObject<BranchList>(
-                    PREF_BRANCH_LIST_REPORT_MODEL
-                )
-            }
+//            FragmentReports.TAG -> {
+//                branchListModel = PreferenceUtils.getObject<BranchList>(
+//                    PREF_BRANCH_LIST_REPORT_MODEL
+//                )
+//            }
         }
 
         val tempList = branchListModel?.branchList
@@ -136,12 +135,12 @@ class SearchBranchActivity : BaseActivity(), OnItemClickListener, OnItemCheckedL
                     )
                 }
 
-                FragmentReports.TAG -> {
-                    PreferenceUtils.putObject(
-                        BranchList(branchList),
-                        PREF_BRANCH_LIST_REPORT_MODEL
-                    )
-                }
+//                FragmentReports.TAG -> {
+//                    PreferenceUtils.putObject(
+//                        BranchList(branchList),
+//                        PREF_BRANCH_LIST_REPORT_MODEL
+//                    )
+//                }
             }
             setResult(SELECT_BRANCH_INTENT_REQUEST_CODE, intent)
             finish()
