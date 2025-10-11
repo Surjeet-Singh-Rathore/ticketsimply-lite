@@ -70,8 +70,6 @@ val RepositoryModule = module {
 
     single { MoveToExtraSeatRepository(get()) }
 
-    single { AllReportsRepository(get()) }
-
     single { AgentAccountInfoRepository(get()) }
 
     single { CrewToolKitRepository(get()) }

@@ -77,8 +77,6 @@ val ViewModelModule = module {
 
     viewModel { MoveToExtraSeatViewModel<Any?>(get()) }
 
-    viewModel { AllReportsViewModel<Any?>(get()) }
-
     viewModel { AgentAccountInfoViewModel<Any?>(get()) }
 
     viewModel { CrewToolKitViewModel<Any?>(get()) }
