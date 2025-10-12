@@ -25,8 +25,6 @@ import com.bitla.ts.domain.pojo.agent_recharge.AgentRechargeResponseModel
 import com.bitla.ts.domain.pojo.agent_recharge.BranchRechargeResponseModel
 import com.bitla.ts.domain.pojo.agent_recharge.request.*
 import com.bitla.ts.domain.pojo.all_coach.response.*
-import com.bitla.ts.domain.pojo.all_reports.*
-import com.bitla.ts.domain.pojo.all_reports.all_report_request.*
 import com.bitla.ts.domain.pojo.allotedServiceDirect.AllotedDirctResponse.*
 import com.bitla.ts.domain.pojo.alloted_services.*
 import com.bitla.ts.domain.pojo.alloted_services.request.*
@@ -193,7 +191,6 @@ import com.bitla.ts.domain.pojo.released_summary.ReleasedSummary
 import com.bitla.ts.domain.pojo.reset_password_with_otp.ResetPasswordWithOtp
 import com.bitla.ts.domain.pojo.revenue_data.RevenueData
 import com.bitla.ts.domain.pojo.revenue_data.ServiceWiseRevenueData
-import com.bitla.ts.domain.pojo.routewise_booking_memo.RouteWiseResponse
 import com.bitla.ts.domain.pojo.rutDiscountDetails.response.RutDiscountResponse
 import com.bitla.ts.domain.pojo.seat_types.SeatTypesResponse
 import com.bitla.ts.domain.pojo.sendOtpAndQrCode.SendOtqAndQrCodeResponseModel
@@ -1295,15 +1292,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("reservation_id") reservation_id: String,
         @Query("locale") locale: String,
     ): Response<TripCollectionDetailsData>
-
-    // ALL REPORTS API
-    @Headers("Content-Type: application/json")
-    @POST("/ts/api/operator_response.json")
-    suspend fun allReportsApi(
-        @Header("Authorization") Authorization: String,
-        @Header("Apikey") Apikey: String,
-        @Body allReportsRequest: AllReportRequest
-    ): Response<AllReports>
 
     @GET("api/eta_details.json?is_from_middle_tier=true")
     suspend fun newEtaApi(

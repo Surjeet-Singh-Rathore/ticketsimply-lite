@@ -544,10 +544,6 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.view.activity.SearchMultiSelectServiceActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.view.activity.OccupancyGridActivity"
             android:exported="true"
             android:screenOrientation="portrait" />

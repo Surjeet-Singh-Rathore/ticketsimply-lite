@@ -35,7 +35,6 @@ import com.bitla.ts.data.listener.VarArgListener
 import com.bitla.ts.data.operator_api_key
 import com.bitla.ts.data.response_format
 import com.bitla.ts.databinding.ActivityViewReservationBinding
-import com.bitla.ts.domain.pojo.all_reports.AllReports
 import com.bitla.ts.domain.pojo.available_routes.BoardingPointDetail
 import com.bitla.ts.domain.pojo.available_routes.DropOffDetail
 import com.bitla.ts.domain.pojo.available_routes.Result
@@ -133,7 +132,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
     private var myDownload: Long = 0
     private var url: String? = null
     private var tabPosition = 0
-    private var allReportSuccessResponse: AllReports? = null
     private var locale: String? = ""
     private val sourceList = mutableListOf<CitySeqOrder>()
     private val destinationList = mutableListOf<CitySeqOrder>()
