@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bitla.ts.R
 import com.bitla.ts.data.listener.OnItemClickListener
 import com.bitla.ts.databinding.ChildPnrDetailsLayoutBinding
-import com.bitla.ts.databinding.LayoutFavouriteReportsFragmentBinding
 import com.bitla.ts.domain.pojo.passenger_history.PassengerHistoryModel
 import com.bitla.ts.presentation.view.activity.ticketDetails.TicketDetailsActivity
 import com.bitla.ts.presentation.view.ticket_details_compose.TicketDetailsActivityCompose
@@ -33,7 +32,6 @@ class PnrDetailsAdapter
 
     //    private var tag: String = BusFilterAdapter::class.java.simpleName
     private lateinit var layoutManager: RecyclerView.LayoutManager
-    private lateinit var binding: LayoutFavouriteReportsFragmentBinding
     private lateinit var favouriteReportsAdapter: FavouriteReportsAdapter
 
 

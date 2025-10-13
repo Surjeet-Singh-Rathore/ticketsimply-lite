@@ -25,14 +25,6 @@ import com.bitla.ts.domain.pojo.agent_recharge.AgentRechargeResponseModel
 import com.bitla.ts.domain.pojo.agent_recharge.BranchRechargeResponseModel
 import com.bitla.ts.domain.pojo.agent_recharge.request.*
 import com.bitla.ts.domain.pojo.all_coach.response.*
-import com.bitla.ts.domain.pojo.all_reports.*
-import com.bitla.ts.domain.pojo.all_reports.all_report_request.*
-import com.bitla.ts.domain.pojo.all_reports.new_response.*
-import com.bitla.ts.domain.pojo.all_reports.new_response.bus_service_collection_summary_report_data.BusServiceCollectionReportResponse
-import com.bitla.ts.domain.pojo.all_reports.new_response.checking_inspector_report_data.CheckingInspectorReportResponse
-import com.bitla.ts.domain.pojo.all_reports.new_response.group_by_branch_report_data.group_by_branch_report_response.GroupByBranchReportResponse
-import com.bitla.ts.domain.pojo.all_reports.new_response.occupany_report_data.*
-import com.bitla.ts.domain.pojo.all_reports.new_response.service_wise_city_pickup_report_data.ServiceWiseCityPickupReportResponse
 import com.bitla.ts.domain.pojo.allotedServiceDirect.AllotedDirctResponse.*
 import com.bitla.ts.domain.pojo.alloted_services.*
 import com.bitla.ts.domain.pojo.alloted_services.request.*
@@ -138,8 +130,6 @@ import com.bitla.ts.domain.pojo.fetch_notification.request.FetchNotificationMode
 import com.bitla.ts.domain.pojo.frequent_traveller_model.response.FrequentTravellerDataResponse
 import com.bitla.ts.domain.pojo.getCouponDiscount.GetCouponDiscountRequest
 import com.bitla.ts.domain.pojo.getCouponDiscount.Response.GetCouponDetailResponse
-import com.bitla.ts.domain.pojo.get_coach_details.response.CoachDetailsResponse
-import com.bitla.ts.domain.pojo.get_coach_documents.response.CoachDocumentsResponse
 import com.bitla.ts.domain.pojo.get_destination_list.response.GetDestinationListResponse
 import com.bitla.ts.domain.pojo.instant_recharge.AgentPGDataResponse
 import com.bitla.ts.domain.pojo.instant_recharge.GetAgentRechargeResponse
@@ -199,7 +189,6 @@ import com.bitla.ts.domain.pojo.released_summary.ReleasedSummary
 import com.bitla.ts.domain.pojo.reset_password_with_otp.ResetPasswordWithOtp
 import com.bitla.ts.domain.pojo.revenue_data.RevenueData
 import com.bitla.ts.domain.pojo.revenue_data.ServiceWiseRevenueData
-import com.bitla.ts.domain.pojo.routewise_booking_memo.RouteWiseResponse
 import com.bitla.ts.domain.pojo.rutDiscountDetails.response.RutDiscountResponse
 import com.bitla.ts.domain.pojo.seat_types.SeatTypesResponse
 import com.bitla.ts.domain.pojo.sendOtpAndQrCode.SendOtqAndQrCodeResponseModel
@@ -239,16 +228,7 @@ import com.bitla.ts.domain.pojo.upi_create_qr.response.UPICreateQRCodeResponse
 import com.bitla.ts.domain.pojo.user_list.UserListModel
 import com.bitla.ts.domain.pojo.validate_otp_wallets.ValidateOtpWalletsModel
 import com.bitla.ts.domain.pojo.viewSummary.ViewSummaryResonse
-import com.bitla.ts.domain.pojo.view_reservation.CheckingInspectorRequestBody
-import com.bitla.ts.domain.pojo.view_reservation.checkingInspectorResponseBody
 import com.bitla.ts.domain.pojo.wallet_otp_generation.WalletOtpGenerationModel
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.booking_trends_model.response.BookingTrendsResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.occupancy_model.response.OccupancyDetailsResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.pending_quota_model.response.PendingQuotaResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.phone_blocked_model.response.PhoneBlockedResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.revenue_model.response.RevenueDetailsResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.schedules_summary_details.response.SchedulesSummaryResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.service_wise_booking_model.response.ServiceWiseBookingResponse
 import com.bitla.ts.phase2.dashboard_pojo.occupancyCalendarModel.response.OccupancyCalendarResponse
 import com.bitla.ts.presentation.view.merge_bus.pojo.ShiftToServicesListResponse
 import com.google.gson.JsonElement
@@ -1304,15 +1284,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("locale") locale: String,
     ): Response<TripCollectionDetailsData>
 
-    // ALL REPORTS API
-    @Headers("Content-Type: application/json")
-    @POST("/ts/api/operator_response.json")
-    suspend fun allReportsApi(
-        @Header("Authorization") Authorization: String,
-        @Header("Apikey") Apikey: String,
-        @Body allReportsRequest: AllReportRequest
-    ): Response<AllReports>
-
     @GET("api/eta_details.json?is_from_middle_tier=true")
     suspend fun newEtaApi(
         @Query("api_key") apikey: String,
@@ -1529,72 +1500,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("start_date") start_date: String,
     ): Response<OccupancyCalendarResponse>
 
-    @GET("api/occupancy_details.json")
-    suspend fun newOccupancyDetails(
-        @Query("api_key") apikey: String,
-        @Query("destination_id") destination_id: String,
-        @Query("from") from: String,
-        @Query("origin_id") origin_id: String,
-        @Query("sort_by") sort_by: String,
-        @Query("to") to: String,
-    ): Response<OccupancyDetailsResponse>
-
-    @GET("api/revenue_details.json")
-    suspend fun newRevenueDetails(
-        @Query("api_key") apikey: String,
-        @Query("destination_id") destination_id: String,
-        @Query("from") from: String,
-        @Query("origin_id") origin_id: String,
-        @Query("sort_by") sort_by: String,
-        @Query("to") to: String,
-    ): Response<RevenueDetailsResponse>
-
-    @GET("api/performance_details.json?is_from_middle_tier=true")
-    suspend fun newBookingTrendsApi(
-        @Query("api_key") apikey: String,
-        @Query("destination_id") destination_id: String,
-        @Query("from") from: String,
-        @Query("origin_id") origin_id: String,
-        @Query("sort_by") sort_by: String,
-        @Query("to") to: String,
-    ): Response<BookingTrendsResponse>
-
-
-    @GET("api/service_wise_booking_details.json?is_from_middle_tier=true")
-    suspend fun newServiceWiseBookingDetails(
-        @Query("api_key") apikey: String,
-        @Query("date") date: String?,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("occupancy_end") occupancy_end: String,
-        @Query("occupancy_start") occupancy_start: String,
-        @Query("reservation_id") reservation_id: String,
-        @Query("sort_by") sort_by: String,
-        @Query("service_id") serviceId: String,
-    ): Response<ServiceWiseBookingResponse>
-
-
-    @GET("api/schedule_summary_details.json?is_from_middle_tier=true")
-    suspend fun newScheduleSummaryDetails(
-        @Query("api_key") apikey: String,
-        @Query("origin_id") originId: String,
-        @Query("destination_id") destination: String,
-        @Query("end_date") end_date: String,
-        @Query("sort_by") sort_by: String,
-        @Query("start_date") start_date: String,
-        @Query("service_id") serviceId: String,
-        @Query("locale") locale: String
-    ): Response<SchedulesSummaryResponse>
-
-
-    @GET("api/pending_quota_seats.json?is_from_middle_tier=true")
-    suspend fun newPendingQuotaApi(
-        @Query("api_key") apikey: String,
-        @Query("reservation_id") reservation_id: String,
-        @Query("end_date") end_date: String,
-        @Query("sort_by") sort_by: String,
-        @Query("start_date") start_date: String,
-    ): Response<PendingQuotaResponse>
 
     @Headers("Content-Type: application/json")
     @GET("api2/get_bp_dp_service_details/{reservation_id}.json?is_from_middle_tier=true")
@@ -1690,250 +1595,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("locale") locale: String?
     ): Response<ViewSummaryResonse>
 
-
-    @POST("bus_operator_app/api/user_collection_details?is_from_middle_tier=true")
-    suspend fun newUserCollectionDetailsApi(
-        @Query("api_key") apikey: String,
-        @Query("date_range") date_range: String,
-        @Query("date_wise") date_wise: String,
-        @Query("from_date") from_date: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("response_format") response_format: String,
-        @Query("route_id") route_id: String,
-        @Query("to_date") to_date: String,
-        @Query("locale") locale: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("is_detailed") is_detailed: Boolean,
-        @Query("branch_id") branchId: String,
-        @Query("user_id") userId: String,
-        @Query("page") page: Int,
-        @Query("per_page") per_page: Int,
-        @Query("pagination") pagination: Boolean,
-    ): Response<AllReports>
-
-
-    //CHECKING_INSPECTOR_REPORT
-    @GET("bus_operator_app/api/checking_inspector_report?is_from_middle_tier=true")
-    suspend fun checkingInspectorReportApi(
-        @Query("api_key") apikey: String,
-        @Query("travel_date") travel_date: String,
-        @Query("route_id") route_id: String,
-        @Query("is_starred_report") is_starred_report: Boolean,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-
-        ): Response<AllReports>
-
-    // CHECKING_INSPECTOR_REPORT
-    @GET("bus_operator_app/api/checking_inspector_report")
-    suspend fun checkingInspectorReportNewApi(
-        @Query("api_key") apiKey: String,
-        @Query("is_pdf_download") isPdfDownload: Boolean,
-        @Query("is_starred_report") isStarredReport: String?,
-        @Query("response_format") responseFormat: String,
-        @Query("route_id") routeId: String,
-        @Query("travel_date") travelDate: String,
-        @Query("is_from_middle_tier") isFromMiddleTier: Boolean,
-        @Query("locale") locale: String,
-        @Query("page") page: Int,
-        @Query("per_page") perPage: Int,
-        @Query("pagination") pagination: Boolean
-    ): Response<CheckingInspectorReportResponse>
-
-
-    //FUEL_TRANSACTION_DETAIL
-    @GET("bus_operator_app/api/get_fuel_transaction_details.json?is_from_middle_tier=true")
-    suspend fun fuelTransactionDetailApi(
-        @Query("api_key") apikey: String,
-        @Query("from_date") from_date: String,
-        @Query("is_export_pdf") is_export_pdf: String,
-        @Query("is_starred_report") is_starred_report: Boolean,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("to_date") to_date: String,
-        @Query("locale") locale: String,
-    ): Response<AllReports>
-
-
-    //OCCUPANCY REPORT
-    @Headers("Content-Type: application/json")
-    @POST("reports/prepare_travel_occupancy_report_tab_pdf_data.json?is_from_middle_tier=true")
-    suspend fun occupancyReportApi(
-        @Body reqBody: com.bitla.ts.domain.pojo.all_reports.all_report_request.ReqBody
-    ): Response<AllReports>
-
-    @Headers("Content-Type: application/json")
-    @POST("reports/prepare_travel_occupancy_report_tab_pdf_data.json?is_from_middle_tier=true")
-    suspend fun occupancyReportApiNew(
-        @Body reqBody: com.bitla.ts.domain.pojo.all_reports.all_report_request.ReqBody
-    ): Response<OccupancyNewResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("bus_operator_app/api/route_wise_booking_memo?is_from_middle_tier=true")
-    suspend fun routeWiseBookingMemoApi(
-        @Query("api_key") apikey: String,
-        @Query("travel_date") travel_date: String,
-        @Query("is_starred_report") is_starred_report: Boolean,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("route_id") route_id: String,
-        @Query("locale") locale: String,
-    ): Response<RouteWiseResponse>
-
-
-    //BUS_SERVICE_COLLECTION
-    @GET("/bus_operator_app/api/get_bus_service_collection_report.json?is_from_middle_tier=true")
-    suspend fun busServiceCollectionApi(
-        @Query("api_key") apikey: String,
-        @Query("from_date") from_date: String,
-        @Query("date_range") date_range: String,
-        @Query("to_date") to_date: String,
-        @Query("bus_groups") bus_groups: String,
-        @Query("hub_options") hub_options: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("date_wise") date_wise: String,
-        @Query("route_id") route_id: String,
-        @Query("locale") locale: String,
-        @Query("response_format") response_format: String,
-        @Query("is_detailed") is_detailed: Boolean
-    ): Response<AllReports>
-
-    @GET("/bus_operator_app/api/get_bus_service_collection_report.json?is_from_middle_tier=true")
-    suspend fun busServiceCollectionNewApi(
-        @Query("api_key") apikey: String,
-        @Query("from_date") from_date: String,
-        @Query("date_range") date_range: String,
-        @Query("to_date") to_date: String,
-        @Query("bus_groups") bus_groups: String,
-        @Query("hub_options") hub_options: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("coach_id") coach_id: String,
-        @Query("is_detailed") is_detailed: Boolean,
-        @Query("date_wise") date_wise: String,
-        @Query("route_id") route_id: String,
-        @Query("locale") locale: String,
-        @Query("response_format") response_format: String,
-        @Query("page") page: Int,
-        @Query("per_page") per_page: Int,
-        @Query("pagination") pagination: Boolean,
-    ): Response<BusServiceCollectionReportResponse>
-
-    //GROUP_BY_BRANCH_REPORT
-    @GET("/bus_operator_app/api/group_by_branch_report.json?is_from_middle_tier=true")
-    suspend fun groupByBranchReportApi(
-        @Query("api_key") apikey: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("travel_date") travel_date: String,
-        @Query("route_id") route_id: String,
-        @Query("locale") locale: String,
-    ): Response<AllReports>
-
-    @GET("/bus_operator_app/api/group_by_branch_report.json?is_from_middle_tier=true")
-    suspend fun groupByBranchNewReportApi(
-        @Query("api_key") apikey: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("travel_date") travel_date: String,
-        @Query("route_id") route_id: String,
-        @Query("locale") locale: String,
-    ) : Response<GroupByBranchReportResponse>
-
-    //GROUP_BY_BRANCH_REPORT
-    @GET("bus_operator_app/api/cargo_booking_report.json?is_from_middle_tier=true")
-    suspend fun cargoBookingReport(
-        @Query("api_key") apikey: String,
-        @Query("from_date") from_date: String,
-        @Query("to_date") to_date: String,
-        @Query("date_range") date_range: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("route_id") route_id: String,
-        @Query("locale") locale: String,
-    ): Response<AllReports>
-
-
-    @GET("api/tickets_booked_by_you.json?is_from_middle_tier=true")
-    suspend fun ticketsBookedByYouApi(
-        @Query("api_key") api_key: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("response_format") resp_format: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("from_date") from_date: String,
-        @Query("to_date") to_date: String,
-        @Query("locale") locale: String,
-        @Query("is_report") is_report: Boolean,
-        @Query("route_id") route_id: String,
-    ): Response<AllReports>
-
-
-
-
-    @GET("api/tickets_booked_by_you.json?is_from_middle_tier=true")
-    suspend fun ticketsBookedByYouNewApi(
-        @Query("api_key") api_key: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("response_format") resp_format: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("from_date") from_date: String,
-        @Query("to_date") to_date: String,
-        @Query("locale") locale: String,
-        @Query("is_report") is_report: Boolean,
-        @Query("date_type") date_type: Int,
-        @Query("page") page: Int,
-        @Query("per_page") per_page: Int,
-        @Query("pagination") pagination: Boolean,
-        @Query("route_id") route_id: String,
-    ): Response<BookedByYouNewResponse>
-
-
-    @GET("api/partial_payment_details.json?is_from_middle_tier=true")
-    suspend fun paymentStatusReportApi(
-        @Query("api_key") api_key: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("response_format") resp_format: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("from_date") from_date: String,
-        @Query("to_date") to_date: String,
-        @Query("locale") locale: String,
-        @Query("is_report") is_report: Boolean,
-        @Query("date_type") date_type: Int,
-        @Query("page") page: Int,
-        @Query("per_page") per_page: Int,
-        @Query("pagination") pagination: Boolean,
-        @Query("route_id") route_id: String,
-        @Query("payment_type") paymentType: String,
-    ): Response<BookedByYouNewResponse>
-
-
-    @GET("api/partial_payment_details.json?is_from_middle_tier=true")
-    suspend fun paymentStatusReportDownloadApi(
-        @Query("api_key") api_key: String,
-        @Query("is_starred_report") is_starred_report: String,
-        @Query("response_format") resp_format: String,
-        @Query("is_pdf_download") is_pdf_download: Boolean,
-        @Query("from_date") from_date: String,
-        @Query("to_date") to_date: String,
-        @Query("locale") locale: String,
-        @Query("is_report") is_report: Boolean,
-        @Query("route_id") route_id: String,
-        @Query("date_type") date_type: Int,
-        @Query("payment_type") paymentType: String,
-    ): Response<AllReports>
-
-
-
-    @Headers("Content-Type: application/json")
-    @POST("bus_operator_app/api/service_wise_city_pickup_closure_report")
-    suspend fun serviceWiseCityPickup(
-        @Body allReportRequest: com.bitla.ts.domain.pojo.all_reports.all_report_request.ReqBody
-    ): Response<AllReports>
-
-    //SERVICE_WISE_CITY_PICKUP_CLOSURE
-    @Headers("Content-Type: application/json")
-    @POST("bus_operator_app/api/service_wise_city_pickup_closure_report")
-    suspend fun serviceWisePickupClosureReportNewApi(
-        @Body allReportRequest: com.bitla.ts.domain.pojo.all_reports.all_report_request.ReqBody
-    ): Response<ServiceWiseCityPickupReportResponse>
-
     //Redelcom Impression Api
     @Headers("Content-Type: application/json")
     @POST("v2/impresion")
@@ -1965,15 +1626,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("api_key") Apikey: String,
         @Query("locale") locale: String?
     ): Call<PayAtBusResponse>
-
-    @Headers("Content-Type: application/json")
-    @POST("bus_operator_app/api/post_inspection_summary/{res_id}.json?is_from_middle_tier=true&operator_api_key=BITLA@123")
-    suspend fun checkingInspectionSummaryApi(
-        @Path("res_id") resId: String,
-        @Query("api_key") apikey: String,
-        @Query("locale") locale: String,
-        @Body requestBody: CheckingInspectorRequestBody,
-    ): Response<checkingInspectorResponseBody>
 
 
     @GET("/bus_operator_app/api/rut_based_auto_discount_details.json?")
@@ -2026,70 +1678,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Body payPendingAmountRequest: PayPendingAmountRequest
     ): Call<PayPendingAmount>
 
-    @Headers("Content-Type: application/json")
-    @GET("/api/performance_details.json")
-    suspend fun getPerformanceDetailsApi(
-        @Query("api_key") apiKey: String,
-        @Query("origin_id") originId: Int,
-        @Query("destination_id") destinationId: Int,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("sort_by") sortBy: String,
-        @Query("service_id") serviceId: String,
-        @Query("branch_id") branchId: String,
-        @Query("api_type") apiType: Int,
-        @Query("is_3days_data") is3DaysData: Boolean,
-        @Query("locale") locale: String,
-        @Query("is_from_middle_tier") is_from_middle_tier: Boolean,
-        @Query("journey_by") journeyBy: String?
-    ): Response<BookingTrendsResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("/api/revenue_details.json")
-    suspend fun getRevenueDetailsApi(
-        @Query("api_key") apiKey: String,
-        @Query("origin_id") originId: Int,
-        @Query("destination_id") destinationId: Int,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("sort_by") sortBy: String,
-        @Query("service_id") serviceId: String,
-        @Query("branch_id") branchId: String,
-        @Query("api_type") apiType: Int,
-        @Query("is_3days_data") is3DaysData: Boolean,
-        @Query("locale") locale: String,
-        @Query("is_from_middle_tier") is_from_middle_tier: Boolean
-    ): Response<RevenueDetailsResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("/api/occupancy_details.json")
-    suspend fun getOccupancyDetailsApi(
-        @Query("api_key") apiKey: String,
-        @Query("origin_id") originId: Int,
-        @Query("destination_id") destinationId: Int,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("sort_by") sortBy: String,
-        @Query("service_id") serviceId: String,
-        @Query("api_type") apiType: Int,
-        @Query("is_3days_data") is3DaysData: Boolean,
-        @Query("locale") locale: String,
-        @Query("is_from_middle_tier") is_from_middle_tier: Boolean
-    ): Response<OccupancyDetailsResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("/api/phone_blocked.json")
-    suspend fun getPhoneBlockedApi(
-        @Query("api_key") apiKey: String,
-        @Query("end_date") endDate: String,
-        @Query("service_id") serviceId: String,
-        @Query("start_date") startDate: String,
-        @Query("sort_by") sortBy: String,
-        @Query("reservation_id") reservationId: String,
-        @Query("ticket_status_fliter") ticketStatusFliter: Boolean,
-        @Query("locale") locale: String,
-        @Query("is_from_middle_tier") is_from_middle_tier: Boolean
-    ): Response<PhoneBlockedResponse>
 
     @Headers("Content-Type: application/json")
     @GET("bus_operator_app/api/alloted_service_with_date_change")
@@ -2135,26 +1723,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("is_encrypted") is_encrypted: Boolean,
 
     ): Response<JsonElement>
-
-    @Headers("Content-Type: application/json")
-    @GET("bus_operator_app/api/get_coach_details")
-    suspend fun getCoachDetails(
-        @Query("is_from_middle_tier") isFromMiddleTier: Boolean?,
-        @Query("api_key") apiKey: String?,
-        @Query("operator_api_key") operatorApiKey: String?,
-        @Query("locale") locale: String?
-    ): Response<CoachDetailsResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("bus_operator_app/api/get_coach_documents/{coach_id}.json")
-    suspend fun getCoachDocuments(
-        @Path("coach_id") coachId: String?,
-        @Query("is_from_middle_tier") isFromMiddleTier: Boolean?,
-        @Query("coach_number") coachNumber: String?,
-        @Query("api_key") apiKey: String?,
-        @Query("operator_api_key") operatorApiKey: String?,
-        @Query("locale") locale: String?
-    ): Response<CoachDocumentsResponse>
 
     @Headers("Content-Type: application/json")
     @GET("api/validate_ts_app_vpa_phonepe.json")

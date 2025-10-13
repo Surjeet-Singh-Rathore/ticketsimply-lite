@@ -8,7 +8,6 @@ import com.bitla.ts.domain.pojo.bulkCancelOtpConfirmtion.request.BulkCancelVerif
 import com.bitla.ts.domain.pojo.pickUpVanChart.PickUpVanRequest
 import com.bitla.ts.domain.pojo.pickUpVanChart.VanChartStatusChangeRequest
 import com.bitla.ts.domain.pojo.viewSummary.ViewSummaryRequest
-import com.bitla.ts.domain.pojo.view_reservation.CheckingInspectorRequestBody
 import com.bitla.ts.koin.models.makeApiCall
 import com.bitla.ts.utils.security.EncrypDecryp
 
@@ -362,14 +361,6 @@ class PickUpRepository(private val apiInterface: ApiInterface) {
         reqBody: com.bitla.ts.domain.pojo.city_pickup_by_chart_stage.request.ReqBody
     ) = makeApiCall { apiInterface.newCloseChartByCity(reqBody) }
 
-
-    suspend fun checkingInspectorApi(
-        resId: String,
-        apiKey: String,
-        locale: String,
-        reqBody: CheckingInspectorRequestBody
-
-    ) = makeApiCall { apiInterface.checkingInspectionSummaryApi(resId, apiKey, locale, reqBody)}
 
 
     suspend fun fetchFareTemplateApi(
