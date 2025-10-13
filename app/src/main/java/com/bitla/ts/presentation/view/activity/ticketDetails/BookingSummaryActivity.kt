@@ -19,7 +19,6 @@ import com.bitla.ts.databinding.LayoutBookTicketsBinding
 import com.bitla.ts.domain.pojo.booking_summary_details.BookingSummaryResponse
 import com.bitla.ts.domain.pojo.booking_summary_details.Detail
 import com.bitla.ts.domain.pojo.login_model.LoginModel
-import com.bitla.ts.phase2.adapter.parent.SummaryBookingAdapter
 import com.bitla.ts.presentation.viewModel.BookingSummaryViewModel
 import com.bitla.ts.utils.common.edgeToEdge
 import com.bitla.ts.utils.dialog.DialogUtils
@@ -37,7 +36,6 @@ class BookingSummaryActivity : BaseActivity(), DialogSingleButtonListener {
     private var loginModelPref: LoginModel = LoginModel()
     private var resID: String? = null
     private val bookingSummaryDetailsViewModel by viewModel<BookingSummaryViewModel<Any?>>()
-    private var summaryBookingAdapter: SummaryBookingAdapter? = null
     private var totalSeatsBooking: String? = null
     private var totalRevenueBooking: String? = null
     private var seatsBooking: String? = null
@@ -148,11 +146,6 @@ class BookingSummaryActivity : BaseActivity(), DialogSingleButtonListener {
                         200 -> {
 
                             setBookingSummaryObserver(it)
-
-                            setOTA_Data(it?.otaData?.details)
-                            setAgent_Data(it?.agentData?.details)
-                            setBranch_Data(it?.branchData?.details)
-                            setEBooking_Data(it?.eBookingData?.details)
                         }
 
                         401 -> {
@@ -206,56 +199,6 @@ class BookingSummaryActivity : BaseActivity(), DialogSingleButtonListener {
         return stringToSpan
     }
 
-    fun setOTA_Data(otaData: List<Detail>?) {
-        val recyclerView: RecyclerView = binding.OTAWiseL.summaryRV
-        summaryBookingAdapter = otaData?.let { it1 -> SummaryBookingAdapter(this, it1, this, true,currecny,currencyFormat) }
-
-        recyclerView.adapter = summaryBookingAdapter
-
-    }
-
-    fun setBranch_Data(branchData: List<Detail>?) {
-        val recyclerView2: RecyclerView = binding.agentWiseL.summaryRV
-        summaryBookingAdapter =
-            branchData?.let { it1 -> SummaryBookingAdapter(
-                this,
-                it1,
-                this,
-                true,
-                currecny,
-                currencyFormat
-            ) }
-        recyclerView2.adapter = summaryBookingAdapter
-    }
-
-    fun setAgent_Data(agentData: List<Detail>?) {
-        val recyclerView1: RecyclerView = binding.branchWiseL.summaryRV
-        summaryBookingAdapter =
-            agentData?.let { it1 -> SummaryBookingAdapter(
-                this,
-                it1,
-                this,
-                true,
-                currecny,
-                currencyFormat
-            ) }
-        recyclerView1.adapter = summaryBookingAdapter
-    }
-
-    fun setEBooking_Data(ebookingData: List<Detail>?) {
-        val recyclerView3: RecyclerView = binding.eBookingWiseL.summaryRV
-
-        summaryBookingAdapter =
-            ebookingData?.let { it1 -> SummaryBookingAdapter(
-                this,
-                it1,
-                this,
-                true,
-                currecny,
-                currencyFormat
-            ) }
-        recyclerView3.adapter = summaryBookingAdapter
-    }
 
     override fun initUI() {
     }

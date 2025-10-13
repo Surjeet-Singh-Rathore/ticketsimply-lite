@@ -229,13 +229,6 @@ import com.bitla.ts.domain.pojo.user_list.UserListModel
 import com.bitla.ts.domain.pojo.validate_otp_wallets.ValidateOtpWalletsModel
 import com.bitla.ts.domain.pojo.viewSummary.ViewSummaryResonse
 import com.bitla.ts.domain.pojo.wallet_otp_generation.WalletOtpGenerationModel
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.booking_trends_model.response.BookingTrendsResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.occupancy_model.response.OccupancyDetailsResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.pending_quota_model.response.PendingQuotaResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.phone_blocked_model.response.PhoneBlockedResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.revenue_model.response.RevenueDetailsResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.schedules_summary_details.response.SchedulesSummaryResponse
-import com.bitla.ts.phase2.dashboard_pojo.dashboardAllModels.service_wise_booking_model.response.ServiceWiseBookingResponse
 import com.bitla.ts.phase2.dashboard_pojo.occupancyCalendarModel.response.OccupancyCalendarResponse
 import com.bitla.ts.presentation.view.merge_bus.pojo.ShiftToServicesListResponse
 import com.google.gson.JsonElement
@@ -1507,72 +1500,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("start_date") start_date: String,
     ): Response<OccupancyCalendarResponse>
 
-    @GET("api/occupancy_details.json")
-    suspend fun newOccupancyDetails(
-        @Query("api_key") apikey: String,
-        @Query("destination_id") destination_id: String,
-        @Query("from") from: String,
-        @Query("origin_id") origin_id: String,
-        @Query("sort_by") sort_by: String,
-        @Query("to") to: String,
-    ): Response<OccupancyDetailsResponse>
-
-    @GET("api/revenue_details.json")
-    suspend fun newRevenueDetails(
-        @Query("api_key") apikey: String,
-        @Query("destination_id") destination_id: String,
-        @Query("from") from: String,
-        @Query("origin_id") origin_id: String,
-        @Query("sort_by") sort_by: String,
-        @Query("to") to: String,
-    ): Response<RevenueDetailsResponse>
-
-    @GET("api/performance_details.json?is_from_middle_tier=true")
-    suspend fun newBookingTrendsApi(
-        @Query("api_key") apikey: String,
-        @Query("destination_id") destination_id: String,
-        @Query("from") from: String,
-        @Query("origin_id") origin_id: String,
-        @Query("sort_by") sort_by: String,
-        @Query("to") to: String,
-    ): Response<BookingTrendsResponse>
-
-
-    @GET("api/service_wise_booking_details.json?is_from_middle_tier=true")
-    suspend fun newServiceWiseBookingDetails(
-        @Query("api_key") apikey: String,
-        @Query("date") date: String?,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("occupancy_end") occupancy_end: String,
-        @Query("occupancy_start") occupancy_start: String,
-        @Query("reservation_id") reservation_id: String,
-        @Query("sort_by") sort_by: String,
-        @Query("service_id") serviceId: String,
-    ): Response<ServiceWiseBookingResponse>
-
-
-    @GET("api/schedule_summary_details.json?is_from_middle_tier=true")
-    suspend fun newScheduleSummaryDetails(
-        @Query("api_key") apikey: String,
-        @Query("origin_id") originId: String,
-        @Query("destination_id") destination: String,
-        @Query("end_date") end_date: String,
-        @Query("sort_by") sort_by: String,
-        @Query("start_date") start_date: String,
-        @Query("service_id") serviceId: String,
-        @Query("locale") locale: String
-    ): Response<SchedulesSummaryResponse>
-
-
-    @GET("api/pending_quota_seats.json?is_from_middle_tier=true")
-    suspend fun newPendingQuotaApi(
-        @Query("api_key") apikey: String,
-        @Query("reservation_id") reservation_id: String,
-        @Query("end_date") end_date: String,
-        @Query("sort_by") sort_by: String,
-        @Query("start_date") start_date: String,
-    ): Response<PendingQuotaResponse>
 
     @Headers("Content-Type: application/json")
     @GET("api2/get_bp_dp_service_details/{reservation_id}.json?is_from_middle_tier=true")
@@ -1751,70 +1678,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Body payPendingAmountRequest: PayPendingAmountRequest
     ): Call<PayPendingAmount>
 
-    @Headers("Content-Type: application/json")
-    @GET("/api/performance_details.json")
-    suspend fun getPerformanceDetailsApi(
-        @Query("api_key") apiKey: String,
-        @Query("origin_id") originId: Int,
-        @Query("destination_id") destinationId: Int,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("sort_by") sortBy: String,
-        @Query("service_id") serviceId: String,
-        @Query("branch_id") branchId: String,
-        @Query("api_type") apiType: Int,
-        @Query("is_3days_data") is3DaysData: Boolean,
-        @Query("locale") locale: String,
-        @Query("is_from_middle_tier") is_from_middle_tier: Boolean,
-        @Query("journey_by") journeyBy: String?
-    ): Response<BookingTrendsResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("/api/revenue_details.json")
-    suspend fun getRevenueDetailsApi(
-        @Query("api_key") apiKey: String,
-        @Query("origin_id") originId: Int,
-        @Query("destination_id") destinationId: Int,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("sort_by") sortBy: String,
-        @Query("service_id") serviceId: String,
-        @Query("branch_id") branchId: String,
-        @Query("api_type") apiType: Int,
-        @Query("is_3days_data") is3DaysData: Boolean,
-        @Query("locale") locale: String,
-        @Query("is_from_middle_tier") is_from_middle_tier: Boolean
-    ): Response<RevenueDetailsResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("/api/occupancy_details.json")
-    suspend fun getOccupancyDetailsApi(
-        @Query("api_key") apiKey: String,
-        @Query("origin_id") originId: Int,
-        @Query("destination_id") destinationId: Int,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("sort_by") sortBy: String,
-        @Query("service_id") serviceId: String,
-        @Query("api_type") apiType: Int,
-        @Query("is_3days_data") is3DaysData: Boolean,
-        @Query("locale") locale: String,
-        @Query("is_from_middle_tier") is_from_middle_tier: Boolean
-    ): Response<OccupancyDetailsResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("/api/phone_blocked.json")
-    suspend fun getPhoneBlockedApi(
-        @Query("api_key") apiKey: String,
-        @Query("end_date") endDate: String,
-        @Query("service_id") serviceId: String,
-        @Query("start_date") startDate: String,
-        @Query("sort_by") sortBy: String,
-        @Query("reservation_id") reservationId: String,
-        @Query("ticket_status_fliter") ticketStatusFliter: Boolean,
-        @Query("locale") locale: String,
-        @Query("is_from_middle_tier") is_from_middle_tier: Boolean
-    ): Response<PhoneBlockedResponse>
 
     @Headers("Content-Type: application/json")
     @GET("bus_operator_app/api/alloted_service_with_date_change")

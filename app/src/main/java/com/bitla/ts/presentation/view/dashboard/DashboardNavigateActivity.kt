@@ -1384,8 +1384,8 @@ class DashboardNavigateActivity : BaseActivity(),
 
 
 
-        binding.bottomNavView.menu.findItem(R.id.dashboard_fragment).isVisible =
-            !(it.allowBookingForAllotedServices != null && it.allowBookingForAllotedServices)
+//        binding.bottomNavView.menu.findItem(R.id.dashboard_fragment).isVisible =
+//            !(it.allowBookingForAllotedServices != null && it.allowBookingForAllotedServices)
 
 
         if (currentUser.role == getString(R.string.role_field_officer) && privilegeResponse?.country.equals(

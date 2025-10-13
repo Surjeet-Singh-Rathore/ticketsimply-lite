@@ -21,7 +21,7 @@ android {
         applicationId = "com.bitla.ticketsimply"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1030
+        versionCode = 1200
         versionName = "7.0.6.1"
 
 //        externalNativeBuild {
