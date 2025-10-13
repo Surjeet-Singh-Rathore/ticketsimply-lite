@@ -105,10 +105,6 @@
             android:name=".presentation.view.activity.addRateCard.editRateCard.EditRateCardActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.view.activity.RouteServiceManagerActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity
             android:name=".presentation.view.activity.SplashScreen"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -215,10 +211,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.view.activity.VehicleDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.view.activity.SeatWiseFareActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -228,10 +220,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.view.activity.ModifyFareActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.view.activity.SearchCoachActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

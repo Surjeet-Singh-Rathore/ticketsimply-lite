@@ -83,8 +83,6 @@ val ViewModelModule = module {
 
     viewModel { RedelcomViewModel<Any?>(get()) }
 
-    viewModel { VehicleDetailsViewModel<Any?>(get()) }
-
     viewModel { PhonePeUpiDirectViewModel<Any?>(get()) }
 
     viewModel { PassengerDetailsViewModel<Any?>() }

@@ -76,8 +76,6 @@ val RepositoryModule = module {
 
     single { RedelcomRepository(get()) }
 
-    single { VehicleDetailsRepository(get()) }
-
     single { PhonePeUpiDirectRepository(get()) }
 
     single { ManageAccountRepository(get()) }

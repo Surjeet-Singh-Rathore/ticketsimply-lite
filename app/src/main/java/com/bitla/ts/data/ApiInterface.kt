@@ -130,8 +130,6 @@ import com.bitla.ts.domain.pojo.fetch_notification.request.FetchNotificationMode
 import com.bitla.ts.domain.pojo.frequent_traveller_model.response.FrequentTravellerDataResponse
 import com.bitla.ts.domain.pojo.getCouponDiscount.GetCouponDiscountRequest
 import com.bitla.ts.domain.pojo.getCouponDiscount.Response.GetCouponDetailResponse
-import com.bitla.ts.domain.pojo.get_coach_details.response.CoachDetailsResponse
-import com.bitla.ts.domain.pojo.get_coach_documents.response.CoachDocumentsResponse
 import com.bitla.ts.domain.pojo.get_destination_list.response.GetDestinationListResponse
 import com.bitla.ts.domain.pojo.instant_recharge.AgentPGDataResponse
 import com.bitla.ts.domain.pojo.instant_recharge.GetAgentRechargeResponse
@@ -1862,26 +1860,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("is_encrypted") is_encrypted: Boolean,
 
     ): Response<JsonElement>
-
-    @Headers("Content-Type: application/json")
-    @GET("bus_operator_app/api/get_coach_details")
-    suspend fun getCoachDetails(
-        @Query("is_from_middle_tier") isFromMiddleTier: Boolean?,
-        @Query("api_key") apiKey: String?,
-        @Query("operator_api_key") operatorApiKey: String?,
-        @Query("locale") locale: String?
-    ): Response<CoachDetailsResponse>
-
-    @Headers("Content-Type: application/json")
-    @GET("bus_operator_app/api/get_coach_documents/{coach_id}.json")
-    suspend fun getCoachDocuments(
-        @Path("coach_id") coachId: String?,
-        @Query("is_from_middle_tier") isFromMiddleTier: Boolean?,
-        @Query("coach_number") coachNumber: String?,
-        @Query("api_key") apiKey: String?,
-        @Query("operator_api_key") operatorApiKey: String?,
-        @Query("locale") locale: String?
-    ): Response<CoachDocumentsResponse>
 
     @Headers("Content-Type: application/json")
     @GET("api/validate_ts_app_vpa_phonepe.json")

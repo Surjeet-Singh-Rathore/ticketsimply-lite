@@ -1688,37 +1688,6 @@ class DashboardNavigateActivity : BaseActivity(),
                 )
             )
         }
-        if (role == getString(R.string.role_field_officer)) {
-            allowToViewVehicleDocBO =
-                privilegeResponse?.boLicenses?.allowToViewVehicleDocumentOption ?: false
-            if (allowToViewVehicleDocBO) {
-                menuList.add(
-                    NavMenuModel(
-                        resources.getString(R.string.vehicle_documents),
-                        R.drawable.ic_vehicle_documents_nav_drawer
-                    )
-                )
-            }
-        } else {
-            if (allowToViewTheCoachDocument) {
-                menuList.add(
-                    NavMenuModel(
-                        resources.getString(R.string.vehicle_documents),
-                        R.drawable.ic_vehicle_documents_nav_drawer
-                    )
-                )
-            }
-        }
-
-
-        if (privilegeResponse?.manageRoutesInTsApp == true) {
-            menuList.add(
-                NavMenuModel(
-                    getString(R.string.route_manager),
-                    R.drawable.ic_route_manager
-                )
-            )
-        }
 
         if (privilegeResponse?.country.equals("india", true)) {
             if (showManageAgentAccountLinkInAccount || manageBranchAccounting) {
@@ -1778,18 +1747,8 @@ class DashboardNavigateActivity : BaseActivity(),
 
                 }
 
-                resources.getString(R.string.vehicle_documents) -> {
-                    val intent = Intent(this, VehicleDetailsActivity::class.java)
-                    this.startActivity(intent)
-                }
-
                 getString(R.string.manage_account) -> {
                     val intent = Intent(this, ManageAccountActivity::class.java)
-                    startActivity(intent)
-                }
-
-                getString(R.string.route_manager) -> {
-                    val intent = Intent(this, RouteServiceManagerActivity::class.java)
                     startActivity(intent)
                 }
 
