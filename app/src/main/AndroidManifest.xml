@@ -73,9 +73,7 @@
         <activity
             android:name=".presentation.view.activity.NewConfirmPhoneBookingActivity"
             android:exported="false" />
-        <activity
-            android:name=".presentation.view.activity.ticketDetails.SelectRestaurantActivity"
-            android:exported="false" />
+
         <activity
             android:name=".presentation.view.activity.BusTrackingActivity"
             android:exported="true" />
@@ -104,6 +102,10 @@
         <activity
             android:name=".presentation.view.activity.addRateCard.editRateCard.EditRateCardActivity"
             android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.RouteServiceManagerActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".presentation.view.activity.SplashScreen"
             android:exported="true"
@@ -137,6 +139,12 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".presentation.view.activity.BranchCollectionDetailsReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.CheckingInspectorReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.view.activity.notifications.NotificationsActivityNew"
             android:exported="false" />
         <activity
@@ -144,6 +152,27 @@
             android:exported="true" />
         <activity
             android:name=".phase2.dashboardContainer.activity.DashboardRevenueNewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.OccupancyReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.BranchCollectionSummaryReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.BookedByYouReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.ServiceWiseCityPickupClosureReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.GroupByBranchReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.BusServiceCollectionDetailedReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.view.activity.BusServiceCollectionSummaryReportActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.view.activity.InstantRechargeActivity"
@@ -211,6 +240,14 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".presentation.view.activity.RoutewiseBookingMemoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.VehicleDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".presentation.view.activity.SeatWiseFareActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -220,6 +257,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.view.activity.ModifyFareActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SearchCoachActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -529,6 +570,10 @@
             android:screenOrientation="portrait" /> <!-- FMC -->
         <activity
             android:name=".presentation.view.activity.notifications.NotificationDetailsPhase3Actvity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.view.activity.SearchMultiSelectServiceActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity

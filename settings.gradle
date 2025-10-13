@@ -27,5 +27,4 @@ rootProject.name = "Ticket Simply"
 include ':app', ':tscalender'
 
 include ':escposprinter'
-include ':restaurant_app'
 include ':coach'
