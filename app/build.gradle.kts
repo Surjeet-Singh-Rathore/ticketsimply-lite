@@ -228,9 +228,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.config)
     implementation(libs.firebase.messaging)
-    implementation(libs.firebase.storage.ktx)
-    implementation(libs.firebase.database.ktx)
-    implementation(libs.firebase.firestore.ktx)
+    //implementation(libs.firebase.storage.ktx)
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.firebase.perf)
     // disabling automatic initialization for all your components and dependencies

@@ -932,14 +932,6 @@ class DashboardNavigateActivity : BaseActivity(),
                             PreferenceUtils.removeKey(PREF_DASHBOARD_NAVIGATE_SCREEN)
                             PreferenceUtils.removeKey("orderBy")
 
-                            registerUserDataToFirestore(
-                                domainName = loginModel.domainName,
-                                userName = loginModel.userName,
-                                userId = loginModel.user_id.toString(),
-                                activity = this,
-                                clazz = DashboardNavigateActivity::class.java,
-                                progressBar = null
-                            )
 
                             userViewModel.insertUserAndRestartActivity(loginModel.toUserModel())
                         }

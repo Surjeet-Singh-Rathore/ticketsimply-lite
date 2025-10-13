@@ -2,7 +2,6 @@ package com.bitla.ts.fcm
 
 import android.Manifest
 import android.app.NotificationChannel
-import android.app.NotificationChannelGroup
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_MUTABLE
@@ -15,13 +14,10 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Matrix
 import android.media.MediaPlayer
-import android.net.Uri
-import android.os.AsyncTask
 import android.os.Build
 import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.RemoteViews
-import androidx.annotation.NonNull
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -31,23 +27,17 @@ import com.bitla.ts.R
 import com.bitla.ts.app.base.BaseActivity
 import com.bitla.ts.presentation.view.activity.DomainActivity
 import com.bitla.ts.presentation.view.activity.SplashScreen
-import com.bitla.ts.presentation.view.activity.notifications.NotificationDetailsActivity
 import com.bitla.ts.presentation.view.activity.notifications.NotificationDetailsPhase3Actvity
 import com.bitla.ts.utils.constants.NOTIFICATION_DEFAULT_SOUND
 import com.bitla.ts.utils.constants.NOTIFICATION_SILENT
-import com.bitla.ts.utils.sharedPref.PREF_LOG_FILE_NAME
 import com.bitla.ts.utils.sharedPref.PreferenceUtils
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import okhttp3.internal.notify
 import timber.log.Timber
 import toast
-import java.io.File
 import java.io.IOException
 import java.io.InputStream
 import java.net.HttpURLConnection
@@ -77,17 +67,6 @@ class FirebaseMessageReceiver : FirebaseMessagingService(), TextToSpeech.OnInitL
             title = remoteMessage.data["title"].toString()
         }
 
-        if (remoteMessage.data["title"].equals("get_log")) {
-            GlobalScope.launch(Dispatchers.IO) {
-                if (!PreferenceUtils.getLogFileNames().isNullOrEmpty()) {
-                    PreferenceUtils.getLogFileNames()?.forEach { nameString ->
-                        readFileDataBase(nameString)
-                    }
-                }
-            }
-
-
-        }
 
         val intent = Intent("FCM_NOTIFICATION_RECEIVED")
         // Optionally, you can put extra data in the intent
@@ -123,36 +102,6 @@ class FirebaseMessageReceiver : FirebaseMessagingService(), TextToSpeech.OnInitL
                 remoteMessage.notification?.body,
                 remoteMessage.notification?.imageUrl.toString()
             )
-        }
-    }
-
-    private fun readFileDataBase(fileName: String) {
-
-
-        try {
-            val storageRef = FirebaseStorage.getInstance().reference.child("logs/$fileName")
-            val file = File(filesDir, fileName)
-            val uri = Uri.fromFile(file)
-            val uploadTask: UploadTask = storageRef.putFile(uri)
-
-            uploadTask.addOnProgressListener { taskSnapshot ->
-            }.addOnPausedListener {
-                fun onPaused(taskSnapshot: UploadTask.TaskSnapshot?) {
-                    println("Upload is paused")
-                }
-            }.addOnFailureListener {
-                fun onFailure(exception: Exception?) {
-                    // Handle unsuccessful uploads
-                }
-            }.addOnSuccessListener {
-                fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
-
-
-                }
-            }
-        } catch (e: IOException) {
-//            toast("some error")
-            e.printStackTrace()
         }
     }
 

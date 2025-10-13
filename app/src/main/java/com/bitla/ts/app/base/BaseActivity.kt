@@ -2,28 +2,23 @@ package com.bitla.ts.app.base
 
 import android.Manifest
 import android.app.Activity
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.os.StrictMode
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
@@ -44,14 +39,9 @@ import com.bitla.ts.domain.pojo.login_model.LoginModel
 import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.PrivilegeResponseModel
 import com.bitla.ts.presentation.view.activity.DomainActivity
 import com.bitla.ts.utils.FontScaleContextWrapper
-import com.bitla.ts.utils.application.DeviceDetails
 import com.bitla.ts.utils.common.clearAndSave
 import com.bitla.ts.utils.common.getTodayDateWithTime
-import com.bitla.ts.utils.constants.DATE_FORMAT_D_M_Y
-import com.bitla.ts.utils.constants.REALTIME_CHILD
 import com.bitla.ts.utils.constants.REQUEST_READ_PERMISSION
-import com.bitla.ts.utils.constants.STORAGE_PERMISSION
-import com.bitla.ts.utils.constants.USER_COLLECTION
 import com.bitla.ts.utils.dialog.DialogUtils
 import com.bitla.ts.utils.sharedPref.IS_LOGOUT_VIA_AUTH_FAIL
 import com.bitla.ts.utils.sharedPref.PREF_FCM_TOKEN
@@ -64,15 +54,7 @@ import com.bitla.ts.utils.sharedPref.PreferenceUtils.getObject
 import com.bitla.ts.utils.sharedPref.PreferenceUtils.mLocalPreferences
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayout
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.messaging.FirebaseMessaging
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 import com.google.gson.GsonBuilder
 import gone
 import kotlinx.coroutines.CoroutineScope
@@ -81,16 +63,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import toast
-import visible
 import java.io.File
-import java.io.IOException
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalTime
 import java.util.Base64
-import java.util.Calendar
 import java.util.Locale
 
 abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
@@ -100,12 +76,6 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
 
     private var alreadyDialogVisible: Boolean = false
     private var userList = mutableListOf<LoginModel>()
-    private lateinit var childListener: ChildEventListener
-
-    //Firebase Instace Variables//
-    private val firestoreDb = FirebaseFirestore.getInstance()
-    private val fbDbRef = FirebaseDatabase.getInstance().reference
-    private val fileNameList = ArrayList<String>()
 
     // network connection
     private lateinit var networkErrorWithDisableAllViews: LinearLayout
@@ -148,7 +118,6 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
                 PreferenceUtils.putString(PREF_FCM_TOKEN, token.toString())
             }
         }
-        getDataFromFirebase()
 
         networkConnection = BaseNetworkConnectionObserver(this)
         networkConnection.observe(this) { isConnected ->
@@ -251,21 +220,6 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
         super.onResume()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        fbDbRef.child(REALTIME_CHILD).removeEventListener(childListener)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        fbDbRef.child(REALTIME_CHILD).removeEventListener(childListener)
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        fbDbRef.child(REALTIME_CHILD).removeEventListener(childListener)
-    }
 
     protected fun getSubString(str: String, startIndex: Int, endIndex: Int): CharSequence? {
         return try {
@@ -390,287 +344,6 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
             number
         }
 
-    }
-
-    fun registerUserDataToFirestore(
-        domainName: String, userName: String, userId: String, activity: Activity?, clazz: Class<*>?,
-        progressBar: ProgressBar?
-    ) {
-        if (progressBar != null) {
-            progressBar.visible()
-        }
-
-        val user = hashMapOf<String, String>()
-        user["domain"] = domainName
-        user["username"] = userName
-        user["userId"] = userId
-        user["versionCode"] = BuildConfig.VERSION_CODE.toString()
-        user["versionName"] = BuildConfig.VERSION_NAME
-        user["fcmKey"] = PreferenceUtils.getString(PREF_FCM_TOKEN)!!
-        user["deviceId"] = DeviceDetails.getDeviceId(baseContext)
-        user["deviceName"] =
-            encodeString(DeviceDetails.getBrand()) + " " + encodeString(DeviceDetails.getModel())
-        user["androidVersion"] = Build.VERSION.RELEASE
-        user["deviceName"] =
-            encodeString(DeviceDetails.getBrand()) + " " + encodeString(DeviceDetails.getModel())
-        user["getLog"] = "false"
-        user["regTime"] = LocalDate.now()
-            .toString() + " " + LocalTime.now().hour.toString() + ":" + LocalTime.now().minute
-        user["onTime"] = LocalDate.now()
-            .toString() + " " + LocalTime.now().hour.toString() + ":" + LocalTime.now().minute
-
-        val dbRef = firestoreDb.collection(USER_COLLECTION)
-        val query = dbRef.whereEqualTo("username", userName)
-            .whereEqualTo("domain", domainName).whereEqualTo("userId", userId)
-            .whereEqualTo("deviceId", DeviceDetails.getDeviceId(baseContext))
-
-        query.get()
-            .addOnSuccessListener { documents ->
-
-                if (!documents.isEmpty) {
-                    for (document in documents) {
-                        val update: MutableMap<String, Any> = HashMap()
-                        update["onTime"] = LocalDate.now()
-                            .toString() + " " + LocalTime.now().hour.toString() + ":" + LocalTime.now().minute
-                        update["fcmKey"] = PreferenceUtils.getString(PREF_FCM_TOKEN)!!
-
-                        dbRef.document(document.id)
-                            .set(update, SetOptions.merge())
-                            .addOnSuccessListener {
-                                if (progressBar != null) {
-                                    progressBar.visibility = View.GONE
-
-                                }
-                            }
-                            .addOnFailureListener {
-                                if (progressBar != null) {
-                                    progressBar.visibility = View.GONE
-                                }
-                            }
-                    }
-                } else {
-                    dbRef.add(user)
-                        .addOnSuccessListener {
-                            toast("Login Successful...")
-                        }
-                        .addOnFailureListener {
-                            if (progressBar != null) {
-                                progressBar.visibility = View.GONE
-                            }
-                        }
-                }
-            }
-            .addOnFailureListener { exception ->
-                Timber.d("ERROR_CAUSE", "Error getting documents: ", exception)
-            }
-        if (clazz != null && activity != null) {
-            intent = Intent(this, clazz)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish()
-        }
-    }
-
-    private fun getDataFromFirebase() {
-        var domainName = ""
-        var userName = ""
-        var userId = ""
-
-        val deviceName = try {
-            DeviceDetails.getDeviceId(applicationContext) + "_" + encodeString(DeviceDetails.getBrand()) + " " + encodeString(
-                DeviceDetails.getModel()
-            )
-        } catch (e: Exception) {
-            ""
-        }
-
-
-        val loginModel = PreferenceUtils.getLogin()
-
-        domainName = loginModel.domainName
-        userName = loginModel.userName
-        userId = loginModel.user_id.toString()
-
-
-        childListener = object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                if (snapshot.exists()) {
-                    val mapOfUser = HashMap<String, String>()
-                    for (childSnapshot in snapshot.children) {
-
-                        mapOfUser[childSnapshot.key.toString()] = childSnapshot.value.toString()
-                    }
-
-                    val uDomain = mapOfUser["domain"].toString()
-                    val uUsername = mapOfUser["username"].toString()
-                    val uUserId = mapOfUser["userId"].toString()
-                    val uDocumentId = mapOfUser["documentId"]
-
-                    if (domainName != null && domainName.isNotEmpty()) {
-                        if (userName != null && userName.isNotEmpty()) {
-                            if (userName == uUsername && domainName == uDomain && userId == uUserId) {
-                                if (!PreferenceUtils.getLogFileNames().isNullOrEmpty()) {
-                                    PreferenceUtils.getLogFileNames()?.forEach { nameString ->
-                                        readFileDataBase(nameString)
-                                    }
-
-                                } else {
-
-                                }
-                                snapshot.ref.removeValue()
-
-                                registerUserDataToFirestore(
-                                    uDomain,
-                                    uUsername,
-                                    uUserId,
-                                    null,
-                                    null,
-                                    null
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-
-                Timber.i("LogFlow: Child Changed")
-                if (!PreferenceUtils.getLogFileNames().isNullOrEmpty()) {
-                    PreferenceUtils.getLogFileNames()?.forEach { nameString ->
-                        readFileDataBase(nameString)
-                    }
-
-                } else
-                    Timber.d(" fileName1: No File Found")
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    var mapOfUser = HashMap<String, String>()
-                    for (childSnapshot in snapshot.children) {
-                        mapOfUser[childSnapshot.key.toString()] = childSnapshot.value.toString()
-                    }
-                    val uDomain = mapOfUser["domain"].toString()
-                    val uUsername = mapOfUser["username"].toString()
-                    val uUserId = mapOfUser["userId"].toString()
-                    val uDocumentId = mapOfUser["documentId"]
-
-                    if (domainName != null && domainName.isNotEmpty()) {
-                        if (userName != null && userName.isNotEmpty()) {
-                            if (userName == uUsername && domainName == uDomain && userId == uUserId) {
-                                if (!PreferenceUtils.getLogFileNames().isNullOrEmpty()) {
-                                    PreferenceUtils.getLogFileNames()?.forEach { nameString ->
-                                        readFileDataBase(nameString)
-                                    }
-
-                                } else
-                                    Timber.d(" fileName: No File Found")
-
-                                registerUserDataToFirestore(
-                                    uDomain,
-                                    uUsername,
-                                    uUserId,
-                                    null,
-                                    null,
-                                    null
-                                )
-
-                            }
-                        }
-                    }
-                }
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                if (!PreferenceUtils.getLogFileNames().isNullOrEmpty()) {
-                    PreferenceUtils.getLogFileNames()?.forEach {
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-//                toast("Error Occured")
-            }
-        }
-        fbDbRef.child(REALTIME_CHILD).ref.child(deviceName).addChildEventListener(childListener)
-
-    }
-
-    private fun readFileDataBase(fileName: String) {
-        try {
-            val storageRef = FirebaseStorage.getInstance().reference.child("logs/$fileName")
-            val file = File(filesDir, fileName)
-            val uri = Uri.fromFile(file)
-            val uploadTask: UploadTask = storageRef.putFile(uri)
-
-            uploadTask.addOnProgressListener { taskSnapshot ->
-            }.addOnPausedListener {
-                fun onPaused(taskSnapshot: UploadTask.TaskSnapshot?) {
-                }
-            }.addOnFailureListener {
-                fun onFailure(exception: Exception?) {
-                    // Handle unsuccessful uploads
-                }
-            }.addOnSuccessListener {
-                fun onSuccess(taskSnapshot: UploadTask.TaskSnapshot?) {
-                    Timber.i("file uploaded successfully")
-                }
-            }
-        } catch (e: IOException) {
-            Timber.d("reading Logs exception ${e.message}")
-//            toast("some error")
-            e.printStackTrace()
-        }
-    }
-
-    override fun fileList(): Array<String> {
-        return super.fileList()
-    }
-
-    fun deleteFrmLocal() {
-
-        fileList().forEach {
-            if (it.endsWith(".txt")) {
-                if (!it.contains("_info.txt") || !it.contains("_lang.txt")) {
-                    if (!fileNameList.contains(it)) {
-                        fileNameList.add(it)
-                    }
-                }
-            }
-        }
-
-        for (i: Int in 0..fileNameList.size) {
-
-            if (!fileNameList[i].endsWith("info.txt") ||
-                !fileNameList[i].endsWith("lang.txt")
-            ) {
-
-                if (checkFilesLastFiveDays(fileNameList[i])) {
-                    val file = File(filesDir, fileNameList[i])
-
-                    file.delete()
-                }
-            }
-        }
-        fileNameList.clear()
-    }
-
-    private fun checkFilesLastFiveDays(fileName: String): Boolean {
-        var isTrue = false
-        val fileSplit = fileName.split("_")
-        val fileSplit2 = fileSplit[3].split(".")
-        val sdf = SimpleDateFormat(DATE_FORMAT_D_M_Y)
-        val fileDate = sdf.parse(fileSplit2[0])
-
-        val calendar = Calendar.getInstance()
-        calendar.time
-        calendar.add(Calendar.DAY_OF_YEAR, -5)
-        val dayFiveDaysBack = calendar.time
-        if (fileDate < dayFiveDaysBack) {
-            isTrue = true
-        }
-        return isTrue
     }
 
     override fun attachBaseContext(newBase: Context?) {

@@ -562,12 +562,6 @@ class LoginActivity : BaseActivity(), DialogButtonListener, DialogSingleButtonLi
         loginModel.isEncryptionEnabled=EncrypDecryp.isEncrypted()
         userViewModel.insertUser(loginModel.toUserModel())
 
-
-
-        registerUserDataToFirestore(
-            loginModel.domainName.lowercase(Locale.getDefault()),loginModel.userName,loginModel.user_id.toString(),this,
-            DashboardNavigateActivity::class.java,binding.includeProgress.progressBar)
-
     }
 
 
