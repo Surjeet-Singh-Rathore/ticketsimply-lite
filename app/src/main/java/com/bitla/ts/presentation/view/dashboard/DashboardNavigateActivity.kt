@@ -24,8 +24,6 @@ import androidx.navigation.*
 import androidx.navigation.fragment.*
 import androidx.navigation.ui.*
 import androidx.recyclerview.widget.*
-import com.bitla.restaurant_app.presentation.utils.Constants
-import com.bitla.restaurant_app.presentation.view.*
 import com.bitla.ts.BuildConfig
 import com.bitla.ts.R
 import com.bitla.ts.app.base.*
@@ -723,48 +721,8 @@ class DashboardNavigateActivity : BaseActivity(),
                 }
             }
         }
-
-        checkIfRestaurantUser()
     }
 
-    private fun DashboardNavigateActivity.checkIfRestaurantUser() {
-        val gson = Gson()
-        val loginModelJson = gson.toJson(currentUser)
-        if (currentUser.role == "Restaurant User") {
-
-            val loginModel = Gson().fromJson(
-                loginModelJson,
-                com.bitla.restaurant_app.presentation.pojo.LoginModel::class.java
-            )
-            com.bitla.restaurant_app.presentation.utils.PreferenceUtils.putObject(
-                loginModel,
-                Constants.PREF_LOGGED_IN_USER
-            )
-
-
-            com.bitla.restaurant_app.presentation.utils.PreferenceUtils.putString(
-                "currency",
-                getPrivilegeBase()?.currency ?: ""
-            )
-            com.bitla.restaurant_app.presentation.utils.PreferenceUtils.putString(
-                "currencyFormat",
-                getPrivilegeBase()?.currencyFormat
-                    ?: getString(R.string.indian_currency_format) ?: ""
-            )
-
-            Constants.BASE_URL =
-                PreferenceUtils.getPreference(PREF_DOMAIN, "mba.ticketsimply.com")!!
-
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("currentUser", loginModelJson)
-            intent.putExtra(
-                "baseUrl",
-                PreferenceUtils.getPreference(PREF_DOMAIN, "mba.ticketsimply.com")
-            )
-            intent.putExtra("version", BuildConfig.VERSION_NAME)
-            startActivityForResult(intent, LAUNCH_MAIN_ACTIVITY_CODE)
-        }
-    }
 
     private fun requestForLocationPermission() {
         ActivityCompat.requestPermissions(

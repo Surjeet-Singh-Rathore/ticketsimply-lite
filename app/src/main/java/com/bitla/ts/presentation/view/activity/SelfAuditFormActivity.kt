@@ -12,10 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import com.bitla.restaurant_app.presentation.utils.gone
-import com.bitla.restaurant_app.presentation.utils.isNetworkAvailable
-import com.bitla.restaurant_app.presentation.utils.toast
-import com.bitla.restaurant_app.presentation.utils.visible
 import com.bitla.ts.R
 import com.bitla.ts.databinding.ActivitySelfAuditFormBinding
 import com.bitla.ts.domain.pojo.self_audit_question.response.Result
@@ -29,7 +25,11 @@ import com.bitla.ts.utils.common.edgeToEdge
 import com.bitla.ts.utils.common.edgeToEdgeFromOnlyBottom
 import com.bitla.ts.utils.sharedPref.PreferenceUtils
 import dpToPx
+import gone
+import isNetworkAvailable
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import toast
+import visible
 
 class SelfAuditFormActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySelfAuditFormBinding

@@ -9,11 +9,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.bitla.restaurant_app.presentation.utils.*
 import com.bitla.ts.R
 import com.bitla.ts.app.base.BaseFragment
 import com.bitla.ts.data.alloted_service_Dashboard_method
@@ -42,7 +40,6 @@ import com.bitla.ts.utils.constants.SELECT_SERVICE_INTENT_REQUEST_CODE
 import com.bitla.ts.utils.constants.SchedulesSummary
 import com.bitla.ts.utils.dialog.DialogUtils
 import com.bitla.ts.utils.sharedPref.DASHBOARD_GRAPH_DATE_FILTER_DEFAULT_SELECTION
-import com.bitla.ts.utils.sharedPref.PREF_LOCALE
 import com.bitla.ts.utils.sharedPref.PreferenceUtils
 import com.bitla.ts.utils.showToast
 import gone

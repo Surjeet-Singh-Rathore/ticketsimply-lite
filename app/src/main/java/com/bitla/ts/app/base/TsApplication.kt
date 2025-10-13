@@ -44,7 +44,6 @@ class TsApplication : Application(), ExceptionListener, RemoteConfigUpdateHelper
       // turnOnStrictMode()
 //        setupExceptionHandler()
         PreferenceUtils.with(this)
-        com.bitla.restaurant_app.presentation.utils.PreferenceUtils.with(this)
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())

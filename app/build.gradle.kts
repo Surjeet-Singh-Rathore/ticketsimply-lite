@@ -15,13 +15,13 @@ plugins {
 
 android {
     compileSdk = 35
-    namespace = "com.bitla.ticketsimply"
+    namespace = "com.bitla.ticketsimply.debug"
 
     defaultConfig {
-        applicationId = "com.bitla.ticketsimply"
+        applicationId = "com.bitla.ticketsimply.debug"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1030
+        versionCode = 1039
         versionName = "7.0.6.1"
 
 //        externalNativeBuild {
@@ -152,7 +152,6 @@ android {
 dependencies {
     implementation(project(":escposprinter"))
     implementation(project(":tscalender"))
-    implementation(project(":restaurant_app"))
     implementation(project(":coach"))
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)

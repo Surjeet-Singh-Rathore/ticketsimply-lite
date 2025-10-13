@@ -90,7 +90,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvEnterPickupAddress"
-            style="@style/textStyleBold"
+            style="@style/TextStyleBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/enter_pickup_address"
@@ -103,7 +103,7 @@
             android:id="@+id/etPickupAddress"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            style="@style/textStyleNormal"
+            style="@style/TextStyleNormal"
             android:background="@android:color/white"
             android:padding="@dimen/_14sdp"
             android:gravity="top|start"

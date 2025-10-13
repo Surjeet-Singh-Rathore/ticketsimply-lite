@@ -9,10 +9,10 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bitla.restaurant_app.presentation.utils.gone
 import com.bitla.ts.databinding.AdapterSelfAuditOptionCityBinding
 import com.bitla.ts.domain.pojo.self_audit_question.response.BoardingData
 import com.bitla.ts.domain.pojo.self_audit_question.response.Option
+import gone
 import visible
 
 

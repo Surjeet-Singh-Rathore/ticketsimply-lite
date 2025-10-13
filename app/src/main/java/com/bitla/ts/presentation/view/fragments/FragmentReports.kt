@@ -77,7 +77,6 @@ import com.bitla.ts.presentation.view.activity.BusServiceCollectionSummaryReport
 import com.bitla.ts.presentation.view.activity.CheckingInspectorReportActivity
 import com.bitla.ts.presentation.view.activity.GroupByBranchReportActivity
 import com.bitla.ts.presentation.view.activity.LoginActivity
-import com.bitla.ts.presentation.view.activity.MealsReportActivity
 import com.bitla.ts.presentation.view.activity.OccupancyReportActivity
 import com.bitla.ts.presentation.view.activity.RoutewiseBookingMemoActivity
 import com.bitla.ts.presentation.view.activity.SearchActivity
@@ -85,7 +84,6 @@ import com.bitla.ts.presentation.view.activity.SearchBranchActivity
 import com.bitla.ts.presentation.view.activity.SearchMultiSelectServiceActivity
 import com.bitla.ts.presentation.view.activity.SelectAllotedServiceActivity
 import com.bitla.ts.presentation.view.activity.ServiceWiseCityPickupClosureReportActivity
-import com.bitla.ts.presentation.view.activity.ticketDetails.SelectRestaurantActivity
 import com.bitla.ts.presentation.view.dashboard.DashboardNavigateActivity
 import com.bitla.ts.presentation.viewModel.AllReportsViewModel
 import com.bitla.ts.presentation.viewModel.BlockViewModel
@@ -302,7 +300,6 @@ class FragmentReports : BaseFragment(), View.OnClickListener, OnItemClickListene
         setServiceWisePickupReportObserver()
         setGroupByBranchReportObserver()
         setBusServiceCollectionReportObserver()
-        setRestaurantMealReportObserver()
 //        setBranchCollectionSummaryReportObserver()
 //        setOccupancyReportObserver()
         setBranchObserver()
@@ -689,10 +686,6 @@ class FragmentReports : BaseFragment(), View.OnClickListener, OnItemClickListene
             }else{
                 navigateToAllotmentService()
             }
-        }
-
-        binding.acSelectRestaurant.setOnClickListener {
-            navigateToSelectRestaurant()
         }
 
         binding.spinnerSelectService.setEndIconOnClickListener {
@@ -1773,17 +1766,6 @@ class FragmentReports : BaseFragment(), View.OnClickListener, OnItemClickListene
         resultLauncher.launch(intent)
     }
 
-
-
-    private fun navigateToSelectRestaurant() {
-        val intent =
-            Intent(requireContext(), SelectRestaurantActivity::class.java)
-        intent.putExtra("apiKey",apiKey)
-        resultLauncher.launch(intent)
-    }
-
-
-
     fun calendar() {
         binding.tvFromDate.setOnClickListener {
             try {
@@ -2763,74 +2745,6 @@ class FragmentReports : BaseFragment(), View.OnClickListener, OnItemClickListene
             }
         }
     }
-
-
-
-
-    private fun setRestaurantMealReportObserver() {
-        restaurantViewModel.reportsResponse.observe(viewLifecycleOwner) { it ->
-            binding.progressPB.root.gone()
-            dismissProgressDialog()
-
-            if (it != null) {
-                binding.apply {
-                    btnDownload.isEnabled = true
-                    btnViewReport.isEnabled = true
-                    btnDownload.setBackgroundResource(R.drawable.bg_little_round_blue)
-                    btnViewReport.setBackgroundResource(R.drawable.bg_little_round_blue)
-                    btnDownload.setTextColor(resources.getColor(R.color.white))
-                    btnViewReport.setTextColor(resources.getColor(R.color.white))
-                }
-
-                when (it.code) {
-                    200 -> {
-
-                        if (isViewReport == false) {
-                            DownloadPdf.downloadReportPdf(requireContext(), it.pdfUrl)
-                            stopShimmerEffect()
-                            dismissProgressDialog()
-                        } else {
-                            stopShimmerEffect()
-                            dismissProgressDialog()
-                            val intent = Intent(requireContext(), MealsReportActivity::class.java)
-                            intent.putExtra("reportsData", Gson().toJson(it))
-                            intent.putExtra(
-                                "fromDate",
-                                getDateYMD(binding.tvFromDate.text.toString())
-                            )
-                            intent.putExtra(
-                                "toDate",
-                                getDateYMD(binding.tvToDate.text.toString())
-                            )
-                            intent.putExtra("serviceId", returnedRouteId)
-                            intent.putExtra("restaurantId", restaurantId)
-                            startActivity(intent)
-                        }
-                    }
-
-                    401 -> {
-                        DialogUtils.unAuthorizedDialog(
-                            requireContext(),
-                            "${getString(R.string.authentication_failed)}\n\n ${getString(R.string.please_try_again)}",
-                            this
-                        )
-                    }
-
-                    else -> {
-                        if (it?.message != null) {
-                            it.message.let { it1 -> requireContext().toast(it1) }
-                        }
-                        stopShimmerEffect()
-                    }
-                }
-            } else {
-                requireContext().toast(getString(R.string.server_error))
-                stopShimmerEffect()
-            }
-        }
-    }
-
-
 
     private fun setRouteWiseBookingMemoObserver() {
         allReportsViewModel.routeWiseMemo.observe(viewLifecycleOwner) { it ->
