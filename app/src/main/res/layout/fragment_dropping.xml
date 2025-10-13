@@ -103,7 +103,7 @@
             android:id="@+id/etDropoffAddress"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            style="@style/TextStyleNormal"
+            style="@style/TextStyleBold"
             android:background="@android:color/white"
             android:padding="@dimen/_14sdp"
             android:gravity="top|start"

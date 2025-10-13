@@ -34,7 +34,7 @@ import com.bitla.ts.databinding.DialogChangeToCompleteBinding
 import com.bitla.ts.databinding.DialogTransactionInfoBinding
 import com.bitla.ts.domain.pojo.login_model.LoginModel
 import com.bitla.ts.domain.pojo.manage_account_view.get_transaction_pdf_url.request.GetTransactionPdfUrlRequest
-import com.bitla.ts.domain.pojo.manage_account_view.show_transaction_list.PagenationData
+import com.bitla.ts.domain.pojo.all_reports.new_response.occupany_report_data.PagenationData
 import com.bitla.ts.domain.pojo.manage_account_view.show_transaction_list.request.ReqBody
 import com.bitla.ts.domain.pojo.manage_account_view.show_transaction_list.request.ShowTransactionListRequest
 import com.bitla.ts.domain.pojo.manage_account_view.show_transaction_list.response.Result

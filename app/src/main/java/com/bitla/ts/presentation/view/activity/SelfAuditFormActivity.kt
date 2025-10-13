@@ -1,10 +1,12 @@
 package com.bitla.ts.presentation.view.activity
 
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ImageSpan
 import android.view.Gravity
+import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +21,8 @@ import com.bitla.ts.domain.pojo.submit_self_audit_form.request.NormalQuestion
 import com.bitla.ts.domain.pojo.submit_self_audit_form.request.SubmitSelfAuditFormRequest
 import com.bitla.ts.presentation.adapter.sellfAuditFormAdapters.SelfAuditQuestionsAdapter
 import com.bitla.ts.presentation.viewModel.SelfAuditViewModel
+import com.bitla.ts.utils.common.edgeToEdge
+import com.bitla.ts.utils.common.edgeToEdgeFromOnlyBottom
 import com.bitla.ts.utils.sharedPref.PreferenceUtils
 import dpToPx
 import gone
@@ -68,7 +72,10 @@ class SelfAuditFormActivity : AppCompatActivity() {
                 remarks =binding.remarksET.text.toString()
             )
 
+//            Log.d("GauravTest00: " , submitFormRequest.toString())
             submitFormAPi(submitFormRequest)
+
+//            onBackPressed()
         }
         getIntentData()
         setContentView(binding.root)
@@ -86,16 +93,21 @@ class SelfAuditFormActivity : AppCompatActivity() {
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(
-                systemBars.left + dpToPx(16, view.context),
-                systemBars.top + dpToPx(10, view.context),
-                systemBars.right + dpToPx(16, view.context),
-                systemBars.bottom + dpToPx(16, view.context)
-            )
-            insets
-        }
+
+       // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            // Android 15+ (API 34)
+            //edgeToEdge(binding.root)
+            ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                view.setPadding(
+                    systemBars.left + dpToPx(16, view.context),
+                    systemBars.top + dpToPx(10, view.context),
+                    systemBars.right + dpToPx(16, view.context),
+                    systemBars.bottom + dpToPx(16, view.context)
+                )
+                insets
+            }
+      //  }
 
         binding.btnBack.setOnClickListener {
             onBackPressed()
@@ -241,8 +253,8 @@ class SelfAuditFormActivity : AppCompatActivity() {
     }
 
 
-    private fun submitFormAPi( selfAuditFormSubmitRequest: SubmitSelfAuditFormRequest){
-
+    private fun submitFormAPi( selfAuditFormSubmitRequest: SubmitSelfAuditFormRequest
+    ){
             if (isNetworkAvailable()) {
                 binding.progressBarLayout.visible()
                 viewModel.selfAuditFormApi(selfAuditFormSubmitRequest)

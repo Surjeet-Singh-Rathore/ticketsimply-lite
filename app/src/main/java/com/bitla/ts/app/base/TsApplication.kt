@@ -2,6 +2,8 @@ package com.bitla.ts.app.base
 
 import android.app.*
 import android.content.Context
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.os.*
 import com.bitla.ts.BuildConfig
 import com.bitla.ts.koin.appModule.*
@@ -22,6 +24,7 @@ import org.koin.android.ext.koin.*
 import org.koin.core.context.*
 import org.koin.core.logger.*
 import timber.log.*
+import toast
 
 @HiltAndroidApp
 class TsApplication : Application(), ExceptionListener, RemoteConfigUpdateHelper.SentryListener {
@@ -38,6 +41,8 @@ class TsApplication : Application(), ExceptionListener, RemoteConfigUpdateHelper
         instance = this
         super.onCreate()
 
+      // turnOnStrictMode()
+//        setupExceptionHandler()
         PreferenceUtils.with(this)
 
         if (BuildConfig.DEBUG) {
@@ -52,6 +57,12 @@ class TsApplication : Application(), ExceptionListener, RemoteConfigUpdateHelper
 
 //        fetch remote config
         val remoteConfig: FirebaseRemoteConfig = FirebaseRemoteConfig.getInstance()
+//        val defaultData: MutableMap<String, Any> = HashMap()
+//        defaultData[RemoteConfigUpdateHelper.KEY_UPDATE_ENABLE] = false
+//        defaultData[RemoteConfigUpdateHelper.KEY_UPDATE_VERSION] = "3.2"
+//        defaultData[RemoteConfigUpdateHelper.KEY_UPDATE_URL] = "update_url"
+//        remoteConfig.setDefaultsAsync(defaultData)
+
         remoteConfig.fetch(5)
             .addOnCompleteListener { task: Task<Void?> ->
                 if (task.isSuccessful) {
@@ -154,5 +165,31 @@ class TsApplication : Application(), ExceptionListener, RemoteConfigUpdateHelper
 
 interface ExceptionListener {
     fun uncaughtException(thread: Thread, throwable: Throwable)
+}
+
+fun turnOnStrictMode() {
+    if (BuildConfig.DEBUG) {
+        StrictMode.setThreadPolicy(
+            StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .penaltyFlashScreen()
+                .detectCustomSlowCalls()
+                .detectDiskWrites()
+                .detectNetwork()
+                .penaltyDeath()
+                .build()
+        )
+        StrictMode.setVmPolicy(
+            StrictMode.VmPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .detectLeakedSqlLiteObjects()
+                .detectLeakedClosableObjects() // API level 11
+//                .setClassInstanceLimit(Class.forName(“com.apress.proandroid.SomeClass”), 100)
+                .penaltyDeath().build()
+        )
+        StrictMode.allowThreadDiskReads()
+    }
 }
 

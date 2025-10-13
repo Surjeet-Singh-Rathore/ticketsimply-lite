@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:id="@+id/nestedScrollV"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/pleasing_grey"
+                android:orientation="vertical">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    shimmer:duration="800">
+
+                    <include layout="@layout/shimmer_report" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/reportMainContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextStyleBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="@string/generate_report"
+                        android:textColor="@color/grey" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginRight="16dp"
+                        android:backgroundTint="@color/white"
+                        android:clipToPadding="false"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/spinnerSelectReportType"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/select_report_type"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxBackgroundMode="filled">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acSelectReportType"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textColorHint="@color/grey"
+                                    android:textSize="14sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/spinnerSelectService"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:hint="@string/select_service"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxBackgroundMode="filled">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acSelectService"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textColorHint="@color/grey"
+                                    android:textSize="14sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/spinnerSelectCoach"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:hint="@string/select_coach"
+                                android:visibility="gone"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxBackgroundMode="filled">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acSelectCoach"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textColorHint="@color/grey"
+                                    android:textSize="14sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/spinnerSelectCustomDate"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:hint="@string/select_date"
+                                android:visibility="gone"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxBackgroundMode="filled">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acSelectCustomDate"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textColorHint="@color/grey"
+                                    android:textSize="14sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/spinnerSelectRestaurantTIL"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:hint="@string/select_service"
+                                android:visibility="gone"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxBackgroundMode="filled">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acSelectRestaurant"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textColorHint="@color/grey"
+                                    android:textSize="14sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/spinnerSelectPaymentType"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:visibility="gone"
+                                android:hint="@string/payment_type"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxBackgroundMode="filled">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/acSelectSelectPaymentType"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textColorHint="@color/grey"
+                                    android:textSize="14sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/branchListTIL"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:hint="@string/select_branch"
+                                android:visibility="gone"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxBackgroundMode="filled">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/branchListTV"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textColorHint="@color/grey"
+                                    android:textSize="14sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/userListTIL"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_16"
+                                android:visibility="gone"
+                                android:hint="@string/select_user"
+                                app:boxBackgroundColor="@color/title_bg"
+                                app:boxBackgroundMode="filled">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/userListTV"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/et_bg"
+                                    android:inputType="none"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textColorHint="@color/grey"
+                                    android:textSize="14sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layoutFromToDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="58dp"
+                                android:layout_marginTop="@dimen/dp_12"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:paddingTop="2dp"
+                                    android:layout_weight="0.50">
+
+                                    <TextView
+                                        android:id="@+id/tvFromDate"
+                                        style="@style/msg_context"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/header_gradient_bg_underline"
+                                        android:clickable="true"
+                                        android:drawableEnd="@drawable/ic_calendar_start"
+                                        android:focusable="true"
+                                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                                        android:gravity="left|center"
+                                        android:paddingStart="16dp"
+                                        android:paddingEnd="16dp"
+                                        android:text="@string/fromDate"
+                                        android:singleLine="true"
+                                        android:paddingTop="7dp"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/black" />
+
+                                    <TextView
+                                        android:id="@+id/tvFromHint"
+                                        style="@style/msg_context"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="2dp"
+                                        android:text="@string/fromDate"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="11sp"
+                                        android:visibility="gone" />
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:paddingTop="2dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="0.50">
+
+                                    <TextView
+                                        android:id="@+id/tvToDate"
+                                        style="@style/msg_context"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/header_gradient_bg_underline"
+                                        android:clickable="true"
+                                        android:drawableRight="@drawable/ic_combined_shape_"
+                                        android:focusable="true"
+                                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                                        android:gravity="left|center"
+                                        android:paddingStart="16dp"
+                                        android:paddingEnd="16dp"
+                                        android:text="@string/toDate"
+                                        android:singleLine="true"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/black"
+                                        android:paddingTop="7dp"/>
+
+                                    <TextView
+                                        android:id="@+id/tvToHint"
+                                        style="@style/msg_context"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="2dp"
+                                        android:text="@string/toDate"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="11sp"
+                                        android:visibility="gone" />
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layoutTravelDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="58dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="2dp"
+                                android:layout_marginTop="@dimen/dp_12"
+                                android:visibility="gone">
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <TextView
+                                        android:id="@+id/tvTravelDate"
+                                        style="@style/msg_context"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/header_gradient_bg_underline"
+                                        android:drawableEnd="@drawable/ic_calendar_start"
+                                        android:gravity="left|center"
+                                        android:paddingStart="16dp"
+                                        android:paddingEnd="16dp"
+                                        android:text="@string/travel_date"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/black" />
+
+                                    <TextView
+                                        android:id="@+id/tvTravelHint"
+                                        style="@style/msg_context"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="0dp"
+                                        android:text="@string/travel_date"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="11sp"
+                                        android:visibility="gone" />
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <RadioGroup
+                                android:id="@+id/rgDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_8"
+                                android:orientation="horizontal"
+                                android:weightSum="2"
+                                android:visibility="gone">
+
+                                <RadioButton
+                                    android:id="@+id/rbIssueDate"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/colorPrimary"
+                                    android:checked="true"
+                                    android:layout_weight="1"
+                                    android:text="@string/issue_date_"
+                                    android:textColor="@color/colorBlackShadow" />
+
+                                <RadioButton
+                                    android:id="@+id/rbTravelDate"
+                                    style="@style/TextStyleNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:buttonTint="@color/colorPrimary"
+                                    android:text="@string/travel_date"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlackShadow"
+                                    android:textSize="@dimen/sp14" />
+                            </RadioGroup>
+
+                            <RadioGroup
+                                android:id="@+id/detailSummaryRG"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal"
+                                android:weightSum="2"
+                                android:visibility="gone">
+
+                                <RadioButton
+                                    android:id="@+id/detailedRB"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:text="@string/detailed"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlackShadow" />
+
+                                <RadioButton
+                                    android:id="@+id/summaryRB"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/summary"
+                                    android:layout_weight="1"
+                                    android:textColor="@color/colorBlackShadow" />
+                            </RadioGroup>
+
+                            <LinearLayout
+                                android:id="@+id/layoutSms"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/_8sdp"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:background="@drawable/layout_rounded_shape_border_transparent"
+                                android:backgroundTint="@color/colorDimShadow6">
+
+                                <CheckBox
+                                    android:id="@+id/chkStarred"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/add_to_starred_tab"
+                                    android:fontFamily="@font/notosans_bold"
+                                    android:textAllCaps="true"
+                                    android:paddingStart="@dimen/_8sdp"
+                                    android:textColor="@color/colorBlackShadow2" />
+                            </LinearLayout>
+
+
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <android.widget.Button
+                                android:id="@+id/btn_download"
+                                style="@style/TextStyleBold"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_25sdp"
+                                android:layout_marginEnd="@dimen/_25sdp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_weight="1"
+                                app:layout_constraintEnd_toStartOf="@id/btnViewReport"
+                                android:background="@drawable/rounded_border_primary_second"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                                android:text="@string/download_report"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/_11ssp" />
+
+                            <android.widget.Button
+                                android:id="@+id/btnViewReport"
+                                style="@style/TextStyleBold"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/button_height"
+                                android:layout_marginEnd="@dimen/_25sdp"
+                                android:layout_weight="1"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:visibility="gone"
+                                android:background="@drawable/rounded_border_primary_second"
+                                android:clickable="true"
+                                android:focusable="true"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/btn_download"
+                                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                                android:text="@string/view_report"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/_11ssp" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/recent_report_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextStyleBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="16dp"
+                            android:text="@string/recently_generated_reports"
+                            android:textColor="@color/grey"
+                            android:textSize="14sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_favoutrite_reports"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="16dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/progressPB"
+            layout="@layout/dialog_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_150"
+            android:visibility="gone" />
+    </RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

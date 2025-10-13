@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -11,27 +13,15 @@ plugins {
     alias(libs.plugins.kotlin.parcelize)
 }
 
-// Force Java 17 toolchain for all tasks including KSP
-kotlin {
-    jvmToolchain(17)
-}
-
-// Ensure Java toolchain is consistently set to 17
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
-}
-
 android {
     compileSdk = 35
-    namespace = "com.bitla.ticketsimply"
+    namespace = "com.bitla.ticketsimply.debug"
 
     defaultConfig {
-        applicationId = "com.bitla.ticketsimply"
+        applicationId = "com.bitla.ticketsimply.debug"
         minSdk = 24
         targetSdk = 35
-        versionCode = 1030
+        versionCode = 1039
         versionName = "7.0.6.1"
 
 //        externalNativeBuild {
@@ -71,6 +61,12 @@ android {
         isCoreLibraryDesugaringEnabled = true
     }
 
+    tasks.withType<KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "17"
+        }
+    }
+
     kotlinOptions {
         jvmTarget = "17"
         freeCompilerArgs = listOf("-XXLanguage:-ProperCheckAnnotationsTargetInTypeUsePositions")
@@ -78,7 +74,6 @@ android {
 //        freeCompilerArgs += ["-P", "plugjvmOptions += listOf("-Xms4000m", "-Xmx4000m", "-XX:+HeapDumpOnOutOfMemoryError")in:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"]
 //        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
     }
-
 
     buildFeatures {
         compose = true

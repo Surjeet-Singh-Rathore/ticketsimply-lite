@@ -1449,6 +1449,7 @@ Bạn có muốn đăng nhập vào thiết bị này không?</string>-->
     <string name="only_main_src_dest">Chỉ các tuyến đường nơi đi-nơi đến chính</string>
     <string name="via">(thông qua)</string>
     <string name="customer_does_not_belong_to_this_service">Khách hàng không thuộc dịch vụ này</string>
+    <string name="vehicle_documents">Giấy tờ xe</string>
     <string name="error_occur_please_try_again">Đã xảy ra lỗi! Vui lòng thử lại</string>
     <string name="not_uploaded">Chưa tải lên</string>
     <string name="download_document">Tải tài liệu</string>

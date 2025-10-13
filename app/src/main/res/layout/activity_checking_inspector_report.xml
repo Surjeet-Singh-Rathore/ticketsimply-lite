@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/title_bg">
+
+    <include
+        android:id="@+id/update_ratecard_toolbar"
+        layout="@layout/item_header_view_with_title_des"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="@id/listRV"
+        app:layout_constraintStart_toStartOf="@id/listRV"
+        app:layout_constraintTop_toBottomOf="@id/update_ratecard_toolbar"
+        tools:listitem="@layout/child_checking_inspector_report" />
+
+    <View
+        android:id="@+id/bottomV"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_53sdp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/prevPageBT"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:background="@drawable/button_selected_bg_grey_round"
+        android:padding="@dimen/_12sdp"
+        android:src="@drawable/page_left_grey"
+        app:layout_constraintBottom_toBottomOf="@id/pagenationRV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pagenationRV" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pagenationRV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_7sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nextButtonBT"
+        app:layout_constraintStart_toEndOf="@+id/prevPageBT"
+        tools:listitem="@layout/adapter_pagenation_number" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/nextButtonBT"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:background="@drawable/button_selected_bg_round"
+        android:padding="@dimen/_12sdp"
+        android:src="@drawable/page_right_white"
+        app:layout_constraintBottom_toBottomOf="@id/pagenationRV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pagenationRV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

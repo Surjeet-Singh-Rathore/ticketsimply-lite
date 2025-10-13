@@ -30,7 +30,7 @@
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
                 android:text="@string/your_summary"
-                android:textColor="@color/gray_shade_a"
+                android:textColor="@color/grey"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

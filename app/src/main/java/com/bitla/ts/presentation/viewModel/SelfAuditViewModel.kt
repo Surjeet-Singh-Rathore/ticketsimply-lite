@@ -4,9 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bitla.ts.domain.pojo.mealCoupon.RestaurantListResponse
+import com.bitla.ts.domain.pojo.reports.ReportsResponse
+import com.bitla.ts.domain.pojo.self_audit_data.SelfAuditResponse
 import com.bitla.ts.domain.pojo.self_audit_question.response.SelfAuditQuestionResponse
 import com.bitla.ts.domain.pojo.submit_self_audit_form.request.SubmitSelfAuditFormRequest
 import com.bitla.ts.domain.pojo.submit_self_audit_form.response.SubmitSelfAuditFormResponse
+import com.bitla.ts.domain.repository.RestaurantRepository
 import com.bitla.ts.domain.repository.SelfAuditRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

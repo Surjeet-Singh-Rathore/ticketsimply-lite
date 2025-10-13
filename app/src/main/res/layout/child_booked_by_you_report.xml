@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
+    app:cardCornerRadius="4dp"
+    app:cardPreventCornerOverlap="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8sdp">
+
+        <TextView
+            android:id="@+id/pnrNumberTV"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1282984"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/busDetailsTV"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="Banglore - Hyderabad"
+            android:textColor="@color/colorBlackShadow"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pnrNumberTV"
+            app:layout_constraintTop_toTopOf="@+id/pnrNumberTV" />
+
+        <TextView
+            android:id="@+id/rateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/rate"
+            android:textColor="@color/very_light_greyyy"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/busDetailsTV" />
+
+        <TextView
+            android:id="@+id/routeNumberTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="BDG/BKS/KPR/PRS - PYK 2 (EXE+)"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toEndOf="@id/rateTV"
+            app:layout_constraintTop_toBottomOf="@id/busDetailsTV" />
+
+
+        <TextView
+            android:id="@+id/seatNoTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/seat"
+            android:textColor="@color/very_light_greyyy"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/routeNumberTV" />
+
+
+        <TextView
+            android:id="@+id/travelDateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/travel_date"
+            android:textColor="@color/very_light_greyyy"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seatNoTV" />
+
+        <TextView
+            android:id="@+id/seatNoValueTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="Seat: 7 (A1, A2, A3, A4, A5, A6, A7)"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toEndOf="@+id/seatNoTV"
+            app:layout_constraintTop_toTopOf="@+id/seatNoTV" />
+
+        <TextView
+            android:id="@+id/travelDateValueTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="02-02-2023 15:34"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintStart_toEndOf="@+id/travelDateTV"
+            app:layout_constraintTop_toTopOf="@+id/travelDateTV" />
+
+        <TextView
+            android:id="@+id/totalFareTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="₹1500"
+            android:visibility="visible"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/travelDateTV" />
+
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalPaidHeadTV"
+            android:textStyle="bold"
+            android:textColor="@color/slate_dark_grey"
+            android:layout_gravity="start"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/totalUnPaidHeadTV"
+            app:layout_constraintEnd_toStartOf="@+id/totalPaidValueTV"
+            android:text="@string/paid_amount"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalPaidValueTV"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:textColor="@color/slate_dark_grey"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/totalUnPaidHeadTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/notAvailable"/>
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalUnPaidHeadTV"
+            android:textStyle="bold"
+            android:textColor="@color/slate_dark_grey"
+            android:layout_gravity="start"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/travelDateTV"
+            app:layout_constraintEnd_toStartOf="@id/totalUnPaidValueTV"
+            app:layout_constraintBottom_toBottomOf="@id/travelDateTV"
+            android:text="@string/unpaid_amount"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalUnPaidValueTV"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:textColor="@color/slate_dark_grey"
+            android:textSize="@dimen/_10ssp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/totalUnPaidHeadTV"
+            app:layout_constraintBottom_toBottomOf="@id/totalUnPaidHeadTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/notAvailable"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

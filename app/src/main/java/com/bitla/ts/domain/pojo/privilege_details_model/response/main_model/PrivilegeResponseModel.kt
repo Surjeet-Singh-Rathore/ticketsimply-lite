@@ -119,6 +119,8 @@ data class PrivilegeResponseModel(
     val allowToShowWhatsappCheckboxInBookingPage: Boolean,
     @SerializedName("allow_to_update_fuel_filling_details_from_bus_mobility_app")
     val allowToUpdateFuelFillingDetailsFromBusMobilityApp: Boolean,
+    @SerializedName("allow_to_view_the_coach_document")
+    val allowToViewTheCoachDocument: Boolean,
     @SerializedName("agent_instant_recharge")
     val agentInstantRecharge: Boolean,
     @SerializedName("allow_update_details_option_in_reservation_chart")

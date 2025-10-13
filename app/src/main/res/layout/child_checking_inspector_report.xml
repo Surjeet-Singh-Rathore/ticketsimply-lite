@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
+    app:cardCornerRadius="4dp"
+    app:cardPreventCornerOverlap="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/serviceNameTV"
+            style="@style/TextStyleBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/dp_8"
+            android:text="@string/service_name"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/pleasing_grey"
+            android:layout_marginTop="@dimen/dp_8"
+            app:layout_constraintTop_toBottomOf="@+id/serviceNameTV"
+            app:cardPreventCornerOverlap="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/serviceNumberTV">
+
+                <TextView
+                    android:id="@+id/totalSeatsTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/total_seats"
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/extraCabinSeatsTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/totalSeatsValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/totalSeatsTV"
+                    app:layout_constraintTop_toTopOf="@+id/totalSeatsTV" />
+
+                <TextView
+                    android:id="@+id/reservedSeatsTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/reserved_seats"
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/extraCabinSeatsTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/totalSeatsValueTV" />
+
+                <TextView
+                    android:id="@+id/reservedSeatsValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/reservedSeatsTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/reservedSeatsTV" />
+
+                <TextView
+                    android:id="@+id/maleSeatsTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/male_seats"
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/extraCabinSeatsTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/reservedSeatsValueTV" />
+
+                <TextView
+                    android:id="@+id/maleSeatsValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/maleSeatsTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/maleSeatsTV" />
+
+                <TextView
+                    android:id="@+id/femaleSeatsTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/female_seats"
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/extraCabinSeatsTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/maleSeatsValueTV" />
+
+                <TextView
+                    android:id="@+id/femaleSeatsValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/femaleSeatsTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/femaleSeatsTV" />
+
+                <TextView
+                    android:id="@+id/extraCabinSeatsTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="@string/extra_cabin_seats"
+                    android:paddingEnd="@dimen/_26sdp"
+                    android:textColor="@color/very_light_greyyy"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/femaleSeatsValueTV" />
+
+                <TextView
+                    android:id="@+id/extraCabinSeatsValueTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/notAvailable"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@+id/extraCabinSeatsTV"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/extraCabinSeatsTV" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

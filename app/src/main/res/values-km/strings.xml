@@ -1430,6 +1430,7 @@ function</string>
     <string name="only_main_src_dest">មានតែផ្លូវ ទីតាំង-ទិសដៅ គោលប៉ុណ្ណោះ។</string>
     <string name="via">(កាត់តាម)</string>
     <string name="customer_does_not_belong_to_this_service">អតិថិជនមិនបានកក់សេវាកម្មនេះទេ</string>
+    <string name="vehicle_documents">ឯកសារយានយន្ត</string>
     <string name="error_occur_please_try_again">បញ្ហាបច្ចេកទេសបានកើតឡើង! សូមព្យាយាមម្តងទៀត</string>
     <string name="not_uploaded">មិនទាន់បង្ហោះ</string>
     <string name="download_document">ទាញយកឯកសារ</string>

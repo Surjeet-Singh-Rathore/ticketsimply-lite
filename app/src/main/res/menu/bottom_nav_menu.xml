@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/icons_dashboard"
+        android:title="Dashboard" />
+
+    <item
         android:id="@+id/navigation_booking"
         android:icon="@drawable/icons_bookings"
         android:iconTint="@color/colorDim"
@@ -11,6 +16,11 @@
         android:id="@+id/navigation_pickupcharts"
         android:icon="@drawable/icons_pickup_charts"
         android:title="Pick-up Charts" />
+
+    <item
+        android:id="@+id/navigation_reports"
+        android:icon="@drawable/icons_reports"
+        android:title="Reports" />
 
 
 </menu>

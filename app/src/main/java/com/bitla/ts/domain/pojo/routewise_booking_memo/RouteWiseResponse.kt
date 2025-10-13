@@ -1,5 +1,6 @@
 package com.bitla.ts.domain.pojo.routewise_booking_memo
 
+import com.bitla.ts.domain.pojo.all_reports.Result
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -58,11 +59,11 @@ data class RouteWiseResponse(
 
     @SerializedName("code")
     @Expose
-    val code: Int,
+    val code: Int ,
 
     @SerializedName("message")
     @Expose
-    val message: String = "",
+    val message: String  = "",
 
     @SerializedName("result")
     @Expose
