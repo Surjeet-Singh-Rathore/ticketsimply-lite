@@ -152,7 +152,7 @@ android {
 dependencies {
     implementation(project(":escposprinter"))
     implementation(project(":tscalender"))
-    implementation(project(":restaurant_app"))
+//    implementation(project(":restaurant_app"))
     implementation(project(":coach"))
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
