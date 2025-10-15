@@ -70,7 +70,6 @@ import com.bitla.ts.domain.pojo.collection_details.trip_collection.TripCollectio
 import com.bitla.ts.domain.pojo.collection_summary.CollectionSummary
 import com.bitla.ts.domain.pojo.create_route.CreateRouteResponse
 import com.bitla.ts.domain.pojo.create_stage_data.CreateStageResponse
-import com.bitla.ts.domain.pojo.dashboard_branchwise_revenue_popup.*
 import com.bitla.ts.domain.pojo.delete_stage.DeleteStageResponse
 import com.bitla.ts.domain.pojo.duplicate_service.DuplicateServiceResponse
 import com.bitla.ts.domain.pojo.get_route.GetRouteResponse
@@ -302,14 +301,6 @@ interface ApiInterface {
 
         ):Response<ServiceOccupancyDetails?>
 
-@GET ("api/get_branch_wise_revenue_details.json?is_from_middle_tier=true")
-suspend fun newGetBranchWiseRevenueDetails(
-    @Query("api_key") apiKey: String,
-    @Query("branch_id")branchId : String,
-    @Query("from_date")fromDate: String,
-    @Query("to_date")toDate : String,
-
-    ):Response<BranchWiseRevenuePopUpResponse>
 
     // logout
     @GET("bus_operator_app/api/logout?is_from_middle_tier=true")

@@ -9,7 +9,6 @@ val RepositoryModule = module {
 
     single { LoginRepository(get()) }
 
-    single { BranchWiseRevenueRepository(get()) }
 
     single { DashboardRepository(get()) }
 

@@ -244,8 +244,6 @@ class DashboardNavigateActivity : BaseActivity(),
         binding.appBar.layoutPnr.setOnClickListener(this)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.dashboard_fragment,
-                R.id.dashboard_fragment_tabs,
                 R.id.pickup_fragment
             ), binding.drawerLayout
         )
@@ -1755,24 +1753,6 @@ class DashboardNavigateActivity : BaseActivity(),
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.dashboard_fragment -> {
-                PreferenceUtils.putObject(true, "callAPI_onCLICK")
-                privilegeDetailsViewModel.setDashboardDefaultTab(true)
-                if (::navigationMenuAdapter.isInitialized) {
-                    navigationMenuAdapter.menuColorChange(0)
-                    setDefaultDashboard()
-                    back = true
-//                    PreferenceUtils.putString(PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.dashboard))
-                }
-            }
-
-            R.id.dashboard_fragment_tabs -> {
-                if (::navigationMenuAdapter.isInitialized) {
-                    setDefaultDashboard()
-                    back = true
-//                    PreferenceUtils.putString(PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.dashboard))
-                }
-            }
 
             R.id.pickup_fragment -> {
                 PreferenceUtils.putObject(true, "callAPI_onCLICK")
@@ -1856,16 +1836,6 @@ class DashboardNavigateActivity : BaseActivity(),
 
         dashboardViewModel.privilegesLiveData.observe(this) { privilegeResponse ->
 
-            if (privilegeResponse?.allowToViewTsAppNewDashboard == true) {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.dashboard_fragment_tabs)
-                setToolbarTitle(getString(R.string.dashboard))
-            } else {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.dashboard_fragment)
-                setToolbarTitle(getString(R.string.dashboard))
-                binding.appBar.lastUpdateTV.gone()
-                binding.appBar.notificationImg.gone()
-                binding.appBar.calendarImg.gone()
-            }
 
             if (privilegeResponse?.country.equals(
                     "India", true

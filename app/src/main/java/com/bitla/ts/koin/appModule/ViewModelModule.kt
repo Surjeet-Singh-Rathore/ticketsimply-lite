@@ -18,7 +18,6 @@ val ViewModelModule = module {
 
     viewModel { DashboardViewModel<Any?>(get()) }
 
-    viewModel { BranchWiseRevenueViewModel<Any?>(get()) }
 
 
     viewModel { ForgotPasswordViewModel(get()) }
