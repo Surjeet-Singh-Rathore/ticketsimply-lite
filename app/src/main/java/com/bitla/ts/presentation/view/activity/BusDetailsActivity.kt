@@ -3333,22 +3333,6 @@ class BusDetailsActivity : BaseActivity(), OnItemClickListener, SlyCalendarDialo
                 selectedDestinationId.toString(),
                 locale = locale
             )
-            val deleteRecentSearchRequest = DeleteRecentSearchRequest(
-                bccId.toString(), format_type,
-                delete_recent_search_method_name, reqBody
-            )
-
-            /* sharedViewModel.deleteRecentSearchApi(
-                 loginModelPref.auth_token,
-                 loginModelPref.api_key,
-                 deleteRecentSearchRequest,
-                 delete_recent_search_method_name
-             )*/
-
-            sharedViewModel.deleteRecentSearchApi(
-                reqBody,
-                delete_recent_search_method_name
-            )
         } catch (ex: Exception) {
 
         }

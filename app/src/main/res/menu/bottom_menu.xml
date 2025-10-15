@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/bookings_fragment"
-        android:icon="@drawable/icons_bookings"
-        android:title="@string/bookings" />
-
-    <item
         android:id="@+id/pickup_fragment"
         android:icon="@drawable/icons_pickup_charts"
         android:title="@string/pick_up_chart" />

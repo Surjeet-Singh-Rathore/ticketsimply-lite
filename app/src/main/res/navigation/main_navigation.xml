@@ -3,30 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/dashboard_fragment">
+    app:startDestination="@id/pickup_fragment">
 
-    <fragment
-        android:id="@+id/dashboard_fragment"
-        android:name="com.bitla.ts.presentation.view.dashboard.DashboardFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/dashboard_fragment_tabs"
-        android:name="com.bitla.ts.phase2.dashboardContainer.DashboardFragmentTabs"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_dashboard_tabs" />
-
-    <fragment
-        android:id="@+id/bookings_fragment"
-        android:name="com.bitla.ts.presentation.view.dashboard.BookingsFragment"
-        android:label="TermsFragment"
-        tools:layout="@layout/fragment_pickup_chart">
-        <action
-            android:id="@+id/action_bookings_fragment_pop"
-            app:popUpTo="@id/bookings_fragment"
-            app:popUpToInclusive="true" />
-    </fragment>
     <fragment
         android:id="@+id/pickup_fragment"
         android:name="com.bitla.ts.presentation.view.dashboard.PickupChartFragment"
@@ -37,62 +15,6 @@
             app:popUpTo="@id/pickup_fragment"
             app:popUpToInclusive="true" />
     </fragment>
-
-<!--    <fragment-->
-<!--        android:id="@+id/report_fragment"-->
-<!--        android:name="com.bitla.ts.presentation.view.dashboard.ReportsFragment"-->
-<!--        android:label="DetailFragment"-->
-<!--        tools:layout="@layout/fragment_pickup_chart">-->
-<!--        <action-->
-<!--            android:id="@+id/action_report_fragment_pop"-->
-<!--            app:popUpTo="@id/report_fragment"-->
-<!--            app:popUpToInclusive="true" />-->
-<!--        <action-->
-<!--            android:id="@+id/action_report_fragment_to_searchRestaurantFragment"-->
-<!--            app:destination="@id/searchRestaurantFragment" />-->
-<!--    </fragment>-->
-
-<!--    <fragment-->
-<!--        android:id="@+id/searchRestaurantFragment"-->
-<!--        android:name="com.bitla.ts.presentation.view.fragments.reports.SelectRestaurantServiceFragment"-->
-<!--        android:label="SelectRestaurantServiceFragment"-->
-<!--        tools:layout="@layout/fragment_select_restaurant_service">-->
-<!--        <action-->
-<!--            android:id="@+id/action_report_fragment_pop"-->
-<!--            app:popUpTo="@id/B"-->
-<!--            app:popUpToInclusive="true" />-->
-<!--    </fragment>-->
-
-
-<!--    <fragment-->
-<!--        android:id="@+id/B"-->
-<!--        android:name="com.bitla.ts.presentation.view.fragments.FragmentReports"-->
-<!--        android:label="SelectRestaurantServiceFragment"-->
-<!--        tools:layout="@layout/fragment_reports">-->
-
-<!--    </fragment>-->
-
-<!--    <fragment-->
-<!--        android:id="@+id/chk_inspector_fragment"-->
-<!--        android:name="com.bitla.ts.presentation.view.fragments.CheckingInspectorFragment"-->
-<!--        android:label="ChkInspectorFragment"-->
-<!--        tools:layout="@layout/fragment_checking_inspector">-->
-<!--        <action-->
-<!--            android:id="@+id/action_chk_inspector_fragment_pop"-->
-<!--            app:popUpTo="@id/chk_inspector_fragment"-->
-<!--            app:popUpToInclusive="true" />-->
-<!--    </fragment>-->
-
-<!--    <fragment-->
-<!--        android:id="@+id/chk_inspector_detail_fragment"-->
-<!--        android:name="com.bitla.ts.presentation.view.fragments.CheckingInspectorDetailFragment"-->
-<!--        android:label="ChkInspectorDetailFragment"-->
-<!--        tools:layout="@layout/fragment_checking_inspector_detail">-->
-<!--        <action-->
-<!--            android:id="@+id/action_chk_inspector_detail_fragment_pop"-->
-<!--            app:popUpTo="@id/chk_inspector_fragment" />-->
-<!--    </fragment>-->
-
 
     <action
         android:id="@+id/action_global_pickup_fragment"

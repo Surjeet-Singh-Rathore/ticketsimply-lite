@@ -47,14 +47,6 @@ open class SharedViewModel<T : Any?>(private val sharedRepository: SharedReposit
         get() = _loadingState
 
 
-    private val _dataRecentSearch = MutableLiveData<RecentSearchModel>()
-    val dataRecentSearch: LiveData<RecentSearchModel>
-        get() = _dataRecentSearch
-
-    private val _deleteSearch = MutableLiveData<DeleteRecentSearch>()
-    val deleteSearch: LiveData<DeleteRecentSearch>
-        get() = _deleteSearch
-
     private val _notificationData =
         MutableLiveData<ArrayList<com.bitla.ts.domain.pojo.fetch_notification.Data>>()
     val notificationListData: LiveData<ArrayList<com.bitla.ts.domain.pojo.fetch_notification.Data>>
@@ -194,105 +186,6 @@ open class SharedViewModel<T : Any?>(private val sharedRepository: SharedReposit
         return filterType
 
     }
-
-    fun recentSearchApi(
-        apiKey: String,
-        limit: Int,
-        locale: String,
-        isBima :Boolean,
-        apiType: String
-    ) {
-
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-            sharedRepository.newRecentSearch(
-                apiKey = apiKey,
-                limit = limit,
-                isBima = isBima,
-                locale = locale
-            ).collect {
-                when (it) {
-                    is NetworkProcess.Loading -> {}
-                    is NetworkProcess.Success -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        _dataRecentSearch.postValue(
-                            it.data
-                        )
-                    }
-
-                    is NetworkProcess.Failure -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        messageSharedFlow.emit(it.message)
-                    }
-                }
-            }
-
-        }
-    }
-
-    /*fun deleteRecentSearchApi(
-        authorization: String,
-        apiKey: String,
-        deleteRecentSearchRequest: DeleteRecentSearchRequest,
-        apiType: String
-    ) {
-      
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-            _deleteSearch.postValue(
-                sharedRepository.deleteRecentSearch(
-                    authorization,
-                    apiKey,
-                    deleteRecentSearchRequest
-                ).body()
-            )
-        }
-    }  */
-
-    fun deleteRecentSearchApi(
-        deleteRecentSearchRequest: ReqBody,
-        apiType: String
-    ) {
-
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-            sharedRepository.newDeleteRecentSearch(
-                deleteRecentSearchRequest
-            ).collect {
-                when (it) {
-                    is NetworkProcess.Loading -> {}
-                    is NetworkProcess.Success -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        _deleteSearch.postValue(
-                            it.data
-                        )
-                    }
-
-                    is NetworkProcess.Failure -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        messageSharedFlow.emit(it.message)
-                    }
-                }
-            }
-
-        }
-    }
-
-    /* fun getServiceDetails(authorization: String,
-                           apiKey: String, request: ServiceDetailsRequest, apiType: String) {
-
-         _loadingState.postValue(LoadingState.LOADING)
-
-         viewModelScope.launch(Dispatchers.IO) {
-             _serviceDetails.postValue(
-                 sharedRepository.getServiceDetails(authorization, apiKey,request).body()
-             )
-         }
-     }
- */
 
     fun getQuickBookServiceDetail(
         reservationId: String,

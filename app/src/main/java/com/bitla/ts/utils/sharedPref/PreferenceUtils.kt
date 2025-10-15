@@ -473,15 +473,6 @@ object PreferenceUtils {
         return mLocalPreferences.getString(key, "")
     }
 
-    fun getNavigationScreenString(key: String): String? {
-        return mLocalPreferences.getString(key, getString(R.string.dashboard.toString()))
-    }
-
-    fun removeString(key: String) {
-        val edit = mLocalPreferences.edit()
-        edit.remove(key)
-        edit.apply()
-    }
 
     fun getBccId(): Int {
         var bccId = 0
