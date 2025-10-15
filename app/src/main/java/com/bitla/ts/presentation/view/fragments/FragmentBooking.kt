@@ -974,42 +974,6 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setObserver() {
-        sharedViewModel.dataRecentSearch.observe(requireActivity()) {
-            if (it != null) {
-                binding.includeProgress.progressBar.gone()
-                if (it.code == 200 && isAttachedToActivity() && !it.recent_search.isNullOrEmpty()) {
-                    recentSearchList = it.recent_search
-                    PreferenceUtils.putRecentSearch(it.recent_search)
-                    if (it.recent_search != null)
-                        setBusBookings(it.recent_search)
-                }
-            } else {
-                requireContext().toast(getString(R.string.server_error))
-            }
-        }
-
-        sharedViewModel.deleteSearch.observe(requireActivity()) { it ->
-            if (it != null) {
-                if (it.code == 200) {
-                    if (busStageData.any { it.origin_id == selectedOriginId && it.destination_id == selectedDestinationId.toString() }) {
-                        val index =
-                            busStageData.indexOfFirst { it.origin_id == selectedOriginId && it.destination_id == selectedDestinationId.toString() }
-                        busStageData.removeAt(index)
-                        binding.rvBookingSrcDes.adapter?.notifyDataSetChanged()
-                    }
-                } else
-                    if (isAttachedToActivity()) {
-                        if (it.message != null) {
-                            it.message.let { it1 -> requireContext().toast(it1) }
-                        }
-                    }
-
-            } else {
-                if (isAttachedToActivity()) {
-                    requireContext().toast(getString(R.string.server_error))
-                }
-            }
-        }
         binding.rvLastBooked.gone()
 
 
@@ -1113,7 +1077,6 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
                 role = getUserRole(loginModelPref, isAgentLogin = isAgentLogin, requireActivity())
 
-                callRecentSearch()
 
                 isAllowBookingAfterTravelDate = privilegeResponse.isAllowBookingAfterTravelDate
 
@@ -1234,16 +1197,6 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
         lastBookedAdapter =
             LastBookedAdapter(requireActivity(), this, this, recentBooking)
         binding.rvLastBooked.adapter = lastBookedAdapter
-    }
-
-    private fun callRecentSearch() {
-        sharedViewModel.recentSearchApi(
-            apiKey = loginModelPref.api_key,
-            limit = 10,
-            isBima = allowBimaInTs,
-            locale = locale!!,
-            apiType = recent_search_method_name
-        )
     }
 
     private fun setBusBookings(
@@ -2839,10 +2792,7 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
             destination_id = selectedDestinationId.toString(),
             locale = locale
         )
-        sharedViewModel.deleteRecentSearchApi(
-            reqBody,
-            delete_recent_search_method_name
-        )
+
     }
 
     override fun onClickOfItem(data: String, position: Int) {
@@ -3056,28 +3006,6 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
             }
         }
-
-        sharedViewModel.deleteSearch.observe(viewLifecycleOwner) {
-            binding.busDetailsIncludeLayout.includeProgress.progressBar.gone()
-            if (it != null) {
-                if (it.code == 200) {
-                    if (busStageData.any { it.origin_id == selectedOriginId && it.destination_id == selectedDestinationId }) {
-                        val index =
-                            busStageData.indexOfFirst { it.origin_id == selectedOriginId && it.destination_id == selectedDestinationId }
-                        busStageData.removeAt(index)
-                        binding.busDetailsIncludeLayout.rvBookingDetails.adapter?.notifyDataSetChanged()
-                    }
-                } else
-                    if (it.message != null) {
-                        it.message.let { it1 ->
-                            requireContext().toast(it1)
-                        }
-                    }
-            } else {
-                requireContext().toast(getString(R.string.server_error))
-            }
-        }
-
         sharedViewModel.serviceDetails.observe(viewLifecycleOwner) {
             binding.busDetailsIncludeLayout.includeProgress.progressBar.gone()
             if (it.code == 200) {

@@ -246,7 +246,6 @@ class DashboardNavigateActivity : BaseActivity(),
             setOf(
                 R.id.dashboard_fragment,
                 R.id.dashboard_fragment_tabs,
-                R.id.bookings_fragment,
                 R.id.pickup_fragment
             ), binding.drawerLayout
         )
@@ -482,65 +481,6 @@ class DashboardNavigateActivity : BaseActivity(),
                 } else {
                     binding.openCalender.calenderLayout.exFiveNextMonthImage.visible()
                 }
-            }
-        }
-    }
-
-    private fun landingPageNavigation() {
-
-        when (PreferenceUtils.getString(getString(R.string.landing_page)).toString()) {
-            getString(R.string.dashboard) -> {
-                setDefaultDashboard()
-                back = true
-            }
-
-            getString(R.string.booking) -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
-                setToolbarTitle(getString(R.string.bookings))
-                back = true
-            }
-
-            getString(R.string.pickup_chart) -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.pickup_fragment)
-                setToolbarTitle(getString(R.string.pickup_chart))
-                back = true
-            }
-
-//            getString(R.string.reports) -> {
-//                findNavController(R.id.nav_host_fragment).navigate(R.id.report_fragment)
-//                navController.navigate(R.id.report_fragment)
-//                setToolbarTitle(getString(R.string.reports))
-//                back = true
-//            }
-
-            else -> {
-                if (privilegeResponse?.country.equals(
-                        "India", true
-                    ) && currentUser.role == getString(R.string.role_field_officer)
-                ) {
-                    if (privilegeResponse?.boLicenses != null && privilegeResponse?.boLicenses?.showBookingAndCollectionTabInTsApp == true && privilegeResponse?.country.equals(
-                            "India", true
-                        )
-                    ) {
-                        findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
-                        setToolbarTitle(getString(R.string.bookings))
-                        back = true
-                    } else if (privilegeResponse?.showBusMobilityAppDashboard == true) {
-                        findNavController(R.id.nav_host_fragment).navigate(R.id.dashboard_fragment)
-                        setToolbarTitle(getString(R.string.dashboard))
-                        back = true
-                    } else {
-                        findNavController(R.id.nav_host_fragment).navigate(R.id.pickup_fragment)
-                        setToolbarTitle(getString(R.string.pickup_chart))
-                        back = true
-                    }
-                } else {
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
-                    setToolbarTitle(getString(R.string.bookings))
-                    back = true
-                }
-
-
             }
         }
     }
@@ -1331,34 +1271,11 @@ class DashboardNavigateActivity : BaseActivity(),
         }
 
 
-
-
-
-//        binding.bottomNavView.menu.findItem(R.id.dashboard_fragment).isVisible =
-//            !(it.allowBookingForAllotedServices != null && it.allowBookingForAllotedServices)
-
-
-        if (currentUser.role == getString(R.string.role_field_officer) && privilegeResponse?.country.equals(
-                "India", true
-            )
-        ) {
-            binding.bottomNavView.menu.findItem(R.id.bookings_fragment).isVisible =
-                it.boLicenses?.showBookingAndCollectionTabInTsApp == true
-            binding.bottomNavView.menu.findItem(R.id.dashboard_fragment).isVisible =
-                it.showBusMobilityAppDashboard == true
-        }
-
-//        if (it.availableAppModes?.showReports != null && !it.availableAppModes.showReports) {
-//            binding.bottomNavView.menu.removeItem(R.id.report_fragment)
-//        }
-
         setNavAdapter()
         setBottomBarOptions()
-        if (isNewBookingFromTicketDetails) {
-            findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
-            setToolbarTitle(getString(R.string.bookings))
-        } else
-            landingPageNavigation()
+        findNavController(R.id.nav_host_fragment).navigate(R.id.pickup_fragment)
+        setToolbarTitle(getString(R.string.pickup_chart))
+        back = true
     }
 
     private fun setCurrentCoach(it: PrivilegeResponseModel) {
@@ -1854,22 +1771,6 @@ class DashboardNavigateActivity : BaseActivity(),
                     setDefaultDashboard()
                     back = true
 //                    PreferenceUtils.putString(PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.dashboard))
-                }
-            }
-
-            R.id.bookings_fragment -> {
-                PreferenceUtils.putObject(true, "callAPI_onCLICK")
-                PreferenceUtils.putString(PREF_TRAVEL_DATE, getTodayDate())
-                setToolbarTitle(getString(R.string.bookings))
-
-                if (::navigationMenuAdapter.isInitialized) {
-                    setToolbarTitle(getString(R.string.bookings))
-                    navigationMenuAdapter.menuColorChange(1)
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.bookings_fragment)
-                    back = true
-                    PreferenceUtils.putString(
-                        PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.bookings)
-                    )
                 }
             }
 

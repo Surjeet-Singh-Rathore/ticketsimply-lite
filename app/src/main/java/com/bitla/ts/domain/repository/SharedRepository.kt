@@ -8,25 +8,7 @@ import com.bitla.ts.koin.models.makeApiCall
 import com.bitla.ts.utils.security.EncrypDecryp
 
 class SharedRepository(private val apiInterface: ApiInterface) {
-    
-    suspend fun newRecentSearch(
-        apiKey: String,
-        limit: Int,
-        isBima: Boolean,
-        locale: String,
-    ) = makeApiCall {
-        apiInterface.newRecentSearchApi(
-            api_key = apiKey,
-            limit = limit,
-            locale = locale,
-            isBima = isBima
-        )
-    }
 
-
-    suspend fun newDeleteRecentSearch(
-        deleteRecentSearchRequest: ReqBody
-    ) = makeApiCall { apiInterface.newDeleteRecentSearchApi(deleteRecentSearchRequest) }
 
 
     suspend fun newGetServiceDetail(

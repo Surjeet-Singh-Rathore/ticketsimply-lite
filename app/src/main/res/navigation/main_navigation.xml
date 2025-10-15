@@ -17,16 +17,16 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_dashboard_tabs" />
 
-    <fragment
-        android:id="@+id/bookings_fragment"
-        android:name="com.bitla.ts.presentation.view.dashboard.BookingsFragment"
-        android:label="TermsFragment"
-        tools:layout="@layout/fragment_pickup_chart">
-        <action
-            android:id="@+id/action_bookings_fragment_pop"
-            app:popUpTo="@id/bookings_fragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/bookings_fragment"-->
+<!--        android:name="com.bitla.ts.presentation.view.dashboard.BookingsFragment"-->
+<!--        android:label="TermsFragment"-->
+<!--        tools:layout="@layout/fragment_pickup_chart">-->
+<!--        <action-->
+<!--            android:id="@+id/action_bookings_fragment_pop"-->
+<!--            app:popUpTo="@id/bookings_fragment"-->
+<!--            app:popUpToInclusive="true" />-->
+<!--    </fragment>-->
     <fragment
         android:id="@+id/pickup_fragment"
         android:name="com.bitla.ts.presentation.view.dashboard.PickupChartFragment"

@@ -113,7 +113,6 @@ import com.bitla.ts.domain.pojo.dashboard_fetch.response.DashboardFetchResponse
 import com.bitla.ts.domain.pojo.dashboard_model.release_ticket.request.ReqBodyWithoutTicket
 import com.bitla.ts.domain.pojo.dashboard_model.release_ticket.response.ReleaseTicketResponse
 import com.bitla.ts.domain.pojo.dashboard_model.response.DashboardResponseModel
-import com.bitla.ts.domain.pojo.delete_recent_search.DeleteRecentSearch
 import com.bitla.ts.domain.pojo.destination_list.DestinationList
 import com.bitla.ts.domain.pojo.destination_pair.DestinationPairModel
 import com.bitla.ts.domain.pojo.drag_drop_remarks_update.response.DragDropRemarksUpdateResponse
@@ -180,7 +179,6 @@ import com.bitla.ts.domain.pojo.quick_book_chile.response.quickbook_service_deta
 import com.bitla.ts.domain.pojo.quota_blocking_tooltip_Info_model.response.QuotaBlockingTooltipInfoResponse
 import com.bitla.ts.domain.pojo.rapid_booking.RapidBookingModel
 import com.bitla.ts.domain.pojo.rapid_booking.request.RapidBookingRequest
-import com.bitla.ts.domain.pojo.recent_search.RecentSearchModel
 import com.bitla.ts.domain.pojo.recommended_seats.response.RecommendedSeatsResponse
 import com.bitla.ts.domain.pojo.redelcom.ReqBodyPrint
 import com.bitla.ts.domain.pojo.redelcom.ResponseBodyPG
@@ -516,14 +514,6 @@ suspend fun newGetBranchWiseRevenueDetails(
     ): Response<TicketDetailsMenu>
 
 
-    @GET("api/recent_search.json?is_from_middle_tier=true")
-    suspend fun newRecentSearchApi(
-        @Query("api_key") api_key: String,
-        @Query("limit") limit: Int,
-        @Query("app_bima_enabled") isBima: Boolean,
-        @Query("locale") locale: String
-    ): Response<RecentSearchModel>
-
 
     @GET("bus_operator_app/api/block_configurations?is_from_middle_tier=true")
     suspend fun newBlockConfigApi(
@@ -789,12 +779,6 @@ suspend fun newGetBranchWiseRevenueDetails(
         @Query("response_format") response_format: String,
     ): Response<SmsTypesModel>
 
-
-    @Headers("Content-Type: application/json")
-    @POST("api/delete_recent_search.json")
-    suspend fun newDeleteRecentSearchApi(
-        @Body deleteRecentSearchRequest: com.bitla.ts.domain.pojo.delete_recent_search.request.ReqBody
-    ): Response<DeleteRecentSearch>
 
 
     @Headers("Content-Type: application/json")
