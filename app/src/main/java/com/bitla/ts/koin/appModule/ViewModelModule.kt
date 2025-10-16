@@ -92,7 +92,6 @@ val ViewModelModule = module {
     viewModel { BookingSummaryViewModel<Any?>(get()) }
     viewModel { StagingSummaryViewModel<Any?>(get()) }
     viewModel { OccupancyGridViewModel<Any?>(get()) }
-    viewModel { DashboardRevenueViewModel<Any?>(get()) }
     viewModel { BlackListViewModel<Any?>(get()) }
 
     viewModel { MergeBusSharedViewModel(get())}

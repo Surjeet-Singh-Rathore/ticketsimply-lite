@@ -78,7 +78,6 @@ val RepositoryModule = module {
     single { PhonePeUpiDirectRepository(get()) }
 
     single { ManageAccountRepository(get()) }
-    single { DashboardRevenueRepository(get()) }
 
     single { OccupancyGridRepository(get()) }
     single { StagingSummaryRepository(get()) }

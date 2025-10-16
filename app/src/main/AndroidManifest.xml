@@ -585,10 +585,6 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.view.activity.SearchAgentActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.view.merge_bus.MergeBusShiftActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
