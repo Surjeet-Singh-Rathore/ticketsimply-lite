@@ -630,7 +630,7 @@ class DashboardNavigateActivity : BaseActivity(),
         addVerifyUsers()
         encryptDecryptDeviceId()
         setAddUserTextOnChangeObserver()
-        getAllUserObserver()
+
         userViewModel.getCurrentUser()
         getCurrentUserObserver()
         restartActivityObserver()
@@ -1400,7 +1400,6 @@ class DashboardNavigateActivity : BaseActivity(),
         binding.layoutVerifyOtp.tvBack.setOnClickListener(this)
         binding.layoutVerifyOtp.textResendOtp.setOnClickListener(this)
         binding.appBar.layoutPnr.setOnClickListener(this)
-        binding.ivSwitchUser.setOnClickListener(this)
         binding.layoutAddUserData.root.setOnClickListener(this)
         binding.layoutVerifyOtp.root.setOnClickListener(this)
         binding.refreshCreditIV.setOnClickListener(this)
@@ -1493,10 +1492,6 @@ class DashboardNavigateActivity : BaseActivity(),
             R.id.layoutPnr -> {
                 val intent = Intent(this, PnrSearchActivity::class.java)
                 startActivity(intent)
-            }
-
-            R.id.ivSwitchUser -> {
-                userViewModel.getAllUsers()
             }
 
             R.id.refreshCreditIV -> {
@@ -2021,17 +2016,7 @@ class DashboardNavigateActivity : BaseActivity(),
         }
     }
 
-    private fun getAllUserObserver() {
-        userViewModel.getAllUsers.observe(this) {
 
-            if (it.isEmpty()) {
-                openDomainActivity()
-            } else {
-                userList = it
-                openSwitchUserDialog(userList.toMutableList())
-            }
-        }
-    }
 
     private fun setLoggedInUserNavDrawerData(user: User) {
         binding.navTextUserName.text = user.name
@@ -2147,33 +2132,6 @@ class DashboardNavigateActivity : BaseActivity(),
             })
     }
 
-    private fun openSwitchUserDialog(userList: List<User>) {
-        dashboardViewModel.isResetUserCall = false
-        DialogUtils.switchUserDialog(this, userList, onItemClick = {
-            openCloseNavigationDrawer()
-            if (userList.size > 1) {
-                username = it.username ?: ""
-                password = it.password
-                domain = it.domainName
-
-                lastCounterUserName = username
-                lastCounterPassword = password
-                lastCounterDomain= domain
-                PreferenceUtils.setPreference(PREF_IS_ENCRYPTED, it.isEncryptionEnabled)
-
-                updateBaseURL(domain)
-                dashboardViewModel.isResetUserCall = true
-                callDomainApi()
-//                callResetApi(username, password)
-            }
-        }, onAddAccountClick = {
-            openCloseNavigationDrawer()
-            binding.layoutAddUserData.root.visible()
-            binding.layoutAddUserData.etDomain.setText(
-                domain
-            )
-        })
-    }
 
     private fun restartActivityObserver() {
         userViewModel.restartActivity.observe(this) {

@@ -1026,38 +1026,6 @@ class DialogUtils {
             builder.show()
         }
 
-        fun switchUserDialog(
-            context: Context,
-            userList: List<User>,
-            onItemClick: ((user: User) -> Unit),
-            onAddAccountClick: (() -> Unit),
-        ) {
-
-            val builder = AlertDialog.Builder(context).create()
-            val binding: DialogSwitchUserBinding =
-                DialogSwitchUserBinding.inflate(LayoutInflater.from(context))
-            builder.setCancelable(true)
-
-            val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            binding.rvSwitchUser.layoutManager = layoutManager
-            val switchUserAdapter = SwitchUserAdapter(context, userList) {
-                onItemClick.invoke(it)
-                builder.cancel()
-            }
-            binding.rvSwitchUser.adapter = switchUserAdapter
-
-            binding.tvAddAccount.setOnClickListener {
-                if (userList.size < 7) {
-                    builder.cancel()
-                    onAddAccountClick.invoke()
-                } else {
-                    context.toast(context.getString(R.string.youCanAddMaxSevenUsers))
-                }
-            }
-            builder.setView(binding.root)
-            builder.show()
-        }
-
         fun unAuthorizedDialog(
             context: Context,
             message: String,
