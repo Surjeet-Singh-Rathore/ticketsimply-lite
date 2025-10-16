@@ -111,5 +111,4 @@ val ViewModelModule = module {
     viewModel { RouteManagerViewModel<Any?>(get()) }
     viewModel { MoveQuotaBlockSeatViewModel<Any?>(get()) }
 
-    viewModel { MultipleServicesManageFareViewModel(get()) }
 }

@@ -1115,7 +1115,6 @@ class FragmentBooking : BaseUpdateCancelTicket(), View.OnClickListener,
 
 
                 (activity as DashboardNavigateActivity).checkForVehicleDocument(privilegeResponse!!.allowToViewTheCoachDocument)
-                (activity as DashboardNavigateActivity).setNavAdapter()
 
             }
         }

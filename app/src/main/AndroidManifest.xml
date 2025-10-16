@@ -340,10 +340,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.view.activity.PaymentGatewayActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.view.activity.InterCityAgentActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
