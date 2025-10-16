@@ -184,8 +184,6 @@ import com.bitla.ts.domain.pojo.redelcom.ResponseBodyPG
 import com.bitla.ts.domain.pojo.release_partial_booked.ReleasePartialBookedTicket
 import com.bitla.ts.domain.pojo.released_summary.ReleasedSummary
 import com.bitla.ts.domain.pojo.reset_password_with_otp.ResetPasswordWithOtp
-import com.bitla.ts.domain.pojo.revenue_data.RevenueData
-import com.bitla.ts.domain.pojo.revenue_data.ServiceWiseRevenueData
 import com.bitla.ts.domain.pojo.rutDiscountDetails.response.RutDiscountResponse
 import com.bitla.ts.domain.pojo.seat_types.SeatTypesResponse
 import com.bitla.ts.domain.pojo.sendOtpAndQrCode.SendOtqAndQrCodeResponseModel
@@ -1835,44 +1833,6 @@ interface ApiInterface {
         @Query("api_key") apikey: String,
         @Body activateDeactivateServiceRequest: ActivateDeactivateServiceRequest
     ): Response<ActivateDeactivateServiceResponse?>
-
-
-    @GET("v1/api/get_revenue_details.json?")
-    suspend fun getAllRevenueDataApi(
-        @Query("api_key") apikey: String,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("route_id") routeId: String,
-        @Query("journey_by") journeyBy: String,
-        @Query("pagination") pagination: String? = null,
-        @Query("per_page") perPage: String? = null,
-        @Query("page") page: String? = null,
-        @Query("filter") filter: String? = null,
-        @Query("agent_id") agentId: String,
-        @Query("hub_id") hubId: String,
-    ): Response<RevenueData?>
-
-
-    @GET("v1/api/get_service_wise_summary_details.json?")
-    suspend fun getRevenueRouteDetailsApi(
-        @Query("api_key") apikey: String,
-        @Query("from_date") from: String,
-        @Query("to_date") to: String,
-        @Query("route_id") routeId: String,
-        @Query("journey_by") journeyBy: String
-
-        ): Response<ServiceWiseRevenueData?>
-
-
-    @GET("v1/api/get_agent_and_hub_details.json?")
-    suspend fun getRevenueAgentHubDetails(
-        @Query("api_key") apikey: String,
-        @Query("from") from: String,
-        @Query("to") to: String,
-        @Query("hub_id") hubId: String?,
-        @Query("agent_id") routeId: String,
-        @Query("journey_by") journeyBY: String,
-    ): Response<ServiceWiseRevenueData?>
 
 
     @GET("v1/api/get_hub_list.json?")
