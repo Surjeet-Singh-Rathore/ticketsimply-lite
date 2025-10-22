@@ -573,10 +573,6 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.view.activity.OccupancyGridActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.view.activity.SearchActiveInactiveServiceActivity"
             android:exported="true"
             android:screenOrientation="portrait" />

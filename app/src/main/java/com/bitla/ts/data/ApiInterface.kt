@@ -128,7 +128,6 @@ import com.bitla.ts.domain.pojo.fetch_notification.request.FetchNotificationMode
 import com.bitla.ts.domain.pojo.frequent_traveller_model.response.FrequentTravellerDataResponse
 import com.bitla.ts.domain.pojo.getCouponDiscount.GetCouponDiscountRequest
 import com.bitla.ts.domain.pojo.getCouponDiscount.Response.GetCouponDetailResponse
-import com.bitla.ts.domain.pojo.get_destination_list.response.GetDestinationListResponse
 import com.bitla.ts.domain.pojo.instant_recharge.AgentPGDataResponse
 import com.bitla.ts.domain.pojo.instant_recharge.GetAgentRechargeResponse
 import com.bitla.ts.domain.pojo.location_logs.LocationLogs
@@ -143,10 +142,6 @@ import com.bitla.ts.domain.pojo.manage_account_view.show_transaction_list.respon
 import com.bitla.ts.domain.pojo.manage_account_view.transaction_info.response.TransactionInformationResponse
 import com.bitla.ts.domain.pojo.manage_account_view.update_account_status.request.UpdateAccountStatusRequest
 import com.bitla.ts.domain.pojo.manage_account_view.update_account_status.response.UpdateAccountStatusResponse
-import com.bitla.ts.domain.pojo.merge_bus_seat_mapping.request.MergeBusSeatMappingRequest
-import com.bitla.ts.domain.pojo.merge_bus_seat_mapping.response.MergeBusSeatMappingResponse
-import com.bitla.ts.domain.pojo.merge_bus_shift_passenger.request.MergeBusShiftPassengerRequest
-import com.bitla.ts.domain.pojo.merge_bus_shift_passenger.response.MergeBusShiftPassengerResponse
 import com.bitla.ts.domain.pojo.move_to_extra_seat.MoveToExtraSeat
 import com.bitla.ts.domain.pojo.move_to_normal_seats.MoveToNormalSeatRequest
 import com.bitla.ts.domain.pojo.multiple_shift_passenger.MultiShiftPassengerResponse
@@ -178,7 +173,6 @@ import com.bitla.ts.domain.pojo.quick_book_chile.response.quickbook_service_deta
 import com.bitla.ts.domain.pojo.quota_blocking_tooltip_Info_model.response.QuotaBlockingTooltipInfoResponse
 import com.bitla.ts.domain.pojo.rapid_booking.RapidBookingModel
 import com.bitla.ts.domain.pojo.rapid_booking.request.RapidBookingRequest
-import com.bitla.ts.domain.pojo.recommended_seats.response.RecommendedSeatsResponse
 import com.bitla.ts.domain.pojo.redelcom.ReqBodyPrint
 import com.bitla.ts.domain.pojo.redelcom.ResponseBodyPG
 import com.bitla.ts.domain.pojo.release_partial_booked.ReleasePartialBookedTicket
@@ -225,7 +219,6 @@ import com.bitla.ts.domain.pojo.validate_otp_wallets.ValidateOtpWalletsModel
 import com.bitla.ts.domain.pojo.viewSummary.ViewSummaryResonse
 import com.bitla.ts.domain.pojo.wallet_otp_generation.WalletOtpGenerationModel
 import com.bitla.ts.phase2.dashboard_pojo.occupancyCalendarModel.response.OccupancyCalendarResponse
-import com.bitla.ts.presentation.view.merge_bus.pojo.ShiftToServicesListResponse
 import com.google.gson.JsonElement
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -2181,66 +2174,6 @@ interface ApiInterface {
        @Body reqBody: Any
     ): Response<UpdateTripResponse>
 
-
-
-
-
-    @GET("/v1/api/shift_to_services?is_from_middle_tier=true")
-    suspend fun getMergeBusShiftToServices(
-        @Query("origin_id") origin_id: String,
-        @Query("destination_id") destination_id: String,
-        @Query("travel_date") travel_date: String,
-        @Query("api_key") api_key: String,
-        @Query("response_format") response_format: String,
-        @Query("locale") locale: String,
-        @Query("old_res_id") old_res_id: String,
-    ): Response<ShiftToServicesListResponse>
-
-    @GET("/v1/api/recommended_seats?is_from_middle_tier=true&json_format=true&operator_api_key=BITLA@123")
-    suspend fun getMergeBusRecommendedSeats(
-        @Query("api_key") apiKey: String?,
-        @Query("res_id") resId: String?,
-        @Query("pnr_number") pnrNumber: String?,
-        @Query("origin_id") originId: String?,
-        @Query("destination_id") destinationId: String?,
-        @Query("exclude_passenger_details") excludePassengerDetails: Boolean?,
-        @Query("locale") locale: String?,
-    ): Response<RecommendedSeatsResponse>
-
-    @GET("/v1/api/merge_service_details?is_from_middle_tier=true&json_format=true&operator_api_key=BITLA@123")
-    suspend fun getMergeServiceDetails(
-        @Query("api_key") apiKey: String?,
-        @Query("res_id") resId: String?,
-        @Query("origin_id") originId: String?,
-        @Query("destination_id") destinationId: String?,
-        @Query("exclude_passenger_details") excludePassengerDetails: Boolean?,
-        @Query("locale") locale: String?,
-    ): Response<com.example.buscoach.service_details_response.ServiceDetailsModel>
-
-
-    @POST("/v1/api/merge_bus_shift_passenger")
-    suspend fun mergeBusShiftPassenger(
-        @Query("api_key") apiKey: String?,
-        @Body mergeBusShiftPassengerRequest: MergeBusShiftPassengerRequest
-    ): Response<MergeBusShiftPassengerResponse>
-
-    @POST("/v1/api/merge_bus_seat_mapping")
-    suspend fun mergeBusSeatMapping(
-        @Query("api_key") apiKey: String?,
-        @Body mergeBusSeatMappingRequest: MergeBusSeatMappingRequest
-    ): Response<MergeBusSeatMappingResponse>
-
-
-    @POST("/v1/api/add_bp_dp_to_service")
-    suspend fun addBpDpToService(
-        @Body addBpDpRequest: AddBpDpToServiceRequest
-    ): Response<AddBpDpToServiceResponse>
-
-    @GET("/v1/api/get_destination_list.json")
-    suspend fun getDestinationList(
-        @Query("api_key") apiKey: String?,
-        @Query("reservation_id") reservationId: String?
-    ): Response<GetDestinationListResponse>
 
 
     @GET("v1/api/get_destination_list.json?is_from_middle_tier=true")

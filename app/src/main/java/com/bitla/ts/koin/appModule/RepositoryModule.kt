@@ -89,7 +89,6 @@ val RepositoryModule = module {
     single { UpdateCoachTypeRepository(get()) }
     single { RouteManagerRepository(get()) }
     single { SelfAuditRepository(get()) }
-    single { MergeBusShiftRepository(get()) }
     single { MoveQuotaBlockSeatRepository(get()) }
 
     single { MultipleServicesManageFareRepository(get()) }
