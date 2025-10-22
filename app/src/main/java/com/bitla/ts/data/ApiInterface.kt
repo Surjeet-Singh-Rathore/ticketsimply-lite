@@ -844,11 +844,6 @@ interface ApiInterface {
         @Body allotedServiceRequest: AllotedServiceRequest
     ): Response<AllotedServicesResponseModel>
 
-    @GET("bus_operator_app/api/alloted_services?is_from_middle_tier=true")
-    suspend fun getNewAllotedServices(
-        @Query("api_key") api_key: String,
-        @Query("travel_date") travel_date: String
-    ): Response<AllotedServicesResponseModel>
 
 
     @GET("api/cities.json?is_from_middle_tier=true")
@@ -1402,13 +1397,7 @@ interface ApiInterface {
         @Query("agent_id") agentId: String?,
         @Query("branch_id") branchId: String?,
     ): Response<AgentAccountInfoRespnse>
-
-    @Headers("Content-Type: application/json")
-    @POST("api/dashboard_fetch.json")
-    suspend fun newDashBoardFetch(
-        @Body dashboardFetchRequest: com.bitla.ts.domain.pojo.dashboard_fetch.request.ReqBody
-    ): Response<DashboardFetchResponse>
-
+    
 
     @Headers("Content-Type: application/json")
     @GET("bus_operator_app/api/get_frequent_travellers_data?is_from_middle_tier=true")
