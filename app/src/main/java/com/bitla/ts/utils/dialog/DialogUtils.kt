@@ -48,14 +48,12 @@ import com.bitla.ts.domain.pojo.my_bookings.response.Filter
 import com.bitla.ts.domain.pojo.pickup_chart_crew_details.response.*
 import com.bitla.ts.domain.pojo.privilege_details_model.response.child_model.*
 import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.*
-import com.bitla.ts.domain.pojo.recommended_seats.response.*
 import com.bitla.ts.domain.pojo.redelcom.*
 import com.bitla.ts.domain.pojo.service_details_response.*
 import com.bitla.ts.domain.pojo.ticket_details.response.*
 import com.bitla.ts.domain.pojo.ticket_details.response.Body
 import com.bitla.ts.domain.pojo.ticket_details_menu.*
 import com.bitla.ts.domain.pojo.update_rate_card.multistation_wise_fare.response.*
-import com.bitla.ts.domain.pojo.user.*
 import com.bitla.ts.domain.pojo.view_reservation.*
 import com.bitla.ts.presentation.adapter.*
 import com.bitla.ts.presentation.adapter.NewSortByAdaper.MultiSeatLuggageAdapter
@@ -71,26 +69,17 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.bottomsheet.*
-import com.google.android.material.slider.*
-import com.kizitonwose.calendarview.model.*
-import com.kizitonwose.calendarview.ui.*
-import com.kizitonwose.calendarview.utils.*
-import daysOfWeekFromLocale
 import gone
-import invisible
 import layoutInflater
 import setMaxLength
 import setSafeOnClickListener
-import setTextColorRes
 import timber.log.*
 import toast
 import visible
 import java.text.*
-import java.time.*
-import java.time.format.*
 import java.util.*
 import java.util.concurrent.*
-import kotlin.math.*
+
 
 
 class DialogUtils {
@@ -1022,38 +1011,6 @@ class DialogUtils {
                 //finish()
             }
             //builder.setView(dialogLayout)
-            builder.setView(binding.root)
-            builder.show()
-        }
-
-        fun switchUserDialog(
-            context: Context,
-            userList: List<User>,
-            onItemClick: ((user: User) -> Unit),
-            onAddAccountClick: (() -> Unit),
-        ) {
-
-            val builder = AlertDialog.Builder(context).create()
-            val binding: DialogSwitchUserBinding =
-                DialogSwitchUserBinding.inflate(LayoutInflater.from(context))
-            builder.setCancelable(true)
-
-            val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            binding.rvSwitchUser.layoutManager = layoutManager
-            val switchUserAdapter = SwitchUserAdapter(context, userList) {
-                onItemClick.invoke(it)
-                builder.cancel()
-            }
-            binding.rvSwitchUser.adapter = switchUserAdapter
-
-            binding.tvAddAccount.setOnClickListener {
-                if (userList.size < 7) {
-                    builder.cancel()
-                    onAddAccountClick.invoke()
-                } else {
-                    context.toast(context.getString(R.string.youCanAddMaxSevenUsers))
-                }
-            }
             builder.setView(binding.root)
             builder.show()
         }
@@ -7100,152 +7057,6 @@ class DialogUtils {
         }
 
 
-        builder.setView(binding.root)
-        builder.show()
-    }
-
-
-
-
-
-    fun dialogAddBpDpValidation(
-        context: Context,
-        title: String,
-        message: String,
-        addBpDpCallBack: ((pnrNumber: String) -> Unit),
-        onCancelClick: (() -> Unit),
-    ) {
-        val builder = AlertDialog.Builder(context).create()
-        builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val binding: DialogTwoButtonsBinding =
-            DialogTwoButtonsBinding.inflate(LayoutInflater.from(context))
-        builder.setCancelable(false)
-
-        binding.btnLeft.setOnClickListener {
-            onCancelClick.invoke()
-            builder.cancel()
-        }
-
-        binding.btnRight.setOnClickListener {
-            builder.cancel()
-            addBpDpCallBack.invoke("")
-        }
-        binding.btnLeft.text=context.getString(R.string.goBack)
-        binding.btnRight.text=context.getString(R.string.proceed)
-        binding.tvTitle.text=title
-        //binding.tvContent.text=message
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            // FROM_HTML_MODE_LEGACY is the behaviour that was used for versions below android N
-            // we are using this flag to give a consistent behaviour
-            binding.tvContent.text =
-                Html.fromHtml(message, Html.FROM_HTML_MODE_LEGACY)
-        }
-        else {
-            binding.tvContent.text = Html.fromHtml(message)
-        }
-        builder.setView(binding.root)
-        builder.show()
-
-    }
-
-
-    fun dialogAddBpDp(
-        context: Context,
-        title: String,
-        hitAddBpDpApi: (pnrNumber: String,boardingTime:String,droppingTime:String) -> Unit,
-        recommendedSeatsResponse: RecommendedSeatsResponse?,
-        onCancelClick: (() -> Unit),
-        ) {
-        val builder = AlertDialog.Builder(context).create()
-        builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        val binding: DialogAddBpDpBinding =
-            DialogAddBpDpBinding.inflate(LayoutInflater.from(context))
-        builder.setCancelable(false)
-
-        recommendedSeatsResponse?.let {
-            when {
-                it.isDifferentBp == true && it.isDifferentDp == true -> {
-                    binding.boardingLayout.visible()
-                    binding.droppingLayout.visible()
-
-                    binding.etBoardingCity.setText(it.sourceInfo?.name?:"")
-                    binding.bpET.setText(it.boardingPointInfo?.name?:"")
-                    binding.boardingHoursACT.setText(it.boardingPointInfo?.timeHH)
-                    binding.boardingMinutesACT.setText(it.boardingPointInfo?.timeMM)
-
-
-                    binding.etDroppingCity.setText(it.destinationInfo?.name?:"")
-                    binding.dpET.setText(it.dropOffDetails?.name?:"")
-                    binding.droppingHoursACT.setText(it.dropOffDetails?.timeHH)
-                    binding.droppingMinutesACT.setText(it.dropOffDetails?.timeMM)
-                }
-                it.isDifferentBp==true && it.isDifferentDp==false -> {
-
-                    binding.etBoardingCity.setText(it.sourceInfo?.name?:"")
-                    binding.bpET.setText(it.boardingPointInfo?.name?:"")
-                    binding.boardingHoursACT.setText(it.boardingPointInfo?.timeHH)
-                    binding.boardingMinutesACT.setText(it.boardingPointInfo?.timeMM)
-
-                    binding.etDroppingCity.setText(it.destinationInfo?.name?:"")
-                    binding.dpET.setText(it.dropOffDetails?.name?:"")
-                    binding.droppingHoursACT.setText(it.dropOffDetails?.timeHH)
-                    binding.droppingMinutesACT.setText(it.dropOffDetails?.timeMM)
-
-
-
-                    binding.boardingLayout.visible()
-                    binding.droppingLayout.gone()
-                }
-                it.isDifferentDp==true && it.isDifferentBp==false -> {
-
-
-                    binding.etBoardingCity.setText(it.sourceInfo?.name?:"")
-                    binding.bpET.setText(it.boardingPointInfo?.name?:"")
-                    binding.boardingHoursACT.setText(it.boardingPointInfo?.timeHH)
-                    binding.boardingMinutesACT.setText(it.boardingPointInfo?.timeMM)
-
-                    binding.etDroppingCity.setText(it.destinationInfo?.name?:"")
-                    binding.dpET.setText(it.dropOffDetails?.name?:"")
-                    binding.droppingHoursACT.setText(it.dropOffDetails?.timeHH)
-                    binding.droppingMinutesACT.setText(it.dropOffDetails?.timeMM)
-
-
-                    binding.boardingLayout.gone()
-                    binding.droppingLayout.visible()
-                }
-            }
-
-
-        }
-
-        val hoursList = arrayListOf<String>()
-
-        for (hour in 0..23) {
-            val formattedHour = String.format("%02d:00", hour)
-            hoursList.add(formattedHour)
-        }
-
-        binding.boardingHoursACT.setAdapter(ArrayAdapter(context, R.layout.child_city_list,R.id.city_name, hoursList))
-        binding.boardingMinutesACT.setAdapter(ArrayAdapter(context,R.layout.child_city_list,R.id.city_name, generateMinuteList()))
-
-
-        binding.droppingHoursACT.setAdapter(ArrayAdapter(context, R.layout.child_city_list,R.id.city_name, hoursList))
-        binding.droppingMinutesACT.setAdapter(ArrayAdapter(context,R.layout.child_city_list,R.id.city_name, generateMinuteList()))
-
-
-        binding.btnLeft.setOnClickListener {
-            onCancelClick.invoke()
-            builder.cancel()
-        }
-
-        binding.btnRight.setOnClickListener {
-            builder.cancel()
-            hitAddBpDpApi.invoke("",binding.boardingHoursACT.text.toString()+":"+binding.boardingMinutesACT.text.toString(),binding.droppingHoursACT.text.toString()+":"+binding.droppingMinutesACT.text.toString())
-        }
-        binding.btnLeft.text=context.getString(R.string.goBack)
-        binding.btnRight.text=context.getString(R.string.proceed)
-        binding.tvTitle.text=title
         builder.setView(binding.root)
         builder.show()
     }

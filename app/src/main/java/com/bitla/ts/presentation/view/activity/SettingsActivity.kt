@@ -91,12 +91,6 @@ class SettingsActivity : BaseActivity(),
         }
 
 
-        binding.selectLandingPage.setOnClickListener {
-            val intent = Intent(this, LandingPageActivity::class.java)
-            intent.putExtra(getString(R.string.landing_page_key), getString(R.string.landing_page))
-            resultLauncher.launch(intent)
-        }
-
         binding.printTypeLL.setOnClickListener{
             val intent = Intent(this, PrinterTypeActivity::class.java)
             startActivity(intent)
@@ -118,24 +112,9 @@ class SettingsActivity : BaseActivity(),
             startActivity(intent)
 
         }
-//        binding.layoutSendError.setOnClickListener {
-//            binding.includeProgress.progressBar.visible()
-//            if (!PreferenceUtils.getLogFileNames().isNullOrEmpty()) {
-//                PreferenceUtils.getLogFileNames()?.forEach {
-//                    readFileData(it)
-//                }
-//            } else
-//                Timber.d("log file not found")
-//        }
 
 
-        val selectedLandingPage =
-            PreferenceUtils.getString(getString(R.string.landing_page)).toString()
-        if (selectedLandingPage.isEmpty()) {
-            binding.viewSelectionLandingPage.text = getString(R.string.bookings)
-        } else {
-            binding.viewSelectionLandingPage.text = selectedLandingPage
-        }
+
 
         val previledeData = getPrivilegeBase()
 
@@ -431,15 +410,6 @@ class SettingsActivity : BaseActivity(),
             param(FINGERPRINT_OPTION, fingerprint_option)
         }
     }
-
-    private var resultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val selectedLandingPageName =
-                    result.data?.getStringExtra(getString(R.string.landing_page_key)).toString()
-                binding.viewSelectionLandingPage.text = selectedLandingPageName
-            }
-        }
 
     override fun onErrorCheckListener(isSendErrorReportEnable: Boolean?) {
             if (!privilegeResponseModel?.country.isNullOrEmpty() && privilegeResponseModel?.country.equals(

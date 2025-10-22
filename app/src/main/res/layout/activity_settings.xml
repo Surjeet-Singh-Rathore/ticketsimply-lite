@@ -186,40 +186,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/selectLandingPage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/layout_rounded_shape"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/subTextLandingPage"
-                    style="@style/TextStyleBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/landing_page"
-                    android:textColor="@color/grey" />
-
-                <TextView
-                    android:id="@+id/viewSelectionLandingPage"
-                    style="@style/TextStyleBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/bookings"
-                    android:textColor="@color/colorButton" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/printTypeLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

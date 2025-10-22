@@ -340,10 +340,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.view.activity.PaymentGatewayActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.view.activity.InterCityAgentActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -577,15 +573,7 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.view.activity.OccupancyGridActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.view.activity.SearchActiveInactiveServiceActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.view.activity.SearchAgentActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity

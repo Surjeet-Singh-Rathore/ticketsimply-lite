@@ -149,7 +149,6 @@ class DashboardNavigateActivity : BaseActivity(),
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var menuList: MutableList<NavMenuModel>
-    private lateinit var navigationMenuAdapter: NavigationMenuAdapter
     private var currentUser: LoginModel = LoginModel()
     private val dashboardViewModel by viewModel<DashboardViewModel<Any>>()
     private val userViewModel: UserViewModel by viewModels()
@@ -631,7 +630,7 @@ class DashboardNavigateActivity : BaseActivity(),
         addVerifyUsers()
         encryptDecryptDeviceId()
         setAddUserTextOnChangeObserver()
-        getAllUserObserver()
+
         userViewModel.getCurrentUser()
         getCurrentUserObserver()
         restartActivityObserver()
@@ -1269,7 +1268,6 @@ class DashboardNavigateActivity : BaseActivity(),
         }
 
 
-        setNavAdapter()
         setBottomBarOptions()
         findNavController(R.id.nav_host_fragment).navigate(R.id.pickup_fragment)
         setToolbarTitle(getString(R.string.pickup_chart))
@@ -1402,7 +1400,6 @@ class DashboardNavigateActivity : BaseActivity(),
         binding.layoutVerifyOtp.tvBack.setOnClickListener(this)
         binding.layoutVerifyOtp.textResendOtp.setOnClickListener(this)
         binding.appBar.layoutPnr.setOnClickListener(this)
-        binding.ivSwitchUser.setOnClickListener(this)
         binding.layoutAddUserData.root.setOnClickListener(this)
         binding.layoutVerifyOtp.root.setOnClickListener(this)
         binding.refreshCreditIV.setOnClickListener(this)
@@ -1497,10 +1494,6 @@ class DashboardNavigateActivity : BaseActivity(),
                 startActivity(intent)
             }
 
-            R.id.ivSwitchUser -> {
-                userViewModel.getAllUsers()
-            }
-
             R.id.refreshCreditIV -> {
                 callCreditInfoApi()
             }
@@ -1527,121 +1520,6 @@ class DashboardNavigateActivity : BaseActivity(),
 
     fun checkForVehicleDocument(bool: Boolean) {
         allowToViewTheCoachDocument = bool
-    }
-
-    fun setNavAdapter() {
-        menuList = mutableListOf()
-        if (manageBranchAccounting || showManageAgentAccountLinkInAccount) {
-            menuList.add(
-                NavMenuModel(
-                    resources.getString(R.string.recharge), R.drawable.ic_recharge
-                )
-            )
-        }
-
-        val role = getUserRole(
-            currentUser,
-            isAgentLogin = privilegeResponse?.isAgentLogin ?: false,
-            this
-        )
-
-        if (role == getString(R.string.role_agent) && agentInstantRecharge && privilegeResponse?.rechargeTypes?.instantRecharge == true) {
-            menuList.add(
-                NavMenuModel(
-                    resources.getString(R.string.recharge),
-                    R.drawable.ic_recharge
-                )
-            )
-        }
-
-        if (privilegeResponse?.country.equals("india", true)) {
-            if (showManageAgentAccountLinkInAccount || manageBranchAccounting) {
-                menuList.add(
-                    NavMenuModel(
-                        resources.getString(R.string.manage_account), R.drawable.ic_manage_acc
-                    )
-                )
-            }
-        }
-
-
-        if (privilegeResponse?.isAgentLogin == true && !privilegeResponse?.country.equals(
-                "india", true
-            )
-        ) {
-            val index = menuList.indexOfFirst {
-                it.title == getString(R.string.account_details)
-            }
-
-            if (index == -1) {
-                menuList.add(
-                    NavMenuModel(
-                        getString(R.string.account_details), R.drawable.baseline_account_circle_24
-                    )
-                )
-            }
-        }
-
-        if (privilegeResponse?.tsPrivileges?.allowFareChangeForMultipleServices == true) {
-            menuList.add(
-                NavMenuModel(
-                    getString(R.string.fare_change_multiple_services),
-                    R.drawable.ic_recharge
-                )
-            )
-        }
-
-
-        binding.navRecyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        navigationMenuAdapter = NavigationMenuAdapter(this, menuList) {
-            when (it) {
-                resources.getString(R.string.recharge) -> {
-                    val role = getUserRole(
-                        currentUser,
-                        isAgentLogin = privilegeResponse?.isAgentLogin ?: false,
-                        this
-                    )
-                    if (role == getString(R.string.role_agent)) {
-                        val intent = Intent(this, InstantRechargeActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        val intent = Intent(this, RechargeActivity::class.java)
-                        this.startActivity(intent)
-                    }
-
-                }
-
-                getString(R.string.manage_account) -> {
-                    val intent = Intent(this, ManageAccountActivity::class.java)
-                    startActivity(intent)
-                }
-
-
-                getString(R.string.account_details) -> {
-
-                    firebaseLogEvent(
-                        this,
-                        ACCOUNT_DETAILS,
-                        currentUser.userName,
-                        currentUser.travels_name,
-                        currentUser.role,
-                        ACCOUNT_DETAILS,
-                        ACCOUNT_DETAILS_HAMBURGER_MENU
-                    )
-
-                    val intent = Intent(this, AccountDetailsActivity::class.java)
-                    startActivity(intent)
-                }
-
-                getString(R.string.fare_change_multiple_services) -> {
-                    val intent = Intent(this, MultipleServicesManageFareActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-            openCloseNavigationDrawer()
-        }
-        binding.navRecyclerView.adapter = navigationMenuAdapter
     }
 
     private fun callLogoutApi(closeCounter: Boolean = false) {
@@ -1756,35 +1634,7 @@ class DashboardNavigateActivity : BaseActivity(),
 
             R.id.pickup_fragment -> {
                 PreferenceUtils.putObject(true, "callAPI_onCLICK")
-
-                if (::navigationMenuAdapter.isInitialized) {
-                    setToolbarTitle(getString(R.string.pickup_chart))
-                    navigationMenuAdapter.menuColorChange(2)
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.pickup_fragment)
-                    binding.appBar.notificationImg.gone()
-                    binding.appBar.calendarImg.gone()
-                    back = true
-                    PreferenceUtils.putString(
-                        PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.pick_up_chart)
-                    )
-                }
             }
-
-//            R.id.report_fragment -> {
-//                PreferenceUtils.putObject(true, "callAPI_onCLICK")
-//
-//                if (::navigationMenuAdapter.isInitialized) {
-//                    setToolbarTitle(getString(R.string.reports))
-//                    navigationMenuAdapter.menuColorChange(3)
-//                    findNavController(R.id.nav_host_fragment).navigate(R.id.report_fragment)
-//                    back = true
-//                    binding.appBar.notificationImg.gone()
-//                    binding.appBar.calendarImg.gone()
-//                    PreferenceUtils.putString(
-//                        PREF_DASHBOARD_NAVIGATE_SCREEN, getString(R.string.reports)
-//                    )
-//                }
-//            }
         }
         return true
     }
@@ -2166,17 +2016,7 @@ class DashboardNavigateActivity : BaseActivity(),
         }
     }
 
-    private fun getAllUserObserver() {
-        userViewModel.getAllUsers.observe(this) {
 
-            if (it.isEmpty()) {
-                openDomainActivity()
-            } else {
-                userList = it
-                openSwitchUserDialog(userList.toMutableList())
-            }
-        }
-    }
 
     private fun setLoggedInUserNavDrawerData(user: User) {
         binding.navTextUserName.text = user.name
@@ -2292,33 +2132,6 @@ class DashboardNavigateActivity : BaseActivity(),
             })
     }
 
-    private fun openSwitchUserDialog(userList: List<User>) {
-        dashboardViewModel.isResetUserCall = false
-        DialogUtils.switchUserDialog(this, userList, onItemClick = {
-            openCloseNavigationDrawer()
-            if (userList.size > 1) {
-                username = it.username ?: ""
-                password = it.password
-                domain = it.domainName
-
-                lastCounterUserName = username
-                lastCounterPassword = password
-                lastCounterDomain= domain
-                PreferenceUtils.setPreference(PREF_IS_ENCRYPTED, it.isEncryptionEnabled)
-
-                updateBaseURL(domain)
-                dashboardViewModel.isResetUserCall = true
-                callDomainApi()
-//                callResetApi(username, password)
-            }
-        }, onAddAccountClick = {
-            openCloseNavigationDrawer()
-            binding.layoutAddUserData.root.visible()
-            binding.layoutAddUserData.etDomain.setText(
-                domain
-            )
-        })
-    }
 
     private fun restartActivityObserver() {
         userViewModel.restartActivity.observe(this) {

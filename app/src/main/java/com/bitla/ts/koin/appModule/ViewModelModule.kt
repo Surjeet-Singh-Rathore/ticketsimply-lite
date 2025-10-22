@@ -92,17 +92,14 @@ val ViewModelModule = module {
     viewModel { BookingSummaryViewModel<Any?>(get()) }
     viewModel { StagingSummaryViewModel<Any?>(get()) }
     viewModel { OccupancyGridViewModel<Any?>(get()) }
-    viewModel { DashboardRevenueViewModel<Any?>(get()) }
     viewModel { BlackListViewModel<Any?>(get()) }
 
-    viewModel { MergeBusSharedViewModel(get())}
 
     single { SingleViewModel<Any?>() }
 
     single { AddRateCardSingleViewModel<Any?>() }
 
     viewModel { AddRateCardViewModel<Any?>(get()) }
-    viewModel { MergeBusShiftPassengerViewModel<Any?>(get()) }
 
     viewModel { BusTrackingViewModel<Any?>() }
     viewModel { RestaurantViewModel(get()) }
@@ -112,5 +109,4 @@ val ViewModelModule = module {
     viewModel { RouteManagerViewModel<Any?>(get()) }
     viewModel { MoveQuotaBlockSeatViewModel<Any?>(get()) }
 
-    viewModel { MultipleServicesManageFareViewModel(get()) }
 }
