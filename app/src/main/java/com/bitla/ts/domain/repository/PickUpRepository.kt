@@ -158,21 +158,6 @@ class PickUpRepository(private val apiInterface: ApiInterface) {
         )
     }
 
-    suspend fun newViewReservationServiceForCheckingInspector(
-        apiKey: String,
-        resId: String,
-        cityId: Int,
-        chartType: String,
-        locale: String
-    ) = makeApiCall {
-        apiInterface.newGetViewReservationForCheckingInspector(
-            apiKey,
-            resId,
-            cityId,
-            chartType,
-            locale
-        )
-    }
 
 
     suspend fun newUpdateBoardedStatusService(
@@ -279,30 +264,10 @@ class PickUpRepository(private val apiInterface: ApiInterface) {
     }
 
 
-
-
-
-    suspend fun newUpdateRateCardFareService(
-        updateRateCardFareRequest: com.bitla.ts.domain.pojo.update_rate_card.update_rate_card_fare.request.ReqBody
-
-    ) = makeApiCall { apiInterface.newUpdateRateCardFareApi(updateRateCardFareRequest) }
-
-    suspend fun newUpdateRateCardFare(
-        updateRateCardFareRequest: com.bitla.ts.domain.pojo.update_rate_card.update_rate_card_fare.request.ReqBodyNew
-
-    ) = makeApiCall { apiInterface.newUpdateRateCardFareApiX(updateRateCardFareRequest) }
-
-
     suspend fun updateRateCardTimeService(
         updateRateCardTimeRequest: com.bitla.ts.domain.pojo.update_rate_card.update_rate_card_time.request.ReqBody
 
     ) =  makeApiCall {  apiInterface.newUpdateRateCardTimeApi(updateRateCardTimeRequest) }
-
-
-    suspend fun newUpdateRateCardCommissionService(
-        reqBody: com.bitla.ts.domain.pojo.update_rate_card.update_rate_card_commission.request.ReqBody
-
-    ) = makeApiCall { apiInterface.newUpdateRateCardCommissionApi(reqBody) }
 
 
     suspend fun newFetchMultiStatioWiseFareService(
@@ -362,17 +327,6 @@ class PickUpRepository(private val apiInterface: ApiInterface) {
     ) = makeApiCall { apiInterface.newCloseChartByCity(reqBody) }
 
 
-
-    suspend fun fetchFareTemplateApi(
-        reqBody: com.bitla.ts.domain.pojo.update_rate_card.fetch_fare_template.request.ReqBody
-    ) = makeApiCall {
-        apiInterface.fetchFareTemplateApi(
-            apikey = reqBody.apiKey,
-            templateId = reqBody.templateId,
-            locale = reqBody.locale!!
-        )
-    }
-
     suspend fun updateTripStatusApi(
         reqBody: Any
     ) = makeApiCall {
@@ -381,10 +335,6 @@ class PickUpRepository(private val apiInterface: ApiInterface) {
         )
     }
 
-    suspend fun createFareTemplateService(
-        reqBody: com.bitla.ts.domain.pojo.update_rate_card.create_fare_template.request.ReqBody
-
-    ) = makeApiCall { apiInterface.createFareTemplateApi(reqBody) }
 
     suspend fun updateLuggageOptionIntlApi(
         reqBody: com.bitla.ts.domain.pojo.luggage_details.request.ReqBody

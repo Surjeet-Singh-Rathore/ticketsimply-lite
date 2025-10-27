@@ -350,30 +350,6 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
         }
     }
 
-//    fun allotedServiceApiDirect(
-//        is_group_by_hubs: Boolean,
-//        hub_id: Int?,
-//        travel_date: String,
-//        Apikey: String,
-//        page: Int?= null,
-//        per_page: Int?= null,
-//        view_mode: String,
-//        pagination: Boolean,
-//        origin: Int?,
-//        destination: Int?
-//    ) {
-//      
-//        _loadingState.postValue(LoadingState.LOADING)
-//
-//        viewModelScope.launch(Dispatchers.IO) {
-//            _dataAllotedServiceDirect.postValue(
-//                pickUpRepository.getNewAllotedService(
-//                   is_group_by_hubs, hub_id, travel_date, Apikey, page, per_page, view_mode, pagination, origin, destination
-//                ).body()
-//            )
-//        }
-//    }
-
     fun getCoachList(apiKey: String, routeId: String) {
         _loadingState.postValue(LoadingState.LOADING)
 
@@ -779,44 +755,6 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
         }
     }
 
-    fun viewReservationCheckingInspectorAPI(
-        apiKey: String,
-        resId: String,
-        cityId: Int,
-        chartType: String,
-        locale: String,
-        apiType: String,
-    ) {
-
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-
-            pickUpRepository.newViewReservationServiceForCheckingInspector(
-                apiKey,
-                resId,
-                cityId,
-                chartType,
-                locale
-            ).collect {
-                when (it) {
-                    is NetworkProcess.Loading -> {}
-                    is NetworkProcess.Success -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        _viewReservationResponse.postValue(
-                            it.data
-                        )
-                    }
-
-                    is NetworkProcess.Failure -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        messageSharedFlow.emit(it.message)
-                    }
-                }
-            }
-        }
-    }
-
 
     fun updateBoardedStatusAPI(
         updateBoardedStatusRequest: com.bitla.ts.domain.pojo.update_boarded_status.ReqBody,
@@ -1096,63 +1034,6 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
     }
 
 
-    fun updateRateCardFareApi(
-        updateRateCardFareRequest: com.bitla.ts.domain.pojo.update_rate_card.update_rate_card_fare.request.ReqBody,
-        apiType: String,
-    ) {
-
-        _loadingState.postValue(LoadingState.LOADING)
-        viewModelScope.launch(Dispatchers.IO) {
-            pickUpRepository.newUpdateRateCardFareService(
-                updateRateCardFareRequest
-            ).collect {
-                when (it) {
-                    is NetworkProcess.Loading -> {}
-                    is NetworkProcess.Success -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        _updateRateCardFareResponse.postValue(
-                            it.data
-                        )
-                    }
-
-                    is NetworkProcess.Failure -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        messageSharedFlow.emit(it.message)
-                    }
-                }
-            }
-        }
-    }
-
-    fun updateRateCardFareApiNew(
-        updateRateCardFareRequest: com.bitla.ts.domain.pojo.update_rate_card.update_rate_card_fare.request.ReqBodyNew,
-        apiType: String,
-    ) {
-        this.apiType = apiType
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-            pickUpRepository.newUpdateRateCardFare(
-                updateRateCardFareRequest
-            ).collect {
-                when (it) {
-                    is NetworkProcess.Loading -> {}
-                    is NetworkProcess.Success -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        _updateRateCardFareResponse.postValue(
-                            it.data
-                        )
-                    }
-
-                    is NetworkProcess.Failure -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        messageSharedFlow.emit(it.message)
-                    }
-                }
-            }
-        }
-    }
-
     fun updateRateCardTimeApi(
         updateRateCardTimeRequest: com.bitla.ts.domain.pojo.update_rate_card.update_rate_card_time.request.ReqBody,
         apiType: String,
@@ -1182,36 +1063,6 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
         }
     }
 
-
-    fun updateRateCardCommissionApi(
-        updateRateCardCommissionRequest: com.bitla.ts.domain.pojo.update_rate_card.update_rate_card_commission.request.ReqBody,
-        apiType: String,
-    ) {
-
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-            pickUpRepository.newUpdateRateCardCommissionService(
-                updateRateCardCommissionRequest
-            ).collect {
-                when (it) {
-                    is NetworkProcess.Loading -> {}
-                    is NetworkProcess.Success -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        _updateRateCardCommissionResponse.postValue(
-                            it.data
-                        )
-                    }
-
-                    is NetworkProcess.Failure -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        messageSharedFlow.emit(it.message)
-                    }
-                }
-            }
-
-        }
-    }
 
     fun fetchMultiStatioWiseFareApi(
         multiStationWiseFareRequest: com.bitla.ts.domain.pojo.update_rate_card.multistation_wise_fare.request.ReqBody,
@@ -1245,63 +1096,7 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
         Timber.d("PickUpChartViewModel", "multiStationWiseFareRequest: " + json.toString())
     }
 
-    fun fetchFareTemplateDetailsApi(
-        fareTemplateRequest: com.bitla.ts.domain.pojo.update_rate_card.fetch_fare_template.request.ReqBody,
-        apiType: String,
-    ) {
-        this.apiType = apiType
-        _loadingState.postValue(LoadingState.LOADING)
 
-        viewModelScope.launch(Dispatchers.IO) {
-            pickUpRepository.fetchFareTemplateApi(
-                fareTemplateRequest
-            ).collect {
-            when (it) {
-                is NetworkProcess.Loading -> {}
-                is NetworkProcess.Success -> {
-                    _loadingState.postValue(LoadingState.LOADED)
-                    _fetchFareTemplateResponse.postValue(
-                            it.data
-                        )
-                }
-
-                is NetworkProcess.Failure -> {
-                    _loadingState.postValue(LoadingState.LOADED)
-                    messageSharedFlow.emit(it.message)
-                }
-            }
-        }
-        }
-        val gson = GsonBuilder().disableHtmlEscaping().create()
-        val json = gson.toJson(fareTemplateRequest)
-        Timber.d("PickUpChartViewModel", "multiStationWiseFareRequest: " + json.toString())
-    }
-
-    fun createFareTemplateApi(
-        createFareTemplateReqBody: com.bitla.ts.domain.pojo.update_rate_card.create_fare_template.request.ReqBody,
-    ) {
-        _loadingState.postValue(LoadingState.LOADING)
-        viewModelScope.launch(Dispatchers.IO) {
-            pickUpRepository.createFareTemplateService(
-                createFareTemplateReqBody
-            ).collect {
-            when (it) {
-                is NetworkProcess.Loading -> {}
-                is NetworkProcess.Success -> {
-                    _loadingState.postValue(LoadingState.LOADED)
-                    _createFareTemplateResponse .postValue(
-                            it.data
-                        )
-                }
-
-                is NetworkProcess.Failure -> {
-                    _loadingState.postValue(LoadingState.LOADED)
-                    messageSharedFlow.emit(it.message)
-                }
-            }
-        }
-        }
-    }
 
 
     fun manageFareMultiStation(
@@ -1458,25 +1253,6 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
 
         }
     }
-
-    /* fun cityPickupChartByStage(
-         authorization: String,
-         apiKey: String,
-         cityPickupChartByStageRequest: CityPickupChartByStageRequest,
-         apiType: String
-     ) {
-
-         _loadingState.postValue(LoadingState.LOADING)
-         viewModelScope.launch(Dispatchers.IO) {
-             _cityPickupChartByStageResponse.postValue(
-                 pickUpRepository.cityPickupChartByStageService(
-                     authorization,
-                     apiKey,
-                     cityPickupChartByStageRequest
-                 ).body()
-             )
-         }
-     }  */
 
     fun cityPickupChartByStage(
         cityPickupChartByStageRequest: com.bitla.ts.domain.pojo.city_pickup_by_chart_stage.request.ReqBody,
