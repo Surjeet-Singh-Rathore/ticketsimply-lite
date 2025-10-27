@@ -115,34 +115,15 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
     val sendOtpAndQrCodeResponse: LiveData<SendOtqAndQrCodeResponseModel>
         get() = _sendOtpAndQrCodeResponse
 
-    private val _updateRateCardFareResponse = MutableLiveData<UpdateRateCardFareResponse>()
-    val updateRateCardFareResponse: LiveData<UpdateRateCardFareResponse>
-        get() = _updateRateCardFareResponse
-
     private val _updateRateCardTimeResponse = MutableLiveData<UpdateRateCardTimeResponse>()
     val updateRateCardTimeResponse: LiveData<UpdateRateCardTimeResponse>
         get() = _updateRateCardTimeResponse
 
-    private val _updateRateCardCommissionResponse =
-        MutableLiveData<UpdateRateCardCommissionResponse>()
-    val updateRateCardCommissionResponse: LiveData<UpdateRateCardCommissionResponse>
-        get() = _updateRateCardCommissionResponse
 
     private val _fetchMultiStatioWiseFareResponse = MutableLiveData<MultiStationWiseFareResponse>()
     val fetchMultiStatioWiseFareResponse: LiveData<MultiStationWiseFareResponse> get() = _fetchMultiStatioWiseFareResponse
 
-    private val _fetchFareTemplateResponse = MutableLiveData<FetchFareTemplateResponse>()
-    val fetchFareTemplateResponse: LiveData<FetchFareTemplateResponse> get() = _fetchFareTemplateResponse
 
-    private val _createFareTemplateResponse =
-        MutableLiveData<CreateFareTemplateResponse>()
-    val createFareTemplateResponse: LiveData<CreateFareTemplateResponse>
-        get() = _createFareTemplateResponse
-
-    private val _manageMultiStatioWiseFareApi =
-        MutableLiveData<ManageFareMultiStationResponse>()
-    val manageFareMultiStationResponse: LiveData<ManageFareMultiStationResponse>
-        get() = _manageMultiStatioWiseFareApi
 
     private val _updateRateCardSeatWiseResponse = MutableLiveData<UpdateRateCardSeatWiseResponse>()
     val updateRateCardSeatWiseResponse: LiveData<UpdateRateCardSeatWiseResponse>
@@ -218,9 +199,7 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
     val updateTripStatusData: LiveData<UpdateTripResponse>
         get() = _updateTripStatusData
 
-    private val _coachList = MutableLiveData<CoachListResponse>()
-    val coachList: LiveData<CoachListResponse>
-        get() = _coachList
+
 
     private val _updateLuggageOption = MutableLiveData<LuggageOptionsDetailsResponse>()
     val updateLuggageOption: LiveData<LuggageOptionsDetailsResponse> get() = _updateLuggageOption
@@ -238,40 +217,7 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
         privilegesLiveData.value = privileges
     }
 
-    fun allotedServiceAPI(
-        authorization: String,
-        apiKey: String,
-        allotedServiceRequest: AllotedServiceRequest,
-        apiType: String,
-    ) {
 
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-
-            pickUpRepository.allotedService(
-                authorization,
-                apiKey,
-                allotedServiceRequest
-            ).collect {
-                when (it) {
-                    is NetworkProcess.Loading -> {}
-                    is NetworkProcess.Success -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        _allotedDetailResponse.postValue(
-                            it.data
-                        )
-                    }
-
-                    is NetworkProcess.Failure -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        messageSharedFlow.emit(it.message)
-                    }
-                }
-            }
-
-        }
-    }
 
     fun allotedServiceApiDirect(
         allotedRequest: AllotedDirectRequest,
@@ -350,25 +296,6 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
         }
     }
 
-    fun getCoachList(apiKey: String, routeId: String) {
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-            pickUpRepository.getCoachList(apiKey, routeId).collect {
-                when (it) {
-                    is NetworkProcess.Loading -> {}
-                    is NetworkProcess.Success -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        _coachList.postValue(it.data)
-                    }
-                    is NetworkProcess.Failure -> {
-                        _loadingState.postValue(LoadingState.LOADED)
-                        messageSharedFlow.emit(it.message)
-                    }
-                }
-            }
-        }
-    }
 
     fun viewSummaryApi(
         viewSummaryRequest: ViewSummaryRequest,
@@ -1099,37 +1026,7 @@ class PickUpChartViewModel<T : Any?>(private val pickUpRepository: PickUpReposit
 
 
 
-    fun manageFareMultiStation(
-        manageFareMultiStationRequest: com.bitla.ts.domain.pojo.update_rate_card.manage_fare_multistaion.request.ReqBody,
-        apiType: String,
-    ) {
 
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-            pickUpRepository.newManageMultiStatioWiseFareApi(
-                manageFareMultiStationRequest
-            )  .collect {
-            when (it) {
-                is NetworkProcess.Loading -> {}
-                is NetworkProcess.Success -> {
-                    _loadingState.postValue(LoadingState.LOADED)
-                    _manageMultiStatioWiseFareApi .postValue(
-                            it.data
-                        )
-                }
-
-                is NetworkProcess.Failure -> {
-                    _loadingState.postValue(LoadingState.LOADED)
-                    messageSharedFlow.emit(it.message)
-                }
-            }
-        }
-        }
-        val gson = GsonBuilder().disableHtmlEscaping().create()
-        val json = gson.toJson(manageFareMultiStationRequest)
-        Timber.d("PickUpChartViewModel", "manageFareMultiStationApi: " + json.toString())
-    }
 
 
     fun updateRateCardSeatWiseApi(

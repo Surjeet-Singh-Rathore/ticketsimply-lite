@@ -560,55 +560,6 @@ class BusDetailsAdapter(
                                 //
                             }
 
-                        R.id.item_extend_fare_settings -> {
-                            if(!availableRoutesModelItem.is_edit_mode){
-                                try {
-                                    if (position < availableRoutesList.size) {
-                                        val intent = Intent(context, ExtendedFair::class.java)
-                                        intent.putExtra(
-                                            "originID",
-                                            availableRoutesList[position].origin_id
-                                        )
-                                        intent.putExtra(
-                                            "destinationID",
-                                            availableRoutesList[position].destination_id
-                                        )
-                                        intent.putExtra(
-                                            "reservationID",
-                                            availableRoutesList[position].reservation_id
-                                        )
-                                        intent.putExtra(
-                                            "serviceNumber",
-                                            availableRoutesList[position].number
-                                        )
-
-                                        context.startActivity(intent)
-                                        val date = availableRoutesList[position].dep_date.split("/")
-                                        if (date.size > 2) {
-                                            val finalDate = "${date[2]}-${date[1]}-${date[0]}"
-                                            PreferenceUtils.putString("ViewReservation_date", finalDate)
-                                        }
-
-                                        firebaseLogEvent(
-                                            context,
-                                            EXTEND_FARE_SETTINGS,
-                                            loginModelPref.userName,
-                                            loginModelPref.travels_name,
-                                            loginModelPref.role,
-                                            EXTEND_FARE_SETTINGS,
-                                            "Extend Fare Settings - SRP"
-                                        )
-                                    }
-
-                                } catch (e: Exception) {
-                                    Timber.d("Invalid index")
-                                }
-                            }else{
-                                context.toast(context.getString(R.string.this_service_is_under_edit_mode))
-                            }
-
-                        }
-
                         R.id.item_update_rate_card -> {
                             if(!availableRoutesModelItem.is_edit_mode){
                                 if (position < availableRoutesList.size) {

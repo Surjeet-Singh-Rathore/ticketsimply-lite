@@ -1480,19 +1480,7 @@ private var transactionFare: String = ""
             //Edit Reservation Chart GONE
         }
 
-        if (allowToExtendFareForServices) {
-            coachOptionsArray.add(
-                CoachOptionsModel(
-                    coachOption = getString(R.string.extend_fare_settings_options),
-                    coachOptionIcon = ContextCompat.getDrawable(
-                        this, R.drawable.extend_fare_settings_icon_new_booking_flow
-                    )
-                )
-            )
-            // Extend Fare Setting Visible
-        } else {
-            // Extend Fare Setting GONE
-        }
+
 
 
         if (privilegeResponseModel?.allowRapidBookingFlow == true) {
@@ -7053,43 +7041,6 @@ private var transactionFare: String = ""
                         closeToggle()
                     }
 
-                    getString(R.string.extend_fare_settings_options) -> {
-                        try {
-
-                            val intent = Intent(context, ExtendedFair::class.java)
-                            intent.putExtra("originID", serviceDetails?.body?.origin?.id)
-                            intent.putExtra(
-                                "destinationID",
-                                serviceDetails?.body?.destination?.id
-                            )
-                            intent.putExtra("reservationID", reservationId)
-                            intent.putExtra("serviceNumber", serviceDetails?.body?.number)
-
-                            context.startActivity(intent)
-                            val date = serviceDetails?.body?.travelDate!!.split("/")
-                            if (date.size > 2) {
-                                val finalDate = "${date[2]}-${date[1]}-${date[0]}"
-                                PreferenceUtils.putString("ViewReservation_date", finalDate)
-                            }
-
-                            firebaseLogEvent(
-                                context,
-                                EXTEND_FARE_SETTINGS,
-                                loginModelPref.userName,
-                                loginModelPref.travels_name,
-                                loginModelPref.role,
-                                EXTEND_FARE_SETTINGS,
-                                "Extend Fare Settings - SRP"
-                            )
-
-
-                        } catch (e: Exception) {
-                            Timber.d(e.message)
-                        }
-
-
-                    }
-
 
                     getString(R.string.quick_book_option) -> {
                         val intent = Intent(context, QuickBookChileActivity::class.java)
@@ -9490,10 +9441,6 @@ private var transactionFare: String = ""
 
     override fun onOptionMenuClick(option: String) {
         when (option) {
-            getString(R.string.modify_reservation) -> {
-                navigateToModifyFare()
-            }
-
             getString(R.string.seat_wise_fare) -> {
                 navigateToSeatWiseFare()
             }

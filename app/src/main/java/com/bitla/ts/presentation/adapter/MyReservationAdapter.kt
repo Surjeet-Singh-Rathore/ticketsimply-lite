@@ -544,18 +544,6 @@ class MyReservationAdapter(
                             popup.menu.getItem(0).setVisible(false)
                         }
                         if (it.allowToExtendFareForServices) {
-                            if (holder.tvRoutestatus.text.toString()
-                                    .equals(context.getString(R.string.active), true)
-                            ) {
-                                if (holder.btnViewReservationChart.text == context.getString(R.string.locked)) {
-                                    popup.menu.getItem(5).setVisible(false)
-                                } else {
-                                    popup.menu.getItem(5).setVisible(true)
-                                }
-                            } else {
-                                popup.menu.getItem(5).setVisible(false)
-                            }
-                        } else {
                             popup.menu.getItem(5).setVisible(false)
                         }
 
@@ -801,32 +789,6 @@ class MyReservationAdapter(
 
                         }
 
-                        R.id.extend_fare_settings -> {
-                            if(!isEditMode){
-                                val intent = Intent(context, ExtendedFair::class.java)
-                                intent.putExtra("originID", searchList[position].originId.toString())
-                                intent.putExtra(
-                                    "destinationID",
-                                    searchList[position].destinationId.toString()
-                                )
-                                intent.putExtra("reservationID", searchList[position].reservationId)
-                                intent.putExtra("serviceNumber", searchList[position].number)
-                                context.startActivity(intent)
-
-                                firebaseLogEvent(
-                                    context,
-                                    EXTEND_FARE_SETTINGS,
-                                    loginModelPref.userName,
-                                    loginModelPref.travels_name,
-                                    loginModelPref.role,
-                                    EXTEND_FARE_SETTINGS,
-                                    "Extend Fare Settings - PickupCharts"
-                                )
-                            }else{
-                                context.toast(context.getString(R.string.this_service_is_under_edit_mode))
-                            }
-
-                        }
 
                         R.id.send_sms -> {
                             PreferenceUtils.removeKey(PREF_EMPLOYEE_TYPE_OPTIONS)
