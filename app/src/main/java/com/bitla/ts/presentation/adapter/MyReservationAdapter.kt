@@ -543,18 +543,6 @@ class MyReservationAdapter(
                         } else {
                             popup.menu.getItem(0).setVisible(false)
                         }
-
-                        if (it.isEditReservation) {
-                            if (holder.tvRoutestatus.text.toString()
-                                    .equals(context.getString(R.string.active), true)
-                            ) {
-                                popup.menu.getItem(4).setVisible(true)
-                            } else {
-                                popup.menu.getItem(4).setVisible(false)
-                            }
-                        } else {
-                            popup.menu.getItem(4).setVisible(false)
-                        }
                         if (it.allowToExtendFareForServices) {
                             if (holder.tvRoutestatus.text.toString()
                                     .equals(context.getString(R.string.active), true)
@@ -837,76 +825,6 @@ class MyReservationAdapter(
                             }else{
                                 context.toast(context.getString(R.string.this_service_is_under_edit_mode))
                             }
-
-                        }
-
-                        R.id.Update_ratecard -> {
-
-                            if(!isEditMode){
-                                val busDetails =
-                                    "${searchModel.number} | ${
-                                        searchModel.travelDate?.let { it1 ->
-                                            getDateDMY(it1)?.let { it2 ->
-                                                getDateDMYY(
-                                                    it2
-                                                )
-                                            }
-                                        }
-                                    } | ${searchModel.origin} - ${searchModel.destination} ${searchModel.busType} "
-                                val intent = Intent(context, UpdateRateCardActivity::class.java)
-                                intent.putExtra(
-                                    context.getString(R.string.origin),
-                                    searchList[position].origin
-                                )
-                                intent.putExtra(
-                                    context.getString(R.string.destination),
-                                    searchList[position].destination
-                                )
-                                intent.putExtra(context.getString(R.string.bus_type), busDetails)
-                                context.startActivity(intent)
-
-                                PreferenceUtils.putString(
-                                    context.getString(R.string.updateRateCard_resId),
-                                    "${searchModel.reservationId}"
-                                )
-                                PreferenceUtils.putString(
-                                    context.getString(R.string.updateRateCard_origin),
-                                    searchModel.origin
-                                )
-                                PreferenceUtils.putString(
-                                    context.getString(R.string.updateRateCard_destination),
-                                    searchModel.destination
-                                )
-                                PreferenceUtils.putString(
-                                    context.getString(R.string.updateRateCard_originId),
-                                    searchModel.originId.toString()
-                                )
-                                PreferenceUtils.putString(
-                                    context.getString(R.string.updateRateCard_destinationId),
-                                    searchModel.destinationId.toString()
-                                )
-                                PreferenceUtils.putString(
-                                    context.getString(R.string.updateRateCard_travelDate),
-                                    searchModel.travelDate
-                                )
-                                PreferenceUtils.putString(
-                                    context.getString(R.string.updateRateCard_busType),
-                                    busDetails
-                                )
-
-                                firebaseLogEvent(
-                                    context,
-                                    UPDATE_RATE_CARD,
-                                    loginModelPref.userName,
-                                    loginModelPref.travels_name,
-                                    loginModelPref.role,
-                                    UPDATE_RATE_CARD,
-                                    "Update Rate Card - PickupCharts"
-                                )
-                            }else{
-                                context.toast(context.getString(R.string.this_service_is_under_edit_mode))
-                            }
-
 
                         }
 

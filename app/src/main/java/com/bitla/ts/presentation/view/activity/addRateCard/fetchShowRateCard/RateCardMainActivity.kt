@@ -96,12 +96,7 @@ class RateCardMainActivity : BaseActivity(), OnMenuItemClickListener {
             onBackPressed()
         }
 
-        binding.createRateCardBT.setOnClickListener {
-            val intent = Intent(this, CreateRateCardActivity::class.java)
-            intent.putExtra(getString(R.string.create_rate_card), true)
-            startActivity(intent)
-            PreferenceUtils.putString(getString(R.string.routeId), routeId)
-        }
+
 
         DialogUtils.showProgressDialog(this)
         setCreateFareTemplateApiObserver()
@@ -240,13 +235,7 @@ class RateCardMainActivity : BaseActivity(), OnMenuItemClickListener {
                     routeWiseRateCardDetailList,
                 )
             }
-            2 -> {
-                val intent = Intent(this, EditRateCardActivity::class.java)
-                intent.putExtra(getString(R.string.create_rate_card), false)
-                intent.putExtra(getString(R.string.rate_card_id), routeWiseRateCardDetailList[itemPosition].rateCardId)
-                startActivity(intent)
-                PreferenceUtils.putString(getString(R.string.routeId), routeId)
-            }
+
             3 -> {
 
                 DialogUtils.deleteRateCardDialog(
