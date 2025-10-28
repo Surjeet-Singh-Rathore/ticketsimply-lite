@@ -1333,43 +1333,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
 
                         }
 
-                        getString(R.string.extend_fare_settings_options) -> {
-                            try {
-
-                                val intent = Intent(this, ExtendedFair::class.java)
-                                intent.putExtra("originID", serviceDetails?.body?.origin?.id)
-                                intent.putExtra(
-                                    "destinationID",
-                                    serviceDetails?.body?.destination?.id
-                                )
-                                intent.putExtra("reservationID", reservationId)
-                                intent.putExtra("serviceNumber", serviceDetails?.body?.number)
-
-                                startActivity(intent)
-                                val date = serviceDetails?.body?.travelDate!!.split("/")
-                                if (date.size > 2) {
-                                    val finalDate = "${date[2]}-${date[1]}-${date[0]}"
-                                    PreferenceUtils.putString("ViewReservation_date", finalDate)
-                                }
-
-                                firebaseLogEvent(
-                                    this,
-                                    EXTEND_FARE_SETTINGS,
-                                    loginModelPref.userName,
-                                    loginModelPref.travels_name,
-                                    loginModelPref.role,
-                                    EXTEND_FARE_SETTINGS,
-                                    "Extend Fare Settings - SRP"
-                                )
-
-
-                            } catch (e: Exception) {
-                                Timber.d(e.message)
-                            }
-
-
-                        }
-
 
                         getString(R.string.quick_book_option) -> {
                             val intent = Intent(this, QuickBookChileActivity::class.java)

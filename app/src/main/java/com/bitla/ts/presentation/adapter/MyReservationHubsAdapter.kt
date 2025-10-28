@@ -30,7 +30,6 @@ import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.Priv
 import com.bitla.ts.presentation.view.activity.ServiceDetailsActivity
 import com.bitla.ts.presentation.view.activity.SmsNotificationActivity
 import com.bitla.ts.presentation.view.activity.reservationOption.announcement.AnnouncementActivity
-import com.bitla.ts.presentation.view.activity.reservationOption.extendedFare.ExtendedFair
 import com.bitla.ts.presentation.view.activity.reservationOption.extendedFare.UpdateRateCardActivity
 import com.bitla.ts.utils.common.*
 import com.bitla.ts.utils.constants.*
@@ -651,92 +650,6 @@ class MyReservationHubsAdapter(
                         )
                         intent.putExtra(context.getString(R.string.bus_type), busDetails)
                         context.startActivity(intent)
-                    }
-
-                    R.id.extend_fare_settings -> {
-                        val intent = Intent(context, ExtendedFair::class.java)
-                        intent.putExtra("originID", searchList[position].originId.toString())
-                        intent.putExtra(
-                            "destinationID",
-                            searchList[position].destinationId.toString()
-                        )
-                        intent.putExtra("reservationID", searchList[position].reservationId)
-                        intent.putExtra("serviceNumber", searchList[position].number)
-                        context.startActivity(intent)
-
-                        firebaseLogEvent(
-                            context,
-                            EXTEND_FARE_SETTINGS,
-                            loginModelPref.userName,
-                            loginModelPref.travels_name,
-                            loginModelPref.role,
-                            EXTEND_FARE_SETTINGS,
-                            "Extend Fare Settings - PickupCharts"
-                        )
-                    }
-
-                    R.id.Update_ratecard -> {
-
-                        val busDetails =
-                            "${searchModel.number} | ${
-                                searchModel.travelDate?.let { it1 ->
-                                    getDateDMY(it1)?.let { it2 ->
-                                        getDateDMYY(
-                                            it2
-                                        )
-                                    }
-                                }
-                            } | ${searchModel.origin} - ${searchModel.destination} ${searchModel.busType} "
-                        val intent = Intent(context, UpdateRateCardActivity::class.java)
-                        intent.putExtra(
-                            context.getString(R.string.origin),
-                            searchList[position].origin
-                        )
-                        intent.putExtra(
-                            context.getString(R.string.destination),
-                            searchList[position].destination
-                        )
-                        intent.putExtra(context.getString(R.string.bus_type), busDetails)
-                        context.startActivity(intent)
-
-                        PreferenceUtils.putString(
-                            context.getString(R.string.updateRateCard_resId),
-                            "${searchModel.reservationId}"
-                        )
-                        PreferenceUtils.putString(
-                            context.getString(R.string.updateRateCard_origin),
-                            searchModel.origin
-                        )
-                        PreferenceUtils.putString(
-                            context.getString(R.string.updateRateCard_destination),
-                            searchModel.destination
-                        )
-                        PreferenceUtils.putString(
-                            context.getString(R.string.updateRateCard_originId),
-                            searchModel.originId.toString()
-                        )
-                        PreferenceUtils.putString(
-                            context.getString(R.string.updateRateCard_destinationId),
-                            searchModel.destinationId.toString()
-                        )
-                        PreferenceUtils.putString(
-                            context.getString(R.string.updateRateCard_travelDate),
-                            searchModel.travelDate
-                        )
-                        PreferenceUtils.putString(
-                            context.getString(R.string.updateRateCard_busType),
-                            busDetails
-                        )
-
-                        firebaseLogEvent(
-                            context,
-                            UPDATE_RATE_CARD,
-                            loginModelPref.userName,
-                            loginModelPref.travels_name,
-                            loginModelPref.role,
-                            UPDATE_RATE_CARD,
-                            "Update Rate Card - PickupCharts"
-                        )
                     }
 
                     R.id.send_sms -> {

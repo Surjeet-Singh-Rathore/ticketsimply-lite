@@ -111,10 +111,6 @@ open class SharedViewModel<T : Any?>(private val sharedRepository: SharedReposit
         get() = _frequentData
 
 
-    var multistationFareDetails : MutableLiveData<MultiStationWiseFareResponse> = MutableLiveData()
-
-    private var apiType: String? = null
-
     val messageSharedFlow = MutableSharedFlow<String>()
 
     var privilegesLiveData = MutableLiveData<PrivilegeResponseModel?>()
@@ -124,25 +120,6 @@ open class SharedViewModel<T : Any?>(private val sharedRepository: SharedReposit
     }
 
 
-    /*    fun recentSearchApi(
-            authorization: String,
-            apiKey: String,
-            recentSearchRequest: RecentSearchRequest,
-            apiType: String
-        ) {
-
-            _loadingState.postValue(LoadingState.LOADING)
-
-            viewModelScope.launch(Dispatchers.IO) {
-                val response = _dataRecentSearch.postValue(
-                    sharedRepository.recentSearch(
-                        authorization,
-                        apiKey,
-                        recentSearchRequest
-                    ).body()
-                )
-            }
-        } */
 
     fun getNotificationList(
         seatDetails: ArrayList<com.bitla.ts.domain.pojo.fetch_notification.Data>,
@@ -359,20 +336,6 @@ open class SharedViewModel<T : Any?>(private val sharedRepository: SharedReposit
     }
 
 
-    /*    fun bookingSummaryApi(
-            authorization: String,
-            apiKey: String, request: BookingSummaryRequest, apiType: String
-        ) {
-
-            _loadingState.postValue(LoadingState.LOADING)
-
-            viewModelScope.launch(Dispatchers.IO) {
-                _bookingSummary.postValue(
-                    sharedRepository.bookingSummary(authorization, apiKey, request).body()
-                )
-            }
-        } */
-
     fun bookingSummaryApi(
         apiKey: String,
         reservationId: String,
@@ -438,19 +401,6 @@ open class SharedViewModel<T : Any?>(private val sharedRepository: SharedReposit
         }
     }
 
-    /* fun collectionSummaryApi(
-         authorization: String,
-         apiKey: String, request: BookingSummaryRequest, apiType: String
-     ) {
-
-         _loadingState.postValue(LoadingState.LOADING)
-
-         viewModelScope.launch(Dispatchers.IO) {
-             _collectionSummary.postValue(
-                 sharedRepository.collectionSummary(authorization, apiKey, request).body()
-             )
-         }
-     } */
 
     fun collectionSummaryApi(
         apiKey: String,
@@ -482,19 +432,7 @@ open class SharedViewModel<T : Any?>(private val sharedRepository: SharedReposit
         }
     }
 
-    /*  fun releasedSummaryApi(
-          authorization: String,
-          apiKey: String, request: BookingSummaryRequest, apiType: String
-      ) {
 
-          _loadingState.postValue(LoadingState.LOADING)
-
-          viewModelScope.launch(Dispatchers.IO) {
-              _releasedSummary.postValue(
-                  sharedRepository.releasedSummary(authorization, apiKey, request).body()
-              )
-          }
-      } */
 
     fun releasedSummaryApi(
         apiKey: String,

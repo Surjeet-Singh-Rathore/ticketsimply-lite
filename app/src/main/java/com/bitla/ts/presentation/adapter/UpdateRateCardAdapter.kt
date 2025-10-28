@@ -11,9 +11,6 @@ import com.bitla.ts.R
 import com.bitla.ts.databinding.SlideTabBinding
 import com.bitla.ts.domain.pojo.booking.Tabs
 import com.bitla.ts.presentation.view.dashboard.ViewReservationFragments.ReservationChartFragment
-import com.bitla.ts.presentation.view.dashboard.update_rate_card_fragments.CommissionFragment
-import com.bitla.ts.presentation.view.dashboard.update_rate_card_fragments.FareFragment
-import com.bitla.ts.presentation.view.dashboard.update_rate_card_fragments.NewFareFragment
 import com.bitla.ts.presentation.view.dashboard.update_rate_card_fragments.TimeFragment
 
 class UpdateRateCardAdapter(
@@ -26,31 +23,8 @@ class UpdateRateCardAdapter(
 ) : FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
+        return ReservationChartFragment()
 
-        return when (position) {
-            0 -> {
-                if (currentCountry.equals("india", true)) {
-                    NewFareFragment()
-                } else {
-                    FareFragment()
-                }
-            }
-            1 -> {
-                TimeFragment(isMultiHopService)
-            }
-            2 -> {
-                CommissionFragment()
-            }
-           /* 3 -> {
-                MultistationFragment()
-            }
-            4 -> {
-                SeatWiseFragment()
-            }*/
-            else -> {
-                return ReservationChartFragment()
-            }
-        }
     }
 
     override fun getCount(): Int {

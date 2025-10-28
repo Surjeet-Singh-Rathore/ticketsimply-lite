@@ -33,7 +33,6 @@ import com.bitla.ts.presentation.view.ticket_details_compose.TicketDetailsActivi
 import com.bitla.ts.presentation.view.activity.ServiceDetailsActivity
 import com.bitla.ts.presentation.view.activity.SmsNotificationActivity
 import com.bitla.ts.presentation.view.activity.reservationOption.announcement.AnnouncementActivity
-import com.bitla.ts.presentation.view.activity.reservationOption.extendedFare.ExtendedFair
 import com.bitla.ts.presentation.view.activity.reservationOption.extendedFare.UpdateRateCardActivity
 import com.bitla.ts.presentation.view.activity.ticketDetails.TicketDetailsActivity
 import com.bitla.ts.utils.common.*

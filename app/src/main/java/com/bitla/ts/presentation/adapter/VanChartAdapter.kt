@@ -30,7 +30,6 @@ import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.Priv
 import com.bitla.ts.presentation.view.activity.ServiceDetailsActivity
 import com.bitla.ts.presentation.view.activity.SmsNotificationActivity
 import com.bitla.ts.presentation.view.activity.reservationOption.announcement.AnnouncementActivity
-import com.bitla.ts.presentation.view.activity.reservationOption.extendedFare.ExtendedFair
 import com.bitla.ts.presentation.view.activity.reservationOption.extendedFare.UpdateRateCardActivity
 import com.bitla.ts.utils.common.*
 import com.bitla.ts.utils.constants.*
