@@ -1512,48 +1512,6 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
                 }
             }
 
-            R.id.layout_multistation -> {
-                val intent = Intent(this, ServiceSummaryActivity::class.java)
-                intent.putExtra("TYPE", "Multistation Booking")
-                startActivity(intent)
-            }
-
-            R.id.layout_boardin_point -> {
-                val intent = Intent(this, ServiceSummaryActivity::class.java)
-                intent.putExtra("TYPE", "Boarding Points")
-                startActivity(intent)
-            }
-
-            R.id.layout_dropping_point -> {
-                val intent = Intent(this, ServiceSummaryActivity::class.java)
-                intent.putExtra("TYPE", "Dropping Points")
-                startActivity(intent)
-            }
-
-            R.id.layout_booked_by -> {
-                val intent = Intent(this, ServiceSummaryActivity::class.java)
-                intent.putExtra("TYPE", "Booked By")
-                startActivity(intent)
-            }
-
-            R.id.layout_bookings -> {
-                val intent = Intent(this, ServiceSummaryActivity::class.java)
-                intent.putExtra("TYPE", "Bookings")
-                startActivity(intent)
-            }
-
-            R.id.layout_collections -> {
-                val intent = Intent(this, ServiceSummaryActivity::class.java)
-                intent.putExtra("TYPE", "Collection")
-                startActivity(intent)
-            }
-
-            R.id.layout_released_tickets -> {
-                val intent = Intent(this, ServiceSummaryActivity::class.java)
-                intent.putExtra("TYPE", "Released Tickets")
-                startActivity(intent)
-            }
-
             R.id.layout_service_details -> {
                 //val busDetails = "$travelDate $source - $destination $busType "
 
