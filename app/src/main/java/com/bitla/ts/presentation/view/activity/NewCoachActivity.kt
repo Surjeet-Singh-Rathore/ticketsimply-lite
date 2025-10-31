@@ -1560,19 +1560,6 @@ private var transactionFare: String = ""
             }
 
         }
-
-
-
-        coachOptionsArray.add(
-            CoachOptionsModel(
-                coachOption = getString(R.string.released_ticket_option),
-                coachOptionIcon = ContextCompat.getDrawable(
-                    this, R.drawable.released_tickets_button_new_booking_flow
-                )
-            )
-        )
-
-
     }
 
 
