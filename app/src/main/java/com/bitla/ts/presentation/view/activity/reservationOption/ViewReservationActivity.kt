@@ -849,29 +849,26 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
             }
         }
 
+
         availableRoutesViewModel.dataAvailableRoutes.observe(this, Observer {
             binding.includeProgress.progressBar.gone()
             val dialogProgress = srcDestDialog?.findViewById<ProgressBar>(R.id.dialog_progress_bar)
             dialogProgress?.gone()
 
-            try {
-                if (it != null) {
-                    if (it.code == 200) {
-                        if (it.result.isNotEmpty()) {
-                            val index = it.result.indexOfFirst { it.reservation_id == resId }
-                            if (index != -1) {
-
-                                val isApplyBpdpFare =
-                                    PreferenceUtils.getPreference(PREF_IS_APPLY_BPDP_FARE, false)
-
-                                if (isApplyBpdpFare != null && isApplyBpdpFare) {
+                try {
+                    if (it != null) {
+                        if (it.code == 200) {
+                            if (it.result.isNotEmpty()) {
+                                val index = it.result.indexOfFirst { it.reservation_id == resId }
+                                if (index != -1) {
                                     if (srcDestDialog != null)
                                         srcDestDialog!!.dismiss()
                                     val bpDpBoarding: MutableList<BoardingPointDetail> =
                                         it.result[index].boarding_point_details as MutableList<BoardingPointDetail>
                                     val bpDpDropping: MutableList<DropOffDetail> =
                                         it.result[index].drop_off_details as MutableList<DropOffDetail>
-                                    val isPickupDropoffChargesEnabled = it.result[index].pickup_dropoff_charges_enabled
+                                    val isPickupDropoffChargesEnabled =
+                                        it.result[index].pickup_dropoff_charges_enabled
 
                                     if (bpDpBoarding.isEmpty() || bpDpDropping.isEmpty()) {
                                         val intent = Intent(this, NewCoachActivity::class.java)
@@ -892,7 +889,10 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                                             bpDpDropping[0],
                                             SELECTED_DROPPING_DETAIL
                                         )
-                                        PreferenceUtils.setPreference(PREF_PICKUP_DROPOFF_CHARGES_ENABLED, isPickupDropoffChargesEnabled)
+                                        PreferenceUtils.setPreference(
+                                            PREF_PICKUP_DROPOFF_CHARGES_ENABLED,
+                                            isPickupDropoffChargesEnabled
+                                        )
 
                                         if (srcDestDialog != null)
                                             srcDestDialog!!.dismiss()
@@ -918,28 +918,22 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                                         intent.putExtra("Previous Page", "ViewReservationChart")
                                         startActivity(intent)
                                     }
-                                } else {
-                                    PreferenceUtils.setPreference(PREF_UPDATE_COACH, true)
 
-                                    val intent = Intent(this, NewCoachActivity::class.java)
-                                    PreferenceUtils.setPreference(PREF_RESERVATION_ID, resId)
-                                    intent.putExtra(getString(R.string.navigate_tag), tag)
-                                    startActivity(intent)
-                                }
-                            } else
-                                toast(getString(R.string.route_not_configured))
-                        }
-                    } else
-                        toast(it.message)
-                } else {
-                    toast(getString(R.string.server_error))
+                                } else
+                                    toast(getString(R.string.route_not_configured))
+                            }
+                        } else
+                            toast(it.message)
+                    } else {
+                        toast(getString(R.string.server_error))
+                    }
+                } catch (e: Exception) {
+                    if (BuildConfig.DEBUG) {
+                        e.printStackTrace()
+                    }
                 }
-            } catch (e: Exception) {
-                if (BuildConfig.DEBUG) {
-                    e.printStackTrace()
-                }
-            }
-        })
+            })
+
     }
 
     private fun preparingPrintDocuments(url: String) {
@@ -1001,7 +995,23 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                             PreferenceUtils.putString(PREF_SOURCE, src)
                             PreferenceUtils.putString(PREF_DESTINATION, dest)
 
-                            availableRoutesApi(srcId, destId)
+
+                            val isApplyBpdpFare =
+                                PreferenceUtils.getPreference(PREF_IS_APPLY_BPDP_FARE, false)
+
+                            if (isApplyBpdpFare != null && isApplyBpdpFare) {
+                                availableRoutesApi(srcId, destId)
+                            }else {
+                                binding.includeProgress.progressBar.gone()
+                                val dialogProgress = srcDestDialog?.findViewById<ProgressBar>(R.id.dialog_progress_bar)
+                                dialogProgress?.gone()
+                                PreferenceUtils.setPreference(PREF_UPDATE_COACH, true)
+
+                                val intent = Intent(this, NewCoachActivity::class.java)
+                                PreferenceUtils.setPreference(PREF_RESERVATION_ID, resId)
+                                intent.putExtra(getString(R.string.navigate_tag), tag)
+                                startActivity(intent)
+                            }
                         } else {
                             Timber.e("Invalid list positions: src=$selectedSrcPosition, dest=$selectedDestPosition")
                             toast(getString(R.string.server_error))
