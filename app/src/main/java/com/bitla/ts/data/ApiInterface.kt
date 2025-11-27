@@ -184,7 +184,6 @@ import com.bitla.ts.domain.pojo.sendOtpAndQrCode.SendOtqAndQrCodeResponseModel
 import com.bitla.ts.domain.pojo.send_sms_email.SendSmsEmailResponse
 import com.bitla.ts.domain.pojo.service_allotment.response.ServiceAllotmentResponse
 import com.bitla.ts.domain.pojo.service_details_response.ServiceDetailsModel
-import com.bitla.ts.domain.pojo.service_routes_list.response.ServiceRoutesListResponse
 import com.bitla.ts.domain.pojo.service_summary.ServiceSummaryModel
 import com.bitla.ts.domain.pojo.shortRouteCityPair.ShortRouteCityPairApiResponse
 import com.bitla.ts.domain.pojo.singleShiftPassenger.SingleShiftPassengerResponse
@@ -359,20 +358,6 @@ interface ApiInterface {
         @Query("locale") locale: String,
         @Query("app_bima_enabled") app_bima_enabled: Boolean
     ): Response<AvailableRoutesModel>
-
-    @GET("api/service_routes_list/{origin_id}/{destination_id}/{travel_date}.json?is_from_middle_tier=true")
-    suspend fun serviceRoutesList(
-        @Path("origin_id") origin_id: String,
-        @Path("destination_id") destination_id: String,
-        @Path("travel_date") travel_date: String,
-        @Query("api_key") api_key: String,
-        @Query("show_injourney_services") show_injourney_services: String,
-        @Query("is_cs_shared") is_cs_shared: Boolean,
-        @Query("operator_api_key") operator_api_key: String,
-        @Query("response_format") response_format: String,
-        @Query("show_only_available_services") show_only_available_services: String,
-        @Query("locale") locale: String,
-    ): Response<ServiceRoutesListResponse>
 
     @GET("v1/api/available_routes/{origin_id}/{destination_id}/{travel_date}.json?is_from_middle_tier=true")
     suspend fun availableRoutesForAgent(

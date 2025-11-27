@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bitla.ts.domain.pojo.available_routes.AvailableRoutesModel
 import com.bitla.ts.domain.pojo.bp_dp_details.BpDpDetails
-import com.bitla.ts.domain.pojo.service_routes_list.response.ServiceRoutesListResponse
 import com.bitla.ts.domain.pojo.single_block_unblock.SingleBlockUnblock
 import com.bitla.ts.domain.pojo.single_block_unblock.single_block_unblock_request.SingleBlockUnblockRequest
 import com.bitla.ts.domain.repository.AvailableRoutesRepository
@@ -32,9 +31,6 @@ class AvailableRoutesViewModel<T : Any?>(private val availableRoutesRepository: 
         get() = _dataAvailableRoutes
 
 
-    private val _serviceRoutesList = MutableLiveData<ServiceRoutesListResponse>()
-    val serviceRoutesList: LiveData<ServiceRoutesListResponse>
-        get() = _serviceRoutesList
 
     private val _dataSingleBLockUnblock = MutableLiveData<SingleBlockUnblock>()
     val dataSingleBLockUnblock: LiveData<SingleBlockUnblock>
@@ -161,52 +157,6 @@ class AvailableRoutesViewModel<T : Any?>(private val availableRoutesRepository: 
         }
     }
 
-    fun serviceRoutesListApi(
-        apiKey: String,
-        originId: String,
-        destinationId: String,
-        showInJourneyServices: String,
-        isCsShared: Boolean,
-        operatorkey: String,
-        responseFormat: String,
-        travelDate: String,
-        showOnlyAvalServices: String,
-        locale: String,
-        apiType: String,
-    ) {
-        this.apiType = apiType
-        _loadingState.postValue(LoadingState.LOADING)
-
-        viewModelScope.launch(Dispatchers.IO) {
-
-                availableRoutesRepository.getServiceRoutesList(
-                    originId = originId,
-                    destinationId = destinationId,
-                    travelDate = travelDate,
-                    apiKey = apiKey,
-                    showInJourneyServices = showInJourneyServices,
-                    isCsShared = isCsShared,
-                    operatorkey = operatorkey,
-                    responseFormat = responseFormat,
-                    showOnlyAvalServices = showOnlyAvalServices,
-                    locale = locale
-                ).collect {
-                    when (it) {
-                        is NetworkProcess.Loading -> {}
-                        is NetworkProcess.Success -> {
-                            _loadingState.postValue(LoadingState.LOADED)
-                            _serviceRoutesList.postValue(it.data)
-                        }
-
-                        is NetworkProcess.Failure -> {
-                            _loadingState.postValue(LoadingState.LOADED)
-                            messageSharedFlow.emit(it.message)
-                        }
-                    }
-                }
-
-        }
-    }
 
     fun getBpDpDetails(
         apiKey: String,
