@@ -244,7 +244,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
             serviceDirect.clear()
             PAGE_NUMBER = 1
             maxPage = 0
-
             allotedDirectService(
                 PAGE_NUMBER,
                 ymdDate,
@@ -288,14 +287,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false) // Enables edge-to-edge
-            ViewCompat.setOnApplyWindowInsetsListener(binding.btnFilter) { view, insets ->
-                val bottomInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-                val layoutParams = view.layoutParams as ViewGroup.MarginLayoutParams
-                layoutParams.bottomMargin = bottomInset + 16.toDp // add extra margin if needed
-                view.layoutParams = layoutParams
-                insets
-            }
-
         }
 
         init()
@@ -332,19 +323,14 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
         initRefreshListner()
         setPrivilegeObserver()
         allotedObserver()
-        setCityDetailsObserver()
-
-        callCityDetailsApi()
         locationPopUpCheck()
-        viewSummaryObserver()
-
-//        allotedDirectService(
-//            PAGE_NUMBER,
-//            ymdDate,
-//            finaloriginID,
-//            finaldestinationId,
-//            finalSelectedHubId
-//        )
+        allotedDirectService(
+            PAGE_NUMBER,
+            ymdDate,
+            finaloriginID,
+            finaldestinationId,
+            finalSelectedHubId
+        )
 //        allotedServiceDirectApi(PAGE_NUMBER,ymdDate, finaloriginID,finaldestinationId, finalSelectedHubId)
 //        viewSummaryApi(ymdDate, finaloriginID, finaldestinationId, finalSelectedHubId)
         onScrollListener = object : EndlessRecyclerOnScrollListener(tempnum) {
@@ -357,7 +343,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
                     //Handler(Looper.getMainLooper()).postDelayed({
 
                     PAGE_NUMBER += 1
-
                     allotedDirectService(
                         PAGE_NUMBER,
                         ymdDate,
@@ -626,440 +611,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
 
     @SuppressLint("SetTextI18n")
     private fun onClickListener() {
-
-        binding.viewSummary.setOnClickListener {
-            binding.progressViewSummary.visible()
-
-            viewSummaryApi(ymdDate, finaloriginID, finaldestinationId, finalSelectedHubId)
-        }
-
-        binding.btnFilter.setOnClickListener {
-
-            firebaseLogEvent(
-                requireContext(),
-                FILTERS_OPTIONS,
-                loginModelPref.userName,
-                loginModelPref.travels_name,
-                loginModelPref.role,
-                FILTERS_OPTIONS,
-                "Filter floating icon clicks - PickupCharts"
-            )
-
-            btnValidate = false
-            bottomSheetDialoge = BottomSheetDialog(requireActivity(), R.style.BottomSheetDialog)
-            binding1 = ReservationbottomSheetBinding.inflate(layoutInflater)
-            bottomSheetDialoge?.setContentView(binding1.root)
-
-
-            validateButton(
-                originChangeCheck,
-                destinationChangeCheck,
-                true,
-                hubChangeCheck
-            )
-
-            if (!filteredServiceName.isNullOrBlank()) {
-                binding1.selectServiceTV.text = filteredServiceName
-            }
-
-            if (groupByHubs) {
-                binding1.layoutSelectHubs.visible()
-                binding1.etHubs.setText(sectedHubName)
-            }
-
-            pickUpChartViewModel.privilegesLiveData.observe(requireActivity()) { privilegeResponse ->
-                if (privilegeResponse != null) {
-                    privilegeResponse.let {
-                        if (privilegeResponse.showPickupChartBasedOnHubsConfiguration == true) {
-                            binding1.chkByHubService.visible()
-                            binding1.selectServiceLL.gone()
-                        } else {
-                            binding1.chkByHubService.gone()
-                            if (country.equals("india", true)) {
-                                binding1.selectServiceLL.visible()
-                            } else {
-                                binding1.selectServiceLL.gone()
-                            }
-                        }
-                    }
-                } else {
-                    requireContext().toast(getString(R.string.server_error))
-                }
-            }
-
-
-            binding1.chkByHubService.isChecked = groupByHubs
-            binding1.chkActiveService.isChecked = isActiveService
-
-            val bottomSheetBehavior = BottomSheetBehavior.from((binding1.root.parent) as View)
-            bottomSheetBehavior.peekHeight = Resources.getSystem().displayMetrics.heightPixels
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-
-            binding1.chkByHubService.setOnCheckedChangeListener { compoundButton, b ->
-                temIsHubs = b
-                if (b) {
-                    binding1.layoutSelectHubs.visible()
-                    if (binding1.etHubs.text.isNullOrEmpty()) {
-                        validateButton(false, false, false, false)
-                    }
-                } else {
-                    binding1.layoutSelectHubs.gone()
-                    validateButton(originChangeCheck, destinationChangeCheck, activeCheck, true)
-                }
-
-            }
-            binding1.etHubs.setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.spinner_dropdown_item,
-                    R.id.tvItem,
-                    spinnerHUbs
-                )
-            )
-
-
-            binding1.etHubs.onItemClickListener =
-                AdapterView.OnItemClickListener { parent, view, position, id ->
-                    selectedHubId = spinnerHUbs[position].id
-
-                    if (finalSelectedHubId == selectedHubId) {
-                        hubChangeCheck = false
-                    } else {
-                        finalSelectedHubId = selectedHubId
-                        sectedHubName = spinnerHUbs[position].value
-                        hubChangeCheck = true
-                    }
-                    validateButton(
-                        originChangeCheck,
-                        destinationChangeCheck,
-                        activeCheck,
-                        hubChangeCheck
-                    )
-                }
-            binding1.chkActiveService.setOnCheckedChangeListener { compoundButton, b ->
-
-                activeCheck = isActiveService != b
-                validateButton(
-                    originChangeCheck,
-                    destinationChangeCheck,
-                    activeCheck,
-                    hubChangeCheck
-                )
-            }
-//            {
-//
-//                isactivetemp = !isactivetemp
-//
-//                if (isactivetemp == isActiveService) {
-//                    if (finaloriginID != temOrigin || finaldestinationId != temDestination || temIsHubs != groupByHubs) {
-//                        btnValidate = true
-//                        validateButton(btnValidate)
-//                    } else {
-//                        btnValidate = false
-//                        validateButton(btnValidate)
-//                    }
-//                } else {
-//
-//                    btnValidate = true
-//                    validateButton(btnValidate)
-//
-//
-//                }
-//
-//            }
-
-            if (count == 0) {
-
-                if (cityId == "") {
-                    binding1.selectionFromCity.text = getString(R.string.all)
-                    originData = ""
-                    finaloriginID = cityId!!
-                    PreferenceUtils.setPreference("selectedCityOrigin", originData)
-                    PreferenceUtils.setPreference("selectedCityIdOrigin", cityId)
-                    PreferenceUtils.setPreference("selectedCityDestination", destinationData)
-                    PreferenceUtils.setPreference("selectedCityIdDestination", "")
-                } else {
-                    for (i in 0 until tempOriginId.size) {
-
-                        if (tempOriginId[i] == cityId?.toInt()) {
-
-                            binding1.selectionFromCity.text = tempOriginList[i]
-                            originData = tempOriginList[i]
-                            finaloriginID = cityId!!
-                            PreferenceUtils.setPreference("selectedCityOrigin", originData)
-                            PreferenceUtils.setPreference("selectedCityIdOrigin", cityId)
-                            PreferenceUtils.setPreference(
-                                "selectedCityDestination",
-                                destinationData
-                            )
-                            PreferenceUtils.setPreference("selectedCityIdDestination", "")
-                        }
-                    }
-                }
-
-            } else {
-                if (originData.isNullOrEmpty()) {
-                    binding1.selectionFromCity.text = getString(R.string.all)
-                } else {
-                    binding1.selectionFromCity.text = originData
-                }
-                if (destinationData.isNullOrEmpty()) {
-                    binding1.selectionToCity.text = getString(R.string.all)
-                } else {
-                    binding1.selectionToCity.text = destinationData
-                }
-            }
-
-
-
-            binding1.selectionFromCity.setOnClickListener {
-                PreferenceUtils.setPreference("TravelSelection", "OriginCity")
-                resumeCall = false
-                val intent = Intent(requireContext(), CityDetailsActivity::class.java)
-                resultLauncher.launch(intent)
-                count = 1
-                firebaseLogEvent(
-                    requireContext(),
-                    FROM_CITY,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    FROM_CITY,
-                    "from city click"
-                )
-//                PreferenceUtils.setPreference("selectedCityOrigin", originData)
-//              PreferenceUtils.setPreference("selectedCityIdOrigin", cityId)
-            }
-            binding1.selectionToCity.setOnClickListener {
-                PreferenceUtils.setPreference("TravelSelection", "DestinationCity")
-                resumeCall = false
-                val intent = Intent(requireContext(), CityDetailsActivity::class.java)
-                resultLauncher.launch(intent)
-
-                firebaseLogEvent(
-                    requireContext(),
-                    TO_CITY,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    TO_CITY,
-                    "To city click"
-                )
-            }
-
-            binding1.selectServiceTV.setOnClickListener {
-                resumeCall = false
-                PreferenceUtils.setPreference(PREF_TRAVEL_DATE,
-                    convertedDate?.let { getDateDMY(it) })
-                val intent = Intent(
-                    activity,
-                    SelectAllotedServiceActivity::class.java
-                )
-                var originID = ""
-                var destID = ""
-                if(!cityId.isNullOrBlank()){
-                    originID = cityId?:""
-                }
-
-                if(destinationdataID != "0"){
-                    destID = destinationdataID
-                }
-                if(origindataID != "0"){
-                    originID = origindataID
-                }
-
-
-                intent.putExtra("selected_source_name", originData)
-                intent.putExtra("selected_destination_name", destinationData)
-                intent.putExtra("selected_origin_id", originID)
-                intent.putExtra("selected_dest_id", destID)
-                if(binding1.chkByHubService.isChecked){
-                    intent.putExtra("is_group_by_hub",true)
-                    intent.putExtra("selected_hub_id",finalSelectedHubId)
-                }
-                intent.putExtra("is_from_reservation_chart", true)
-                resultLauncher.launch(intent)
-
-            }
-
-            binding1.tvCancel.setOnClickListener {
-
-                if (cityId == "") {
-                    binding1.selectionFromCity.text = getString(R.string.all)
-                    originData = ""
-                    finaloriginID = cityId!!
-                    origindataID = cityId!!
-
-
-                } else {
-                    for (i in 0 until tempOriginId.size) {
-
-                        if (tempOriginId[i] == cityId?.toInt()) {
-
-                            binding1.selectionFromCity.text = tempOriginList[i]
-                            originData = tempOriginList[i]
-                            finaloriginID = cityId!!
-                            origindataID = cityId!!
-                            binding1.selectionFromCity.text = originData
-
-                        }
-                    }
-                }
-
-                filteredResvId = ""
-                filteredServiceName = ""
-                filteredServiceId = ""
-                PreferenceUtils.setPreference(
-                    PREF_RESERVATION_ID, 0L
-                )
-                binding1.selectServiceTV.text = context?.getString(R.string.all)
-                destinationData = getString(R.string.all)
-                destinationdataID = ""
-                finaldestinationId = ""
-                PreferenceUtils.setPreference("selectedCityOrigin", originData)
-                PreferenceUtils.setPreference("selectedCityDestination", destinationData)
-                PreferenceUtils.setPreference("selectedCityIdOrigin", origindataID)
-                PreferenceUtils.setPreference("selectedCityIdDestination", destinationdataID)
-                binding1.chkActiveService.isChecked = false
-                binding1.chkByHubService.isChecked = false
-                binding1.selectionToCity.text = getString(R.string.all)
-
-                validateButton(
-                    originChangeCheck,
-                    destinationChangeCheck,
-                    activeCheck,
-                    hubChangeCheck
-                )
-            }
-            binding1.btnApply.setOnClickListener {
-                if (btnValidate) {
-                    PAGE_NUMBER = 1
-
-
-                    if (count == 0) {
-                        groupByHubs = binding1.chkByHubService.isChecked
-                        isActiveService = binding1.chkActiveService.isChecked
-
-                        if (cityId == "") {
-                            binding1.selectionFromCity.text = getString(R.string.all)
-                            originData = ""
-                            finaloriginID = cityId!!
-                            PreferenceUtils.setPreference("selectedCityOrigin", originData)
-                            PreferenceUtils.setPreference("selectedCityIdOrigin", cityId)
-                            PreferenceUtils.setPreference(
-                                "selectedCityDestination",
-                                destinationData
-                            )
-                            PreferenceUtils.setPreference("selectedCityIdDestination", "")
-                        } else {
-                            for (i in 0 until tempOriginId.size) {
-                                if (tempOriginId[i] == cityId?.toInt()) {
-
-                                    binding1.selectionFromCity.text = tempOriginList[i]
-                                    originData = tempOriginList[i]
-                                    finaloriginID = cityId!!
-                                    PreferenceUtils.setPreference("selectedCityOrigin", originData)
-                                    PreferenceUtils.setPreference("selectedCityIdOrigin", cityId)
-                                    PreferenceUtils.setPreference(
-                                        "selectedCityDestination",
-                                        destinationData
-                                    )
-                                    PreferenceUtils.setPreference("selectedCityIdDestination", "")
-                                }
-                            }
-                        }
-
-                        count = 1
-                    } else {
-                        groupByHubs = binding1.chkByHubService.isChecked
-                        if (binding1.chkActiveService.isChecked) {
-                            isActiveService = true
-//                            isActiveService = binding1.chkActiveService.isChecked
-
-
-                        } else {
-                            isActiveService = false
-                        }
-                    }
-                    binding.constraintLayout.gone()
-                    recallAdapterHub = true
-                    recallAdapter = true
-                    tempServiceDirect.clear()
-                    searchList1.clear()
-                    serviceDirect.clear()
-//                    viewSummary(ymdDate, finaloriginID, finaldestinationId,finalSelectedHubId )
-
-                    allotedDirectService(
-                        PAGE_NUMBER,
-                        ymdDate,
-                        finaloriginID,
-                        finaldestinationId,
-                        finalSelectedHubId
-                    )
-                    startShimmerEffect()
-                    binding.btnFilter.visible()
-                    binding.NoResult.gone()
-                    binding.btnFilter.setImageDrawable(
-                        ResourcesCompat.getDrawable(
-                            resources,
-                            R.drawable.ic_filter_selected,
-                            null
-                        )
-                    )
-                    binding.btnFilter.imageTintList =
-                        ColorStateList.valueOf(requireContext().resources.getColor(R.color.color_03_review_02_moderate))
-                    bottomSheetDialoge?.dismiss()
-
-                } else {
-                    Timber.d("invalidate button")
-                }
-
-                if (binding1.selectionFromCity.text == getString(R.string.all)) {
-                    binding.allservice.text = getString(R.string.service_from)
-                } else {
-                    binding.allservice.text =
-                        "${getString(R.string.service_from_city)} ${binding1.selectionFromCity.text}"
-                }
-
-                firebaseLogEvent(
-                    requireContext(),
-                    APPLY,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    APPLY,
-                    "Apply btn"
-                )
-            }
-
-            temOrigin = finaloriginID
-            temDestination = finaldestinationId
-            temIsHubs = groupByHubs
-
-            if (country == "Indonesia") {
-                binding1.layoutServices.visible()
-                val serviceList = getServiceList()
-                selectedServiceFilter = serviceList[serviceFilterPosition].id.toString()
-                binding1.etServices.setText(serviceList[serviceFilterPosition].value)
-                binding1.etServices.setAdapter(
-                    ArrayAdapter(
-                        requireContext(),
-                        R.layout.spinner_dropdown_item,
-                        R.id.tvItem,
-                        serviceList
-                    )
-                )
-                binding1.etServices.onItemClickListener =
-                    AdapterView.OnItemClickListener { parent, view, position, id ->
-                        selectedServiceFilter = serviceList[position].id.toString()
-                        serviceFilterPosition = position
-                    }
-            } else {
-                binding1.layoutServices.gone()
-            }
-
-            bottomSheetDialoge?.show()
-        }
 
 
         binding.childReservationBottomSheet.selectionFromCityLayout.setOnClickListener {
@@ -1503,8 +1054,8 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
             QUERY_PER_PAGE,
             "",
             true,
-            orId,
-            destId,
+            "",
+            "",
             locale,
             serviceFilter = selectedServiceFilter,
             res_id = filteredResvId
@@ -1525,15 +1076,11 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
                 when (it.code) {
                     200 -> {
                         binding.constraintLayout.visible()
-                        binding.relativeLayout5.visible()
                         binding.reservationProgressBar.gone()
                         maxPage = it.number_of_pages
 
                         if (!it.resp_hash.isNullOrEmpty()) {
                             recallAdapter = true
-                            if (!it.resp_hash[0].hub_name.isNullOrEmpty()) {
-                                binding.allservice.text = "(${it.resp_hash[0].hub_name})"
-                            }
                             tempServiceDirect.addAll(it.resp_hash[0].services)
                             if (isActiveService) {
                                 searchList1.clear()
@@ -1639,7 +1186,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
                         binding.rvreservationPickup.gone()
                         binding.noResultText.text = it.result?.message ?: ""
                         stopShimmerEffect()
-                        binding.relativeLayout5.gone()
 //                        it.result.message?.let { it1 -> requireContext().toast(it1) }
                     }
                 }
@@ -1650,129 +1196,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
         })
     }
 
-    private fun viewSummaryApi(
-        travelDate: String,
-        originID: String,
-        destinationId: String,
-        selectedHubId: Int?
-    ) {
-        var orId: Int?
-        var destId: Int?
-        var hubId: Int?
-        if (originID.isNullOrEmpty())
-            orId = null
-        else
-            orId = originID.toInt()
-        if (destinationId.isNullOrEmpty())
-            destId = null
-        else
-            destId = destinationId.toInt()
-
-        if (selectedHubId != null)
-            hubId = selectedHubId
-        else
-            hubId = null
-
-        if (!groupByHubs)
-            hubId = null
-        val viewSummaryRequest = ViewSummaryRequest(
-            groupByHubs, hubId, loginModelPref.api_key, travelDate, true, true, orId, destId, locale
-        )
-        pickUpChartViewModel.viewSummaryApi(
-            viewSummaryRequest,
-            view_summary
-        )
-    }
-
-    private fun viewSummaryObserver() {
-
-        pickUpChartViewModel.viewSummaryDirect.observe(viewLifecycleOwner) {
-            if (it != null) {
-                binding.progressViewSummary.gone()
-
-                binding.refreshLayout.isRefreshing = false
-
-                when (it.code) {
-                    200 -> {
-                        summary = it.view_summary
-                        val bottomSheetDialoge =
-                            BottomSheetDialog(requireActivity(), R.style.BottomSheetDialog)
-                        val binding = SheetSummaryBinding.inflate(layoutInflater)
-                        bottomSheetDialoge.setContentView(binding.root)
-                        val dayMonth = getNextDate2(ymdDate)
-                        if (groupByHubs) {
-                            binding.textHeading.text =
-                                "${requireActivity().getString(R.string.summary)} ($sectedHubName $dayMonth)"
-                        } else {
-                            binding.textHeading.text =
-                                "${requireActivity().getString(R.string.summary)} (${
-                                    requireActivity().getString(R.string.all_services_on)
-                                } $dayMonth)"
-                        }
-                        binding.summaryTotalBookedSeats.text = "${summary?.totalBookedSeats}"
-                        binding.totalQuotaSeats.text = "${summary?.totalQuotaSeats}"
-                        binding.totalRevenue.text = "${summary?.totalRevenue}"
-                        binding.totalBlockedSeats.text = "${summary?.timeBlockedSeats}"
-                        binding.extraSeatsBooked.text = "${summary?.extraSeatBooked}"
-                        binding.summaryApi.text = "${getString(R.string.summary_api)} ${summary?.api}"
-                        binding.summaryUserCnf.text = "${getString(R.string.summary_user_cnf)} ${summary?.userConf}"
-                        binding.summaryBranchCnf.text = "${getString(R.string.summary_branch_cnf)} ${summary?.branchConf}"
-                        binding.summaryOnlineagent.text = "${getString(R.string.summary_online_agent)} ${summary?.onlineAgent}"
-                        binding.summaryOfflineAgent.text = "${getString(R.string.summary_offline_agent)} ${summary?.offlineAgent}"
-                        binding.summaryOnline.text = "${getString(R.string.summary_online)} ${summary?.online}"
-                        binding.summaryQuota.text = "${getString(R.string.summary_agent_quota)} ${summary?.quota}"
-                        binding.summaryETicket.text = "${getString(R.string.summary_e_ticket)} ${summary?.eTicket}"
-                        binding.summaryLadiesQuota.text = "${getString(R.string.summary_ladies_quota)} ${summary?.ladiesQuota}"
-                        binding.summaryGentsQuota.text = "${getString(R.string.summary_gents_quota)}${summary?.gentsQuota}"
-                        binding.summaryInJourney.text = "${getString(R.string.summary_in_journey)} ${summary?.inJourney}"
-                        binding.extraSeatsBooked.text = "${summary?.extraSeatBooked} - ${
-                            getString(
-                                R.string.summary_extra_seat_booked
-                            )
-                        }"
-                        binding.totalCount.text = "${summary?.availableSeats} ${getString(R.string.summary_seat_available)} ${
-                            getString(
-                                R.string.summary_occupancy
-                            )
-                        } ${summary?.occupancy}%"
-
-                        binding.textHeading.setOnClickListener {
-                            bottomSheetDialoge.dismiss()
-                        }
-                        bottomSheetDialoge.show()
-
-                        firebaseLogEvent(
-                            requireContext(),
-                            VIEW_SUMMARY_CLICKS,
-                            loginModelPref.userName,
-                            loginModelPref.travels_name,
-                            loginModelPref.role,
-                            VIEW_SUMMARY_CLICKS,
-                            "View Summary Clicks"
-                        )
-                    }
-
-                    401 -> {
-                        /*DialogUtils.unAuthorizedDialog(
-                            requireContext(),
-                            "${getString(R.string.authentication_failed)}\n\n ${getString(R.string.please_try_again)}",
-                            this
-                        )*/
-
-                        (activity as BaseActivity).showUnauthorisedDialog()
-
-                    }
-
-                    else -> {
-                        requireContext().toast(getString(R.string.server_error))
-                    }
-                }
-            } else {
-                binding.progressViewSummary.gone()
-                requireContext().toast(getString(R.string.server_error))
-            }
-        }
-    }
 
     @SuppressLint("SetTextI18n")
     override fun onClick(view: View, position: Int) {
@@ -2126,105 +1549,7 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
     }
 
 
-    private fun callCityDetailsApi() {
-        if (requireContext().isNetworkAvailable()) {
-            val cityDetailRequest = CityDetailRequest(
-                bccId.toString(),
-                city_Details_method_name,
-                format_type,
-                com.bitla.ts.domain.pojo.city_details.request.ReqBody(
-                    loginModelPref.api_key,
-                    response_format,
-                    locale = locale
-                )
-            )
-            /* cityDetailViewModel.cityDetailAPI(
-                 loginModelPref.auth_token,
-                 loginModelPref.api_key,
-                 cityDetailRequest,
-                 city_Details_method_name
-             )*/
 
-            cityDetailViewModel.cityDetailAPI(
-                loginModelPref.api_key,
-                response_format,
-                locale!!,
-                city_Details_method_name
-            )
-        } else requireContext().noNetworkToast()
-    }
-
-    private fun setCityDetailsObserver() {
-        cityDetailViewModel.cityDetailResponse.observe(requireActivity()) {
-            if (it != null) {
-                if (it.code == 200) {
-                    if (it.result != null && it.result.isNotEmpty()) {
-                        for (i in 0..it.result.size.minus(1)) {
-                            tempOriginId.add(it.result[i].id)
-                            it.result[i].name?.let { it1 -> tempOriginList.add(it1) }
-                        }
-                        if (cityId == "") {
-                            binding.allservice.text = getString(R.string.service_from)
-                        } else if (tempOriginId.contains(cityId!!.toInt())) {
-                            for (i in 0 until tempOriginId.size) {
-                                if (tempOriginId[i] == cityId?.toInt()) {
-                                    originData = tempOriginList[i]
-                                    binding.allservice.text =
-                                        "${getString(R.string.service_from_city)} ${originData}"
-                                }
-                            }
-                        } else {
-                            cityId = ""
-                            finaloriginID = cityId!!
-                        }
-
-
-                    }
-                    allotedDirectService(
-                        PAGE_NUMBER,
-                        ymdDate,
-                        finaloriginID,
-                        finaldestinationId,
-                        finalSelectedHubId
-                    )
-                } else if (it.code == 401) {
-                    /*DialogUtils.unAuthorizedDialog(
-                        requireContext(),
-                        "${getString(R.string.authentication_failed)}\n\n ${getString(R.string.please_try_again)}",
-                        this
-                    )*/
-
-                    (activity as BaseActivity).showUnauthorisedDialog()
-
-                } else {
-                    cityId = ""
-                    finaloriginID = cityId!!
-                    allotedDirectService(
-                        PAGE_NUMBER,
-                        ymdDate,
-                        finaloriginID,
-                        finaldestinationId,
-                        finalSelectedHubId
-                    )
-                }
-            } else {
-                cityId = ""
-                finaloriginID = cityId!!
-                allotedDirectService(
-                    PAGE_NUMBER,
-                    ymdDate,
-                    finaloriginID,
-                    finaldestinationId,
-                    finalSelectedHubId
-                )
-                requireActivity().isActivityIsLive {
-
-                    requireContext().toast(getString(R.string.server_error))
-                }
-            }
-
-        }
-    }
 
     private fun initRefreshListner() {
         binding.refreshLayout.setOnRefreshListener {
@@ -2238,7 +1563,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
                 val itemCount = myReservationAdapter.itemCount
                 myReservationAdapter.notifyItemRangeRemoved(0, itemCount)
             }
-
             allotedDirectService(
                 page_count = PAGE_NUMBER,
                 travelDate = ymdDate,
@@ -2254,7 +1578,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
 
 
     private fun startShimmerEffect() {
-        binding.relativeLayout5.gone()
         binding.rvreservationPickup.gone()
         binding.shimmerLayout.visible()
         binding.shimmerLayout.startShimmer()

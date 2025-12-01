@@ -11,7 +11,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.bitla.ts.R
 import com.bitla.ts.databinding.SlideTabBinding
 import com.bitla.ts.domain.pojo.booking.Tabs
-import com.bitla.ts.presentation.view.dashboard.PickupVanChartFragment
 import com.bitla.ts.presentation.view.dashboard.ViewReservationFragments.ReservationChartFragment
 
 class PickupPagerAdapter(
@@ -30,9 +29,9 @@ class PickupPagerAdapter(
             0 -> {
                 ReservationChartFragment()
             }
-            1 -> {
-                PickupVanChartFragment()
-            }
+//            1 -> {
+//                PickupVanChartFragment()
+//            }
             else -> {
                 return ReservationChartFragment()
             }

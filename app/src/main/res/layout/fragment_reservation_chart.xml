@@ -43,45 +43,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/relativeLayout5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="@dimen/dp_12"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/allservice"
-                        style="@style/TextStyleBold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_toStartOf="@+id/view_summary"
-                        android:letterSpacing="0.05"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorBlackShadow"
-                        app:layout_constraintEnd_toStartOf="@+id/view_summary"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/view_summary"
-                        style="@style/TextStyleBold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:letterSpacing="0.05"
-                        android:text="@string/view_summary"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorButton"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvreservationPickup"
                     android:layout_width="match_parent"
@@ -90,7 +51,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout5"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <LinearLayout
@@ -135,20 +96,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnFilter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:layout_marginBottom="@dimen/dp_8"
-        android:backgroundTint="@color/button_secondary_bg"
-        android:src="@drawable/ic_filter"
-        app:layout_constraintBottom_toBottomOf="@+id/refresh_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="14dp"
-        app:tint="@color/white" />
 
     <!--    <View
             android:id="@+id/tansparentbackbround"
