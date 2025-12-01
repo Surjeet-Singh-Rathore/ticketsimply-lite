@@ -244,7 +244,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
             serviceDirect.clear()
             PAGE_NUMBER = 1
             maxPage = 0
-
             allotedDirectService(
                 PAGE_NUMBER,
                 ymdDate,
@@ -324,19 +323,14 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
         initRefreshListner()
         setPrivilegeObserver()
         allotedObserver()
-        setCityDetailsObserver()
-
-        callCityDetailsApi()
         locationPopUpCheck()
-//        viewSummaryObserver()
-
-//        allotedDirectService(
-//            PAGE_NUMBER,
-//            ymdDate,
-//            finaloriginID,
-//            finaldestinationId,
-//            finalSelectedHubId
-//        )
+        allotedDirectService(
+            PAGE_NUMBER,
+            ymdDate,
+            finaloriginID,
+            finaldestinationId,
+            finalSelectedHubId
+        )
 //        allotedServiceDirectApi(PAGE_NUMBER,ymdDate, finaloriginID,finaldestinationId, finalSelectedHubId)
 //        viewSummaryApi(ymdDate, finaloriginID, finaldestinationId, finalSelectedHubId)
         onScrollListener = object : EndlessRecyclerOnScrollListener(tempnum) {
@@ -349,7 +343,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
                     //Handler(Looper.getMainLooper()).postDelayed({
 
                     PAGE_NUMBER += 1
-
                     allotedDirectService(
                         PAGE_NUMBER,
                         ymdDate,
@@ -1556,94 +1549,7 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
     }
 
 
-    private fun callCityDetailsApi() {
-        if (requireContext().isNetworkAvailable()) {
-            val cityDetailRequest = CityDetailRequest(
-                bccId.toString(),
-                city_Details_method_name,
-                format_type,
-                com.bitla.ts.domain.pojo.city_details.request.ReqBody(
-                    loginModelPref.api_key,
-                    response_format,
-                    locale = locale
-                )
-            )
-            /* cityDetailViewModel.cityDetailAPI(
-                 loginModelPref.auth_token,
-                 loginModelPref.api_key,
-                 cityDetailRequest,
-                 city_Details_method_name
-             )*/
 
-            cityDetailViewModel.cityDetailAPI(
-                loginModelPref.api_key,
-                response_format,
-                locale!!,
-                city_Details_method_name
-            )
-        } else requireContext().noNetworkToast()
-    }
-
-    private fun setCityDetailsObserver() {
-        cityDetailViewModel.cityDetailResponse.observe(requireActivity()) {
-            if (it != null) {
-                if (it.code == 200) {
-                    if (it.result != null && it.result.isNotEmpty()) {
-                        for (i in 0..it.result.size.minus(1)) {
-                            tempOriginId.add(it.result[i].id)
-                            it.result[i].name?.let { it1 -> tempOriginList.add(it1) }
-                        }
-                        cityId = ""
-                        finaloriginID = cityId!!
-
-
-
-                    }
-                    allotedDirectService(
-                        PAGE_NUMBER,
-                        ymdDate,
-                        finaloriginID,
-                        finaldestinationId,
-                        finalSelectedHubId
-                    )
-                } else if (it.code == 401) {
-                    /*DialogUtils.unAuthorizedDialog(
-                        requireContext(),
-                        "${getString(R.string.authentication_failed)}\n\n ${getString(R.string.please_try_again)}",
-                        this
-                    )*/
-
-                    (activity as BaseActivity).showUnauthorisedDialog()
-
-                } else {
-                    cityId = ""
-                    finaloriginID = cityId!!
-                    allotedDirectService(
-                        PAGE_NUMBER,
-                        ymdDate,
-                        finaloriginID,
-                        finaldestinationId,
-                        finalSelectedHubId
-                    )
-                }
-            } else {
-                cityId = ""
-                finaloriginID = cityId!!
-                allotedDirectService(
-                    PAGE_NUMBER,
-                    ymdDate,
-                    finaloriginID,
-                    finaldestinationId,
-                    finalSelectedHubId
-                )
-                requireActivity().isActivityIsLive {
-
-                    requireContext().toast(getString(R.string.server_error))
-                }
-            }
-
-        }
-    }
 
     private fun initRefreshListner() {
         binding.refreshLayout.setOnRefreshListener {
@@ -1657,7 +1563,6 @@ class ReservationChartFragment : BaseFragment(), View.OnClickListener, OnItemCli
                 val itemCount = myReservationAdapter.itemCount
                 myReservationAdapter.notifyItemRangeRemoved(0, itemCount)
             }
-
             allotedDirectService(
                 page_count = PAGE_NUMBER,
                 travelDate = ymdDate,
