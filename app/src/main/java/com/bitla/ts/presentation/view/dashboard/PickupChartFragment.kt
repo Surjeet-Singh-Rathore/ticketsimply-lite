@@ -101,15 +101,8 @@ class PickupChartFragment : BaseFragment(), DialogSingleButtonListener {
         val tabBooking = Tabs()
         tabBooking.title = "Reservation Charts"
         tabsList.add(tabBooking)
+        fragmentPickupChartBinding.tabsPickup.gone()
 
-        if (isShowPickupVanChartTabInReservationChart) {
-            fragmentPickupChartBinding.tabsPickup.visible()
-            val tabMyBooking = Tabs()
-            tabMyBooking.title = "Pickup Van Chart"
-            tabsList.add(tabMyBooking)
-        } else {
-            fragmentPickupChartBinding.tabsPickup.gone()
-        }
         if (isAdded) {
             val fragmentAdapter = PickupPagerAdapter(
                 requireContext(),
@@ -178,7 +171,7 @@ class PickupChartFragment : BaseFragment(), DialogSingleButtonListener {
                         )
                         setData(it)
 
-                        lifecycleScope.launch(Dispatchers.Main) { initTab( it.showPickupVanChartTabInReservationChart || it.tsPrivileges?.allowToViewPickupVanChartsAgent == true) }
+                        lifecycleScope.launch(Dispatchers.Main) { initTab( false) }
                         stopShimmerEffect()
 
                     }
