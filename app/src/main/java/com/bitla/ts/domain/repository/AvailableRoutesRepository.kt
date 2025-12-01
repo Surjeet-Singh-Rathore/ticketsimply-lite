@@ -140,29 +140,5 @@ class AvailableRoutesRepository(private val apiInterface: ApiInterface) {
         )
     }
 
-    suspend fun getServiceRoutesList(
-        originId: String,
-        destinationId: String,
-        travelDate: String,
-        apiKey: String,
-        showInJourneyServices: String,
-        isCsShared: Boolean,
-        operatorkey: String,
-        responseFormat: String,
-        showOnlyAvalServices: String,
-        locale: String
-    ) = makeApiCall {
-        apiInterface.serviceRoutesList(
-            origin_id = originId,
-            destination_id = destinationId,
-            travel_date = travelDate,
-            api_key = apiKey,
-            show_injourney_services = showInJourneyServices,
-            is_cs_shared = isCsShared,
-            operator_api_key = operatorkey,
-            response_format = responseFormat,
-            show_only_available_services = showOnlyAvalServices,
-            locale = locale
-        )
-    }
+
 }

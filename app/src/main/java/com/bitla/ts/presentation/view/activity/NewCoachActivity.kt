@@ -359,9 +359,6 @@ private var transactionFare: String = ""
     private val availableRoutesViewModel by viewModel<AvailableRoutesViewModel<Any?>>()
     private val showOnlyAvailableServices: String = "false" //fixed
     private val showInJourneyServices: String = "true" // fixed
-    private var isAllowToDoNextAndPreviousDatesServices = false
-    private var availableRoutesList =
-        mutableListOf<com.bitla.ts.domain.pojo.service_routes_list.response.Result>()
     private var srpServiceSelectionPos = 1
     private var availableSeatsCount = 0
     private var isBimaServiceDetails: Boolean? = null
@@ -439,7 +436,6 @@ private var transactionFare: String = ""
                     editPriceLayout.editprice.gone()
                     editPriceLayout.layoutExtraSeatProceed.visible()
                     editPriceLayout.btnExtraBookingProceed.visible()
-                    editPriceLayout.nextBackLayout.gone()
 
                     btnServiceSummary.gone()
                     layoutSummary.root.gone()
@@ -512,7 +508,16 @@ private var transactionFare: String = ""
                             selectedDropping?.id.toString()
                         )
                     } else {
-                        callServiceApi()
+                        if (isApplyBPDPFare == "true") {
+                            callBpDpServiceApi(selectedBoarding?.id.toString(), selectedDropping?.id.toString())
+                        } else {
+                            callServiceApi()
+
+                            if (role == getString(R.string.role_field_officer) &&
+                                allowBookingForAllServices ) {
+                                getDates(travelDate)
+                            }
+                        }
                     }
                 }
             }
@@ -527,7 +532,17 @@ private var transactionFare: String = ""
             selectedSeatDetails.clear()
         }
 
-        callServiceApi()
+        if (isApplyBPDPFare == "true") {
+            callBpDpServiceApi(selectedBoarding?.id.toString(), selectedDropping?.id.toString())
+        } else {
+            callServiceApi()
+
+            if (role == getString(R.string.role_field_officer) &&
+                allowBookingForAllServices) {
+
+                getDates(travelDate)
+            }
+        }
         binding.coachProgressBar.visible()
 
         if (privilegeResponseModel?.tsPrivileges?.allowServiceBlockingReasonsList == true) {
@@ -719,43 +734,7 @@ private var transactionFare: String = ""
 
         PreferenceUtils.removeKey(PREF_ENABLE_CAMPAIGN_PROMOTIONS)
 
-        if (isApplyBPDPFare == "true") {
-            callBpDpServiceApi(selectedBoarding?.id.toString(), selectedDropping?.id.toString())
-        } else {
-            when (role) {
-                getString(R.string.role_field_officer) -> {
-                    if (allowBookingForAllServices && isAllowToDoNextAndPreviousDatesServices) {
-                        callServiceApi()
-                        callServiceRoutesListApi(getDateYMD(travelDate))
-                        getDates(travelDate)                             // Added calendar because of regression issue App-I55 in IOS it is showing for field officer
-                    } else {
-                        if (isApplyBPDPFare == "true") {
-                            callBpDpServiceApi(
-                                selectedBoarding?.id.toString(), selectedDropping?.id.toString()
-                            )
-                        } else {
-                            callServiceApi()
-                        }
-                    }
-                }
 
-                else -> {
-                    if (isAllowToDoNextAndPreviousDatesServices) {
-                        callServiceApi()
-                        callServiceRoutesListApi(getDateYMD(travelDate))
-                        getDates(travelDate)
-                    } else {
-                        if (isApplyBPDPFare == "true") {
-                            callBpDpServiceApi(
-                                selectedBoarding?.id.toString(), selectedDropping?.id.toString()
-                            )
-                        } else {
-                            callServiceApi()
-                        }
-                    }
-                }
-            }
-        }
 
         setObserver()
         moveToNormalSeatObserver()
@@ -766,7 +745,6 @@ private var transactionFare: String = ""
         updateBoardedStatusObserver()
         setSendSMSEmailObserver()
         setQuotaBlockingTooltipInfoObserver()
-        setServiceRoutesListObserver()
         setConfirmOtpReleaseObserver()
         moveToExtraSeatObserver()
         singleBlockUnblockObserver()
@@ -1281,11 +1259,6 @@ private var transactionFare: String = ""
                 privilegeResponseModel?.showViewChartLinkInTheSearchResults ?: false
         }
 
-        if (privilegeResponseModel?.allowToDoNextAndPreviousDatesServices != null) {
-            isAllowToDoNextAndPreviousDatesServices =
-                privilegeResponseModel?.allowToDoNextAndPreviousDatesServices ?: false
-        }
-
         if (privilegeResponseModel?.pinCount != null) {
             pinSize =
                 privilegeResponseModel?.pinCount ?: 6
@@ -1374,89 +1347,6 @@ private var transactionFare: String = ""
             PreferenceUtils.getPreference(PREF_AVAILABLE_ROUTES_ITEM_IS_SERVICE_BLOCKED, false)
                 ?: false
         isPickupDropoffChargesEnabled = PreferenceUtils.getPreference(PREF_PICKUP_DROPOFF_CHARGES_ENABLED, false) ?: false
-    }
-
-    private fun initNextPreviousDate() {
-
-        binding.editPriceLayout.arrowCoachBackImg.setTextColor(
-            ContextCompat.getColor(
-                this@NewCoachActivity, R.color.colorDimShadow6
-            )
-        )
-        swipePosition = 0
-        isNextSwipeClick = false
-        isPreviousSwipeClick = false
-        reservationIdSwipe = ""
-
-        binding.apply {
-            if (!availableRoutesList.isNullOrEmpty()) {
-                for (i in 0 until availableRoutesList.size) {
-                    reservationIdList.add(i, availableRoutesList[i].reservation_id.toString())
-                }
-            }
-            if (reservationIdList.isNotEmpty()) {
-                if (srpServiceSelectionPos > 0 && srpServiceSelectionPos < reservationIdList.size) {
-                    reservationId = reservationIdList[srpServiceSelectionPos].toLong()
-                    swipePosition = srpServiceSelectionPos
-                } else {
-                    reservationId = reservationIdList[0].toLong()
-                }
-            }
-
-            if (!reservationIdList.isNullOrEmpty()) {
-                val lastIndex = reservationIdList.size - 1
-                val enabledColor = ContextCompat.getColor(this@NewCoachActivity, R.color.colorPrimary)
-                val disabledColor = ContextCompat.getColor(this@NewCoachActivity, R.color.colorDimShadow6)
-
-                val pos = if (swipePosition < 0) 0 else swipePosition
-
-                val isAtStart = pos <= 0
-                val isAtEnd = pos >= lastIndex
-
-                editPriceLayout.arrowCoachBackImg.apply {
-                    isEnabled = !isAtStart
-                    isClickable = !isAtStart
-                    setTextColor(if (!isAtStart) enabledColor else disabledColor)
-                }
-
-                editPriceLayout.arrowCoachNextImg.apply {
-                    isEnabled = !isAtEnd
-                    isClickable = !isAtEnd
-                    setTextColor(if (!isAtEnd) enabledColor else disabledColor)
-                }
-            }
-
-            if (!availableRoutesList.isNullOrEmpty() && swipePosition == availableRoutesList.size - 1) {
-                editPriceLayout.arrowCoachNextImg.setTextColor(
-                    ContextCompat.getColor(
-                        this@NewCoachActivity, R.color.colorDimShadow6
-                    )
-                )
-            }
-
-            iterator = reservationIdList.listIterator()
-
-            if (!availableRoutesList.isNullOrEmpty()) {
-                for (i in 0 until availableRoutesList.size) {
-                        if (reservationId == availableRoutesList[i].reservation_id) {
-                            swipePosition = i
-                            isNextSwipeClick = true
-                            for (x in 0 until swipePosition + 1) {
-                                if (iterator.hasNext())
-                                    iterator.next()
-                            }
-                        }
-
-                }
-            }
-
-            coachSwipeButtonsVisibility()
-            editPriceLayout.proceedLayout.gone()
-            editPriceLayout.editprice.gone()
-            editPriceLayout.fabsummary.gone()
-            editPriceLayout.layoutExtraSeatProceed.gone()
-            srpServiceSelectionPos = 0
-        }
     }
 
 
@@ -1640,9 +1530,6 @@ private var transactionFare: String = ""
                             if (PreferenceUtils.getPreference(PREF_UPDATE_COACH, false) == true) {
 //                                binding.editPriceLayout.root.gone()
                                 binding.apply {
-                                    if (availableRoutesList.size == 1) {
-                                        binding.editPriceLayout.root.gone()
-                                    } else {
                                         coachSwipeButtonsVisibility()
                                         binding.apply {
                                             editPriceLayout.proceedLayout.gone()
@@ -1650,7 +1537,7 @@ private var transactionFare: String = ""
                                             editPriceLayout.fabsummary.gone()
                                             editPriceLayout.layoutExtraSeatProceed.gone()
                                         }
-                                    }
+
                                 }
 
                                 if (isApplyBPDPFare == "true") {
@@ -1687,9 +1574,6 @@ private var transactionFare: String = ""
         }
 
         sharedViewModel.serviceDetailsByRouteId.observe(this) { response ->
-            binding.editPriceLayout.arrowCoachBackImg.gone()
-            binding.editPriceLayout.arrowCoachNextImg.gone()
-            binding.editPriceLayout.nextBackLayout.gone()
             handleServiceDetailsResponse(response)
         }
 
@@ -2162,116 +2046,6 @@ private var transactionFare: String = ""
         }
     }
 
-    private fun callServiceRoutesListApi(travelDateX: String) {
-        if (intent.hasExtra("is_bima")) {
-            isBimaServiceDetails = intent.getBooleanExtra("is_bima", false)
-            Timber.d("checkBima - $isBimaServiceDetails")
-        }
-        binding.coachProgressBar.visible()
-
-        var isCsShared: Boolean? = null
-        if (isBimaServiceDetails == true) {
-            isCsShared = true
-        }
-        var serviceRouteSourceId="-1"
-        var serviceRouteDestinationId="-1"
-        if(PreferenceUtils.getPreference("isAllToAllFlow",false)==true){
-            serviceRouteSourceId=PreferenceUtils.getPreference("serviceRouteOriginId","-1").toString()
-            serviceRouteDestinationId=PreferenceUtils.getPreference("serviceRouteDestinationId","-1").toString()
-
-            if(serviceRouteSourceId=="0"){
-                serviceRouteSourceId="-1"
-            }
-            if(serviceRouteDestinationId=="0"){
-                serviceRouteDestinationId="-1"
-            }
-
-        }else{
-            serviceRouteSourceId=sourceId
-            serviceRouteDestinationId=destinationId
-        }
-
-        if (isBimaServiceDetails == false) {
-            if (isNetworkAvailable()) {
-                availableRoutesViewModel.serviceRoutesListApi(
-                    apiKey = loginModelPref.api_key,
-                    originId = serviceRouteSourceId,
-                    destinationId = serviceRouteDestinationId,
-                    showInJourneyServices = showInJourneyServices,
-                    isCsShared = isCsShared ?: false,
-                    operatorkey = operator_api_key,
-                    responseFormat = format_type,
-                    travelDate = travelDateX,
-                    showOnlyAvalServices = showOnlyAvailableServices,
-                    locale = locale ?: "",
-                    apiType = service_routes_list
-                )
-            } else
-                noNetworkToast()
-        }
-    }
-
-
-    private fun setServiceRoutesListObserver() {
-
-        availableRoutesViewModel.serviceRoutesList.observe(this) {
-            PreferenceUtils.removeKey(PREF_AVAILABLE_ROUTES_ITEM_IS_SERVICE_BLOCKED)
-            if (reservationIdList!=null){
-                reservationIdList.clear()
-            }
-            if (availableRoutesList != null) {
-                availableRoutesList.clear()
-            }
-
-            if (it != null) {
-                if (it.code == 200) {
-                    availableRoutesList = it.result
-
-                    initNextPreviousDate()
-
-                    if (it.result.isNullOrEmpty()) {
-                        binding.noData.root.visible()
-                        binding.noData.tvNoData.visible()
-                        binding.noData.tvNoData.text = "${it.message}"
-                    } else {
-                        binding.noData.root.gone()
-                        binding.noData.tvNoData.gone()
-                    }
-
-                    if (isDateSelected) {
-                        if (isApplyBPDPFare == "true") {
-                            callBpDpServiceApi(
-                                selectedBoarding?.id.toString(),
-                                selectedDropping?.id.toString()
-                            )
-                        } else {
-                            callServiceApi()
-                        }
-                    }
-
-                } else if (it.code == 401) {
-                    /* DialogUtils.unAuthorizedDialog(
-                         this,
-                         "${getString(R.string.authentication_failed)}\n\n ${getString(R.string.please_try_again)}",
-                         this
-                     )*/
-                    showUnauthorisedDialog()
-
-                } else if (it.code == 404) {
-                    binding.noData.root.visible()
-                    binding.noData.tvNoData.visible()
-                    binding.noData.tvNoData.text = "${it.error}"
-                } else {
-                    binding.noData.root.visible()
-                    binding.noData.tvNoData.visible()
-                    binding.noData.tvNoData.text = "${it.message}"
-                }
-            } else {
-                toast(getString(R.string.server_error))
-            }
-        }
-    }
-
     private fun callServiceDetailsByRouteIdApi() {
 
         if (isNetworkAvailable()) {
@@ -2337,7 +2111,6 @@ private var transactionFare: String = ""
                         editPriceLayout.editprice.visible()
                         editPriceLayout.layoutExtraSeatProceed.visible()
                         editPriceLayout.btnExtraBookingProceed.gone()
-                        editPriceLayout.nextBackLayout.gone()
                         btnServiceSummary.gone()
                         layoutSummary.root.gone()
                     }
@@ -2461,7 +2234,6 @@ private var transactionFare: String = ""
             layoutSummary.root.gone()
             editPriceLayout.layoutExtraSeatProceed.gone()
             editPriceLayout.btnExtraBookingProceed.visible()
-            editPriceLayout.nextBackLayout.gone()
         }
 
         if (book)
@@ -2506,7 +2278,6 @@ private var transactionFare: String = ""
             layoutSummary.root.gone()
             editPriceLayout.layoutExtraSeatProceed.gone()
             editPriceLayout.btnExtraBookingProceed.visible()
-            editPriceLayout.nextBackLayout.gone()
 
             if (book)
                 editPriceLayout.bookLL.visible()
@@ -2593,7 +2364,6 @@ private var transactionFare: String = ""
                 editPriceLayout.editprice.gone()
                 editPriceLayout.layoutExtraSeatProceed.visible()
                 editPriceLayout.btnExtraBookingProceed.visible()
-                editPriceLayout.nextBackLayout.gone()
 
                 btnServiceSummary.gone()
                 layoutSummary.root.gone()
@@ -2718,19 +2488,15 @@ private var transactionFare: String = ""
                             }
 //                            binding.editPriceLayout.root.gone()
                             binding.apply {
-                                if (availableRoutesList.size == 1) {
-                                    editPriceLayout.arrowCoachNextImg.gone()
-                                    editPriceLayout.arrowCoachBackImg.gone()
-                                    editPriceLayout.nextBackLayout.gone()
-                                } else {
-                                    coachSwipeButtonsVisibility()
-                                    binding.apply {
-                                        editPriceLayout.proceedLayout.gone()
-                                        editPriceLayout.editprice.gone()
-                                        editPriceLayout.fabsummary.gone()
-                                        editPriceLayout.layoutExtraSeatProceed.gone()
-                                    }
+
+                                coachSwipeButtonsVisibility()
+                                binding.apply {
+                                    editPriceLayout.proceedLayout.gone()
+                                    editPriceLayout.editprice.gone()
+                                    editPriceLayout.fabsummary.gone()
+                                    editPriceLayout.layoutExtraSeatProceed.gone()
                                 }
+
                             }
                         }
 
@@ -2873,8 +2639,6 @@ private var transactionFare: String = ""
         binding.seatLegendsIV.setOnClickListener(this)
         binding.transparentOptionV.setOnClickListener(this)
         binding.includeHeader.headerLL.setOnClickListener(this)
-        binding.editPriceLayout.arrowCoachBackImg.setOnClickListener(this)
-        binding.editPriceLayout.arrowCoachNextImg.setOnClickListener(this)
 
         binding.modifySearchLayout.tvSource.setOnClickListener(this)
         binding.modifySearchLayout.btnSearch.setOnClickListener(this)
@@ -2902,8 +2666,6 @@ private var transactionFare: String = ""
         binding.layoutBookedSeatDetails.menuMoveExtra.setOnClickListener(this)
         binding.layoutBookedSeatDetails.boardedSwitchBox.setOnClickListener(this)
         binding.layoutBookedSeatDetails.menuConvertPermanentPhoneBlock.setOnClickListener(this)
-        binding.editPriceLayout.nextBackLayout.setOnClickListener {
-        }
 
     }
 
@@ -3929,208 +3691,9 @@ private var transactionFare: String = ""
                 showConvertToPermanentPhoneBlockDialog()
             }
 
-            R.id.arrowCoachBackImg -> {
-
-                if (!isServiceLoading) {
-                    if (swipePosition > 0) {
-                        swipePosition--
-                        reservationId = availableRoutesList[swipePosition].reservation_id
-                        binding.coachProgressBar.visible()
-                        callCoach = true
-                        setSourceAndDestination()
-                        callServiceApi()
-                    }
-
-                    updateArrowUI()
-                }
-
-//                /*if(swipePosition != 0){
-//                    progressBar?.show()
-//                    Handler(Looper.getMainLooper()).postDelayed({
-//                        progressBar?.dismiss()
-//                    }, 1000)
-//                }*/
-//                if(!isServiceLoading){
-//
-////                    if(isNextSwipeClick){
-////                        isPreviousSwipeClick=true
-////                        isNextSwipeClick=false
-////                    }
-//                    binding.apply {
-//                        if (swipePosition == -1 || swipePosition == 0) {
-//                            editPriceLayout.arrowCoachBackImg.isClickable = false
-//                            editPriceLayout.arrowCoachBackImg.isEnabled = false
-//                        } else {
-//                            if (swipePosition == 1) {
-////                            arrowCoachBackImg.setBackgroundResource(R.drawable.ic_arrow_coach_back_disable)
-//                                editPriceLayout.arrowCoachBackImg.setTextColor(
-//                                    ContextCompat.getColor(
-//                                        this@NewCoachActivity,
-//                                        R.color.colorDimShadow6
-//                                    )
-//                                )
-//                            } else {
-//                                editPriceLayout.arrowCoachBackImg.isClickable = true
-//                                editPriceLayout.arrowCoachBackImg.isEnabled = true
-////                            arrowCoachBackImg.setBackgroundResource(R.drawable.ic_arrow_coach_back_active)
-////                            arrowCoachNextImg.setBackgroundResource(R.drawable.ic_arrow_coach_next_active)
-//
-//                                editPriceLayout.arrowCoachBackImg.setTextColor(
-//                                    ContextCompat.getColor(
-//                                        this@NewCoachActivity,
-//                                        R.color.colorPrimary
-//                                    )
-//                                )
-//                                editPriceLayout.arrowCoachNextImg.setTextColor(
-//                                    ContextCompat.getColor(
-//                                        this@NewCoachActivity,
-//                                        R.color.colorPrimary
-//                                    )
-//                                )
-//                            }
-//
-//                            if (swipePosition == 1 && availableRoutesList.size - 1 == 1) {
-//                                editPriceLayout.arrowCoachNextImg.setTextColor(
-//                                    ContextCompat.getColor(
-//                                        this@NewCoachActivity,
-//                                        R.color.colorPrimary
-//                                    )
-//                                )
-//                            }
-//
-//                            if (swipePosition == -1) {
-//                                iterator.previous()
-//                                swipePosition--
-//                            } else if (swipePosition == 0 && !isNextSwipeClick) {
-//                                iterator.previous()
-//                            }
-//
-//                            if (::iterator.isInitialized && isNextSwipeClick) {
-//                                iterator.previous()
-//                                isNextSwipeClick = false
-//                            }
-////                        if (availableRoutesList[swipePosition - 1].is_service_blocked) {
-////                            iterator.previous()
-////                            swipePosition--
-////                        }
-//
-//                            try {
-//                                if (::iterator.isInitialized) {
-//                                    reservationIdSwipe = iterator.previous()
-//                                    reservationId = reservationIdSwipe.toLong()
-//
-//                                    binding.coachProgressBar.visible()
-//                                    callCoach= true
-//                                    callServiceApi()
-//                                    swipePosition--
-//                                }
-//                            } catch (e: Exception) {
-//                                Timber.d("ExceptionMsg ${e.message}")
-//                            }
-//                        }
-//
-//
-//                    }
-//                }
-//
-//
-////                Timber.d("reservationId => Previous  $swipePosition , ${availableRoutesList.size-1}")
-            }
-
-            R.id.arrowCoachNextImg -> {
-                if (!isServiceLoading && !availableRoutesList.isNullOrEmpty() && swipePosition < availableRoutesList.size - 1) {
-                    swipePosition++
-                    try {
-                        reservationId = availableRoutesList[swipePosition].reservation_id
-                        binding.coachProgressBar.visible()
-                        callCoach = true
-                        setSourceAndDestination()
-                        callServiceApi()
-                    } catch (e: Exception) {
-                        Timber.d("ExceptionMsg ${e.message}")
-                    }
-
-                    updateArrowUI()
-                }
-
-
-//               /* if (swipePosition != availableRoutesList.size - 1){
-//                    progressBar?.show()
-//                    Handler(Looper.getMainLooper()).postDelayed({
-//                        progressBar?.dismiss()
-//                    }, 1000)
-//                }*/
-//                    if(!isServiceLoading){
-//                        binding.apply {
-//                            editPriceLayout.arrowCoachBackImg.isClickable = true
-//                            editPriceLayout.arrowCoachBackImg.isEnabled = true
-////                    arrowCoachBackImg.setBackgroundResource(R.drawable.ic_arrow_coach_back_active)
-//                            editPriceLayout.arrowCoachBackImg.setTextColor(
-//                                ContextCompat.getColor(
-//                                    this@NewCoachActivity,
-//                                    R.color.colorPrimary
-//                                )
-//                            )
-//                            if(availableRoutesList != null && availableRoutesList.size > 0){
-//                                if (::iterator.isInitialized && swipePosition < availableRoutesList.size - 1) {
-//                                    if (swipePosition == -1) {
-//                                        iterator.next()
-//                                        swipePosition++
-//                                    } else if (swipePosition == 0 && !isNextSwipeClick) {
-//                                        iterator.next()
-//                                    }
-//
-//                                    if (availableRoutesList[swipePosition + 1].is_service_blocked) {
-//                                        iterator.next()
-//                                        swipePosition++
-//                                    }
-//
-//                                    if(::iterator.isInitialized && isPreviousSwipeClick) {
-//                                        iterator.next()
-//                                    }
-//
-//                                    try {
-//                                        reservationId = availableRoutesList[swipePosition+1].reservation_id
-//                                        binding.coachProgressBar.visible()
-//                                        callCoach= true
-//                                        callServiceApi()
-//                                        swipePosition++
-//                                        isNextSwipeClick = true
-//                                        isPreviousSwipeClick = false
-//                                    } catch (e: Exception) {
-//                                        Timber.d("ExceptionMsg ${e.message}")
-//                                    }
-//                                }
-//
-//                                if (swipePosition == availableRoutesList.size - 1) {
-////                        arrowCoachNextImg.setBackgroundResource(R.drawable.ic_arrow_coach_next_disable)
-//                                    editPriceLayout.arrowCoachNextImg.setTextColor(
-//                                        ContextCompat.getColor(
-//                                            this@NewCoachActivity,
-//                                            R.color.colorDimShadow6
-//                                        )
-//                                    )
-//                                }
-//                            }
-//                        }
-//
-//                    }
-//
-////                Timber.d("reservationId => Next $swipePosition , ${availableRoutesList.size-1}")
-            }
         }
     }
 
-    private fun setSourceAndDestination() {
-        if (!availableRoutesList.isNullOrEmpty()) {
-            for (i in 0 until availableRoutesList.size) {
-                    if (reservationId == availableRoutesList[i].reservation_id) {
-                        sourceId=availableRoutesList[i].originId.toString()
-                        destinationId=availableRoutesList[i].destinationId.toString()
-                        }
-                    }
-            }
-        }
 
 
     private fun showConvertToPermanentPhoneBlockDialog() {
@@ -4181,35 +3744,6 @@ private var transactionFare: String = ""
         binding.seatLegendsIV.visible()
     }
 
-
-
-    private fun updateArrowUI() {
-        binding.apply {
-            if(availableRoutesList != null && availableRoutesList.isNotEmpty()) {
-                val isAtStart = swipePosition <= 0
-                val isAtEnd = swipePosition >= (availableRoutesList?.size?.minus(1) ?: 0)
-
-                editPriceLayout.arrowCoachBackImg.isEnabled = !isAtStart
-                editPriceLayout.arrowCoachBackImg.isClickable = !isAtStart
-                editPriceLayout.arrowCoachBackImg.setTextColor(
-                    ContextCompat.getColor(
-                        this@NewCoachActivity,
-                        if (isAtStart) R.color.colorDimShadow6 else R.color.colorPrimary
-                    )
-                )
-
-                editPriceLayout.arrowCoachNextImg.isEnabled = !isAtEnd
-                editPriceLayout.arrowCoachNextImg.isClickable = !isAtEnd
-                editPriceLayout.arrowCoachNextImg.setTextColor(
-                    ContextCompat.getColor(
-                        this@NewCoachActivity,
-                        if (isAtEnd) R.color.colorDimShadow6 else R.color.colorPrimary
-                    )
-                )
-            }
-
-        }
-    }
 
 
     private fun callMoveToExtraSeatApi(
@@ -4849,7 +4383,7 @@ private var transactionFare: String = ""
                     editPriceLayout.proceedLayout.gone()
                     editPriceLayout.editprice.gone()
 
-                    editPriceLayout.nextBackLayout.gone()
+
                 }
 
                 selectedSeatDetails.forEach {
@@ -4869,7 +4403,6 @@ private var transactionFare: String = ""
 
                     editPriceLayout.proceedLayout.gone()
                     editPriceLayout.editprice.gone()
-                    editPriceLayout.nextBackLayout.gone()
                 }
             }
             selectedSeatDetails.forEach {
@@ -4893,23 +4426,18 @@ private var transactionFare: String = ""
                     editPriceLayout.editprice.visible()
 
                     binding.apply {
-                        editPriceLayout.arrowCoachNextImg.gone()
-                        editPriceLayout.arrowCoachBackImg.gone()
-                        editPriceLayout.nextBackLayout.gone()
                     }
                 }
 
             } else {
                 binding.apply {
-                    if (availableRoutesList != null && availableRoutesList.size == 1) {
-                        binding.editPriceLayout.root.gone()
-                    } else {
+
                         coachSwipeButtonsVisibility()
                         editPriceLayout.proceedLayout.gone()
                         editPriceLayout.editprice.gone()
                         editPriceLayout.fabsummary.gone()
                         editPriceLayout.layoutExtraSeatProceed.gone()
-                    }
+
 
                     if (isBimaServiceDetails == true) {
                         binding.btnServiceSummary.gone()
@@ -6769,7 +6297,6 @@ private var transactionFare: String = ""
                 ).replace("1970", getCurrentYear())
                 travelDate = getDateDMY(ymdDate)!!
 
-                callServiceRoutesListApi(getDateYMD(travelDate))
 //                Timber.d("hhh travelDate ${travelDate} == ${ymdDate} == ${dateList[position].title}")
 
                 if (position == 0 || position == 4) {
@@ -7597,9 +7124,6 @@ private var transactionFare: String = ""
             view.visibility = VISIBLE
             view.startAnimation(slideRight)
             binding.seatLegendsIV.gone()
-            binding.editPriceLayout.arrowCoachNextImg.gone()
-            binding.editPriceLayout.arrowCoachBackImg.gone()
-            binding.editPriceLayout.nextBackLayout.gone()
             binding.transparentBookedSeatsOptionsV.visible()
             binding.btnServiceSummary.gone()
         } else {
@@ -9011,73 +8535,17 @@ private var transactionFare: String = ""
 
             setToolbarTitle()
 
-            binding.editPriceLayout.arrowCoachNextImg.gone()
-            binding.editPriceLayout.arrowCoachBackImg.gone()
-            binding.editPriceLayout.nextBackLayout.gone()
-
         } else {
             toast(getString(R.string.please_fill_all_the_required_details))
         }
     }
 
     private fun coachSwipeButtonsVisibility() {
-
 //        Timber.d("availableRoutesList_size-- ${availableRoutesList.size}")
 
         binding.apply {
             if (privilegeResponseModel?.country.equals("India", true)) {
-
-                if (role == getString(R.string.role_field_officer)
-                ) {
-                    if (allowBookingForAllServices && isAllowToDoNextAndPreviousDatesServices) {
-
-                        binding.includeHeader.headerLL.gone()
-
-                        if (availableRoutesList != null && availableRoutesList.size == 1) {
-                            editPriceLayout.root.gone()
-                            editPriceLayout.arrowCoachNextImg.gone()
-                            editPriceLayout.arrowCoachBackImg.gone()
-                            editPriceLayout.nextBackLayout.gone()
-                            binding.rvDateDetails.gone()
-                        } else {
-                            editPriceLayout.arrowCoachNextImg.visible()
-                            editPriceLayout.arrowCoachBackImg.visible()
-                            editPriceLayout.nextBackLayout.visible()
-                            editPriceLayout.root.visible()
-                            binding.rvDateDetails.visible()
-                        }
-                    } else {
-                        editPriceLayout.root.gone()
-                        binding.rvDateDetails.gone()
-                    }
-                } else {
-                    if (isAllowToDoNextAndPreviousDatesServices) {
-
-                        binding.includeHeader.headerLL.gone()
-                        if (!availableRoutesList.isNullOrEmpty() && availableRoutesList.size == 1) {
-                            editPriceLayout.root.gone()
-                            editPriceLayout.arrowCoachNextImg.gone()
-                            editPriceLayout.arrowCoachBackImg.gone()
-                            editPriceLayout.nextBackLayout.gone()
-                            binding.rvDateDetails.gone()
-                        } else {
-                            editPriceLayout.arrowCoachNextImg.visible()
-                            editPriceLayout.arrowCoachBackImg.visible()
-                            editPriceLayout.nextBackLayout.visible()
-                            editPriceLayout.root.visible()
-                            binding.rvDateDetails.visible()
-                        }
-                    } else {
-                        editPriceLayout.root.gone()
-                        binding.rvDateDetails.gone()
-                    }
-                }
-
-            } else {
                 editPriceLayout.root.gone()
-                editPriceLayout.arrowCoachNextImg.gone()
-                editPriceLayout.arrowCoachBackImg.gone()
-                editPriceLayout.nextBackLayout.gone()
                 binding.rvDateDetails.gone()
             }
         }
