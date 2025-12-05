@@ -39,6 +39,9 @@
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
 
+    <uses-sdk tools:overrideLibrary="com.paytm.printgenerator,com.bitla.restaurant_app,com.example.buscoach,com.dantsu.escposprinter,androidx.security" />
+
+
     <application
         android:name=".app.base.TsApplication"
         android:allowBackup="false"
