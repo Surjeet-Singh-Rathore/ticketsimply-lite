@@ -574,7 +574,9 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
     private fun showPopupMenu() {
         val popup = PopupMenu(this, binding.updateRatecardToolbar.imgDownload)
         popup.inflate(R.menu.custom_menu)
-        popup.gravity = Gravity.RIGHT
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            popup.gravity = Gravity.RIGHT
+        }
         if (Build.VERSION.SDK_INT > 28) {
             popup.setForceShowIcon(true)
         }

@@ -1718,7 +1718,7 @@ class DashboardNavigateActivity : BaseActivity(),
             var isUpdate = false
             this.isCritical =
                 getPrivilegeBase()?.appSubmissionHistory?.android?.isCriticalUpdate ?: false
-
+            inAppUpdateTs = inAppUpdateTS
             val currentCountry = getPrivilegeBase()?.country ?: ""
             if (updateDetailsList!!.is_global_update!!) {
                 this.title = updateDetailsList!!.global_update_details!!.title!!
@@ -1903,7 +1903,7 @@ class DashboardNavigateActivity : BaseActivity(),
 
                 InstallStatus.DOWNLOADED -> {
                     //Timber.d("inAppUpdateTSStatus - info_downloaded ")
-                    popupSnackbarForCompleteUpdate(manager)
+//                    popupSnackbarForCompleteUpdate(manager)
 
                 }
 
