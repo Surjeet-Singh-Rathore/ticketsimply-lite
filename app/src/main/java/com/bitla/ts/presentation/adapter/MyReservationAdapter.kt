@@ -418,7 +418,7 @@ class MyReservationAdapter(
                     )
                 )
                 holder.btnViewReservationChart.text = context.getString(R.string.locked)
-                holder.btnViewReservationChart.setTextColor(context.getColor(R.color.white))
+                holder.btnViewReservationChart.setTextColor(ContextCompat.getColor(context, R.color.white))
                 holder.btnViewReservationChart.isClickable = false
 
                 // For the View Coach Layout Chart Button
@@ -428,7 +428,7 @@ class MyReservationAdapter(
                     )
                 )
                 holder.btnViewCoachLayoutChart.text = context.getString(R.string.locked)
-                holder.btnViewCoachLayoutChart.setTextColor(context.getColor(R.color.white))
+                holder.btnViewCoachLayoutChart.setTextColor(ContextCompat.getColor(context, R.color.white))
                 holder.btnViewCoachLayoutChart.isClickable = false
             } else {
                 holder.btnViewReservationChart.text = context.getString(R.string.view_reservation_chart)
@@ -449,7 +449,7 @@ class MyReservationAdapter(
                     )
                 )
                 holder.btnViewCoachLayoutChart.text = context.getString(R.string.view_coach_layout_chart)
-                holder.btnViewCoachLayoutChart.setTextColor(context.getColor(R.color.colorPrimary))
+                holder.btnViewCoachLayoutChart.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary))
                 holder.btnViewCoachLayoutChart.isClickable = true
             }
 
@@ -494,7 +494,9 @@ class MyReservationAdapter(
                 PreferenceUtils.putString("ViewReservation_date", "${searchModel.travelDate} ")
                 val popup = PopupMenu(context, holder.imgMore)
                 popup.inflate(R.menu.pickup_more_options)
-                popup.gravity = Gravity.RIGHT
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    popup.gravity = Gravity.RIGHT
+                }
 
                 if (holder.tvRoutestatus.text.toString()
                         .equals(context.getString(R.string.active), true)
@@ -714,21 +716,23 @@ class MyReservationAdapter(
                                 } else {
                                     holder.tvRoutestatus.tag = "Activate"
 
-                                    DialogUtils.closeReservationCancle(
-                                        context,
-                                        context.getString(R.string.allow_reservation),
-                                        context.getString(R.string.allowe_reservation_message),
-                                        "${searchModel.number} ${searchModel.name}",
-                                        "${searchModel.coachNumber} (${searchModel.busType})",
-                                        context.getString(R.string.goBack),
-                                        context.getString(R.string.proceed),
-                                        this,
-                                        holder.imgMore,
-                                        holder.btnViewReservationChart,
-                                        holder.tvRoutestatus,
-                                        holder.cardlayout,
-                                        searchModel.reservationId.toString()
-                                    )
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        DialogUtils.closeReservationCancle(
+                                            context,
+                                            context.getString(R.string.allow_reservation),
+                                            context.getString(R.string.allowe_reservation_message),
+                                            "${searchModel.number} ${searchModel.name}",
+                                            "${searchModel.coachNumber} (${searchModel.busType})",
+                                            context.getString(R.string.goBack),
+                                            context.getString(R.string.proceed),
+                                            this,
+                                            holder.imgMore,
+                                            holder.btnViewReservationChart,
+                                            holder.tvRoutestatus,
+                                            holder.cardlayout,
+                                            searchModel.reservationId.toString()
+                                        )
+                                    }
                                 }
 
                                 firebaseLogEvent(

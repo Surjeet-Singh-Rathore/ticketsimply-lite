@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId = "com.bitla.ticketsimply"
-        minSdk = 24
+        minSdk = 21
         targetSdk = 35
         versionCode = 1200
         versionName = "7.0.6.1"

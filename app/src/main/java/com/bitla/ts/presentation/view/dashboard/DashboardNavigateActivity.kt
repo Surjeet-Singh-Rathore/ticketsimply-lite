@@ -643,34 +643,7 @@ class DashboardNavigateActivity : BaseActivity(),
             }
         }
     }
-
-
-    private fun requestForLocationPermission() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-            LOCATION_PERMISSION_REQUEST_CODE
-        )
-    }
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                // Permission is granted. Continue the action or workflow in your app.
-                getLastKnownLocation()
-            } else {
-                toast("Location Permission Denied")
-
-                // Permission denied. Inform the user that the feature requires permission.
-            }
-        }
-    }
+    
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun getLastKnownLocation() {
@@ -1108,13 +1081,6 @@ class DashboardNavigateActivity : BaseActivity(),
 
                             currentCountry = privilegeResponse?.country ?: ""
 
-                            if (!currentCountry.isNullOrEmpty() && currentCountry.equals(
-                                    "india",
-                                    true
-                                )
-                            ) {
-                                requestForLocationPermission()
-                            }
 
 
                             if (role == getString(R.string.role_agent) && privilegeResponse?.allowBookingForAllotedServices == true) {
@@ -1718,7 +1684,7 @@ class DashboardNavigateActivity : BaseActivity(),
             var isUpdate = false
             this.isCritical =
                 getPrivilegeBase()?.appSubmissionHistory?.android?.isCriticalUpdate ?: false
-
+            inAppUpdateTs = inAppUpdateTS
             val currentCountry = getPrivilegeBase()?.country ?: ""
             if (updateDetailsList!!.is_global_update!!) {
                 this.title = updateDetailsList!!.global_update_details!!.title!!
@@ -1903,7 +1869,7 @@ class DashboardNavigateActivity : BaseActivity(),
 
                 InstallStatus.DOWNLOADED -> {
                     //Timber.d("inAppUpdateTSStatus - info_downloaded ")
-                    popupSnackbarForCompleteUpdate(manager)
+//                    popupSnackbarForCompleteUpdate(manager)
 
                 }
 

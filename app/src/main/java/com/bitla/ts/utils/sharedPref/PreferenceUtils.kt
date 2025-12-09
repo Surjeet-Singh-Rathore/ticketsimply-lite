@@ -45,26 +45,37 @@ object PreferenceUtils {
         val oldPolicy = StrictMode.allowThreadDiskReads()
 
         try {
-            // Validate or reset master key
-            val masterKeyAlias = getOrResetMasterKey()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // Try encrypted prefs on API 23+
+                try {
+                    val masterKeyAlias = getOrResetMasterKey()   // make sure THIS is @RequiresApi(M)
+                    mLocalPreferences = EncryptedSharedPreferences.create(
+                        PREFERENCES_FILE_NAME,
+                        masterKeyAlias,
+                        application,
+                        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                    )
+                    applicationContext = application
+                } catch (t: Throwable) {
+                    // Includes NoClassDefFoundError, KeyStore problems, etc.
+                    Timber.tag("PreferenceUtils")
+                        .e(t, "Error initializing EncryptedSharedPreferences. Falling back to normal prefs.")
 
-            // Initialize EncryptedSharedPreferences
-            mLocalPreferences = EncryptedSharedPreferences.create(
-                // passing a file name to share a preferences
-                PREFERENCES_FILE_NAME,
-                masterKeyAlias,
-                application,
-                EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            )
-            applicationContext = application
-
-        } catch (e: Exception) {
-            Timber.tag("PreferenceUtils").e(e, "Error initializing EncryptedSharedPreferences. Falling back.")
-
-            // Fallback to regular SharedPreferences in case of failure
-            mLocalPreferences = application.getSharedPreferences(PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
-            applicationContext = application
+                    mLocalPreferences = application.getSharedPreferences(
+                        PREFERENCES_FILE_NAME,
+                        Context.MODE_PRIVATE
+                    )
+                    applicationContext = application
+                }
+            } else {
+                // API < 23: EncryptedSharedPreferences / MasterKeys are not supported
+                mLocalPreferences = application.getSharedPreferences(
+                    PREFERENCES_FILE_NAME,
+                    Context.MODE_PRIVATE
+                )
+                applicationContext = application
+            }
         } finally {
             StrictMode.setThreadPolicy(oldPolicy)
         }
