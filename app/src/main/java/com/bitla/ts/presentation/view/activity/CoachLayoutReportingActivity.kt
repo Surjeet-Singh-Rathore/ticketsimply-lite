@@ -1497,10 +1497,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                         }
 
 
-                        getString(R.string.bus_location_option) -> {
-                            gotoBusTrackingPage()
-                        }
-
 
                         getString(R.string.frequent_traveller) -> {
                             val intent = Intent(this, FrequentTravellerDataActivity::class.java)
@@ -1633,47 +1629,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
         }
     }
 
-
-    private fun gotoBusTrackingPage() {
-        if (privilegeResponseModel?.country.equals("India", true)) {
-            val intent = Intent(this, CurrentLocationActivity::class.java)
-            PreferenceUtils.putString(
-                "toolbarheader",
-                binding.includeHeader.toolbarHeaderText.text.toString()
-            )
-            PreferenceUtils.putString(
-                "toolbarsubheader",
-                "${serviceDetails?.body?.number} | ${getDateDMYY(travelDate)} | ${serviceDetails?.body?.origin?.name}-${serviceDetails?.body?.destination?.name} | ${serviceDetails?.body?.busType} ${serviceDetails?.body?.coachDetails?.totalSeats?.toString()}"
-            )
-
-            startActivity(intent)
-        } else {
-            val intent = Intent(this, BusTrackingActivity::class.java)
-            intent.putExtra(
-                "toolbarSubHeader",
-                "${serviceDetails?.body?.origin?.name}-${serviceDetails?.body?.destination?.name}"
-            )
-            intent.putExtra(
-                "coachNumber",
-                "${serviceDetails?.body?.coachDetails?.coachNumber}"
-            )
-            intent.putExtra(
-                "serviceNumber",
-                "${serviceDetails?.body?.number}"
-            )
-            intent.putExtra(
-                "routeId",
-                serviceDetails?.body?.routeId
-            )
-
-            intent.putExtra(
-                "deptDateTime",
-                serviceDetails?.body?.depTime.toString() + "T" + travelDate
-            )
-
-            startActivity(intent)
-        }
-    }
 
     override fun onClick(v: View) {
         super.onClick(v)

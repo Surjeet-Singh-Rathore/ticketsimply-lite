@@ -2580,14 +2580,6 @@ class TicketDetailsActivityCompose : BaseActivity() {
                 } else {
                     pineLabPrint()
                 }
-            } else if (privilegeResponseModel?.isEzetapEnabledInTsApp!!) {
-//                commonReplacementPrint()
-               /* if (bluetoothPrintTemplate!!.contains("FOR_EACH_SEAT")) {
-                    printEzetapTicket()
-                } else {
-                    singleSeatEzetapPrint()
-                }*/
-
             } else if (privilegeResponseModel.isPaytmPosEnabled == true) {
                 if (originalTemplate!!.contains("FOR_EACH_SEAT")) {
                     paytmPrint(false)

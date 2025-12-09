@@ -77,7 +77,7 @@ class CoachOptionsFragment() : Fragment(), OnItemClickListener {
 
         // Assuming your adapter needs some data to display,
         // you should initialize it here with your data.
-        shortOptionsList = getData() // Replace getData() with your method to retrieve data
+//        shortOptionsList = getData() // Replace getData() with your method to retrieve data
 
         adapter = CoachShortOptionsAdapter(shortOptionsList,this) // Initialize your adapter with the data
 

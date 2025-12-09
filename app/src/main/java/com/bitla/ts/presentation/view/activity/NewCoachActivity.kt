@@ -1383,13 +1383,6 @@ private var transactionFare: String = ""
             // Pickup Chart GONE
         }
 
-        coachOptionsArray.add(
-            CoachOptionsModel(
-                coachOption = getString(R.string.bus_location_option),
-                coachOptionIcon = ContextCompat.getDrawable(this, R.drawable.current_location)
-            )
-        )
-
         if (privilegeResponseModel?.notifyOption == true) {
             coachOptionsArray.add(
                 CoachOptionsModel(
@@ -2774,20 +2767,6 @@ private var transactionFare: String = ""
                     minutes = calculatedMinutes.toString(),
                     amOrpm = checkAMOrPM
                 )
-            }
-
-            R.id.current_location -> {
-                val intent = Intent(this, CurrentLocationActivity::class.java)
-                PreferenceUtils.putString(
-                    "toolbarheader",
-                    binding.includeHeader.toolbarHeaderText.text.toString()
-                )
-                PreferenceUtils.putString(
-                    "toolbarsubheader",
-                    "${serviceNumber} | ${getDateDMYY(travelDate)} | $source-$destination | ${serviceBusType} ${totalSeats}"
-                )
-
-                startActivity(intent)
             }
 
 
@@ -6487,9 +6466,6 @@ private var transactionFare: String = ""
                     }
 
 
-                    getString(R.string.bus_location_option) -> {
-                        gotoBusTrackingPage()
-                    }
 
                     getString(R.string.frequent_traveller) -> {
                         val intent = Intent(this, FrequentTravellerDataActivity::class.java)
@@ -6553,46 +6529,7 @@ private var transactionFare: String = ""
 
     }
 
-    private fun gotoBusTrackingPage() {
-        if (privilegeResponseModel?.country.equals("India", true)) {
-            val intent = Intent(this, CurrentLocationActivity::class.java)
-            PreferenceUtils.putString(
-                "toolbarheader",
-                binding.includeHeader.toolbarHeaderText.text.toString()
-            )
-            PreferenceUtils.putString(
-                "toolbarsubheader",
-                "${serviceNumber} | ${getDateDMYY(travelDate)} | $source-$destination | ${serviceBusType} ${totalSeats}"
-            )
 
-            startActivity(intent)
-        } else {
-            val intent = Intent(this, BusTrackingActivity::class.java)
-            intent.putExtra(
-                "toolbarSubHeader",
-                "$source-$destination"
-            )
-            intent.putExtra(
-                "coachNumber",
-                "${serviceDetails?.body?.coachDetails?.coachNumber}"
-            )
-            intent.putExtra(
-                "serviceNumber",
-                "${serviceDetails?.body?.number}"
-            )
-            intent.putExtra(
-                "routeId",
-                serviceDetails?.body?.routeId
-            )
-
-            intent.putExtra(
-                "deptDateTime",
-                serviceDetails?.body?.depTime.toString() + "T" + travelDate
-            )
-
-            startActivity(intent)
-        }
-    }
 
     private fun saveBpDpList() {
         if (sourceId.contains(":")) {
