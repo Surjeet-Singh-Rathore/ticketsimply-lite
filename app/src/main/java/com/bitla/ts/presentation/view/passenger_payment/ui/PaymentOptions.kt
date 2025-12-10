@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.*
 import androidx.compose.ui.window.*
 import asString
 import com.bitla.ts.R
+import com.bitla.ts.domain.pojo.destination_pair.SearchModel
 import com.bitla.ts.presentation.components.*
 import com.bitla.ts.presentation.viewModel.PassengerDetailsViewModel
 import com.bitla.ts.utils.*
@@ -38,6 +39,15 @@ fun PaymentOptions(
     passengerDetailsViewModel: PassengerDetailsViewModel<Any?>,
     onPaymentOptionSelection: (String) -> Unit
 ) {
+
+    val paymentOptionsList = remember {
+        mutableStateListOf<SearchModel>().apply {
+            val cash = SearchModel()
+            cash.id = "1"
+            cash.paymentType = ResourceProvider.TextResource.fromStringId(R.string.cash)
+            add(cash)
+        }
+    }
 
 
 
@@ -60,7 +70,7 @@ fun PaymentOptions(
                 )
 
 
-                passengerDetailsViewModel.paymentOptionsList.forEach {
+                paymentOptionsList.forEach {
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
@@ -147,7 +157,7 @@ fun PaymentOptions(
 //                        passengerDetailsViewModel.selectedPaymentOption = passengerDetailsViewModel.paymentOptionsList[0].paymentType!!
 //                    }
 
-                    passengerDetailsViewModel.paymentOptionsList.forEach {
+                    paymentOptionsList.forEach {
                         
 //                        Timber.d("paymentTypeX - ${it.paymentType?.asString(context.resources)} == ${passengerDetailsViewModel.selectedPaymentOption?.asString(context.resources)}")
 //                        Timber.d("paymentTypeX - ${it.paymentType} == ${passengerDetailsViewModel.selectedPaymentOption}")

@@ -12,8 +12,10 @@ import androidx.compose.ui.text.*
 import androidx.compose.ui.unit.*
 import asString
 import com.bitla.ts.R
+import com.bitla.ts.domain.pojo.destination_pair.SearchModel
 import com.bitla.ts.presentation.components.*
 import com.bitla.ts.presentation.viewModel.*
+import com.bitla.ts.utils.ResourceProvider
 import toast
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -23,13 +25,25 @@ fun PaymentOptionsNewFlow(
     passengerDetailsViewModel: PassengerDetailsViewModel<Any?>,
     onPaymentOptionSelection: (String) -> Unit
 ) {
+    // Create payment options list outside of composition
+    val paymentOptionsList = remember {
+        mutableStateListOf<SearchModel>().apply {
+            val cash = SearchModel()
+            cash.id = "1"
+            cash.paymentType = ResourceProvider.TextResource.fromStringId(R.string.cash)
+            add(cash)
+        }
+    }
 
-    CardComponent(shape = RoundedCornerShape(4.dp),
-        bgColor = colorResource(id = R.color.white), modifier = Modifier
+    CardComponent(
+        shape = RoundedCornerShape(4.dp),
+        bgColor = colorResource(id = R.color.white),
+        modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .wrapContentHeight(), onClick = {}) {
-        
+            .wrapContentHeight(),
+        onClick = {}
+    ) {
         Column(
             modifier = Modifier.padding(
                 start = 16.dp,
@@ -38,36 +52,30 @@ fun PaymentOptionsNewFlow(
                 bottom = 8.dp
             )
         ) {
-            
             TextBoldRegular(
                 text = stringResource(id = R.string.payment_options),
                 modifier = Modifier.wrapContentHeight(),
                 textStyle = TextStyle(
-                    color = colorResource(
-                        id = R.color.colorBlackShadow
-                    )
+                    color = colorResource(id = R.color.colorBlackShadow)
                 )
             )
 
-
-
-            
-            FlowRow (modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start) {
-                passengerDetailsViewModel.paymentOptionsList.forEach {
-                    Row (
+            FlowRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
+            ) {
+                paymentOptionsList.forEach { option ->
+                    Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
                             .padding(top = 8.dp, bottom = 8.dp)
                             .selectable(
-                                selected = (it.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                                selected = (option.paymentType == passengerDetailsViewModel.selectedPaymentOption),
                                 onClick = {
                                     passengerDetailsViewModel.selectedPaymentOptionId =
-                                        it.id
-                                            .toString()
-                                            .toInt()
+                                        option.id.toString().toInt()
                                     passengerDetailsViewModel.selectedPaymentOption =
-                                        it.paymentType!!
+                                        option.paymentType!!
                                     onPaymentOptionSelection(
                                         passengerDetailsViewModel.selectedPaymentOption.asString(
                                             context.resources
@@ -77,12 +85,15 @@ fun PaymentOptionsNewFlow(
                             )
                     ) {
                         RadioButton(
-                            selected = (it.paymentType == passengerDetailsViewModel.selectedPaymentOption),
-                            modifier = Modifier.requiredHeight(20.dp).absoluteOffset((-10).dp, 0.dp),
+                            selected = (option.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                            modifier = Modifier
+                                .requiredHeight(20.dp)
+                                .absoluteOffset((-10).dp, 0.dp),
                             onClick = {
-
-                                passengerDetailsViewModel.selectedPaymentOptionId = it.id.toString().toInt()
-                                passengerDetailsViewModel.selectedPaymentOption = it.paymentType!!
+                                passengerDetailsViewModel.selectedPaymentOptionId =
+                                    option.id.toString().toInt()
+                                passengerDetailsViewModel.selectedPaymentOption =
+                                    option.paymentType!!
                                 onPaymentOptionSelection(
                                     passengerDetailsViewModel.selectedPaymentOption.asString(
                                         context.resources
@@ -92,7 +103,8 @@ fun PaymentOptionsNewFlow(
                         )
                         TextNormalSmall(
                             modifier = Modifier.absoluteOffset((-12).dp, 0.dp),
-                            text = it.paymentType?.asString(context.resources) ?: "")
+                            text = option.paymentType?.asString(context.resources) ?: ""
+                        )
                     }
                 }
             }
