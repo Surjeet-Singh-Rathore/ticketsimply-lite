@@ -44,7 +44,6 @@ import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.Priv
 import com.bitla.ts.domain.pojo.update_trip_status.UpdateTripReqBody
 import com.bitla.ts.domain.pojo.view_reservation.CitySeqOrder
 import com.bitla.ts.presentation.adapter.ViewReservationAdapter
-import com.bitla.ts.presentation.view.activity.BusTrackingActivity
 import com.bitla.ts.presentation.view.activity.InterBDActivity
 import com.bitla.ts.presentation.view.activity.LoginActivity
 import com.bitla.ts.presentation.view.activity.NewCoachActivity
@@ -105,7 +104,6 @@ import timber.log.Timber
 import toast
 import visible
 import java.io.File
-import com.bitla.ts.presentation.view.activity.reservationOption.CurrentLocationActivity
 
 
 
@@ -165,7 +163,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
             PreferenceUtils.removeKey(PREF_PICKUP_DROPOFF_CHARGES_ENABLED)
             initUI()
             // Move this to after binding is initialized
-            binding.updateRatecardToolbar.busEta.visible()
+//            binding.updateRatecardToolbar.busEta.visible()
             binding.updateRatecardToolbar.imageOptionLayout.visible()
         } catch (e: Exception) {
             Timber.e(e, "Error in isInternetOnCallApisAndInitUI")
@@ -187,11 +185,11 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
             getPref()
             tabPosition = PreferenceUtils.getPreference("shiftPassenger_tab", 0)!!
             initTab()
-            binding.updateRatecardToolbar.busEta.visible()
+//            binding.updateRatecardToolbar.busEta.visible()
 
-            binding.updateRatecardToolbar.busEta.setOnClickListener {
-                gotoBusTrackingPage()
-            }
+//            binding.updateRatecardToolbar.busEta.setOnClickListener {
+//                gotoBusTrackingPage()
+//            }
 
 
 
@@ -212,51 +210,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                     showToast(it)
                 }
             }
-        }
-    }
-
-    private fun gotoBusTrackingPage() {
-        if (privilegeResponse?.country.equals("India", ignoreCase = true)) {
-            val intent = Intent(this, CurrentLocationActivity::class.java)
-            startActivity(intent)
-        } else {
-            PreferenceUtils.setPreference(PREF_RESERVATION_ID, resId)
-            // val intent = Intent(this, CurrentLocationActivity::class.java)
-            val intent = Intent(this, BusTrackingActivity::class.java)
-            intent.putExtra(
-                "toolbarSubHeader",
-                "$serviceName"
-            )
-            intent.putExtra(
-                "coachNumber",
-                "$coachNumber"
-            )
-            intent.putExtra(
-                "serviceNumber",
-                "$serviceNumber"
-            )
-
-            intent.putExtra(
-                "routeId",
-                routeId
-            )
-
-            intent.putExtra(
-                "deptDateTime",
-                deptTime
-            )
-
-            startActivity(intent)
-
-            firebaseLogEvent(
-                this,
-                ETA_CLICK,
-                loginModelPref.userName,
-                loginModelPref.travels_name,
-                loginModelPref.role,
-                ETA_CLICK,
-                EtaClick.ETA_OPTIONS_CLICKS_VIEW_RESERVATION
-            )
         }
     }
 
@@ -1090,7 +1043,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                 .setLifecycleOwner(this)
                 .build()
 
-            binding.updateRatecardToolbar.busEta.showAlignBottom(balloon)
+//            binding.updateRatecardToolbar.busEta.showAlignBottom(balloon)
 
             binding.updateRatecardToolbar.newBusLocationSmallLogo.visibility = View.VISIBLE
 
