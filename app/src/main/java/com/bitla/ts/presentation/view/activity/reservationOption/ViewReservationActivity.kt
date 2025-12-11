@@ -966,6 +966,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                                 PreferenceUtils.setPreference(PREF_RESERVATION_ID, resId)
                                 intent.putExtra(getString(R.string.navigate_tag), tag)
                                 startActivity(intent)
+                                finish()
                             }
                         } else {
                             Timber.e("Invalid list positions: src=$selectedSrcPosition, dest=$selectedDestPosition")

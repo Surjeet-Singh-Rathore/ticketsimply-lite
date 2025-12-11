@@ -458,34 +458,6 @@ class DialogUtils {
         }
 
 
-        fun dialogRedelcomDetails(
-            context: Context,
-            data: RedelcomPreferenceData
-        ) {
-
-            val builder = AlertDialog.Builder(context).create()
-            LayoutInflater.from(context)
-            builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))  // for transparent background
-            val binding: DialogRedelcomDetailsBinding =
-                DialogRedelcomDetailsBinding.inflate(LayoutInflater.from(context))
-            builder.setCancelable(false)
-
-            binding.apiKeyTV.text = "Api key : " + data.api_key
-            binding.urlTV.text = "Url : " + data.redelcom_uri
-            binding.terminalIdTV.text = "Terminal : " + data.terminalId
-            binding.clientIDTV.text = "Client Id : " + data.client_id
-
-            binding.cancelTV.setOnClickListener {
-                builder.cancel()
-
-            }
-
-
-            builder.setView(binding.root)
-            builder.show()
-        }
-
-
 
         fun dialogServiceFilter(
             context: Context,
