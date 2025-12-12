@@ -19,79 +19,8 @@ class ViewReservationAdapter(
     var tabList: MutableList<Tabs>,
     var country: String,
     var groupByPnrPickupChart: Boolean,
-    private var tripSheetCollectionOptionsInTSAppReservationChart: Boolean?,
     fm: FragmentActivity
 ) :  FragmentStateAdapter(fm,) {
-
-//    override fun getItem(position: Int): Fragment {
-//
-//        return when (tabList[position].title) {
-//
-//            context.getString(R.string.passenger_list) -> {
-//
-////                if(country.equals("indonesia", true)) {
-////                    PickupPassengerList()
-////                } else {
-////                    PassengerListFragment()
-////                }
-//
-//                PickupPassengerList()
-//
-//                /* if(!country.equals("india", true)) {
-//                     PickupPassengerList()
-//                 } else {
-//                     PassengerListFragment()
-//                 }*/
-//
-////                PassengerListFragment()
-//            }
-//            context.getString(R.string.bulk_cancel) -> {
-//                BulkCancelFragment()
-//            }
-//            context.getString(R.string.shift_passengers) -> {
-//                ShiftPassengersFragment()
-//            }
-//            context.getString(R.string.collection) -> {
-//                CollectionFragment()
-//            }
-//
-//            else -> {
-//                return ReservationChartFragment()
-//            }
-//        }
-//    }
-
-//    override fun getCount(): Int {
-//        return tabList.size
-//    }
-
-//    override fun getPageTitle(position: Int): CharSequence {
-//        return when (tabList[position].title) {
-//            context.getString(R.string.passenger_list) -> {
-//                context.getString(R.string.passenger_list)
-//            }
-//            context.getString(R.string.bulk_cancel) -> {
-//                context.getString(R.string.bulk_cancel)
-//            }
-//            context.getString(R.string.shift_passengers) -> {
-//                context.getString(R.string.shift_passengers)
-//            }
-//            context.getString(R.string.collection) -> {
-//                context.getString(R.string.collection)
-//            }
-//
-//
-////            0 -> "Passenger list"
-////
-////            1 -> "Bulk Cancel"
-////            2 -> "Shift Passengers"
-////            3 -> "Collection"
-//
-//            else -> {
-//                return context.getString(R.string.passenger_list)
-//            }
-//        }
-//    }
 
     // custom tabs
     fun getTabView(position: Int): View {
@@ -108,7 +37,6 @@ class ViewReservationAdapter(
                 0 -> R.drawable.ic_pickup_list_dashboard
                 1 -> R.drawable.ic_pickup_cancel_dashboard
                 2 -> R.drawable.ic_pickup_shift_passenger_dashboard
-                3 -> R.drawable.ic_pickup_collection_dashboard
                 else -> 0
             }
             ivTabIcon.setIconAndShow(drawableResId)
@@ -155,11 +83,6 @@ class ViewReservationAdapter(
             }
             context.getString(R.string.shift_passengers) -> {
                 ShiftPassengersFragment()
-            }
-            context.getString(R.string.collection) -> {
-                val isTripCollection= tripSheetCollectionOptionsInTSAppReservationChart == true &&
-                        country.equals("india", true)
-                CollectionFragment(isTripCollection)
             }
 
             else -> {

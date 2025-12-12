@@ -244,12 +244,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
 
                     tabsList.add(tabshift)
                 }
-                if (privilegeResponse?.viewCollectionChart == true) {
-                    val tabcollection = Tabs()
-                    tabcollection.title = getString(R.string.collection)
-                    tabsList.add(tabcollection)
-
-                }
 
                 isAllowBooking = privilegeResponse?.allowBooking
             }
@@ -264,7 +258,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
         }
 
 
-        val fragmentAdapter = ViewReservationAdapter(this, tabsList, country, privilegeResponse?.tsPrivileges?.groupByPnrPickupChart ?: false, tripSheetCollectionOptionsInTSAppReservationChart, this)
+        val fragmentAdapter = ViewReservationAdapter(this, tabsList, country, privilegeResponse?.tsPrivileges?.groupByPnrPickupChart ?: false, this)
         binding.viewpagerPickup.adapter = fragmentAdapter
         if (binding.viewpagerPickup.adapter != null) {
             TabLayoutMediator(
@@ -285,18 +279,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                         getString(R.string.shift_passengers)
                     }
 
-                    getString(R.string.collection) -> {
-                        if (tripSheetCollectionOptionsInTSAppReservationChart == true && country.equals(
-                                "india",
-                                true
-                            )
-                        ) {
-                            getString(R.string.trip_sheet_collection)
-                        } else {
-                            getString(R.string.collection)
-                        }
-                    }
-
                     else -> {
                         getString(R.string.passenger_list)
                     }
@@ -305,7 +287,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                     getString(R.string.passenger_list) -> R.drawable.ic_pickup_list_dashboard
                     getString(R.string.bulk_cancel) -> R.drawable.ic_pickup_cancel_dashboard
                     getString(R.string.shift_passengers) -> R.drawable.ic_pickup_shift_passenger_dashboard
-                    getString(R.string.collection) -> R.drawable.ic_pickup_collection_dashboard
                     else -> 0
                 }
                 tab.icon = if (drawableResId != 0) {
@@ -427,7 +408,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                     0 -> R.drawable.ic_pickup_list_dashboard
                     1 -> R.drawable.ic_pickup_cancel_dashboard
                     2 -> R.drawable.ic_pickup_shift_passenger_dashboard
-                    3 -> R.drawable.ic_pickup_collection_dashboard
                     else -> 0
                 }
                 if (drawableResId != 0) {
