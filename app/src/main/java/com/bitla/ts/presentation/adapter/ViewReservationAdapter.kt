@@ -35,8 +35,6 @@ class ViewReservationAdapter(
         if (country.equals("india", ignoreCase = true)) {
             val drawableResId = when (position) {
                 0 -> R.drawable.ic_pickup_list_dashboard
-                1 -> R.drawable.ic_pickup_cancel_dashboard
-                2 -> R.drawable.ic_pickup_shift_passenger_dashboard
                 else -> 0
             }
             ivTabIcon.setIconAndShow(drawableResId)
@@ -77,12 +75,6 @@ class ViewReservationAdapter(
                     PickupPassengerList()
                 }
 
-            }
-            context.getString(R.string.bulk_cancel) -> {
-                BulkCancelFragment()
-            }
-            context.getString(R.string.shift_passengers) -> {
-                ShiftPassengersFragment()
             }
 
             else -> {

@@ -230,21 +230,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
         if (getPrivilegeBase() != null) {
             privilegeResponse = getPrivilegeBase()
             privilegeResponse?.let {
-
-                if (privilegeResponse?.allowBulkCancellation == true) {
-
-                    val tabbulk = Tabs()
-                    tabbulk.title = getString(R.string.bulk_cancel)
-
-                    tabsList.add(tabbulk)
-                }
-                if (privilegeResponse?.allowBulkShifting == true) {
-                    val tabshift = Tabs()
-                    tabshift.title = getString(R.string.shift_passengers)
-
-                    tabsList.add(tabshift)
-                }
-
                 isAllowBooking = privilegeResponse?.allowBooking
             }
         } else {
@@ -271,22 +256,12 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                         getString(R.string.passenger_list)
                     }
 
-                    getString(R.string.bulk_cancel) -> {
-                        getString(R.string.bulk_cancel)
-                    }
-
-                    getString(R.string.shift_passengers) -> {
-                        getString(R.string.shift_passengers)
-                    }
-
                     else -> {
                         getString(R.string.passenger_list)
                     }
                 }
                 val drawableResId = when (tabsList[position].title) {
                     getString(R.string.passenger_list) -> R.drawable.ic_pickup_list_dashboard
-                    getString(R.string.bulk_cancel) -> R.drawable.ic_pickup_cancel_dashboard
-                    getString(R.string.shift_passengers) -> R.drawable.ic_pickup_shift_passenger_dashboard
                     else -> 0
                 }
                 tab.icon = if (drawableResId != 0) {
@@ -406,8 +381,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
             if (country.equals("india", ignoreCase = true)) {
                 val drawableResId = when (i) {
                     0 -> R.drawable.ic_pickup_list_dashboard
-                    1 -> R.drawable.ic_pickup_cancel_dashboard
-                    2 -> R.drawable.ic_pickup_shift_passenger_dashboard
                     else -> 0
                 }
                 if (drawableResId != 0) {
@@ -513,12 +486,13 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
         if (Build.VERSION.SDK_INT > 28) {
             popup.setForceShowIcon(true)
         }
-        popup.menu.getItem(3).isVisible = isAllowBooking != null && isAllowBooking!!
+        popup.menu.getItem(4).isVisible = isAllowBooking != null && isAllowBooking!!
         /* hide the visibility of booking summary & stage summary for build_6.12
         popup.menu.getItem(1).isVisible = privilegeResponse?.country.equals("India", true)
         popup.menu.getItem(2).isVisible = privilegeResponse?.country.equals("India", true)*/
         popup.menu.getItem(1).isVisible = false
         popup.menu.getItem(2).isVisible = false
+        popup.menu.getItem(3).isVisible = false
 
         isTripComplete = PreferenceUtils.getString("is_trip_complete")
         // var isTripComplete = "completed"
