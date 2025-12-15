@@ -65,8 +65,6 @@ class ChildSortSublistAdapter(
 
         holder.sideLine.gone()
         holder.detailedpart.gone()
-        holder.imageexpandless.gone()
-        holder.imageexpandmore.visible()
         val searchModel: PassengerDetail = searchList[position]
 
         if (position == 0) {
@@ -223,7 +221,6 @@ class ChildSortSublistAdapter(
         holder.checkBoarded.isChecked = searchModel.status == 2
         holder.checkBoarded.isClickable = true
         holder.callPassenger.isClickable = true
-        holder.imageexpandmore.isClickable = true
         holder.parentChard.setCardBackgroundColor(ContextCompat.getColor(context, R.color.white))
 
         holder.checkBoarded.setOnTouchListener(View.OnTouchListener { v, event -> event.actionMasked == MotionEvent.ACTION_MOVE }) //disable swipe
@@ -339,112 +336,6 @@ class ChildSortSublistAdapter(
         }
 
 
-        holder.imageexpandmore.setOnClickListener {
-            holder.detailedpart.visible()
-            holder.imageexpandless.visible()
-            holder.imageexpandmore.gone()
-
-            holder.layoutstatus.setOnClickListener {
-                holder.checkBoarded.tag = "Status"
-                if (statusCount == 0) {
-                    val statusSelected =
-                        PreferenceUtils.setPreference(
-                            "pickUpChartStatus",
-                            "${searchModel.status}"
-                        )
-                }
-                holder.layoutstatus.tag = searchModel.pnrNumber
-                statusCount += 1
-
-                holder.detailedpart.tag = position
-                onclickitemMultiView.onClickMuliView(
-                    view = holder.layoutstatus,
-                    view2 = holder.yetToBoard,
-                    view3 = holder.checkBoarded,
-                    view4 = holder.detailedpart,
-                    resID = searchModel.passengerName,
-                    remarks = searchModel.seatNumber
-
-                )
-                onclickitemMultiView.onClickAdditionalData(
-                    holder.boardedLoayout,
-                    holder.layoutstatus
-                )
-
-            }
-            holder.layoutModify.setOnClickListener {
-                holder.layoutModify.tag = "${searchModel.pnrNumber}&${searchModel.seatNumber}"
-                    onItemClickListener.onClick(holder.layoutModify, position)
-            }
-
-            holder.layoutluggage.setOnClickListener {
-                PreferenceUtils.putString(
-                    "genderAge",
-                    "${searchModel.status},${searchModel.sex},${searchModel.passengerAge} "
-                )
-
-                holder.layoutluggage.tag = "luggage"
-                onItemPassData.onItemDataMore(
-                    view = holder.layoutluggage,
-                    str1 = searchModel.passengerName,
-                    str2 = searchModel.seatNumber,
-                    str3 = searchModel.pnrNumber
-                )
-
-                firebaseLogEvent(
-                    context,
-                    LUGGAGE_OPTION_CLICK,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    LUGGAGE_OPTION_CLICK,
-                    "Luggage Option Clicks - ViewReservation"
-                )
-
-            }
-            
-            holder.layoutviewTicket.setOnClickListener {
-                firebaseLogEvent(
-                    context,
-                    VIEW_TICKET,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    VIEW_TICKET,
-                    "View ticket"
-                )
-
-//                val intent = if(privilegeResponseModel?.country.equals("India", true) || privilegeResponseModel?.country.equals("Indonesia", true)) {
-//                    Intent(context, TicketDetailsActivityCompose::class.java)
-//                } else {
-//                    Intent(context, TicketDetailsActivity::class.java)
-//                }
-
-//                val intent=Intent(context, TicketDetailsActivityCompose::class.java)
-//
-//                context.toast("Click")
-//                intent.putExtra(
-//                    context.getString(R.string.TICKET_NUMBER),
-//                    searchModel.pnrNumber
-//                )
-//                intent.putExtra("returnToDashboard", false)
-//
-//                context.startActivity(intent)
-                val pnrNumber = searchModel.pnrNumber
-                onPnrListener?.onPnrSelection(context.getString(R.string.view_ticket), pnrNumber)
-            }
-            
-            count++
-        }
-        
-        holder.imageexpandless.setOnClickListener {
-            holder.imageexpandless.gone()
-            holder.imageexpandmore.visible()
-
-            holder.detailedpart.gone()
-        }
-
-
         if (privilegeResponseModel != null) {
 
 
@@ -518,18 +409,6 @@ class ChildSortSublistAdapter(
                 }
 
 
-                if (it.availableAppModes?.allowModify == true) {
-                    holder.layoutModify.visible()
-                } else {
-                    holder.layoutModify.gone()
-                }
-
-                if (it.availableAppModes?.allowLuggage == true) {
-                    holder.layoutluggage.visible()
-
-                } else {
-                    holder.layoutluggage.gone()
-                }
                 if (searchModel.ticketFare != null) {
                     holder.collection.text =
                         "$currency ${(searchModel.ticketFare)?.convert(currencyFormat)}"
@@ -554,15 +433,9 @@ class ChildSortSublistAdapter(
 
     class ViewHolder(binding: ChildSortSublistAdapterBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val detailextend = binding.extendDetail
         val detailedpart = binding.extendedPart
-        val imageexpandmore = binding.imgExpandMore
-        val imageexpandless = binding.imgExpandLess
         val sideLine = binding.sideLine
         val layoutstatus = binding.layoutStatus
-        val layoutModify = binding.layoutModify
-        val layoutluggage = binding.layoutLuggage
-        val layoutviewTicket = binding.layoutViewTicket
         val checkBoarded = binding.boardedSwitch
         val passengerName = binding.passengerName
         val bookedBy = binding.bookedBy
