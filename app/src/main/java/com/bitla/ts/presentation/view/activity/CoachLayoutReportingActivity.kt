@@ -110,18 +110,12 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
     private var scanTag = ""
     private var seatNum = ""
     private var pnrNum = ""
-
     private lateinit var bindingStatus: SheetBoardedCheckBinding
     private lateinit var bottomSheetDialogStatus: BottomSheetDialog
-
     private lateinit var bindingSheet: SheetReleaseTicketsBinding
     private lateinit var bottomSheetDialoge: BottomSheetDialog
     private var qrresponse = ""
     private lateinit var switch: SwitchCompat
-
-    private lateinit var convertToPermanentPhoneBlockDialogBinding: DialogConvertToPermanentPhoneBlockBinding
-    private var convertToPermanentPhoneBlockDialog: AlertDialog? = null
-
     private var passengerName: String = ""
     private var newOtp: String = ""
     private var skipQrCcode: Boolean = false
@@ -201,16 +195,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                         } else {
                             if (!it.passenger_details.isNullOrEmpty()) getBookedSeatOptions(it.passenger_details)
                         }
-
-                        if (isPermanentPhoneBooking
-                            && it.passenger_details.isNotEmpty() && it.passenger_details[0].is_temporary_phone_block == true
-                            && it.passenger_details[0].is_phone_block
-                            && isBimaServiceDetails == false
-                        ) {
-                            binding.layoutBookedSeatDetails.menuConvertPermanentPhoneBlock.visible()
-                        } else {
-                            binding.layoutBookedSeatDetails.menuConvertPermanentPhoneBlock.gone()
-                        }
                     }
 
                     401 -> {
@@ -263,17 +247,10 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
 
     private fun onClickListener() {
         binding.apply {
-            layoutBookedSeatDetails.menuCancelTicket.setOnClickListener(this@CoachLayoutReportingActivity)
-            layoutBookedSeatDetails.menuUpdateTicket.setOnClickListener(this@CoachLayoutReportingActivity)
-            layoutBookedSeatDetails.menuUpdateRemark.setOnClickListener(this@CoachLayoutReportingActivity)
             layoutBookedSeatDetails.menuViewticket.setOnClickListener(this@CoachLayoutReportingActivity)
             layoutBookedSeatDetails.callPassenger.setOnClickListener(this@CoachLayoutReportingActivity)
             layoutBookedSeatDetails.resendSms.setOnClickListener(this@CoachLayoutReportingActivity)
-            layoutBookedSeatDetails.menuShift.setOnClickListener(this@CoachLayoutReportingActivity)
-            layoutBookedSeatDetails.menuShiftSameService.setOnClickListener(this@CoachLayoutReportingActivity)
-            layoutBookedSeatDetails.menuMoveExtra.setOnClickListener(this@CoachLayoutReportingActivity)
             layoutBookedSeatDetails.boardedSwitchBox.setOnClickListener(this@CoachLayoutReportingActivity)
-            layoutBookedSeatDetails.menuConvertPermanentPhoneBlock.setOnClickListener(this@CoachLayoutReportingActivity)
             transparentOptionV.setOnClickListener(this@CoachLayoutReportingActivity)
             transparentBookedSeatsOptionsV.setOnClickListener(this@CoachLayoutReportingActivity)
         }
@@ -822,12 +799,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
 
             }
 
-            if (data.is_update_ticket) {
-                view.menuUpdateTicket.visible()
-            } else {
-                view.menuUpdateTicket.gone()
-            }
-
             if (data.can_release_phone_block) {
                 view.cancelPhoneBookingView.visible()
                 view.cancelPhoneBooking.visible()
@@ -851,30 +822,7 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                 view.confirmPhoneBooking.gone()
             }
 
-            if (isBimaServiceDetails == true) {
-                view.menuMoveExtra.gone()
-                view.viewMoveExtraSeat.gone()
-            } else {
-                if (privilegeResponseModel?.allowToMoveBookedSeatToExtraSeat == true) {
-                    view.menuMoveExtra.visible()
-                    view.viewMoveExtraSeat.visible()
-                } else {
-                    view.menuMoveExtra.gone()
-                    view.viewMoveExtraSeat.gone()
-                }
-            }
 
-            if (isExtraSeat) {
-                if (getAvailableSeats().size > 0) {
-                    view.menuMoveExtra.visible()
-                    view.moveTV.text = "Move To Book Seats"
-                } else {
-                    view.menuMoveExtra.gone()
-                }
-
-            } else {
-                view.moveTV.text = "Move To Extra Seats"
-            }
 
             if (data.phone_num.isNullOrEmpty()) {
                 view.callPassenger.gone()
@@ -882,45 +830,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                 view.callPassenger.visible()
             }
 
-            if (data.policy_number.isNullOrEmpty()) {
-                if (data.can_shift_ticket) {
-                    view.menuShift.visible()
-                } else {
-                    view.menuShift.gone()
-                }
-            } else {
-                view.menuShift.gone()
-            }
-
-            if (data.policy_number.isNullOrEmpty()) {
-                if (data.can_shift_ticket) {
-                    if (!privilegeResponseModel?.country.equals("Indonesia", true) && !isExtraSeat) {
-                        view.menuShiftSameService.visible()
-                    } else {
-                        view.menuShiftSameService.gone()
-                    }
-
-                } else {
-                    view.menuShiftSameService.gone()
-                }
-            } else {
-                view.menuShiftSameService.gone()
-            }
-
-
-            if (data.can_cancel && !data.can_release_phone_block) {
-                view.menuCancelTicketView.visible()
-                view.menuCancelTicket.visible()
-            } else {
-                view.menuCancelTicket.gone()
-            }
-
-
-            if (privilegeResponseModel?.showUpdateRemarksLinkInTheTicketSearch == true) {
-                view.menuUpdateRemark.visible()
-            } else {
-                view.menuUpdateRemark.gone()
-            }
 
             if(!data.travel_date.isNullOrEmpty()) {
                 view.dateOfJourneyLL.visible()
@@ -1464,55 +1373,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                             val intent = Intent(this, SmsNotificationActivity::class.java)
                             startActivity(intent)
                         }
-
-
-                        getString(R.string.update_details_option) -> {
-                            // val busDetails = "$travelDate $source - $destination $busType"
-                            firebaseLogEvent(
-                                this,
-                                BOOKINGPG_UPDATE_DETAILS,
-                                loginModelPref.userName,
-                                loginModelPref.travels_name,
-                                loginModelPref.role,
-                                BOOKINGPG_UPDATE_DETAILS,
-                                "Update Details"
-                            )
-                            val busDetails =
-                                "${serviceDetails?.body?.number} | ${getDateDMYY(travelDate)} ${serviceDetails?.body?.depTime} | $busType"
-                            val intent = Intent(this, ServiceDetailsActivity::class.java)
-                            intent.putExtra(getString(R.string.origin), serviceDetails?.body?.origin?.name ?: "")
-                            intent.putExtra(getString(R.string.destination), destination)
-                            intent.putExtra(getString(R.string.bus_type), busDetails)
-
-                            PreferenceUtils.removeKey(getString(R.string.scannedUserName))
-                            PreferenceUtils.removeKey(getString(R.string.scannedUserId))
-                            PreferenceUtils.removeKey("selectedScanType")
-                            PreferenceUtils.removeKey(getString(R.string.scan_coach))
-                            PreferenceUtils.removeKey(getString(R.string.scan_driver_1))
-                            PreferenceUtils.removeKey(getString(R.string.scan_driver_2))
-                            PreferenceUtils.removeKey(getString(R.string.scan_cleaner))
-                            PreferenceUtils.removeKey(getString(R.string.scan_contractor))
-
-                            startActivity(intent)
-                        }
-
-
-
-                        getString(R.string.frequent_traveller) -> {
-                            val intent = Intent(this, FrequentTravellerDataActivity::class.java)
-                            startActivity(intent)
-
-                            firebaseLogEvent(
-                                this,
-                                FREQUENT_TRAVELLER,
-                                loginModelPref.userName,
-                                loginModelPref.travels_name,
-                                loginModelPref.role,
-                                FREQUENT_TRAVELLER,
-                                "Frequent Traveller"
-                            )
-                        }
-
                     }
                 }
 
@@ -1717,9 +1577,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                 )
             }
 
-            R.id.menu_update_remark -> {
-                openUpdateRemarksDialog()
-            }
 
             R.id.call_passenger -> {
 
@@ -1733,128 +1590,9 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                 callSendSMSEmailApi("sms")
             }
 
-            R.id.menu_shift -> {
-                val intent = Intent(this, ShiftPassengerActivity::class.java)
-                intent.putExtra(
-                    "service_ticketno",
-                    seatPassengersList[lastSelectedSeatPosition].ticket_no
-                )
-
-                intent.putExtra(
-                    "travel_date",
-                    seatPassengersList[lastSelectedSeatPosition].travel_date
-                )
-
-                PreferenceUtils.putString(
-                    "SHIFT_SeatPnrNumber",
-                    seatPassengersList[lastSelectedSeatPosition].ticket_no
-                )
-                PreferenceUtils.putString(
-                    "TicketDetail_SeatNumbes",
-                    seatPassengersList[lastSelectedSeatPosition].seat_numbers
-                )
-
-
-                PreferenceUtils.putString("SHIFT_servicename", serviceDetails?.body?.number ?: "")
-                PreferenceUtils.putString("SHIFT_originId", originId)
-                PreferenceUtils.putString("SHIFT_destinationId", destinationId)
-                PreferenceUtils.putString(
-                    "oldServiceNumberShiftACTIVITY",
-                    "${serviceDetails?.body?.number ?: ""}?${serviceDetails?.body?.travelDate ?: ""}"
-                )
-                PreferenceUtils.putString(
-                    "TicketDetail_noOfSeats",
-                    (seatPassengersList[lastSelectedSeatPosition].no_of_seats ?: 1).toString()
-                )
-
-                startActivity(intent)
-            }
-
-            R.id.menu_shift_same_service_ -> {
-                val intent = Intent(this, ShiftPassengerActivity::class.java)
-                intent.putExtra(
-                    "service_ticketno",
-                    seatPassengersList[lastSelectedSeatPosition].ticket_no
-                )
-                intent.putExtra("partial_shift", true)
-                PreferenceUtils.putString("SHIFT_servicename", serviceDetails?.body?.number ?: "")
-                PreferenceUtils.putString(
-                    "SHIFT_SeatPnrNumber",
-                    seatPassengersList[lastSelectedSeatPosition].ticket_no
-                )
-                PreferenceUtils.putString(
-                    "TicketDetail_SeatNumbes",
-                    seatPassengersList[lastSelectedSeatPosition].seat_no
-                )
-
-                PreferenceUtils.putString("SHIFT_originId", originId)
-                PreferenceUtils.putString("SHIFT_destinationId", destinationId)
-
-                PreferenceUtils.putString(
-                    "oldServiceNumberShiftACTIVITY",
-                    "${serviceDetails?.body?.number ?: ""}?${serviceDetails?.body?.travelDate ?: ""}"
-                )
-                startActivity(intent)
-            }
-
-
-            R.id.menuConvertPermanentPhoneBlock -> {
-
-                showConvertToPermanentPhoneBlockDialog()
-            }
-
-
         }
     }
 
-    private fun showConvertToPermanentPhoneBlockDialog() {
-        convertToPermanentPhoneBlockDialog = AlertDialog.Builder(this).create()
-        convertToPermanentPhoneBlockDialogBinding =
-            DialogConvertToPermanentPhoneBlockBinding.inflate(LayoutInflater.from(this))
-        convertToPermanentPhoneBlockDialog?.setView(convertToPermanentPhoneBlockDialogBinding.root)
-
-        convertToPermanentPhoneBlockDialogBinding.btnProcceed.setOnClickListener {
-            var ticketNumber =
-                if (seatPassengersList.isNotEmpty()) seatPassengersList[lastSelectedSeatPosition].ticket_no else ""
-            if (ticketNumber.contains("("))
-                ticketNumber = ticketNumber.substringBefore("(").trim()
-
-            Timber.d("ticketNumberX- $ticketNumber")
-
-            callPhoneBlockTempToPermanentApi(
-                apiKey = loginModelPref.api_key,
-                pnrNumber = ticketNumber
-            )
-            convertToPermanentPhoneBlockDialog?.dismiss()
-            closeToggle()
-        }
-
-        convertToPermanentPhoneBlockDialogBinding.closeTV.setOnClickListener {
-            convertToPermanentPhoneBlockDialog?.dismiss()
-        }
-
-        convertToPermanentPhoneBlockDialogBinding.tvCancel.setOnClickListener {
-            convertToPermanentPhoneBlockDialog?.dismiss()
-        }
-
-        convertToPermanentPhoneBlockDialog?.show()
-    }
-
-
-    private fun openUpdateRemarksDialog() {
-        DialogUtils.updateRemarkDialog(
-            context = this,
-            onUpdateButtonClick = { remark ->
-                callDragDropRemarksUpdateApi(
-                    binding.layoutBookedSeatDetails.pnrValueTV.text.toString(),
-                    remark
-                )
-            },
-            onCancelButtonClick = {
-//                    toast("onCancelCalled")
-            }
-        )
-    }
 
 
 

@@ -2,22 +2,12 @@ package com.bitla.ts.presentation.view.activity
 
 import android.content.Intent
 import android.os.Build
-import android.os.Bundle
-import android.widget.SeekBar
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bitla.ts.R
 import com.bitla.ts.app.base.BaseActivity
-import com.bitla.ts.databinding.ActivityBlackListNumberBinding
 import com.bitla.ts.databinding.ActivityTextSizeBinding
 import com.bitla.ts.utils.common.edgeToEdge
 import com.bitla.ts.utils.constants.DEFAULT_TEXT_SIZE
 import com.bitla.ts.utils.constants.LARGE_TEXT_SIZE
-import com.bitla.ts.utils.constants.NOTIFICATION_DEFAULT_SOUND
-import com.bitla.ts.utils.constants.NOTIFICATION_SILENT
-import com.bitla.ts.utils.constants.NOTIFICATION_SYSTEM_SOUND
 import com.bitla.ts.utils.constants.SMALL_TEXT_SIZE
 import com.bitla.ts.utils.constants.XLARGE_TEXT_SIZE
 import com.bitla.ts.utils.sharedPref.PreferenceUtils
@@ -74,14 +64,9 @@ class TextSizeActivity : BaseActivity() {
 
             startActivity(Intent(this, SplashScreen::class.java))
             finish()
-//            restartApp()
         }
     }
 
-    private fun restartApp() {
-        startActivity(Intent(this, SplashScreen::class.java))
-        finish()
-    }
 
 
 

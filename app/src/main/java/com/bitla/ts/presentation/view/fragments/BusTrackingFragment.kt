@@ -114,7 +114,7 @@ class BusTrackingFragment : BaseFragment(), OnMapReadyCallback {
                     requireContext().getString(R.string.vehicle_is_not_assigned)
 
                 if ((activity as BaseActivity).getPrivilegeBase()?.allowUpdateDetailsOptionInReservationChart == true) {
-                    binding.addBusDetailsButton.visible()
+                    binding.addBusDetailsButton.gone()
                 } else {
                     binding.addBusDetailsButton.gone()
                 }
@@ -133,7 +133,7 @@ class BusTrackingFragment : BaseFragment(), OnMapReadyCallback {
                     requireContext().getString(R.string.vehicle_is_not_assigned)
 
                 if ((activity as BaseActivity).getPrivilegeBase()?.allowUpdateDetailsOptionInReservationChart == true) {
-                    binding.addBusDetailsButton.visible()
+                    binding.addBusDetailsButton.gone()
                 } else {
                     binding.addBusDetailsButton.gone()
                 }
@@ -155,43 +155,6 @@ class BusTrackingFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     private fun setClickListener() {
-        binding.addBusDetailsButton.setOnClickListener {
-            firebaseLogEvent(
-                requireContext(),
-                BOOKINGPG_UPDATE_DETAILS,
-                loginModelPref.userName,
-                loginModelPref.travels_name,
-                loginModelPref.role,
-                BOOKINGPG_UPDATE_DETAILS,
-                "Update Details"
-            )
-            val busDetails =
-                "${busTrackingViewModel.serviceNumber.value} | ${getDateDMYY(busTrackingViewModel.serviceTravelDate.value.toString())} ${busTrackingViewModel.deptTime.value} | ${busTrackingViewModel.serviceBusType.value}"
-            val intent = Intent(requireContext(), ServiceDetailsActivity::class.java)
-            intent.putExtra(
-                requireContext().getString(R.string.origin),
-                busTrackingViewModel.origin.value
-            )
-            intent.putExtra(
-                requireContext().getString(R.string.destination),
-                busTrackingViewModel.destination.value
-            )
-            intent.putExtra(requireContext().getString(R.string.bus_type), busDetails)
-
-            PreferenceUtils.removeKey(requireContext().getString(R.string.scannedUserName))
-            PreferenceUtils.removeKey(requireContext().getString(R.string.scannedUserId))
-            PreferenceUtils.removeKey("selectedScanType")
-            PreferenceUtils.removeKey(requireContext().getString(R.string.scan_coach))
-            PreferenceUtils.removeKey(requireContext().getString(R.string.scan_driver_1))
-            PreferenceUtils.removeKey(requireContext().getString(R.string.scan_driver_2))
-            PreferenceUtils.removeKey(requireContext().getString(R.string.scan_cleaner))
-            PreferenceUtils.removeKey(requireContext().getString(R.string.scan_contractor))
-
-            requireActivity().finish()
-            context?.startActivity(intent)
-
-
-        }
     }
 
 

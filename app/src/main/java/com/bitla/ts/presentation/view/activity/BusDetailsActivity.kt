@@ -3179,35 +3179,6 @@ class BusDetailsActivity : BaseActivity(), OnItemClickListener, SlyCalendarDialo
                 startActivity(intent)
             }
 
-            4 -> {
-                // val busDetails = "$travelDate $source - $destination $busType"
-                firebaseLogEvent(
-                    this,
-                    BOOKINGPG_UPDATE_DETAILS,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    BOOKINGPG_UPDATE_DETAILS,
-                    BookingPGUpdateDetails.UPDATE_DETAILS
-                )
-                val busDetails = "$serviceNumber | ${getDateDMYY(travelDate)} $depTime | $busType"
-                val intent = Intent(context, ServiceDetailsActivity::class.java)
-                intent.putExtra(context.getString(R.string.origin), source)
-                intent.putExtra(context.getString(R.string.destination), destination)
-                intent.putExtra(context.getString(R.string.bus_type), busDetails)
-
-                removeKey(context.getString(R.string.scannedUserName))
-                removeKey(context.getString(R.string.scannedUserId))
-                removeKey("selectedScanType")
-                removeKey(context.getString(R.string.scan_coach))
-                removeKey(context.getString(R.string.scan_driver_1))
-                removeKey(context.getString(R.string.scan_driver_2))
-                removeKey(context.getString(R.string.scan_cleaner))
-                removeKey(context.getString(R.string.scan_contractor))
-
-                context.startActivity(intent)
-            }
-
             5 -> {
                 Timber.d("isSingleBlockUnblock ${busData.isSingleBlockUnblock}")
 
@@ -3314,11 +3285,6 @@ class BusDetailsActivity : BaseActivity(), OnItemClickListener, SlyCalendarDialo
                 } else {
                     callServiceApi()
                 }
-            }
-
-            10 -> {
-                val intent = Intent(this, FrequentTravellerDataActivity::class.java)
-                startActivity(intent)
             }
         }
     }

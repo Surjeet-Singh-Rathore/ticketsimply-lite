@@ -1047,7 +1047,6 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
         binding.layoutBoardinPoint.setOnClickListener(this)
         binding.layoutDroppingPoint.setOnClickListener(this)
         binding.layoutBookedBy.setOnClickListener(this)
-        binding.layoutServiceDetails.setOnClickListener(this)
         binding.layoutBookings.setOnClickListener(this)
         binding.layoutCollections.setOnClickListener(this)
         binding.layoutReleasedTickets.setOnClickListener(this)
@@ -1512,27 +1511,6 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
                 }
             }
 
-            R.id.layout_service_details -> {
-                //val busDetails = "$travelDate $source - $destination $busType "
-
-                val busDetails = "$serviceNumber $travelDate $source - $destination $busType "
-                val intent = Intent(this, ServiceDetailsActivity::class.java)
-                intent.putExtra(getString(R.string.origin), source)
-                intent.putExtra(getString(R.string.destination), destination)
-                intent.putExtra(getString(R.string.bus_type), busDetails)
-
-                PreferenceUtils.apply {
-                    removeKey(getString(R.string.scannedUserName))
-                    removeKey(getString(R.string.scannedUserId))
-                    removeKey("selectedScanType")
-                    removeKey(getString(R.string.scan_coach))
-                    removeKey(getString(R.string.scan_driver_1))
-                    removeKey(getString(R.string.scan_driver_2))
-                    removeKey(getString(R.string.scan_cleaner))
-                    removeKey(getString(R.string.scan_contractor))
-                }
-                startActivity(intent)
-            }
         }
     }
 

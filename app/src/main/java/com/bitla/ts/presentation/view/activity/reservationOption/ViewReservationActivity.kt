@@ -230,27 +230,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
         if (getPrivilegeBase() != null) {
             privilegeResponse = getPrivilegeBase()
             privilegeResponse?.let {
-
-                if (privilegeResponse?.allowBulkCancellation == true) {
-
-                    val tabbulk = Tabs()
-                    tabbulk.title = getString(R.string.bulk_cancel)
-
-                    tabsList.add(tabbulk)
-                }
-                if (privilegeResponse?.allowBulkShifting == true) {
-                    val tabshift = Tabs()
-                    tabshift.title = getString(R.string.shift_passengers)
-
-                    tabsList.add(tabshift)
-                }
-                if (privilegeResponse?.viewCollectionChart == true) {
-                    val tabcollection = Tabs()
-                    tabcollection.title = getString(R.string.collection)
-                    tabsList.add(tabcollection)
-
-                }
-
                 isAllowBooking = privilegeResponse?.allowBooking
             }
         } else {
@@ -264,7 +243,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
         }
 
 
-        val fragmentAdapter = ViewReservationAdapter(this, tabsList, country, privilegeResponse?.tsPrivileges?.groupByPnrPickupChart ?: false, tripSheetCollectionOptionsInTSAppReservationChart, this)
+        val fragmentAdapter = ViewReservationAdapter(this, tabsList, country, privilegeResponse?.tsPrivileges?.groupByPnrPickupChart ?: false, this)
         binding.viewpagerPickup.adapter = fragmentAdapter
         if (binding.viewpagerPickup.adapter != null) {
             TabLayoutMediator(
@@ -277,35 +256,12 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                         getString(R.string.passenger_list)
                     }
 
-                    getString(R.string.bulk_cancel) -> {
-                        getString(R.string.bulk_cancel)
-                    }
-
-                    getString(R.string.shift_passengers) -> {
-                        getString(R.string.shift_passengers)
-                    }
-
-                    getString(R.string.collection) -> {
-                        if (tripSheetCollectionOptionsInTSAppReservationChart == true && country.equals(
-                                "india",
-                                true
-                            )
-                        ) {
-                            getString(R.string.trip_sheet_collection)
-                        } else {
-                            getString(R.string.collection)
-                        }
-                    }
-
                     else -> {
                         getString(R.string.passenger_list)
                     }
                 }
                 val drawableResId = when (tabsList[position].title) {
                     getString(R.string.passenger_list) -> R.drawable.ic_pickup_list_dashboard
-                    getString(R.string.bulk_cancel) -> R.drawable.ic_pickup_cancel_dashboard
-                    getString(R.string.shift_passengers) -> R.drawable.ic_pickup_shift_passenger_dashboard
-                    getString(R.string.collection) -> R.drawable.ic_pickup_collection_dashboard
                     else -> 0
                 }
                 tab.icon = if (drawableResId != 0) {
@@ -425,9 +381,6 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
             if (country.equals("india", ignoreCase = true)) {
                 val drawableResId = when (i) {
                     0 -> R.drawable.ic_pickup_list_dashboard
-                    1 -> R.drawable.ic_pickup_cancel_dashboard
-                    2 -> R.drawable.ic_pickup_shift_passenger_dashboard
-                    3 -> R.drawable.ic_pickup_collection_dashboard
                     else -> 0
                 }
                 if (drawableResId != 0) {
@@ -533,12 +486,13 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
         if (Build.VERSION.SDK_INT > 28) {
             popup.setForceShowIcon(true)
         }
-        popup.menu.getItem(3).isVisible = isAllowBooking != null && isAllowBooking!!
+        popup.menu.getItem(4).isVisible = isAllowBooking != null && isAllowBooking!!
         /* hide the visibility of booking summary & stage summary for build_6.12
         popup.menu.getItem(1).isVisible = privilegeResponse?.country.equals("India", true)
         popup.menu.getItem(2).isVisible = privilegeResponse?.country.equals("India", true)*/
         popup.menu.getItem(1).isVisible = false
         popup.menu.getItem(2).isVisible = false
+        popup.menu.getItem(3).isVisible = false
 
         isTripComplete = PreferenceUtils.getString("is_trip_complete")
         // var isTripComplete = "completed"
@@ -966,6 +920,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                                 PreferenceUtils.setPreference(PREF_RESERVATION_ID, resId)
                                 intent.putExtra(getString(R.string.navigate_tag), tag)
                                 startActivity(intent)
+                                finish()
                             }
                         } else {
                             Timber.e("Invalid list positions: src=$selectedSrcPosition, dest=$selectedDestPosition")

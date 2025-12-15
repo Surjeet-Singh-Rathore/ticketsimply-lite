@@ -458,34 +458,6 @@ class DialogUtils {
         }
 
 
-        fun dialogRedelcomDetails(
-            context: Context,
-            data: RedelcomPreferenceData
-        ) {
-
-            val builder = AlertDialog.Builder(context).create()
-            LayoutInflater.from(context)
-            builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))  // for transparent background
-            val binding: DialogRedelcomDetailsBinding =
-                DialogRedelcomDetailsBinding.inflate(LayoutInflater.from(context))
-            builder.setCancelable(false)
-
-            binding.apiKeyTV.text = "Api key : " + data.api_key
-            binding.urlTV.text = "Url : " + data.redelcom_uri
-            binding.terminalIdTV.text = "Terminal : " + data.terminalId
-            binding.clientIDTV.text = "Client Id : " + data.client_id
-
-            binding.cancelTV.setOnClickListener {
-                builder.cancel()
-
-            }
-
-
-            builder.setView(binding.root)
-            builder.show()
-        }
-
-
 
         fun dialogServiceFilter(
             context: Context,
@@ -5390,12 +5362,6 @@ class DialogUtils {
         }
 
 
-        fun launch(activity: Activity) {
-            activity.startActivity(Intent(activity, SeatShiftingSuccessfulActivity::class.java))
-            activity.finish()
-        }
-
-
         override fun onClickOfItem(data: String, position: Int) {
             filterItemName = data
             lastCheckedPos = position
@@ -6329,45 +6295,6 @@ class DialogUtils {
 
         fun getProgressDialogVar(): AlertDialog? {
             return progressDialog
-        }
-
-        fun updateRemarkDialog(
-            context: Context,
-            onUpdateButtonClick: ((remark: String) -> Unit),
-            onCancelButtonClick: (() -> Unit)
-        ) {
-
-            val builder = AlertDialog.Builder(context).create()
-
-            builder.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))  // for transparent background
-
-            val binding: DialogUpdateRemarkBinding =
-                DialogUpdateRemarkBinding.inflate(LayoutInflater.from(context))
-
-            builder.setCancelable(false)
-
-            binding.clearTV.setOnClickListener {
-                binding.textInputEditTextRemarks.setText("")
-            }
-
-            binding.btnUpdate.setOnClickListener {
-                if (binding.textInputEditTextRemarks.text.toString().trim().isEmpty()) {
-                    context.toast("Please enter a remark")
-                } else {
-                    onUpdateButtonClick.invoke(
-                        binding.textInputEditTextRemarks.text.toString()
-                    )
-                    builder.cancel()
-                }
-            }
-
-            binding.tvCancel.setOnClickListener {
-                onCancelButtonClick.invoke()
-                builder.cancel()
-            }
-
-            builder.setView(binding.root)
-            builder.show()
         }
 
         fun ticketCancelDialog(

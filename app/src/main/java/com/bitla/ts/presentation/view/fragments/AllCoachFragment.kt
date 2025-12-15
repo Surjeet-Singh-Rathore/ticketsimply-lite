@@ -2577,9 +2577,9 @@ class AllCoachFragment : BaseUpdateCancelTicket(), NewCoachActivity.CoachDataInt
         val blocked = item.isBlocked
 
         if (available != null && blocked != null) {
-            if (!isAllowUsersToViewTicket && ((available == true && blocked == false) || (available == true && blocked == true)) && (activity is NewCoachActivity) || ((activity is ShiftPassengerActivity)) || (activity is SeatWiseFareActivity)){
+            if (!isAllowUsersToViewTicket && ((available == true && blocked == false) || (available == true && blocked == true)) && (activity is NewCoachActivity)  || (activity is SeatWiseFareActivity)){
                 selectionFilter(titleText, item, bgColor)
-            } else if (!isAllowUsersToViewTicket && (blocked == true && available == false) && (activity is NewCoachActivity) || (activity is ShiftPassengerActivity)) {
+            } else if (!isAllowUsersToViewTicket && (blocked == true && available == false) && (activity is NewCoachActivity) ) {
                 selectionFilter(titleText, item, bgColor)
             } else {
                 if (!isFromShiftPassenger && item.number != null) {
