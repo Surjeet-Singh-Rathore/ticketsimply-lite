@@ -1855,66 +1855,6 @@ class TicketDetailsActivityCompose : BaseActivity() {
                                 })
                         }
 
-                        if (ticketDetailsComposeViewModel.shiftTicketBtnVisibility(
-                                privilegeResponseModel
-                            )
-                        ) {
-
-                            ticketDetailsComposeViewModel.sideBarOptionsList.add(
-                                TicketDetailsSideBarOptionsModel(
-                                    R.drawable.ic_shift_arrow, getString(R.string.shift_passengers)
-                                ) {
-
-                                    lifecycleScope.launch {
-                                        ClickHandler.runWithDelay {
-                                            val intent = Intent(
-                                                this@TicketDetailsActivityCompose,
-                                                ShiftPassengerActivity::class.java
-                                            )
-                                            intent.putExtra(
-                                                "service_ticketno", ticketNumber ?: ""
-                                            )
-                                            PreferenceUtils.putString(
-                                                "SHIFT_SeatPnrNumber", ticketNumber
-                                            )
-                                            PreferenceUtils.putString(
-                                                "TicketDetail_SeatNumbes",
-                                                ticketDetailsComposeViewModel.seatNumbers
-                                            )
-                                            PreferenceUtils.putString(
-                                                "SHIFT_servicename",
-                                                ticketDetailsComposeViewModel.serviceNumber
-                                            )
-                                            PreferenceUtils.putString(
-                                                "SHIFT_originId", ticketDetailsComposeViewModel.originId
-                                            )
-                                            PreferenceUtils.putString(
-                                                "SHIFT_destinationId",
-                                                ticketDetailsComposeViewModel.destinationId
-                                            )
-                                            PreferenceUtils.putString(
-                                                "oldServiceNumberShiftACTIVITY",
-                                                "${ticketDetailsComposeViewModel.serviceNumber}?${ticketDetailsComposeViewModel.travelDate}"
-                                            )
-
-                                            PreferenceUtils.putString(
-                                                "TicketDetail_noOfSeats",
-                                                ticketDetailsComposeViewModel.noOfSeats.toString()
-                                            )
-
-                                            PreferenceUtils.setPreference(
-                                                PREF_RESERVATION_ID,
-                                                ticketDetailsComposeViewModel.reservationId
-                                            )
-
-                                            startActivity(intent)
-
-                                        }
-                                    }
-
-                                })
-                        }
-
                         if (ticketDetailsComposeViewModel.cancelTicketBtnVisibility()) {
                             ticketDetailsComposeViewModel.sideBarOptionsList.add(
                                 TicketDetailsSideBarOptionsModel(

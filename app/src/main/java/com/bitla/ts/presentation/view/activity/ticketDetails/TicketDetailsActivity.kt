@@ -75,7 +75,6 @@ import com.bitla.ts.presentation.view.activity.ConfirmPhoneBookingActivity
 import com.bitla.ts.presentation.view.activity.LoginActivity
 import com.bitla.ts.presentation.view.activity.NewCoachActivity
 import com.bitla.ts.presentation.view.activity.NewConfirmPhoneBookingActivity
-import com.bitla.ts.presentation.view.activity.ShiftPassengerActivity
 import com.bitla.ts.presentation.view.dashboard.DashboardNavigateActivity
 import com.bitla.ts.presentation.viewModel.CancelTicketViewModel
 import com.bitla.ts.presentation.viewModel.DashboardViewModel
@@ -4364,20 +4363,6 @@ class TicketDetailsActivity : BaseActivity(), View.OnClickListener, OnItemClickL
                 intent.putExtra(getString(R.string.pnr_number), ticketNumber)
                 startActivity(intent)
             }
-            R.id.ticketDetails_btnShiftPassenger -> {
-                if(getPrivilegeBase()?.country.equals("indonesia",true)){
-                    if (isShiftPassenger && isInsurance) {
-                        goToShiftPassengerActivity()
-
-                    } else {
-                        toast(getString(R.string.passenger_cannot_be_shifted))
-                    }
-                }else{
-                    goToShiftPassengerActivity()
-                }
-
-
-            }
             R.id.viewPassengersBtn -> {
                 firebaseLogEvent(
                     this,
@@ -4633,30 +4618,7 @@ class TicketDetailsActivity : BaseActivity(), View.OnClickListener, OnItemClickL
         }
     }
 
-    private fun goToShiftPassengerActivity() {
-        PreferenceUtils.setPreference("BUlK_shifting", false)
-        intent = Intent(this, ShiftPassengerActivity::class.java)
-        intent.putExtra("1234", seatNumbers)
 
-        intent.putExtra("service_name", serviceName)
-        //                    intent.putExtra("service_date", travelDate )
-        //                    PreferenceUtils.putString("reservationid",reservationId.toString())!!
-        PreferenceUtils.setPreference(
-            PREF_RESERVATION_ID, reservationId
-        )
-        intent.putExtra("service_ticketno", ticketNumber)
-        startActivity(intent)
-
-        firebaseLogEvent(
-            this,
-            SHIFT_PAX,
-            loginModelPref.userName,
-            loginModelPref.travels_name,
-            loginModelPref.role,
-            SHIFT_PAX,
-            SHIFT_PASSENGER_TICKET_DETAILS
-        )
-    }
 
     /*var printerInterface: EPrinterInterface? = null
     private fun printEzetapTicket() {

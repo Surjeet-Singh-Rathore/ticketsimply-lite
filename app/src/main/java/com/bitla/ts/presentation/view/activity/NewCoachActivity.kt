@@ -340,7 +340,6 @@ private var transactionFare: String = ""
     private var checkAMOrPM = ""
     private var allowBookingForAllotedServices: Boolean = false
     private var allowBookingForAllServices: Boolean = false
-    private lateinit var convertToPermanentPhoneBlockDialogBinding: DialogConvertToPermanentPhoneBlockBinding
     private lateinit var layoutNotifyPassengerOptionsBinding: LayoutNotifyPassengerOptionBinding
     private var convertToPermanentPhoneBlockDialog: AlertDialog? = null
     private var canBlockSeat = false
@@ -1427,17 +1426,6 @@ private var transactionFare: String = ""
                             isSwitchClicked = false
                         } else {
                             if (!response.passenger_details.isNullOrEmpty()) getBookedSeatOptions(response.passenger_details)
-                        }
-
-                        // Check if passenger_details is not null and contains data before accessing its first element
-                        if (isPermanentPhoneBooking
-                            && it.passenger_details.isNotEmpty() && it.passenger_details[0].is_temporary_phone_block == true
-                            && it.passenger_details[0].is_phone_block
-                            && isBimaServiceDetails == false
-                        ) {
-                            binding.layoutBookedSeatDetails.menuConvertPermanentPhoneBlock.visible()
-                        } else {
-                            binding.layoutBookedSeatDetails.menuConvertPermanentPhoneBlock.gone()
                         }
                     }
 
@@ -2608,17 +2596,11 @@ private var transactionFare: String = ""
         binding.editPriceLayout.bookLL.setOnClickListener(this)
         binding.editPriceLayout.ticketPrice.setOnClickListener(this)
         binding.transparentBookedSeatsOptionsV.setOnClickListener(this)
-        binding.layoutBookedSeatDetails.menuCancelTicket.setOnClickListener(this)
-        binding.layoutBookedSeatDetails.menuUpdateTicket.setOnClickListener(this)
-        binding.layoutBookedSeatDetails.menuUpdateRemark.setOnClickListener(this)
         binding.layoutBookedSeatDetails.menuViewticket.setOnClickListener(this)
         binding.layoutBookedSeatDetails.callPassenger.setOnClickListener(this)
         binding.layoutBookedSeatDetails.resendSms.setOnClickListener(this)
-        binding.layoutBookedSeatDetails.menuShift.setOnClickListener(this)
-        binding.layoutBookedSeatDetails.menuShiftSameService.setOnClickListener(this)
-        binding.layoutBookedSeatDetails.menuMoveExtra.setOnClickListener(this)
         binding.layoutBookedSeatDetails.boardedSwitchBox.setOnClickListener(this)
-        binding.layoutBookedSeatDetails.menuConvertPermanentPhoneBlock.setOnClickListener(this)
+
 
     }
 
@@ -3288,10 +3270,6 @@ private var transactionFare: String = ""
                 )
             }
 
-            R.id.menu_update_remark -> {
-                openUpdateRemarksDialog()
-            }
-
             R.id.call_passenger -> {
 
                 onSeatSelectionListener.callPassenger(
@@ -3305,75 +3283,6 @@ private var transactionFare: String = ""
                 startActivity(intent)*/
 
                 callSendSMSEmailApi("sms")
-            }
-
-            R.id.menu_shift -> {
-                val intent = Intent(context, ShiftPassengerActivity::class.java)
-                intent.putExtra(
-                    "service_ticketno",
-                    seatPassengersList[lastSelectedSeatPosition].ticket_no
-                )
-
-                intent.putExtra(
-                    "travel_date",
-                    seatPassengersList[lastSelectedSeatPosition].travel_date
-                )
-
-                PreferenceUtils.putString(
-                    "SHIFT_SeatPnrNumber",
-                    seatPassengersList[lastSelectedSeatPosition].ticket_no
-                )
-                PreferenceUtils.putString(
-                    "TicketDetail_SeatNumbes",
-                    seatPassengersList[lastSelectedSeatPosition].seat_numbers
-                )
-
-                Timber.d("sourceIdsourceIdTest - $sourceId & $destinationId")
-
-                PreferenceUtils.putString("SHIFT_servicename", serviceNumber)
-                PreferenceUtils.putString("SHIFT_originId", sourceId)
-                PreferenceUtils.putString("SHIFT_destinationId", destinationId)
-                PreferenceUtils.putString(
-                    "oldServiceNumberShiftACTIVITY",
-                    "${serviceNumber}?${serviceTravelDate}"
-                )
-                PreferenceUtils.putString(
-                    "TicketDetail_noOfSeats",
-                    (seatPassengersList[lastSelectedSeatPosition].no_of_seats ?: 1).toString()
-                )
-
-                startActivity(intent)
-            }
-
-            R.id.menu_shift_same_service_ -> {
-                val intent = Intent(context, ShiftPassengerActivity::class.java)
-                intent.putExtra(
-                    "service_ticketno",
-                    seatPassengersList[lastSelectedSeatPosition].ticket_no
-                )
-                intent.putExtra("partial_shift", true)
-                PreferenceUtils.putString("SHIFT_servicename", serviceNumber)
-                PreferenceUtils.putString(
-                    "SHIFT_SeatPnrNumber",
-                    seatPassengersList[lastSelectedSeatPosition].ticket_no
-                )
-                PreferenceUtils.putString(
-                    "TicketDetail_SeatNumber_sameService",
-                    seatPassengersList[lastSelectedSeatPosition].seat_no
-                )
-                PreferenceUtils.putString(
-                    "TicketDetail_SeatNumbes",
-                    seatPassengersList[lastSelectedSeatPosition].seat_no
-                )
-
-                PreferenceUtils.putString("SHIFT_originId", sourceId)
-                PreferenceUtils.putString("SHIFT_destinationId", destinationId)
-
-                PreferenceUtils.putString(
-                    "oldServiceNumberShiftACTIVITY",
-                    "${serviceNumber}?${serviceTravelDate}"
-                )
-                startActivity(intent)
             }
 
             R.id.menu_move_extra -> {
@@ -3593,49 +3502,12 @@ private var transactionFare: String = ""
                     }
                 }
             }
-
-            R.id.menuConvertPermanentPhoneBlock -> {
-
-                showConvertToPermanentPhoneBlockDialog()
-            }
-
         }
     }
 
 
 
-    private fun showConvertToPermanentPhoneBlockDialog() {
-        convertToPermanentPhoneBlockDialog = AlertDialog.Builder(this).create()
-        convertToPermanentPhoneBlockDialogBinding =
-            DialogConvertToPermanentPhoneBlockBinding.inflate(LayoutInflater.from(this))
-        convertToPermanentPhoneBlockDialog?.setView(convertToPermanentPhoneBlockDialogBinding.root)
 
-        convertToPermanentPhoneBlockDialogBinding.btnProcceed.setOnClickListener {
-            var ticketNumber =
-                if (seatPassengersList.isNotEmpty()) seatPassengersList[lastSelectedSeatPosition].ticket_no else ""
-            if (ticketNumber.contains("("))
-                ticketNumber = ticketNumber.substringBefore("(").trim()
-
-            Timber.d("ticketNumberX- $ticketNumber")
-
-            callPhoneBlockTempToPermanentApi(
-                apiKey = loginModelPref.api_key,
-                pnrNumber = ticketNumber
-            )
-            convertToPermanentPhoneBlockDialog?.dismiss()
-            closeToggle()
-        }
-
-        convertToPermanentPhoneBlockDialogBinding.closeTV.setOnClickListener {
-            convertToPermanentPhoneBlockDialog?.dismiss()
-        }
-
-        convertToPermanentPhoneBlockDialogBinding.tvCancel.setOnClickListener {
-            convertToPermanentPhoneBlockDialog?.dismiss()
-        }
-
-        convertToPermanentPhoneBlockDialog?.show()
-    }
 
     private fun closeChageStartionLayout() {
         binding.modifySearchLayout.root.gone()
@@ -7116,22 +6988,6 @@ private var transactionFare: String = ""
 
             }
 
-//            if (isBimaServiceDetails == true) {
-//                view.menuUpdateTicket.gone()
-//            } else {
-//                if (data.is_update_ticket) {
-//                    view.menuUpdateTicket.visible()
-//                } else {
-//                    view.menuUpdateTicket.gone()
-//                }
-//            }
-
-            if (data.is_update_ticket) {
-                view.menuUpdateTicket.visible()
-            } else {
-                view.menuUpdateTicket.gone()
-            }
-
             if (data.can_release_phone_block) {
                 view.cancelPhoneBookingView.visible()
                 view.cancelPhoneBooking.visible()
@@ -7155,74 +7011,11 @@ private var transactionFare: String = ""
                 view.confirmPhoneBooking.gone()
             }
 
-            if (isBimaServiceDetails == true) {
-                view.menuMoveExtra.gone()
-                view.viewMoveExtraSeat.gone()
-            } else {
-                if (privilegeResponseModel?.allowToMoveBookedSeatToExtraSeat == true) {
-                    view.menuMoveExtra.visible()
-                    view.viewMoveExtraSeat.visible()
-                } else {
-                    view.menuMoveExtra.gone()
-                    view.viewMoveExtraSeat.gone()
-                }
-            }
-
-            if (isExtraSeat) {
-                if (getAvailableSeats().size > 0) {
-                    view.menuMoveExtra.visible()
-                    view.moveTV.text = "Move To Book Seats"
-                } else {
-                    view.menuMoveExtra.gone()
-                }
-
-            } else {
-                view.moveTV.text = "Move To Extra Seats"
-            }
 
             if (data.phone_num.isNullOrEmpty()) {
                 view.callPassenger.gone()
             } else {
                 view.callPassenger.visible()
-            }
-            if (data.policy_number.isNullOrEmpty()) {
-                if (data.can_shift_ticket) {
-                    view.menuShift.visible()
-                } else {
-                    view.menuShift.gone()
-                }
-            } else {
-                view.menuShift.gone()
-            }
-
-            if (data.policy_number.isNullOrEmpty()) {
-                if (data.can_shift_ticket) {
-                    if (!isIndonesiaLogin && !isExtraSeat) {
-                        view.menuShiftSameService.visible()
-                    } else {
-                        view.menuShiftSameService.gone()
-                    }
-
-                } else {
-                    view.menuShiftSameService.gone()
-                }
-            } else {
-                view.menuShiftSameService.gone()
-            }
-
-
-            if (data.can_cancel && !data.can_release_phone_block && PreferenceUtils.getSubAgentRole() != "true") {
-                view.menuCancelTicketView.visible()
-                view.menuCancelTicket.visible()
-            } else {
-                view.menuCancelTicket.gone()
-            }
-
-
-            if (privilegeResponseModel?.showUpdateRemarksLinkInTheTicketSearch == true) {
-                view.menuUpdateRemark.visible()
-            } else {
-                view.menuUpdateRemark.gone()
             }
 
             if (privilegeResponseModel?.allowToSendSmsInPnrSearchPage == true) {
@@ -7675,21 +7468,6 @@ private var transactionFare: String = ""
                 }
             }
         }
-    }
-
-    private fun openUpdateRemarksDialog() {
-        DialogUtils.updateRemarkDialog(
-            context = this,
-            onUpdateButtonClick = { remark ->
-                callDragDropRemarksUpdateApi(
-                    binding.layoutBookedSeatDetails.pnrValueTV.text.toString(),
-                    remark
-                )
-            },
-            onCancelButtonClick = {
-//                    toast("onCancelCalled")
-            }
-        )
     }
 
     private fun callDragDropRemarksUpdateApi(pnr: String, remark: String) {
