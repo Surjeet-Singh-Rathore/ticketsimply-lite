@@ -1354,21 +1354,6 @@ private var transactionFare: String = ""
         coachOptionsArray.clear()
 
 
-//        if (bulkUpdationOfTickets && !serviceDetails?.body.is_service_blocked && !isAllowBpDpFare) {
-        if (privilegeResponseModel?.bulkUpdationOfTickets == true && !isServiceBlocked) {
-            if (privilegeResponseModel?.availableAppModes?.allowBpDpFare == false) {
-                coachOptionsArray.add(
-                    CoachOptionsModel(
-                        coachOption = getString(R.string.edit_chart_option),
-                        coachOptionIcon = ContextCompat.getDrawable(
-                            this, R.drawable.edit_chart_button_new_booking_flow
-                        )
-                    )
-                )
-            }
-        }
-
-
         Timber.d("showViewChartLinkInTheSearchResults $showViewChartLinkInTheSearchResults  isAgentLogin $isAgentLogin")
         if (showViewChartLinkInTheSearchResults && !isAgentLogin) {
             coachOptionsArray.add(
@@ -1389,17 +1374,6 @@ private var transactionFare: String = ""
                     coachOption = getString(R.string.sms_notification_option),
                     coachOptionIcon = ContextCompat.getDrawable(
                         this, R.drawable.sms_notification_button_new_booking_flow
-                    )
-                )
-            )
-        }
-
-        if (privilegeResponseModel?.allowToShowFrequentTravellerTag == true) {
-            coachOptionsArray.add(
-                CoachOptionsModel(
-                    coachOption = getString(R.string.frequent_traveller),
-                    coachOptionIcon = ContextCompat.getDrawable(
-                        this, R.drawable.ic_frequent_traveller
                     )
                 )
             )
@@ -6246,13 +6220,6 @@ private var transactionFare: String = ""
             R.id.optionRootCL -> {
                 when (view.tag) {
 
-                    getString(R.string.edit_chart_option) -> {
-                        isEditChartClicked = true
-                        //  excludePassengerDetails = false
-                        callServiceApi()
-                        binding.coachProgressBar.visible()
-                        closeToggle()
-                    }
 
 
                     getString(R.string.quick_book_option) -> {
@@ -6388,24 +6355,6 @@ private var transactionFare: String = ""
                         val intent = Intent(this, SmsNotificationActivity::class.java)
                         startActivity(intent)
                     }
-
-
-
-                    getString(R.string.frequent_traveller) -> {
-                        val intent = Intent(this, FrequentTravellerDataActivity::class.java)
-                        startActivity(intent)
-
-                        firebaseLogEvent(
-                            this,
-                            FREQUENT_TRAVELLER,
-                            loginModelPref.userName,
-                            loginModelPref.travels_name,
-                            loginModelPref.role,
-                            FREQUENT_TRAVELLER,
-                            "Frequent Traveller"
-                        )
-                    }
-
                 }
             }
 

@@ -3286,11 +3286,6 @@ class BusDetailsActivity : BaseActivity(), OnItemClickListener, SlyCalendarDialo
                     callServiceApi()
                 }
             }
-
-            10 -> {
-                val intent = Intent(this, FrequentTravellerDataActivity::class.java)
-                startActivity(intent)
-            }
         }
     }
 

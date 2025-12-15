@@ -1464,24 +1464,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                             val intent = Intent(this, SmsNotificationActivity::class.java)
                             startActivity(intent)
                         }
-
-
-
-                        getString(R.string.frequent_traveller) -> {
-                            val intent = Intent(this, FrequentTravellerDataActivity::class.java)
-                            startActivity(intent)
-
-                            firebaseLogEvent(
-                                this,
-                                FREQUENT_TRAVELLER,
-                                loginModelPref.userName,
-                                loginModelPref.travels_name,
-                                loginModelPref.role,
-                                FREQUENT_TRAVELLER,
-                                "Frequent Traveller"
-                            )
-                        }
-
                     }
                 }
 
