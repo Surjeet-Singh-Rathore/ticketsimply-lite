@@ -1405,20 +1405,6 @@ private var transactionFare: String = ""
             )
         }
 
-        if ((loginModelPref.role.equals(context.getString(R.string.role_field_officer), true)
-            && privilegeResponseModel?.boLicenses?.allowToUpdateVehicleExpenses == true)
-            || (privilegeResponseModel?.allowUpdateDetailsOptionInReservationChart == true))
-        {
-            coachOptionsArray.add(
-                CoachOptionsModel(
-                    coachOption = getString(R.string.update_details_option),
-                    coachOptionIcon = ContextCompat.getDrawable(
-                        this, R.drawable.update_service_details
-                    )
-                )
-            )
-        }
-
 
         if (loginModelPref.role == getString(R.string.role_field_officer)) {
             if (privilegeResponseModel?.country.equals(
@@ -2766,37 +2752,6 @@ private var transactionFare: String = ""
                     hours = calculatedHours.toString(),
                     minutes = calculatedMinutes.toString(),
                     amOrpm = checkAMOrPM
-                )
-            }
-
-
-            R.id.layout_service_details -> {
-                // val busDetails = "${getDateDMYY(travelDate)} $source - $destination $busType "
-                val busDetails =
-                    "$serviceNumber | ${getDateDMYY(travelDate)} $source - $destination | $busType"
-                val intent = Intent(context, ServiceDetailsActivity::class.java)
-                intent.putExtra(context.getString(R.string.origin), source)
-                intent.putExtra(context.getString(R.string.destination), destination)
-                intent.putExtra(context.getString(R.string.bus_type), busDetails)
-
-                PreferenceUtils.removeKey(getString(R.string.scannedUserName))
-                PreferenceUtils.removeKey(getString(R.string.scannedUserId))
-                PreferenceUtils.removeKey("selectedScanType")
-                PreferenceUtils.removeKey(getString(R.string.scan_coach))
-                PreferenceUtils.removeKey(getString(R.string.scan_driver_1))
-                PreferenceUtils.removeKey(getString(R.string.scan_driver_2))
-                PreferenceUtils.removeKey(getString(R.string.scan_cleaner))
-                PreferenceUtils.removeKey(getString(R.string.scan_contractor))
-
-                context.startActivity(intent)
-                firebaseLogEvent(
-                    this,
-                    UPDATE_DETAILS_BOOKCLICK,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    UPDATE_DETAILS_BOOKCLICK,
-                    "Update details"
                 )
             }
 
@@ -6435,37 +6390,6 @@ private var transactionFare: String = ""
                     }
 
 
-                    getString(R.string.update_details_option) -> {
-                        // val busDetails = "$travelDate $source - $destination $busType"
-                        firebaseLogEvent(
-                            this,
-                            BOOKINGPG_UPDATE_DETAILS,
-                            loginModelPref.userName,
-                            loginModelPref.travels_name,
-                            loginModelPref.role,
-                            BOOKINGPG_UPDATE_DETAILS,
-                            "Update Details"
-                        )
-                        val busDetails =
-                            "$serviceNumber | ${getDateDMYY(travelDate)} $deptTime | $busType"
-                        val intent = Intent(context, ServiceDetailsActivity::class.java)
-                        intent.putExtra(context.getString(R.string.origin), source)
-                        intent.putExtra(context.getString(R.string.destination), destination)
-                        intent.putExtra(context.getString(R.string.bus_type), busDetails)
-
-                        PreferenceUtils.removeKey(context.getString(R.string.scannedUserName))
-                        PreferenceUtils.removeKey(context.getString(R.string.scannedUserId))
-                        PreferenceUtils.removeKey("selectedScanType")
-                        PreferenceUtils.removeKey(context.getString(R.string.scan_coach))
-                        PreferenceUtils.removeKey(context.getString(R.string.scan_driver_1))
-                        PreferenceUtils.removeKey(context.getString(R.string.scan_driver_2))
-                        PreferenceUtils.removeKey(context.getString(R.string.scan_cleaner))
-                        PreferenceUtils.removeKey(context.getString(R.string.scan_contractor))
-
-                        context.startActivity(intent)
-                    }
-
-
 
                     getString(R.string.frequent_traveller) -> {
                         val intent = Intent(this, FrequentTravellerDataActivity::class.java)
@@ -8550,9 +8474,7 @@ private var transactionFare: String = ""
                     noNetworkToast()
             }
 
-            getString(R.string.update_details_option) -> {
-                navigateToUpdateDetails()
-            }
+
 
             getString(R.string.send_sms) -> {
                 navigateToSendSms()
@@ -8721,34 +8643,6 @@ private var transactionFare: String = ""
         val intent = Intent(this, SmsNotificationActivity::class.java)
         startActivity(intent)
 
-    }
-
-    private fun navigateToUpdateDetails() {
-        firebaseLogEvent(
-            this,
-            BOOKINGPG_UPDATE_DETAILS,
-            loginModelPref.userName,
-            loginModelPref.travels_name,
-            loginModelPref.role,
-            BOOKINGPG_UPDATE_DETAILS,
-            "Update Details"
-        )
-        val busDetails = "$serviceNumber | ${getDateDMYY(travelDate)} $deptTime | $busType"
-        val intent = Intent(context, ServiceDetailsActivity::class.java)
-        intent.putExtra(context.getString(R.string.origin), source)
-        intent.putExtra(context.getString(R.string.destination), destination)
-        intent.putExtra(context.getString(R.string.bus_type), busDetails)
-
-        PreferenceUtils.removeKey(context.getString(R.string.scannedUserName))
-        PreferenceUtils.removeKey(context.getString(R.string.scannedUserId))
-        PreferenceUtils.removeKey("selectedScanType")
-        PreferenceUtils.removeKey(context.getString(R.string.scan_coach))
-        PreferenceUtils.removeKey(context.getString(R.string.scan_driver_1))
-        PreferenceUtils.removeKey(context.getString(R.string.scan_driver_2))
-        PreferenceUtils.removeKey(context.getString(R.string.scan_cleaner))
-        PreferenceUtils.removeKey(context.getString(R.string.scan_contractor))
-
-        context.startActivity(intent)
     }
 
     private fun navigateToModifyFare() {

@@ -1466,37 +1466,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                         }
 
 
-                        getString(R.string.update_details_option) -> {
-                            // val busDetails = "$travelDate $source - $destination $busType"
-                            firebaseLogEvent(
-                                this,
-                                BOOKINGPG_UPDATE_DETAILS,
-                                loginModelPref.userName,
-                                loginModelPref.travels_name,
-                                loginModelPref.role,
-                                BOOKINGPG_UPDATE_DETAILS,
-                                "Update Details"
-                            )
-                            val busDetails =
-                                "${serviceDetails?.body?.number} | ${getDateDMYY(travelDate)} ${serviceDetails?.body?.depTime} | $busType"
-                            val intent = Intent(this, ServiceDetailsActivity::class.java)
-                            intent.putExtra(getString(R.string.origin), serviceDetails?.body?.origin?.name ?: "")
-                            intent.putExtra(getString(R.string.destination), destination)
-                            intent.putExtra(getString(R.string.bus_type), busDetails)
-
-                            PreferenceUtils.removeKey(getString(R.string.scannedUserName))
-                            PreferenceUtils.removeKey(getString(R.string.scannedUserId))
-                            PreferenceUtils.removeKey("selectedScanType")
-                            PreferenceUtils.removeKey(getString(R.string.scan_coach))
-                            PreferenceUtils.removeKey(getString(R.string.scan_driver_1))
-                            PreferenceUtils.removeKey(getString(R.string.scan_driver_2))
-                            PreferenceUtils.removeKey(getString(R.string.scan_cleaner))
-                            PreferenceUtils.removeKey(getString(R.string.scan_contractor))
-
-                            startActivity(intent)
-                        }
-
-
 
                         getString(R.string.frequent_traveller) -> {
                             val intent = Intent(this, FrequentTravellerDataActivity::class.java)

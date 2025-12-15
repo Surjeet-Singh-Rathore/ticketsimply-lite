@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     android:background="@color/flash_white_bg">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="layout_service_details" />
+
     <include
         android:id="@+id/layout_passenger_details_seat_legends"
         layout="@layout/passenger_details_seat_legends"
@@ -481,42 +487,6 @@
 
                             android:padding="8dp">
 
-                            <LinearLayout
-                                android:id="@+id/layout_service_details"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:orientation="horizontal"
-                                android:paddingStart="15dp"
-                                android:paddingTop="@dimen/dp_12"
-                                android:paddingBottom="@dimen/dp_12"
-                                android:weightSum="2">
-
-
-                                <TextView
-                                    style="@style/TextStyleNormal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_weight="1.7"
-                                    android:drawableStart="@drawable/icon_update_details"
-                                    android:drawablePadding="10dp"
-                                    android:text="@string/service_details"
-                                    android:textColor="@color/black"
-
-
-                                    />
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerInParent="true"
-                                    android:layout_weight="0.3"
-                                    android:contentDescription="@string/app_name"
-                                    android:src="@drawable/arrow_forward" />
-
-                            </LinearLayout>
 
                             <View
                                 android:layout_width="match_parent"

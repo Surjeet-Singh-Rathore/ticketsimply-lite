@@ -27,7 +27,6 @@ import com.bitla.ts.domain.pojo.available_routes.Result
 import com.bitla.ts.domain.pojo.block_unblock_reservation.ReasonList
 import com.bitla.ts.domain.pojo.login_model.LoginModel
 import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.PrivilegeResponseModel
-import com.bitla.ts.presentation.view.activity.ServiceDetailsActivity
 import com.bitla.ts.presentation.view.activity.SmsNotificationActivity
 import com.bitla.ts.presentation.view.activity.reservationOption.announcement.AnnouncementActivity
 import com.bitla.ts.presentation.view.activity.reservationOption.extendedFare.UpdateRateCardActivity

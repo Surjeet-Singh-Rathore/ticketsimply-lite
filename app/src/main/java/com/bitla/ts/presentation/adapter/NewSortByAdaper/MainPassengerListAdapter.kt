@@ -30,7 +30,6 @@ import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.Priv
 import com.bitla.ts.domain.pojo.view_reservation.PassengerDetail
 import com.bitla.ts.domain.pojo.view_reservation.PassengerDetailX
 import com.bitla.ts.presentation.view.ticket_details_compose.TicketDetailsActivityCompose
-import com.bitla.ts.presentation.view.activity.ServiceDetailsActivity
 import com.bitla.ts.presentation.view.activity.SmsNotificationActivity
 import com.bitla.ts.presentation.view.activity.reservationOption.announcement.AnnouncementActivity
 import com.bitla.ts.presentation.view.activity.reservationOption.extendedFare.UpdateRateCardActivity

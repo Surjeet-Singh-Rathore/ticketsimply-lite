@@ -1725,26 +1725,6 @@ class NewPassengerDetailsActivity : BaseActivity(), View.OnClickListener, OnItem
                     isClick = 0
                 }
             }
-
-            R.id.layout_service_details -> {
-                //val busDetails = "$travelDate $source - $destination $busType "
-
-                val busDetails = "$serviceNumber $travelDate $source - $destination $busType "
-                val intent = Intent(this, ServiceDetailsActivity::class.java)
-                intent.putExtra(getString(R.string.origin), source)
-                intent.putExtra(getString(R.string.destination), destination)
-                intent.putExtra(getString(R.string.bus_type), busDetails)
-
-                PreferenceUtils.removeKey(getString(R.string.scannedUserName))
-                PreferenceUtils.removeKey(getString(R.string.scannedUserId))
-                PreferenceUtils.removeKey("selectedScanType")
-                PreferenceUtils.removeKey(getString(R.string.scan_coach))
-                PreferenceUtils.removeKey(getString(R.string.scan_driver_1))
-                PreferenceUtils.removeKey(getString(R.string.scan_driver_2))
-                PreferenceUtils.removeKey(getString(R.string.scan_cleaner))
-                PreferenceUtils.removeKey(getString(R.string.scan_contractor))
-                startActivity(intent)
-            }
         }
     }
 
