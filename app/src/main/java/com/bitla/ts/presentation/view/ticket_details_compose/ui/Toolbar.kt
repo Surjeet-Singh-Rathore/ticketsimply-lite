@@ -96,17 +96,17 @@ fun Toolbar(ticketDetailsComposeViewModel: TicketDetailsComposeViewModel<Any?>,
                    .align(Alignment.CenterVertically))
        }
 
-        Image(painter = painterResource(id = R.drawable.ic_dots_grey),
-            contentDescription = "3 Dots Button",
-            contentScale = ContentScale.Fit,
-            colorFilter = ColorFilter.tint(Color.White),
-            modifier = Modifier
-                .height(24.dp)
-                .width(24.dp)
-                .clickable {
-                    onSideBarMenuClick.invoke()
-                }
-                .align(Alignment.CenterVertically))
+//        Image(painter = painterResource(id = R.drawable.ic_dots_grey),
+//            contentDescription = "3 Dots Button",
+//            contentScale = ContentScale.Fit,
+//            colorFilter = ColorFilter.tint(Color.White),
+//            modifier = Modifier
+//                .height(24.dp)
+//                .width(24.dp)
+//                .clickable {
+//                    onSideBarMenuClick.invoke()
+//                }
+//                .align(Alignment.CenterVertically))
     }
 }
 
