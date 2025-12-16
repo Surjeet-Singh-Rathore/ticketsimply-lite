@@ -188,7 +188,7 @@ const val PRINT_TYPE_BLUETOOTH = 1
 const val PRINT_TYPE_HARVARD = 2
 const val PRINT_TYPE_SUNMI = 3
 const val PRINT_TYPE_PINELAB = 4
-
+const val PRINT_TYPE_PAYTM = 5
 
 const val IS_WHATSAPP_SMS_ENABLE = "is_whatsapp_sms_enable"
 const val NEW_BOOK_BLOCK_CHECK = "NEW_BOOK_BLOCK_CHECK"

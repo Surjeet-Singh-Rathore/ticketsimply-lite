@@ -57,8 +57,11 @@ class PrinterTypeActivity : BaseActivity() {
         } else if(PreferenceUtils.getPrintingType() == PRINT_TYPE_PINELAB){
             binding.pineLabRB.isChecked = true
         }
-        else {
+        else if(PreferenceUtils.getPrintingType() == PRINT_TYPE_SUNMI){
             binding.sunmiRB.isChecked = true
+        }
+        else {
+            binding.PaytmRB.isChecked = true
         }
 
         binding.bluetoothRB.setOnClickListener {
@@ -79,7 +82,6 @@ class PrinterTypeActivity : BaseActivity() {
             PreferenceUtils.putPrintingType(PRINT_TYPE_SUNMI)
             super.onBackPressed()
 
-
             firebaseLogEvent(
                 this,
                 PRINTER_SELECTION,
@@ -91,6 +93,24 @@ class PrinterTypeActivity : BaseActivity() {
             )
 
         }
+
+        binding.PaytmRB.setOnClickListener {
+            PreferenceUtils.putPrintingType(PRINT_TYPE_PAYTM)
+            super.onBackPressed()
+
+            firebaseLogEvent(
+                this,
+                PRINTER_SELECTION,
+                loginDetails.userName,
+                loginDetails.travels_name,
+                loginDetails.role,
+                PRINTER_SELECTION,
+                "Print_Paytm"
+            )
+
+        }
+
+
         binding.pineLabRB.setOnClickListener {
             PreferenceUtils.putPrintingType(PRINT_TYPE_PINELAB)
             super.onBackPressed()

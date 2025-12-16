@@ -2567,6 +2567,7 @@ App will automatically reload once internet is back.</string>
     <string name="branch_booking_">Branch Booking</string>
     <string name="kemarin">Kemarin</string>
     <string name="c12">C12</string>
+    <string name="paytm_print_option">Paytm</string>
 </resources>
 
 
