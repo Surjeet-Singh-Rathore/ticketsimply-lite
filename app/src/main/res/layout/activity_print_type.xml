@@ -84,19 +84,6 @@
             android:text="@string/pinelab"
             android:visibility="gone" />
 
-        <RadioButton
-            android:id="@+id/PaytmRB"
-            style="@style/TextStyleNormalTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_8"
-            android:background="@color/white"
-            android:layoutDirection="rtl"
-            android:paddingStart="@dimen/dp_16"
-            android:paddingTop="18dp"
-            android:paddingEnd="@dimen/dp_16"
-            android:paddingBottom="18dp"
-            android:text="@string/paytm_print_option" />
     </RadioGroup>
 
 

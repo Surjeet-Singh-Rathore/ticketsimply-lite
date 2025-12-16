@@ -121,12 +121,10 @@ class SettingsActivity : BaseActivity(),
             binding.printTypeValueTV.text = this.getString(R.string.harvard)
         }else if(PreferenceUtils.getPrintingType() == PRINT_TYPE_PINELAB){
             binding.printTypeValueTV.text = this.getString(R.string.pinelab)
-        } else if(PreferenceUtils.getPrintingType() == PRINT_TYPE_SUNMI){
+        } else {
             binding.printTypeValueTV.text = this.getString(R.string.SUNMI)
         }
-        else{
-            binding.printTypeValueTV.text = this.getString(R.string.paytm_print_option)
-        }
+
 
         super.onResume()
 
