@@ -79,7 +79,7 @@ fun PaymentOptions(
                             Modifier
                                 .wrapContentWidth()
                                 .selectable(
-                                    selected = (it.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                                    selected = true,
                                     onClick = {
                                         passengerDetailsViewModel.selectedPaymentOptionId =
                                             it.id
@@ -99,7 +99,7 @@ fun PaymentOptions(
                             verticalAlignment = CenterVertically
                         ) {
                             RadioButton(
-                                selected = (it.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                                selected = true,
                                 onClick = {
                                     passengerDetailsViewModel.selectedPaymentOptionId =
                                         it.id.toString().toInt()

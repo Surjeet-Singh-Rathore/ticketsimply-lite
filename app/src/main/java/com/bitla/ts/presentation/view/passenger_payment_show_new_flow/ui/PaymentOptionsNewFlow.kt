@@ -70,7 +70,7 @@ fun PaymentOptionsNewFlow(
                         modifier = Modifier
                             .padding(top = 8.dp, bottom = 8.dp)
                             .selectable(
-                                selected = (option.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                                selected = true,
                                 onClick = {
                                     passengerDetailsViewModel.selectedPaymentOptionId =
                                         option.id.toString().toInt()
@@ -85,7 +85,7 @@ fun PaymentOptionsNewFlow(
                             )
                     ) {
                         RadioButton(
-                            selected = (option.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                            selected = true,
                             modifier = Modifier
                                 .requiredHeight(20.dp)
                                 .absoluteOffset((-10).dp, 0.dp),
