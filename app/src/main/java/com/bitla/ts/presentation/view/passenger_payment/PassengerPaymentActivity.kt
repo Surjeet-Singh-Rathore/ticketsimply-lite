@@ -2102,11 +2102,6 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 
                                 if (rapidBookingType != 0) {
 
-                                    if (!isAdditionalOfferCardVisible) item {
-                                        AdditionalOfferTypesCard(
-                                            passengerDetailsViewModel
-                                        )
-                                    }
 
                                     if (privilegeResponseModel?.allowToSendSmsOnBooking == true) item {
                                         SendSmsOnBookingCard(
