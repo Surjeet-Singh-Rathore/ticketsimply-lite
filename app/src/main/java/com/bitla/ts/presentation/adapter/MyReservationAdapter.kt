@@ -191,11 +191,7 @@ class MyReservationAdapter(
             }
             Timber.d("ischartlocked: ${searchModel.isLocked}")
 
-            if (enableCoachLevelReporting) {
-                holder.btnViewCoachLayoutChart.visible()
-            } else {
-                holder.btnViewCoachLayoutChart.gone()
-            }
+
 
             if (status.toString().equals(context.getString(R.string.active), true)) {
                 holder.tvRoutestatus.text = searchModel.status.toString().replaceFirstChar {
@@ -288,7 +284,7 @@ class MyReservationAdapter(
                 )
                 PreferenceUtils.putString("ViewReservation_number", "${searchModel.number} ")
                 PreferenceUtils.putString("ViewReservation_coach_number", "${searchModel.coachNumber} ")
-//            PreferenceUtils.putString ("ViewReservation_seats","${searchModel.number} ")
+
                 PreferenceUtils.putString("ViewReservation_driverName", "${searchModel.driverName}")
 
                 holder.btnViewReservationChart.tag = "viewReservation"
@@ -306,22 +302,6 @@ class MyReservationAdapter(
                 )
             }
 
-            holder.btnViewCoachLayoutChart.setOnClickListener {
-
-                holder.btnViewCoachLayoutChart.tag = context.getString(R.string.viewCoachLayout)
-
-                onItemClickListener.onClick(holder.btnViewCoachLayoutChart, position)
-
-                firebaseLogEvent(
-                    context,
-                    VIEW_COACH_LAYOUT_CHART,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    VIEW_COACH_LAYOUT_CHART,
-                    context.getString(R.string.viewcoachlayout_chart_clicks)
-                )
-            }
 
 
             if (searchModel.driverName == ""|| searchModel.driverName== null) holder.lldriver_one.gone()
@@ -417,15 +397,7 @@ class MyReservationAdapter(
                 holder.btnViewReservationChart.setTextColor(ContextCompat.getColor(context, R.color.white))
                 holder.btnViewReservationChart.isClickable = false
 
-                // For the View Coach Layout Chart Button
-                holder.btnViewCoachLayoutChart.backgroundTintList = ColorStateList.valueOf(
-                    context.resources.getColor(
-                        R.color.colorRed
-                    )
-                )
-                holder.btnViewCoachLayoutChart.text = context.getString(R.string.locked)
-                holder.btnViewCoachLayoutChart.setTextColor(ContextCompat.getColor(context, R.color.white))
-                holder.btnViewCoachLayoutChart.isClickable = false
+
             } else {
                 holder.btnViewReservationChart.text = context.getString(R.string.view_reservation_chart)
 
@@ -438,31 +410,11 @@ class MyReservationAdapter(
                 holder.btnViewReservationChart.setTextColor(ContextCompat.getColor(context,R.color.colorPrimary))
                 holder.btnViewReservationChart.isClickable = true
 
-                // For the View Coach Layout Chart Button
-                holder.btnViewCoachLayoutChart.backgroundTintList = ColorStateList.valueOf(
-                    context.resources.getColor(
-                        R.color.primaryLight
-                    )
-                )
-                holder.btnViewCoachLayoutChart.text = context.getString(R.string.view_coach_layout_chart)
-                holder.btnViewCoachLayoutChart.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                holder.btnViewCoachLayoutChart.isClickable = true
             }
 
 
             holder.cardlayout.setCardBackgroundColor(context.resources.getColor(R.color.white))
 
-//        } else {
-//
-//            holder.cardlayout.setCardBackgroundColor(context.resources.getColor(R.color.light_grey))
-//            holder.btnViewReservationChart.backgroundTintList = ColorStateList.valueOf(
-//                context.resources.getColor(
-//                    R.color.colorShadow
-//                )
-//            )
-//            holder.btnViewReservationChart.setTextColor(context.getColor(R.color.white))
-//            holder.btnViewReservationChart.isClickable = false
-//        }
         } else {
             context.toast(context.getString(R.string.something_went_wrong))
         }
@@ -477,7 +429,6 @@ class MyReservationAdapter(
 
         //        val reservationSwitch = binding.allowReservationSwitch
         val btnViewReservationChart = binding.btnViewReservationChart
-        val btnViewCoachLayoutChart = binding.btnViewCoachLayoutChart
 
         //        val rvDriverNumber = binding.rvDriverNumber
         val occupancyPercentage = binding.percent
