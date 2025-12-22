@@ -25,14 +25,23 @@ fun PaymentOptionsNewFlow(
     passengerDetailsViewModel: PassengerDetailsViewModel<Any?>,
     onPaymentOptionSelection: (String) -> Unit
 ) {
-    // Create payment options list outside of composition
-    val paymentOptionsList = remember {
-        mutableStateListOf<SearchModel>().apply {
-            val cash = SearchModel()
-            cash.id = "1"
-            cash.paymentType = ResourceProvider.TextResource.fromStringId(R.string.cash)
-            add(cash)
+
+    // Create Cash payment option
+    val cashOption = remember {
+        SearchModel().apply {
+            id = "1"
+            paymentType = ResourceProvider.TextResource.fromStringId(R.string.cash)
         }
+    }
+
+    // 🔥 Auto-select Cash when composable is created
+    LaunchedEffect(Unit) {
+        passengerDetailsViewModel.selectedPaymentOptionId = 1
+        passengerDetailsViewModel.selectedPaymentOption = cashOption.paymentType!!
+
+        onPaymentOptionSelection(
+            cashOption.paymentType!!.asString(context.resources)
+        )
     }
 
     CardComponent(
@@ -42,8 +51,9 @@ fun PaymentOptionsNewFlow(
             .fillMaxWidth()
             .padding(8.dp)
             .wrapContentHeight(),
-        onClick = {}
+        onClick = {} // REQUIRED by CardComponent
     ) {
+
         Column(
             modifier = Modifier.padding(
                 start = 16.dp,
@@ -52,6 +62,7 @@ fun PaymentOptionsNewFlow(
                 bottom = 8.dp
             )
         ) {
+
             TextBoldRegular(
                 text = stringResource(id = R.string.payment_options),
                 modifier = Modifier.wrapContentHeight(),
@@ -64,48 +75,27 @@ fun PaymentOptionsNewFlow(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Start
             ) {
-                paymentOptionsList.forEach { option ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .padding(top = 8.dp, bottom = 8.dp)
-                            .selectable(
-                                selected = true,
-                                onClick = {
-                                    passengerDetailsViewModel.selectedPaymentOptionId =
-                                        option.id.toString().toInt()
-                                    passengerDetailsViewModel.selectedPaymentOption =
-                                        option.paymentType!!
-                                    onPaymentOptionSelection(
-                                        passengerDetailsViewModel.selectedPaymentOption.asString(
-                                            context.resources
-                                        )
-                                    )
-                                }
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                ) {
+
+                    RadioButton(
+                        selected = true,
+                        onClick = {
+                            // Optional manual click support
+                            onPaymentOptionSelection(
+                                cashOption.paymentType!!.asString(context.resources)
                             )
-                    ) {
-                        RadioButton(
-                            selected = true,
-                            modifier = Modifier
-                                .requiredHeight(20.dp)
-                                .absoluteOffset((-10).dp, 0.dp),
-                            onClick = {
-                                passengerDetailsViewModel.selectedPaymentOptionId =
-                                    option.id.toString().toInt()
-                                passengerDetailsViewModel.selectedPaymentOption =
-                                    option.paymentType!!
-                                onPaymentOptionSelection(
-                                    passengerDetailsViewModel.selectedPaymentOption.asString(
-                                        context.resources
-                                    )
-                                )
-                            }
-                        )
-                        TextNormalSmall(
-                            modifier = Modifier.absoluteOffset((-12).dp, 0.dp),
-                            text = option.paymentType?.asString(context.resources) ?: ""
-                        )
-                    }
+                        },
+                        modifier = Modifier.requiredHeight(20.dp)
+                    )
+
+                    TextNormalSmall(
+                        modifier = Modifier.padding(start = 4.dp),
+                        text = cashOption.paymentType!!.asString(context.resources)
+                    )
                 }
             }
         }

@@ -156,45 +156,7 @@ fun BookingTypeCardNewFlow(
                     }
                 )
             }
-
-
-            if (passengerDetailsViewModel.isAgentLogin) {
-                if (isPhoneBookingVisible && rapidBookingType != 0) {
-
-//                    SpaceComponent(modifier = Modifier.height(4.dp))
-//                    PhoneBookingCard(
-//                        context = context,
-//                        passengerDetailsViewModel = passengerDetailsViewModel,
-//                        onPhoneBookingClick = { onPhoneBookingClick(it)
-//                        }
-//                    )
-                }
-            } else {
-                if (privilegeResponseModel?.allowToSwitchSinglePageBooking != null
-                    && !privilegeResponseModel?.allowToSwitchSinglePageBooking!!
-                ) {
-                    if (isPhoneBookingVisible && rapidBookingType != 0) {
-                        SpaceComponent(modifier = Modifier.height(4.dp))
-                        PhoneBookingCard(
-                            context = context,
-                            passengerDetailsViewModel = passengerDetailsViewModel,
-                            onPhoneBookingClick = { onPhoneBookingClick(it) })
-                    }
-                }
-            }
         }
-
-//        if (passengerDetailsViewModel.country.equals("india", true)) {
-//            if (passengerDetailsViewModel.rapidBookingType != 0) {
-//                if (!passengerDetailsViewModel.isAdditionalOfferCardVisible && !passengerDetailsViewModel.isAgentLogin) {
-//                    SpaceComponent(modifier = Modifier.height(4.dp))
-//
-//                    SpecialBookingCardNewFlow(
-//                        passengerDetailsViewModel
-//                    )
-//                }
-//            }
-//        }
     }
 
 }
@@ -361,7 +323,50 @@ private fun BookingTypeDropDown(
     role: String?,
     onBookingTypeClick: (Boolean) -> Unit,
 ) {
-    
+
+    // Auto-select Walkin option when component is first composed
+    LaunchedEffect(Unit) {
+        passengerDetailsViewModel.apply {
+            selectedRadioWalking = true
+            selectedRadioPhoneBooking = false
+            selectedRadioOnlineAgent = false
+            selectedRadioOfflineAgent = false
+            selectedRadioBranch = false
+            selectedRadioSubAgentBooking = false
+
+            setBookingType(ResourceProvider.TextResource.fromText("Walkin"))
+            setBookingTypeId(0)
+            setStatusType(ResourceProvider.TextResource.fromText("Confirm"))
+            if (privilegeResponseModel?.isAgentLogin == true) {
+                setPaymentOptionsAgents()
+            } else {
+                setPaymentOptions()
+            }
+            selectedCityName = ""
+            selectedCityId = 0
+            onBehalfOfAgentName = ""
+            onBehalfOfAgentId = 0
+            bookingReferenceNo = ""
+            amountPaidOffline = false
+            selectedBranchId = 0
+            selectedBranchName = ""
+            selectedUserId = 0
+            selectedUserName = ""
+            isBookingTypeCardExpanded = false
+            isSeatWiseDiscountEdit = false
+            setPaymentOptionsVisibility(context, passengerDetailsViewModel)
+        }
+
+        onBookingTypeClick(true)
+
+        manageLayouts(
+            selectedBookingId = 0,
+            passengerDetailsViewModel = passengerDetailsViewModel,
+            context = context,
+            role = role ?: ""
+        )
+    }
+
     Column {
         TextBoldLarge(
             text = stringResource(id = R.string.booking_type),
@@ -504,85 +509,7 @@ private fun BookingTypeDropDown(
                 )
             }
         }
-        
-//        ExposedDropdownMenuBox(
-//            modifier = Modifier.requiredSizeIn(maxHeight = 52.dp),
-//            expanded = passengerDetailsViewModel.isBookingTypeCardExpanded,
-//            onExpandedChange = {
-//                passengerDetailsViewModel.isBookingTypeCardExpanded = !passengerDetailsViewModel.isBookingTypeCardExpanded
-//            }
-//        )
-//        {
-//            TextFieldComponentRounded(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .fillMaxHeight(),
-//                readOnly = true,
-//                value = if(passengerDetailsViewModel.selectedBookingType != null) passengerDetailsViewModel.selectedBookingType?.asString(context.resources)!! else "",
-//                onValueChange = { },
-//                trailingIcon = {
-//                    ExposedDropdownMenuDefaults.TrailingIcon(
-//                        expanded = passengerDetailsViewModel.isBookingTypeCardExpanded
-//                    )
-//                },
-//                label = stringResource(id = R.string.booking_type) ,
-//
-//                keyboardOptions = KeyboardOptions(
-//                    capitalization = KeyboardCapitalization.None,
-//                    autoCorrect = true,
-//                    keyboardType = KeyboardType.Text,
-//                )
-//            )
-//
-//            if (passengerDetailsViewModel.rapidBookingType != 0){
-//                ExposedDropdownMenu(
-//                    expanded = passengerDetailsViewModel.isBookingTypeCardExpanded,
-//                    onDismissRequest = {
-//                        passengerDetailsViewModel.isBookingTypeCardExpanded = false
-//                    }
-//                ) {
-//                    passengerDetailsViewModel.bookingTypes.forEach {
-//                        DropdownMenuItem(
-//                            onClick = {
-//                                Timber.d("booking_type_id_value = value==${it.id} --- id ${it.value}")
-//                                onBookingTypeClick(true)
-//                                passengerDetailsViewModel.apply {
-//                                    setBookingType(ResourceProvider.TextResource.fromText(it.value))
-//                                    setBookingTypeId(it.id)
-//                                    setStatusType(ResourceProvider.TextResource.fromText("Confirm"))
-//                                    setPaymentOptions()
-//                                    selectedCityName = ""
-//                                    selectedCityId = 0
-//                                    onBehalfOfAgentName = ""
-//                                    onBehalfOfAgentId = 0
-//                                    bookingReferenceNo = ""
-//                                    amountPaidOffline = false
-//                                    selectedBranchId = 0
-//                                    selectedBranchName = ""
-//                                    selectedUserId = 0
-//                                    selectedUserName = ""
-//                                    isBookingTypeCardExpanded = false
-//                                    isSeatWiseDiscountEdit = false
-//                                    setPaymentOptionsVisibility(context,passengerDetailsViewModel)
-//                                }
-//
-//                                manageLayouts(
-//                                    selectedBookingId = it.id,
-//                                    passengerDetailsViewModel = passengerDetailsViewModel,
-//                                    context = context,
-//                                    role = role ?: ""
-//                                )
-//                            }
-//                        ) {
-//                            TextNormalSmall(text = it.value, modifier = Modifier)
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        
     }
-
 }
 
 @OptIn(ExperimentalMaterialApi::class)
