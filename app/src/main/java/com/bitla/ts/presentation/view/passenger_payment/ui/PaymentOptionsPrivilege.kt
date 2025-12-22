@@ -14,6 +14,4 @@ fun setPaymentOptionsVisibility(context: Context,passengerDetailsViewModel: Pass
     passengerDetailsViewModel.selectedPaymentOptionId = 1
     passengerDetailsViewModel.selectedPaymentOption =
         ResourceProvider.TextResource.fromStringId(R.string.cash)
-    passengerDetailsViewModel.isPaymentOptionCardVisible=false
-
 }
