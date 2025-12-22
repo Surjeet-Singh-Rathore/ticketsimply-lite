@@ -61,6 +61,7 @@ class PrinterTypeActivity : BaseActivity() {
             binding.sunmiRB.isChecked = true
         }
 
+
         binding.bluetoothRB.setOnClickListener {
             PreferenceUtils.putPrintingType(PRINT_TYPE_BLUETOOTH)
             super.onBackPressed()
@@ -79,7 +80,6 @@ class PrinterTypeActivity : BaseActivity() {
             PreferenceUtils.putPrintingType(PRINT_TYPE_SUNMI)
             super.onBackPressed()
 
-
             firebaseLogEvent(
                 this,
                 PRINTER_SELECTION,
@@ -91,6 +91,10 @@ class PrinterTypeActivity : BaseActivity() {
             )
 
         }
+
+
+
+
         binding.pineLabRB.setOnClickListener {
             PreferenceUtils.putPrintingType(PRINT_TYPE_PINELAB)
             super.onBackPressed()

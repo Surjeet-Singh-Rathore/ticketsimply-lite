@@ -1827,7 +1827,7 @@ App will automatically reload once internet is back.</string>
     <string name="ticket_history">Ticket History</string>
     <string name="share_ticket">Share Ticket</string>
     <string name="book_another_ticket_in_this_service">Book another ticket in this service</string>
-    <string name="go_to_booking_page">Go to Booking Page</string>
+    <string name="go_to_booking_page">Go to Pickup Chart</string>
     <string name="or">or</string>
     <string name="share_ticket_on_whatsapp">Share Ticket on Whatsapp</string>
     <string name="Inclusive_of_GST">Inclusive of GST</string>
@@ -2567,6 +2567,7 @@ App will automatically reload once internet is back.</string>
     <string name="branch_booking_">Branch Booking</string>
     <string name="kemarin">Kemarin</string>
     <string name="c12">C12</string>
+    <string name="paytm_print_option">Paytm</string>
 </resources>
 
 

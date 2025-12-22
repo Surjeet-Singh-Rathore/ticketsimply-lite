@@ -165,11 +165,6 @@ class MyReservationHubsAdapter(
         }
         Timber.d("ischartlocked: ${searchModel.isLocked}")
 
-        if (enableCoachLevelReporting) {
-            holder.btnViewCoachLayoutChart.visible()
-        } else {
-            holder.btnViewCoachLayoutChart.gone()
-        }
 
         if (status.toString().equals(context.getString(R.string.active), true)) {
             holder.tvRoutestatus.text = searchModel.status.toString().replaceFirstChar {
@@ -229,23 +224,6 @@ class MyReservationHubsAdapter(
                 loginModelPref.role,
                 VIEW_RESERVATION_CHART,
                 "ViewReservation Chart Clicks"
-            )
-        }
-
-        holder.btnViewCoachLayoutChart.setOnClickListener {
-
-            holder.btnViewCoachLayoutChart.tag = context.getString(R.string.viewCoachLayout)
-
-            onItemClickListener.onClick(holder.btnViewCoachLayoutChart, position)
-
-            firebaseLogEvent(
-                context,
-                VIEW_COACH_LAYOUT_CHART,
-                loginModelPref.userName,
-                loginModelPref.travels_name,
-                loginModelPref.role,
-                VIEW_COACH_LAYOUT_CHART,
-                context.getString(R.string.viewcoachlayout_chart_clicks)
             )
         }
 
@@ -329,14 +307,7 @@ class MyReservationHubsAdapter(
             holder.btnViewReservationChart.isClickable = false
 
             // For the View Coach Layout Chart Button
-            holder.btnViewCoachLayoutChart.backgroundTintList = ColorStateList.valueOf(
-                context.resources.getColor(
-                    R.color.colorRed
-                )
-            )
-            holder.btnViewCoachLayoutChart.text = "Locked"
-            holder.btnViewCoachLayoutChart.setTextColor(context.getColor(R.color.white))
-            holder.btnViewCoachLayoutChart.isClickable = false
+
         } else {
             holder.btnViewReservationChart.text = context.getString(R.string.view_reservation_chart)
 
@@ -348,14 +319,6 @@ class MyReservationHubsAdapter(
             holder.btnViewReservationChart.setTextColor(context.getColor(R.color.colorPrimary))
             holder.btnViewReservationChart.isClickable = true
 
-            // For the View Coach Layout Chart Button
-            holder.btnViewCoachLayoutChart.backgroundTintList = ColorStateList.valueOf(
-                context.resources.getColor(
-                    R.color.primaryLight
-                )
-            )
-            holder.btnViewCoachLayoutChart.setTextColor(context.getColor(R.color.colorPrimary))
-            holder.btnViewCoachLayoutChart.isClickable = true
         }
 
 
@@ -385,7 +348,6 @@ class MyReservationHubsAdapter(
 
         //        val reservationSwitch = binding.allowReservationSwitch
         val btnViewReservationChart = binding.btnViewReservationChart
-        val btnViewCoachLayoutChart = binding.btnViewCoachLayoutChart
 
         //        val rvDriverNumber = binding.rvDriverNumber
         val occupancyPercentage = binding.percent

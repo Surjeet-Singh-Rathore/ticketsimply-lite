@@ -197,7 +197,8 @@
                     android:paddingBottom="@dimen/dp_8"
                     app:layout_constraintEnd_toStartOf="@+id/unblockLL"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/block_head_text"
@@ -232,7 +233,8 @@
                     android:paddingBottom="@dimen/dp_8"
                     app:layout_constraintEnd_toStartOf="@+id/bookLL"
                     app:layout_constraintStart_toEndOf="@+id/blockLL"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/unblock_head_text"

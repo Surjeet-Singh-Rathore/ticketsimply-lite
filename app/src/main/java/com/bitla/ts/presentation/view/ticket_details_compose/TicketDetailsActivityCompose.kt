@@ -450,7 +450,7 @@ class TicketDetailsActivityCompose : BaseActivity() {
                         }
                     },
                     onSideBarMenuClick = {
-                        ticketDetailsComposeViewModel.showTicketDetailsSideBarMenu = true
+                        ticketDetailsComposeViewModel.showTicketDetailsSideBarMenu = false
                         if (ticketDetailsComposeViewModel.sideBarOptionsList.isEmpty()) {
                             callTicketDetailsMenusApi()
                         }
@@ -466,9 +466,9 @@ class TicketDetailsActivityCompose : BaseActivity() {
                 modifier = Modifier.align(Alignment.TopCenter)
             )
 
-            if (ticketDetailsComposeViewModel.ticketDetailsMenuOptions != null) {
-                TicketDetailsSideBar()
-            }
+//            if (ticketDetailsComposeViewModel.ticketDetailsMenuOptions != null) {
+////                TicketDetailsSideBar()
+//            }
 
             BaseUpdateCancelTicketComposable()
             editPassengerSheetComposable()

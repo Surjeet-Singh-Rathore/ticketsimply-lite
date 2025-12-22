@@ -2033,19 +2033,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                                     }
                                 }
 
-                                item {
-                                    if (passengerDetailsViewModel.country.equals("india", true)) {
-                                        if (passengerDetailsViewModel.rapidBookingType != 0) {
-                                            if (!passengerDetailsViewModel.isAdditionalOfferCardVisible) {
-                                                SpaceComponent(modifier = Modifier.height(4.dp))
-                                                selectedSeatDetails
-                                                SpecialBookingCard(
-                                                    passengerDetailsViewModel
-                                                )
-                                            }
-                                        }
-                                    }
-                                }
+
 
                                 if (isPhoneDialogVisible && (isAgentLogin ||
                                             (privilegeResponseModel?.allowToSwitchSinglePageBooking != null && privilegeResponseModel?.allowToSwitchSinglePageBooking!!)))
@@ -2114,11 +2102,6 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 
                                 if (rapidBookingType != 0) {
 
-                                    if (!isAdditionalOfferCardVisible) item {
-                                        AdditionalOfferTypesCard(
-                                            passengerDetailsViewModel
-                                        )
-                                    }
 
                                     if (privilegeResponseModel?.allowToSendSmsOnBooking == true) item {
                                         SendSmsOnBookingCard(

@@ -2189,7 +2189,7 @@ private var transactionFare: String = ""
             if (isBimaServiceDetails != null && isBimaServiceDetails == true) {
                 binding.editPriceLayout.blockLL.gone()
             } else {
-                binding.editPriceLayout.blockLL.visible()
+                binding.editPriceLayout.blockLL.gone()
             }
         } else {
             binding.editPriceLayout.blockLL.gone()
@@ -2203,7 +2203,7 @@ private var transactionFare: String = ""
             if (isBimaServiceDetails != null && isBimaServiceDetails == true) {
                 binding.editPriceLayout.unblockLL.gone()
             } else {
-                binding.editPriceLayout.unblockLL.visible()
+                binding.editPriceLayout.unblockLL.gone()
             }
         } else
             binding.editPriceLayout.unblockLL.gone()
@@ -2230,12 +2230,12 @@ private var transactionFare: String = ""
                 editPriceLayout.unblockLL.gone()
             } else {
                 if (block && canBlockSeat)
-                    editPriceLayout.blockLL.visible()
+                    editPriceLayout.blockLL.gone()
                 else
                     editPriceLayout.blockLL.gone()
 
                 if (unblock && canUnblockSeat)
-                    editPriceLayout.unblockLL.visible()
+                    editPriceLayout.unblockLL.gone()
                 else
                     editPriceLayout.unblockLL.gone()
             }
@@ -2252,48 +2252,7 @@ private var transactionFare: String = ""
     }
 
 
-    private fun unBlockFunction(
-        seatList: ArrayList<SeatDetail>,
-        seatNumber: String,
-        currentSeatNo: String
-    ) {
-        val serviceDateTimeBusType =
-            "${getDateDMYY(travelDate)} | $deptTime  | $busType"
-        DialogUtils.unblockSeatsDialog(
-            this,
-            getString(R.string.unblock_seat),
-            getString(R.string.unBlockContent),
-            "$source-$destination",
-            serviceDateTimeBusType,
-            seatList.size.toString(),
-            seatNumber,
-            getString(R.string.goBack),
-            getString(R.string.unblock_seat),
-            false,
-            currentSeatNo,
-            object : DialogButtonUnblockSeatListener {
-                override fun onLeftButtonClick() {
 
-                }
-
-                override fun onRightButtonClick(
-                    seats: String,
-                    selectionType: String,
-                    fromDate: String?,
-                    toDate: String?,
-                    remarks: String?
-                ) {
-                    onSeatSelectionListener.unblockSeat(
-                        seats,
-                        selectionType,
-                        fromDate,
-                        toDate,
-                        remarks
-                    )
-                }
-            }
-        )
-    }
 
 
     private fun onNoSeatSelection() {
@@ -2591,8 +2550,6 @@ private var transactionFare: String = ""
         binding.modifySearchLayout.btnRotate.setOnClickListener(this)
         binding.modifySearchLayout.btnCancel.setOnClickListener(this)
         binding.modifySearchLayout.busServices.setOnClickListener(this)
-        binding.editPriceLayout.blockLL.setOnClickListener(this)
-        binding.editPriceLayout.unblockLL.setOnClickListener(this)
         binding.editPriceLayout.bookLL.setOnClickListener(this)
         binding.editPriceLayout.ticketPrice.setOnClickListener(this)
         binding.transparentBookedSeatsOptionsV.setOnClickListener(this)
@@ -2895,68 +2852,6 @@ private var transactionFare: String = ""
                 }
             }
 
-            R.id.blockLL -> {
-                val intent = Intent(this, NewPassengerDetailsActivity::class.java)
-                intent.putExtra(
-                    getString(R.string.boarding_point_key),
-                    selectedBoarding?.name
-                )
-                intent.putExtra(
-                    getString(R.string.dropping_point_key),
-                    selectedDropping?.name
-                )
-                intent.putExtra(
-                    getString(R.string.boarding_point_id_key),
-                    selectedBoarding?.id
-                )
-                intent.putExtra(
-                    getString(R.string.dropping_point_id_key),
-                    selectedDropping?.id
-                )
-                intent.putExtra(
-                    ROUTE_ID,
-                    mainOpId
-                )
-                intent.putExtra(
-                    NEW_BOOK_BLOCK_CHECK,
-                    false
-                )
-
-                stageDetails.forEach {
-                    if (it.id.toString() == selectedBoarding?.id) {
-                        PreferenceUtils.putObject<StageDetail>(
-                            it,
-                            PREF_BOARDING_STAGE_DETAILS
-                        )
-                    }
-                    if (it.id.toString() == selectedDropping?.id) {
-                        PreferenceUtils.putObject<StageDetail>(
-                            it,
-                            PREF_DROPPING_STAGE_DETAILS
-                        )
-                    }
-                }
-                setSelectSeats(selectedSeatDetails)
-                PreferenceUtils.setPreference(PREF_UPDATE_COACH, false)
-                startActivity(intent)
-            }
-
-            R.id.unblockLL -> {
-                var seatNumbers = ""
-
-                if (blockedSeatsList.isNotEmpty()) {
-                    blockedSeatsList.forEach {
-                        seatNumbers += "${it.number},"
-                    }
-                    seatNumbers = seatNumbers.substring(0, seatNumbers.length - 1)
-
-                }
-                unBlockFunction(
-                    blockedSeatsList,
-                    seatNumbers,
-                    retrieveSelectedSeatNumber() ?: ""
-                )
-            }
 
             R.id.btnExtraBookingProceed -> {
                 bookExtraSeatNoList.clear()

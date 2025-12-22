@@ -49,7 +49,20 @@ fun PaymentOptions(
         }
     }
 
-
+    // Auto-select the single payment option when component is first composed
+    LaunchedEffect(Unit) {
+        if (paymentOptionsList.isNotEmpty() &&
+            !passengerDetailsViewModel.isAgentLogin &&
+            !passengerDetailsViewModel.isAllowUpiForDirectPgBookingForAgents) {
+            val firstOption = paymentOptionsList[0]
+            passengerDetailsViewModel.selectedPaymentOptionId = firstOption.id.toString().toInt()
+            passengerDetailsViewModel.selectedPaymentOption = firstOption.paymentType!!
+            onPaymentOptionSelection(
+                passengerDetailsViewModel.selectedPaymentOption.asString(context.resources)
+            )
+            passengerDetailsViewModel.isShowUserSubPaymentDialog = true
+        }
+    }
 
     if (!passengerDetailsViewModel.isAgentLogin && !passengerDetailsViewModel.isAllowUpiForDirectPgBookingForAgents) {
         CardComponent(shape = RoundedCornerShape(4.dp),
@@ -58,7 +71,7 @@ fun PaymentOptions(
                 .padding(8.dp)
                 .wrapContentHeight(), onClick = {}) {
             Column(modifier = Modifier.padding(16.dp)) {
-                
+
                 TextBoldRegular(
                     text = stringResource(id = R.string.payment_options),
                     modifier = Modifier.wrapContentHeight(),
@@ -69,7 +82,6 @@ fun PaymentOptions(
                     )
                 )
 
-
                 paymentOptionsList.forEach {
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -79,7 +91,7 @@ fun PaymentOptions(
                             Modifier
                                 .wrapContentWidth()
                                 .selectable(
-                                    selected = (it.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                                    selected = true,
                                     onClick = {
                                         passengerDetailsViewModel.selectedPaymentOptionId =
                                             it.id
@@ -99,7 +111,7 @@ fun PaymentOptions(
                             verticalAlignment = CenterVertically
                         ) {
                             RadioButton(
-                                selected = (it.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                                selected = true,
                                 onClick = {
                                     passengerDetailsViewModel.selectedPaymentOptionId =
                                         it.id.toString().toInt()
@@ -140,7 +152,7 @@ fun PaymentOptions(
                     .padding(8.dp)
                     .wrapContentHeight(), onClick = {}) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    
+
                     TextBoldRegular(
                         text = stringResource(id = R.string.payment_options),
                         modifier = Modifier.wrapContentHeight(),
@@ -151,17 +163,7 @@ fun PaymentOptions(
                         )
                     )
 
-                    // Only cash should be pre selected else not pre selected for agent
-//                    if (!passengerDetailsViewModel.isPaymentOptionClicked && passengerDetailsViewModel.paymentOptionsList.isNotEmpty()) {
-//                        passengerDetailsViewModel.selectedPaymentOptionId = passengerDetailsViewModel.paymentOptionsList[0].id.toString().toInt()
-//                        passengerDetailsViewModel.selectedPaymentOption = passengerDetailsViewModel.paymentOptionsList[0].paymentType!!
-//                    }
-
                     paymentOptionsList.forEach {
-                        
-//                        Timber.d("paymentTypeX - ${it.paymentType?.asString(context.resources)} == ${passengerDetailsViewModel.selectedPaymentOption?.asString(context.resources)}")
-//                        Timber.d("paymentTypeX - ${it.paymentType} == ${passengerDetailsViewModel.selectedPaymentOption}")
-                        
                         Row(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             modifier = Modifier.fillMaxWidth()
@@ -170,7 +172,7 @@ fun PaymentOptions(
                                 Modifier
                                     .wrapContentWidth()
                                     .selectable(
-                                        selected = (it.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                                        selected = true,
                                         onClick = {
                                             passengerDetailsViewModel.selectedPaymentOptionId =
                                                 it.id
@@ -194,7 +196,7 @@ fun PaymentOptions(
                                 verticalAlignment = CenterVertically
                             ) {
                                 RadioButton(
-                                    selected = (it.paymentType == passengerDetailsViewModel.selectedPaymentOption),
+                                    selected = true,
                                     onClick = {
                                         passengerDetailsViewModel.selectedPaymentOptionId =
                                             it.id.toString().toInt()
@@ -214,7 +216,7 @@ fun PaymentOptions(
                                 TextNormalSmall(
                                     text = if(it.paymentType == ResourceProvider.TextResource.fromStringId(R.string.wallet)) {
                                         "${it.paymentType?.asString(context.resources)} (Bal: ${passengerDetailsViewModel.getAvailableBalance})"
-                                        
+
                                     } else {
                                         "${it.paymentType?.asString(context.resources)}"
                                     },
@@ -226,15 +228,11 @@ fun PaymentOptions(
                                 )
                             }
                         }
-
-//                    Timber.d("agentWalletBalance  = ${passengerDetailsViewModel.getAvailableBalance}")
                     }
                 }
             }
         }
     }
-    
-//    Timber.d("selectedPaymentOptionId  = ${passengerDetailsViewModel.paybleAmount}")
 
     if (passengerDetailsViewModel.payableAmount > 0.0
         && passengerDetailsViewModel.selectedPaymentOptionId != 1) {
