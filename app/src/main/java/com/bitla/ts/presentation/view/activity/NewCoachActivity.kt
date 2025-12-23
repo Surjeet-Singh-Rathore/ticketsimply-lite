@@ -2556,7 +2556,6 @@ private var transactionFare: String = ""
         binding.layoutBookedSeatDetails.menuViewticket.setOnClickListener(this)
         binding.layoutBookedSeatDetails.callPassenger.setOnClickListener(this)
         binding.layoutBookedSeatDetails.resendSms.setOnClickListener(this)
-        binding.layoutBookedSeatDetails.boardedSwitchBox.setOnClickListener(this)
 
 
     }
@@ -3097,31 +3096,6 @@ private var transactionFare: String = ""
                 } else {
                     if (finalSeatNumbers.isEmpty()) {
                         binding.btnServiceSummary.visible()
-                    }
-                }
-
-            }
-
-            R.id.boarded_switch_box -> {
-                if (lastSelectedSeatPosition < seatPassengersList.size) {
-                    if (binding.layoutBookedSeatDetails.boardedSwitchBox.isChecked) {
-                        binding.layoutBookedSeatDetails.boardedSwitchBox.isChecked = false
-                        onSeatSelectionListener.checkBoardedStatus(
-                            true,
-                            seatPassengersList[lastSelectedSeatPosition].name,
-                            seatPassengersList[lastSelectedSeatPosition].ticket_no,
-                            seatPassengersList[lastSelectedSeatPosition].seat_no,
-                            binding.layoutBookedSeatDetails.boardedSwitchBox
-                        )
-                    } else {
-                        binding.layoutBookedSeatDetails.boardedSwitchBox.isChecked = true
-                        onSeatSelectionListener.checkBoardedStatus(
-                            false,
-                            seatPassengersList[lastSelectedSeatPosition].name,
-                            seatPassengersList[lastSelectedSeatPosition].ticket_no,
-                            seatPassengersList[lastSelectedSeatPosition].seat_no,
-                            binding.layoutBookedSeatDetails.boardedSwitchBox
-                        )
                     }
                 }
 
@@ -6840,48 +6814,6 @@ private var transactionFare: String = ""
                 view.fareValueTV.text = data.seat_fare
             }
 
-            if (privilegeResponseModel?.country != null
-                && privilegeResponseModel?.country.equals(INDIA, true)
-            ) {
-                if (isBimaServiceDetails == true) {
-                    view.boardingStatus.gone()
-                } else {
-                    view.boardedSwitchBox.isChecked = data.status == 2
-
-                    if (isAllowOnlyOnce) {
-                        view.boardedSwitchBox.isEnabled = (data.status == 0)
-                    } else {
-                        view.boardedSwitchBox.isEnabled = true
-                    }
-                }
-            } else {
-                view.boardedSwitchBox.isChecked = data.status == 2
-                view.boardedSwitchBox.isEnabled = (data.status == 0)
-
-                view.boardedSwitchBox.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) {
-                        view.boardedSwitchBox.isEnabled = false
-                    }
-                }
-            }
-
-            if (data.can_confirm_phone_block || isAgentLogin || role.contains(
-                    context.getString(
-                        R.string.role_agent
-                    )
-                ) || !updatePassengerTravelStatus
-            ) {
-                view.boardingStatus.gone()
-                view.boardingStatusView.gone()
-            } else {
-                if (isBimaServiceDetails == true) {
-                    view.boardingStatus.gone()
-                } else {
-                    view.boardingStatus.visible()
-                    view.boardingStatusView.visible()
-                }
-
-            }
 
             if (data.can_release_phone_block) {
                 view.cancelPhoneBookingView.visible()

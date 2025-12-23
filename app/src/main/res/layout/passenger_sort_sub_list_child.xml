@@ -276,7 +276,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:tint="@color/colorShadow" />
+                    app:tint="@color/colorShadow"
+                    android:visibility="gone"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_expand_less_options"
@@ -286,7 +287,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/colorShadow" />
+                    app:tint="@color/colorShadow"
+                    android:visibility="gone"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
