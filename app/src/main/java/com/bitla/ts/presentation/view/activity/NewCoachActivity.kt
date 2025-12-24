@@ -435,13 +435,10 @@ private var transactionFare: String = ""
                     editPriceLayout.editprice.gone()
                     editPriceLayout.layoutExtraSeatProceed.visible()
                     editPriceLayout.btnExtraBookingProceed.visible()
-
-                    btnServiceSummary.gone()
                     layoutSummary.root.gone()
                 }
             } else {
                 binding.apply {
-                    btnServiceSummary.visible()
                     binding.layoutSummary.root.gone()
 
                     coachSwipeButtonsVisibility()
@@ -523,9 +520,6 @@ private var transactionFare: String = ""
         }
 
         // binding.editPriceLayout.root.gone()
-        if (finalSeatNumbers.isNotEmpty()) {
-            binding.btnServiceSummary.gone()
-        }
 
         if (isExtraSeatChecked) {
             selectedSeatDetails.clear()
@@ -712,7 +706,6 @@ private var transactionFare: String = ""
 
         binding.apply {
             coachProgressBar.visible()
-            btnServiceSummary.setOnClickListener(this@NewCoachActivity)
             editPriceLayout.proceedLayout.setOnClickListener(this@NewCoachActivity)
             imgExpand.setOnClickListener(this@NewCoachActivity)
             imgCollapse.setOnClickListener(this@NewCoachActivity)
@@ -1441,7 +1434,6 @@ private var transactionFare: String = ""
 
                     else -> {
                         binding.apply {
-                            btnServiceSummary.gone()
                             layoutPassengerDetailsSeatLegends.root.gone()
                             nestedScrollView.gone()
                             noData.root.visible()
@@ -2052,7 +2044,6 @@ private var transactionFare: String = ""
                         editPriceLayout.editprice.visible()
                         editPriceLayout.layoutExtraSeatProceed.visible()
                         editPriceLayout.btnExtraBookingProceed.gone()
-                        btnServiceSummary.gone()
                         layoutSummary.root.gone()
                     }
 
@@ -2171,7 +2162,6 @@ private var transactionFare: String = ""
             editPriceLayout.root.visible()
             editPriceLayout.proceedLayout.visible()
             editPriceLayout.editprice.visible()
-            btnServiceSummary.gone()
             layoutSummary.root.gone()
             editPriceLayout.layoutExtraSeatProceed.gone()
             editPriceLayout.btnExtraBookingProceed.visible()
@@ -2215,7 +2205,6 @@ private var transactionFare: String = ""
             editPriceLayout.root.visible()
             editPriceLayout.proceedLayout.visible()
             editPriceLayout.editprice.visible()
-            btnServiceSummary.gone()
             layoutSummary.root.gone()
             editPriceLayout.layoutExtraSeatProceed.gone()
             editPriceLayout.btnExtraBookingProceed.visible()
@@ -2265,16 +2254,11 @@ private var transactionFare: String = ""
                 editPriceLayout.layoutExtraSeatProceed.visible()
                 editPriceLayout.btnExtraBookingProceed.visible()
 
-                btnServiceSummary.gone()
                 layoutSummary.root.gone()
             }
         } else {
             binding.apply {
-                if (isBimaServiceDetails != null && isBimaServiceDetails == true) {
-                    btnServiceSummary.gone()
-                } else {
-                    btnServiceSummary.visible()
-                }
+
                 binding.layoutSummary.root.gone()
 
                 coachSwipeButtonsVisibility()
@@ -2633,18 +2617,7 @@ private var transactionFare: String = ""
                 scanScaeen()
             }
 
-            R.id.btn_service_summary -> {
-                tabs("btnServiceSummary")
-                firebaseLogEvent(
-                    this,
-                    SERVICE_SUMMARY,
-                    loginModelPref.userName,
-                    loginModelPref.travels_name,
-                    loginModelPref.role,
-                    SERVICE_SUMMARY,
-                    "service summary"
-                )
-            }
+
 
             R.id.fabsummary -> {
                 binding.editPriceLayout.fabsummary.gone()
@@ -3091,13 +3064,7 @@ private var transactionFare: String = ""
                 binding.seatLegendsIV.visible()
                 coachSwipeButtonsVisibility()
 
-                if (isBimaServiceDetails == true) {
-                    binding.btnServiceSummary.gone()
-                } else {
-                    if (finalSeatNumbers.isEmpty()) {
-                        binding.btnServiceSummary.visible()
-                    }
-                }
+
 
             }
 
@@ -3382,13 +3349,6 @@ private var transactionFare: String = ""
         binding.modifySearchLayout.root.gone()
         binding.tansparentbackbroundServiceSummary.gone()
 
-        if (isBimaServiceDetails == true) {
-            binding.btnServiceSummary.gone()
-        } else {
-            if (finalSeatNumbers.isEmpty()) {
-                binding.btnServiceSummary.visible()
-            }
-        }
 
         binding.seatLegendsIV.visible()
     }
@@ -3460,17 +3420,12 @@ private var transactionFare: String = ""
             view.visibility = VISIBLE
             view.startAnimation(slideUP)
             binding.tansparentbackbround.visible()
-            binding.btnServiceSummary.gone()
+
         } else {
             view.visibility = GONE
             view.startAnimation(slideDown)
             binding.tansparentbackbround.gone()
 
-            if (isBimaServiceDetails == true) {
-                binding.btnServiceSummary.gone()
-            } else {
-                binding.btnServiceSummary.visible()
-            }
         }
     }
 
@@ -3486,19 +3441,13 @@ private var transactionFare: String = ""
             view.visibility = VISIBLE
             view.startAnimation(slideRight)
             binding.transparentOptionV.visible()
-            binding.btnServiceSummary.gone()
+
         } else {
             view.visibility = GONE
             view.startAnimation(slideLeft)
             binding.transparentOptionV.gone()
 
-            if (isBimaServiceDetails == true) {
-                binding.btnServiceSummary.gone()
-            } else {
-                if (finalSeatNumbers.isEmpty()) {
-                    binding.btnServiceSummary.visible()
-                }
-            }
+
 
         }
     }
@@ -3521,7 +3470,6 @@ private var transactionFare: String = ""
         }
 
         binding.tansparentbackbroundServiceSummary.visible()
-        binding.btnServiceSummary.gone()
         binding.seatLegendsIV.gone()
 
 //        } else {
@@ -4027,7 +3975,6 @@ private var transactionFare: String = ""
                         binding.editPriceLayout.fabsummary.visible()
                     }
 
-                    btnServiceSummary.gone()
                     layoutSummary.root.gone()
                     editPriceLayout.proceedLayout.gone()
                     editPriceLayout.editprice.gone()
@@ -4042,7 +3989,6 @@ private var transactionFare: String = ""
                 binding.apply {
                     editPriceLayout.root.visible()
                     editPriceLayout.layoutExtraSeatProceed.visible()
-                    btnServiceSummary.gone()
                     if (isBimaServiceDetails == true) {
                         binding.editPriceLayout.fabsummary.gone()
                     } else {
@@ -4062,11 +4008,7 @@ private var transactionFare: String = ""
             if (isSelectedSeat) {
                 binding.apply {
                     editPriceLayout.root.visible()
-                    if (isBimaServiceDetails == true) {
-                        binding.btnServiceSummary.gone()
-                    } else {
-                        btnServiceSummary.visible()
-                    }
+
                     editPriceLayout.fabsummary.gone()
                     editPriceLayout.layoutExtraSeatProceed.gone()
 //                    layoutSummary.root.visible()
@@ -4087,12 +4029,6 @@ private var transactionFare: String = ""
                         editPriceLayout.fabsummary.gone()
                         editPriceLayout.layoutExtraSeatProceed.gone()
 
-
-                    if (isBimaServiceDetails == true) {
-                        binding.btnServiceSummary.gone()
-                    } else {
-                        btnServiceSummary.visible()
-                    }
                     layoutSummary.root.gone()
                 }
             }
@@ -6352,11 +6288,7 @@ private var transactionFare: String = ""
 //                    binding.layoutSummary.mainLayout.visible()
                     binding.layoutSummary.root.gone()
 
-                    if (isBimaServiceDetails == true) {
-                        binding.btnServiceSummary.gone()
-                    } else {
-                        binding.btnServiceSummary.visible()
-                    }
+
                     //binding.layoutviews.visible()
                     binding.editPriceLayout.fabsummary.setOnClickListener(this)
                     onNoSeatSelection()
@@ -6676,12 +6608,10 @@ private var transactionFare: String = ""
             view.startAnimation(slideRight)
             binding.seatLegendsIV.gone()
             binding.transparentBookedSeatsOptionsV.visible()
-            binding.btnServiceSummary.gone()
         } else {
             view.visibility = GONE
             view.startAnimation(slideLeft)
             binding.transparentBookedSeatsOptionsV.gone()
-            binding.btnServiceSummary.visible()
             binding.seatLegendsIV.visible()
             coachSwipeButtonsVisibility()
         }
@@ -6694,7 +6624,6 @@ private var transactionFare: String = ""
         view.visibility = GONE
         view.startAnimation(slideLeft)
         binding.transparentBookedSeatsOptionsV.gone()
-        binding.btnServiceSummary.visible()
         binding.seatLegendsIV.visible()
         coachSwipeButtonsVisibility()
     }
@@ -7094,11 +7023,7 @@ private var transactionFare: String = ""
         view.visibility = GONE
         view.startAnimation(slideLeft)
         binding.transparentOptionV.gone()
-        if (isBimaServiceDetails == true) {
-            binding.btnServiceSummary.gone()
-        } else {
-            binding.btnServiceSummary.visible()
-        }
+
     }
 
     override fun returnData(value: Any) {
@@ -7321,13 +7246,7 @@ private var transactionFare: String = ""
         binding.seatLegendsIV.visible()
         coachSwipeButtonsVisibility()
 
-        if (isBimaServiceDetails == true) {
-            binding.btnServiceSummary.gone()
-        } else {
-            if (finalSeatNumbers.isEmpty()) {
-                binding.btnServiceSummary.visible()
-            }
-        }
+
 
     }
 
@@ -7587,11 +7506,7 @@ private var transactionFare: String = ""
                                 binding.editPriceLayout.layoutExtraSeatProceed.gone()
                                 binding.editPriceLayout.editprice.gone()
                                 binding.editPriceLayout.fabsummary.gone()
-                                if (isBimaServiceDetails == true) {
-                                    binding.btnServiceSummary.gone()
-                                } else {
-                                    binding.btnServiceSummary.visible()
-                                }
+
                                 coachSwipeButtonsVisibility()
                                 commonCoach.binding.layoutCrewI.root.visible()
                             } else {
@@ -7760,15 +7675,11 @@ private var transactionFare: String = ""
 
                     if (isBimaServiceDetails != null && isBimaServiceDetails!!) {
                         binding.layoutSummary.root.gone()
-                        binding.btnServiceSummary.gone()
                     } else {
-                        binding.btnServiceSummary.visible()
                         binding.layoutSummary.root.visible()
                     }
 
-                    if(binding.editPriceLayout.fabsummary.isVisible) {
-                        binding.btnServiceSummary.gone()
-                    }
+
 
                     if (isEditChartClicked) {
                         isEditChartClicked = false
@@ -7823,7 +7734,6 @@ private var transactionFare: String = ""
 
                 else -> {
                     binding.apply {
-                        btnServiceSummary.gone()
                         layoutPassengerDetailsSeatLegends.root.gone()
                         nestedScrollView.gone()
 
@@ -7837,7 +7747,6 @@ private var transactionFare: String = ""
 
         } else {
             binding.apply {
-                btnServiceSummary.gone()
                 layoutPassengerDetailsSeatLegends.root.gone()
                 nestedScrollView.gone()
 
