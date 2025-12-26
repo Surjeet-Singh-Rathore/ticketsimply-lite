@@ -20,6 +20,7 @@ import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
@@ -145,6 +146,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
     private var deptTime = ""
     private var auditType: String = ""
     private var tripSheetCollectionOptionsInTSAppReservationChart: Boolean? = false
+    private var isFromTicketDetails: Boolean? = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -152,6 +154,19 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
         pickUpchartPDFObserver()
         setUpdateTripStatusObserver()
         getBusLocationAddedPopup()
+        isFromTicketDetails = intent?.getBooleanExtra("fromTicketDetails", false)
+
+        if (isFromTicketDetails == true) {
+            onBackPressedDispatcher.addCallback(this) {
+                val intent = Intent(
+                    this@ViewReservationActivity,
+                    DashboardNavigateActivity::class.java
+                )
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
