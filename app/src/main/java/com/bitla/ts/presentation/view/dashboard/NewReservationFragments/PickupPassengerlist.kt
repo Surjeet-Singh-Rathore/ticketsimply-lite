@@ -22,6 +22,7 @@ import android.os.Messenger
 import android.os.RemoteException
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -50,6 +51,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bitla.ts.BuildConfig
 import com.bitla.ts.R
 import com.bitla.ts.app.base.BaseActivity
+import com.bitla.ts.app.base.BaseActivity.PrivilegeManager.getPrivilegeBase
 import com.bitla.ts.app.base.BaseUpdateCancelTicket
 import com.bitla.ts.app.base.CancelTicketSheet
 import com.bitla.ts.app.base.EditPassengerSheet
@@ -155,6 +157,13 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.WriterException
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import com.paytm.printgenerator.BitmapReceiverCallback
+import com.paytm.printgenerator.FontSize
+import com.paytm.printgenerator.page.Page
+import com.paytm.printgenerator.page.TextElement
+import com.paytm.printgenerator.printer.PrintStatusCallBack
+import com.paytm.printgenerator.printer.PrintStatusEnum
+import com.paytm.printgenerator.printer.Printer
 import gone
 import isNetworkAvailable
 import kotlinx.coroutines.CoroutineScope
@@ -188,6 +197,7 @@ class PickupPassengerList : BaseUpdateCancelTicket(), OnItemClickListener,
     private var currency: String = ""
     private var currencyFormat: String = ""
     private var privilegeResponse: PrivilegeResponseModel? = null
+    private lateinit var privilegeResponseModel: PrivilegeResponseModel
     private var operatorName: String = ""
     private var serviceName: String? = null
     private var travelDate: String? = null
@@ -275,6 +285,15 @@ class PickupPassengerList : BaseUpdateCancelTicket(), OnItemClickListener,
     private var reprintChargesAmount: Double? = null
     private var pnrTicketNumber: String? = ""
     private var allowToDisplayCustomerPhoneNumber: Boolean? = false
+    val callback = object : PrintStatusCallBack {
+        override fun onFailure(id: String, status: PrintStatusEnum) {
+
+        }
+
+        override fun onSuccess(id: String) {
+
+        }
+    }
 
 
 
@@ -435,10 +454,14 @@ class PickupPassengerList : BaseUpdateCancelTicket(), OnItemClickListener,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch {
-            ticketDetailsViewModel.messageSharedFlow.collect{
-                if (it.isNotEmpty()){
-                    requireContext().showToast(it)
+
+        if (getPrivilegeBase(requireActivity()) != null) {
+            privilegeResponseModel = getPrivilegeBase(requireActivity()) as PrivilegeResponseModel
+            lifecycleScope.launch {
+                ticketDetailsViewModel.messageSharedFlow.collect {
+                    if (it.isNotEmpty()) {
+                        requireContext().showToast(it)
+                    }
                 }
             }
         }
@@ -4506,13 +4529,6 @@ class PickupPassengerList : BaseUpdateCancelTicket(), OnItemClickListener,
     }
 
     private fun printTicketDetailsDialog() {
-
-        if(operatorLogo != null){
-            CoroutineScope(Dispatchers.Main).launch {
-                busLogo = getBitmapDirectFromUrl(operatorLogo!!)
-            }
-
-        }
         generateQrcode()
 
         if (!originalTemplate.isNullOrEmpty()) bluetoothPrintTemplate = originalTemplate
@@ -4529,9 +4545,9 @@ class PickupPassengerList : BaseUpdateCancelTicket(), OnItemClickListener,
                 getBitmapFromURL(operatorLogo!!, getString(R.string.logo))
             }
 
-            if (!privilegeResponse?.tsPrivileges?.qoalaImageV1.isNullOrEmpty()) {
+            if (!privilegeResponseModel!!.tsPrivileges?.qoalaImageV1.isNullOrEmpty()) {
                 getBitmapFromURL(
-                    privilegeResponse?.tsPrivileges?.qoalaImageV1 ?: "",
+                    privilegeResponseModel!!.tsPrivileges?.qoalaImageV1 ?: "",
                     getString(R.string.insurance_bitmap)
                 )
             }
@@ -4541,6 +4557,12 @@ class PickupPassengerList : BaseUpdateCancelTicket(), OnItemClickListener,
                     multiplePrintPinelab()
                 } else {
                     pineLabPrint()
+                }
+            } else if (privilegeResponseModel!!.isPaytmPosEnabled == true) {
+                if (originalTemplate!!.contains("FOR_EACH_SEAT")) {
+                    paytmPrint(false)
+                } else {
+                    paytmPrint(true)
                 }
             } else {
                 if (PreferenceUtils.getPrintingType() == PRINT_TYPE_BLUETOOTH) {
@@ -4568,6 +4590,573 @@ class PickupPassengerList : BaseUpdateCancelTicket(), OnItemClickListener,
 
         } else requireContext().toast(getString(R.string.template_not_configured))
     }
+
+    private fun paytmPrint(singlePrint: Boolean) {
+        var page = Page()
+        if (singlePrint) {
+            page = getDemoPage(requireActivity())
+        } else {
+            page = getPageForMultiplePassenger()
+        }
+        Printer.generateBitmapAsync(page, object : BitmapReceiverCallback {
+            override fun onFailure(message: String) {
+
+            }
+
+            override fun onSuccess(image: Bitmap) {
+                if (image != null)
+                    Printer.print(
+                        image!!,
+                        "temp" + getRandomString(5),
+                        requireActivity(),
+                        callback
+                    )
+                else
+                    requireActivity().toast("Bitmap is Null")
+            }
+        })
+    }
+
+    fun getRandomString(length: Int): String {
+        val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+        return (1..length)
+            .map { allowedChars.random() }
+            .joinToString("")
+    }
+
+
+    fun getDemoPage(context: Context): Page {
+
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat(DATE_FORMAT_D_M_Y_H_M)
+        val currentDate = dateFormat.format(calendar.time);
+
+        val page = Page()
+
+
+        var template = originalTemplate
+
+        if (template!!.contains("PNR_NUMBER")) {
+            template = template.replace("PNR_NUMBER", ticketDetailsComposeViewModel.pnrNumber!!)
+        }
+        if (template.contains("TRAVEL_DATE")) {
+            template =
+                template.replace("TRAVEL_DATE", ticketDetailsComposeViewModel.travelDate!!)
+
+        }
+        if (template.contains("TAB_SPACE")) {
+            template = template.replace("TAB_SPACE", "")
+
+        }
+        if (template.contains("NEW_LINE")) {
+            template = template.replace("NEW_LINE", "\n")
+
+        }
+        if (template.contains("ONE_SPACE")) {
+            template = template.replace("ONE_SPACE", " ")
+        }
+
+        if (template.contains("SEAT_EACH_NUMBERS")) {
+            template = template.replace(
+                "SEAT_EACH_NUMBERS", ticketDetailsComposeViewModel.seatNumbers!!
+            )
+
+        }
+        if (template.contains("SEAT_NUMBERS")) {
+            template =
+                template.replace("SEAT_NUMBERS", ticketDetailsComposeViewModel.seatNumbers!!)
+
+        }
+        if (template.contains("BOARDING_POINT")) {
+            template = template.replace(
+                "BOARDING_POINT", ticketDetailsComposeViewModel.boardingDetails.value.address!!
+            )
+
+        }
+        if (template.contains("DROPPING_POINT")) {
+            template = template.replace(
+                "DROPPING_POINT", ticketDetailsComposeViewModel.dropOffDetails.value.address!!
+            )
+
+        }
+        if (template.contains("PASSENGER_NAME")) {
+            template = template.replace(
+                "PASSENGER_NAME", ticketDetailsComposeViewModel.passengerDetails?.get(0)?.name!!
+            )
+        }
+        if (template.contains("DEPARTURE_TIME")) {
+            template = template.replace(
+                "DEPARTURE_TIME", ticketDetailsComposeViewModel.boardingDetails.value.depTime!!
+            )
+        }
+        if (template.contains("MOBILE_NUMBER")) {
+            template = template.replace(
+                "MOBILE_NUMBER",
+                ticketDetailsComposeViewModel.passengerDetails?.get(0)?.mobile!!
+            )
+        }
+        if (template.contains("TICKET_EACH_FARE")) {
+            template = template.replace(
+                "TICKET_EACH_FARE", "${privilegeResponseModel.currency} ${
+                    ticketDetailsComposeViewModel.totalFare?.toString()?.toDouble()
+                        ?.convert(privilegeResponseModel.currencyFormat) ?: ""
+                }"
+            )
+        }
+        if (template.contains("ACCOUNT_HOLDER_NAME")) {
+            template = template.replace("ACCOUNT_HOLDER_NAME", loginModelPref.userName)
+
+        }
+        if (template.contains("TICKET_BOOKED_BY")) {
+            template = template.replace(
+                "TICKET_BOOKED_BY",
+                ticketDetailsComposeViewModel.ticketBookedBy
+            )
+        }
+        if (template.contains("SERVICE_NUMBER")) {
+            template = template.replace(
+                "SERVICE_NUMBER", ticketDetailsComposeViewModel.serviceNumber!!
+            )
+
+        }
+        if (template.contains("CONTACT_NUMBER_PERSON")) {
+            template = ticketDetailsComposeViewModel.boardingDetails.value.contactPersons?.let {
+                template?.replace(
+                    "CONTACT_NUMBER_PERSON", it
+                )
+            }!!
+        }
+        if (template.contains("LANDMARK")) {
+            template = ticketDetailsComposeViewModel.boardingDetails.value.landmark?.let {
+                template?.replace(
+                    "LANDMARK", it
+                )
+            } ?: "-"
+        }
+        if (template.contains("CURRENT_TIME")) {
+            template = template?.replace("CURRENT_TIME", currentDate)!!
+        }
+        if (template.contains("BOLD_ON")) {
+            template = template.replace("BOLD_ON", "")
+        }
+        if (template.contains("BOLD_OFF")) {
+            template = template.replace("BOLD_OFF", "")
+        }
+        if (template.contains("INSURANCE_QRCODE")) {
+            template = template.replace("INSURANCE_QRCODE", "")
+        }
+        if (template.contains("MEAL_TYPE")) {
+            template = template.replace("MEAL_TYPE", "")
+        }
+        if (template.contains("ALL_INSURANCE_NUMBERS")) {
+            template = template.replace("ALL_INSURANCE_NUMBERS", "")
+        }
+        if (template.contains("ORIGIN")) {
+            template = template.replace("ORIGIN", ticketDetailsComposeViewModel.origin)
+        }
+        if (template.contains("DESTINATION")) {
+            template =
+                template.replace("DESTINATION", ticketDetailsComposeViewModel.destination!!)
+        }
+
+
+        if (template.contains("ALIGN_LEFT")) {
+            template = template?.replace(
+                "ALIGN_LEFT", ""
+            )!!
+        }
+
+        if (template.contains("ALIGN_CENTER")) {
+            template = template?.replace(
+                "ALIGN_CENTER", ""
+            )!!
+        }
+
+        if (template.contains("|")) {
+            template = template?.replace(
+                "|", ""
+            )!!
+        }
+
+
+
+
+
+        if (template.contains("TICKET_FARE")) {
+            template = template?.replace(
+                "TICKET_FARE", "${privilegeResponseModel.currency} ${
+                    ticketDetailsComposeViewModel.totalFare?.toString()?.toDouble()
+                        ?.convert(privilegeResponseModel.currencyFormat) ?: ""
+                }"
+            )!!
+        }
+
+
+        page.addLine().addElement(
+            TextElement(
+                false,
+                false,
+                FontSize.FONT_NORMAL,
+                template,
+                alignment = com.paytm.printgenerator.Alignment.LEFT
+            )
+        )
+
+
+
+
+        return page
+    }
+
+    private fun getPageForMultiplePassenger(): Page {
+
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat(DATE_FORMAT_D_M_Y_H_M)
+        val currentDate = dateFormat.format(calendar.time);
+
+        val page = Page()
+
+        try {
+
+
+            var template = originalTemplate!!
+            if (ticketDetailsComposeViewModel.passengerDetails != null && ticketDetailsComposeViewModel?.passengerDetails?.isNotEmpty()!!) {
+                printArray = JSONArray()
+
+                val multiSeats = mutableListOf<String>()
+                Timber.e("Passenger size : ${ticketDetailsComposeViewModel.passengerDetails!!.size}")
+                for (i in 0..ticketDetailsComposeViewModel.passengerDetails?.size?.minus(1)!!) {
+                    if (ticketDetailsComposeViewModel.passengerDetails?.size!! != 1) {
+                        if (i < ticketDetailsComposeViewModel.passengerDetails?.size?.minus(1)!!) {
+                            template = template?.replace("[C]=", "")!!
+                            template = template?.replace("cut here", "")?.trimEnd()!!
+                            template = template?.replace("BOARDING_QR", "")?.trim()!!
+                            template = template?.replace("BAR_CODE", "")?.trim()!!
+
+                        } else {
+                            template = template?.replace("[C]=", "")!!
+                            template = template?.replace("=", "")?.trimEnd()!!
+
+                            if (originalTemplate?.contains("BOARDING_QR")!!) template =
+                                "${template}\nBOARDING_QR"
+                            if (originalTemplate?.contains("BAR_CODE")!!) template =
+                                "${template}\n\nBAR_CODE"
+                            template = "${template}\nALIGN_CENTER|=======cut here======="
+                        }
+                    }
+
+                    template = template?.replace("FOR_EACH_SEAT", "")!!
+                    if (template?.contains("SEAT_EACH_NUMBERS")!!) {
+                        template = template?.replace(
+                            "SEAT_EACH_NUMBERS",
+                            ticketDetailsComposeViewModel?.passengerDetails!![i]?.seatNumber ?: ""
+                        )!!
+                    } else {
+                        if (i > 0) {
+                            template =
+                                ticketDetailsComposeViewModel?.passengerDetails!![i.minus(1)]?.seatNumber?.let {
+                                    template?.replace(
+                                        it,
+                                        ticketDetailsComposeViewModel?.passengerDetails!![i]?.seatNumber
+                                            ?: ""
+                                    )
+                                }!!
+                        }
+                    }
+                    if (template?.contains("PASSENGER_EACH_NAME") == true) {
+                        template = template?.replace(
+                            "PASSENGER_EACH_NAME",
+                            ticketDetailsComposeViewModel?.passengerDetails!![i]?.name ?: ""
+                        )!!
+                    } else {
+                        if (i > 0) {
+                            template =
+                                ticketDetailsComposeViewModel?.passengerDetails!![i.minus(1)]?.name?.let {
+                                    template?.replace(
+                                        it,
+                                        ticketDetailsComposeViewModel?.passengerDetails!![i]?.name
+                                            ?: ""
+                                    )
+                                }!!
+                        }
+                    }
+
+
+                    if (template?.contains("TICKET_EACH_FARE")!!) {
+                        template = template?.replace(
+                            "TICKET_EACH_FARE",
+                            ticketDetailsComposeViewModel?.passengerDetails!![i]?.netFare?.toDouble()
+                                ?.convert(privilegeResponseModel.currencyFormat) ?: ""
+                        )!!
+                    } else {
+                        if (i > 0) {
+                            template =
+                                ticketDetailsComposeViewModel.passengerDetails[i.minus(1)]?.netFare.let {
+                                    template.replace(
+                                        it.toString(),
+                                        ticketDetailsComposeViewModel.passengerDetails[i]?.netFare?.convert(
+                                            privilegeResponseModel.currencyFormat
+                                        ) ?: ""
+                                    )
+                                }
+                        }
+                    }
+
+
+                    if (!ticketDetailsComposeViewModel?.passengerDetails!![i]?.mealCoupons.isNullOrEmpty()) {
+                        if (template?.contains("MEAL_COUPON_LOOP")!!) {
+
+                            template = template?.replace(
+                                "MEAL_COUPON_LOOP",
+                                ticketDetailsComposeViewModel?.passengerDetails!![i]?.mealCoupons.toString()
+                                    .replace("[", "").replace("]", "").replace(",", "\n")
+                                    .replace(" ", "")
+                            )!!
+                        } else {
+                            if (i > 0) {
+                                template =
+                                    ticketDetailsComposeViewModel?.passengerDetails!![i.minus(1)]?.mealCoupons?.toString()
+                                        ?.let {
+                                            template?.replace(
+                                                it,
+                                                ticketDetailsComposeViewModel?.passengerDetails!![i]?.mealCoupons.toString()
+                                            )
+                                        }!!
+                            }
+                        }
+
+                        if (template?.contains("MEAL_COUPON_NUMBER")!!) {
+                            template = template?.replace(
+                                "MEAL_COUPON_NUMBER",
+                                ticketDetailsComposeViewModel?.passengerDetails!![i]?.mealCoupons.toString()
+                                    .replace("[", "").replace("]", "")
+                            )!!
+                        } else {
+                            if (i > 0) {
+                                template = template?.replace(
+                                    ticketDetailsComposeViewModel?.passengerDetails!![i.minus(1)]?.mealCoupons.toString()
+                                        .replace("[", "").replace("]", ""),
+                                    ticketDetailsComposeViewModel?.passengerDetails!![i]?.mealCoupons.toString()
+                                        .replace("[", "").replace("]", "")
+                                )!!
+                            }
+                        }
+
+                        if (template?.contains("MEAL_COUNT")!!) {
+                            template = template?.replace(
+                                "MEAL_COUNT",
+                                ticketDetailsComposeViewModel?.passengerDetails!![i]?.mealCoupons?.size.toString()
+                            )!!
+                        } else {
+                            if (i > 0) {
+                                template = template?.replace(
+                                    ticketDetailsComposeViewModel?.passengerDetails!![i.minus(1)]?.mealCoupons?.size.toString(),
+                                    ticketDetailsComposeViewModel?.passengerDetails!![i]?.mealCoupons?.size.toString()
+                                )!!
+                            }
+                        }
+                    } else {
+                        template = template?.replace(
+                            "MEAL_COUPON_LOOP", ""
+                        )!!
+                    }
+
+
+
+
+                    template = ticketDetailsComposeViewModel.serviceNumber?.let {
+                        template?.replace(
+                            "SERVICE_NUMBER", it
+                        )
+                    }!!
+
+                    template = template?.replace(
+                        "PAID_AMOUNT",
+                        ticketDetailsComposeViewModel.partialPaymentDetails.value.paidAmount.toString()
+                    ) ?: "-"
+                    template = template.replace(
+                        "REMAINING_AMOUNT",
+                        ticketDetailsComposeViewModel.partialPaymentDetails.value.paidAmount.toString()
+                    ) ?: "-"
+
+                    if (template.contains("ORIGIN")) {
+                        template = template.replace("ORIGIN", ticketDetailsComposeViewModel.origin)
+                    }
+                    if (template.contains("DESTINATION")) {
+                        template = template.replace(
+                            "DESTINATION", ticketDetailsComposeViewModel.destination
+                        )
+                    }
+                    if (template.contains("WEB_ADDRESS")) {
+                        template = template.replace(
+                            "WEB_ADDRESS", privilegeResponseModel.webAddressUrl
+                        )
+                    }
+
+
+                    if (template.contains("TICKET_FARE")) {
+                        template = template.replace(
+                            "TICKET_FARE", "${privilegeResponseModel.currency} ${
+                                ticketDetailsComposeViewModel.totalFare?.toString()?.toDouble()
+                                    ?.convert(privilegeResponseModel.currencyFormat) ?: ""
+                            }"
+                        )
+                    }
+
+
+
+                    template = ticketDetailsComposeViewModel.boardingDetails.value.landmark?.let {
+                        template?.replace(
+                            "LANDMARK", it
+                        )
+                    } ?: "-"
+
+                    template = template?.replace(
+                        "OPERATOR_NAME", privilegeResponseModel.operatorName
+                    )!!
+
+                    template = template?.replace(
+                        "WEB_ADDRESS", privilegeResponseModel.webAddressUrl
+                    )!!
+
+                    template = template?.replace(
+                        "ACCOUNT_HOLDER_NAME", loginModelPref.userName
+                    )!!
+                    template = ticketDetailsComposeViewModel.pnrNumber?.let {
+                        template?.replace(
+                            "PNR_NUMBER", it
+                        )
+                    }!!
+                    template = ticketDetailsComposeViewModel.ticketStatus?.let {
+                        template?.replace(
+                            "TICKET_STATUS", it
+                        )
+                    } ?: "-"
+                    template = template?.replace("ORIGIN", ticketDetailsComposeViewModel.origin)!!
+                    template = ticketDetailsComposeViewModel.destination?.let {
+                        template?.replace(
+                            "DESTINATION", it
+                        )
+                    }!!
+                    template = ticketDetailsComposeViewModel.boardingDetails.value.depTime?.let {
+                        template?.replace(
+                            "DEPARTURE_TIME", it
+                        )
+                    }!!
+                    template = ticketDetailsComposeViewModel.travelDate?.let {
+                        template?.replace(
+                            "TRAVEL_DATE", "$it"
+                        )
+                    }!!
+                    template = template?.replace(
+                        "TICKET_FARE", "${privilegeResponseModel.currency} ${
+                            ticketDetailsComposeViewModel.totalFare?.toString()?.toDouble()
+                                ?.convert(privilegeResponseModel.currencyFormat) ?: ""
+                        }"
+                    )!!
+                    template = ticketDetailsComposeViewModel.passengerDetails?.get(i)?.name?.let {
+                        template?.replace(
+                            "PASSENGER_NAME", it
+                        )
+                    } ?: ""
+                    template = ticketDetailsComposeViewModel.passengerDetails?.get(i)?.let {
+                        it.mobile?.let { it1 ->
+                            template?.replace(
+                                "MOBILE_NUMBER", it1
+                            )
+                        }
+                    } ?: ""
+                    ticketDetailsComposeViewModel.seatNumbers?.toString()
+                        ?.let { Log.d("seatNumber", it) }
+                    template = ticketDetailsComposeViewModel.seatNumbers?.let {
+                        template?.replace(
+                            "SEAT_NUMBERS", it
+                        )
+                    }!!
+
+
+                    template = ticketDetailsComposeViewModel.boardingDetails.value.address?.let {
+                        template?.replace(
+                            "BOARDING_POINT", it
+                        )
+                    }!!
+                    template = ticketDetailsComposeViewModel.dropOffDetails.value.address?.let {
+                        template?.replace(
+                            "DROPPING_POINT", it
+                        )
+                    }!!
+                    template =
+                        ticketDetailsComposeViewModel.boardingDetails.value.contactPersons?.let {
+                            template?.replace(
+                                "CONTACT_PERSON", it
+                            )
+                        }!!
+
+                    template =
+                        ticketDetailsComposeViewModel.boardingDetails.value.contactNumbers?.let {
+                            template?.replace(
+                                "CONTACT_NUMBER_PERSON", it
+                            )
+                        }!!
+
+                    /*template = ticketDetailsComposeViewModel.ticketLeadDetail?.ticketBookedBy?.let {
+                        template?.replace(
+                            "TICKET_BOOKED_BY",
+                            it.substringBefore(",")
+                        )
+                    }!!*/
+
+                    template = ticketDetailsComposeViewModel.busType?.let {
+                        template?.replace(
+                            "COACH_TYPE", it
+                        )
+                    }!!
+                    template =
+                        template?.replace("REMARKS", ticketDetailsComposeViewModel.remarks ?: "-")!!
+                    template = template?.replace(
+                        "TERMINAL_ID", ticketDetailsComposeViewModel.terminalRefNo ?: ""
+                    )!!
+                    if (ticketDetailsComposeViewModel.terminalRefNo.isNullOrEmpty()) {
+                        template = template?.replace("TERMINAL_PULOGABANG", "")!!
+                    }
+                    template = template?.replace("CURRENT_DATE", getTodayDate())!!
+                    template = template?.replace("CURRENT_TIME", getTodayDateWithTime())!!
+
+                    template = template?.replace("TAB_SPACE", " ")!!
+
+                    template = template?.replace("BAR_CODE", " ")!!
+
+                    template = template?.replace("BOLD_ON", " ")!!
+                    template = template?.replace("BOLD_OFF", " ")!!
+
+                    template = "\n$template\n"
+                    template?.let { multiSeats.add(it) }
+
+                    Timber.e("Template : $template")
+
+                    page.addLine().addElement(
+                        TextElement(
+                            false,
+                            false,
+                            FontSize.FONT_NORMAL,
+                            template,
+                            alignment = com.paytm.printgenerator.Alignment.LEFT
+                        )
+                    )
+
+
+                }
+
+            }
+
+
+        } catch (e: Exception) {
+            Timber.d("exceptionMsg ${e.message}")
+        }
+
+        return page
+    }
+
 
     private fun callUpdatePrintCountApi() {
         lifecycleScope.launch {
