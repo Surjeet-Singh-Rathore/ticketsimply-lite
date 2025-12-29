@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.bitla.ts.utils.sharedPref.PreferenceUtils;
 import com.dantsu.escposprinter.EscPosCharsetEncoding;
@@ -146,44 +147,39 @@ public abstract class AsyncEscPosPrint extends AsyncTask<AsyncEscPosPrinter, Int
             return;
         }
 
+        String message;
+
         switch (result.getPrinterStatus()) {
             case AsyncEscPosPrint.FINISH_SUCCESS:
-                new AlertDialog.Builder(context)
-                        .setTitle("Success")
-                        .setMessage("Print Successfully!")
-                        .show();
+                message = "Print Successfully!";
                 break;
+
             case AsyncEscPosPrint.FINISH_NO_PRINTER:
-                new AlertDialog.Builder(context)
-                        .setTitle("No printer")
-                        .setMessage("The application can't find any printer connected.")
-                        .show();
+                message = "No printer connected.";
                 break;
+
             case AsyncEscPosPrint.FINISH_PRINTER_DISCONNECTED:
-                new AlertDialog.Builder(context)
-                        .setTitle("Broken connection")
-                        .setMessage("Unable to connect the printer.")
-                        .show();
+                message = "Printer disconnected.";
                 break;
+
             case AsyncEscPosPrint.FINISH_PARSER_ERROR:
-                new AlertDialog.Builder(context)
-                        .setTitle("Invalid formatted text")
-                        .setMessage("It seems to be an invalid syntax problem.")
-                        .show();
+                message = "Invalid print format.";
                 break;
+
             case AsyncEscPosPrint.FINISH_ENCODING_ERROR:
-                new AlertDialog.Builder(context)
-                        .setTitle("Bad selected encoding")
-                        .setMessage("The selected encoding character returning an error.")
-                        .show();
+                message = "Encoding error occurred.";
                 break;
+
             case AsyncEscPosPrint.FINISH_BARCODE_ERROR:
-                new AlertDialog.Builder(context)
-                        .setTitle("Invalid barcode")
-                        .setMessage("Data send to be converted to barcode or QR code seems to be invalid.")
-                        .show();
+                message = "Invalid barcode or QR code.";
+                break;
+
+            default:
+                message = "Unknown printer error.";
                 break;
         }
+
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
         if (this.onPrintFinished != null) {
             if (result.getPrinterStatus() == AsyncEscPosPrint.FINISH_SUCCESS) {
                 this.onPrintFinished.onSuccess(result.getAsyncEscPosPrinter());
