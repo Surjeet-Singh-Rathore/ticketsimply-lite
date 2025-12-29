@@ -284,18 +284,18 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                     passengerDetailsViewModel.isPerBookingDiscountAmountChanged = false
                 }
             }
-            if (isNetworkAvailable()) {
+            LaunchedEffect(passengerDetailsViewModel.isFareBreakupApiCalled) {
                 if (passengerDetailsViewModel.isFareBreakupApiCalled) {
-                    fareBreakupApi()
+                    if (isNetworkAvailable()) {
+                        fareBreakupApi()
+                    } else {
+                        noNetworkToast()
+                    }
+                    // VERY IMPORTANT: reset flag
+                    passengerDetailsViewModel.isFareBreakupApiCalled = false
                 }
-//                LaunchedEffect(passengerDetailsViewModel.isFareBreakupApiCalled) {
-//                    if (passengerDetailsViewModel.isFareBreakupApiCalled) {
-//                        fareBreakupApi()
-//                        passengerDetailsViewModel.isFareBreakupApiCalled = false
-//                    }
-//                }
-            } else
-                noNetworkToast()
+            }
+
 
             if (isNetworkAvailable()) {
                 if (passengerDetailsViewModel.isSmartMilesOtpApi.value)
