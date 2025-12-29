@@ -852,6 +852,7 @@ class ViewReservationActivity : BaseActivity(), DialogSingleButtonListener, VarA
                                     PreferenceUtils.setPreference(PREF_FROM_PICKUP_CHART, true)
                                     intent.putExtra(getString(R.string.navigate_tag), tag)
                                     startActivity(intent)
+                                    finish()
                                 }
                             } else
                                 toast(getString(R.string.route_not_configured))
