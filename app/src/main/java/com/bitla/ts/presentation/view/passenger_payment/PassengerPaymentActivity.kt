@@ -1996,7 +1996,42 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                                     }
                                 }
 
-
+                                if (isBookingTypeCardVisible || isPhoneBookingVisible) {
+                                    item {
+                                        BookingTypeCard(role,
+                                            passengerDetailsViewModel,
+                                            this@PassengerPaymentActivity,
+                                            onClick = {
+                                                onBookingTypeSelection(it)
+                                            },
+                                            onPhoneBookingClick = {
+                                                DialogUtils.phoneBlockingDialog(
+                                                    context = this@PassengerPaymentActivity,
+                                                    varArgListener = this@PassengerPaymentActivity,
+                                                    isPermanentPhoneBooking = passengerDetailsViewModel.privilegeResponseModel?.isPermanentPhoneBooking
+                                                        ?: false,
+                                                    removePreSelectionOptionInTheBooking = passengerDetailsViewModel.removePreSelectionOptionInTheBooking,
+                                                    hours = passengerDetailsViewModel.calculatedHours.toString(),
+                                                    minutes = passengerDetailsViewModel.calculatedMinutes.toString(),
+                                                    amOrpm = passengerDetailsViewModel.checkAMOrPM,
+                                                    selectedDate = passengerDetailsViewModel.selectedDate,
+                                                    isPhoneBlockedDateChanged = passengerDetailsViewModel.isPhoneBlockedDateChanged,
+                                                    isBima = passengerDetailsViewModel.isBima == true
+                                                )
+                                            },
+                                            onBookingTypeClick = {
+//                                                isBookingTypeValueChanged = true
+//                                                coroutineScope.launch {
+//                                                    listState.animateScrollToItem(index = 1)
+//                                                }
+                                                passengerDetailsViewModel.isFareBreakupApiCalled = true
+                                                coroutineScope.launch {
+                                                    listState.animateScrollToItem(index = 1)
+                                                }
+                                            }
+                                        )
+                                    }
+                                }
 
 
 
