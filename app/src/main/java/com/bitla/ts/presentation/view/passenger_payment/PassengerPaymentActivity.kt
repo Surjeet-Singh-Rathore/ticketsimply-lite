@@ -1996,42 +1996,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                                     }
                                 }
 
-                                if (isBookingTypeCardVisible || isPhoneBookingVisible) {
-                                    item {
-                                        BookingTypeCard(role,
-                                            passengerDetailsViewModel,
-                                            this@PassengerPaymentActivity,
-                                            onClick = {
-                                                onBookingTypeSelection(it)
-                                            },
-                                            onPhoneBookingClick = {
-                                                DialogUtils.phoneBlockingDialog(
-                                                    context = this@PassengerPaymentActivity,
-                                                    varArgListener = this@PassengerPaymentActivity,
-                                                    isPermanentPhoneBooking = passengerDetailsViewModel.privilegeResponseModel?.isPermanentPhoneBooking
-                                                        ?: false,
-                                                    removePreSelectionOptionInTheBooking = passengerDetailsViewModel.removePreSelectionOptionInTheBooking,
-                                                    hours = passengerDetailsViewModel.calculatedHours.toString(),
-                                                    minutes = passengerDetailsViewModel.calculatedMinutes.toString(),
-                                                    amOrpm = passengerDetailsViewModel.checkAMOrPM,
-                                                    selectedDate = passengerDetailsViewModel.selectedDate,
-                                                    isPhoneBlockedDateChanged = passengerDetailsViewModel.isPhoneBlockedDateChanged,
-                                                    isBima = passengerDetailsViewModel.isBima == true
-                                                )
-                                            },
-                                            onBookingTypeClick = {
-//                                                isBookingTypeValueChanged = true
-//                                                coroutineScope.launch {
-//                                                    listState.animateScrollToItem(index = 1)
-//                                                }
-                                                passengerDetailsViewModel.isFareBreakupApiCalled = true
-                                                coroutineScope.launch {
-                                                    listState.animateScrollToItem(index = 1)
-                                                }
-                                            }
-                                        )
-                                    }
-                                }
+
 
 
 
@@ -2743,17 +2708,10 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                     getRole()
                     checkBookingTypeCardVisibility()
                     customBookingTypes(
-                        phoneBooking = getString(R.string.phone),
-                        walkin = getString(R.string.walkin),
-                        confirmBooking = getString(R.string.confirmBooking),
-                        onlineAgent = getString(R.string.online_agent),
-                        offlineAgent = getString(R.string.offline_agent),
-                        branch = getString(R.string.branch),
-                        subAgent = getString(R.string.sub_agent_title)
+                        walkin = getString(R.string.walkin)
                     )
                     bookingStatus(
-                        confirmBooking = getString(R.string.confirm),
-                        phoneBooking = getString(R.string.phone)
+                        confirmBooking = getString(R.string.confirm)
                     )
                     handlePrivileges(
                         passengerDetailsViewModel = passengerDetailsViewModel,

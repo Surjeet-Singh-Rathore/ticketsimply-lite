@@ -1504,112 +1504,30 @@ class PassengerDetailsViewModel<T : Any?> : ViewModel() {
     }
 
     fun customBookingTypes(
-        phoneBooking: String,
         walkin: String,
-        confirmBooking: String,
-        onlineAgent: String,
-        offlineAgent: String,
-        branch: String,
-        subAgent: String
-    ) {
+        ) {
         _bookingTypes.clear()
         var itemWalkin = SpinnerItems(walkinId, walkin)
-        if (privilegeResponseModel?.allowToSwitchSinglePageBooking != null && privilegeResponseModel?.allowToSwitchSinglePageBooking!!) {
-
-            itemWalkin = SpinnerItems(walkinId, confirmBooking)
-            val itemPhone = SpinnerItems(phoneBookingId, phoneBooking)
-            if (privilegeResponseModel?.isPhoneBooking == true)
-                _bookingTypes.add(itemPhone)
-        }
-
-        val itemOnlAgent = SpinnerItems(onlineAgentId, onlineAgent)
-        val itemOfflineAgent = SpinnerItems(offlineAgentId, offlineAgent)
-        val itemBranch = SpinnerItems(branchId, branch)
         _bookingTypes.add(itemWalkin)
+        setBookingTypeText()
 
-        /*  checking below privilege
-          "is_allow_online_agent_booking": true,
-           "is_allow_offline_agent_booking": true,
-           "is_allow_branch_booking": true,*/
-        if (privilegeResponseModel != null) {
-
-            if (isBima != null && isBima == true && privilegeResponseModel?.chartSharedPrivilege?.isNotEmpty() == true && privilegeResponseModel?.chartSharedPrivilege?.get(
-                    0
-                )?.parent_travel_id == parentTravelId.toInt()
-            ) {
-                if (privilegeResponseModel?.chartSharedPrivilege?.get(0)?.privileges?.is_allow_online_agent_booking == true)
-                    bookingTypes.add(itemOnlAgent)
-
-                if (privilegeResponseModel?.chartSharedPrivilege?.get(0)?.privileges?.is_allow_offline_agent_booking == true)
-                    bookingTypes.add(itemOfflineAgent)
-
-                if (privilegeResponseModel?.chartSharedPrivilege?.get(0)?.privileges?.is_allow_branch_booking == true)
-                    bookingTypes.add(itemBranch)
-
-            } else {
-                if ((!isOwnRoute && privilegeResponseModel?.isAllowOnlineAgentBookingForOtherRoutes == true)
-                    || (isOwnRoute && privilegeResponseModel?.isAllowOnlineAgentBooking == true)
-                )
-                    _bookingTypes.add(itemOnlAgent)
-                if (privilegeResponseModel?.isAllowOfflineAgentBooking == true)
-                    _bookingTypes.add(itemOfflineAgent)
-                if (privilegeResponseModel?.isAllowBranchBooking == true)
-                    _bookingTypes.add(itemBranch)
-            }
-
-            if (isAgentLogin) {
-                if (privilegeResponseModel?.allowToDoPhoneBlocking == true) {
-                    val itemPhone = SpinnerItems(phoneBookingId, phoneBooking)
-                    _bookingTypes.add(itemPhone)
-                }
-
-                if (PreferenceUtils.getSubAgentRole() != "true") {
-                    val subAgentBookingType = SpinnerItems(33, subAgent)
-                    _bookingTypes.add(subAgentBookingType)
-                }
-            }
-
-            setBookingTypeText()
-        }
     }
 
     fun bookingStatus(
         confirmBooking: String,
-        phoneBooking: String,
     ) {
         _bookingStatusTypes.clear()
 
         val itemConfirmBooking = SpinnerItems(statusConfirmBookingId, confirmBooking)
         _bookingStatusTypes.add(itemConfirmBooking)
 
-        if (privilegeResponseModel != null) {
-            if (isBima != null && isBima == true && privilegeResponseModel?.chartSharedPrivilege?.get(
-                    0
-                )?.parent_travel_id == parentTravelId.toInt()
-            ) {
-                if (privilegeResponseModel?.chartSharedPrivilege?.get(0)?.privileges?.is_allow_phone_blocking_in_bima == true) {
-                    val itemPhoneBookingId = SpinnerItems(statusPhoneBookingId, phoneBooking)
-                    _bookingStatusTypes.add(itemPhoneBookingId)
-                }
-            } else {
-                if (privilegeResponseModel?.isPhoneBooking == true) {
-                    val itemPhoneBookingId = SpinnerItems(statusPhoneBookingId, phoneBooking)
-                    _bookingStatusTypes.add(itemPhoneBookingId)
-                }
-            }
-        }
-
         _selectedStatusType = ResourceProvider.TextResource.fromStringId(R.string.confirm)
 
     }
 
     fun setBookingTypeText() {
-        _selectedBookingType =
-            if (privilegeResponseModel != null && privilegeResponseModel?.allowToSwitchSinglePageBooking != null && privilegeResponseModel?.allowToSwitchSinglePageBooking!!) {
-                ResourceProvider.TextResource.fromStringId(R.string.confirmBooking)
-            } else {
-                ResourceProvider.TextResource.fromStringId(R.string.walkin)
-            }
+        _selectedBookingType = ResourceProvider.TextResource.fromStringId(R.string.walkin)
+
         _selectedBookingTypeId = walkinId
     }
 
