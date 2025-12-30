@@ -1019,7 +1019,6 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
     }
 
     private fun clickListener() {
-        binding.btnServiceSummary.setOnClickListener(this)
         binding.includeToolbar.imgBack.setOnClickListener(this)
         binding.tvFromDate.setOnClickListener(this)
         binding.tvToDate.setOnClickListener(this)
@@ -1279,9 +1278,6 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
     override fun onClick(v: View) {
         super.onClick(v)
         when (v.id) {
-            R.id.btn_service_summary -> {
-                tabs("btnServiceSummary")
-            }
 
             R.id.fabsummary -> {
                 binding.editPriceLayout.fabsummary.gone()
@@ -1741,7 +1737,6 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
         var selectedSeatsNumber: String? = ""
         if (finalSeatNumbers.isNotEmpty()) {
             binding.multioptionView.gone()
-            binding.btnServiceSummary.gone()
             binding.coachUnderView.gone()
             binding.imgCollapse.gone()
             binding.imgExpand.gone()
@@ -1814,7 +1809,6 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
         layoutParams.setMargins(0, 0, 0, 0)
         binding.layoutCoach.layoutParams = layoutParams
 //        binding.imgExpand.visible()
-        binding.btnServiceSummary.visible()
         binding.multioptionView.visible()
         binding.coachUnderView.gone()
         binding.editPriceLayout.fabsummary.setOnClickListener(this)
@@ -2023,7 +2017,6 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
 
     private fun tabs(btn: String) {
         binding.summaryLayout.root.visible()
-        binding.btnServiceSummary.gone()
         binding.tansparentbackbround.visible()
 
         val tabsList: MutableList<Tabs> = mutableListOf()
@@ -2105,7 +2098,7 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
         binding.summaryLayout.headText.setOnClickListener {
             if (btn == "btnServiceSummary") {
                 binding.summaryLayout.root.gone()
-                binding.btnServiceSummary.visible()
+
 
                 binding.tansparentbackbround.gone()
             } else {

@@ -21,7 +21,8 @@
         android:backgroundTint="@color/text_header_bg"
         android:src="@drawable/ic_edit_chart_white"
         app:tint="@color/white"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/layoutContainer"

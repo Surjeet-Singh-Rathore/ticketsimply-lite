@@ -444,7 +444,6 @@ private var transactionFare: String = ""
                     coachSwipeButtonsVisibility()
                     editPriceLayout.proceedLayout.gone()
                     editPriceLayout.editprice.gone()
-                    editPriceLayout.fabsummary.gone()
                     editPriceLayout.layoutExtraSeatProceed.gone()
                 }
             }
@@ -455,7 +454,6 @@ private var transactionFare: String = ""
                 binding.layoutSummary.root.visible()
             }
 
-            binding.editPriceLayout.fabsummary.setOnClickListener(this)
             this.editFareSeatDetails.clear()
             this.selectedSeatDetails.clear()
             PreferenceUtils.removeKey(getString(R.string.rebooking_same_service))
@@ -733,7 +731,6 @@ private var transactionFare: String = ""
         unblockObserver()
         setTicketDetailsV1Observer()
         setUpSeatWisePerSeatObserver()
-        releaseTicketFun()
         updateBoardedStatusObserver()
         setSendSMSEmailObserver()
         setQuotaBlockingTooltipInfoObserver()
@@ -1467,7 +1464,6 @@ private var transactionFare: String = ""
                                         binding.apply {
                                             editPriceLayout.proceedLayout.gone()
                                             editPriceLayout.editprice.gone()
-                                            editPriceLayout.fabsummary.gone()
                                             editPriceLayout.layoutExtraSeatProceed.gone()
                                         }
 
@@ -2070,7 +2066,7 @@ private var transactionFare: String = ""
                     onEditFareChange()
                 else
                     binding.editPriceLayout.ticketPrice.text = totalFare
-                binding.editPriceLayout.fabsummary.setOnClickListener(this)
+
             } else {
                 binding.imgCollapse.visible()
                 binding.editPriceLayout.tvSelectedSeats.text = getString(R.string.empty)
@@ -2080,7 +2076,6 @@ private var transactionFare: String = ""
 //            binding.layoutSummary.mainLayout.visible()
 //            binding.btnServiceSummary.visible()
 //            binding.layoutviews.visible()
-                binding.editPriceLayout.fabsummary.setOnClickListener(this)
                 onNoSeatSelection()
             }
 
@@ -2264,12 +2259,11 @@ private var transactionFare: String = ""
                 coachSwipeButtonsVisibility()
                 editPriceLayout.proceedLayout.gone()
                 editPriceLayout.editprice.gone()
-                editPriceLayout.fabsummary.gone()
                 editPriceLayout.layoutExtraSeatProceed.gone()
             }
         }
 
-        binding.editPriceLayout.fabsummary.setOnClickListener(this)
+
         this.editFareSeatDetails.clear()
         this.selectedSeatDetails.clear()
     }
@@ -2377,7 +2371,6 @@ private var transactionFare: String = ""
                                 binding.apply {
                                     editPriceLayout.proceedLayout.gone()
                                     editPriceLayout.editprice.gone()
-                                    editPriceLayout.fabsummary.gone()
                                     editPriceLayout.layoutExtraSeatProceed.gone()
                                 }
 
@@ -2411,7 +2404,6 @@ private var transactionFare: String = ""
 
     private fun tabs(btn: String) {
         binding.summaryLayout.root.visible()
-        binding.btnServiceSummary.gone()
         binding.tansparentbackbroundServiceSummary.visible()
 
         val tabsList: MutableList<Tabs> = mutableListOf()
@@ -2489,17 +2481,12 @@ private var transactionFare: String = ""
         binding.summaryLayout.headText.setOnClickListener {
             if (btn == "btnServiceSummary") {
                 binding.summaryLayout.root.gone()
-                binding.btnServiceSummary.visible()
+
 
                 binding.tansparentbackbround.gone()
                 binding.tansparentbackbroundServiceSummary.gone()
             } else {
                 binding.summaryLayout.root.gone()
-                if (isBimaServiceDetails != null && isBimaServiceDetails == true) {
-                    binding.editPriceLayout.fabsummary.gone()
-                } else {
-                    binding.editPriceLayout.fabsummary.visible()
-                }
                 binding.tansparentbackbround.gone()
                 binding.tansparentbackbroundServiceSummary.gone()
             }
@@ -2617,12 +2604,6 @@ private var transactionFare: String = ""
                 scanScaeen()
             }
 
-
-
-            R.id.fabsummary -> {
-                binding.editPriceLayout.fabsummary.gone()
-                tabs("fabSummary")
-            }
 
             R.id.toolbar_image_left -> {
                 onBackPressed()
@@ -3969,11 +3950,7 @@ private var transactionFare: String = ""
                     editPriceLayout.root.visible()
                     editPriceLayout.layoutExtraSeatProceed.visible()
                     editPriceLayout.btnExtraBookingProceed.visible()
-                    if (isBimaServiceDetails == true) {
-                        binding.editPriceLayout.fabsummary.gone()
-                    } else {
-                        binding.editPriceLayout.fabsummary.visible()
-                    }
+
 
                     layoutSummary.root.gone()
                     editPriceLayout.proceedLayout.gone()
@@ -3989,11 +3966,6 @@ private var transactionFare: String = ""
                 binding.apply {
                     editPriceLayout.root.visible()
                     editPriceLayout.layoutExtraSeatProceed.visible()
-                    if (isBimaServiceDetails == true) {
-                        binding.editPriceLayout.fabsummary.gone()
-                    } else {
-                        binding.editPriceLayout.fabsummary.visible()
-                    }
                     layoutSummary.root.gone()
 
                     editPriceLayout.proceedLayout.gone()
@@ -4008,8 +3980,6 @@ private var transactionFare: String = ""
             if (isSelectedSeat) {
                 binding.apply {
                     editPriceLayout.root.visible()
-
-                    editPriceLayout.fabsummary.gone()
                     editPriceLayout.layoutExtraSeatProceed.gone()
 //                    layoutSummary.root.visible()
                     layoutSummary.root.gone()
@@ -4026,7 +3996,6 @@ private var transactionFare: String = ""
                         coachSwipeButtonsVisibility()
                         editPriceLayout.proceedLayout.gone()
                         editPriceLayout.editprice.gone()
-                        editPriceLayout.fabsummary.gone()
                         editPriceLayout.layoutExtraSeatProceed.gone()
 
                     layoutSummary.root.gone()
@@ -5364,234 +5333,6 @@ private var transactionFare: String = ""
     }
 
 
-    private fun releaseTicketFun() {
-        _sheetReleaseTicketsBinding =
-            SheetReleaseTicketsBinding.inflate(LayoutInflater.from(this))
-
-
-        ticketDetailsViewModel.dataTicketDetails.observe(this) {
-            if (!passengerDetailList.isNullOrEmpty()) {
-                passengerDetailList?.clear()
-
-            }
-            if (it != null) {
-                when (it.code) {
-                    200 -> {
-
-                        passengerDetailList = it.body.passengerDetails
-                        if (isReleaseTicket == "true") {
-                            bindingSheet.releaseTicketBtn.setOnClickListener {
-                                for (i in 0 until currentCheckedItem.size) {
-                                    selectedSeatNumber.append(currentCheckedItem[i]?.seatNumber)
-                                    if (i < currentCheckedItem.size - 1) {
-                                        selectedSeatNumber.append(",")
-                                    }
-                                }
-                                if (selectedSeatNumber.isEmpty()) {
-                                    toast(getString(R.string.selectSeat))
-                                } else {
-                                    bindingSheet.progressBarRelease.visible()
-                                    authPinDialog(releaseTicketNumber)
-                                }
-                            }
-
-                            setReleaseTicketPassengerAdapter()
-                            bottomSheetDialoge.show()
-                        } else {
-                            passengerList.clear()
-                            seatList.clear()
-                            selectedSeatDetails.clear()
-                            pnr = it.body.ticketNumber
-                            boardingStageID = it.body.dropOffDetails?.stageId.toString()
-                            boarding = it.body.origin
-                            dropping = it.body.destination ?: getString(R.string.notAvailable)
-                            bAddress = it.body.boardingDetails?.stageName
-                                ?: getString(R.string.notAvailable)
-                            dAddress = it.body.dropOffDetails?.stageName
-                                ?: getString(R.string.notAvailable)
-                            boardingTravelDate = it.body.boardingDetails?.travelDate
-                                ?: getString(R.string.notAvailable)
-                            boardingDepTime =
-                                it.body.boardingDetails?.depTime
-                                    ?: getString(R.string.notAvailable)
-                            dropOffTravelDate = it.body.dropOffDetails?.travelDate
-                                ?: getString(R.string.notAvailable)
-                            dropOffDepTime =
-                                it.body.dropOffDetails?.arrTime
-                                    ?: getString(R.string.notAvailable)
-
-
-                            if (it.body.passengerDetails != null) {
-
-                                for (i in 0..it.body.passengerDetails.size.minus(1)) {
-                                    isShiftPassenger =
-                                        it.body.passengerDetails[i]!!.canShiftTicket
-                                    isCanCancelTicket = it.body.passengerDetails[i]!!.canCancel
-                                    seatList.clear()
-                                    selectedSeatDetails.clear()
-
-                                    passengerContactDetailList.add(
-                                        ContactDetail(
-                                            "${it.body.passengerDetails[i]?.mobile}",
-                                            "${it.body.passengerDetails[i]?.mobile}",
-                                            "${it.body.passengerDetails[i]?.email}",
-                                            "${it.body.passengerDetails[i]?.cusMobile}",
-                                        )
-                                    )
-                                    passengerList.add(
-                                        PassengerDetailsResult(
-                                            true,
-                                            isPrimary = true,
-                                            seatNumber = it.body.passengerDetails[i]!!.seatNumber,
-                                            name = it.body.passengerDetails[i]!!.name,
-                                            age = it.body.passengerDetails[i]?.age.toString(),
-                                            sex = it.body.passengerDetails[i]!!.gender,
-                                            contactDetail = passengerContactDetailList,
-                                            fare = it.body.passengerDetails[i]?.netFare
-                                        )
-                                    )
-
-                                    for (j in 0 until passengerList.size) {
-                                        val seatDetail = SeatDetail()
-                                        seatDetail.isPrimary = true
-                                        seatDetail.number =
-                                            it.body.passengerDetails[i]?.seatNumber ?: ""
-                                        seatDetail.sex = it.body.passengerDetails[i]?.gender
-                                        seatDetail.name = it.body.passengerDetails[i]?.name
-                                        seatDetail.age =
-                                            it.body.passengerDetails[i]?.age?.toString()
-                                        seatDetail.fare = it.body.passengerDetails[i]?.netFare
-                                        selectedSeatDetails.add(seatDetail)
-                                    }
-
-                                    setSelectedPassengers(passengers = passengerList)
-
-                                    val seatDetailNew = SeatDetail()
-                                    seatDetailNew.number = it.body.seatNumbers ?: ""
-                                    seatList.add(seatDetailNew)
-                                    setSelectSeats(seatList)
-                                }
-                                setSelectSeats(selectedSeatDetail = selectedSeatDetails)
-                            }
-
-                            PreferenceUtils.apply {
-                                setPreference(PREF_BOARDING_TIME, boardingDepTime)
-                                setPreference(PREF_BOARDING_AT, bAddress)
-                                setPreference(PREF_BOARDING_DATE, boardingTravelDate)
-                                setPreference(PREF_DROP_OFF_TIME, dropOffDepTime)
-                                setPreference(PREF_DROP_OFF, dAddress)
-                                setPreference(PREF_DROP_OFF_DATE, dropOffTravelDate)
-                            }
-
-                            val intent = if(countryName.equals("india", true) && privilegeResponseModel?.isAgentLogin == false && it.body.booking_source.equals(
-                                    getString(
-                                        R.string.branch_booking_
-                                    ),true)) {
-                                Intent(this, NewConfirmPhoneBookingActivity::class.java)
-                            }else{
-                                Intent(this, ConfirmPhoneBookingActivity::class.java)
-
-                            }
-                            if (it.body?.booking_source == "Online Agent Booking" ||it.body.booking_source == "Offline Agent Booking") {
-                                intent.putExtra("isOnBehalgOfAgent", true)
-                            }
-                            intent.putExtra("fromTicketDetailsActivity", true)
-                            intent.putExtra(getString(R.string.pnr_number), pnr)
-                            intent.putExtra(
-                                getString(R.string.select_boarding_stage),
-                                boardingStageID
-                            )
-                            intent.putExtra(
-                                getString(R.string.total_net_amount),
-                                totalNetAmount
-                            )
-                            intent.putExtra(
-                                getString(R.string.transaction_fare),
-                               transactionFare
-                            )
-                            intent.putExtra("reservationId",reservationId)
-
-                            intent.putExtra(
-                                getString(R.string.select_boarding_stage),
-                                boardingStageID
-                            )
-
-                            intent.putExtra(
-                                getString(R.string.select_dropping_stage),
-                                droppingStageID
-                            )
-                            intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
-                            intent.putExtra(
-                                getString(R.string.travel_date),
-                                getDateDMY(travelDate.toString())
-                            )
-                            intent.putExtra(getString(R.string.bus_type), busType)
-                            intent.putExtra(getString(R.string.source_id), sourceId)
-                            intent.putExtra(getString(R.string.destination_id), destinationId)
-                            intent.putExtra(getString(R.string.origin), boarding)
-                            intent.putExtra(getString(R.string.destination), dropping)
-                            intent.putExtra(
-                                getString(R.string.totalAmount),
-                                it.body.totalFare.toString()
-                            )
-                            startActivity(intent)
-                        }
-
-                    }
-
-                    401 -> {
-                        /*DialogUtils.unAuthorizedDialog(
-                            this,
-                            "${getString(R.string.authentication_failed)}\n\n ${getString(R.string.please_try_again)}",
-                            this
-                        )*/
-                        showUnauthorisedDialog()
-
-                    }
-
-                    else -> {
-                        if (it.result?.message != null) {
-                            it.result.message.let { it1 ->
-                                toast(it1)
-                            }
-                        }
-                        if (it.result?.message != null) {
-                            it.result.message.let { it1 ->
-                                toast(it1)
-                            }
-                        }
-                        if (it.result?.message != null) {
-                            it.result.message.let { it1 ->
-                                toast(it1)
-                            }
-                        }
-                    }
-                }
-            } else {
-                toast(getString(R.string.server_error))
-            }
-        }
-
-
-    }
-
-
-
-    private fun setReleaseTicketPassengerAdapter() {
-
-        bindingSheet.rvPassengers.layoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false
-        )
-
-        bindingSheet.rvPassengers.adapter = ReleaseTicketPassengersListAdapter(
-            this,
-            passengerDetailList,
-            this
-        )
-    }
-
     private fun dismissProgressBar() {
         bindingSheet.progressBarRelease.gone()
     }
@@ -6288,9 +6029,6 @@ private var transactionFare: String = ""
 //                    binding.layoutSummary.mainLayout.visible()
                     binding.layoutSummary.root.gone()
 
-
-                    //binding.layoutviews.visible()
-                    binding.editPriceLayout.fabsummary.setOnClickListener(this)
                     onNoSeatSelection()
 
                 } else {
@@ -6743,29 +6481,6 @@ private var transactionFare: String = ""
                 view.fareValueTV.text = data.seat_fare
             }
 
-
-            if (data.can_release_phone_block) {
-                view.cancelPhoneBookingView.visible()
-                view.cancelPhoneBooking.visible()
-                view.cancelPhoneBooking.setOnClickListener {
-                    releaseTicket(data.ticket_no, "true")
-                }
-            } else {
-                view.cancelPhoneBookingView.gone()
-                view.cancelPhoneBooking.gone()
-            }
-
-            if (data.can_confirm_phone_block) {
-                view.confirmPhoneBookingView.visible()
-                view.confirmPhoneBooking.visible()
-                view.confirmPhoneBooking.setOnClickListener {
-                    closeSeatDetailToggle()
-                    releaseTicket(data.ticket_no, "false")
-                }
-            } else {
-                view.confirmPhoneBookingView.gone()
-                view.confirmPhoneBooking.gone()
-            }
 
 
             if (data.phone_num.isNullOrEmpty()) {
@@ -7505,7 +7220,6 @@ private var transactionFare: String = ""
                                 binding.editPriceLayout.proceedLayout.gone()
                                 binding.editPriceLayout.layoutExtraSeatProceed.gone()
                                 binding.editPriceLayout.editprice.gone()
-                                binding.editPriceLayout.fabsummary.gone()
 
                                 coachSwipeButtonsVisibility()
                                 commonCoach.binding.layoutCrewI.root.visible()

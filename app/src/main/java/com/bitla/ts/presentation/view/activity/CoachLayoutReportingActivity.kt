@@ -769,30 +769,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
             }
 
 
-            if (data.can_release_phone_block) {
-                view.cancelPhoneBookingView.visible()
-                view.cancelPhoneBooking.visible()
-                view.cancelPhoneBooking.setOnClickListener {
-                    releaseTicket(data.ticket_no, "true")
-                }
-            } else {
-                view.cancelPhoneBookingView.gone()
-                view.cancelPhoneBooking.gone()
-            }
-
-            if (data.can_confirm_phone_block) {
-                view.confirmPhoneBookingView.visible()
-                view.confirmPhoneBooking.visible()
-                view.confirmPhoneBooking.setOnClickListener {
-                    closeSeatDetailToggle()
-                    releaseTicket(data.ticket_no, "false")
-                }
-            } else {
-                view.confirmPhoneBookingView.gone()
-                view.confirmPhoneBooking.gone()
-            }
-
-
 
             if (data.phone_num.isNullOrEmpty()) {
                 view.callPassenger.gone()

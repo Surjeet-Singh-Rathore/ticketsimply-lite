@@ -53,29 +53,6 @@
         app:layout_constraintGuide_end="@dimen/guideline_size" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_service_summary"
-        style="@style/TextStyleNormalTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dp_24"
-        android:background="@drawable/layout_round_dark_bg"
-        android:drawableStart="@drawable/view_reservation_chart_icon"
-        android:drawablePadding="@dimen/dp_16"
-        android:drawableTint="@color/white"
-        android:paddingStart="@dimen/dp_24"
-        android:paddingTop="14dp"
-        android:paddingEnd="@dimen/dp_24"
-        android:paddingBottom="14dp"
-        android:text="@string/service_summary"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout15"
         android:layout_width="match_parent"
