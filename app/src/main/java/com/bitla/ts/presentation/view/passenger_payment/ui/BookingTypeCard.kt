@@ -157,56 +157,7 @@ fun BookingTypeCard(
                     )
                 }
 
-                if (!isExtraSeats && isBima==true) {
-                    if (passengerDetailsViewModel.isAgentLogin) {
-                        if (isPhoneBookingVisible && rapidBookingType != 0) {
-                            SpaceComponent(modifier = Modifier.height(4.dp))
-                            PhoneBookingCard(
-                                context = context,
-                                passengerDetailsViewModel = passengerDetailsViewModel,
-                                onPhoneBookingClick = { onPhoneBookingClick(it) })
-                        }
-                    }
-                    else {
-                        if (privilegeResponseModel?.allowToSwitchSinglePageBooking != null
-                            && !privilegeResponseModel?.allowToSwitchSinglePageBooking!!
-                        ) {
-                            if (isPhoneBookingVisible && rapidBookingType != 0) {
-                                SpaceComponent(modifier = Modifier.height(4.dp))
-                                PhoneBookingCard(
-                                    context = context,
-                                    passengerDetailsViewModel = passengerDetailsViewModel,
-                                    onPhoneBookingClick = { onPhoneBookingClick(it) })
-                            }
-                        }
-                    }
-                } else {
-                    if (passengerDetailsViewModel.isAgentLogin) {
 
-                        if (isPhoneBookingVisible && rapidBookingType != 0 && !isExtraSeat) {
-//                                SpaceComponent(modifier = Modifier.height(4.dp))
-//                                PhoneBookingCard(
-//                                    context = context,
-//                                    passengerDetailsViewModel = passengerDetailsViewModel,
-//                                    onPhoneBookingClick = { onPhoneBookingClick(it) })
-                        }else{
-                            setPhoneBookingVisibility(false)
-//                            setBookingCardVisibility(false)
-                        }
-                    } else {
-                        if (privilegeResponseModel?.allowToSwitchSinglePageBooking != null
-                            && !privilegeResponseModel?.allowToSwitchSinglePageBooking!!
-                        ) {
-                            if (isPhoneBookingVisible && rapidBookingType != 0) {
-                                SpaceComponent(modifier = Modifier.height(4.dp))
-                                PhoneBookingCard(
-                                    context = context,
-                                    passengerDetailsViewModel = passengerDetailsViewModel,
-                                    onPhoneBookingClick = { onPhoneBookingClick(it) })
-                            }
-                        }
-                    }
-                }
 
             }
 
@@ -345,53 +296,6 @@ fun OfflineAmountCheckBox(passengerDetailsViewModel: PassengerDetailsViewModel<A
     }
 }
 
-@Composable
-private fun PhoneBookingCard(context: Context, passengerDetailsViewModel : PassengerDetailsViewModel<Any?>, onPhoneBookingClick: (String) -> Unit) {
-    CardComponent(
-        shape = RoundedCornerShape(4.dp),
-        bgColor = colorResource(id = if(passengerDetailsViewModel.phoneBookingCardColor == PHONE_BOOKING_NOT_SELECTED) R.color.button_secondary_bg else R.color.colorBlue1), modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight(),
-            onClick = {
-               onPhoneBookingClick("")
-            })
-    {
-        Row(modifier = Modifier.padding(12.dp)) {
-            Row(Modifier.weight(0.7f), verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_phone_),
-                    contentDescription = stringResource(id = R.string.do_phone_booking),
-                    tint = colorResource(
-                        id = R.color.white
-                    )
-                )
-
-                SpaceComponent(modifier = Modifier.padding(start = 4.dp, top = 6.dp))
-
-                TextBoldRegular(
-                    text = stringResource(id = R.string.do_phone_booking),
-                    modifier = Modifier,
-                    textStyle = TextStyle(
-                        color = colorResource(
-                            id = R.color.white
-                        )
-                    )
-                )
-            }
-            Row(Modifier.weight(0.3f), verticalAlignment = Alignment.CenterVertically) {
-                TextNormalSmall(
-                    text = passengerDetailsViewModel.phoneBlockTime?.asString(context.resources) ?: "",
-                    modifier = Modifier,
-                    textStyle = TextStyle(
-                        colorResource(id = R.color.white)
-                    )
-                )
-            }
-
-
-        }
-    }
-}
 
 @Composable
 @OptIn(ExperimentalMaterialApi::class)
