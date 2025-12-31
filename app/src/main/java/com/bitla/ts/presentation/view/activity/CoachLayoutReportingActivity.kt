@@ -250,7 +250,7 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
             layoutBookedSeatDetails.menuViewticket.setOnClickListener(this@CoachLayoutReportingActivity)
             layoutBookedSeatDetails.callPassenger.setOnClickListener(this@CoachLayoutReportingActivity)
             layoutBookedSeatDetails.resendSms.setOnClickListener(this@CoachLayoutReportingActivity)
-            layoutBookedSeatDetails.boardedSwitchBox.setOnClickListener(this@CoachLayoutReportingActivity)
+
             transparentOptionV.setOnClickListener(this@CoachLayoutReportingActivity)
             transparentBookedSeatsOptionsV.setOnClickListener(this@CoachLayoutReportingActivity)
         }
@@ -766,60 +766,6 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
                 view.fareValueTV.text = "${privilegeResponseModel?.currency} ${data.seat_fare.toDouble().convert(currencyFormatt)}"
             } catch (e: Exception) {
                 view.fareValueTV.text = data.seat_fare
-            }
-
-            if (isBimaServiceDetails == true) {
-                view.boardingStatus.gone()
-            } else {
-                view.boardedSwitchBox.isChecked = data.status == 2
-
-                if (isAllowOnlyOnce) {
-                    view.boardedSwitchBox.isEnabled = (data.status == 0)
-                } else {
-                    view.boardedSwitchBox.isEnabled = true
-                }
-            }
-
-
-            if (data.can_confirm_phone_block || (privilegeResponseModel?.isAgentLogin ?: false) || role.contains(
-                    getString(
-                        R.string.role_agent
-                    )
-                ) || !updatePassengerTravelStatus
-            ) {
-                view.boardingStatus.gone()
-                view.boardingStatusView.gone()
-            } else {
-                if (isBimaServiceDetails == true) {
-                    view.boardingStatus.gone()
-                } else {
-                    view.boardingStatus.visible()
-                    view.boardingStatusView.visible()
-                }
-
-            }
-
-            if (data.can_release_phone_block) {
-                view.cancelPhoneBookingView.visible()
-                view.cancelPhoneBooking.visible()
-                view.cancelPhoneBooking.setOnClickListener {
-                    releaseTicket(data.ticket_no, "true")
-                }
-            } else {
-                view.cancelPhoneBookingView.gone()
-                view.cancelPhoneBooking.gone()
-            }
-
-            if (data.can_confirm_phone_block) {
-                view.confirmPhoneBookingView.visible()
-                view.confirmPhoneBooking.visible()
-                view.confirmPhoneBooking.setOnClickListener {
-                    closeSeatDetailToggle()
-                    releaseTicket(data.ticket_no, "false")
-                }
-            } else {
-                view.confirmPhoneBookingView.gone()
-                view.confirmPhoneBooking.gone()
             }
 
 
@@ -1528,30 +1474,7 @@ class CoachLayoutReportingActivity : BaseActivity(), OnSeatSelectionListener, On
 
             }
 
-            R.id.boarded_switch_box -> {
-                if (lastSelectedSeatPosition < seatPassengersList.size) {
-                    if (binding.layoutBookedSeatDetails.boardedSwitchBox.isChecked) {
-                        binding.layoutBookedSeatDetails.boardedSwitchBox.isChecked = false
-                        onSeatSelectionListener.checkBoardedStatus(
-                            true,
-                            seatPassengersList[lastSelectedSeatPosition].name,
-                            seatPassengersList[lastSelectedSeatPosition].ticket_no,
-                            seatPassengersList[lastSelectedSeatPosition].seat_no,
-                            binding.layoutBookedSeatDetails.boardedSwitchBox
-                        )
-                    } else {
-                        binding.layoutBookedSeatDetails.boardedSwitchBox.isChecked = true
-                        onSeatSelectionListener.checkBoardedStatus(
-                            false,
-                            seatPassengersList[lastSelectedSeatPosition].name,
-                            seatPassengersList[lastSelectedSeatPosition].ticket_no,
-                            seatPassengersList[lastSelectedSeatPosition].seat_no,
-                            binding.layoutBookedSeatDetails.boardedSwitchBox
-                        )
-                    }
-                }
 
-            }
 
             R.id.menu_cancel_ticket -> {
                // baseUpdateCancelTicket.showTicketCancellationSheet(seatPassengersList[lastSelectedSeatPosition].ticket_no)

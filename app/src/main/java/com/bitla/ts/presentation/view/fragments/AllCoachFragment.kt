@@ -1856,18 +1856,18 @@ class AllCoachFragment : BaseUpdateCancelTicket(), NewCoachActivity.CoachDataInt
 
                 moveToExtraSeatViewModel.privilegesLiveData.observe(requireActivity()) { privilegeResponseModel ->
 
-                    if (privilegeResponseModel?.country.equals("India", true) && (activity is NewCoachActivity)) {
-                        if (isAgentLogin) {
-                            dragAndDropSeats(privilegeResponseModel, titleText, seatnumber2,listsubitem[j]!!)
-                        } else {
-                            dragAndDropSeats(
-                                privilegeResponseModel,
-                                titleText,
-                                seatnumber2,
-                                listsubitem[j]!!
-                            )
-                        }
-                    }
+//                    if (privilegeResponseModel?.country.equals("India", true) && (activity is NewCoachActivity)) {
+//                        if (isAgentLogin) {
+//                            dragAndDropSeats(privilegeResponseModel, titleText, seatnumber2,listsubitem[j]!!)
+//                        } else {
+//                            dragAndDropSeats(
+//                                privilegeResponseModel,
+//                                titleText,
+//                                seatnumber2,
+//                                listsubitem[j]!!
+//                            )
+//                        }
+//                    }
 
 
 
@@ -2379,111 +2379,111 @@ class AllCoachFragment : BaseUpdateCancelTicket(), NewCoachActivity.CoachDataInt
         return false
     }
 
-    private fun dragAndDropSeats(
-        privilegeResponseModel: PrivilegeResponseModel?,
-        titleText: TextView,
-        seatnumber2: String?,
-        seatDetail: SeatDetail
-    ) {
-
-        titleText.setOnLongClickListener { v ->
-            val item = ClipData.Item(seatnumber2)
-
-            getSourceSeatBlockingNumber(
-                serviceDetailsData?.coachDetails?.seatDetails,
-                seatnumber2!!
-            )
-            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
-            val dragData = ClipData("Text", mimeTypes, item)
-
-            isBookedSeat = checkBookedSeat(serviceDetailsData?.coachDetails?.seatDetails, seatnumber2)
-            canShiftTicket = checkShiftTicketPermission(serviceDetailsData?.coachDetails?.seatDetails, seatnumber2)
-
-            if (isBookedSeat && canShiftTicket && role == getString(R.string.user)) {
-                val myShadow = View.DragShadowBuilder(titleText)
-                v.startDragAndDrop(dragData, myShadow, v, 0)
-
-            } else if (!isBookedSeat && privilegeResponseModel?.tsPrivileges?.allowQuotaBlockingByDragDropInTheCoachLayout == true && loginModelPref.role != getString(R.string.role_field_officer)) {
-                if (blockingNumber.isNotEmpty()) {
-                    val myShadow = View.DragShadowBuilder(titleText)
-                    v.startDragAndDrop(dragData, myShadow, v, 0)
-                }
-            } else {
-                seatLongPressSelected(
-                    item = seatDetail,
-                )
-                return@setOnLongClickListener true
-            }
-            false
-        }
-
-        titleText.setOnDragListener { v, event ->
-            when (event.action) {
-                DragEvent.ACTION_DRAG_STARTED -> {
-                    event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                }
-
-                DragEvent.ACTION_DRAG_ENTERED -> {
-                    true
-                }
-
-                DragEvent.ACTION_DRAG_EXITED -> {
-                    true
-                }
-
-                DragEvent.ACTION_DROP -> {
-                    val sourceView = event.localState as? TextView
-                    val sourceText = sourceView?.text?.toString() ?: "Unknown"
-
-                    val targetView = v as TextView
-                    val targetText = targetView.text.toString()
-
-                    val sourceSeat = getFirstPartFromText(sourceText)
-                    val destinationSeat = getFirstPartFromText(targetText)
-
-                    val isSeatAvailable = getSeatAvailability(
-                        seatNumber = destinationSeat,
-                        seatList = serviceDetailsData?.coachDetails?.seatDetails
-                    )
-
-                    if (sourceSeat != destinationSeat && isSeatAvailable) {
-                        if (isBookedSeat && canShiftTicket && role == getString(R.string.user)) {
-                            DialogUtils.shiftBookedSeatConfirmationDialog(
-                                requireContext(),
-                                getString(R.string.confirmShiftingPassenger),
-                                sourceSeat,
-                                destinationSeat,
-                            ) { remarks, isSendSms ->
-                                val ticketNumber = getTicketNumber(serviceDetailsData?.coachDetails?.seatDetails, sourceSeat)
-                                proceedForShiftPassengerApi(
-                                    sourceSeat = sourceSeat,
-                                    destinationSeat = destinationSeat,
-                                    ticketNumber = ticketNumber,
-                                    remarks = remarks,
-                                    isSendSms = isSendSms,
-                                    privilegeResponseModel = privilegeResponseModel,
-                                )
-                            }
-                        } else if (!isBookedSeat && privilegeResponseModel?.tsPrivileges?.allowQuotaBlockingByDragDropInTheCoachLayout == true && loginModelPref.role != getString(R.string.role_field_officer)) {
-                            hitQuotaBlockSeatShiftApi(
-                                blockingNumber = blockingNumber,
-                                oldSeatNumber = sourceSeat,
-                                newSeatNumber = destinationSeat,
-                                apiKey = loginModelPref.api_key
-                            )
-                        }
-                    }
-                    true
-                }
-
-                DragEvent.ACTION_DRAG_ENDED -> {
-                    true
-                }
-
-                else -> false
-            }
-        }
-    }
+//    private fun dragAndDropSeats(
+//        privilegeResponseModel: PrivilegeResponseModel?,
+//        titleText: TextView,
+//        seatnumber2: String?,
+//        seatDetail: SeatDetail
+//    ) {
+//
+//        titleText.setOnLongClickListener { v ->
+//            val item = ClipData.Item(seatnumber2)
+//
+//            getSourceSeatBlockingNumber(
+//                serviceDetailsData?.coachDetails?.seatDetails,
+//                seatnumber2!!
+//            )
+//            val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
+//            val dragData = ClipData("Text", mimeTypes, item)
+//
+//            isBookedSeat = checkBookedSeat(serviceDetailsData?.coachDetails?.seatDetails, seatnumber2)
+//            canShiftTicket = checkShiftTicketPermission(serviceDetailsData?.coachDetails?.seatDetails, seatnumber2)
+//
+//            if (isBookedSeat && canShiftTicket && role == getString(R.string.user)) {
+//                val myShadow = View.DragShadowBuilder(titleText)
+//                v.startDragAndDrop(dragData, myShadow, v, 0)
+//
+//            } else if (!isBookedSeat && privilegeResponseModel?.tsPrivileges?.allowQuotaBlockingByDragDropInTheCoachLayout == true && loginModelPref.role != getString(R.string.role_field_officer)) {
+//                if (blockingNumber.isNotEmpty()) {
+//                    val myShadow = View.DragShadowBuilder(titleText)
+//                    v.startDragAndDrop(dragData, myShadow, v, 0)
+//                }
+//            } else {
+//                seatLongPressSelected(
+//                    item = seatDetail,
+//                )
+//                return@setOnLongClickListener true
+//            }
+//            false
+//        }
+//
+//        titleText.setOnDragListener { v, event ->
+//            when (event.action) {
+//                DragEvent.ACTION_DRAG_STARTED -> {
+//                    event.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
+//                }
+//
+//                DragEvent.ACTION_DRAG_ENTERED -> {
+//                    true
+//                }
+//
+//                DragEvent.ACTION_DRAG_EXITED -> {
+//                    true
+//                }
+//
+//                DragEvent.ACTION_DROP -> {
+//                    val sourceView = event.localState as? TextView
+//                    val sourceText = sourceView?.text?.toString() ?: "Unknown"
+//
+//                    val targetView = v as TextView
+//                    val targetText = targetView.text.toString()
+//
+//                    val sourceSeat = getFirstPartFromText(sourceText)
+//                    val destinationSeat = getFirstPartFromText(targetText)
+//
+//                    val isSeatAvailable = getSeatAvailability(
+//                        seatNumber = destinationSeat,
+//                        seatList = serviceDetailsData?.coachDetails?.seatDetails
+//                    )
+//
+//                    if (sourceSeat != destinationSeat && isSeatAvailable) {
+//                        if (isBookedSeat && canShiftTicket && role == getString(R.string.user)) {
+//                            DialogUtils.shiftBookedSeatConfirmationDialog(
+//                                requireContext(),
+//                                getString(R.string.confirmShiftingPassenger),
+//                                sourceSeat,
+//                                destinationSeat,
+//                            ) { remarks, isSendSms ->
+//                                val ticketNumber = getTicketNumber(serviceDetailsData?.coachDetails?.seatDetails, sourceSeat)
+//                                proceedForShiftPassengerApi(
+//                                    sourceSeat = sourceSeat,
+//                                    destinationSeat = destinationSeat,
+//                                    ticketNumber = ticketNumber,
+//                                    remarks = remarks,
+//                                    isSendSms = isSendSms,
+//                                    privilegeResponseModel = privilegeResponseModel,
+//                                )
+//                            }
+//                        } else if (!isBookedSeat && privilegeResponseModel?.tsPrivileges?.allowQuotaBlockingByDragDropInTheCoachLayout == true && loginModelPref.role != getString(R.string.role_field_officer)) {
+//                            hitQuotaBlockSeatShiftApi(
+//                                blockingNumber = blockingNumber,
+//                                oldSeatNumber = sourceSeat,
+//                                newSeatNumber = destinationSeat,
+//                                apiKey = loginModelPref.api_key
+//                            )
+//                        }
+//                    }
+//                    true
+//                }
+//
+//                DragEvent.ACTION_DRAG_ENDED -> {
+//                    true
+//                }
+//
+//                else -> false
+//            }
+//        }
+//    }
 
     private fun getSeatAvailability(seatNumber: String, seatList: List<SeatDetail>?) : Boolean{
 

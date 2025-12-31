@@ -89,7 +89,7 @@ class PassengerSortSublistAdapter(
         }
 
         holder.detailedPart.gone()
-        holder.imageExpandLessOption.gone()
+
 
         if (!searchModel?.passenger_details.isNullOrEmpty()){
            searchModel?.passenger_details?.forEach {
@@ -340,24 +340,8 @@ class PassengerSortSublistAdapter(
         holder.rvList.setRecycledViewPool(viewPool)
 
         holder.apply {
-            imageExpandMoreOptions.setOnClickListener {
-                detailedPart.visible()
-                imageExpandLessOption.visible()
-                imageExpandMoreOptions.gone()
-                if (statusCount == 0) {
-                    PreferenceUtils.setPreference(
-                        "pickUpChartStatus",
-                        pnrStatus
-                    )
-                }
-                statusCount += 1
-            }
 
-            imageExpandLessOption.setOnClickListener {
-                detailedPart.gone()
-                imageExpandLessOption.gone()
-                imageExpandMoreOptions.visible()
-            }
+
 
             modifyPassengerDetail.setOnClickListener {
                 val pnrNumberValue: Any = pnrNumber ?: ""
@@ -503,9 +487,7 @@ class PassengerSortSublistAdapter(
         val passengerStatusValue = binding.passengerStatusValue
         val layoutViewTicket = binding.layoutViewTicket
         val detailedPart = binding.extendedPart
-        val imageExpandMoreOptions = binding.imgExpandMoreOptions
         val expandContractCL = binding.constraintLayout13
-        val imageExpandLessOption = binding.imgExpandLessOptions
         val modifyPassengerDetail = binding.layoutModify
         val layoutLuggage = binding.layoutLuggage
         val layoutStatus = binding.layoutStatus

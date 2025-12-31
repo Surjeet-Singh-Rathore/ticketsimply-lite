@@ -714,22 +714,6 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_service_summary"
-        style="@style/TextStyleNormalTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/_24sdp"
-        android:layout_marginBottom="@dimen/_92sdp"
-        android:backgroundTint="@color/text_header_bg"
-        android:src="@drawable/view_reservation_chart_icon"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout15"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/seatLegendsIV"

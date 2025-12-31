@@ -2743,17 +2743,10 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                     getRole()
                     checkBookingTypeCardVisibility()
                     customBookingTypes(
-                        phoneBooking = getString(R.string.phone),
-                        walkin = getString(R.string.walkin),
-                        confirmBooking = getString(R.string.confirmBooking),
-                        onlineAgent = getString(R.string.online_agent),
-                        offlineAgent = getString(R.string.offline_agent),
-                        branch = getString(R.string.branch),
-                        subAgent = getString(R.string.sub_agent_title)
+                        walkin = getString(R.string.walkin)
                     )
                     bookingStatus(
-                        confirmBooking = getString(R.string.confirm),
-                        phoneBooking = getString(R.string.phone)
+                        confirmBooking = getString(R.string.confirm)
                     )
                     handlePrivileges(
                         passengerDetailsViewModel = passengerDetailsViewModel,

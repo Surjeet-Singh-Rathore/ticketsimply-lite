@@ -231,3 +231,5 @@ const val PREF_ORIGINAL_SEAT_LIST = "pref_original_seat_list"
 
 const val PREF_EXTRA_ENABLE_COPY_PASSENGER = "pref_extra_enable_copy_passenger"
 
+const val PREF_FROM_PICKUP_CHART = "pref_from_pickup_chart"
+
