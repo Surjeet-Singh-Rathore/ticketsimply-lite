@@ -7216,7 +7216,7 @@ private var transactionFare: String = ""
                         if (::commonCoach.isInitialized) {
                             commonCoach.updateFromCoach()
                             commonCoach.setCoachData(it.body)
-                            if (previousScreen != null && previousScreen == BusDetailsActivity.TAG || previousScreen == TicketDetailsActivityCompose.tag || previousScreen == TicketDetailsActivity.tag) {
+                            if (previousScreen != null && previousScreen == BusDetailsActivity.TAG || previousScreen == TicketDetailsActivityCompose.tag) {
                                 binding.editPriceLayout.proceedLayout.gone()
                                 binding.editPriceLayout.layoutExtraSeatProceed.gone()
                                 binding.editPriceLayout.editprice.gone()

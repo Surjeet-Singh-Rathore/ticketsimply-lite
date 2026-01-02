@@ -55,7 +55,7 @@ import com.bitla.ts.presentation.adapter.EasebuzzOptionAdapter
 import com.bitla.ts.presentation.adapter.FilterAdapter
 import com.bitla.ts.presentation.adapter.WalletOptionAdapter
 import com.bitla.ts.presentation.adapter.WalletOptionAgentRechargeAdapter
-import com.bitla.ts.presentation.view.activity.BookingPaymentOptionsActivity
+
 import com.bitla.ts.presentation.view.activity.LoginActivity
 import com.bitla.ts.presentation.view.activity.NewConfirmPhoneBookingActivity
 import com.bitla.ts.presentation.view.ticket_details_compose.TicketDetailsActivityCompose
@@ -924,7 +924,6 @@ class PaymentOptionsFragment : BaseUpdateCancelTicket(), OnItemClickListener,
                     else {
                         val intent= Intent(requireActivity(), TicketDetailsActivityCompose::class.java)
                         intent.apply {
-                            putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                             putExtra("activityName2", "booking")
                             putExtra(getString(R.string.TICKET_NUMBER), it.result?.ticketNumber)
                             putExtra(getString(R.string.toolbar_title), toolbarTitle)
@@ -978,10 +977,7 @@ class PaymentOptionsFragment : BaseUpdateCancelTicket(), OnItemClickListener,
 //                            }
                             val intent= Intent(requireActivity(), TicketDetailsActivityCompose::class.java)
 
-                            intent.putExtra(
-                                "activityName",
-                                BookingPaymentOptionsActivity::class.java
-                            )
+
                             intent.putExtra("activityName2", "booking")
 
                             intent.putExtra(getString(R.string.TICKET_NUMBER), pinelabBillingRefNo)
@@ -1116,7 +1112,6 @@ class PaymentOptionsFragment : BaseUpdateCancelTicket(), OnItemClickListener,
                     val intent= Intent(requireActivity(), TicketDetailsActivityCompose::class.java)
 
                     intent.putExtra(getString(R.string.TICKET_NUMBER), bookTicketPnr)
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
                     intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
                     startActivity(intent)
@@ -1205,8 +1200,6 @@ class PaymentOptionsFragment : BaseUpdateCancelTicket(), OnItemClickListener,
                         requireActivity().toast(it.message)
 
                         val intent= Intent(requireActivity(), TicketDetailsActivityCompose::class.java)
-
-                        intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                         intent.putExtra("activityName2", "booking")
 
                         if (privilegeResponseModel.isAgentLogin && privilegeResponseModel.allowUpiForDirectPgBookingForAgents) {
@@ -1258,7 +1251,6 @@ class PaymentOptionsFragment : BaseUpdateCancelTicket(), OnItemClickListener,
 
 
                     val intent= Intent(requireActivity(), TicketDetailsActivityCompose::class.java)
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(getString(R.string.TICKET_NUMBER), pnrNumber)
@@ -1294,7 +1286,6 @@ class PaymentOptionsFragment : BaseUpdateCancelTicket(), OnItemClickListener,
 
 
                     val intent= Intent(requireActivity(), TicketDetailsActivityCompose::class.java)
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(getString(R.string.TICKET_NUMBER), pnrNumber)

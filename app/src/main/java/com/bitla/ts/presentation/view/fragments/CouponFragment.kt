@@ -41,7 +41,6 @@ import com.bitla.ts.domain.pojo.passenger_details_result.PassengerDetailsResult
 import com.bitla.ts.domain.pojo.privilege_details_model.response.main_model.PrivilegeResponseModel
 import com.bitla.ts.domain.pojo.service_details_response.SeatDetail
 import com.bitla.ts.domain.pojo.smart_miles_otp.request.SmartMilesOtpRequest
-import com.bitla.ts.presentation.view.activity.BookingPaymentOptionsActivity
 import com.bitla.ts.presentation.view.activity.LoginActivity
 import com.bitla.ts.presentation.viewModel.ValidateCouponViewModel
 import com.bitla.ts.utils.LoadingState
@@ -153,18 +152,6 @@ class CouponFragment : BaseFragment(), DialogSingleButtonListener, View.OnClickL
         onClickListener()
         setObserver()
 
-        if (::privilegeResponseModel.isInitialized && privilegeResponseModel != null) {
-            if (!privilegeResponseModel.isPrePostpone && privilegeResponseModel.freeTicket == false && isAgentLogin) {
-                val intent = Intent(requireContext(), BookingPaymentOptionsActivity::class.java)
-                intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
-                intent.putExtra(
-                    getString(R.string.applied_coupons),
-                    appliedCouponList as Serializable
-                )
-                startActivity(intent)
-            }
-
-        }
 
         lifecycleScope.launch {
             validateCouponViewModel.messageSharedFlow.collect {

@@ -80,7 +80,6 @@ import com.bitla.ts.domain.pojo.smart_miles_otp.request.*
 import com.bitla.ts.presentation.adapter.*
 import com.bitla.ts.presentation.components.*
 import com.bitla.ts.presentation.view.activity.*
-import com.bitla.ts.presentation.view.activity.ticketDetails.TicketDetailsActivity
 import com.bitla.ts.presentation.view.passenger_payment.ui.*
 import com.bitla.ts.presentation.view.ticket_details_compose.*
 import com.bitla.ts.presentation.viewModel.*
@@ -481,7 +480,6 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 //                            }
 
                         val intent = Intent(this, TicketDetailsActivityCompose::class.java)
-                        intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                         intent.putExtra("activityName2", "booking")
 
                         intent.putExtra(getString(R.string.TICKET_NUMBER), it.result?.ticketNumber)
@@ -570,10 +568,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                                 getString(R.string.TICKET_NUMBER),
                                 it.result.ticket_number
                             )
-                            intent.putExtra(
-                                "activityName",
-                                BookingPaymentOptionsActivity::class.java
-                            )
+
                             intent.putExtra("activityName2", "booking")
                             intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
                             startActivity(intent)
@@ -637,7 +632,6 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                         getString(R.string.TICKET_NUMBER),
                         passengerDetailsViewModel.bookTicketPnr
                     )
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
@@ -727,7 +721,6 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 //                    }
 
                     val intent = Intent(this, TicketDetailsActivityCompose::class.java)
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 //                    if (passengerDetailsViewModel.isAgentLogin && passengerDetailsViewModel.isAllowUpiForDirectPgBookingForAgents) {
 //                        toast(it.status)
@@ -752,15 +745,8 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 
                     if(it.error?.isNotEmpty()==true && it.error?.contains("Ticket Already Confirmed",true)==true){
 
-                        val intent = if (passengerDetailsViewModel.country.equals("India",
-                                true) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                        ) {
-                            Intent(this, TicketDetailsActivityCompose::class.java)
-                        } else {
-                            Intent(this, TicketDetailsActivity::class.java)
-                        }
+                        val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
-                        intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                         intent.putExtra("activityName2", "booking")
 
                         if (it.pnrNumber?.isNotEmpty() == true) {
@@ -1044,8 +1030,6 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 
                     val intent = Intent(this, TicketDetailsActivityCompose::class.java)
 
-
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(
@@ -1081,23 +1065,11 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
             if (it != null) {
                 if (it.code == 200) {
                     if(it.body?.ticketStatus=="Booked"){
-                        val intent = if (passengerDetailsViewModel.country.equals(
-                                "India",
-                                true
-                            ) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                        ) {
-                            Intent(this, TicketDetailsActivityCompose::class.java)
-                        } else {
-                            Intent(this, TicketDetailsActivity::class.java)
-                        }
+                        val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
                         intent.putExtra(
                             getString(R.string.TICKET_NUMBER),
                             passengerDetailsViewModel.bookTicketPnr
-                        )
-                        intent.putExtra(
-                            "activityName",
-                            BookingPaymentOptionsActivity::class.java
                         )
                         intent.putExtra("activityName2", "booking")
                         intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
@@ -1330,7 +1302,6 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                         else {
                             val intent = Intent(this, TicketDetailsActivityCompose::class.java)
                             intent.putExtra(getString(R.string.TICKET_NUMBER), it.result.ticket_number)
-                            intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                             intent.putExtra("activityName2", "booking")
                             intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
                             startActivity(intent)
@@ -3242,10 +3213,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 
 //                    if (it.responseCode == 0 && it.data!!.code == null) {
 //                    val intent = Intent(this, TicketDetailsActivity::class.java)
-                        intent.putExtra(
-                            "activityName",
-                            BookingPaymentOptionsActivity::class.java
-                        )
+
                         intent.putExtra("activityName2", "booking")
 
                         intent.putExtra(
@@ -3308,10 +3276,6 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 
                         val intent = Intent(this, TicketDetailsActivityCompose::class.java)
 
-                        intent.putExtra(
-                            "activityName",
-                            BookingPaymentOptionsActivity::class.java
-                        )
                         intent.putExtra("activityName2", "booking")
 
                         intent.putExtra(

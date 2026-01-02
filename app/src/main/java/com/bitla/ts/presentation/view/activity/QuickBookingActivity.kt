@@ -350,10 +350,6 @@ class QuickBookingActivity : BaseActivity(), OnItemClickListener, DialogSingleBu
                     getString(R.string.TICKET_NUMBER),
                     pnrNumber
                 )
-                intent.putExtra(
-                    "activityName",
-                    BookingPaymentOptionsActivity::class.java
-                )
                 intent.putExtra("activityName2", "booking")
                 intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
                 startActivity(intent)

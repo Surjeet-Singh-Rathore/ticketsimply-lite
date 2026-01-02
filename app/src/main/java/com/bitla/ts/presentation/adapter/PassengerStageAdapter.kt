@@ -30,7 +30,7 @@ import com.bitla.ts.domain.pojo.view_reservation.PassengerDetail
 import com.bitla.ts.domain.pojo.view_reservation.PassengerDetailX
 import com.bitla.ts.domain.pojo.view_reservation.RespHash
 import com.bitla.ts.presentation.adapter.NewSortByAdaper.PassengerSortSublistAdapter
-import com.bitla.ts.presentation.view.activity.ticketDetails.TicketDetailsActivity
+import com.bitla.ts.presentation.view.ticket_details_compose.TicketDetailsActivityCompose
 import com.bitla.ts.utils.common.convert
 import com.bitla.ts.utils.common.firebaseLogEvent
 import com.bitla.ts.utils.common.getCountryCodes
@@ -566,7 +566,7 @@ class PassengerStageAdapter(
                         VIEW_TICKET,
                         "View ticket"
                     )
-                    val intent = Intent(context, TicketDetailsActivity::class.java)
+                    val intent = Intent(context, TicketDetailsActivityCompose::class.java)
                     intent.putExtra(
                         context.getString(R.string.TICKET_NUMBER),
                         passengerSearchModel.pnrNumber

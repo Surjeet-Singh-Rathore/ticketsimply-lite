@@ -2471,7 +2471,7 @@ class TicketDetailsActivityCompose : BaseActivity() {
         PreferenceUtils.setPreference(PREF_UPDATE_COACH, true)
 
         val intent = Intent(this, NewCoachActivity::class.java)
-        intent.putExtra(REDIRECT_FROM, TicketDetailsActivity.tag)
+        intent.putExtra(REDIRECT_FROM, TicketDetailsActivityCompose.tag)
         intent.putExtra("fromTicketDetails", "rebooking")
         PreferenceUtils.putString("SelectionCoach", "BOOK")
         PreferenceUtils.putString(
@@ -7383,36 +7383,10 @@ class TicketDetailsActivityCompose : BaseActivity() {
         }
 
         setConfirmOtpReleaseObserver()
-        setReleaseTicketPassengerAdapter()
         bottomSheetDialoge.show()
     }
 
-    private fun setReleaseTicketPassengerAdapter() {
-        _sheetReleaseTicketsBinding.rvPassengers.layoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false
-        )
 
-        _sheetReleaseTicketsBinding.rvPassengers.adapter = ReleaseTicketPassengersListAdapterPhase3(
-            this,
-            ticketDetailsComposeViewModel.passengerDetails.toMutableList(),
-            onItemCheck = { item ->
-                currentCheckedItem.add(item)
-                Timber.d("seat:added-$currentCheckedItem")
-            },
-            onItemUncheck = { item ->
-                currentCheckedItem.remove(item)
-                if (currentCheckedItem.size == 0) {
-                    currentCheckedItem.clear()
-                    selectedSeatNumber.clear()
-
-                }
-                selectedSeatNumber.clear()
-                Timber.d("seat:removed-$currentCheckedItem")
-            }
-        )
-    }
 
     // In your Compose UI
     fun showHideMenuFromOtherFragmentObserver() {

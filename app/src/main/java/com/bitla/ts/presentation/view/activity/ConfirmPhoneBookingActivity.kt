@@ -67,7 +67,7 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
     VarArgListener, DialogSingleButtonListener {
 
     companion object {
-        val tag: String = BookingPaymentOptionsActivity::class.java.simpleName
+        val tag: String = ConfirmPhoneBookingActivity::class.java.simpleName
     }
 
     private var privileges: PrivilegeResponseModel? = null
@@ -299,7 +299,7 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
         setObserver()
         getSeatDetails()
         getPassengersList()
-        setPassengersAdapter()
+
         setPassengerInfo()
         setConfirmPhoneBlockTicketObserver()
         phonePeV2StatusObserver()
@@ -528,14 +528,8 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
                     mealTypes = ""
                 }
             }
-            if (mealCouponList.isNotEmpty()) {
-                binding.cardMealCoupons.visible()
-                setMealsAdapter(mealCouponList)
-            }
-            if (mealTypeList.isNotEmpty()) {
-                binding.cardMealTypes.visible()
-                setMealTypeAdapter(mealTypeList)
-            }
+
+
         } else {
             binding.cardMealCoupons.gone()
             binding.cardMealTypes.gone()
@@ -562,17 +556,8 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
 //        selectedSeatNo = commaSeparatedSeatNoUpdated
     }
 
-    private fun setMealsAdapter(mealCouponList: MutableList<String>) {
-        binding.rvMealCoupons.layoutManager = GridLayoutManager(this, 3)
-        val mealCouponsAdapter = MealCouponsAdapter(this, mealCouponList)
-        binding.rvMealCoupons.adapter = mealCouponsAdapter
-    }
 
-    private fun setMealTypeAdapter(mealTypeList: MutableList<String>) {
-        binding.rvMealType.layoutManager = GridLayoutManager(this, 3)
-        val mealTypeAdapter = MealCouponsAdapter(this, mealTypeList)
-        binding.rvMealType.adapter = mealTypeAdapter
-    }
+
 
     private fun getBookingRequest() {
         bookingCustomRequest = retrieveBookingCustomRequest()
@@ -616,11 +601,6 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
 //                                Intent(this, TicketDetailsActivity::class.java)
 //                            }
                             val intent=Intent(this, TicketDetailsActivityCompose::class.java)
-
-                            intent.putExtra(
-                                "activityName",
-                                BookingPaymentOptionsActivity::class.java
-                            )
                             intent.putExtra("activityName2", "booking")
 
                             intent.putExtra(getString(R.string.TICKET_NUMBER), pinelabBillingRefNo)
@@ -757,7 +737,6 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
                     val intent=Intent(this, TicketDetailsActivityCompose::class.java)
 
                     intent.putExtra(getString(R.string.TICKET_NUMBER), bookTicketPnr)
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
                     intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
                     startActivity(intent)
@@ -848,8 +827,6 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
                         toast(it.message)
                         
                         val intent=Intent(this, TicketDetailsActivityCompose::class.java)
-                        
-                        intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                         intent.putExtra("activityName2", "booking")
 
                         if ((privilegeResponseModel.isAgentLogin && privilegeResponseModel.allowUpiForDirectPgBookingForAgents) ||
@@ -902,7 +879,6 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
 
 
                     val intent=Intent(this, TicketDetailsActivityCompose::class.java)
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(getString(R.string.TICKET_NUMBER), pnrNumber)
@@ -939,7 +915,6 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
 
 
                     val intent=Intent(this, TicketDetailsActivityCompose::class.java)
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(getString(R.string.TICKET_NUMBER), pnrNumber)
@@ -1306,13 +1281,7 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
         
     }
 
-    private fun setPassengersAdapter() {
-        layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.rvPassengers.layoutManager = layoutManager
-        val bookPassengersAdapter =
-            BookPassengersAdapter(this, this, passengerList)
-        binding.rvPassengers.adapter = bookPassengersAdapter
-    }
+
 
     override fun onClick(v: View) {
         super.onClick(v)
@@ -2039,7 +2008,6 @@ class ConfirmPhoneBookingActivity : BaseActivity(), OnItemClickListener, DialogB
                     else {
                         val intent= Intent(this, TicketDetailsActivityCompose::class.java)
                         intent.apply {
-                            putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                             putExtra("activityName2", "booking")
                             putExtra(getString(R.string.TICKET_NUMBER), it.result?.ticketNumber)
                             putExtra(getString(R.string.toolbar_title), toolbarTitle)
