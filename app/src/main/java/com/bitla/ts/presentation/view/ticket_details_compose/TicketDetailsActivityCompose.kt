@@ -617,23 +617,19 @@ class TicketDetailsActivityCompose : BaseActivity() {
                 OrTextLayout()
             }
             if (ticketDetailsComposeViewModel.showNewBookingButton) {
-                GoToBookingPageLayout(
-                    onClick = {
-                        val resID = PreferenceUtils.getPreference(PREF_RESERVATION_ID, 0L)
-
-                        val intent = Intent(
-                            this@TicketDetailsActivityCompose,
-                            ViewReservationActivity::class.java
-                        ).apply {
-                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            putExtra("pickUpResid", resID)
-                            putExtra("fromTicketDetails", true)
-                        }
-
-                        startActivity(intent)
-                        finish()
-                    }
-                )
+                GoToBookingPageLayout(onClick = {
+                    PreferenceUtils.putString(
+                        getString(R.string.BACK_PRESS), getString(R.string.new_booking)
+                    )
+                    PreferenceUtils.removeKey(PREF_PICKUP_DROPOFF_CHARGES_ENABLED)
+                    val intent = Intent(
+                        this@TicketDetailsActivityCompose, DashboardNavigateActivity::class.java
+                    )
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    intent.putExtra("newBooking", true)
+                    startActivity(intent)
+                    finish()
+                })
             }
         }
     }

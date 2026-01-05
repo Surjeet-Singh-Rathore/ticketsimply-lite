@@ -1942,7 +1942,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                                                 rapidBookingSkip = it
                                                 if (it) {
                                                     rapidBookingType = 0
-                                                    isFareBreakupApiCalled = true
+                                                    isFareBreakupApiCalled = false
                                                 } else {
                                                     rapidBookingType = 1
                                                     isRapidBooking = "false"
@@ -1995,7 +1995,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
 //                                                coroutineScope.launch {
 //                                                    listState.animateScrollToItem(index = 1)
 //                                                }
-                                                passengerDetailsViewModel.isFareBreakupApiCalled = true
+                                                passengerDetailsViewModel.isFareBreakupApiCalled = false
                                                 coroutineScope.launch {
                                                     listState.animateScrollToItem(index = 1)
                                                 }
@@ -3044,7 +3044,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                                 passengerDetailsViewModel.selectedBranchId = selectedBranchId
                                 passengerDetailsViewModel.selectedBranchName = selectedCityName
 
-                                passengerDetailsViewModel.isFareBreakupApiCalled= true
+                                passengerDetailsViewModel.isFareBreakupApiCalled= false
                                 passengerDetailsViewModel.isFareBreakupBottomSheetVisible= false
                                 if (passengerDetailsViewModel.branchRoleDiscountType != getString(R.string.none)) {
                                     PreferenceUtils.setPreference(
@@ -3078,7 +3078,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                                 val selectedUserId = selectedCityId.toDouble().toInt()
                                 passengerDetailsViewModel.selectedUserId = selectedUserId
                                 passengerDetailsViewModel.selectedUserName = selectedCityName
-                                passengerDetailsViewModel.isFareBreakupApiCalled= true
+                                passengerDetailsViewModel.isFareBreakupApiCalled= false
                                 passengerDetailsViewModel.isFareBreakupBottomSheetVisible= false
                                 if (passengerDetailsViewModel.branchRoleDiscountType != getString(R.string.none)) {
                                     PreferenceUtils.setPreference(
@@ -5324,7 +5324,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                     isShowUserSubPaymentDialog = false
                     selectedPaymentOptionId = 1
                     selectedPaymentOption = ResourceProvider.TextResource.fromStringId(R.string.cash)
-                    isFareBreakupApiCalled = true
+                    isFareBreakupApiCalled = false
                     passengerDetailsViewModel.isUserSubPaymentSelected = false
                 }
 
@@ -5357,7 +5357,7 @@ class PassengerPaymentActivity : BaseActivity(), VarArgListener, DialogSingleBut
                     isShowAgentSubPaymentDialog = false
                     selectedPaymentOptionId = 1
                     selectedPaymentOption = ResourceProvider.TextResource.fromStringId(R.string.cash)
-                    isFareBreakupApiCalled = true
+                    isFareBreakupApiCalled = false
                     passengerDetailsViewModel.isAgentSubPaymentSelected = false
                 }
 

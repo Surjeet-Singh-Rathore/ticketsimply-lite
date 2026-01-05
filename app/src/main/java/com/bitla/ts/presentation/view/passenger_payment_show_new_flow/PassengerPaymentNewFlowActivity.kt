@@ -284,16 +284,14 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                     passengerDetailsViewModel.isPerBookingDiscountAmountChanged = false
                 }
             }
-            LaunchedEffect(passengerDetailsViewModel.isFareBreakupApiCalled) {
+
                 if (passengerDetailsViewModel.isFareBreakupApiCalled) {
                     if (isNetworkAvailable()) {
                         fareBreakupApi()
                     } else {
                         noNetworkToast()
                     }
-                    // VERY IMPORTANT: reset flag
-                    passengerDetailsViewModel.isFareBreakupApiCalled = false
-                }
+
             }
 
 
@@ -2067,7 +2065,7 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                                                             rapidBookingSkip = it
                                                             if (it) {
                                                                 rapidBookingType = 0
-                                                                isFareBreakupApiCalled = true
+                                                                isFareBreakupApiCalled = false
                                                             } else {
                                                                 rapidBookingType = 1
                                                                 isRapidBooking = "false"
@@ -2111,7 +2109,7 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
 //                                                      coroutineScope.launch {
 //                                                      listState.animateScrollToItem(index = 1)
 //                                                      }
-                                                                passengerDetailsViewModel.isFareBreakupApiCalled = true
+                                                                passengerDetailsViewModel.isFareBreakupApiCalled = false
                                                                 coroutineScope.launch {
                                                                     listState.animateScrollToItem(index = 1)
                                                                 }
@@ -5310,7 +5308,7 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                     isShowUserSubPaymentDialog = false
                     selectedPaymentOptionId = 1
                     selectedPaymentOption = ResourceProvider.TextResource.fromStringId(R.string.cash)
-                    isFareBreakupApiCalled = true
+                    isFareBreakupApiCalled = false
                     passengerDetailsViewModel.isUserSubPaymentSelected = false
                 }
 

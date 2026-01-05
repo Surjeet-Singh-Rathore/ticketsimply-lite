@@ -7446,6 +7446,18 @@ private var transactionFare: String = ""
 
                 }
 
+                424 -> {
+                    binding.apply {
+                        layoutPassengerDetailsSeatLegends.root.gone()
+                        nestedScrollView.gone()
+
+                        noData.root.visible()
+                        noData.tvNoData.text = getString(R.string.no_services)
+                    }
+
+                    it.message?.let { it1 -> Timber.d(it1) }
+                }
+
                 else -> {
                     binding.apply {
                         layoutPassengerDetailsSeatLegends.root.gone()
