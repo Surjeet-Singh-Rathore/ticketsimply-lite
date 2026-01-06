@@ -1307,7 +1307,6 @@ class PassengerDetailsViewModel<T : Any?> : ViewModel() {
         val appliedCoupon = AppliedCoupon(couponCode, couponTypeResource = checkedOfferTypeResId)
         removeAppliedCoupon(checkedOfferTypeResId!!)
         appliedCouponList.add(appliedCoupon)
-        isFareBreakupApiCalled = true
         visibleTextField.value = false
 //        Timber.d("appliedCoupon_add- list=$appliedCouponList")
     }
@@ -1316,7 +1315,6 @@ class PassengerDetailsViewModel<T : Any?> : ViewModel() {
         val index = appliedCouponList.indexOfFirst { it.couponTypeResource == couponType }
         if (index != null && index != -1) {
             appliedCouponList.removeAt(index)
-            isFareBreakupApiCalled = true
             visibleTextField.value = false
         }
 //        Timber.d("appliedCouponList_remove- list = $appliedCouponList index = $index")

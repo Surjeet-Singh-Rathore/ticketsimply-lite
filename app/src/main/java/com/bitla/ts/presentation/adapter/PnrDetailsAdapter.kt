@@ -13,7 +13,6 @@ import com.bitla.ts.R
 import com.bitla.ts.data.listener.OnItemClickListener
 import com.bitla.ts.databinding.ChildPnrDetailsLayoutBinding
 import com.bitla.ts.domain.pojo.passenger_history.PassengerHistoryModel
-import com.bitla.ts.presentation.view.activity.ticketDetails.TicketDetailsActivity
 import com.bitla.ts.presentation.view.ticket_details_compose.TicketDetailsActivityCompose
 import gone
 import visible

@@ -284,16 +284,14 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                     passengerDetailsViewModel.isPerBookingDiscountAmountChanged = false
                 }
             }
-            LaunchedEffect(passengerDetailsViewModel.isFareBreakupApiCalled) {
+
                 if (passengerDetailsViewModel.isFareBreakupApiCalled) {
                     if (isNetworkAvailable()) {
                         fareBreakupApi()
                     } else {
                         noNetworkToast()
                     }
-                    // VERY IMPORTANT: reset flag
-                    passengerDetailsViewModel.isFareBreakupApiCalled = false
-                }
+
             }
 
 
@@ -430,16 +428,7 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
             if (it != null) {
                 when (it.code) {
                     200 -> {
-                        val intent = if (passengerDetailsViewModel.country.equals(
-                                "India",
-                                true
-                            ) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                        ) {
-                            Intent(this, TicketDetailsActivityCompose::class.java)
-                        } else {
-                            Intent(this, TicketDetailsActivity::class.java)
-                        }
-                        intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
+                        val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
                         intent.putExtra("activityName2", "booking")
 
                         intent.putExtra(getString(R.string.TICKET_NUMBER), it.result?.ticketNumber)
@@ -581,24 +570,13 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                             callPayStatOfAgentInsRechargStatusApi()
                         }
                         else {
-                            val intent = if (passengerDetailsViewModel.country.equals(
-                                    "India",
-                                    true
-                                ) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                            ) {
-                                Intent(this, TicketDetailsActivityCompose::class.java)
-                            } else {
-                                Intent(this, TicketDetailsActivity::class.java)
-                            }
+                            val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
                             intent.putExtra(
                                 getString(R.string.TICKET_NUMBER),
                                 it.result.ticket_number
                             )
-                            intent.putExtra(
-                                "activityName",
-                                BookingPaymentOptionsActivity::class.java
-                            )
+
                             intent.putExtra("activityName2", "booking")
                             intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
                             startActivity(intent)
@@ -648,21 +626,12 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                     if (::walletUpiAlertDialog.isInitialized && walletUpiAlertDialog != null)
                         walletUpiAlertDialog.cancel()
 
-                    val intent = if (passengerDetailsViewModel.country.equals(
-                            "India",
-                            true
-                        ) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                    ) {
-                        Intent(this, TicketDetailsActivityCompose::class.java)
-                    } else {
-                        Intent(this, TicketDetailsActivity::class.java)
-                    }
+                    val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
                     intent.putExtra(
                         getString(R.string.TICKET_NUMBER),
                         passengerDetailsViewModel.bookTicketPnr
                     )
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
@@ -742,15 +711,8 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                 if (it.code == 200) {
                     toast(it.message)
 
-                    val intent = if (passengerDetailsViewModel.country.equals("India",
-                            true) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                    ) {
-                        Intent(this, TicketDetailsActivityCompose::class.java)
-                    } else {
-                        Intent(this, TicketDetailsActivity::class.java)
-                    }
+                    val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     if (it.pnrNumber?.isNotEmpty() == true) {
@@ -767,15 +729,8 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                 } else if (it.code == 400) {
                     if(it.error?.isNotEmpty()==true && it.error?.contains("Ticket Already Confirmed",true)==true){
 
-                        val intent = if (passengerDetailsViewModel.country.equals("India",
-                                true) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                        ) {
-                            Intent(this, TicketDetailsActivityCompose::class.java)
-                        } else {
-                            Intent(this, TicketDetailsActivity::class.java)
-                        }
+                        val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
-                        intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                         intent.putExtra("activityName2", "booking")
 
                         if (it.pnrNumber?.isNotEmpty() == true) {
@@ -1044,17 +999,8 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                     )
                 }
                 else if (it.passenger_details != null && it.passenger_details.isNotEmpty()) {
-                    val intent = if (passengerDetailsViewModel.country.equals(
-                            "India",
-                            true
-                        ) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                    ) {
-                        Intent(this, TicketDetailsActivityCompose::class.java)
-                    } else {
-                        Intent(this, TicketDetailsActivity::class.java)
-                    }
+                    val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
-                    intent.putExtra("activityName", BookingPaymentOptionsActivity::class.java)
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(
@@ -1278,24 +1224,12 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                         }
                         else {
 
-                            val intent = if (passengerDetailsViewModel.country.equals(
-                                    "India",
-                                    true
-                                ) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                            ) {
-                                Intent(this, TicketDetailsActivityCompose::class.java)
-                            } else {
-                                Intent(this, TicketDetailsActivity::class.java)
-                            }
-
+                            val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
                             intent.putExtra(
                                 getString(R.string.TICKET_NUMBER),
                                 it.result.ticket_number
                             )
-                            intent.putExtra(
-                                "activityName",
-                                BookingPaymentOptionsActivity::class.java
-                            )
+
                             intent.putExtra("activityName2", "booking")
                             intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
                             startActivity(intent)
@@ -1629,10 +1563,7 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
 
 //                    if (it.responseCode == 0 && it.data!!.code == null) {
 //                    val intent = Intent(this, TicketDetailsActivity::class.java)
-                        intent.putExtra(
-                            "activityName",
-                            BookingPaymentOptionsActivity::class.java
-                        )
+
                         intent.putExtra("activityName2", "booking")
 
                         intent.putExtra(
@@ -2134,7 +2065,7 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                                                             rapidBookingSkip = it
                                                             if (it) {
                                                                 rapidBookingType = 0
-                                                                isFareBreakupApiCalled = true
+                                                                isFareBreakupApiCalled = false
                                                             } else {
                                                                 rapidBookingType = 1
                                                                 isRapidBooking = "false"
@@ -2178,7 +2109,7 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
 //                                                      coroutineScope.launch {
 //                                                      listState.animateScrollToItem(index = 1)
 //                                                      }
-                                                                passengerDetailsViewModel.isFareBreakupApiCalled = true
+                                                                passengerDetailsViewModel.isFareBreakupApiCalled = false
                                                                 coroutineScope.launch {
                                                                     listState.animateScrollToItem(index = 1)
                                                                 }
@@ -3438,19 +3369,9 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                         passengerDetailsViewModel.showShimmer = false
                     }
 
-                    val intent = if (passengerDetailsViewModel.country.equals(
-                            "India",
-                            true
-                        ) || passengerDetailsViewModel.country.equals("Indonesia", true)) {
-                        Intent(this, TicketDetailsActivityCompose::class.java)
-                    } else {
-                        Intent(this, TicketDetailsActivity::class.java)
-                    }
+                    val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
-                    intent.putExtra(
-                        "activityName",
-                        BookingPaymentOptionsActivity::class.java
-                    )
+
                     intent.putExtra("activityName2", "booking")
 
                     intent.putExtra(
@@ -3508,24 +3429,13 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
             if (it != null) {
                 if (it.code == 200) {
                     if(it.body?.ticketStatus=="Booked"){
-                        val intent = if (passengerDetailsViewModel.country.equals(
-                                "India",
-                                true
-                            ) || passengerDetailsViewModel.country.equals("Indonesia", true)
-                        ) {
-                            Intent(this, TicketDetailsActivityCompose::class.java)
-                        } else {
-                            Intent(this, TicketDetailsActivity::class.java)
-                        }
+                        val intent =  Intent(this, TicketDetailsActivityCompose::class.java)
 
                         intent.putExtra(
                             getString(R.string.TICKET_NUMBER),
                             passengerDetailsViewModel.bookTicketPnr
                         )
-                        intent.putExtra(
-                            "activityName",
-                            BookingPaymentOptionsActivity::class.java
-                        )
+
                         intent.putExtra("activityName2", "booking")
                         intent.putExtra(getString(R.string.toolbar_title), toolbarTitle)
                         startActivity(intent)
@@ -5398,7 +5308,7 @@ class PassengerPaymentNewFlowActivity : BaseActivity(), VarArgListener, DialogSi
                     isShowUserSubPaymentDialog = false
                     selectedPaymentOptionId = 1
                     selectedPaymentOption = ResourceProvider.TextResource.fromStringId(R.string.cash)
-                    isFareBreakupApiCalled = true
+                    isFareBreakupApiCalled = false
                     passengerDetailsViewModel.isUserSubPaymentSelected = false
                 }
 

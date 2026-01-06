@@ -617,23 +617,19 @@ class TicketDetailsActivityCompose : BaseActivity() {
                 OrTextLayout()
             }
             if (ticketDetailsComposeViewModel.showNewBookingButton) {
-                GoToBookingPageLayout(
-                    onClick = {
-                        val resID = PreferenceUtils.getPreference(PREF_RESERVATION_ID, 0L)
-
-                        val intent = Intent(
-                            this@TicketDetailsActivityCompose,
-                            ViewReservationActivity::class.java
-                        ).apply {
-                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            putExtra("pickUpResid", resID)
-                            putExtra("fromTicketDetails", true)
-                        }
-
-                        startActivity(intent)
-                        finish()
-                    }
-                )
+                GoToBookingPageLayout(onClick = {
+                    PreferenceUtils.putString(
+                        getString(R.string.BACK_PRESS), getString(R.string.new_booking)
+                    )
+                    PreferenceUtils.removeKey(PREF_PICKUP_DROPOFF_CHARGES_ENABLED)
+                    val intent = Intent(
+                        this@TicketDetailsActivityCompose, DashboardNavigateActivity::class.java
+                    )
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    intent.putExtra("newBooking", true)
+                    startActivity(intent)
+                    finish()
+                })
             }
         }
     }
@@ -2471,7 +2467,7 @@ class TicketDetailsActivityCompose : BaseActivity() {
         PreferenceUtils.setPreference(PREF_UPDATE_COACH, true)
 
         val intent = Intent(this, NewCoachActivity::class.java)
-        intent.putExtra(REDIRECT_FROM, TicketDetailsActivity.tag)
+        intent.putExtra(REDIRECT_FROM, TicketDetailsActivityCompose.tag)
         intent.putExtra("fromTicketDetails", "rebooking")
         PreferenceUtils.putString("SelectionCoach", "BOOK")
         PreferenceUtils.putString(
@@ -7383,36 +7379,10 @@ class TicketDetailsActivityCompose : BaseActivity() {
         }
 
         setConfirmOtpReleaseObserver()
-        setReleaseTicketPassengerAdapter()
         bottomSheetDialoge.show()
     }
 
-    private fun setReleaseTicketPassengerAdapter() {
-        _sheetReleaseTicketsBinding.rvPassengers.layoutManager = LinearLayoutManager(
-            this,
-            LinearLayoutManager.VERTICAL,
-            false
-        )
 
-        _sheetReleaseTicketsBinding.rvPassengers.adapter = ReleaseTicketPassengersListAdapterPhase3(
-            this,
-            ticketDetailsComposeViewModel.passengerDetails.toMutableList(),
-            onItemCheck = { item ->
-                currentCheckedItem.add(item)
-                Timber.d("seat:added-$currentCheckedItem")
-            },
-            onItemUncheck = { item ->
-                currentCheckedItem.remove(item)
-                if (currentCheckedItem.size == 0) {
-                    currentCheckedItem.clear()
-                    selectedSeatNumber.clear()
-
-                }
-                selectedSeatNumber.clear()
-                Timber.d("seat:removed-$currentCheckedItem")
-            }
-        )
-    }
 
     // In your Compose UI
     fun showHideMenuFromOtherFragmentObserver() {

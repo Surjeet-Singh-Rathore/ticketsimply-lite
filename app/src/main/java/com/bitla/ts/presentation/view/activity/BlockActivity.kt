@@ -2570,11 +2570,7 @@ class BlockActivity : BaseActivity(), AdapterView.OnItemSelectedListener, OnItem
             /* reverseLayout = */ false
         )
 
-        bindingSheet.rvPassengers.adapter = ReleaseTicketPassengersListAdapter(
-            context = this,
-            passengerDetailSeatList = passengerDetailList,
-            onItemCheckListener = this
-        )
+
     }
 
     private fun callReleaseTicketApi(ticketNumber: String, authPin: String) {
